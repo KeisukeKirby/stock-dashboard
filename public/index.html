@@ -12,6 +12,35 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="toolbar" role="search">
+    <label class="field grow">
+      <span>検索</span>
+      <input id="q" type="search" placeholder="コード・モデル・カラー・サイズ" autocomplete="off">
+    </label>
+    <label class="field">
+      <span>モデル</span>
+      <select id="fModel"><option value="">すべて</option></select>
+    </label>
+    <label class="field">
+      <span>カラー</span>
+      <select id="fColor"><option value="">すべて</option></select>
+    </label>
+    <label class="field">
+      <span>サイズ</span>
+      <select id="fSize"><option value="">すべて</option></select>
+    </label>
+    <label class="field">
+      <span>在庫</span>
+      <select id="fStock">
+        <option value="">すべて</option>
+        <option value="in">在庫あり</option>
+        <option value="low">残りわずか (1点)</option>
+        <option value="out">在庫切れ (0点)</option>
+      </select>
+    </label>
+    <button id="reset" type="button">条件をリセット</button>
+    <span id="rowCount" class="count"></span>
+  </div>
   <div class="sheet" id="sheet">
     <table id="stockTable">
       <colgroup id="cols"></colgroup>

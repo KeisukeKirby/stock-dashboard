@@ -22,8 +22,27 @@ body {
   font-size: 11pt;
 }
 
+body { display: flex; flex-direction: column; }
+
+/* 検索バー (表の上に固定) */
+.toolbar {
+  flex: none; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px;
+  padding: 6px 8px; background: #f3f3f3; border-bottom: 1px solid #d4d4d4; font-size: 10pt;
+}
+.toolbar .field { display: flex; align-items: center; gap: 5px; }
+.toolbar .field.grow { flex: 0 1 300px; }
+.toolbar .field > span { color: #404040; white-space: nowrap; }
+.toolbar input, .toolbar select, .toolbar button {
+  font: inherit; color: #000; height: 24px; border: 1px solid #c6c6c6; border-radius: 2px; background: #fff; padding: 0 6px;
+}
+.toolbar input { width: 100%; min-width: 160px; }
+.toolbar input:focus, .toolbar select:focus { outline: 1px solid var(--header); border-color: var(--header); }
+.toolbar button { cursor: pointer; }
+.toolbar button:hover { background: #e8eef6; border-color: var(--header); }
+.toolbar .count { color: #404040; margin-left: auto; white-space: nowrap; }
+
 /* ウィンドウ枠の固定 (A5) : 1〜4 行目は常に表示 */
-.sheet { height: 100%; overflow: auto; }
+.sheet { flex: 1; min-height: 0; overflow: auto; }
 
 table {
   border-collapse: separate;
@@ -65,11 +84,14 @@ thead tr.h2 th.ret-h { background: var(--header-ret); }
 /* Total 行 */
 tr.total td { background: var(--total-fill); font-weight: 700; }
 
+td.empty { text-align: center; color: #595959; height: 40px; }
+
 .status { margin: 8px 6px; color: #595959; font-size: 10pt; }
 .status:empty { display: none; }
 
 @media print {
-  html, body, .sheet { height: auto; overflow: visible; }
+  html, body, .sheet { height: auto; overflow: visible; display: block; }
+  .toolbar { display: none; }
   thead th { position: static; }
   th, td { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
