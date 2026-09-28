@@ -27,6 +27,13 @@
       </div>
     </header>
 
+    <nav class="tabs" role="tablist" aria-label="表示切替">
+      <button class="tab" role="tab" id="tab-table" data-view="table" aria-controls="view-table">在庫一覧</button>
+      <button class="tab" role="tab" id="tab-detail" data-view="detail" aria-controls="view-detail">詳細</button>
+    </nav>
+
+    <section id="view-detail" class="view" role="tabpanel" aria-labelledby="tab-detail" hidden>
+    <p class="view-note" id="detailNote"></p>
     <section class="kpis" aria-label="サマリー">
       <div class="kpi">
         <p class="kpi-label">総在庫数</p>
@@ -66,8 +73,9 @@
         <div id="modelChart" class="bars compact"></div>
       </div>
     </section>
+    </section>
 
-    <section class="card table-card">
+    <section id="view-table" class="view card table-card" role="tabpanel" aria-labelledby="tab-table">
       <div class="card-head">
         <h2>在庫一覧 <span class="count" id="rowCount"></span></h2>
         <button id="dlCsv" class="ghost small" type="button">表示中の行を CSV で保存</button>

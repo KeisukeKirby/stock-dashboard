@@ -82,6 +82,18 @@ h1 { font-size: 26px; font-weight: 700; margin: 4px 0 6px; letter-spacing: -.01e
 .hint { font-size: 12px; color: var(--muted); }
 .count { font-weight: 500; color: var(--muted); font-size: 13px; margin-left: 6px; }
 
+/* tabs */
+.tabs { display: flex; gap: 4px; margin-bottom: 14px; border-bottom: 1px solid var(--line-strong); }
+.tab {
+  border: 0; background: none; cursor: pointer; padding: 10px 18px; font-size: 14px; font-weight: 600; color: var(--muted);
+  border-bottom: 3px solid transparent; margin-bottom: -1px;
+}
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+.view[hidden] { display: none; }
+.view-note { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+.view-note:empty { display: none; }
+
 /* KPI */
 .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 14px; }
 .kpi {
@@ -156,10 +168,10 @@ h1 { font-size: 26px; font-weight: 700; margin: 4px 0 6px; letter-spacing: -.01e
   font-family: Calibri, Carlito, "Segoe UI", Arial, sans-serif;
   font-size: 11pt;
   line-height: 1;
-  overflow: auto;
-  max-height: 75vh;
   border: 1px solid var(--line-strong);
 }
+/* 画面幅に収まるよう JS で zoom を設定 (縦・横ともスクロールなし) */
+.sheet table { zoom: var(--fit, 1); }
 .sheet table { border-collapse: separate; border-spacing: 0; table-layout: fixed; width: max-content; }
 .sheet th, .sheet td {
   height: var(--row-h);
@@ -210,7 +222,9 @@ h1 { font-size: 26px; font-weight: 700; margin: 4px 0 6px; letter-spacing: -.01e
   body { background: #fff; }
   .top-actions, .kpis, .charts, .filters, #dlCsv, .foot { display: none; }
   .card { border: 0; box-shadow: none; padding: 0; }
-  .sheet { max-height: none; overflow: visible; border: 0; }
+  .tabs, .view-note { display: none; }
+  #view-table { display: block !important; }
+  .sheet { border: 0; }
   .sheet thead th { position: static; }
   .sheet th, .sheet td { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }

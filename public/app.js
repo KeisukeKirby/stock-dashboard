@@ -45,6 +45,30 @@
   });
   applyTheme();
 
+  /* ---------- tabs ---------- */
+  let view = location.hash === "#detail" ? "detail" : "table";
+  function showView(v, { scroll = false } = {}) {
+    view = v;
+    document.querySelectorAll(".tab").forEach((t) => t.setAttribute("aria-selected", t.dataset.view === v));
+    $("view-table").hidden = v !== "table";
+    $("view-detail").hidden = v !== "detail";
+    history.replaceState(null, "", v === "detail" ? "#detail" : location.pathname + location.search);
+    if (v === "table") fitTable();
+    if (scroll) $("view-table").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  document.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => showView(t.dataset.view)));
+
+  /* ---------- 表を画面幅に合わせる (スクロールなし) ---------- */
+  function fitTable() {
+    const sheet = $("sheet"), table = $("stockTable");
+    if (!sheet.offsetWidth) return;
+    table.style.setProperty("--fit", 1);
+    const w = table.offsetWidth;
+    const avail = sheet.clientWidth;
+    table.style.setProperty("--fit", w > avail ? Math.floor(((avail - 2) / w) * 10000) / 10000 : 1);
+  }
+  window.addEventListener("resize", fitTable);
+
   /* ---------- tooltip ---------- */
   const tip = $("tip");
   const showTip = (e, html) => {
@@ -120,7 +144,7 @@
     barChart($("storeChart"), stores, {
       active: state.sort,
       tipFor: (e) => `<b>${esc(e.label)}</b><br>在庫 ${fmt(e.value)} 点（${Math.round((e.value / grand) * 100)}%）<br>在庫のある SKU ${fmt(e.skus)}`,
-      onClick: (e) => { state.sort = state.sort === e.key ? "" : e.key; $("fSort").value = state.sort; render(); },
+      onClick: (e) => { state.sort = state.sort === e.key ? "" : e.key; $("fSort").value = state.sort; render(); if (state.sort) showView("table", { scroll: true }); },
     });
 
     // モデル別はモデル絞り込み以外の条件を反映 (クリックで切り替えられるように)
@@ -138,7 +162,7 @@
       active: state.model,
       tipFor: (e) => `<b>${esc(e.label)}</b><br>在庫 ${fmt(e.value)} 点 / ${e.skus} SKU<br>` +
         data.stores.map((s, i) => `${esc(s)}: ${fmt(e.stores[i])}`).join("<br>"),
-      onClick: (e) => { state.model = state.model === e.key ? "" : e.key; $("fModel").value = state.model; render(); },
+      onClick: (e) => { state.model = state.model === e.key ? "" : e.key; $("fModel").value = state.model; render(); if (state.model) showView("table", { scroll: true }); },
     });
   }
 
@@ -189,6 +213,11 @@
     renderKpis(rows);
     renderCharts(rows);
     renderTable(rows);
+    const filteredNow = rows.length !== data.items.length;
+    $("detailNote").textContent = filteredNow
+      ? `在庫一覧の絞り込み条件を反映しています（${fmt(data.items.length)} 件中 ${fmt(rows.length)} 件）`
+      : "";
+    fitTable();
   }
 
   /* ---------- CSV ---------- */
@@ -214,7 +243,12 @@
   bind("fSize", "size");
   bind("fStock", "stock");
   bind("fSort", "sort");
-  const toggleStock = (v) => { state.stock = state.stock === v ? "" : v; $("fStock").value = state.stock; render(); };
+  const toggleStock = (v) => {
+    state.stock = state.stock === v ? "" : v;
+    $("fStock").value = state.stock;
+    render();
+    if (state.stock) showView("table", { scroll: true });
+  };
   $("kpiOutBtn").addEventListener("click", () => toggleStock("out"));
   $("kpiLowBtn").addEventListener("click", () => toggleStock("low"));
   $("reset").addEventListener("click", () => {
@@ -248,6 +282,7 @@
         [...d.stores.map((s) => `${s} の在庫が多い順`), "Total の在庫が多い順"]);
       renderFrame(d);
       render();
+      showView(view);
     })
     .catch((err) => {
       $("asof").textContent = "データの読み込みに失敗しました";
