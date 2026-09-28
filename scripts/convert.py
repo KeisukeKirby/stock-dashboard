@@ -9,13 +9,16 @@ Excel で一度保存したファイルを使ってください。
 """
 import json
 import re
+import shutil
 import sys
 from pathlib import Path
 
 import openpyxl
 
 SHEET = "VFF Shoes Stock"
-OUT = Path(__file__).resolve().parent.parent / "public" / "stock.json"
+PUBLIC = Path(__file__).resolve().parent.parent / "public"
+OUT = PUBLIC / "stock.json"
+XLSX_COPY = PUBLIC / "source.xlsx"  # 画面の「元の Excel をダウンロード」用
 
 
 def num(v):
@@ -81,6 +84,7 @@ def main(path):
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    shutil.copyfile(path, XLSX_COPY)
     total = sum(sum(i["qty"]) for i in items)
     print(f"{len(items)} rows, {len(stores)} stores, total qty {total} -> {OUT}")
 
