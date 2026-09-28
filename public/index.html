@@ -3,122 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>店舗在庫ダッシュボード</title>
-  <meta name="description" content="VFF シューズの店舗別在庫一覧ダッシュボード">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233b82c4'/><rect x='7' y='16' width='4' height='9' rx='1.5' fill='white'/><rect x='14' y='10' width='4' height='15' rx='1.5' fill='white'/><rect x='21' y='13' width='4' height='12' rx='1.5' fill='white'/></svg>">
+  <title>VFF Shoe Inventory</title>
+  <meta name="description" content="VFF シューズの店舗別在庫一覧（Store_Stock Excel と同じレイアウト）">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231F4E78'/><rect x='6' y='9' width='20' height='3' fill='white'/><rect x='6' y='15' width='20' height='2' fill='%23D9D9D9'/><rect x='6' y='20' width='20' height='2' fill='%23D9D9D9'/><rect x='20' y='14' width='6' height='9' fill='%23FFF2CC'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="page">
-    <header class="top">
-      <div>
-        <p class="eyebrow">Store Stock Dashboard</p>
-        <h1 id="title">店舗在庫ダッシュボード</h1>
-        <p class="sub"><span id="asof">読み込み中…</span><span class="dot">·</span><span id="source"></span></p>
-      </div>
-      <button id="themeToggle" class="ghost" type="button" aria-label="表示モード切替">
-        <span aria-hidden="true">◐</span> <span id="themeLabel">自動</span>
-      </button>
-    </header>
-
-    <section class="kpis" aria-label="サマリー">
-      <div class="kpi">
-        <p class="kpi-label">総在庫数</p>
-        <p class="kpi-value" id="kpiTotal">–</p>
-        <p class="kpi-note" id="kpiTotalNote"></p>
-      </div>
-      <div class="kpi">
-        <p class="kpi-label">SKU 数</p>
-        <p class="kpi-value" id="kpiSku">–</p>
-        <p class="kpi-note" id="kpiSkuNote"></p>
-      </div>
-      <div class="kpi">
-        <p class="kpi-label"><span class="status-ic crit" aria-hidden="true">●</span>全店在庫切れ</p>
-        <p class="kpi-value" id="kpiOut">–</p>
-        <p class="kpi-note">全店舗の合計が 0 の SKU</p>
-      </div>
-      <div class="kpi">
-        <p class="kpi-label"><span class="status-ic warn" aria-hidden="true">▲</span>残りわずか</p>
-        <p class="kpi-value" id="kpiLow">–</p>
-        <p class="kpi-note">全店舗の合計が 1 点の SKU</p>
-      </div>
-    </section>
-
-    <section class="charts">
-      <div class="card">
-        <div class="card-head">
-          <h2>店舗別の在庫数</h2>
-          <p class="hint">バーをクリックすると、その店舗で並び替えます</p>
-        </div>
-        <div id="storeChart" class="bars"></div>
-      </div>
-      <div class="card">
-        <div class="card-head">
-          <h2>モデル別の在庫数</h2>
-          <p class="hint">バーをクリックすると、そのモデルに絞り込みます</p>
-        </div>
-        <div id="modelChart" class="bars"></div>
-      </div>
-    </section>
-
-    <section class="card table-card">
-      <div class="card-head">
-        <h2>在庫一覧 <span class="count" id="rowCount"></span></h2>
-        <p class="hint legend">
-          <span class="swatches" aria-hidden="true"><i class="sw h1"></i><i class="sw h2"></i><i class="sw h3"></i><i class="sw h4"></i><i class="sw h5"></i></span>色が濃いほど在庫が多い
-          <span class="badge out" aria-hidden="true">✕</span>全店在庫切れ
-          <span class="badge low" aria-hidden="true">▲</span>残り1点
-        </p>
-      </div>
-
-      <div class="filters" role="search">
-        <label class="field grow">
-          <span>検索</span>
-          <input id="q" type="search" placeholder="コード・モデル・カラー・サイズ" autocomplete="off">
-        </label>
-        <label class="field">
-          <span>モデル</span>
-          <select id="fModel"><option value="">すべて</option></select>
-        </label>
-        <label class="field">
-          <span>カラー</span>
-          <select id="fColor"><option value="">すべて</option></select>
-        </label>
-        <label class="field">
-          <span>サイズ</span>
-          <select id="fSize"><option value="">すべて</option></select>
-        </label>
-        <label class="field">
-          <span>在庫</span>
-          <select id="fStock">
-            <option value="">すべて</option>
-            <option value="in">在庫あり</option>
-            <option value="low">残りわずか (1点)</option>
-            <option value="out">在庫切れ (0点)</option>
-          </select>
-        </label>
-        <label class="check">
-          <input id="showReturn" type="checkbox">
-          <span>返品列を表示</span>
-        </label>
-        <button id="reset" class="ghost" type="button">条件をリセット</button>
-      </div>
-
-      <div class="table-wrap">
-        <table id="stockTable">
-          <thead id="thead"></thead>
-          <tbody id="tbody"></tbody>
-          <tfoot id="tfoot"></tfoot>
-        </table>
-      </div>
-    </section>
-
-    <footer class="foot">
-      データ元: <span id="footSource"></span> — 数値は Excel 保存時の計算結果です
-    </footer>
+  <div class="sheet" id="sheet">
+    <table id="stockTable">
+      <colgroup id="cols"></colgroup>
+      <thead id="thead"></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <p id="status" class="status">読み込み中…</p>
   </div>
-
-  <div id="tip" class="tip" role="tooltip" hidden></div>
   <script src="app.js"></script>
 </body>
 </html>

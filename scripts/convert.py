@@ -22,6 +22,11 @@ def num(v):
     return int(v) if isinstance(v, (int, float)) else 0
 
 
+def cell(v):
+    """空セルは None (表示も空欄) のまま残す。"""
+    return int(v) if isinstance(v, (int, float)) else None
+
+
 def main(path):
     wb = openpyxl.load_workbook(path, data_only=True)
     ws = wb[SHEET] if SHEET in wb.sheetnames else wb.worksheets[0]
@@ -38,13 +43,21 @@ def main(path):
         stores.append({"name": str(header[col]).strip(), "col": col})
         col += 2
 
+    total_col = col  # "Total" 列 (Quantity, Return)
     items = []
+    total_row = None
     for r in rows[4:]:
         code = r[0]
-        if not code or str(code).strip() == "Total":
+        if not code:
+            continue
+        if str(code).strip() == "Total":
+            total_row = {
+                "qty": [cell(r[s["col"]]) for s in stores] + [cell(r[total_col])],
+                "ret": [cell(r[s["col"] + 1]) for s in stores] + [cell(r[total_col + 1])],
+            }
             continue
         qty = [num(r[s["col"]]) for s in stores]
-        ret = [num(r[s["col"] + 1]) for s in stores]
+        ret = [cell(r[s["col"] + 1]) for s in stores]
         items.append({
             "code": str(code).strip(),
             "model": (r[1] or "").strip(),
@@ -52,6 +65,8 @@ def main(path):
             "size": str(r[3] or "").strip(),
             "qty": qty,
             "ret": ret,
+            "totalQty": cell(r[total_col]),
+            "totalRet": cell(r[total_col + 1]),
         })
 
     m = re.search(r"(\d{2}/\d{2}/\d{4})", str(as_of))
@@ -62,6 +77,7 @@ def main(path):
         "source": Path(path).name,
         "stores": [s["name"] for s in stores],
         "items": items,
+        "totalRow": total_row,
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
