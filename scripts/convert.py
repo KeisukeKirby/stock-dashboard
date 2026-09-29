@@ -143,6 +143,11 @@ def main(path, office_path=None):
     if office_path:
         matched, added = add_office(items, read_office(office_path))
         store_names.append(OFFICE_NAME)
+        # Office を一番左 (先頭) に並べ替える
+        store_names.insert(0, store_names.pop())
+        for i in items:
+            i["qty"].insert(0, i["qty"].pop())
+            i["ret"].insert(0, i["ret"].pop())
         n = len(store_names)
         qty = [sum(i["qty"][k] for i in items) for k in range(n)]
         ret = [sum(i["ret"][k] or 0 for i in items) for k in range(n)]
@@ -158,6 +163,7 @@ def main(path, office_path=None):
         "asOfDate": m.group(1) if m else "",
         "source": Path(path).name,
         "officeSource": office_src,
+        "officeIndex": 0 if office_src else None,  # Office 列 (Return なし)
         "stores": store_names,
         "items": items,
         "totalRow": total_row,

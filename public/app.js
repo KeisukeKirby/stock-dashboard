@@ -89,16 +89,24 @@
   // 値は基準日ごとに保存するので、新しい在庫データに更新すると入力はリセットされる。
   let returns = {};
   let RKEY = "returns";
+  // Office 列には Return がない。店舗の Return はその店舗から引いて Office に足す (店舗 → オフィスへ戻る)
+  const hasRet = (i) => i !== data.officeIndex;
   const rkey = (it, i) => `${it.code || `${it.model}|${it.color}|${it.size}`}@${data.stores[i]}`;
   const loadReturns = () => {
     try { returns = JSON.parse(localStorage.getItem(RKEY) || "{}") || {}; } catch (_) { returns = {}; }
+    if (data.officeIndex != null) {
+      const office = `@${data.stores[data.officeIndex]}`;
+      Object.keys(returns).forEach((k) => { if (k.endsWith(office)) delete returns[k]; });
+    }
   };
   const saveReturns = () => {
     try { localStorage.setItem(RKEY, JSON.stringify(returns)); } catch (_) {}
   };
   function recompute(it) {
-    it._ret = it.ret.map((r, i) => returns[rkey(it, i)] ?? r);
-    it._adj = it.qty.map((q, i) => q - (returns[rkey(it, i)] || 0));
+    const r = it.qty.map((_, i) => (hasRet(i) ? returns[rkey(it, i)] || 0 : 0));
+    it._ret = it.ret.map((x, i) => (hasRet(i) ? returns[rkey(it, i)] ?? x : null));
+    it._adj = it.qty.map((q, i) => q - r[i]);
+    if (data.officeIndex != null) it._adj[data.officeIndex] += sum(r);
     it._tq = sum(it._adj);
     it._tr = sum(it._ret);
   }
@@ -194,19 +202,21 @@
 
   /* ---------- table (Excel 書式) ---------- */
   function renderFrame(d) {
-    const ncol = 4 + groups.length * 2;
+    const ncol = numCols();
     $("cols").innerHTML =
       [COL_W.code, COL_W.model, COL_W.color, COL_W.size].map((w) => `<col style="width:${px(w)}px">`).join("") +
-      groups.map(() => `<col style="width:${px(COL_W.qty)}px"><col style="width:${px(COL_W.ret)}px">`).join("");
+      groups.map((_, g) => `<col style="width:${px(COL_W.qty)}px">` + (hasRet(g) ? `<col style="width:${px(COL_W.ret)}px">` : "")).join("");
     $("thead").innerHTML = `
       <tr class="title"><th colspan="${ncol}">${esc(d.title)}</th></tr>
       <tr class="asof"><th colspan="${ncol}">${esc(d.asOf)}</th></tr>
       <tr class="h1">
         <th rowspan="2">Code</th><th rowspan="2">Model</th><th rowspan="2">Color</th><th rowspan="2">Size</th>
-        ${groups.map((g) => `<th colspan="2">${esc(g)}</th>`).join("")}
+        ${groups.map((g, i) => `<th colspan="${hasRet(i) ? 2 : 1}">${esc(g)}</th>`).join("")}
       </tr>
-      <tr class="h2">${groups.map(() => `<th>Quantity</th><th class="ret-h">Return</th>`).join("")}</tr>`;
+      <tr class="h2">${groups.map((_, i) => `<th>Quantity</th>` + (hasRet(i) ? `<th class="ret-h">Return</th>` : "")).join("")}</tr>`;
   }
+
+  const numCols = () => 4 + groups.length * 2 - (data.officeIndex != null ? 1 : 0);
 
   function totalsOf(items) {
     const qty = data.stores.map((_, i) => items.reduce((a, it) => a + it._adj[i], 0));
@@ -215,7 +225,7 @@
   }
 
   const totalRowHtml = (t) => `<td>Total</td><td></td><td></td><td></td>
-      ${groups.map((_, i) => `<td class="c">${nf(t.qty[i])}</td><td class="c">${nf(t.ret[i])}</td>`).join("")}`;
+      ${groups.map((_, i) => `<td class="c">${nf(t.qty[i])}</td>` + (hasRet(i) ? `<td class="c">${nf(t.ret[i])}</td>` : "")).join("")}`;
 
   let shown = []; // 表示中の行 (Total 行の再計算用)
   function renderTable(items) {
@@ -223,10 +233,10 @@
     const all = items.length === data.items.length;
     const rows = items.map((it) => `<tr data-id="${it._id}">
         <td>${esc(it.code)}</td><td>${esc(it.model)}</td><td>${esc(it.color)}</td><td class="c">${esc(it.size)}</td>
-        ${it._adj.map((q, i) => `<td class="c q">${nf(q)}</td><td class="c ret"><input class="ret-in" type="text" inputmode="numeric" autocomplete="off" data-s="${i}" value="${it._ret[i] ?? ""}" aria-label="${esc(data.stores[i])} Return"></td>`).join("")}
+        ${it._adj.map((q, i) => `<td class="c q">${nf(q)}</td>` + (hasRet(i) ? `<td class="c ret"><input class="ret-in" type="text" inputmode="numeric" autocomplete="off" data-s="${i}" value="${it._ret[i] ?? ""}" aria-label="${esc(data.stores[i])} Return"></td>` : "")).join("")}
         <td class="c b tq">${nf(it._tq)}</td><td class="c b tr">${nf(it._tr)}</td>
       </tr>`);
-    if (!items.length) rows.push(`<tr><td class="empty" colspan="${4 + groups.length * 2}">条件に合う商品がありません</td></tr>`);
+    if (!items.length) rows.push(`<tr><td class="empty" colspan="${numCols()}">条件に合う商品がありません</td></tr>`);
 
     // 表示中の行の合計 (絞り込み・返品入力がなければ Excel の Total 行と同じ値)
     rows.push(`<tr class="total" id="totalRow">${totalRowHtml(totalsOf(items))}</tr>`);
@@ -308,9 +318,9 @@
   $("dlCsv").addEventListener("click", () => {
     const rows = filtered();
     const q = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
-    const head = ["Code", "Model", "Color", "Size", ...groups.flatMap((g) => [`${g} Quantity`, `${g} Return`])];
+    const head = ["Code", "Model", "Color", "Size", ...groups.flatMap((g, i) => (hasRet(i) ? [`${g} Quantity`, `${g} Return`] : [`${g} Quantity`]))];
     const body = rows.map((it) => [it.code, it.model, it.color, it.size,
-      ...it._adj.flatMap((v, i) => [v, it._ret[i] ?? ""]), it._tq, it._tr]);
+      ...it._adj.flatMap((v, i) => (hasRet(i) ? [v, it._ret[i] ?? ""] : [v])), it._tq, it._tr]);
     const csv = "﻿" + [head, ...body].map((r) => r.map(q).join(",")).join("\r\n");
     const a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
