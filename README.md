@@ -17,7 +17,7 @@
 - 列幅・行高は Excel と同じ、1〜4 行目は固定（ウィンドウ枠の固定 A5 と同じ）
 - 絞り込み中の Total 行は表示中の行の合計
 - Office 列は一番左で、Return 欄なし
-- 各店舗の黄色の Return 欄に返品数を入力でき、その数だけ店舗の Quantity が減り Office の Quantity が増える（Store Total は減り、Company Total は変わらない）（入力内容はブラウザの localStorage に基準日ごとに保存。他の人・他の端末とは共有されない）
+- 各店舗の黄色の Return 欄に返品数を入力でき、その数だけ店舗の Quantity が減り Office の Quantity が増える（Store Total は減り、Company Total は変わらない）。入力後「保存」ボタン（Ctrl+S）で保存するとウィンドウを閉じても残る（ブラウザの localStorage に基準日ごとに保存。他の人・他の端末とは共有されない）。未保存のまま閉じようとすると確認が出る
 
 ## 構成
 

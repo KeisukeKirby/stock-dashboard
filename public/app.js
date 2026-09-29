@@ -100,9 +100,23 @@
       const office = `@${data.stores[data.officeIndex]}`;
       Object.keys(returns).forEach((k) => { if (k.endsWith(office)) delete returns[k]; });
     }
+    savedJson = JSON.stringify(sortKeys(returns));
   };
+  // 入力はまず画面上だけに反映し (未保存)、「保存」ボタンでブラウザに記録する
+  let savedJson = "{}";
+  let lastSaved = null;
+  const isDirty = () => JSON.stringify(sortKeys(returns)) !== savedJson;
+  const sortKeys = (o) => Object.fromEntries(Object.entries(o).sort(([a], [b]) => a.localeCompare(b)));
   const saveReturns = () => {
-    try { localStorage.setItem(RKEY, JSON.stringify(returns)); } catch (_) {}
+    try {
+      localStorage.setItem(RKEY, JSON.stringify(returns));
+      savedJson = JSON.stringify(sortKeys(returns));
+      lastSaved = new Date();
+      return true;
+    } catch (_) {
+      alert("保存できませんでした。ブラウザの設定（プライベートモード・Cookie の制限など）を確認してください。");
+      return false;
+    }
   };
   function recompute(it) {
     const r = it.qty.map((_, i) => (hasRet(i) ? returns[rkey(it, i)] || 0 : 0));
@@ -116,8 +130,22 @@
   const returnCount = () => Object.keys(returns).length;
   function updateReturnInfo() {
     const n = returnCount();
+    const dirty = isDirty();
     $("retInfo").textContent = n ? `返品入力 ${fmt(n)} 件（合計 ${fmt(sum(Object.values(returns)))} 点）` : "";
     $("clearReturns").hidden = !n;
+    $("saveReturns").disabled = !dirty;
+    $("revertReturns").hidden = !dirty;
+    const st = $("saveState");
+    st.classList.toggle("dirty", dirty);
+    st.textContent = dirty
+      ? "未保存の変更があります"
+      : lastSaved ? `保存しました（${lastSaved.toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" })}）` : n ? "保存済み" : "";
+  }
+  function applyReturns() {
+    data.items.forEach(recompute);
+    data._grand = sum(data.items.map((x) => x._tq));
+    render();
+    updateReturnInfo();
   }
 
   /* ---------- filtering ---------- */
@@ -277,7 +305,6 @@
       setTimeout(() => input.classList.remove("invalid"), 800);
       return;
     }
-    saveReturns();
     recompute(it);
     input.value = it._ret[i] ?? "";
     const q = rowQty(it);
@@ -311,11 +338,29 @@
   $("clearReturns").addEventListener("click", () => {
     if (!confirm(`入力した返品 ${returnCount()} 件をすべて消去します。よろしいですか？`)) return;
     returns = {};
-    saveReturns();
-    data.items.forEach(recompute);
-    data._grand = sum(data.items.map((x) => x._tq));
-    render();
-    updateReturnInfo();
+    applyReturns(); // 消去も「保存」を押すまで確定しない
+  });
+
+  $("saveReturns").addEventListener("click", () => {
+    const active = document.activeElement;
+    if (active && active.classList.contains("ret-in")) active.blur(); // 入力中の値を確定してから保存
+    if (saveReturns()) updateReturnInfo();
+  });
+  $("revertReturns").addEventListener("click", () => {
+    if (!confirm("保存していない変更を取り消して、最後に保存した状態に戻します。よろしいですか？")) return;
+    loadReturns();
+    applyReturns();
+  });
+  // Ctrl+S / ⌘+S でも保存
+  document.addEventListener("keydown", (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
+      e.preventDefault();
+      $("saveReturns").click();
+    }
+  });
+  // 未保存のままページを閉じようとしたら確認
+  window.addEventListener("beforeunload", (e) => {
+    if (data && isDirty()) { e.preventDefault(); e.returnValue = ""; }
   });
 
   function render() {

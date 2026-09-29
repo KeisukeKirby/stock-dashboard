@@ -85,6 +85,17 @@ h1 { font-size: 26px; font-weight: 700; margin: 4px 0 6px; letter-spacing: -.01e
 .head-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .ret-info { font-size: 12px; color: var(--ink-2); background: #fff2cc; border-radius: 999px; padding: 3px 10px; color: #7f6000; }
 .ret-info:empty { display: none; }
+.primary {
+  display: inline-flex; align-items: center; gap: 4px; cursor: pointer; white-space: nowrap;
+  background: var(--accent); color: #fff; border: 1px solid var(--accent); border-radius: 999px;
+  padding: 7px 18px; font-size: 13px; font-weight: 600;
+}
+.primary.small { padding: 4px 16px; font-size: 12px; }
+.primary:hover:not(:disabled) { filter: brightness(1.08); }
+.primary:disabled { background: var(--surface-2); color: var(--muted); border-color: var(--line); cursor: default; }
+.save-state { font-size: 12px; color: var(--muted); }
+.save-state.dirty { color: #b45309; font-weight: 600; }
+.save-state.dirty::before { content: "● "; }
 .ret-hint { font-size: 12px; color: var(--muted); margin: -4px 0 10px; }
 
 /* tabs */
