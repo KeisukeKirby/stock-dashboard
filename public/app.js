@@ -390,6 +390,150 @@
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   });
 
+  /* ---------- Excel 出力 (Return 入力を反映、元の Excel と同じ書式) ---------- */
+  let excelJsLoading = null;
+  const loadExcelJs = () => excelJsLoading || (excelJsLoading = new Promise((resolve, reject) => {
+    if (window.ExcelJS) return resolve(window.ExcelJS);
+    const sc = document.createElement("script");
+    sc.src = "vendor/exceljs.min.js";
+    sc.onload = () => resolve(window.ExcelJS);
+    sc.onerror = () => { excelJsLoading = null; reject(new Error("exceljs load failed")); };
+    document.head.appendChild(sc);
+  }));
+
+  async function exportExcel() {
+    const btn = $("dlXlsxOut");
+    const label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = "作成中…";
+    try {
+      const ExcelJS = await loadExcelJs();
+      const items = filtered();
+      const now = new Date();
+      const stamp = now.toLocaleString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" });
+      const wb = new ExcelJS.Workbook();
+      const ws = wb.addWorksheet("VFF Shoes Stock", { views: [{ state: "frozen", ySplit: 4 }] });
+
+      const NAVY = "FF1F4E78", GOLD = "FFBF8F00", RETFILL = "FFFFF2CC", TOTFILL = "FFD9E1F2", LINE = "FFD9D9D9";
+      const NF = "#,##0;\\(#,##0\\);\\-";
+      const fill = (argb) => ({ type: "pattern", pattern: "solid", fgColor: { argb } });
+      const white = { style: "thin", color: { argb: "FFFFFFFF" } };
+      const headBorder = { top: white, left: white, bottom: white, right: white };
+
+      // 列の並び: Code, Model, Color, Size, [拠点ごとに Quantity (+ Return)], Store Total, Company Total
+      const layout = []; // { g, kind: "qty" | "ret" }
+      groups.forEach((_, g) => { layout.push({ g, kind: "qty" }); if (hasRet(g)) layout.push({ g, kind: "ret" }); });
+      ws.columns = [
+        { width: COL_W.code }, { width: COL_W.model }, { width: COL_W.color }, { width: COL_W.size },
+        ...layout.map((c) => ({ width: c.kind === "ret" ? COL_W.ret : (!hasRet(c.g) && c.g >= data.stores.length ? 15.5 : COL_W.qty) })),
+      ];
+      const lastCol = 4 + layout.length;
+
+      ws.getCell(1, 1).value = data.title;
+      ws.getCell(1, 1).font = { name: "Calibri", size: 14, bold: true };
+      ws.getRow(1).height = 18.5;
+      ws.getCell(2, 1).value = `${data.asOf}   —   Returns applied / exported ${stamp}`;
+
+      // 見出し 3〜4 行目
+      ["Code", "Model", "Color", "Size"].forEach((h, k) => {
+        ws.mergeCells(3, k + 1, 4, k + 1);
+        ws.getCell(3, k + 1).value = h;
+      });
+      let c = 5;
+      groups.forEach((g, gi) => {
+        const span = hasRet(gi) ? 2 : 1;
+        if (span === 2) ws.mergeCells(3, c, 3, c + 1);
+        ws.getCell(3, c).value = g;
+        ws.getCell(4, c).value = "Quantity";
+        if (span === 2) ws.getCell(4, c + 1).value = "Return";
+        c += span;
+      });
+      for (let r = 3; r <= 4; r++) {
+        ws.getRow(r).height = 20;
+        for (let k = 1; k <= lastCol; k++) {
+          const cell = ws.getCell(r, k);
+          const isRet = r === 4 && layout[k - 5] && layout[k - 5].kind === "ret";
+          cell.fill = fill(isRet ? GOLD : NAVY);
+          cell.font = { name: "Calibri", size: 11, bold: true, color: { argb: "FFFFFFFF" } };
+          cell.alignment = { horizontal: "center", vertical: "middle" };
+          cell.border = headBorder;
+        }
+      }
+
+      // 明細
+      const bottom = { bottom: { style: "thin", color: { argb: LINE } } };
+      items.forEach((it, n) => {
+        const r = 5 + n;
+        const q = rowQty(it), rt = rowRet(it);
+        const vals = [it.code || null, it.model, it.color, it.size,
+          ...layout.map((col) => (col.kind === "qty" ? q[col.g] : rt[col.g] || null))];
+        const row = ws.getRow(r);
+        row.values = vals;
+        vals.forEach((_, k) => {
+          const cell = row.getCell(k + 1);
+          const col = layout[k - 4];
+          cell.border = bottom;
+          cell.font = { name: "Calibri", size: 11 };
+          if (k >= 3) cell.alignment = { horizontal: "center" };
+          if (!col) return;
+          cell.numFmt = NF;
+          const isTotal = col.g >= data.stores.length;
+          if (col.kind === "ret" && !isTotal) {
+            cell.fill = fill(RETFILL);
+            cell.font = { name: "Calibri", size: 11, color: { argb: "FF0000FF" } };
+          }
+          if (isTotal) cell.font = { name: "Calibri", size: 11, bold: true };
+        });
+      });
+
+      // Total 行
+      const t = totalsOf(items);
+      const tr = ws.getRow(5 + items.length);
+      tr.values = ["Total", null, null, null, ...layout.map((col) => (col.kind === "qty" ? t.qty[col.g] : t.ret[col.g]))];
+      for (let k = 1; k <= lastCol; k++) {
+        const cell = tr.getCell(k);
+        cell.fill = fill(TOTFILL);
+        cell.font = { name: "Calibri", size: 11, bold: true };
+        cell.border = { top: { style: "thin", color: { argb: LINE } } };
+        if (k >= 4) { cell.alignment = { horizontal: "center" }; cell.numFmt = NF; }
+      }
+
+      // 2 枚目: 入力された返品の一覧
+      const rs = wb.addWorksheet("Returns");
+      rs.columns = [
+        { header: "Code", width: COL_W.code }, { header: "Model", width: COL_W.model },
+        { header: "Color", width: COL_W.color }, { header: "Size", width: COL_W.size },
+        { header: "Store", width: 24 }, { header: "Return", width: 10 },
+      ];
+      rs.getRow(1).eachCell((cell) => {
+        cell.fill = fill(NAVY);
+        cell.font = { name: "Calibri", size: 11, bold: true, color: { argb: "FFFFFFFF" } };
+        cell.alignment = { horizontal: "center" };
+      });
+      data.items.forEach((it) => data.stores.forEach((s, i) => {
+        const v = hasRet(i) ? returns[rkey(it, i)] : 0;
+        if (v) rs.addRow([it.code || null, it.model, it.color, it.size, s, v]);
+      }));
+      if (rs.rowCount === 1) rs.addRow(["（返品の入力はありません）"]);
+      rs.views = [{ state: "frozen", ySplit: 1 }];
+
+      const buf = await wb.xlsx.writeBuffer();
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([buf], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
+      const ymd = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}_${String(now.getHours()).padStart(2, "0")}${String(now.getMinutes()).padStart(2, "0")}`;
+      a.download = `VFF_Stock_with_returns_${ymd}.xlsx`;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    } catch (err) {
+      console.error(err);
+      alert("Excel の作成に失敗しました。ページを再読み込みしてもう一度お試しください。");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = label;
+    }
+  }
+  $("dlXlsxOut").addEventListener("click", exportExcel);
+
   /* ---------- controls ---------- */
   const bind = (id, key, ev = "change") => $(id).addEventListener(ev, (e) => { state[key] = e.target.value; render(); });
   bind("q", "q", "input");
