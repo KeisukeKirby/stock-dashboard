@@ -486,6 +486,8 @@
     // 表示中の行の合計 (絞り込み・返品入力がなければ Excel の Total 行と同じ値)
     rows.push(`<tr class="total" id="totalRow">${totalRowHtml(totalsOf(items))}</tr>`);
     $("tbody").innerHTML = rows.join("");
+    sel = null;
+    refreshSel();
     $("rowCount").textContent = all ? t("count.all", { n: fmt(data.items.length) }) : t("count.of", { n: fmt(data.items.length), m: fmt(items.length) });
   }
 
@@ -518,7 +520,129 @@
     renderCharts(rows);
     updateReturnInfo();
   }
-  $("tbody").addEventListener("change", (e) => { if (e.target.classList.contains("ret-in")) commitReturn(e.target); });
+  $("tbody").addEventListener("change", (e) => { if (e.target.classList.contains("ret-in")) { commitReturn(e.target); refreshSel(); } });
+
+  /* ---------- 範囲選択 → 合計 (Excel のステータスバーと同じ) ---------- */
+  // 選択範囲は tbody の行番号 × セル番号 の長方形で持つ
+  let sel = null;       // { r0, c0, r1, c1 }  (anchor = r0,c0)
+  let dragging = false;
+  let scrollTimer = null;
+  const bodyRows = () => $("tbody").rows;
+  const cellAt = (el) => {
+    const td = el && el.closest && el.closest("#tbody td");
+    if (!td || td.classList.contains("empty")) return null;
+    return { r: td.parentElement.sectionRowIndex, c: td.cellIndex };
+  };
+  const cellValue = (td) => {
+    const input = td.querySelector("input");
+    const raw = (input ? input.value : td.textContent).trim().replace(/,/g, "");
+    if (raw === "") return null;
+    if (raw === "-") return 0;
+    const m = /^\((\d+(?:\.\d+)?)\)$/.exec(raw);
+    if (m) return -Number(m[1]);
+    return /^-?\d+(?:\.\d+)?$/.test(raw) ? Number(raw) : null;
+  };
+  function selRange() {
+    return { r0: Math.min(sel.r0, sel.r1), r1: Math.max(sel.r0, sel.r1), c0: Math.min(sel.c0, sel.c1), c1: Math.max(sel.c0, sel.c1) };
+  }
+  function refreshSel() {
+    document.querySelectorAll("#tbody td.sel").forEach((td) => td.classList.remove("sel", "sel-t", "sel-b", "sel-l", "sel-r"));
+    const bar = $("selBar");
+    if (!sel) { bar.hidden = true; return; }
+    const { r0, r1, c0, c1 } = selRange();
+    const rows = bodyRows();
+    let total = 0, nums = 0, cells = 0;
+    for (let r = r0; r <= r1 && r < rows.length; r++) {
+      for (let c = c0; c <= c1; c++) {
+        const td = rows[r].cells[c];
+        if (!td) continue;
+        cells++;
+        td.classList.add("sel");
+        if (r === r0) td.classList.add("sel-t");
+        if (r === r1) td.classList.add("sel-b");
+        if (c === c0) td.classList.add("sel-l");
+        if (c === c1) td.classList.add("sel-r");
+        const v = cellValue(td);
+        if (v != null) { total += v; nums++; }
+      }
+    }
+    if (cells <= 1 && !dragging) { bar.hidden = true; return; } // 1 マスだけのクリックでは出さない
+    bar.hidden = false;
+    $("selSum").textContent = fmt(total);
+    $("selAvg").textContent = nums ? (Math.round((total / nums) * 10) / 10).toLocaleString("en-US") : "–";
+    $("selCount").textContent = fmt(nums);
+    $("selSize").textContent = `${r1 - r0 + 1} × ${c1 - c0 + 1}`;
+  }
+  function clearSel() { sel = null; refreshSel(); }
+
+  $("tbody").addEventListener("pointerdown", (e) => {
+    if (e.button !== 0) return;
+    // Return 欄は通常クリックで入力、Shift+クリックなら範囲選択を広げる
+    if (e.target.closest("input, button") && !(e.shiftKey && sel)) return;
+    const p = cellAt(e.target);
+    if (!p) return;
+    e.preventDefault(); // 文字の選択をしない
+    if (document.activeElement && document.activeElement.classList.contains("ret-in")) document.activeElement.blur();
+    if (e.shiftKey && sel) { sel.r1 = p.r; sel.c1 = p.c; }
+    else sel = { r0: p.r, c0: p.c, r1: p.r, c1: p.c };
+    dragging = true;
+    document.body.classList.add("selecting");
+    refreshSel();
+  });
+  let lastPt = null;
+  function dragTo(x, y) {
+    const p = cellAt(document.elementFromPoint(x, y));
+    if (p && (p.r !== sel.r1 || p.c !== sel.c1)) { sel.r1 = p.r; sel.c1 = p.c; refreshSel(); }
+  }
+  document.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    lastPt = { x: e.clientX, y: e.clientY };
+    dragTo(e.clientX, e.clientY);
+    // 画面の端までドラッグしたら自動でスクロール
+    const edge = 40;
+    const dy = e.clientY < edge ? -20 : e.clientY > window.innerHeight - edge ? 20 : 0;
+    clearInterval(scrollTimer);
+    if (dy) scrollTimer = setInterval(() => { window.scrollBy(0, dy); if (lastPt) dragTo(lastPt.x, lastPt.y); }, 30);
+  });
+  const endDrag = () => {
+    if (!dragging) return;
+    dragging = false;
+    clearInterval(scrollTimer);
+    document.body.classList.remove("selecting");
+    refreshSel();
+  };
+  document.addEventListener("pointerup", endDrag);
+  document.addEventListener("pointercancel", endDrag);
+  document.addEventListener("pointerdown", (e) => {
+    if (sel && !e.target.closest("#tbody") && !e.target.closest("#selBar")) clearSel();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (!sel) return;
+    if (e.key === "Escape") clearSel();
+    // Ctrl+C / ⌘+C で選択範囲をコピー (Excel に貼り付けられるタブ区切り)
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "c" && !window.getSelection().toString() && !e.target.closest("input")) {
+      const { r0, r1, c0, c1 } = selRange();
+      const rows = bodyRows();
+      const lines = [];
+      for (let r = r0; r <= r1 && r < rows.length; r++) {
+        const vals = [];
+        for (let c = c0; c <= c1; c++) {
+          const td = rows[r].cells[c];
+          if (!td) continue;
+          const v = cellValue(td);
+          vals.push(v != null ? v : (td.querySelector("input") ? td.querySelector("input").value : td.textContent.trim()));
+        }
+        lines.push(vals.join("\t"));
+      }
+      navigator.clipboard && navigator.clipboard.writeText(lines.join("\n")).then(() => {
+        const b = $("selBar");
+        b.classList.add("copied");
+        setTimeout(() => b.classList.remove("copied"), 700);
+      }).catch(() => {});
+      e.preventDefault();
+    }
+  });
+  $("selClose").addEventListener("click", clearSel);
   $("tbody").addEventListener("focusin", (e) => { if (e.target.classList.contains("ret-in")) e.target.select(); });
   // Enter / ↑↓ で上下のセルへ移動 (Excel と同じ操作感)
   $("tbody").addEventListener("keydown", (e) => {

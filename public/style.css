@@ -156,6 +156,33 @@ h1 { font-size: 26px; font-weight: 700; margin: 4px 0 6px; letter-spacing: -.01e
 .af-foot { display: flex; align-items: center; gap: 6px; margin-top: 10px; }
 .af-foot span { flex: 1; }
 
+/* 範囲選択 (Excel と同じ緑の枠) */
+.sheet tbody td { cursor: cell; }
+.sheet tbody td.sel { background-color: #d9eadf !important; }
+.sheet tbody td.ret.sel { background-color: #e6efcf !important; }
+.sheet tbody td.sel {
+  --st: 0px; --sb: 0px; --sl: 0px; --sr: 0px;
+  box-shadow: inset 0 var(--st) 0 #217346, inset 0 calc(-1 * var(--sb)) 0 #217346,
+              inset var(--sl) 0 0 #217346, inset calc(-1 * var(--sr)) 0 0 #217346;
+}
+.sheet tbody td.sel-t { --st: 2px; }
+.sheet tbody td.sel-b { --sb: 2px; }
+.sheet tbody td.sel-l { --sl: 2px; }
+.sheet tbody td.sel-r { --sr: 2px; }
+body.selecting, body.selecting * { user-select: none; -webkit-user-select: none; }
+.sel-bar {
+  position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 70;
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center;
+  background: #217346; color: #fff; border-radius: 999px; padding: 8px 10px 8px 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25); font-size: 13px; max-width: calc(100vw - 32px);
+}
+.sel-bar b { font-size: 15px; font-variant-numeric: tabular-nums; }
+.sel-bar .sel-size, .sel-bar .sel-copy { opacity: .75; font-size: 12px; }
+.sel-bar.copied .sel-copy { opacity: 1; font-weight: 700; }
+.sel-bar button { border: 0; background: rgba(255,255,255,.18); color: #fff; width: 26px; height: 26px; border-radius: 999px; cursor: pointer; font-size: 16px; line-height: 1; }
+.sel-bar button:hover { background: rgba(255,255,255,.3); }
+@media (max-width: 560px) { .sel-bar .sel-copy { display: none; } }
+
 /* tabs */
 .tabs { display: flex; gap: 4px; margin-bottom: 14px; border-bottom: 1px solid var(--line-strong); }
 .tab {
@@ -316,7 +343,7 @@ h1 { font-size: 26px; font-weight: 700; margin: 4px 0 6px; letter-spacing: -.01e
   body { background: #fff; }
   .top-actions, .kpis, .charts, .filters, #dlCsv, .foot { display: none; }
   .card { border: 0; box-shadow: none; padding: 0; }
-  .tabs, .view-note, .ret-hint, .af-hint, .chips, .head-actions, .sheet .af { display: none; }
+  .sel-bar, .tabs, .view-note, .ret-hint, .af-hint, .chips, .head-actions, .sheet .af { display: none; }
   #view-table { display: block !important; }
   .sheet { border: 0; }
   .sheet thead th { position: static; }

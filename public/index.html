@@ -130,6 +130,7 @@
 
       <p class="ret-hint" data-i18n-html="retHint"></p>
       <p class="af-hint" data-i18n-html="af.hint"></p>
+      <p class="af-hint" data-i18n-html="sel.hint"></p>
       <div id="activeFilters" class="chips" hidden></div>
 
       <!-- ここから下は Excel「VFF Shoes Stock」シートと同じ書式 -->
@@ -147,6 +148,14 @@
 
   <div id="tip" class="tip" role="tooltip" hidden></div>
   <div id="afPop" class="af-pop" role="dialog" hidden></div>
+  <div id="selBar" class="sel-bar" role="status" aria-live="polite" hidden>
+    <span><span data-i18n="sel.sum"></span>: <b id="selSum"></b></span>
+    <span><span data-i18n="sel.avg"></span>: <b id="selAvg"></b></span>
+    <span><span data-i18n="sel.count"></span>: <b id="selCount"></b></span>
+    <span class="sel-size" id="selSize"></span>
+    <span class="sel-copy" data-i18n="sel.copyHint"></span>
+    <button type="button" id="selClose" aria-label="×">×</button>
+  </div>
   <script src="i18n.js"></script>
   <script src="app.js"></script>
 </body>
