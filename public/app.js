@@ -150,9 +150,22 @@
   }
 
   /* ---------- filtering ---------- */
-  function filtered() {
+  // 見出しの ▼ フィルター (Excel のオートフィルターと同じ)
+  //   text: Code / Model / Color / Size → 表示する値の Set (null = 絞り込みなし)
+  //   num:  groups の番号 → { op: "gt0" | "eq0" | "range", min, max }
+  const TEXT_COLS = ["code", "model", "color", "size"];
+  const colFilters = { text: {}, num: {} };
+  const numOk = (v, f) =>
+    f.op === "gt0" ? v > 0 : f.op === "eq0" ? v === 0 :
+    (f.min == null || v >= f.min) && (f.max == null || v <= f.max);
+  const hasColFilters = () => Object.keys(colFilters.text).length + Object.keys(colFilters.num).length > 0;
+
+  // skip: そのフィルター自身を除いて判定する (▼ の候補一覧を作るため)
+  function matches(it, skip) {
     const q = state.q.trim().toLowerCase();
-    let rows = data.items.filter((it) => {
+    {
+      for (const k of TEXT_COLS) if (k !== skip && colFilters.text[k] && !colFilters.text[k].has(it[k])) return false;
+      for (const g in colFilters.num) if (`n${g}` !== skip && !numOk(rowQty(it)[+g], colFilters.num[g])) return false;
       if (state.model && it.model !== state.model) return false;
       if (state.color && it.color !== state.color) return false;
       if (state.size && it.size !== state.size) return false;
@@ -161,13 +174,184 @@
       if (state.stock === "out" && it._tq !== 0) return false;
       if (q && !it._search.includes(q)) return false;
       return true;
-    });
+    }
+  }
+
+  function filtered() {
+    let rows = data.items.filter((it) => matches(it));
     if (state.sort !== "") {
       const key = state.sort === "total" ? (it) => it._tq : state.sort === "store" ? (it) => it._st : (it) => it._adj[+state.sort];
       rows = rows.map((it, i) => [it, i]).sort((a, b) => key(b[0]) - key(a[0]) || a[1] - b[1]).map((x) => x[0]);
     }
     return rows;
   }
+
+  /* ---------- 見出しの ▼ フィルター UI ---------- */
+  const pop = $("afPop");
+  let popFor = null;
+
+  function colLabel(id) {
+    return id[0] === "t" ? { code: "Code", model: "Model", color: "Color", size: "Size" }[id.slice(1)] : `${groups[+id.slice(1)]} Quantity`;
+  }
+  function filterSummary(id) {
+    if (id[0] === "t") {
+      const set = colFilters.text[id.slice(1)];
+      const vals = [...set].map((v) => v || t("af.blank"));
+      return vals.length <= 2 ? vals.join(", ") : `${vals.slice(0, 2).join(", ")} +${vals.length - 2}`;
+    }
+    const f = colFilters.num[id.slice(1)];
+    if (f.op === "gt0") return t("af.gt0");
+    if (f.op === "eq0") return t("af.eq0");
+    return `${f.min ?? ""} – ${f.max ?? ""}`;
+  }
+  function activeIds() {
+    return [...Object.keys(colFilters.text).map((k) => `t${k}`), ...Object.keys(colFilters.num).map((g) => `n${g}`)];
+  }
+
+  function updateFilterUi() {
+    const act = new Set(activeIds());
+    document.querySelectorAll(".af").forEach((b) => b.classList.toggle("on", act.has(b.dataset.af)));
+    const box = $("activeFilters");
+    if (!act.size) { box.hidden = true; box.innerHTML = ""; return; }
+    box.hidden = false;
+    box.innerHTML = `<span class="chips-label">${esc(t("chips.label"))}</span>` +
+      [...act].map((id) => `<span class="chip"><b>${esc(colLabel(id))}</b>: ${esc(filterSummary(id))}<button type="button" data-rm="${id}" aria-label="${esc(t("af.clear"))}">×</button></span>`).join("") +
+      `<button type="button" class="chip-clear" data-rm="*">${esc(t("chips.clearAll"))}</button>`;
+  }
+  $("activeFilters").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-rm]");
+    if (!b) return;
+    if (b.dataset.rm === "*") { colFilters.text = {}; colFilters.num = {}; } else removeFilter(b.dataset.rm);
+    render();
+  });
+  function removeFilter(id) {
+    if (id[0] === "t") delete colFilters.text[id.slice(1)]; else delete colFilters.num[id.slice(1)];
+  }
+
+  function closePop() { pop.hidden = true; popFor = null; }
+  function openPop(btn) {
+    const id = btn.dataset.af;
+    if (popFor === id) return closePop();
+    popFor = id;
+    pop.innerHTML = id[0] === "t" ? textPopHtml(id.slice(1)) : numPopHtml(+id.slice(1));
+    pop.hidden = false;
+    const r = btn.getBoundingClientRect();
+    const w = pop.offsetWidth, h = pop.offsetHeight;
+    let x = Math.min(r.left, window.innerWidth - w - 8), y = r.bottom + 4;
+    if (y + h > window.innerHeight - 8) y = Math.max(8, r.top - h - 4);
+    pop.style.left = Math.max(8, x) + "px";
+    pop.style.top = y + "px";
+    const first = pop.querySelector("input[type=search], input[type=radio]:checked");
+    if (first) first.focus();
+  }
+
+  function textPopHtml(key) {
+    const counts = new Map();
+    for (const it of data.items) if (matches(it, `t${key}`)) counts.set(it[key], (counts.get(it[key]) || 0) + 1);
+    // 絞り込み中の値は、他の条件で 0 件になっても一覧に残す
+    const cur = colFilters.text[key];
+    if (cur) cur.forEach((v) => counts.has(v) || counts.set(v, 0));
+    let vals = [...counts.keys()];
+    if (key === "size") vals.sort((a, b) => { const [pa, na] = sizeKey(a), [pb, nb] = sizeKey(b); return pa === pb ? na - nb : pa.localeCompare(pb); });
+    else if (key !== "model") vals.sort((a, b) => (a === "") - (b === "") || a.localeCompare(b));
+    return `<div class="af-head">${esc(colLabel(`t${key}`))}</div>
+      <input type="search" class="af-search" placeholder="${esc(t("f.search"))}" autocomplete="off">
+      <div class="af-list">
+        <label class="af-all"><input type="checkbox" data-all> ${esc(t("af.selectAll"))}</label>
+        ${vals.map((v) => `<label data-v="${esc(v.toLowerCase())}"><input type="checkbox" value="${esc(v)}" ${!cur || cur.has(v) ? "checked" : ""}> <span>${esc(v || t("af.blank"))}</span><em>${counts.get(v)}</em></label>`).join("")}
+      </div>
+      <div class="af-foot">
+        <button type="button" class="ghost small" data-act="clear">${esc(t("af.clear"))}</button>
+        <span></span>
+        <button type="button" class="ghost small" data-act="cancel">${esc(t("af.cancel"))}</button>
+        <button type="button" class="primary small" data-act="ok">OK</button>
+      </div>`;
+  }
+
+  function numPopHtml(g) {
+    const f = colFilters.num[g] || { op: "all" };
+    const opt = (op, label) => `<label><input type="radio" name="afop" value="${op}" ${f.op === op ? "checked" : ""}> ${esc(label)}</label>`;
+    return `<div class="af-head">${esc(colLabel(`n${g}`))}</div>
+      <div class="af-num">
+        ${opt("all", t("f.all"))}
+        ${opt("gt0", t("af.gt0"))}
+        ${opt("eq0", t("af.eq0"))}
+        ${opt("range", t("af.range"))}
+        <div class="af-range">
+          <input type="number" data-min placeholder="${esc(t("af.min"))}" value="${f.op === "range" && f.min != null ? f.min : ""}">
+          <span>–</span>
+          <input type="number" data-max placeholder="${esc(t("af.max"))}" value="${f.op === "range" && f.max != null ? f.max : ""}">
+        </div>
+      </div>
+      <div class="af-foot">
+        <button type="button" class="ghost small" data-act="clear">${esc(t("af.clear"))}</button>
+        <span></span>
+        <button type="button" class="ghost small" data-act="cancel">${esc(t("af.cancel"))}</button>
+        <button type="button" class="primary small" data-act="ok">OK</button>
+      </div>`;
+  }
+
+  function syncAllBox() {
+    const all = pop.querySelector("[data-all]");
+    if (!all) return;
+    const boxes = [...pop.querySelectorAll(".af-list label:not(.af-all):not([hidden]) input")];
+    const on = boxes.filter((b) => b.checked).length;
+    all.checked = on === boxes.length && on > 0;
+    all.indeterminate = on > 0 && on < boxes.length;
+  }
+
+  function applyPop() {
+    const id = popFor;
+    if (id[0] === "t") {
+      const key = id.slice(1);
+      const boxes = [...pop.querySelectorAll(".af-list label:not(.af-all) input")];
+      const on = boxes.filter((b) => b.checked).map((b) => b.value);
+      if (on.length === boxes.length) delete colFilters.text[key];
+      else colFilters.text[key] = new Set(on);
+    } else {
+      const g = id.slice(1);
+      const op = (pop.querySelector("input[name=afop]:checked") || {}).value || "all";
+      const num = (el) => (el.value.trim() === "" ? null : Number(el.value));
+      const min = num(pop.querySelector("[data-min]")), max = num(pop.querySelector("[data-max]"));
+      if (op === "all" || (op === "range" && min == null && max == null)) delete colFilters.num[g];
+      else colFilters.num[g] = { op, min, max };
+    }
+    closePop();
+    render();
+  }
+
+  $("thead").addEventListener("click", (e) => {
+    const b = e.target.closest(".af");
+    if (b) { e.stopPropagation(); openPop(b); }
+  });
+  pop.addEventListener("input", (e) => {
+    if (e.target.classList.contains("af-search")) {
+      const q = e.target.value.trim().toLowerCase();
+      pop.querySelectorAll(".af-list label:not(.af-all)").forEach((l) => (l.hidden = q && !l.dataset.v.includes(q)));
+      syncAllBox();
+    }
+    if (e.target.matches("[data-min], [data-max]")) pop.querySelector("input[value=range]").checked = true;
+  });
+  pop.addEventListener("change", (e) => {
+    if (e.target.matches("[data-all]")) {
+      pop.querySelectorAll(".af-list label:not(.af-all):not([hidden]) input").forEach((b) => (b.checked = e.target.checked));
+    }
+    syncAllBox();
+  });
+  pop.addEventListener("click", (e) => {
+    const act = e.target.closest("[data-act]");
+    if (!act) return;
+    if (act.dataset.act === "ok") applyPop();
+    else if (act.dataset.act === "cancel") closePop();
+    else if (act.dataset.act === "clear") { removeFilter(popFor); closePop(); render(); }
+  });
+  pop.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closePop();
+    if (e.key === "Enter" && !e.target.matches("button")) { e.preventDefault(); applyPop(); }
+  });
+  document.addEventListener("click", (e) => { if (popFor && !pop.contains(e.target) && !e.target.closest(".af")) closePop(); });
+  window.addEventListener("resize", closePop);
+  new MutationObserver(syncAllBox).observe(pop, { childList: true });
 
   /* ---------- KPI ---------- */
   function renderKpis(rows) {
@@ -248,11 +432,15 @@
       <tr class="title"><th colspan="${ncol}">${esc(d.title)}</th></tr>
       <tr class="asof"><th colspan="${ncol}">${esc(d.asOf)}</th></tr>
       <tr class="h1">
-        <th rowspan="2">Code</th><th rowspan="2">Model</th><th rowspan="2">Color</th><th rowspan="2">Size</th>
+        ${["Code", "Model", "Color", "Size"].map((h, k) => `<th rowspan="2">${h}${afBtn(`t${TEXT_COLS[k]}`, h)}</th>`).join("")}
         ${groups.map((g, i) => `<th colspan="${hasRet(i) ? 2 : 1}">${esc(g)}</th>`).join("")}
       </tr>
-      <tr class="h2">${groups.map((_, i) => `<th>Quantity</th>` + (hasRet(i) ? `<th class="ret-h">Return</th>` : "")).join("")}</tr>`;
+      <tr class="h2">${groups.map((g, i) => `<th>Quantity${afBtn(`n${i}`, `${g} Quantity`)}</th>` + (hasRet(i) ? `<th class="ret-h">Return</th>` : "")).join("")}</tr>`;
+    updateFilterUi();
   }
+
+  const afBtn = (id, label) =>
+    `<button type="button" class="af" data-af="${id}" aria-haspopup="dialog" aria-label="${esc(label)} ${esc(t("af.title"))}"><svg viewBox="0 0 10 10" aria-hidden="true"><path class="af-arrow" d="M2 3.5h6L5 7z"/><path class="af-funnel" d="M1.5 2h7L6 5.2V8.5L4 7.5V5.2z"/></svg></button>`;
 
   const numCols = () => 4 + sum(groups.map((_, i) => (hasRet(i) ? 2 : 1)));
 
@@ -367,6 +555,7 @@
   });
 
   function render() {
+    updateFilterUi();
     const rows = filtered();
     renderKpis(rows);
     renderCharts(rows);
@@ -555,6 +744,8 @@
   $("kpiLowBtn").addEventListener("click", () => toggleStock("low"));
   $("reset").addEventListener("click", () => {
     Object.assign(state, { q: "", model: "", color: "", size: "", stock: "", sort: "" });
+    colFilters.text = {};
+    colFilters.num = {};
     ["q", "fModel", "fColor", "fSize", "fStock", "fSort"].forEach((id) => ($(id).value = ""));
     render();
   });
@@ -581,6 +772,8 @@
     if (!data) return;
     applyStaticTexts();
     fillSortOptions();
+    closePop();
+    renderFrame(data);
     render();
     updateReturnInfo();
   });
