@@ -82,6 +82,11 @@ h1 { font-size: 26px; font-weight: 700; margin: 4px 0 6px; letter-spacing: -.01e
 .hint { font-size: 12px; color: var(--muted); }
 .count { font-weight: 500; color: var(--muted); font-size: 13px; margin-left: 6px; }
 
+.head-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.ret-info { font-size: 12px; color: var(--ink-2); background: #fff2cc; border-radius: 999px; padding: 3px 10px; color: #7f6000; }
+.ret-info:empty { display: none; }
+.ret-hint { font-size: 12px; color: var(--muted); margin: -4px 0 10px; }
+
 /* tabs */
 .tabs { display: flex; gap: 4px; margin-bottom: 14px; border-bottom: 1px solid var(--line-strong); }
 .tab {
@@ -184,6 +189,15 @@ h1 { font-size: 26px; font-weight: 700; margin: 4px 0 6px; letter-spacing: -.01e
 .sheet td.c { text-align: center; }
 .sheet td.b { font-weight: 700; }
 .sheet td.ret { background: var(--x-ret-fill); color: var(--x-ret-ink); }
+.sheet td.ret { padding: 0; }
+.sheet .ret-in {
+  display: block; width: 100%; height: calc(var(--row-h) - 1px); margin: 0; padding: 0 3px;
+  border: 0; background: transparent; color: var(--x-ret-ink);
+  font: inherit; text-align: center; cursor: cell;
+}
+.sheet .ret-in:hover { background: #ffe699; }
+.sheet .ret-in:focus { outline: 2px solid #217346; outline-offset: -2px; background: #ffffff; cursor: text; }
+.sheet .ret-in.invalid { outline: 2px solid #d03b3b; outline-offset: -2px; }
 
 /* ウィンドウ枠の固定 (A5): 1〜4 行目は常に表示 */
 .sheet thead tr.title th, .sheet thead tr.asof th {
@@ -222,7 +236,7 @@ h1 { font-size: 26px; font-weight: 700; margin: 4px 0 6px; letter-spacing: -.01e
   body { background: #fff; }
   .top-actions, .kpis, .charts, .filters, #dlCsv, .foot { display: none; }
   .card { border: 0; box-shadow: none; padding: 0; }
-  .tabs, .view-note { display: none; }
+  .tabs, .view-note, .ret-hint, .head-actions { display: none; }
   #view-table { display: block !important; }
   .sheet { border: 0; }
   .sheet thead th { position: static; }

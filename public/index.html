@@ -79,7 +79,11 @@
     <section id="view-table" class="view card table-card" role="tabpanel" aria-labelledby="tab-table">
       <div class="card-head">
         <h2>在庫一覧 <span class="count" id="rowCount"></span></h2>
-        <button id="dlCsv" class="ghost small" type="button">表示中の行を CSV で保存</button>
+        <div class="head-actions">
+          <span id="retInfo" class="ret-info"></span>
+          <button id="clearReturns" class="ghost small" type="button" hidden>返品入力をすべて消去</button>
+          <button id="dlCsv" class="ghost small" type="button">表示中の行を CSV で保存</button>
+        </div>
       </div>
 
       <div class="filters" role="search">
@@ -114,6 +118,8 @@
         </label>
         <button id="reset" class="ghost" type="button">条件をリセット</button>
       </div>
+
+      <p class="ret-hint">黄色の <b>Return</b> 欄をクリックすると返品数を入力できます。入力した数だけ Quantity から差し引かれます（Enter で下のセルへ）。入力内容はこのブラウザに保存されます。</p>
 
       <!-- ここから下は Excel「VFF Shoes Stock」シートと同じ書式 -->
       <div class="sheet" id="sheet">
