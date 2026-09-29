@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>店舗在庫ダッシュボード</title>
-  <meta name="description" content="VFF シューズの店舗別在庫ダッシュボード（在庫表は Excel と同じ書式）">
+  <title>VFF 在庫ダッシュボード</title>
+  <meta name="description" content="VFF シューズの店舗・オフィス別在庫ダッシュボード（在庫表は Excel と同じ書式）">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233b82c4'/><rect x='7' y='16' width='4' height='9' rx='1.5' fill='white'/><rect x='14' y='10' width='4' height='15' rx='1.5' fill='white'/><rect x='21' y='13' width='4' height='12' rx='1.5' fill='white'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,11 +16,12 @@
     <header class="top">
       <div>
         <p class="eyebrow">Store Stock Dashboard</p>
-        <h1>店舗在庫ダッシュボード</h1>
+        <h1>店舗・オフィス在庫ダッシュボード</h1>
         <p class="sub"><span id="asof">読み込み中…</span><span class="dot">·</span><span id="source"></span></p>
       </div>
       <div class="top-actions">
-        <a id="dlXlsx" class="ghost" href="source.xlsx" download>元の Excel をダウンロード</a>
+        <a id="dlXlsx" class="ghost" href="source.xlsx" download>店舗在庫の Excel</a>
+        <a id="dlOffice" class="ghost" href="source_office.xlsx" download hidden>オフィス在庫の Excel</a>
         <button id="themeToggle" class="ghost" type="button" aria-label="表示モード切替">
           <span aria-hidden="true">◐</span> <span id="themeLabel">自動</span>
         </button>
@@ -46,7 +47,7 @@
         <p class="kpi-note" id="kpiSkuNote"></p>
       </div>
       <button class="kpi kpi-btn" id="kpiOutBtn" type="button" aria-pressed="false">
-        <span class="kpi-label"><span class="status-ic crit" aria-hidden="true">●</span>全店在庫切れ</span>
+        <span class="kpi-label"><span class="status-ic crit" aria-hidden="true">●</span>在庫切れ（全拠点）</span>
         <span class="kpi-value" id="kpiOut">–</span>
         <span class="kpi-note">合計 0 の SKU — クリックで一覧に表示</span>
       </button>
@@ -60,8 +61,8 @@
     <section class="charts">
       <div class="card">
         <div class="card-head">
-          <h2>店舗別の在庫数</h2>
-          <p class="hint">クリックでその店舗の在庫が多い順に並び替え</p>
+          <h2>拠点別の在庫数</h2>
+          <p class="hint">クリックでその拠点の在庫が多い順に並び替え</p>
         </div>
         <div id="storeChart" class="bars"></div>
       </div>
@@ -125,7 +126,7 @@
     </section>
 
     <footer class="foot">
-      データ元: <span id="footSource"></span> — 数値は Excel 保存時の計算結果です。絞り込み中の Total 行は表示中の行の合計です。
+      データ元: <span id="footSource"></span> — 数値は Excel 保存時の計算結果です。Total は店舗とオフィスの合計です。絞り込み中の Total 行は表示中の行の合計です。
     </footer>
   </div>
 

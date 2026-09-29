@@ -15,7 +15,7 @@
   const COL_W = { code: 23.63, model: 15.27, color: 16.63, size: 10.91, qty: 12.36, ret: 11.18 };
   const px = (w) => Math.round(w * 7 + 5);
 
-  // sort: "" = Excel の並び / "0".."4" = 店舗 / "total"
+  // sort: "" = Excel の並び / "0".. = 店舗・オフィス / "total"
   const state = { q: "", model: "", color: "", size: "", stock: "", sort: "" };
   let data = null;
   let groups = [];
@@ -108,7 +108,7 @@
     const all = rows.length === data.items.length;
     const t = rows.reduce((a, it) => a + it._tq, 0);
     $("kpiTotal").textContent = fmt(t);
-    $("kpiTotalNote").textContent = all ? `${data.stores.length} 店舗の合計` : `全体 ${fmt(data._grand)} 点のうち`;
+    $("kpiTotalNote").textContent = all ? (data.officeSource ? `${data.stores.length - 1} 店舗＋オフィスの合計` : `${data.stores.length} 店舗の合計`) : `全体 ${fmt(data._grand)} 点のうち`;
     $("kpiSku").textContent = fmt(rows.length);
     $("kpiSkuNote").textContent = all ? `${uniq(data.items.map((i) => i.model)).length} モデル` : `全 ${fmt(data.items.length)} SKU のうち`;
     $("kpiOut").textContent = fmt(rows.filter((it) => it._tq === 0).length);
@@ -271,7 +271,8 @@
       d._grand = d.items.reduce((a, it) => a + it._tq, 0);
       $("asof").textContent = d.asOfDate ? `${d.asOfDate} 営業終了時点` : d.asOf;
       $("source").textContent = d.title;
-      $("footSource").textContent = d.source;
+      $("footSource").textContent = d.officeSource ? `${d.source}（店舗）、${d.officeSource}（オフィス）` : d.source;
+      $("dlOffice").hidden = !d.officeSource;
       fillSelect($("fModel"), uniq(d.items.map((i) => i.model)));
       fillSelect($("fColor"), uniq(d.items.map((i) => i.color)).sort());
       fillSelect($("fSize"), uniq(d.items.map((i) => i.size)).sort((a, b) => {

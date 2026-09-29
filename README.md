@@ -1,4 +1,4 @@
-# 店舗在庫ダッシュボード
+# 店舗・オフィス在庫ダッシュボード
 
 `Store_Stock_*.xlsx`（VFF Shoes Stock シート）を、そのままの表構成でブラウザで見られるダッシュボードにしたものです。
 
@@ -25,7 +25,8 @@ public/          # Vercel が配信する静的ファイル（ビルド不要）
   style.css
   app.js
   stock.json     # Excel から生成したデータ
-  source.xlsx    # 元の Excel（ダウンロード用、convert.py がコピー）
+  source.xlsx    # 店舗在庫の Excel（ダウンロード用、convert.py がコピー）
+  source_office.xlsx  # オフィス在庫の Excel（同上）
 scripts/convert.py  # Excel → public/stock.json 変換
 data/            # 元の Excel ファイル
 vercel.json
@@ -34,12 +35,16 @@ vercel.json
 ## データの更新手順
 
 1. 新しい Excel を `data/` に置く（Excel で一度保存して、数式の計算結果が入った状態にしてください）
-2. 変換を実行
+2. 変換を実行（2 つ目にオフィス在庫の Excel を渡すと「Office」列が追加されます）
 
    ```bash
    pip install openpyxl
-   python scripts/convert.py data/Store_Stock_XXXXXX.xlsx
+   python scripts/convert.py data/Store_Stock_XXXXXX.xlsx data/VFF_Stock_XX-XX-XX.xlsx
    ```
+
+   オフィス在庫は 1 枚目のシートの B 列（商品名・カラー）、C 列（サイズ）、BN 列（Stock > Office）を読み、
+   モデル・カラー・サイズで店舗の行と照合します。店舗にない商品は、オフィス在庫がある場合だけ行を追加します（Code は空欄）。
+   Total 列は店舗とオフィスの合計です。
 
 3. `git add . && git commit -m "在庫データ更新" && git push` — Vercel が自動で再デプロイします
 
