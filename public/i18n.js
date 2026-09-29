@@ -3,6 +3,8 @@
 (() => {
   const DICT = {
     ja: {
+      "alloc.note": "新入荷の店舗配分を反映済み（{n} 足を Office から各店舗へ）",
+      "foot.alloc": "新入荷の店舗配分表の配分数（{n} 足）を Office から各店舗へ移して反映しています。",
       "sync.shared": "全員で共有中 · {t} 更新",
       "sync.local": "このブラウザにのみ保存",
       "sync.pulled": "他の人の入力を反映しました",
@@ -94,6 +96,8 @@
       "foot": "データ元: {src} — 数値は Excel 保存時の計算結果です。Store Total は店舗のみ、Company Total は店舗とオフィスの合計です。絞り込み中の Total 行は表示中の行の合計です。",
     },
     en: {
+      "alloc.note": "New-arrival store allocation applied ({n} pairs moved from Office to stores)",
+      "foot.alloc": "The new-arrival store allocation ({n} pairs) has been moved from Office to the stores.",
       "sync.shared": "Shared with everyone · updated {t}",
       "sync.local": "Saved in this browser only",
       "sync.pulled": "Updated with others' changes",
@@ -185,6 +189,8 @@
       "foot": "Source: {src} — Figures are the values calculated when the Excel file was saved. Store Total = stores only; Company Total = stores + office. When filtered, the Total row is the sum of the rows shown.",
     },
     th: {
+      "alloc.note": "รวมการจัดสรรสินค้าเข้าใหม่แล้ว ({n} คู่ ย้ายจากออฟฟิศไปยังสาขา)",
+      "foot.alloc": "ได้ย้ายจำนวนที่จัดสรรสินค้าเข้าใหม่ ({n} คู่) จากออฟฟิศไปยังสาขาแล้ว",
       "sync.shared": "แชร์กับทุกคน · อัปเดต {t}",
       "sync.local": "บันทึกในเบราว์เซอร์นี้เท่านั้น",
       "sync.pulled": "อัปเดตตามการแก้ไขของผู้อื่นแล้ว",

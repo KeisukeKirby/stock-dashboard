@@ -63,6 +63,11 @@ button, select, input { font: inherit; color: inherit; }
 .eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
 h1 { font-size: 26px; font-weight: 700; margin: 4px 0 6px; letter-spacing: -.01em; }
 .sub { color: var(--ink-2); font-size: 13px; }
+.alloc-note {
+  display: inline-block; margin-top: 8px; font-size: 12px; color: #1f5f3a; background: #e3f4ea;
+  border: 1px solid #b7e0c6; border-radius: 999px; padding: 3px 12px;
+}
+.alloc-note[hidden] { display: none; }
 .sub .dot { margin: 0 8px; color: var(--muted); }
 
 .ghost {

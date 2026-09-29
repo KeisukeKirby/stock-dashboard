@@ -1,9 +1,10 @@
 """Excel (Store_Stock_*.xlsx) の「VFF Shoes Stock」シートを public/stock.json に変換する。
 オフィス在庫の Excel (VFF_Stock_*.xlsx) を渡すと「Office」列として追加する。
+新入荷の店舗配分表 (「配分表」シートのある Excel) を渡すと、配分した足数を Office から各店舗へ移す。
 
 使い方:
     pip install openpyxl
-    python scripts/convert.py data/Store_Stock_092526.xlsx data/VFF_Stock_25-09-26.xlsx
+    python scripts/convert.py data/Store_Stock_092526.xlsx data/VFF_Stock_25-09-26.xlsx [data/New_Arrival_Allocation.xlsx]
 
 Excel 側で保存時に計算済みの値 (data_only) を読み込むため、
 Excel で一度保存したファイルを使ってください。
@@ -110,7 +111,58 @@ def add_office(items, office):
     return matched, added
 
 
-def main(path, office_path=None):
+ALLOC_SHEET = "配分表"
+
+
+def store_match(name, stores):
+    """配分表の店舗名 (例: "Central CL (Chidlom)") をダッシュボードの店舗名に合わせる。"""
+    base = re.sub(r"\s*\(.*\)$", "", str(name)).strip().lower()
+    for s in stores:
+        if re.sub(r"\s*\(.*\)$", "", s).strip().lower() == base:
+            return s
+    raise SystemExit(f"配分表の店舗名が一致しません: {name}")
+
+
+def apply_allocation(items, store_names, path):
+    """配分表の店舗配分を反映する。新入荷はオフィス在庫に含まれているので、
+    配分した足数を Office から各店舗へ移す (Company Total は変わらない)。"""
+    wb = openpyxl.load_workbook(path, data_only=True)
+    ws = wb[ALLOC_SHEET]
+    rows = list(ws.iter_rows(values_only=True))
+    hi = next(n for n, r in enumerate(rows) if r and r[0] == "モデル" and "入荷数" in r)
+    head = rows[hi]
+    c_model, c_color, c_size = head.index("モデル"), head.index("カラー"), head.index("サイズ")
+    c_total = head.index("店舗合計")
+    c_stores = list(range(head.index("配分グループ") + 1, c_total))
+    col_to_idx = {c: store_names.index(store_match(head[c], store_names)) for c in c_stores}
+    office = store_names.index(OFFICE_NAME)
+    index = {(i["model"], norm_color(i["color"]), i["size"]): i for i in items}
+    moved, n = 0, 0
+    for r in rows[hi + 1:]:
+        if not r or not r[c_model] or r[c_model] == "合計" or not isinstance(r[c_total], (int, float)):
+            continue
+        it = index.get((r[c_model], norm_color(str(r[c_color])), str(r[c_size]).strip()))
+        if not it:
+            raise SystemExit(f"配分表の商品がダッシュボードにありません: {r[c_model]} {r[c_color]} {r[c_size]}")
+        total = 0
+        for c, k in col_to_idx.items():
+            q = int(r[c] or 0)
+            it["qty"][k] += q
+            total += q
+        if total != int(r[c_total]):
+            raise SystemExit(f"店舗合計が一致しません: {r[c_model]} {r[c_color]} {r[c_size]}")
+        if it["qty"][office] < total:
+            raise SystemExit(f"Office 在庫が配分数より少ない: {r[c_model]} {r[c_color]} {r[c_size]}")
+        it["qty"][office] -= total
+        moved += total
+        n += 1
+    for i in items:
+        i["totalQty"] = sum(i["qty"])
+    print(f"allocation: {n} rows, {moved} pairs moved from Office to stores")
+    return moved
+
+
+def main(path, office_path=None, alloc_path=None):
     wb = openpyxl.load_workbook(path, data_only=True)
     ws = wb[SHEET] if SHEET in wb.sheetnames else wb.worksheets[0]
     rows = list(ws.iter_rows(values_only=True))
@@ -163,6 +215,10 @@ def main(path, office_path=None):
             i["qty"].insert(0, i["qty"].pop())
             i["ret"].insert(0, i["ret"].pop())
         n = len(store_names)
+        alloc_src, alloc_moved = None, 0
+        if alloc_path:
+            alloc_moved = apply_allocation(items, store_names, alloc_path)
+            alloc_src = Path(alloc_path).name
         qty = [sum(i["qty"][k] for i in items) for k in range(n)]
         ret = [sum(i["ret"][k] or 0 for i in items) for k in range(n)]
         total_row = {"qty": qty + [sum(qty)], "ret": ret + [sum(ret)]}
@@ -177,6 +233,8 @@ def main(path, office_path=None):
         "asOfDate": m.group(1) if m else "",
         "source": Path(path).name,
         "officeSource": office_src,
+        "allocSource": alloc_src if office_path else None,
+        "allocMoved": alloc_moved if office_path else 0,
         "officeIndex": 0 if office_src else None,  # Office 列 (Return なし)
         "stores": store_names,
         "items": items,
@@ -191,4 +249,5 @@ def main(path, office_path=None):
 
 if __name__ == "__main__":
     main(sys.argv[1] if len(sys.argv) > 1 else "data/Store_Stock_092526.xlsx",
-         sys.argv[2] if len(sys.argv) > 2 else None)
+         sys.argv[2] if len(sys.argv) > 2 else None,
+         sys.argv[3] if len(sys.argv) > 3 else None)

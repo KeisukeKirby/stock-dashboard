@@ -1037,7 +1037,10 @@
     const d = data;
     $("asof").textContent = d.asOfDate ? t("asof", { d: d.asOfDate }) : d.asOf;
     const src = d.officeSource ? t("foot.src", { s: d.source, o: d.officeSource }) : d.source;
-    $("foot").textContent = t("foot", { src });
+    $("foot").textContent = t("foot", { src }) + (d.allocSource ? " " + t("foot.alloc", { n: fmt(d.allocMoved) }) : "");
+    const an = $("allocNote");
+    an.hidden = !d.allocSource;
+    if (d.allocSource) an.textContent = t("alloc.note", { n: fmt(d.allocMoved) });
   }
   function fillSortOptions() {
     const sel = $("fSort");

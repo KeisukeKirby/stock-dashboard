@@ -45,12 +45,15 @@ vercel.json
 
    ```bash
    pip install openpyxl
-   python scripts/convert.py data/Store_Stock_XXXXXX.xlsx data/VFF_Stock_XX-XX-XX.xlsx
+   python scripts/convert.py data/Store_Stock_XXXXXX.xlsx data/VFF_Stock_XX-XX-XX.xlsx [data/配分表.xlsx]
    ```
 
    オフィス在庫は 1 枚目のシートの B 列（商品名・カラー）、C 列（サイズ）、BN 列（Stock > Office）を読み、
    モデル・カラー・サイズで店舗の行と照合します。店舗にない商品は、オフィス在庫がある場合だけ行を追加します。Code は同じモデル・カラーの商品コードがあればサイズ部分を差し替えて補完し、分からないもの（新しいモデル・カラー）は空欄のままにします。
    右端は Store Total（店舗のみの合計、Return あり）と Company Total（店舗 + オフィス、Return なし）です。Office 列は一番左に並べます。
+
+   3 つ目に新入荷の店舗配分表（「配分表」シートのある Excel）を渡すと、各店舗の配分数を Office から各店舗へ移して反映します
+   （新入荷はオフィス在庫に含まれている前提。Company Total は変わりません）。
 
 3. `git add . && git commit -m "在庫データ更新" && git push` — Vercel が自動で再デプロイします
 
