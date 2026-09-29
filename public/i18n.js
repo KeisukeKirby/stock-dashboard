@@ -3,6 +3,7 @@
 (() => {
   const DICT = {
     ja: {
+      "foot.generated": "（データ作成: {d}）",
       "alloc.note": "新入荷の店舗配分を反映済み（{n} 足を Office から各店舗へ）",
       "foot.alloc": "新入荷の店舗配分表の配分数（{n} 足）を Office から各店舗へ移して反映しています。",
       "sync.shared": "全員で共有中 · {t} 更新",
@@ -96,6 +97,7 @@
       "foot": "データ元: {src} — 数値は Excel 保存時の計算結果です。Store Total は店舗のみ、Company Total は店舗とオフィスの合計です。絞り込み中の Total 行は表示中の行の合計です。",
     },
     en: {
+      "foot.generated": "(Data generated: {d})",
       "alloc.note": "New-arrival store allocation applied ({n} pairs moved from Office to stores)",
       "foot.alloc": "The new-arrival store allocation ({n} pairs) has been moved from Office to the stores.",
       "sync.shared": "Shared with everyone · updated {t}",
@@ -189,6 +191,7 @@
       "foot": "Source: {src} — Figures are the values calculated when the Excel file was saved. Store Total = stores only; Company Total = stores + office. When filtered, the Total row is the sum of the rows shown.",
     },
     th: {
+      "foot.generated": "(สร้างข้อมูลเมื่อ: {d})",
       "alloc.note": "รวมการจัดสรรสินค้าเข้าใหม่แล้ว ({n} คู่ ย้ายจากออฟฟิศไปยังสาขา)",
       "foot.alloc": "ได้ย้ายจำนวนที่จัดสรรสินค้าเข้าใหม่ ({n} คู่) จากออฟฟิศไปยังสาขาแล้ว",
       "sync.shared": "แชร์กับทุกคน · อัปเดต {t}",

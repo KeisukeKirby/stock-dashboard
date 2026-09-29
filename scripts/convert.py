@@ -10,6 +10,7 @@ Excel 側で保存時に計算済みの値 (data_only) を読み込むため、
 Excel で一度保存したファイルを使ってください。
 """
 import json
+from datetime import datetime, timedelta, timezone
 import re
 import shutil
 import sys
@@ -232,6 +233,7 @@ def main(path, office_path=None, alloc_path=None):
         "asOf": as_of,
         "asOfDate": m.group(1) if m else "",
         "source": Path(path).name,
+        "generatedAt": datetime.now(timezone(timedelta(hours=7))).strftime("%Y-%m-%d %H:%M"),  # タイ時間
         "officeSource": office_src,
         "allocSource": alloc_src if office_path else None,
         "allocMoved": alloc_moved if office_path else 0,

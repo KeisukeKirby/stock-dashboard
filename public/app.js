@@ -1037,7 +1037,8 @@
     const d = data;
     $("asof").textContent = d.asOfDate ? t("asof", { d: d.asOfDate }) : d.asOf;
     const src = d.officeSource ? t("foot.src", { s: d.source, o: d.officeSource }) : d.source;
-    $("foot").textContent = t("foot", { src }) + (d.allocSource ? " " + t("foot.alloc", { n: fmt(d.allocMoved) }) : "");
+    $("foot").textContent = t("foot", { src }) + (d.allocSource ? " " + t("foot.alloc", { n: fmt(d.allocMoved) }) : "")
+      + (d.generatedAt ? " " + t("foot.generated", { d: d.generatedAt }) : "");
     const an = $("allocNote");
     an.hidden = !d.allocSource;
     if (d.allocSource) an.textContent = t("alloc.note", { n: fmt(d.allocMoved) });
@@ -1064,7 +1065,8 @@
   });
 
   /* ---------- load ---------- */
-  fetch("stock.json", { cache: "no-cache" })
+  // 毎回かならず最新の在庫データを読む (ブラウザや配信側に古いデータが残っていても使わない)
+  fetch(`stock.json?t=${Date.now()}`, { cache: "no-store" })
     .then((r) => r.json())
     .then((d) => {
       data = d;
