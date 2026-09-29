@@ -66,6 +66,20 @@ def read_office(path):
     return out
 
 
+CODE_RE = re.compile(r"^(VFF\d+)\((.+),([^,()]+)\)$")  # 例) VFF0002(BK/YL,M42)
+
+
+def guess_code(items, model, color, size):
+    """同じモデル・カラーの商品コードがあれば、サイズ部分だけ差し替えてコードを作る。
+    (モデル番号とカラー略号が確実に分かる場合のみ。分からなければ空欄)"""
+    for x in items:
+        if x["code"] and x["model"] == model and norm_color(x["color"]) == norm_color(color):
+            m = CODE_RE.match(x["code"])
+            if m:
+                return f"{m.group(1)}({m.group(2)},{size})"
+    return ""
+
+
 def add_office(items, office):
     """店舗の行に Office 在庫を追加。店舗にない商品は、在庫がある場合のみ行を追加する。"""
     index = {(i["model"], norm_color(i["color"]), i["size"]): i for i in items}
@@ -79,7 +93,7 @@ def add_office(items, office):
             it["qty"][-1] = qty or 0
             matched += 1
         elif qty:
-            new = {"code": "", "model": model, "color": color, "size": size,
+            new = {"code": guess_code(items, model, color, size), "model": model, "color": color, "size": size,
                    "qty": [0] * (len(items[0]["qty"]) - 1) + [qty],
                    "ret": [None] * len(items[0]["ret"]), "office_only": True}
             # 同じモデル・カラーの行の後ろ (なければ同じモデルの後ろ、それもなければ末尾) に入れる
