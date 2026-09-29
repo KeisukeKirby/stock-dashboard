@@ -3,9 +3,9 @@
 (() => {
   const DICT = {
     ja: {
-      "sel.sum": "合計", "sel.avg": "平均", "sel.count": "個数",
+      "sel.sum": "合計", "sel.avg": "平均", "sel.count": "数値の個数", "sel.filled": "データの個数", "sel.rows": "行数",
       "sel.copyHint": "Ctrl+C でコピー",
-      "sel.hint": "数量のマスを <b>ドラッグ</b> すると、選んだ範囲の合計・平均・個数が画面下に表示されます（Shift+クリックで範囲を広げる、Esc で解除）。",
+      "sel.hint": "表のマスを <b>ドラッグ</b> すると、選んだ範囲のデータの個数・行数（数量のマスがあれば合計・平均も）が画面下に表示されます（Shift+クリックで範囲を広げる、Esc で解除）。",
       "af.title": "フィルター",
       "af.hint": "表の見出しの <b>▼</b> から、Excel のフィルターと同じように複数の値や数量の条件で絞り込めます。",
       "af.selectAll": "(すべて選択)",
@@ -87,9 +87,9 @@
       "foot": "データ元: {src} — 数値は Excel 保存時の計算結果です。Store Total は店舗のみ、Company Total は店舗とオフィスの合計です。絞り込み中の Total 行は表示中の行の合計です。",
     },
     en: {
-      "sel.sum": "Sum", "sel.avg": "Average", "sel.count": "Count",
+      "sel.sum": "Sum", "sel.avg": "Average", "sel.count": "Numerical count", "sel.filled": "Count", "sel.rows": "Rows",
       "sel.copyHint": "Ctrl+C to copy",
-      "sel.hint": "<b>Drag</b> across quantity cells to see the sum, average and count of the selected range at the bottom of the screen (Shift+click to extend, Esc to clear).",
+      "sel.hint": "<b>Drag</b> across any cells to see the count and number of rows of the selected range (plus sum and average for quantities) at the bottom of the screen (Shift+click to extend, Esc to clear).",
       "af.title": "filter",
       "af.hint": "Use the <b>▼</b> buttons in the table headers to filter by multiple values or by quantity, just like Excel filters.",
       "af.selectAll": "(Select all)",
@@ -171,9 +171,9 @@
       "foot": "Source: {src} — Figures are the values calculated when the Excel file was saved. Store Total = stores only; Company Total = stores + office. When filtered, the Total row is the sum of the rows shown.",
     },
     th: {
-      "sel.sum": "ผลรวม", "sel.avg": "ค่าเฉลี่ย", "sel.count": "จำนวน",
+      "sel.sum": "ผลรวม", "sel.avg": "ค่าเฉลี่ย", "sel.count": "จำนวนตัวเลข", "sel.filled": "จำนวนข้อมูล", "sel.rows": "จำนวนแถว",
       "sel.copyHint": "Ctrl+C เพื่อคัดลอก",
-      "sel.hint": "<b>ลาก</b> เลือกช่องจำนวนเพื่อดูผลรวม ค่าเฉลี่ย และจำนวนของช่วงที่เลือกที่ด้านล่างของหน้าจอ (Shift+คลิกเพื่อขยายช่วง, Esc เพื่อยกเลิก)",
+      "sel.hint": "<b>ลาก</b> เลือกช่องใดก็ได้ในตารางเพื่อดูจำนวนข้อมูลและจำนวนแถวของช่วงที่เลือก (ถ้ามีช่องจำนวนจะแสดงผลรวมและค่าเฉลี่ยด้วย) ที่ด้านล่างของหน้าจอ (Shift+คลิกเพื่อขยายช่วง, Esc เพื่อยกเลิก)",
       "af.title": "ตัวกรอง",
       "af.hint": "ใช้ปุ่ม <b>▼</b> ที่หัวตารางเพื่อกรองหลายค่าหรือกรองตามจำนวน เหมือนตัวกรองใน Excel",
       "af.selectAll": "(เลือกทั้งหมด)",

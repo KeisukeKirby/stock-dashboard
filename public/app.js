@@ -551,7 +551,7 @@
     if (!sel) { bar.hidden = true; return; }
     const { r0, r1, c0, c1 } = selRange();
     const rows = bodyRows();
-    let total = 0, nums = 0, cells = 0;
+    let total = 0, nums = 0, cells = 0, filled = 0;
     for (let r = r0; r <= r1 && r < rows.length; r++) {
       for (let c = c0; c <= c1; c++) {
         const td = rows[r].cells[c];
@@ -564,13 +564,20 @@
         if (c === c1) td.classList.add("sel-r");
         const v = cellValue(td);
         if (v != null) { total += v; nums++; }
+        // データの個数 (Excel と同じく、空欄でないマスを数える。文字のマスも含む)
+        const input = td.querySelector("input");
+        if ((input ? input.value : td.textContent).trim() !== "") filled++;
       }
     }
     if (cells <= 1 && !dragging) { bar.hidden = true; return; } // 1 マスだけのクリックでは出さない
     bar.hidden = false;
+    // 数値のマスがあるときだけ 合計・平均・数値の個数 を出す (Excel のステータスバーと同じ)
+    document.querySelectorAll("#selBar .sel-num").forEach((el) => (el.hidden = !nums));
     $("selSum").textContent = fmt(total);
     $("selAvg").textContent = nums ? (Math.round((total / nums) * 10) / 10).toLocaleString("en-US") : "–";
     $("selCount").textContent = fmt(nums);
+    $("selFilled").textContent = fmt(filled);
+    $("selRows").textContent = fmt(r1 - r0 + 1);
     $("selSize").textContent = `${r1 - r0 + 1} × ${c1 - c0 + 1}`;
   }
   function clearSel() { sel = null; refreshSel(); }
