@@ -176,7 +176,7 @@
       serverUpdatedAt = j.updatedAt;
       const changed = mergeRemote(j.returns); // 他の人が保存した分もここで反映
       lastSaved = new Date();
-      if (changed) applyReturns(); else updateReturnInfo();
+      if (changed) applyRemote(); else updateReturnInfo();
       return true;
     } catch (e) {
       console.error(e);
@@ -188,8 +188,6 @@
   // 他の人の保存を定期的に取り込む
   async function pullRemote() {
     if (!shared || saving || document.hidden) return;
-    const active = document.activeElement;
-    if (active && active.classList.contains("ret-in")) return; // 入力中は画面を書き換えない
     try {
       const r = await fetch(`${API}?key=${encodeURIComponent(RKEY)}`, { cache: "no-store" });
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -197,7 +195,7 @@
       const fresh = j.updatedAt !== serverUpdatedAt;
       serverUpdatedAt = j.updatedAt;
       if (mergeRemote(j.returns) && fresh) {
-        applyReturns();
+        applyRemote();
         flashSync();
       } else updateReturnInfo();
     } catch (e) {
@@ -247,6 +245,33 @@
       : sy.dataset.flash ? t("sync.pulled")
       : t("sync.shared", { t: lastSync ? hm(lastSync) : "–" });
   }
+  // 他の人の入力を反映: 表を作り直さず数字だけ書き換える。
+  // 入力中のマス (カーソルがあるマス) には触れないので、打ちかけの数字は消えない。
+  // 絞り込み・並び順・スクロール位置・範囲選択もそのまま。
+  function applyRemote() {
+    data.items.forEach(recompute);
+    data._grand = sum(data.items.map((x) => x._tq));
+    const active = document.activeElement;
+    $("tbody").querySelectorAll("tr[data-id]").forEach((tr) => {
+      const it = data.items[+tr.dataset.id];
+      const q = rowQty(it);
+      tr.querySelectorAll("td.q").forEach((td, k) => (td.textContent = nf(q[k])));
+      tr.querySelector("td.tr").textContent = nf(it._tr);
+      tr.querySelectorAll(".ret-in").forEach((inp) => {
+        if (inp === active) return;
+        const v = String(it._ret[+inp.dataset.s] ?? "");
+        inp.value = v;
+        inp.defaultValue = v;
+      });
+    });
+    $("totalRow").innerHTML = totalRowHtml(totalsOf(shown));
+    refreshSel();
+    const rows = filtered();
+    renderKpis(rows);
+    renderCharts(rows);
+    updateReturnInfo();
+  }
+
   function applyReturns() {
     data.items.forEach(recompute);
     data._grand = sum(data.items.map((x) => x._tq));
@@ -615,6 +640,7 @@
     }
     recompute(it);
     input.value = it._ret[i] ?? "";
+    input.defaultValue = input.value;
     const q = rowQty(it);
     tr.querySelectorAll("td.q").forEach((td, k) => (td.textContent = nf(q[k])));
     tr.querySelector("td.tr").textContent = nf(it._tr);
@@ -626,6 +652,15 @@
     updateReturnInfo();
   }
   $("tbody").addEventListener("change", (e) => { if (e.target.classList.contains("ret-in")) { commitReturn(e.target); refreshSel(); } });
+  // 入力せずにマスを離れたとき、入力中に届いた他の人の値があれば表示をそろえる
+  $("tbody").addEventListener("focusout", (e) => {
+    const inp = e.target;
+    if (!inp.classList.contains("ret-in") || inp.value !== inp.defaultValue) return;
+    const it = data.items[+inp.closest("tr").dataset.id];
+    const v = String(it._ret[+inp.dataset.s] ?? "");
+    inp.value = v;
+    inp.defaultValue = v;
+  });
 
   /* ---------- 範囲選択 → 合計 (Excel のステータスバーと同じ) ---------- */
   // 選択範囲は tbody の行番号 × セル番号 の長方形で持つ
