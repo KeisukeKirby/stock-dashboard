@@ -1,0 +1,259 @@
+/* 画面の言語切り替え (日本語 / English / ไทย)
+   在庫表の中身 (Code, Model, Quantity など) は元の Excel と同じ英語のまま。 */
+(() => {
+  const DICT = {
+    ja: {
+      "doc.title": "VFF 在庫ダッシュボード",
+      "h1": "店舗・オフィス在庫ダッシュボード",
+      "loading": "読み込み中…",
+      "loadFail": "データの読み込みに失敗しました",
+      "asof": "{d} 営業終了時点",
+      "dl.store": "店舗在庫の Excel",
+      "dl.office": "オフィス在庫の Excel",
+      "theme.aria": "表示モード切替",
+      "theme.auto": "自動", "theme.light": "ライト", "theme.dark": "ダーク",
+      "lang.aria": "言語",
+      "tabs.aria": "表示切替",
+      "tab.table": "在庫一覧",
+      "tab.detail": "詳細",
+      "kpi.aria": "サマリー",
+      "kpi.total": "総在庫数",
+      "kpi.sku": "SKU 数",
+      "kpi.out": "在庫切れ（全拠点）",
+      "kpi.outNote": "合計 0 の SKU — クリックで一覧に表示",
+      "kpi.low": "残りわずか",
+      "kpi.lowNote": "合計 1 点の SKU — クリックで一覧に表示",
+      "kpi.noteOffice": "{n} 店舗＋オフィスの合計",
+      "kpi.noteStores": "{n} 店舗の合計",
+      "kpi.noteOf": "全体 {n} 点のうち",
+      "kpi.models": "{n} モデル",
+      "kpi.skuOf": "全 {n} SKU のうち",
+      "chart.loc": "拠点別の在庫数",
+      "chart.locHint": "クリックでその拠点の在庫が多い順に並び替え",
+      "chart.model": "モデル別の在庫数",
+      "chart.modelHint": "クリックでそのモデルに絞り込み",
+      "tip.loc": "在庫 {v} 点（{p}%）<br>在庫のある SKU {s}",
+      "tip.model": "在庫 {v} 点 / {s} SKU",
+      "detailNote": "在庫一覧の絞り込み条件を反映しています（{n} 件中 {m} 件）",
+      "list.title": "在庫一覧",
+      "count.all": "{n} 件",
+      "count.of": "{n} 件中 {m} 件を表示",
+      "save": "保存",
+      "save.title": "Ctrl+S でも保存できます",
+      "revert": "変更を取り消す",
+      "clear": "返品入力をすべて消去",
+      "xlsx": "Excel で出力",
+      "xlsx.title": "Return の入力を反映した表示中の行を、Excel と同じ書式で出力します",
+      "xlsx.creating": "作成中…",
+      "xlsx.noReturns": "（返品の入力はありません）",
+      "xlsx.fail": "Excel の作成に失敗しました。ページを再読み込みしてもう一度お試しください。",
+      "csv": "CSV で保存",
+      "f.search": "検索",
+      "f.searchPh": "コード・モデル・カラー・サイズ",
+      "f.model": "モデル", "f.color": "カラー", "f.size": "サイズ", "f.stock": "在庫", "f.sort": "並び順",
+      "f.all": "すべて",
+      "f.in": "在庫あり",
+      "f.low": "残りわずか (1点)",
+      "f.out": "在庫切れ (0点)",
+      "f.sortExcel": "Excel と同じ",
+      "f.sortBy": "{name} の在庫が多い順",
+      "reset": "条件をリセット",
+      "retHint": "黄色の <b>Return</b> 欄をクリックすると返品数を入力できます。入力した数だけその店舗の Quantity から差し引かれ、Office の Quantity に加算されます（Enter で下のセルへ）。入力したら「保存」ボタン（または Ctrl+S）で保存してください。保存した内容はウィンドウを閉じても残ります（このブラウザに保存）。",
+      "ret.info": "返品入力 {n} 件（合計 {q} 点）",
+      "ret.unsaved": "未保存の変更があります",
+      "ret.savedAt": "保存しました（{t}）",
+      "ret.saved": "保存済み",
+      "ret.saveFail": "保存できませんでした。ブラウザの設定（プライベートモード・Cookie の制限など）を確認してください。",
+      "ret.confirmClear": "入力した返品 {n} 件をすべて消去します。よろしいですか？",
+      "ret.confirmRevert": "保存していない変更を取り消して、最後に保存した状態に戻します。よろしいですか？",
+      "empty": "条件に合う商品がありません",
+      "foot.src": "{s}（店舗）、{o}（オフィス）",
+      "foot": "データ元: {src} — 数値は Excel 保存時の計算結果です。Store Total は店舗のみ、Company Total は店舗とオフィスの合計です。絞り込み中の Total 行は表示中の行の合計です。",
+    },
+    en: {
+      "doc.title": "VFF Stock Dashboard",
+      "h1": "Store & Office Stock Dashboard",
+      "loading": "Loading…",
+      "loadFail": "Failed to load data",
+      "asof": "As of {d} (end of business)",
+      "dl.store": "Store stock (Excel)",
+      "dl.office": "Office stock (Excel)",
+      "theme.aria": "Toggle theme",
+      "theme.auto": "Auto", "theme.light": "Light", "theme.dark": "Dark",
+      "lang.aria": "Language",
+      "tabs.aria": "Views",
+      "tab.table": "Stock list",
+      "tab.detail": "Details",
+      "kpi.aria": "Summary",
+      "kpi.total": "Total stock",
+      "kpi.sku": "SKUs",
+      "kpi.out": "Out of stock (all locations)",
+      "kpi.outNote": "SKUs with 0 in total — click to show in the list",
+      "kpi.low": "Low stock",
+      "kpi.lowNote": "SKUs with only 1 left — click to show in the list",
+      "kpi.noteOffice": "{n} stores + office",
+      "kpi.noteStores": "Total of {n} stores",
+      "kpi.noteOf": "of {n} in total",
+      "kpi.models": "{n} models",
+      "kpi.skuOf": "of {n} SKUs",
+      "chart.loc": "Stock by location",
+      "chart.locHint": "Click to sort the list by this location",
+      "chart.model": "Stock by model",
+      "chart.modelHint": "Click to filter the list by this model",
+      "tip.loc": "Stock {v} ({p}%)<br>SKUs in stock: {s}",
+      "tip.model": "Stock {v} / {s} SKUs",
+      "detailNote": "Filters from the stock list are applied ({m} of {n})",
+      "list.title": "Stock list",
+      "count.all": "{n} items",
+      "count.of": "Showing {m} of {n}",
+      "save": "Save",
+      "save.title": "You can also press Ctrl+S",
+      "revert": "Discard changes",
+      "clear": "Clear all returns",
+      "xlsx": "Export to Excel",
+      "xlsx.title": "Export the rows shown, with returns applied, in the same format as the original Excel",
+      "xlsx.creating": "Creating…",
+      "xlsx.noReturns": "(No returns entered)",
+      "xlsx.fail": "Failed to create the Excel file. Please reload the page and try again.",
+      "csv": "Save as CSV",
+      "f.search": "Search",
+      "f.searchPh": "Code, model, color, size",
+      "f.model": "Model", "f.color": "Color", "f.size": "Size", "f.stock": "Stock", "f.sort": "Sort",
+      "f.all": "All",
+      "f.in": "In stock",
+      "f.low": "Low (1 left)",
+      "f.out": "Out of stock (0)",
+      "f.sortExcel": "Same as Excel",
+      "f.sortBy": "{name}: most stock first",
+      "reset": "Reset filters",
+      "retHint": "Click a yellow <b>Return</b> cell to enter a return quantity. The amount is subtracted from that store's Quantity and added to the Office Quantity (press Enter to move down). After entering, press <b>Save</b> (or Ctrl+S). Saved entries remain even after closing the window (stored in this browser).",
+      "ret.info": "Returns entered: {n} ({q} pcs)",
+      "ret.unsaved": "Unsaved changes",
+      "ret.savedAt": "Saved ({t})",
+      "ret.saved": "Saved",
+      "ret.saveFail": "Could not save. Please check your browser settings (private mode, cookie/storage restrictions, etc.).",
+      "ret.confirmClear": "Clear all {n} entered returns?",
+      "ret.confirmRevert": "Discard unsaved changes and go back to the last saved state?",
+      "empty": "No items match the filters",
+      "foot.src": "{s} (stores), {o} (office)",
+      "foot": "Source: {src} — Figures are the values calculated when the Excel file was saved. Store Total = stores only; Company Total = stores + office. When filtered, the Total row is the sum of the rows shown.",
+    },
+    th: {
+      "doc.title": "แดชบอร์ดสต็อก VFF",
+      "h1": "แดชบอร์ดสต็อกสาขาและออฟฟิศ",
+      "loading": "กำลังโหลด…",
+      "loadFail": "โหลดข้อมูลไม่สำเร็จ",
+      "asof": "ณ วันที่ {d} (หลังปิดทำการ)",
+      "dl.store": "Excel สต็อกสาขา",
+      "dl.office": "Excel สต็อกออฟฟิศ",
+      "theme.aria": "สลับโหมดการแสดงผล",
+      "theme.auto": "อัตโนมัติ", "theme.light": "สว่าง", "theme.dark": "มืด",
+      "lang.aria": "ภาษา",
+      "tabs.aria": "มุมมอง",
+      "tab.table": "รายการสต็อก",
+      "tab.detail": "รายละเอียด",
+      "kpi.aria": "สรุป",
+      "kpi.total": "สต็อกทั้งหมด",
+      "kpi.sku": "จำนวน SKU",
+      "kpi.out": "สินค้าหมด (ทุกสาขา)",
+      "kpi.outNote": "SKU ที่รวมแล้วเป็น 0 — คลิกเพื่อแสดงในรายการ",
+      "kpi.low": "ใกล้หมด",
+      "kpi.lowNote": "SKU ที่เหลือเพียง 1 ชิ้น — คลิกเพื่อแสดงในรายการ",
+      "kpi.noteOffice": "{n} สาขา + ออฟฟิศ",
+      "kpi.noteStores": "รวม {n} สาขา",
+      "kpi.noteOf": "จากทั้งหมด {n} ชิ้น",
+      "kpi.models": "{n} รุ่น",
+      "kpi.skuOf": "จากทั้งหมด {n} SKU",
+      "chart.loc": "สต็อกตามสถานที่ (สาขา/ออฟฟิศ)",
+      "chart.locHint": "คลิกเพื่อเรียงรายการตามสถานที่นี้",
+      "chart.model": "สต็อกตามรุ่น",
+      "chart.modelHint": "คลิกเพื่อกรองรายการตามรุ่นนี้",
+      "tip.loc": "สต็อก {v} ชิ้น ({p}%)<br>SKU ที่มีสต็อก {s}",
+      "tip.model": "สต็อก {v} ชิ้น / {s} SKU",
+      "detailNote": "ใช้ตัวกรองจากรายการสต็อก ({m} จาก {n} รายการ)",
+      "list.title": "รายการสต็อก",
+      "count.all": "{n} รายการ",
+      "count.of": "แสดง {m} จาก {n} รายการ",
+      "save": "บันทึก",
+      "save.title": "กด Ctrl+S เพื่อบันทึกได้",
+      "revert": "ยกเลิกการแก้ไข",
+      "clear": "ล้างการคืนสินค้าทั้งหมด",
+      "xlsx": "ส่งออกเป็น Excel",
+      "xlsx.title": "ส่งออกแถวที่แสดงอยู่ (รวมการคืนสินค้าแล้ว) ในรูปแบบเดียวกับ Excel ต้นฉบับ",
+      "xlsx.creating": "กำลังสร้าง…",
+      "xlsx.noReturns": "(ไม่มีการคืนสินค้า)",
+      "xlsx.fail": "สร้างไฟล์ Excel ไม่สำเร็จ กรุณาโหลดหน้าใหม่แล้วลองอีกครั้ง",
+      "csv": "บันทึกเป็น CSV",
+      "f.search": "ค้นหา",
+      "f.searchPh": "รหัส รุ่น สี ไซซ์",
+      "f.model": "รุ่น", "f.color": "สี", "f.size": "ไซซ์", "f.stock": "สต็อก", "f.sort": "เรียงลำดับ",
+      "f.all": "ทั้งหมด",
+      "f.in": "มีสต็อก",
+      "f.low": "ใกล้หมด (เหลือ 1)",
+      "f.out": "หมด (0)",
+      "f.sortExcel": "ตาม Excel",
+      "f.sortBy": "{name}: สต็อกมากไปน้อย",
+      "reset": "รีเซ็ตตัวกรอง",
+      "retHint": "คลิกช่อง <b>Return</b> สีเหลืองเพื่อกรอกจำนวนสินค้าที่คืน จำนวนที่กรอกจะถูกหักออกจาก Quantity ของสาขานั้น และเพิ่มเข้าไปใน Quantity ของ Office (กด Enter เพื่อเลื่อนลง) เมื่อกรอกเสร็จแล้วให้กด <b>บันทึก</b> (หรือ Ctrl+S) ข้อมูลที่บันทึกจะยังอยู่แม้ปิดหน้าต่าง (บันทึกไว้ในเบราว์เซอร์นี้)",
+      "ret.info": "คืนสินค้า {n} รายการ (รวม {q} ชิ้น)",
+      "ret.unsaved": "มีการแก้ไขที่ยังไม่ได้บันทึก",
+      "ret.savedAt": "บันทึกแล้ว ({t})",
+      "ret.saved": "บันทึกแล้ว",
+      "ret.saveFail": "บันทึกไม่สำเร็จ กรุณาตรวจสอบการตั้งค่าเบราว์เซอร์ (โหมดส่วนตัว การจำกัดคุกกี้/พื้นที่จัดเก็บ ฯลฯ)",
+      "ret.confirmClear": "ต้องการล้างการคืนสินค้าทั้งหมด {n} รายการใช่หรือไม่?",
+      "ret.confirmRevert": "ต้องการยกเลิกการแก้ไขที่ยังไม่ได้บันทึก และกลับไปยังข้อมูลที่บันทึกล่าสุดใช่หรือไม่?",
+      "empty": "ไม่พบสินค้าที่ตรงกับเงื่อนไข",
+      "foot.src": "{s} (สาขา), {o} (ออฟฟิศ)",
+      "foot": "แหล่งข้อมูล: {src} — ตัวเลขเป็นค่าที่คำนวณไว้ตอนบันทึกไฟล์ Excel  Store Total = เฉพาะสาขา, Company Total = สาขา + ออฟฟิศ  เมื่อกรองข้อมูล แถว Total จะเป็นผลรวมของแถวที่แสดงอยู่",
+    },
+  };
+  const LOCALE = { ja: "ja-JP", en: "en-GB", th: "th-TH" };
+  const LANGS = Object.keys(DICT);
+
+  let lang = null;
+  try { lang = localStorage.getItem("lang"); } catch (_) {}
+  if (!LANGS.includes(lang)) {
+    const nav = (navigator.languages || [navigator.language || ""]).map((l) => l.slice(0, 2).toLowerCase());
+    lang = nav.find((l) => LANGS.includes(l)) || "en";
+  }
+
+  const listeners = [];
+  const t = (key, params = {}) => {
+    const s = (DICT[lang] && DICT[lang][key]) ?? DICT.en[key] ?? key;
+    return s.replace(/\{(\w+)\}/g, (_, k) => (params[k] ?? `{${k}}`));
+  };
+
+  function apply() {
+    document.documentElement.lang = lang;
+    document.title = t("doc.title");
+    document.querySelectorAll("[data-i18n]").forEach((el) => (el.textContent = t(el.dataset.i18n)));
+    document.querySelectorAll("[data-i18n-html]").forEach((el) => (el.innerHTML = t(el.dataset.i18nHtml)));
+    document.querySelectorAll("[data-i18n-ph]").forEach((el) => (el.placeholder = t(el.dataset.i18nPh)));
+    document.querySelectorAll("[data-i18n-title]").forEach((el) => (el.title = t(el.dataset.i18nTitle)));
+    document.querySelectorAll("[data-i18n-aria]").forEach((el) => el.setAttribute("aria-label", t(el.dataset.i18nAria)));
+    document.querySelectorAll("[data-lang]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.lang === lang));
+  }
+
+  function setLang(l) {
+    if (!LANGS.includes(l) || l === lang) return;
+    lang = l;
+    try { localStorage.setItem("lang", l); } catch (_) {}
+    apply();
+    listeners.forEach((fn) => fn(lang));
+  }
+
+  window.I18N = {
+    t,
+    setLang,
+    apply,
+    get lang() { return lang; },
+    get locale() { return LOCALE[lang]; },
+    onChange: (fn) => listeners.push(fn),
+  };
+
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-lang]");
+    if (b) setLang(b.dataset.lang);
+  });
+  apply();
+})();

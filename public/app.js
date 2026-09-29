@@ -1,6 +1,7 @@
 (() => {
   const $ = (id) => document.getElementById(id);
-  const fmt = (n) => n.toLocaleString("ja-JP");
+  const fmt = (n) => n.toLocaleString("en-US");
+  const t = (k, p) => window.I18N.t(k, p);
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
   // Excel の表示形式 #,##0;\(#,##0\);\-  (空セルは空欄のまま)
@@ -31,13 +32,13 @@
 
   /* ---------- theme ---------- */
   const THEMES = ["auto", "light", "dark"];
-  const THEME_LABEL = { auto: "自動", light: "ライト", dark: "ダーク" };
+
   let theme = "auto";
   try { theme = localStorage.getItem("theme") || "auto"; } catch (_) {}
   const applyTheme = () => {
     if (theme === "auto") document.documentElement.removeAttribute("data-theme");
     else document.documentElement.setAttribute("data-theme", theme);
-    $("themeLabel").textContent = THEME_LABEL[theme];
+    $("themeLabel").textContent = t(`theme.${theme}`);
   };
   $("themeToggle").addEventListener("click", () => {
     theme = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
@@ -50,14 +51,14 @@
   let view = location.hash === "#detail" ? "detail" : "table";
   function showView(v, { scroll = false } = {}) {
     view = v;
-    document.querySelectorAll(".tab").forEach((t) => t.setAttribute("aria-selected", t.dataset.view === v));
+    document.querySelectorAll(".tab").forEach((tab) => tab.setAttribute("aria-selected", tab.dataset.view === v));
     $("view-table").hidden = v !== "table";
     $("view-detail").hidden = v !== "detail";
     history.replaceState(null, "", v === "detail" ? "#detail" : location.pathname + location.search);
     if (v === "table") fitTable();
     if (scroll) $("view-table").scrollIntoView({ behavior: "smooth", block: "start" });
   }
-  document.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => showView(t.dataset.view)));
+  document.querySelectorAll(".tab").forEach((tab) => tab.addEventListener("click", () => showView(tab.dataset.view)));
 
   /* ---------- 表を画面幅に合わせる (スクロールなし) ---------- */
   function fitTable() {
@@ -114,7 +115,7 @@
       lastSaved = new Date();
       return true;
     } catch (_) {
-      alert("保存できませんでした。ブラウザの設定（プライベートモード・Cookie の制限など）を確認してください。");
+      alert(t("ret.saveFail"));
       return false;
     }
   };
@@ -131,15 +132,15 @@
   function updateReturnInfo() {
     const n = returnCount();
     const dirty = isDirty();
-    $("retInfo").textContent = n ? `返品入力 ${fmt(n)} 件（合計 ${fmt(sum(Object.values(returns)))} 点）` : "";
+    $("retInfo").textContent = n ? t("ret.info", { n: fmt(n), q: fmt(sum(Object.values(returns))) }) : "";
     $("clearReturns").hidden = !n;
     $("saveReturns").disabled = !dirty;
     $("revertReturns").hidden = !dirty;
     const st = $("saveState");
     st.classList.toggle("dirty", dirty);
     st.textContent = dirty
-      ? "未保存の変更があります"
-      : lastSaved ? `保存しました（${lastSaved.toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" })}）` : n ? "保存済み" : "";
+      ? t("ret.unsaved")
+      : lastSaved ? t("ret.savedAt", { t: lastSaved.toLocaleTimeString(window.I18N.locale, { hour: "2-digit", minute: "2-digit" }) }) : n ? t("ret.saved") : "";
   }
   function applyReturns() {
     data.items.forEach(recompute);
@@ -171,11 +172,13 @@
   /* ---------- KPI ---------- */
   function renderKpis(rows) {
     const all = rows.length === data.items.length;
-    const t = rows.reduce((a, it) => a + it._tq, 0);
-    $("kpiTotal").textContent = fmt(t);
-    $("kpiTotalNote").textContent = all ? (data.officeSource ? `${data.stores.length - 1} 店舗＋オフィスの合計` : `${data.stores.length} 店舗の合計`) : `全体 ${fmt(data._grand)} 点のうち`;
+    const total = rows.reduce((a, it) => a + it._tq, 0);
+    $("kpiTotal").textContent = fmt(total);
+    $("kpiTotalNote").textContent = all
+      ? (data.officeSource ? t("kpi.noteOffice", { n: data.stores.length - 1 }) : t("kpi.noteStores", { n: data.stores.length }))
+      : t("kpi.noteOf", { n: fmt(data._grand) });
     $("kpiSku").textContent = fmt(rows.length);
-    $("kpiSkuNote").textContent = all ? `${uniq(data.items.map((i) => i.model)).length} モデル` : `全 ${fmt(data.items.length)} SKU のうち`;
+    $("kpiSkuNote").textContent = all ? t("kpi.models", { n: uniq(data.items.map((i) => i.model)).length }) : t("kpi.skuOf", { n: fmt(data.items.length) });
     $("kpiOut").textContent = fmt(rows.filter((it) => it._tq === 0).length);
     $("kpiLow").textContent = fmt(rows.filter((it) => it._tq === 1).length);
     $("kpiOutBtn").setAttribute("aria-pressed", state.stock === "out");
@@ -208,7 +211,7 @@
     }));
     barChart($("storeChart"), stores, {
       active: state.sort,
-      tipFor: (e) => `<b>${esc(e.label)}</b><br>在庫 ${fmt(e.value)} 点（${Math.round((e.value / grand) * 100)}%）<br>在庫のある SKU ${fmt(e.skus)}`,
+      tipFor: (e) => `<b>${esc(e.label)}</b><br>` + t("tip.loc", { v: fmt(e.value), p: Math.round((e.value / grand) * 100), s: fmt(e.skus) }),
       onClick: (e) => { state.sort = state.sort === e.key ? "" : e.key; $("fSort").value = state.sort; render(); if (state.sort) showView("table", { scroll: true }); },
     });
 
@@ -225,7 +228,7 @@
     }
     barChart($("modelChart"), [...byModel.values()].sort((a, b) => b.value - a.value), {
       active: state.model,
-      tipFor: (e) => `<b>${esc(e.label)}</b><br>在庫 ${fmt(e.value)} 点 / ${e.skus} SKU<br>` +
+      tipFor: (e) => `<b>${esc(e.label)}</b><br>` + t("tip.model", { v: fmt(e.value), s: e.skus }) + "<br>" +
         data.stores.map((s, i) => `${esc(s)}: ${fmt(e.stores[i])}`).join("<br>"),
       onClick: (e) => { state.model = state.model === e.key ? "" : e.key; $("fModel").value = state.model; render(); if (state.model) showView("table", { scroll: true }); },
     });
@@ -263,8 +266,8 @@
     return { qty, ret };
   }
 
-  const totalRowHtml = (t) => `<td>Total</td><td></td><td></td><td></td>
-      ${groups.map((_, i) => `<td class="c">${nf(t.qty[i])}</td>` + (hasRet(i) ? `<td class="c">${nf(t.ret[i])}</td>` : "")).join("")}`;
+  const totalRowHtml = (tot) => `<td>Total</td><td></td><td></td><td></td>
+      ${groups.map((_, i) => `<td class="c">${nf(tot.qty[i])}</td>` + (hasRet(i) ? `<td class="c">${nf(tot.ret[i])}</td>` : "")).join("")}`;
 
   let shown = []; // 表示中の行 (Total 行の再計算用)
   function renderTable(items) {
@@ -280,12 +283,12 @@
           return qc + `<td class="c ret"><input class="ret-in" type="text" inputmode="numeric" autocomplete="off" data-s="${g}" value="${it._ret[g] ?? ""}" aria-label="${esc(data.stores[g])} Return"></td>`;
         }).join("")}
       </tr>`);
-    if (!items.length) rows.push(`<tr><td class="empty" colspan="${numCols()}">条件に合う商品がありません</td></tr>`);
+    if (!items.length) rows.push(`<tr><td class="empty" colspan="${numCols()}">${esc(t("empty"))}</td></tr>`);
 
     // 表示中の行の合計 (絞り込み・返品入力がなければ Excel の Total 行と同じ値)
     rows.push(`<tr class="total" id="totalRow">${totalRowHtml(totalsOf(items))}</tr>`);
     $("tbody").innerHTML = rows.join("");
-    $("rowCount").textContent = all ? `${fmt(data.items.length)} 件` : `${fmt(data.items.length)} 件中 ${fmt(items.length)} 件を表示`;
+    $("rowCount").textContent = all ? t("count.all", { n: fmt(data.items.length) }) : t("count.of", { n: fmt(data.items.length), m: fmt(items.length) });
   }
 
   // Return セルの入力 → Quantity・Total・サマリー・グラフを更新
@@ -336,7 +339,7 @@
   });
 
   $("clearReturns").addEventListener("click", () => {
-    if (!confirm(`入力した返品 ${returnCount()} 件をすべて消去します。よろしいですか？`)) return;
+    if (!confirm(t("ret.confirmClear", { n: returnCount() }))) return;
     returns = {};
     applyReturns(); // 消去も「保存」を押すまで確定しない
   });
@@ -347,7 +350,7 @@
     if (saveReturns()) updateReturnInfo();
   });
   $("revertReturns").addEventListener("click", () => {
-    if (!confirm("保存していない変更を取り消して、最後に保存した状態に戻します。よろしいですか？")) return;
+    if (!confirm(t("ret.confirmRevert"))) return;
     loadReturns();
     applyReturns();
   });
@@ -370,7 +373,7 @@
     renderTable(rows);
     const filteredNow = rows.length !== data.items.length;
     $("detailNote").textContent = filteredNow
-      ? `在庫一覧の絞り込み条件を反映しています（${fmt(data.items.length)} 件中 ${fmt(rows.length)} 件）`
+      ? t("detailNote", { n: fmt(data.items.length), m: fmt(rows.length) })
       : "";
     fitTable();
   }
@@ -405,7 +408,7 @@
     const btn = $("dlXlsxOut");
     const label = btn.textContent;
     btn.disabled = true;
-    btn.textContent = "作成中…";
+    btn.textContent = t("xlsx.creating");
     try {
       const ExcelJS = await loadExcelJs();
       const items = filtered();
@@ -487,9 +490,9 @@
       });
 
       // Total 行
-      const t = totalsOf(items);
+      const tot = totalsOf(items);
       const tr = ws.getRow(5 + items.length);
-      tr.values = ["Total", null, null, null, ...layout.map((col) => (col.kind === "qty" ? t.qty[col.g] : t.ret[col.g]))];
+      tr.values = ["Total", null, null, null, ...layout.map((col) => (col.kind === "qty" ? tot.qty[col.g] : tot.ret[col.g]))];
       for (let k = 1; k <= lastCol; k++) {
         const cell = tr.getCell(k);
         cell.fill = fill(TOTFILL);
@@ -514,7 +517,7 @@
         const v = hasRet(i) ? returns[rkey(it, i)] : 0;
         if (v) rs.addRow([it.code || null, it.model, it.color, it.size, s, v]);
       }));
-      if (rs.rowCount === 1) rs.addRow(["（返品の入力はありません）"]);
+      if (rs.rowCount === 1) rs.addRow([t("xlsx.noReturns")]);
       rs.views = [{ state: "frozen", ySplit: 1 }];
 
       const buf = await wb.xlsx.writeBuffer();
@@ -526,7 +529,7 @@
       setTimeout(() => URL.revokeObjectURL(a.href), 1000);
     } catch (err) {
       console.error(err);
-      alert("Excel の作成に失敗しました。ページを再読み込みしてもう一度お試しください。");
+      alert(t("xlsx.fail"));
     } finally {
       btn.disabled = false;
       btn.textContent = label;
@@ -556,6 +559,32 @@
     render();
   });
 
+  /* ---------- 言語 ---------- */
+  function applyStaticTexts() {
+    const d = data;
+    $("asof").textContent = d.asOfDate ? t("asof", { d: d.asOfDate }) : d.asOf;
+    const src = d.officeSource ? t("foot.src", { s: d.source, o: d.officeSource }) : d.source;
+    $("foot").textContent = t("foot", { src });
+  }
+  function fillSortOptions() {
+    const sel = $("fSort");
+    const cur = sel.value;
+    [...sel.options].slice(1).forEach((o) => o.remove());
+    const d = data;
+    const totals = d.officeIndex != null ? [["store", "Store Total"], ["total", "Company Total"]] : [["total", "Total"]];
+    const opts = [...d.stores.map((s, i) => [String(i), s]), ...totals];
+    fillSelect(sel, opts.map((o) => o[0]), opts.map((o) => t("f.sortBy", { name: o[1] })));
+    sel.value = cur;
+  }
+  window.I18N.onChange(() => {
+    applyTheme();
+    if (!data) return;
+    applyStaticTexts();
+    fillSortOptions();
+    render();
+    updateReturnInfo();
+  });
+
   /* ---------- load ---------- */
   fetch("stock.json", { cache: "no-cache" })
     .then((r) => r.json())
@@ -571,9 +600,9 @@
       });
       d._grand = sum(d.items.map((it) => it._tq));
       updateReturnInfo();
-      $("asof").textContent = d.asOfDate ? `${d.asOfDate} 営業終了時点` : d.asOf;
+      applyStaticTexts();
       $("source").textContent = d.title;
-      $("footSource").textContent = d.officeSource ? `${d.source}（店舗）、${d.officeSource}（オフィス）` : d.source;
+
       $("dlOffice").hidden = !d.officeSource;
       fillSelect($("fModel"), uniq(d.items.map((i) => i.model)));
       fillSelect($("fColor"), uniq(d.items.map((i) => i.color)).sort());
@@ -581,17 +610,13 @@
         const [pa, na] = sizeKey(a), [pb, nb] = sizeKey(b);
         return pa === pb ? na - nb : pa.localeCompare(pb);
       }));
-      const totalSorts = d.officeIndex != null
-        ? [["store", "Store Total の在庫が多い順"], ["total", "Company Total の在庫が多い順"]]
-        : [["total", "Total の在庫が多い順"]];
-      fillSelect($("fSort"), [...d.stores.map((_, i) => String(i)), ...totalSorts.map((x) => x[0])],
-        [...d.stores.map((s) => `${s} の在庫が多い順`), ...totalSorts.map((x) => x[1])]);
+      fillSortOptions();
       renderFrame(d);
       render();
       showView(view);
     })
     .catch((err) => {
-      $("asof").textContent = "データの読み込みに失敗しました";
+      $("asof").textContent = t("loadFail");
       console.error(err);
     });
 })();

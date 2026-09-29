@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VFF 在庫ダッシュボード</title>
-  <meta name="description" content="VFF シューズの店舗・オフィス別在庫ダッシュボード（在庫表は Excel と同じ書式）">
+  <title>VFF Stock Dashboard</title>
+  <meta name="description" content="VFF shoes stock dashboard by store and office">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233b82c4'/><rect x='7' y='16' width='4' height='9' rx='1.5' fill='white'/><rect x='14' y='10' width='4' height='15' rx='1.5' fill='white'/><rect x='21' y='13' width='4' height='12' rx='1.5' fill='white'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,60 +16,65 @@
     <header class="top">
       <div>
         <p class="eyebrow">Store Stock Dashboard</p>
-        <h1>店舗・オフィス在庫ダッシュボード</h1>
-        <p class="sub"><span id="asof">読み込み中…</span><span class="dot">·</span><span id="source"></span></p>
+        <h1 data-i18n="h1"></h1>
+        <p class="sub"><span id="asof" data-i18n="loading"></span><span class="dot">·</span><span id="source"></span></p>
       </div>
       <div class="top-actions">
-        <a id="dlXlsx" class="ghost" href="source.xlsx" download>店舗在庫の Excel</a>
-        <a id="dlOffice" class="ghost" href="source_office.xlsx" download hidden>オフィス在庫の Excel</a>
-        <button id="themeToggle" class="ghost" type="button" aria-label="表示モード切替">
-          <span aria-hidden="true">◐</span> <span id="themeLabel">自動</span>
+        <a id="dlXlsx" class="ghost" href="source.xlsx" download data-i18n="dl.store"></a>
+        <a id="dlOffice" class="ghost" href="source_office.xlsx" download hidden data-i18n="dl.office"></a>
+        <div class="lang-switch" role="group" data-i18n-aria="lang.aria">
+          <button type="button" data-lang="ja" lang="ja">日本語</button>
+          <button type="button" data-lang="en" lang="en">EN</button>
+          <button type="button" data-lang="th" lang="th">ไทย</button>
+        </div>
+        <button id="themeToggle" class="ghost" type="button" data-i18n-aria="theme.aria">
+          <span aria-hidden="true">◐</span> <span id="themeLabel"></span>
         </button>
       </div>
     </header>
 
-    <nav class="tabs" role="tablist" aria-label="表示切替">
-      <button class="tab" role="tab" id="tab-table" data-view="table" aria-controls="view-table">在庫一覧</button>
-      <button class="tab" role="tab" id="tab-detail" data-view="detail" aria-controls="view-detail">詳細</button>
+    <nav class="tabs" role="tablist" data-i18n-aria="tabs.aria">
+      <button class="tab" role="tab" id="tab-table" data-view="table" aria-controls="view-table" data-i18n="tab.table"></button>
+      <button class="tab" role="tab" id="tab-detail" data-view="detail" aria-controls="view-detail" data-i18n="tab.detail"></button>
     </nav>
 
     <section id="view-detail" class="view" role="tabpanel" aria-labelledby="tab-detail" hidden>
     <p class="view-note" id="detailNote"></p>
-    <section class="kpis" aria-label="サマリー">
+    <section class="kpis" data-i18n-aria="kpi.aria">
       <div class="kpi">
-        <p class="kpi-label">総在庫数</p>
+        <p class="kpi-label" data-i18n="kpi.total"></p>
         <p class="kpi-value" id="kpiTotal">–</p>
         <p class="kpi-note" id="kpiTotalNote"></p>
       </div>
       <div class="kpi">
-        <p class="kpi-label">SKU 数</p>
+        <p class="kpi-label" data-i18n="kpi.sku"></p>
         <p class="kpi-value" id="kpiSku">–</p>
         <p class="kpi-note" id="kpiSkuNote"></p>
       </div>
       <button class="kpi kpi-btn" id="kpiOutBtn" type="button" aria-pressed="false">
-        <span class="kpi-label"><span class="status-ic crit" aria-hidden="true">●</span>在庫切れ（全拠点）</span>
+        <span class="kpi-label"><span class="status-ic crit" aria-hidden="true">●</span><span data-i18n="kpi.out"></span></span>
         <span class="kpi-value" id="kpiOut">–</span>
-        <span class="kpi-note">合計 0 の SKU — クリックで一覧に表示</span>
+        <span class="kpi-note" data-i18n="kpi.outNote"></span>
       </button>
       <button class="kpi kpi-btn" id="kpiLowBtn" type="button" aria-pressed="false">
-        <span class="kpi-label"><span class="status-ic warn" aria-hidden="true">▲</span>残りわずか</span>
+        <span class="kpi-label"><span class="status-ic warn" aria-hidden="true">▲</span><span data-i18n="kpi.low"></span></span>
         <span class="kpi-value" id="kpiLow">–</span>
-        <span class="kpi-note">合計 1 点の SKU — クリックで一覧に表示</span>
+        <span class="kpi-note" data-i18n="kpi.lowNote"></span>
       </button>
     </section>
 
     <section class="charts">
       <div class="card">
         <div class="card-head">
-          <h2>拠点別の在庫数</h2>
-          <p class="hint">クリックでその拠点の在庫が多い順に並び替え</p>
+          <h2 data-i18n="chart.loc"></h2>
+          <p class="hint" data-i18n="chart.locHint"></p>
         </div>
         <div id="storeChart" class="bars"></div>
       </div>
       <div class="card">
         <div class="card-head">
-          <h2>モデル別の在庫数</h2>
-          <p class="hint">クリックでそのモデルに絞り込み</p>
+          <h2 data-i18n="chart.model"></h2>
+          <p class="hint" data-i18n="chart.modelHint"></p>
         </div>
         <div id="modelChart" class="bars compact"></div>
       </div>
@@ -78,52 +83,52 @@
 
     <section id="view-table" class="view card table-card" role="tabpanel" aria-labelledby="tab-table">
       <div class="card-head">
-        <h2>在庫一覧 <span class="count" id="rowCount"></span></h2>
+        <h2><span data-i18n="list.title"></span> <span class="count" id="rowCount"></span></h2>
         <div class="head-actions">
           <span id="retInfo" class="ret-info"></span>
           <span id="saveState" class="save-state" aria-live="polite"></span>
-          <button id="saveReturns" class="primary small" type="button" disabled title="Ctrl+S でも保存できます">保存</button>
-          <button id="revertReturns" class="ghost small" type="button" hidden>変更を取り消す</button>
-          <button id="clearReturns" class="ghost small" type="button" hidden>返品入力をすべて消去</button>
-          <button id="dlXlsxOut" class="ghost small" type="button" title="Return の入力を反映した表示中の行を、Excel と同じ書式で出力します">Excel で出力</button>
-          <button id="dlCsv" class="ghost small" type="button">CSV で保存</button>
+          <button id="saveReturns" class="primary small" type="button" disabled data-i18n-title="save.title" data-i18n="save"></button>
+          <button id="revertReturns" class="ghost small" type="button" hidden data-i18n="revert"></button>
+          <button id="clearReturns" class="ghost small" type="button" hidden data-i18n="clear"></button>
+          <button id="dlXlsxOut" class="ghost small" type="button" data-i18n-title="xlsx.title" data-i18n="xlsx"></button>
+          <button id="dlCsv" class="ghost small" type="button" data-i18n="csv"></button>
         </div>
       </div>
 
       <div class="filters" role="search">
         <label class="field grow">
-          <span>検索</span>
-          <input id="q" type="search" placeholder="コード・モデル・カラー・サイズ" autocomplete="off">
+          <span data-i18n="f.search"></span>
+          <input id="q" type="search" data-i18n-ph="f.searchPh" autocomplete="off">
         </label>
         <label class="field">
-          <span>モデル</span>
-          <select id="fModel"><option value="">すべて</option></select>
+          <span data-i18n="f.model"></span>
+          <select id="fModel"><option value="" data-i18n="f.all"></option></select>
         </label>
         <label class="field">
-          <span>カラー</span>
-          <select id="fColor"><option value="">すべて</option></select>
+          <span data-i18n="f.color"></span>
+          <select id="fColor"><option value="" data-i18n="f.all"></option></select>
         </label>
         <label class="field">
-          <span>サイズ</span>
-          <select id="fSize"><option value="">すべて</option></select>
+          <span data-i18n="f.size"></span>
+          <select id="fSize"><option value="" data-i18n="f.all"></option></select>
         </label>
         <label class="field">
-          <span>在庫</span>
+          <span data-i18n="f.stock"></span>
           <select id="fStock">
-            <option value="">すべて</option>
-            <option value="in">在庫あり</option>
-            <option value="low">残りわずか (1点)</option>
-            <option value="out">在庫切れ (0点)</option>
+            <option value="" data-i18n="f.all"></option>
+            <option value="in" data-i18n="f.in"></option>
+            <option value="low" data-i18n="f.low"></option>
+            <option value="out" data-i18n="f.out"></option>
           </select>
         </label>
         <label class="field">
-          <span>並び順</span>
-          <select id="fSort"><option value="">Excel と同じ</option></select>
+          <span data-i18n="f.sort"></span>
+          <select id="fSort"><option value="" data-i18n="f.sortExcel"></option></select>
         </label>
-        <button id="reset" class="ghost" type="button">条件をリセット</button>
+        <button id="reset" class="ghost" type="button" data-i18n="reset"></button>
       </div>
 
-      <p class="ret-hint">黄色の <b>Return</b> 欄をクリックすると返品数を入力できます。入力した数だけその店舗の Quantity から差し引かれ、Office の Quantity に加算されます（Enter で下のセルへ）。入力したら「保存」ボタン（または Ctrl+S）で保存してください。保存した内容はウィンドウを閉じても残ります（このブラウザに保存）。</p>
+      <p class="ret-hint" data-i18n-html="retHint"></p>
 
       <!-- ここから下は Excel「VFF Shoes Stock」シートと同じ書式 -->
       <div class="sheet" id="sheet">
@@ -135,12 +140,11 @@
       </div>
     </section>
 
-    <footer class="foot">
-      データ元: <span id="footSource"></span> — 数値は Excel 保存時の計算結果です。Store Total は店舗のみ、Company Total は店舗とオフィスの合計です。絞り込み中の Total 行は表示中の行の合計です。
-    </footer>
+    <footer class="foot" id="foot"></footer>
   </div>
 
   <div id="tip" class="tip" role="tooltip" hidden></div>
+  <script src="i18n.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
