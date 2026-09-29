@@ -15,7 +15,7 @@
   const COL_W = { code: 23.63, model: 15.27, color: 16.63, size: 10.91, qty: 12.36, ret: 11.18 };
   const px = (w) => Math.round(w * 7 + 5);
 
-  // sort: "" = Excel の並び / "0".. = 店舗・オフィス / "total"
+  // sort: "" = Excel の並び / "0".. = 店舗・オフィス / "store" = Store Total / "total" = Company Total
   const state = { q: "", model: "", color: "", size: "", stock: "", sort: "" };
   let data = null;
   let groups = [];
@@ -90,7 +90,9 @@
   let returns = {};
   let RKEY = "returns";
   // Office 列には Return がない。店舗の Return はその店舗から引いて Office に足す (店舗 → オフィスへ戻る)
-  const hasRet = (i) => i !== data.officeIndex;
+  // groups (列グループ): [...拠点, Store Total, Company Total]  ※Office がなければ [...店舗, Total]
+  const hasOffice = () => data.officeIndex != null;
+  const hasRet = (i) => i !== data.officeIndex && !(hasOffice() && i === data.stores.length + 1);
   const rkey = (it, i) => `${it.code || `${it.model}|${it.color}|${it.size}`}@${data.stores[i]}`;
   const loadReturns = () => {
     try { returns = JSON.parse(localStorage.getItem(RKEY) || "{}") || {}; } catch (_) { returns = {}; }
@@ -107,7 +109,8 @@
     it._ret = it.ret.map((x, i) => (hasRet(i) ? returns[rkey(it, i)] ?? x : null));
     it._adj = it.qty.map((q, i) => q - r[i]);
     if (data.officeIndex != null) it._adj[data.officeIndex] += sum(r);
-    it._tq = sum(it._adj);
+    it._tq = sum(it._adj);                                                 // Company Total (店舗 + オフィス)
+    it._st = sum(it._adj.filter((_, i) => i !== data.officeIndex));        // Store Total (店舗のみ)
     it._tr = sum(it._ret);
   }
   const returnCount = () => Object.keys(returns).length;
@@ -131,7 +134,7 @@
       return true;
     });
     if (state.sort !== "") {
-      const key = state.sort === "total" ? (it) => it._tq : (it) => it._adj[+state.sort];
+      const key = state.sort === "total" ? (it) => it._tq : state.sort === "store" ? (it) => it._st : (it) => it._adj[+state.sort];
       rows = rows.map((it, i) => [it, i]).sort((a, b) => key(b[0]) - key(a[0]) || a[1] - b[1]).map((x) => x[0]);
     }
     return rows;
@@ -205,7 +208,11 @@
     const ncol = numCols();
     $("cols").innerHTML =
       [COL_W.code, COL_W.model, COL_W.color, COL_W.size].map((w) => `<col style="width:${px(w)}px">`).join("") +
-      groups.map((_, g) => `<col style="width:${px(COL_W.qty)}px">` + (hasRet(g) ? `<col style="width:${px(COL_W.ret)}px">` : "")).join("");
+      groups.map((_, g) => {
+        // Company Total は Return がないので見出しが収まる幅にする
+        const w = !hasRet(g) && g >= data.stores.length ? 15.5 : COL_W.qty;
+        return `<col style="width:${px(w)}px">` + (hasRet(g) ? `<col style="width:${px(COL_W.ret)}px">` : "");
+      }).join("");
     $("thead").innerHTML = `
       <tr class="title"><th colspan="${ncol}">${esc(d.title)}</th></tr>
       <tr class="asof"><th colspan="${ncol}">${esc(d.asOf)}</th></tr>
@@ -216,12 +223,16 @@
       <tr class="h2">${groups.map((_, i) => `<th>Quantity</th>` + (hasRet(i) ? `<th class="ret-h">Return</th>` : "")).join("")}</tr>`;
   }
 
-  const numCols = () => 4 + groups.length * 2 - (data.officeIndex != null ? 1 : 0);
+  const numCols = () => 4 + sum(groups.map((_, i) => (hasRet(i) ? 2 : 1)));
+
+  // 1 行分の Quantity / Return を groups の並びで返す
+  const rowQty = (it) => (hasOffice() ? [...it._adj, it._st, it._tq] : [...it._adj, it._tq]);
+  const rowRet = (it) => (hasOffice() ? [...it._ret, it._tr, null] : [...it._ret, it._tr]);
 
   function totalsOf(items) {
-    const qty = data.stores.map((_, i) => items.reduce((a, it) => a + it._adj[i], 0));
-    const ret = data.stores.map((_, i) => items.reduce((a, it) => a + (it._ret[i] || 0), 0));
-    return { qty: [...qty, sum(qty)], ret: [...ret, sum(ret)] };
+    const qty = groups.map((_, g) => sum(items.map((it) => rowQty(it)[g])));
+    const ret = groups.map((_, g) => sum(items.map((it) => rowRet(it)[g])));
+    return { qty, ret };
   }
 
   const totalRowHtml = (t) => `<td>Total</td><td></td><td></td><td></td>
@@ -233,8 +244,13 @@
     const all = items.length === data.items.length;
     const rows = items.map((it) => `<tr data-id="${it._id}">
         <td>${esc(it.code)}</td><td>${esc(it.model)}</td><td>${esc(it.color)}</td><td class="c">${esc(it.size)}</td>
-        ${it._adj.map((q, i) => `<td class="c q">${nf(q)}</td>` + (hasRet(i) ? `<td class="c ret"><input class="ret-in" type="text" inputmode="numeric" autocomplete="off" data-s="${i}" value="${it._ret[i] ?? ""}" aria-label="${esc(data.stores[i])} Return"></td>` : "")).join("")}
-        <td class="c b tq">${nf(it._tq)}</td><td class="c b tr">${nf(it._tr)}</td>
+        ${rowQty(it).map((q, g) => {
+          const tot = g >= data.stores.length;
+          const qc = `<td class="c q${tot ? " b" : ""}">${nf(q)}</td>`;
+          if (!hasRet(g)) return qc;
+          if (tot) return qc + `<td class="c b tr">${nf(it._tr)}</td>`;
+          return qc + `<td class="c ret"><input class="ret-in" type="text" inputmode="numeric" autocomplete="off" data-s="${g}" value="${it._ret[g] ?? ""}" aria-label="${esc(data.stores[g])} Return"></td>`;
+        }).join("")}
       </tr>`);
     if (!items.length) rows.push(`<tr><td class="empty" colspan="${numCols()}">条件に合う商品がありません</td></tr>`);
 
@@ -264,8 +280,8 @@
     saveReturns();
     recompute(it);
     input.value = it._ret[i] ?? "";
-    tr.querySelectorAll("td.q").forEach((td, k) => (td.textContent = nf(it._adj[k])));
-    tr.querySelector("td.tq").textContent = nf(it._tq);
+    const q = rowQty(it);
+    tr.querySelectorAll("td.q").forEach((td, k) => (td.textContent = nf(q[k])));
     tr.querySelector("td.tr").textContent = nf(it._tr);
     $("totalRow").innerHTML = totalRowHtml(totalsOf(shown));
     data._grand = sum(data.items.map((x) => x._tq));
@@ -320,7 +336,7 @@
     const q = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
     const head = ["Code", "Model", "Color", "Size", ...groups.flatMap((g, i) => (hasRet(i) ? [`${g} Quantity`, `${g} Return`] : [`${g} Quantity`]))];
     const body = rows.map((it) => [it.code, it.model, it.color, it.size,
-      ...it._adj.flatMap((v, i) => (hasRet(i) ? [v, it._ret[i] ?? ""] : [v])), it._tq, it._tr]);
+      ...rowQty(it).flatMap((v, g) => (hasRet(g) ? [v, rowRet(it)[g] ?? ""] : [v]))]);
     const csv = "﻿" + [head, ...body].map((r) => r.map(q).join(",")).join("\r\n");
     const a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
@@ -356,7 +372,7 @@
     .then((r) => r.json())
     .then((d) => {
       data = d;
-      groups = [...d.stores, "Total"];
+      groups = d.officeIndex != null ? [...d.stores, "Store Total", "Company Total"] : [...d.stores, "Total"];
       RKEY = `returns:${d.asOfDate || d.source}`;
       loadReturns();
       d.items.forEach((it, n) => {
@@ -376,8 +392,11 @@
         const [pa, na] = sizeKey(a), [pb, nb] = sizeKey(b);
         return pa === pb ? na - nb : pa.localeCompare(pb);
       }));
-      fillSelect($("fSort"), [...d.stores.map((_, i) => String(i)), "total"],
-        [...d.stores.map((s) => `${s} の在庫が多い順`), "Total の在庫が多い順"]);
+      const totalSorts = d.officeIndex != null
+        ? [["store", "Store Total の在庫が多い順"], ["total", "Company Total の在庫が多い順"]]
+        : [["total", "Total の在庫が多い順"]];
+      fillSelect($("fSort"), [...d.stores.map((_, i) => String(i)), ...totalSorts.map((x) => x[0])],
+        [...d.stores.map((s) => `${s} の在庫が多い順`), ...totalSorts.map((x) => x[1])]);
       renderFrame(d);
       render();
       showView(view);

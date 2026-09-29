@@ -17,7 +17,7 @@
 - 列幅・行高は Excel と同じ、1〜4 行目は固定（ウィンドウ枠の固定 A5 と同じ）
 - 絞り込み中の Total 行は表示中の行の合計
 - Office 列は一番左で、Return 欄なし
-- 各店舗の黄色の Return 欄に返品数を入力でき、その数だけ店舗の Quantity が減り Office の Quantity が増える（Total は変わらない）（入力内容はブラウザの localStorage に基準日ごとに保存。他の人・他の端末とは共有されない）
+- 各店舗の黄色の Return 欄に返品数を入力でき、その数だけ店舗の Quantity が減り Office の Quantity が増える（Store Total は減り、Company Total は変わらない）（入力内容はブラウザの localStorage に基準日ごとに保存。他の人・他の端末とは共有されない）
 
 ## 構成
 
@@ -46,7 +46,7 @@ vercel.json
 
    オフィス在庫は 1 枚目のシートの B 列（商品名・カラー）、C 列（サイズ）、BN 列（Stock > Office）を読み、
    モデル・カラー・サイズで店舗の行と照合します。店舗にない商品は、オフィス在庫がある場合だけ行を追加します（Code は空欄）。
-   Total 列は店舗とオフィスの合計です。Office 列は一番左に並べます。
+   右端は Store Total（店舗のみの合計、Return あり）と Company Total（店舗 + オフィス、Return なし）です。Office 列は一番左に並べます。
 
 3. `git add . && git commit -m "在庫データ更新" && git push` — Vercel が自動で再デプロイします
 
