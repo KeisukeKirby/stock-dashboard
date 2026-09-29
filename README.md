@@ -60,3 +60,17 @@ vercel.json
 cd public && python3 -m http.server 8000
 # http://localhost:8000
 ```
+
+## 返品入力の共有（全員が同じ画面になる設定）
+
+返品（Return）の入力は `api/returns.js`（Vercel Function）を通して **Upstash Redis** に保存され、同じ URL を開いている全員に共有されます（15 秒ごと・画面に戻ったときに自動更新。保存時は変更したマスだけを送るので、別の人が別のマスを同時に入力しても消えません）。
+
+初回だけ Vercel で保存先を用意してください。
+
+1. Vercel のプロジェクト画面 → **Storage** → **Create Database**（または Marketplace）→ **Upstash for Redis** を作成
+2. 作成したデータベースを **stock-dashboard プロジェクトに接続**（環境変数 `KV_REST_API_URL` / `KV_REST_API_TOKEN` が自動で追加されます。`UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` でも可）
+3. **Redeploy**（再デプロイ）
+
+設定されていない場合（ローカルで開いたときなど）は、これまでどおりブラウザの localStorage に保存され、画面に「このブラウザにのみ保存」と表示されます。
+
+注意: 保存 API に認証はありません。URL を知っている人は誰でも返品を入力できます。

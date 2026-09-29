@@ -85,9 +85,12 @@
   };
   const hideTip = () => { tip.hidden = true; };
 
-  /* ---------- Return 入力 (このブラウザに保存) ---------- */
+  /* ---------- Return 入力 (共有サーバーに保存。未設定ならこのブラウザに保存) ---------- */
   // 入力した Return の数だけ Quantity から差し引く。
   // 値は基準日ごとに保存するので、新しい在庫データに更新すると入力はリセットされる。
+  // 共有モード: /api/returns (Vercel Function + Upstash Redis) に保存し、全員が同じ内容を見る。
+  //   保存時は変更したマスだけを送るので、別の人が別のマスを同時に入力しても消えない。
+  //   15 秒ごと (と画面に戻ったとき) に最新を読み込み、自分の未保存の入力は残したまま反映する。
   let returns = {};
   let RKEY = "returns";
   // Office 列には Return がない。店舗の Return はその店舗から引いて Office に足す (店舗 → オフィスへ戻る)
@@ -95,30 +98,124 @@
   const hasOffice = () => data.officeIndex != null;
   const hasRet = (i) => i !== data.officeIndex && !(hasOffice() && i === data.stores.length + 1);
   const rkey = (it, i) => `${it.code || `${it.model}|${it.color}|${it.size}`}@${data.stores[i]}`;
-  const loadReturns = () => {
-    try { returns = JSON.parse(localStorage.getItem(RKEY) || "{}") || {}; } catch (_) { returns = {}; }
-    if (data.officeIndex != null) {
-      const office = `@${data.stores[data.officeIndex]}`;
-      Object.keys(returns).forEach((k) => { if (k.endsWith(office)) delete returns[k]; });
-    }
-    savedJson = JSON.stringify(sortKeys(returns));
-  };
-  // 入力はまず画面上だけに反映し (未保存)、「保存」ボタンでブラウザに記録する
-  let savedJson = "{}";
+  // 入力はまず画面上だけに反映し (未保存)、「保存」ボタンで確定する
+  let shared = false;      // 共有サーバーが使えるか
+  let saved = {};          // 最後に保存・同期した内容
   let lastSaved = null;
-  const isDirty = () => JSON.stringify(sortKeys(returns)) !== savedJson;
+  let lastSync = null;
+  let serverUpdatedAt = null;
+  let syncError = false;
+  let saving = false;
+  const API = "api/returns";
   const sortKeys = (o) => Object.fromEntries(Object.entries(o).sort(([a], [b]) => a.localeCompare(b)));
-  const saveReturns = () => {
+  const same = (a, b) => JSON.stringify(sortKeys(a)) === JSON.stringify(sortKeys(b));
+  const isDirty = () => !same(returns, saved);
+  const stripOffice = (m) => {
+    const out = {};
+    const office = data.officeIndex != null ? `@${data.stores[data.officeIndex]}` : null;
+    for (const [k, v] of Object.entries(m || {})) if (!(office && k.endsWith(office)) && Number(v) > 0) out[k] = Number(v);
+    return out;
+  };
+  // from → to の差分 (変更・追加したマスと、消したマス)
+  const diff = (from, to) => ({
+    set: Object.fromEntries(Object.entries(to).filter(([k, v]) => from[k] !== v)),
+    del: Object.keys(from).filter((k) => !(k in to)),
+  });
+  // サーバーの最新内容に、自分の未保存の変更を重ねる。画面が変わるなら true
+  function mergeRemote(remote) {
+    const mine = diff(saved, returns);
+    const next = { ...stripOffice(remote), ...mine.set };
+    mine.del.forEach((k) => delete next[k]);
+    saved = stripOffice(remote);
+    lastSync = new Date();
+    syncError = false;
+    const changed = !same(next, returns);
+    returns = next;
+    return changed;
+  }
+  function loadLocal() {
+    try { saved = stripOffice(JSON.parse(localStorage.getItem(RKEY) || "{}")); } catch (_) { saved = {}; }
+    returns = { ...saved };
+  }
+  async function initReturns() {
     try {
-      localStorage.setItem(RKEY, JSON.stringify(returns));
-      savedJson = JSON.stringify(sortKeys(returns));
+      const r = await fetch(`${API}?key=${encodeURIComponent(RKEY)}`, { cache: "no-store" });
+      const j = r.ok ? await r.json() : null;
+      if (j && j.shared) {
+        shared = true;
+        saved = stripOffice(j.returns);
+        returns = { ...saved };
+        serverUpdatedAt = j.updatedAt;
+        lastSync = new Date();
+        return;
+      }
+    } catch (_) {}
+    loadLocal(); // 共有サーバー未設定 (ローカル確認など) → このブラウザに保存
+  }
+  async function saveReturns() {
+    if (!shared) {
+      try {
+        localStorage.setItem(RKEY, JSON.stringify(returns));
+        saved = { ...returns };
+        lastSaved = new Date();
+        return true;
+      } catch (_) {
+        alert(t("ret.saveFail"));
+        return false;
+      }
+    }
+    const { set, del } = diff(saved, returns);
+    try {
+      const r = await fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ key: RKEY, set, del }),
+      });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const j = await r.json();
+      serverUpdatedAt = j.updatedAt;
+      const changed = mergeRemote(j.returns); // 他の人が保存した分もここで反映
       lastSaved = new Date();
+      if (changed) applyReturns(); else updateReturnInfo();
       return true;
-    } catch (_) {
-      alert(t("ret.saveFail"));
+    } catch (e) {
+      console.error(e);
+      syncError = true;
+      alert(t("ret.saveFailShared"));
       return false;
     }
-  };
+  }
+  // 他の人の保存を定期的に取り込む
+  async function pullRemote() {
+    if (!shared || saving || document.hidden) return;
+    const active = document.activeElement;
+    if (active && active.classList.contains("ret-in")) return; // 入力中は画面を書き換えない
+    try {
+      const r = await fetch(`${API}?key=${encodeURIComponent(RKEY)}`, { cache: "no-store" });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const j = await r.json();
+      const fresh = j.updatedAt !== serverUpdatedAt;
+      serverUpdatedAt = j.updatedAt;
+      if (mergeRemote(j.returns) && fresh) {
+        applyReturns();
+        flashSync();
+      } else updateReturnInfo();
+    } catch (e) {
+      syncError = true;
+      updateReturnInfo();
+    }
+  }
+  let flashTimer = null;
+  function flashSync() {
+    const el = $("syncState");
+    el.classList.add("flash");
+    el.dataset.flash = "1";
+    updateReturnInfo();
+    clearTimeout(flashTimer);
+    flashTimer = setTimeout(() => { el.classList.remove("flash"); delete el.dataset.flash; updateReturnInfo(); }, 4000);
+  }
+  setInterval(pullRemote, 15000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) pullRemote(); });
   function recompute(it) {
     const r = it.qty.map((_, i) => (hasRet(i) ? returns[rkey(it, i)] || 0 : 0));
     it._ret = it.ret.map((x, i) => (hasRet(i) ? returns[rkey(it, i)] ?? x : null));
@@ -138,9 +235,17 @@
     $("revertReturns").hidden = !dirty;
     const st = $("saveState");
     st.classList.toggle("dirty", dirty);
-    st.textContent = dirty
+    const hm = (d) => d.toLocaleTimeString(window.I18N.locale, { hour: "2-digit", minute: "2-digit" });
+    st.textContent = saving ? t("ret.saving") : dirty
       ? t("ret.unsaved")
-      : lastSaved ? t("ret.savedAt", { t: lastSaved.toLocaleTimeString(window.I18N.locale, { hour: "2-digit", minute: "2-digit" }) }) : n ? t("ret.saved") : "";
+      : lastSaved ? t("ret.savedAt", { t: hm(lastSaved) }) : n ? t("ret.saved") : "";
+    const sy = $("syncState");
+    sy.classList.toggle("shared", shared && !syncError);
+    sy.classList.toggle("error", shared && syncError);
+    sy.textContent = !shared ? t("sync.local")
+      : syncError ? t("sync.offline")
+      : sy.dataset.flash ? t("sync.pulled")
+      : t("sync.shared", { t: lastSync ? hm(lastSync) : "–" });
   }
   function applyReturns() {
     data.items.forEach(recompute);
@@ -668,19 +773,23 @@
   });
 
   $("clearReturns").addEventListener("click", () => {
-    if (!confirm(t("ret.confirmClear", { n: returnCount() }))) return;
+    if (!confirm(t(shared ? "ret.confirmClearShared" : "ret.confirmClear", { n: returnCount() }))) return;
     returns = {};
     applyReturns(); // 消去も「保存」を押すまで確定しない
   });
 
-  $("saveReturns").addEventListener("click", () => {
+  $("saveReturns").addEventListener("click", async () => {
+    if (saving) return;
     const active = document.activeElement;
     if (active && active.classList.contains("ret-in")) active.blur(); // 入力中の値を確定してから保存
-    if (saveReturns()) updateReturnInfo();
+    saving = true;
+    $("saveReturns").disabled = true;
+    updateReturnInfo();
+    try { await saveReturns(); } finally { saving = false; updateReturnInfo(); }
   });
   $("revertReturns").addEventListener("click", () => {
     if (!confirm(t("ret.confirmRevert"))) return;
-    loadReturns();
+    returns = { ...saved };
     applyReturns();
   });
   // Ctrl+S / ⌘+S でも保存
@@ -923,7 +1032,9 @@
       data = d;
       groups = d.officeIndex != null ? [...d.stores, "Store Total", "Company Total"] : [...d.stores, "Total"];
       RKEY = `returns:${d.asOfDate || d.source}`;
-      loadReturns();
+      return initReturns().then(() => d);
+    })
+    .then((d) => {
       d.items.forEach((it, n) => {
         it._id = n;
         it._search = `${it.code} ${it.model} ${it.color} ${it.size}`.toLowerCase();
