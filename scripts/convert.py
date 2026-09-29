@@ -4,7 +4,11 @@
 
 使い方:
     pip install openpyxl
-    python scripts/convert.py data/Store_Stock_092526.xlsx data/VFF_Stock_25-09-26.xlsx [data/New_Arrival_Allocation.xlsx]
+    python scripts/convert.py data/Store_Stock_092526.xlsx data/VFF_Stock_25-09-26.xlsx \
+        [data/New_Arrival_Allocation.xlsx] [data/import_9.26_move_to_branch.xlsx]
+
+4 つ目に店舗移動表 (import_*_move_to_branch.xlsx) を渡すと、その「Asok」列の数を
+「Event Asok」列として追加し、Office から移す。空欄の Code も移動表のコードで補完する。
 
 Excel 側で保存時に計算済みの値 (data_only) を読み込むため、
 Excel で一度保存したファイルを使ってください。
@@ -163,7 +167,52 @@ def apply_allocation(items, store_names, path):
     return moved
 
 
-def main(path, office_path=None, alloc_path=None):
+EVENT_NAME = "Event Asok"
+EVENT_COL = "Asok"
+
+
+def apply_event(items, store_names, path):
+    """店舗移動表の Asok 列を Event Asok 列として追加し、Office から移す。
+    商品は「ชื่อสินค้า」(例: VFF Groundsplay LS(M40, Black/Lime)) またはコードで照合する。"""
+    ws = openpyxl.load_workbook(path, data_only=True).worksheets[0]
+    rows = list(ws.iter_rows(values_only=True))
+    head = [str(h).strip() if h is not None else "" for h in rows[0]]
+    c_code, c_name, c_event = 0, 1, head.index(EVENT_COL)
+    office = store_names.index(OFFICE_NAME)
+    store_names.append(EVENT_NAME)
+    for i in items:
+        i["qty"].append(0)
+        i["ret"].append(None)
+    by_code = {i["code"]: i for i in items if i["code"]}
+    norm = lambda c: re.sub(r"[\s./]", "", c.lower())
+    by_key = {(i["model"], norm(i["color"]), i["size"]): i for i in items}
+    moved, codes = 0, 0
+    for r in rows[1:]:
+        if not r or not r[c_code]:
+            continue
+        m = re.match(r"^(.*)\((\w+), (.+)\)$", str(r[c_name]).strip())
+        if not m:
+            raise SystemExit(f"移動表の商品名を読めません: {r[c_name]}")
+        model, size, color = m.group(1).strip(), m.group(2), m.group(3).strip()
+        it = by_code.get(str(r[c_code]).strip()) or by_key.get((model, norm(color), size))
+        if not it:
+            raise SystemExit(f"移動表の商品がダッシュボードにありません: {r[c_name]}")
+        if not it["code"]:
+            it["code"] = str(r[c_code]).strip()
+            codes += 1
+        q = int(r[c_event] or 0)
+        if it["qty"][office] < q:
+            raise SystemExit(f"Office 在庫が移動数より少ない: {r[c_name]}")
+        it["qty"][-1] += q
+        it["qty"][office] -= q
+        moved += q
+    for i in items:
+        i["totalQty"] = sum(i["qty"])
+    print(f"event: {moved} pairs moved from Office to {EVENT_NAME}, {codes} codes filled")
+    return moved
+
+
+def main(path, office_path=None, alloc_path=None, event_path=None):
     wb = openpyxl.load_workbook(path, data_only=True)
     ws = wb[SHEET] if SHEET in wb.sheetnames else wb.worksheets[0]
     rows = list(ws.iter_rows(values_only=True))
@@ -220,6 +269,11 @@ def main(path, office_path=None, alloc_path=None):
         if alloc_path:
             alloc_moved = apply_allocation(items, store_names, alloc_path)
             alloc_src = Path(alloc_path).name
+        event_src, event_moved = None, 0
+        if event_path:
+            event_moved = apply_event(items, store_names, event_path)
+            event_src = Path(event_path).name
+            n = len(store_names)
         qty = [sum(i["qty"][k] for i in items) for k in range(n)]
         ret = [sum(i["ret"][k] or 0 for i in items) for k in range(n)]
         total_row = {"qty": qty + [sum(qty)], "ret": ret + [sum(ret)]}
@@ -237,6 +291,9 @@ def main(path, office_path=None, alloc_path=None):
         "officeSource": office_src,
         "allocSource": alloc_src if office_path else None,
         "allocMoved": alloc_moved if office_path else 0,
+        "eventSource": event_src if office_path else None,
+        "eventMoved": event_moved if office_path else 0,
+        "eventIndex": (store_names.index(EVENT_NAME) if office_path and event_src else None),  # Store Total に含めない
         "officeIndex": 0 if office_src else None,  # Office 列 (Return なし)
         "stores": store_names,
         "items": items,
@@ -252,4 +309,5 @@ def main(path, office_path=None, alloc_path=None):
 if __name__ == "__main__":
     main(sys.argv[1] if len(sys.argv) > 1 else "data/Store_Stock_092526.xlsx",
          sys.argv[2] if len(sys.argv) > 2 else None,
-         sys.argv[3] if len(sys.argv) > 3 else None)
+         sys.argv[3] if len(sys.argv) > 3 else None,
+         sys.argv[4] if len(sys.argv) > 4 else None)

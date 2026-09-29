@@ -45,7 +45,7 @@ vercel.json
 
    ```bash
    pip install openpyxl
-   python scripts/convert.py data/Store_Stock_XXXXXX.xlsx data/VFF_Stock_XX-XX-XX.xlsx [data/配分表.xlsx]
+   python scripts/convert.py data/Store_Stock_XXXXXX.xlsx data/VFF_Stock_XX-XX-XX.xlsx [data/配分表.xlsx] [data/import_X.XX_move_to_branch.xlsx]
    ```
 
    オフィス在庫は 1 枚目のシートの B 列（商品名・カラー）、C 列（サイズ）、BN 列（Stock > Office）を読み、
@@ -54,6 +54,9 @@ vercel.json
 
    3 つ目に新入荷の店舗配分表（「配分表」シートのある Excel）を渡すと、各店舗の配分数を Office から各店舗へ移して反映します
    （新入荷はオフィス在庫に含まれている前提。Company Total は変わりません）。
+
+   4 つ目に店舗移動表（import_*_move_to_branch.xlsx）を渡すと、その「Asok」列の数を **Event Asok** 列として追加し、Office から移します
+   （Event Asok は Store Total に含めず、Company Total に含めます）。移動表のコードで空欄の Code も補完します。
 
 3. `git add . && git commit -m "在庫データ更新" && git push` — Vercel が自動で再デプロイします
 

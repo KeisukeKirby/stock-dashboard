@@ -3,6 +3,8 @@
 (() => {
   const DICT = {
     ja: {
+      "kpi.noteOfficeEvent": "{n} 店舗＋オフィス＋イベントの合計",
+      "foot.event": "店舗移動表の Asok 分（{n} 足）を Office から Event Asok 列へ移しています。Event Asok は Store Total には含まず、Company Total に含みます。",
       "foot.generated": "（データ作成: {d}）",
       "alloc.note": "新入荷の店舗配分を反映済み（{n} 足を Office から各店舗へ）",
       "foot.alloc": "新入荷の店舗配分表の配分数（{n} 足）を Office から各店舗へ移して反映しています。",
@@ -97,6 +99,8 @@
       "foot": "データ元: {src} — 数値は Excel 保存時の計算結果です。Store Total は店舗のみ、Company Total は店舗とオフィスの合計です。絞り込み中の Total 行は表示中の行の合計です。",
     },
     en: {
+      "kpi.noteOfficeEvent": "{n} stores + office + event",
+      "foot.event": "The Asok quantities from the move-to-branch sheet ({n} pairs) have been moved from Office to the Event Asok column. Event Asok is included in Company Total but not in Store Total.",
       "foot.generated": "(Data generated: {d})",
       "alloc.note": "New-arrival store allocation applied ({n} pairs moved from Office to stores)",
       "foot.alloc": "The new-arrival store allocation ({n} pairs) has been moved from Office to the stores.",
@@ -191,6 +195,8 @@
       "foot": "Source: {src} — Figures are the values calculated when the Excel file was saved. Store Total = stores only; Company Total = stores + office. When filtered, the Total row is the sum of the rows shown.",
     },
     th: {
+      "kpi.noteOfficeEvent": "{n} สาขา + ออฟฟิศ + อีเวนต์",
+      "foot.event": "ย้ายจำนวน Asok จากตารางย้ายสินค้า ({n} คู่) จากออฟฟิศไปยังคอลัมน์ Event Asok แล้ว Event Asok รวมอยู่ใน Company Total แต่ไม่รวมใน Store Total",
       "foot.generated": "(สร้างข้อมูลเมื่อ: {d})",
       "alloc.note": "รวมการจัดสรรสินค้าเข้าใหม่แล้ว ({n} คู่ ย้ายจากออฟฟิศไปยังสาขา)",
       "foot.alloc": "ได้ย้ายจำนวนที่จัดสรรสินค้าเข้าใหม่ ({n} คู่) จากออฟฟิศไปยังสาขาแล้ว",

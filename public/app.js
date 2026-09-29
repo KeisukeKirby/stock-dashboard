@@ -220,8 +220,10 @@
     it._adj = it.qty.map((q, i) => q - r[i]);
     if (data.officeIndex != null) it._adj[data.officeIndex] += sum(r);
     it._tq = sum(it._adj);                                                 // Company Total (店舗 + オフィス)
-    it._st = sum(it._adj.filter((_, i) => i !== data.officeIndex));        // Store Total (店舗のみ)
-    it._tr = sum(it._ret);
+    // Store Total は店舗のみ (Office と Event Asok は含めない)
+    const isStore = (i) => i !== data.officeIndex && i !== data.eventIndex;
+    it._st = sum(it._adj.filter((_, i) => isStore(i)));
+    it._tr = sum(it._ret.filter((_, i) => isStore(i)));
   }
   const returnCount = () => Object.keys(returns).length;
   function updateReturnInfo() {
@@ -493,7 +495,8 @@
     const total = rows.reduce((a, it) => a + it._tq, 0);
     $("kpiTotal").textContent = fmt(total);
     $("kpiTotalNote").textContent = all
-      ? (data.officeSource ? t("kpi.noteOffice", { n: data.stores.length - 1 }) : t("kpi.noteStores", { n: data.stores.length }))
+      ? (data.eventIndex != null ? t("kpi.noteOfficeEvent", { n: data.stores.length - 2 })
+        : data.officeSource ? t("kpi.noteOffice", { n: data.stores.length - 1 }) : t("kpi.noteStores", { n: data.stores.length }))
       : t("kpi.noteOf", { n: fmt(data._grand) });
     $("kpiSku").textContent = fmt(rows.length);
     $("kpiSkuNote").textContent = all ? t("kpi.models", { n: uniq(data.items.map((i) => i.model)).length }) : t("kpi.skuOf", { n: fmt(data.items.length) });
@@ -1038,6 +1041,7 @@
     $("asof").textContent = d.asOfDate ? t("asof", { d: d.asOfDate }) : d.asOf;
     const src = d.officeSource ? t("foot.src", { s: d.source, o: d.officeSource }) : d.source;
     $("foot").textContent = t("foot", { src }) + (d.allocSource ? " " + t("foot.alloc", { n: fmt(d.allocMoved) }) : "")
+      + (d.eventSource ? " " + t("foot.event", { n: fmt(d.eventMoved) }) : "")
       + (d.generatedAt ? " " + t("foot.generated", { d: d.generatedAt }) : "");
     const an = $("allocNote");
     an.hidden = !d.allocSource;
