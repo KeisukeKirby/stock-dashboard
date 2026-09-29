@@ -17,7 +17,7 @@
   const px = (w) => Math.round(w * 7 + 5);
 
   // sort: "" = Excel の並び / "0".. = 店舗・オフィス / "store" = Store Total / "total" = Company Total
-  const state = { q: "", model: "", color: "", size: "", stock: "", sort: "" };
+  const state = { q: "", stock: "", sort: "" };
   let data = null;
   let groups = [];
 
@@ -164,11 +164,8 @@
   function matches(it, skip) {
     const q = state.q.trim().toLowerCase();
     {
-      for (const k of TEXT_COLS) if (k !== skip && colFilters.text[k] && !colFilters.text[k].has(it[k])) return false;
+      for (const k of TEXT_COLS) if (`t${k}` !== skip && colFilters.text[k] && !colFilters.text[k].has(it[k])) return false;
       for (const g in colFilters.num) if (`n${g}` !== skip && !numOk(rowQty(it)[+g], colFilters.num[g])) return false;
-      if (state.model && it.model !== state.model) return false;
-      if (state.color && it.color !== state.color) return false;
-      if (state.size && it.size !== state.size) return false;
       if (state.stock === "in" && it._tq <= 0) return false;
       if (state.stock === "low" && it._tq !== 1) return false;
       if (state.stock === "out" && it._tq !== 0) return false;
@@ -210,7 +207,12 @@
 
   function updateFilterUi() {
     const act = new Set(activeIds());
-    document.querySelectorAll(".af").forEach((b) => b.classList.toggle("on", act.has(b.dataset.af)));
+    document.querySelectorAll(".af, .ms").forEach((b) => b.classList.toggle("on", act.has(b.dataset.af)));
+    document.querySelectorAll(".ms").forEach((b) => {
+      const id = b.dataset.af;
+      b.querySelector(".ms-val").textContent = act.has(id) ? filterSummary(id) : t("f.all");
+      b.title = act.has(id) ? [...colFilters.text[id.slice(1)]].map((v) => v || t("af.blank")).join("\n") : "";
+    });
     const box = $("activeFilters");
     if (!act.size) { box.hidden = true; box.innerHTML = ""; return; }
     box.hidden = false;
@@ -320,6 +322,8 @@
     render();
   }
 
+  // 見出しの ▼ と、上部のモデル・カラー・サイズ (複数選択) は同じフィルター
+  document.querySelectorAll(".ms").forEach((b) => b.addEventListener("click", (e) => { e.stopPropagation(); openPop(b); }));
   $("thead").addEventListener("click", (e) => {
     const b = e.target.closest(".af");
     if (b) { e.stopPropagation(); openPop(b); }
@@ -349,7 +353,7 @@
     if (e.key === "Escape") closePop();
     if (e.key === "Enter" && !e.target.matches("button")) { e.preventDefault(); applyPop(); }
   });
-  document.addEventListener("click", (e) => { if (popFor && !pop.contains(e.target) && !e.target.closest(".af")) closePop(); });
+  document.addEventListener("click", (e) => { if (popFor && !pop.contains(e.target) && !e.target.closest("[data-af]")) closePop(); });
   window.addEventListener("resize", closePop);
   new MutationObserver(syncAllBox).observe(pop, { childList: true });
 
@@ -402,8 +406,8 @@
     // モデル別はモデル絞り込み以外の条件を反映 (クリックで切り替えられるように)
     const byModel = new Map();
     for (const it of data.items) {
-      if (state.color && it.color !== state.color) continue;
-      if (state.size && it.size !== state.size) continue;
+      if (colFilters.text.color && !colFilters.text.color.has(it.color)) continue;
+      if (colFilters.text.size && !colFilters.text.size.has(it.size)) continue;
       const m = byModel.get(it.model) || { key: it.model, label: it.model, value: 0, skus: 0, stores: data.stores.map(() => 0) };
       m.value += it._tq;
       m.skus += 1;
@@ -411,10 +415,16 @@
       byModel.set(it.model, m);
     }
     barChart($("modelChart"), [...byModel.values()].sort((a, b) => b.value - a.value), {
-      active: state.model,
+      active: colFilters.text.model && colFilters.text.model.size === 1 ? [...colFilters.text.model][0] : null,
       tipFor: (e) => `<b>${esc(e.label)}</b><br>` + t("tip.model", { v: fmt(e.value), s: e.skus }) + "<br>" +
         data.stores.map((s, i) => `${esc(s)}: ${fmt(e.stores[i])}`).join("<br>"),
-      onClick: (e) => { state.model = state.model === e.key ? "" : e.key; $("fModel").value = state.model; render(); if (state.model) showView("table", { scroll: true }); },
+      onClick: (e) => {
+        const cur = colFilters.text.model;
+        const only = cur && cur.size === 1 && cur.has(e.key);
+        if (only) delete colFilters.text.model; else colFilters.text.model = new Set([e.key]);
+        render();
+        if (!only) showView("table", { scroll: true });
+      },
     });
   }
 
@@ -729,9 +739,6 @@
   /* ---------- controls ---------- */
   const bind = (id, key, ev = "change") => $(id).addEventListener(ev, (e) => { state[key] = e.target.value; render(); });
   bind("q", "q", "input");
-  bind("fModel", "model");
-  bind("fColor", "color");
-  bind("fSize", "size");
   bind("fStock", "stock");
   bind("fSort", "sort");
   const toggleStock = (v) => {
@@ -743,10 +750,10 @@
   $("kpiOutBtn").addEventListener("click", () => toggleStock("out"));
   $("kpiLowBtn").addEventListener("click", () => toggleStock("low"));
   $("reset").addEventListener("click", () => {
-    Object.assign(state, { q: "", model: "", color: "", size: "", stock: "", sort: "" });
+    Object.assign(state, { q: "", stock: "", sort: "" });
     colFilters.text = {};
     colFilters.num = {};
-    ["q", "fModel", "fColor", "fSize", "fStock", "fSort"].forEach((id) => ($(id).value = ""));
+    ["q", "fStock", "fSort"].forEach((id) => ($(id).value = ""));
     render();
   });
 
@@ -797,12 +804,6 @@
       $("source").textContent = d.title;
 
       $("dlOffice").hidden = !d.officeSource;
-      fillSelect($("fModel"), uniq(d.items.map((i) => i.model)));
-      fillSelect($("fColor"), uniq(d.items.map((i) => i.color)).sort());
-      fillSelect($("fSize"), uniq(d.items.map((i) => i.size)).sort((a, b) => {
-        const [pa, na] = sizeKey(a), [pb, nb] = sizeKey(b);
-        return pa === pb ? na - nb : pa.localeCompare(pb);
-      }));
       fillSortOptions();
       renderFrame(d);
       render();

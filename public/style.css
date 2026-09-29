@@ -212,6 +212,17 @@ h1 { font-size: 26px; font-weight: 700; margin: 4px 0 6px; letter-spacing: -.01e
 }
 .field input:focus, .field select:focus { outline: 2px solid var(--accent-soft); border-color: var(--accent); }
 .filters .ghost { height: 36px; }
+/* 複数選択のドロップダウン (モデル・カラー・サイズ) */
+.ms {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; min-width: 150px; max-width: 240px;
+  height: 36px; padding: 0 10px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface);
+  cursor: pointer; text-align: left;
+}
+.ms .ms-val { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ms svg { width: 10px; height: 10px; fill: var(--ink-2); flex: none; }
+.ms:hover { border-color: var(--accent); }
+.ms.on { border-color: #bf8f00; background: #fff8e1; color: #5c4600; font-weight: 600; }
+:root[data-theme="dark"] .ms.on { background: #3a3020; color: #fde9a8; }
 
 .tip {
   position: fixed; pointer-events: none; z-index: 50; background: var(--ink); color: var(--surface);
