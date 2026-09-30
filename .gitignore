@@ -2,3 +2,6 @@
 __pycache__/
 .DS_Store
 ~$*.xlsx
+
+# POS の注文明細 (顧客情報を含むため Git に入れない)
+data/event_orders/

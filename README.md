@@ -80,3 +80,16 @@ cd public && python3 -m http.server 8000
 設定されていない場合（ローカルで開いたときなど）は、これまでどおりブラウザの localStorage に保存され、画面に「このブラウザにのみ保存」と表示されます。
 
 注意: 保存 API に認証はありません。URL を知っている人は誰でも返品を入力できます。
+
+## イベント (Event Asok) の残り在庫
+
+`scripts/event_stock.py` で「スタート在庫 − 締め日までの販売数」を計算し、`data/event_asok_stock.json` に保存します。
+convert.py の 5 つ目の引数に渡すと Event Asok 列に加算されます（Office は動かしません）。
+
+```bash
+python scripts/event_stock.py data/EVENT_SeP2026_start_stock.xlsx 2026-09-25 data/event_orders/*.xlsx
+python scripts/convert.py data/Store_Stock_092526.xlsx data/VFF_Stock_25-09-26.xlsx \
+    data/New_Arrival_Allocation.xlsx data/import_9.26_move_to_branch.xlsx data/event_asok_stock.json
+```
+
+POS の注文明細（data/event_orders/）は顧客情報を含むため Git には入れていません。

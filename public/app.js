@@ -1042,6 +1042,7 @@
     const src = d.officeSource ? t("foot.src", { s: d.source, o: d.officeSource }) : d.source;
     $("foot").textContent = t("foot", { src }) + (d.allocSource ? " " + t("foot.alloc", { n: fmt(d.allocMoved) }) : "")
       + (d.eventSource ? " " + t("foot.event", { n: fmt(d.eventMoved) }) : "")
+      + (d.eventStock ? " " + t("foot.eventStock", { c: d.eventStock.cutoff, s: fmt(d.eventStock.start), o: fmt(d.eventStock.sold), r: fmt(d.eventStock.remain) }) : "")
       + (d.generatedAt ? " " + t("foot.generated", { d: d.generatedAt }) : "");
     const an = $("allocNote");
     an.hidden = !d.allocSource;

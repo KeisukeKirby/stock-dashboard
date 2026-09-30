@@ -212,7 +212,28 @@ def apply_event(items, store_names, path):
     return moved
 
 
-def main(path, office_path=None, alloc_path=None, event_path=None):
+def apply_event_stock(items, store_names, path):
+    """scripts/event_stock.py の結果 (スタート在庫 − 販売) を Event Asok 列に加える。Office は動かさない。"""
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    k = store_names.index(EVENT_NAME)
+    by_code = {i["code"]: i for i in items if i["code"]}
+    added, missing = 0, []
+    for code, q in data["remain"].items():
+        it = by_code.get(code)
+        if not it:
+            missing.append(code)
+            continue
+        it["qty"][k] += q
+        added += q
+    if missing:
+        raise SystemExit(f"イベント在庫の商品がダッシュボードにありません: {missing}")
+    for i in items:
+        i["totalQty"] = sum(i["qty"])
+    print(f"event stock: +{added} pairs to {EVENT_NAME} (cutoff {data['cutoff']})")
+    return data, added
+
+
+def main(path, office_path=None, alloc_path=None, event_path=None, event_stock_path=None):
     wb = openpyxl.load_workbook(path, data_only=True)
     ws = wb[SHEET] if SHEET in wb.sheetnames else wb.worksheets[0]
     rows = list(ws.iter_rows(values_only=True))
@@ -274,6 +295,9 @@ def main(path, office_path=None, alloc_path=None, event_path=None):
             event_moved = apply_event(items, store_names, event_path)
             event_src = Path(event_path).name
             n = len(store_names)
+        event_stock, event_stock_added = None, 0
+        if event_stock_path:
+            event_stock, event_stock_added = apply_event_stock(items, store_names, event_stock_path)
         qty = [sum(i["qty"][k] for i in items) for k in range(n)]
         ret = [sum(i["ret"][k] or 0 for i in items) for k in range(n)]
         total_row = {"qty": qty + [sum(qty)], "ret": ret + [sum(ret)]}
@@ -293,6 +317,9 @@ def main(path, office_path=None, alloc_path=None, event_path=None):
         "allocMoved": alloc_moved if office_path else 0,
         "eventSource": event_src if office_path else None,
         "eventMoved": event_moved if office_path else 0,
+        "eventStock": ({"cutoff": event_stock["cutoff"], "start": event_stock["startTotal"],
+                        "sold": event_stock["soldFromStart"], "remain": event_stock_added}
+                       if office_path and event_stock else None),
         "eventIndex": (store_names.index(EVENT_NAME) if office_path and event_src else None),  # Store Total に含めない
         "officeIndex": 0 if office_src else None,  # Office 列 (Return なし)
         "stores": store_names,
@@ -310,4 +337,5 @@ if __name__ == "__main__":
     main(sys.argv[1] if len(sys.argv) > 1 else "data/Store_Stock_092526.xlsx",
          sys.argv[2] if len(sys.argv) > 2 else None,
          sys.argv[3] if len(sys.argv) > 3 else None,
-         sys.argv[4] if len(sys.argv) > 4 else None)
+         sys.argv[4] if len(sys.argv) > 4 else None,
+         sys.argv[5] if len(sys.argv) > 5 else None)
