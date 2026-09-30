@@ -23,7 +23,8 @@ from pathlib import Path
 import openpyxl
 
 SHEET = "VFF Shoes Stock"
-PUBLIC = Path(__file__).resolve().parent.parent / "public"
+ROOT = Path(__file__).resolve().parent.parent
+PUBLIC = ROOT / "public"
 OUT = PUBLIC / "stock.json"
 XLSX_COPY = PUBLIC / "source.xlsx"  # 画面の「元の Excel をダウンロード」用
 OFFICE_XLSX_COPY = PUBLIC / "source_office.xlsx"
@@ -260,6 +261,37 @@ def apply_event_stock(items, store_names, path):
     return data, added
 
 
+def apply_counts(items, store_names, paths):
+    """店舗の実地棚卸 (data/counts/*.json) で、その店舗の数量を上書きする。
+    items: { 商品コード: { count, display } } → 数量 = count + display (展示品)。表にない商品は変えない。"""
+    done = []
+    by_code = {i["code"]: i for i in items if i["code"]}
+    for path in paths:
+        data = json.loads(Path(path).read_text(encoding="utf-8"))
+        k = store_names.index(data["store"])
+        before = after = n = 0
+        missing = []
+        for code, v in data["items"].items():
+            q = int(v.get("count", 0)) + int(v.get("display", 0))
+            it = by_code.get(code)
+            if not it:
+                if q:
+                    missing.append(code)
+                continue
+            before += it["qty"][k]
+            after += q
+            it["qty"][k] = q
+            n += 1
+        if missing:
+            raise SystemExit(f"棚卸表の商品がダッシュボードにありません: {missing}")
+        done.append({"store": data["store"], "source": data.get("source", Path(path).name), "items": n,
+                     "before": before, "after": after})
+        print(f"count: {data['store']} {n} items, {before} -> {after} pairs ({Path(path).name})")
+    for i in items:
+        i["totalQty"] = sum(i["qty"])
+    return done
+
+
 def apply_sales_rate(items, store_names, path):
     """scripts/sales_rate.py の月平均販売足数を各商品に付ける。
     店舗の列は店頭販売、Office の列はオンライン販売 (Online)。Event Asok の列は None。
@@ -347,6 +379,7 @@ def main(path, office_path=None, alloc_path=None, event_path=None, event_stock_p
         event_stock, event_stock_added = None, 0
         if event_stock_path:
             event_stock, event_stock_added = apply_event_stock(items, store_names, event_stock_path)
+        counts = apply_counts(items, store_names, sorted(str(x) for x in (ROOT / "data" / "counts").glob("*.json")))
         sales_rate = apply_sales_rate(items, store_names, sales_rate_path) if sales_rate_path else None
         qty = [sum(i["qty"][k] for i in items) for k in range(n)]
         ret = [sum(i["ret"][k] or 0 for i in items) for k in range(n)]
@@ -371,6 +404,7 @@ def main(path, office_path=None, alloc_path=None, event_path=None, event_stock_p
                         "sold": event_stock["soldFromStart"], "remain": event_stock_added}
                        if office_path and event_stock else None),
         "salesRate": sales_rate if office_path else None,
+        "counts": counts if office_path else [],
         # Excel に直接入力された Return。ダッシュボードが「返品輸送中」として 1 度だけ共有データに登録する
         "returnsSeed": json.loads(Path(returns_import_path).read_text(encoding="utf-8")) if returns_import_path else None,
         "eventIndex": (store_names.index(EVENT_NAME) if office_path and event_src else None),  # Store Total に含めない
