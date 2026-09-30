@@ -3,6 +3,7 @@
 (() => {
   const DICT = {
     ja: {
+      "nav.event": "イベント売上 →",
       "rate.toggle": "月平均販売・在庫月数を表示",
       "col.rate": "月販",
       "col.rate.title": "月販 = 月平均販売: 2026年1〜8月の月平均販売足数（VFFシューズ）。店舗 = 店頭販売、Office = オンライン販売、Company Total = オンライン + イベント + 店舗",
@@ -136,6 +137,7 @@
       "foot": "データ元: {src} — 数値は Excel 保存時の計算結果です。Store Total は店舗のみ、Company Total は店舗・オフィス・イベントと返品輸送中の合計です。絞り込み中の Total 行は表示中の行の合計です。",
     },
     en: {
+      "nav.event": "Event sales →",
       "rate.toggle": "Show avg sales & months of stock",
       "col.rate": "Avg",
       "col.rate.title": "Avg = average monthly sales (VFF shoes, pairs), Jan–Aug 2026. Stores = in-store, Office = online, Company Total = online + events + stores",
@@ -269,6 +271,7 @@
       "foot": "Source: {src} — Figures are the values calculated when the Excel file was saved. Store Total = stores only; Company Total = stores + office + event + returns in transit. When filtered, the Total row is the sum of the rows shown.",
     },
     th: {
+      "nav.event": "ยอดขายอีเวนต์ →",
       "rate.toggle": "แสดงยอดขายเฉลี่ยและสต็อกพอขาย",
       "col.rate": "เฉลี่ย",
       "col.rate.title": "เฉลี่ย = ยอดขายเฉลี่ยต่อเดือน (รองเท้า VFF, คู่) ม.ค.–ส.ค. 2026 ร้าน = หน้าร้าน, Office = ออนไลน์, Company Total = ออนไลน์ + อีเวนต์ + ร้าน",

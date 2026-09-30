@@ -1,0 +1,98 @@
+/* イベント売上ページ (event.html) — style.css の配色・カード・KPI・棒グラフを使い、追加分だけここに書く */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ev-pick select {
+  height: 34px; padding: 0 10px; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--surface); font-size: 13px;
+}
+
+.ev-kpis { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.ev-kpis .kpi-value { font-size: 26px; }
+
+.chips { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; min-height: 36px; margin: 0; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--accent); background: var(--accent-soft);
+  color: var(--ink); border-radius: 999px; padding: 4px 6px 4px 12px; font-size: 12px; cursor: pointer;
+}
+.chip b { font-weight: 600; }
+.chip span { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; color: var(--ink-2); }
+.chip:hover span { background: var(--surface); }
+
+/* segmented toggle */
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); padding: 2px; }
+.seg button { border: 0; background: none; cursor: pointer; padding: 5px 12px; border-radius: 999px; font-size: 12px; color: var(--ink-2); white-space: nowrap; }
+.seg button:hover { color: var(--ink); background: var(--surface-2); }
+.seg button[aria-pressed="true"] { background: var(--accent); color: #fff; font-weight: 600; }
+
+/* 日別売上 (SVG) */
+.ev-daily { margin-bottom: 14px; }
+.ev-daily .hint { margin: -6px 0 8px; }
+.chart-box { position: relative; width: 100%; }
+.chart-box svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart-box .grid line { stroke: var(--line); stroke-width: 1; }
+.chart-box .grid text, .chart-box .xl text { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.chart-box .xl text.we { fill: var(--ink); font-weight: 700; }
+.chart-box .xl text.sel { fill: var(--accent); font-weight: 700; }
+.chart-box .bar { fill: var(--bar); transition: fill .15s; }
+.chart-box .bar.dim { fill: var(--line-strong); }
+.chart-box .col:hover .bar, .chart-box .col.sel .bar { fill: var(--bar-hover); }
+.chart-box .hit { fill: transparent; cursor: pointer; }
+.chart-box .col:hover .hit { fill: var(--surface-2); opacity: .6; }
+.chart-box .avg { stroke: var(--ink-2); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.chart-box .avg-l { fill: var(--ink-2); font-size: 11px; }
+.chart-box .cum { fill: none; stroke: var(--bar-hover); stroke-width: 2; }
+.chart-box .cum-dot { fill: var(--bar-hover); stroke: var(--surface); stroke-width: 2; }
+.chart-box .val { fill: var(--ink-2); font-size: 10.5px; font-variant-numeric: tabular-nums; }
+.chart-box .zero { fill: var(--muted); font-size: 10px; }
+
+.ev-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ev-grid .bar-row { grid-template-columns: minmax(96px, 34%) 1fr 92px; }
+#hourChart .bar-row { grid-template-columns: 56px 1fr 92px; }
+.bar-row.static { cursor: default; }
+.bar-sub { color: var(--muted); font-size: 11px; margin-left: 4px; }
+
+/* テーブル */
+.ev-models, .ev-days { margin-bottom: 14px; }
+.ev-models > .hint { margin: -6px 0 10px; }
+.tbl-wrap { overflow-x: auto; }
+.ev-table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+.ev-table th {
+  text-align: left; font-weight: 600; color: var(--ink-2); font-size: 12px; padding: 8px 10px;
+  border-bottom: 1px solid var(--line-strong); white-space: nowrap; position: sticky; top: 0; background: var(--surface);
+}
+.ev-table td { padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.ev-table .num { text-align: right; white-space: nowrap; }
+.ev-table tr.model { cursor: pointer; }
+.ev-table tr.model:hover td { background: var(--surface-2); }
+.ev-table tr.model.open td { background: var(--accent-soft); }
+.ev-table tr.model td.name::before { content: "▸"; display: inline-block; width: 14px; color: var(--muted); transition: transform .15s; }
+.ev-table tr.model.open td.name::before { transform: rotate(90deg); }
+.ev-table td.rank { color: var(--muted); width: 32px; }
+.ev-table td.cat { color: var(--ink-2); }
+.ev-table td.share { width: 22%; min-width: 120px; }
+.share-bar { display: flex; align-items: center; gap: 8px; }
+.share-bar i { display: block; height: 10px; background: var(--bar); border-radius: 0 4px 4px 0; min-width: 2px; }
+.share-bar span { font-size: 12px; color: var(--ink-2); min-width: 42px; }
+.ev-table tr.detail td { background: var(--surface-2); padding: 10px 14px 14px 46px; }
+.variants { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.variants h3 { font-size: 12px; font-weight: 600; color: var(--ink-2); margin: 0 0 6px; }
+.variants .bar-row { grid-template-columns: minmax(64px, 40%) 1fr 64px; padding: 2px 4px; cursor: default; }
+.variants .bar-track { height: 10px; }
+.ev-table tr.total td { font-weight: 700; border-top: 1px solid var(--line-strong); border-bottom: 0; }
+.ev-table tr.day.we td:first-child { font-weight: 700; }
+.ev-table tr.day.none td { color: var(--muted); }
+.ev-table tr.day.sel td { background: var(--accent-soft); }
+.ev-table tr.day { cursor: pointer; }
+.ev-table tr.day:hover td { background: var(--surface-2); }
+
+@media (max-width: 1200px) { .ev-kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 960px) { .ev-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .ev-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ev-kpis .kpi-value { font-size: 21px; }
+  .ev-daily .card-head { align-items: flex-start; }
+  .ev-table .opt { display: none; }
+  .ev-grid .bar-row { grid-template-columns: minmax(84px, 40%) 1fr 76px; gap: 6px; }
+  .ev-table tr.detail td { padding-left: 14px; }
+}
+@media print {
+  .ev-filters, .seg, #dlModels, #dlDays { display: none; }
+}

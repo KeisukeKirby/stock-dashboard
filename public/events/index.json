@@ -1,0 +1,14 @@
+{
+ "events": [
+  {
+   "id": "kvillage-2026-09",
+   "name": "K Village Event",
+   "venue": "K Village",
+   "from": "2026-09-07",
+   "to": "2026-09-30",
+   "sales": 373405.8,
+   "orders": 103,
+   "units": 157.0
+  }
+ ]
+}
