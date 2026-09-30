@@ -154,6 +154,9 @@ def apply_allocation(items, store_names, path):
             q = int(r[c] or 0)
             it["qty"][k] += q
             total += q
+            if q:
+                alloc = it.setdefault("_alloc", {})  # 移動表で上書きするときに戻す
+                alloc[k] = alloc.get(k, 0) + q
         if total != int(r[c_total]):
             raise SystemExit(f"店舗合計が一致しません: {r[c_model]} {r[c_color]} {r[c_size]}")
         if it["qty"][office] < total:
@@ -171,14 +174,25 @@ EVENT_NAME = "Event Asok"
 EVENT_COL = "Asok"
 
 
+# 店舗移動表の店舗列 -> ダッシュボードの店舗
+MOVE_STORE_COLS = {"Paradise": "Paradise Park", "K-village": "K Village", "Ladprao 3F": "Central LP",
+                   "Chidlom": "Central CL (Department)", "Siamdis": "Siam Discovery"}
+
+
 def apply_event(items, store_names, path):
-    """店舗移動表の Asok 列を Event Asok 列として追加し、Office から移す。
-    商品は「ชื่อสินค้า」(例: VFF Groundsplay LS(M40, Black/Lime)) またはコードで照合する。"""
+    """店舗移動表を反映する。
+    - 店舗列 (Paradise / K-village / Ladprao 3F / Chidlom / Siamdis): 表にある SKU は配分表の配分を取り消し、
+      移動表の数で Office から各店舗へ移す (実際に店舗へ移動した数を正とする)
+    - Asok 列: Event Asok 列として追加し、Office から移す
+    商品は「ชื่อสินค้า」(例: VFF Groundsplay LS(M40, Black/Lime)) またはコードで照合する。
+    戻り値: (Asok へ移した足数, 店舗へ移した足数, 配分表から取り消した足数)"""
     ws = openpyxl.load_workbook(path, data_only=True).worksheets[0]
     rows = list(ws.iter_rows(values_only=True))
     head = [str(h).strip() if h is not None else "" for h in rows[0]]
     c_code, c_name, c_event = 0, 1, head.index(EVENT_COL)
     office = store_names.index(OFFICE_NAME)
+    store_cols = {head.index(h): store_names.index(s) for h, s in MOVE_STORE_COLS.items() if h in head}
+    to_stores, undone = 0, 0
     store_names.append(EVENT_NAME)
     for i in items:
         i["qty"].append(0)
@@ -200,7 +214,18 @@ def apply_event(items, store_names, path):
         if not it["code"]:
             it["code"] = str(r[c_code]).strip()
             codes += 1
-        q = int(r[c_event] or 0)
+        for k, q in it.pop("_alloc", {}).items():  # 配分表の配分を取り消して Office に戻す
+            it["qty"][k] -= q
+            it["qty"][office] += q
+            undone += q
+        for c, k in store_cols.items():
+            q = int(float(r[c] or 0))
+            if it["qty"][office] < q:
+                raise SystemExit(f"Office 在庫が移動数より少ない: {r[c_name]} ({store_names[k]})")
+            it["qty"][k] += q
+            it["qty"][office] -= q
+            to_stores += q
+        q = int(float(r[c_event] or 0))
         if it["qty"][office] < q:
             raise SystemExit(f"Office 在庫が移動数より少ない: {r[c_name]}")
         it["qty"][-1] += q
@@ -208,8 +233,10 @@ def apply_event(items, store_names, path):
         moved += q
     for i in items:
         i["totalQty"] = sum(i["qty"])
-    print(f"event: {moved} pairs moved from Office to {EVENT_NAME}, {codes} codes filled")
-    return moved
+        i.pop("_alloc", None)
+    print(f"move sheet: {to_stores} pairs to stores (allocation {undone} pairs replaced), "
+          f"{moved} pairs to {EVENT_NAME}, {codes} codes filled")
+    return moved, to_stores, undone
 
 
 def apply_event_stock(items, store_names, path):
@@ -311,9 +338,12 @@ def main(path, office_path=None, alloc_path=None, event_path=None, event_stock_p
             alloc_src = Path(alloc_path).name
         event_src, event_moved = None, 0
         if event_path:
-            event_moved = apply_event(items, store_names, event_path)
+            event_moved, move_to_stores, alloc_undone = apply_event(items, store_names, event_path)
+            alloc_moved = alloc_moved - alloc_undone + move_to_stores
             event_src = Path(event_path).name
             n = len(store_names)
+        for i in items:
+            i.pop("_alloc", None)
         event_stock, event_stock_added = None, 0
         if event_stock_path:
             event_stock, event_stock_added = apply_event_stock(items, store_names, event_stock_path)

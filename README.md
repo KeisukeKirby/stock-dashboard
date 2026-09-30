@@ -57,6 +57,7 @@ vercel.json
 
    4 つ目に店舗移動表（import_*_move_to_branch.xlsx）を渡すと、その「Asok」列の数を **Event Asok** 列として追加し、Office から移します
    （Event Asok は Store Total に含めず、Company Total に含めます）。移動表のコードで空欄の Code も補完します。
+   移動表の店舗列（Paradise / K-village / Ladprao 3F = Central LP / Chidlom = Central CL / Siamdis）も反映し、移動表にある SKU は配分表の配分を取り消して移動表の数を正とします（実際に店舗へ移動した数）。
 
 3. `git add . && git commit -m "在庫データ更新" && git push` — Vercel が自動で再デプロイします
 
