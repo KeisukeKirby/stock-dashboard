@@ -103,7 +103,7 @@ POS の注文明細（data/event_orders/）は顧客情報を含むため Git �
 ```bash
 python scripts/sales_rate.py        # data/sales_raw/ の販売明細を読む（顧客情報を含むため Git 管理外）
 python scripts/convert.py data/Store_Stock_092526.xlsx data/VFF_Stock_25-09-26.xlsx data/New_Arrival_Allocation.xlsx \
-    data/import_9.26_move_to_branch.xlsx data/event_asok_stock.json data/sales_rate.json
+    data/import_9.26_move_to_branch.xlsx data/event_asok_stock.json data/sales_rate.json data/returns_import.json
 ```
 
 | 店舗 | 元データ | 対象月 |
@@ -116,3 +116,19 @@ python scripts/convert.py data/Store_Stock_092526.xlsx data/VFF_Stock_25-09-26.x
 | Event（Company Total のみ） | 両受注明細の倉庫 Event 1 / 2 と CART Central LP のイベント分 | 1〜8月（8ヶ月で割る） |
 
 照合: K Village・Central LP は EDV 販売ダッシュボードと SKU×月で一致。Paradise Park は販売ダッシュボードと 4・6・7・8 月一致（5 月は 2 台目レジ RC-14 系の 4 足がダッシュボード側に未計上）。Central CL は 1〜8 月一致。Online は販売ダッシュボード 1,508 足に対し 1,518 足（月ごとに ±7 以内）、Event は 587 + EDV 227 足（販売ダッシュボード 589、EDV ダッシュボード 227）。Siam Discovery は 1〜6 月一致、7 月は照合できない 1 足（LOT เก่า 表記）、8 月は今回のファイルが 6 足多い。
+
+## 返品の受領（輸送中 → Office 在庫）
+
+- Return 欄に入力した返品は、その店舗の在庫から引かれ「輸送中」になります（Office にはまだ足さない。Company Total には含む）。
+- 商品がオフィスに届いたら「返品受領」ボタン → 店舗ごと／商品ごとにチェック → 「受領完了」で Office の在庫に加算します。誤って受領した分は「受領済み」の一覧から「取り消し」で輸送中に戻せます。
+- 共有データ: 輸送中 = Redis ハッシュ `returns:<基準日>`、受領済み = `returns:<基準日>:received`（api/returns.js の `receive` / `unreceive`）。
+
+### Excel に直接入力された Return の取り込み
+
+```bash
+python scripts/import_returns.py data/VFF_Stock_with_returns_20260929_1620.xlsx   # -> data/returns_import.json
+python scripts/convert.py ... data/sales_rate.json data/returns_import.json         # 7 つ目の引数 → stock.json の returnsSeed
+```
+
+ダッシュボードを最初に開いたときに「輸送中」として 1 度だけ共有データに登録します（同じ id では再登録しない。既に入力があるマスは上書きしない）。
+現在の取り込み: VFF_Stock_with_returns_20260929_1620.xlsx の 78 件・102 足（K Village 33 / Central CL 18 / Siam Discovery 7 / Central LP 44）。

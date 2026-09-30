@@ -385,3 +385,38 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 .guide .alloc-note { margin: 0 0 12px; }
 .guide-list { margin: 0; padding-left: 20px; font-size: 13px; color: var(--ink-2); line-height: 1.6; }
 .guide-list li + li { margin-top: 4px; }
+
+/* 返品の受領 */
+.recv-btn {
+  border: 1px solid #b7e0c6; background: #e3f4ea; color: #1f5f3a; border-radius: 999px;
+  font: inherit; font-size: 12px; font-weight: 600; padding: 5px 12px; cursor: pointer;
+}
+.recv-btn:hover { background: #d2ecdc; }
+.recv-btn[hidden] { display: none; }
+.recv-dlg {
+  width: min(720px, calc(100vw - 32px)); max-height: calc(100vh - 48px); padding: 0;
+  border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink);
+  box-shadow: 0 16px 48px rgba(0,0,0,.25);
+}
+.recv-dlg::backdrop { background: rgba(20, 24, 30, .35); }
+.recv-inner { display: flex; flex-direction: column; max-height: calc(100vh - 50px); }
+.recv-head { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px 0; }
+.recv-head h2 { margin: 0; font-size: 18px; }
+.recv-x { border: 0; background: none; font-size: 22px; line-height: 1; cursor: pointer; color: var(--ink-2); }
+.recv-note { margin: 8px 20px 0; font-size: 13px; color: var(--ink-2); line-height: 1.55; }
+.recv-warn { margin: 8px 20px 0; font-size: 13px; color: #8a5a00; background: #fff4d6; border: 1px solid #f0d68a; border-radius: 8px; padding: 6px 10px; }
+.recv-warn[hidden] { display: none; }
+.recv-body { overflow: auto; padding: 4px 20px 8px; flex: 1; }
+.recv-body h3 { font-size: 14px; margin: 14px 0 6px; }
+.recv-store { border: 1px solid var(--line); border-radius: 10px; margin-bottom: 8px; }
+.recv-store summary { display: flex; align-items: center; gap: 8px; padding: 8px 12px; cursor: pointer; }
+.recv-store summary .recv-count { margin-left: auto; font-size: 12px; color: var(--muted); }
+.recv-store ul { list-style: none; margin: 0; padding: 0 12px 8px 12px; }
+.recv-store li { display: flex; align-items: center; gap: 10px; padding: 4px 0; border-top: 1px solid var(--line); font-size: 13px; }
+.recv-store li label { display: flex; align-items: center; gap: 8px; flex: 1; cursor: pointer; }
+.recv-store li > span { flex: 1; }
+.recv-store li em { font-style: normal; font-weight: 700; min-width: 2em; text-align: right; }
+.recv-empty { font-size: 13px; color: var(--muted); }
+.link-btn { border: 0; background: none; color: var(--accent); cursor: pointer; font: inherit; font-size: 12px; text-decoration: underline; }
+.recv-foot { display: flex; align-items: center; gap: 8px; padding: 12px 20px 16px; border-top: 1px solid var(--line); }
+.recv-sel { margin-right: auto; font-size: 13px; color: var(--ink-2); }

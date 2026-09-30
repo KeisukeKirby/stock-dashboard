@@ -97,7 +97,12 @@
   //   保存時は変更したマスだけを送るので、別の人が別のマスを同時に入力しても消えない。
   //   15 秒ごと (と画面に戻ったとき) に最新を読み込み、自分の未保存の入力は残したまま反映する。
   let returns = {};
+  // 受領済みの返品 (オフィスで到着を確認して「受領完了」を押したもの)。これだけが Office の在庫に加算される。
+  // returns (輸送中) は店舗から引くが Office には足さない。受領操作はすぐにサーバーへ保存する。
+  let received = {};
   let RKEY = "returns";
+  let recvBusy = false; // 受領完了・取り消しを送信中
+  const RECV_KEY = () => `${RKEY}:received`;
   // Office 列には Return がない。店舗の Return はその店舗から引いて Office に足す (店舗 → オフィスへ戻る)
   // groups (列グループ): [...拠点, Store Total, Company Total]  ※Office がなければ [...店舗, Total]
   const hasOffice = () => data.officeIndex != null;
@@ -127,7 +132,8 @@
     del: Object.keys(from).filter((k) => !(k in to)),
   });
   // サーバーの最新内容に、自分の未保存の変更を重ねる。画面が変わるなら true
-  function mergeRemote(remote) {
+  function mergeRemote(remote, recv) {
+    if (recv) received = stripOffice(recv);
     const mine = diff(saved, returns);
     const next = { ...stripOffice(remote), ...mine.set };
     mine.del.forEach((k) => delete next[k]);
@@ -140,7 +146,42 @@
   }
   function loadLocal() {
     try { saved = stripOffice(JSON.parse(localStorage.getItem(RKEY) || "{}")); } catch (_) { saved = {}; }
+    try { received = stripOffice(JSON.parse(localStorage.getItem(RECV_KEY()) || "{}")); } catch (_) { received = {}; }
     returns = { ...saved };
+  }
+  function saveLocal() {
+    localStorage.setItem(RKEY, JSON.stringify(saved));
+    localStorage.setItem(RECV_KEY(), JSON.stringify(received));
+  }
+  // 返品の共有データを変更する (受領完了・取り消し・Excel からの取り込み)。成功したら true
+  async function postReturns(extra) {
+    const r = await fetch(API, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ key: RKEY, set: {}, del: [], ...extra }),
+    });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const j = await r.json();
+    serverUpdatedAt = j.updatedAt;
+    mergeRemote(j.returns, j.received);
+    return true;
+  }
+  // Excel に直接入力されていた返品を「輸送中」として 1 度だけ登録する (既に入力があるマスはそのまま)
+  async function importSeed() {
+    const seed = data.returnsSeed;
+    if (!seed || !seed.id) return;
+    const mark = `${RKEY}:seed:${seed.id}`;
+    try { if (localStorage.getItem(mark)) return; } catch (_) {}
+    const set = stripOffice(seed.returns);
+    try {
+      if (shared) await postReturns({ seed: { id: seed.id, set } });
+      else {
+        for (const [k, v] of Object.entries(set)) if (!(k in saved) && !(k in received)) saved[k] = v;
+        returns = { ...saved, ...diff(saved, returns).set };
+        saveLocal();
+      }
+      try { localStorage.setItem(mark, new Date().toISOString()); } catch (_) {}
+    } catch (e) { console.error(e); }
   }
   async function initReturns() {
     try {
@@ -149,19 +190,21 @@
       if (j && j.shared) {
         shared = true;
         saved = stripOffice(j.returns);
+        received = stripOffice(j.received);
         returns = { ...saved };
         serverUpdatedAt = j.updatedAt;
         lastSync = new Date();
-        return;
+        return importSeed();
       }
     } catch (_) {}
     loadLocal(); // 共有サーバー未設定 (ローカル確認など) → このブラウザに保存
+    return importSeed();
   }
   async function saveReturns() {
     if (!shared) {
       try {
-        localStorage.setItem(RKEY, JSON.stringify(returns));
         saved = { ...returns };
+        saveLocal();
         lastSaved = new Date();
         return true;
       } catch (_) {
@@ -179,7 +222,7 @@
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       const j = await r.json();
       serverUpdatedAt = j.updatedAt;
-      const changed = mergeRemote(j.returns); // 他の人が保存した分もここで反映
+      const changed = mergeRemote(j.returns, j.received); // 他の人が保存した分もここで反映
       lastSaved = new Date();
       if (changed) applyRemote(); else updateReturnInfo();
       return true;
@@ -199,7 +242,9 @@
       const j = await r.json();
       const fresh = j.updatedAt !== serverUpdatedAt;
       serverUpdatedAt = j.updatedAt;
-      if (mergeRemote(j.returns) && fresh) {
+      const recvBefore = JSON.stringify(sortKeys(received));
+      const changed = mergeRemote(j.returns, j.received) || recvBefore !== JSON.stringify(sortKeys(received));
+      if (changed && fresh) {
         applyRemote();
         flashSync();
       } else updateReturnInfo();
@@ -220,11 +265,15 @@
   setInterval(pullRemote, 15000);
   document.addEventListener("visibilitychange", () => { if (!document.hidden) pullRemote(); });
   function recompute(it) {
+    // r = 輸送中 (店舗から引く・Office には足さない)、rc = 受領済み (店舗から引いて Office に足す)
     const r = it.qty.map((_, i) => (hasRet(i) ? returns[rkey(it, i)] || 0 : 0));
+    const rc = it.qty.map((_, i) => (hasRet(i) ? received[rkey(it, i)] || 0 : 0));
     it._ret = it.ret.map((x, i) => (hasRet(i) ? returns[rkey(it, i)] ?? x : null));
-    it._adj = it.qty.map((q, i) => q - r[i]);
-    if (data.officeIndex != null) it._adj[data.officeIndex] += sum(r);
-    it._tq = sum(it._adj);                                                 // Company Total (店舗 + オフィス)
+    it._rc = rc;
+    it._adj = it.qty.map((q, i) => q - r[i] - rc[i]);
+    if (data.officeIndex != null) it._adj[data.officeIndex] += sum(rc);
+    it._transit = sum(r);
+    it._tq = sum(it._adj) + it._transit; // Company Total (店舗 + オフィス + イベント + 返品輸送中)
     // Store Total は店舗のみ (Office と Event Asok は含めない)
     const isStore = (i) => i !== data.officeIndex && i !== data.eventIndex;
     it._st = sum(it._adj.filter((_, i) => isStore(i)));
@@ -236,6 +285,10 @@
     const dirty = isDirty();
     $("retInfo").textContent = n ? t("ret.info", { n: fmt(n), q: fmt(sum(Object.values(returns))) }) : "";
     $("clearReturns").hidden = !n;
+    const nRecv = Object.keys(received).length;
+    const nSaved = Object.keys(saved).length;
+    $("receiveReturns").hidden = !(nSaved || nRecv);
+    $("receiveReturns").textContent = nSaved ? t("recv.btnN", { q: fmt(sum(Object.values(saved))) }) : t("recv.btn");
     $("saveReturns").disabled = !dirty;
     $("revertReturns").hidden = !dirty;
     const st = $("saveState");
@@ -278,6 +331,7 @@
     renderKpis(rows);
     renderCharts(rows);
     updateReturnInfo();
+    if ($("recvDlg").open && !recvBusy) renderRecv();
   }
 
   function applyReturns() {
@@ -703,7 +757,7 @@
             if (k === "rate") return `<td class="c rate">${fmtRate(rowRate(it, g))}</td>`;
             if (k === "mos") return `<td class="c mos" data-g="${g}">${fmtMos(mos(q, rowRate(it, g)))}</td>`;
             if (tot) return `<td class="c b tr">${nf(it._tr)}</td>`;
-            return `<td class="c ret"><input class="ret-in" type="text" inputmode="numeric" autocomplete="off" data-s="${g}" value="${it._ret[g] ?? ""}" aria-label="${esc(data.stores[g])} Return"></td>`;
+            return `<td class="c ret"><input class="ret-in" type="text" inputmode="numeric" autocomplete="off" data-s="${g}" value="${it._ret[g] ?? ""}" aria-label="${esc(data.stores[g])} Return"${it._rc[g] ? ` title="${esc(t("recv.cellTitle", { q: it._rc[g] }))}"` : ""}></td>`;
           }).join("");
         }).join("")}
       </tr>`);
@@ -924,6 +978,100 @@
     returns = { ...saved };
     applyReturns();
   });
+  /* ---------- 返品の受領 (オフィスに届いたら「受領完了」で Office 在庫へ) ---------- */
+  const dlg = $("recvDlg");
+  const itemByKey = () => {
+    const m = new Map();
+    data.items.forEach((it) => data.stores.forEach((_, i) => hasRet(i) && m.set(rkey(it, i), { it, i })));
+    return m;
+  };
+  function recvGroups(map) {
+    const by = itemByKey();
+    const out = new Map(); // 店舗 → [{ k, it, q }]
+    Object.entries(map).forEach(([k, q]) => {
+      const hit = by.get(k);
+      const store = k.slice(k.lastIndexOf("@") + 1);
+      if (!out.has(store)) out.set(store, []);
+      out.get(store).push({ k, it: hit ? hit.it : null, q });
+    });
+    const order = (s) => { const i = data.stores.indexOf(s); return i < 0 ? 99 : i; };
+    return [...out.entries()].sort((a, b) => order(a[0]) - order(b[0]))
+      .map(([store, rows]) => [store, rows.sort((a, b) => (a.it ? a.it._id : 1e9) - (b.it ? b.it._id : 1e9))]);
+  }
+  const itemLabel = (r) => (r.it ? `${shortModel(r.it.model)} / ${r.it.color} / ${r.it.size}` : r.k.slice(0, r.k.lastIndexOf("@")));
+  function renderRecv() {
+    const pend = recvGroups(saved), done = recvGroups(received);
+    const dirty = isDirty();
+    $("recvWarn").hidden = !dirty;
+    $("recvWarn").textContent = dirty ? t("recv.unsaved") : "";
+    const sec = (store, rows, kind) => `
+      <details class="recv-store">
+        <summary>
+          ${kind === "pend" ? `<input type="checkbox" class="recv-all" data-store="${esc(store)}" aria-label="${esc(store)}">` : ""}
+          <b>${esc(store)}</b><span class="recv-count">${t("recv.count", { n: fmt(rows.length), q: fmt(sum(rows.map((r) => r.q))) })}</span>
+        </summary>
+        <ul>${rows.map((r) => kind === "pend"
+          ? `<li><label><input type="checkbox" class="recv-one" data-k="${esc(r.k)}" data-store="${esc(store)}"> <span>${esc(itemLabel(r))}</span></label><em>${fmt(r.q)}</em></li>`
+          : `<li><span>${esc(itemLabel(r))}</span><em>${fmt(r.q)}</em><button type="button" class="link-btn" data-undo="${esc(r.k)}">${esc(t("recv.undo"))}</button></li>`).join("")}</ul>
+      </details>`;
+    $("recvBody").innerHTML =
+      `<h3>${esc(t("recv.transit"))}</h3>` +
+      (pend.length ? pend.map(([s, rows]) => sec(s, rows, "pend")).join("") : `<p class="recv-empty">${esc(t("recv.none"))}</p>`) +
+      (done.length ? `<h3>${esc(t("recv.done"))}</h3>` + done.map(([s, rows]) => sec(s, rows, "done")).join("") : "");
+    updateRecvSel();
+  }
+  function updateRecvSel() {
+    const on = [...dlg.querySelectorAll(".recv-one:checked")];
+    const q = sum(on.map((b) => saved[b.dataset.k] || 0));
+    $("recvSel").textContent = on.length ? t("recv.sel", { n: fmt(on.length), q: fmt(q) }) : "";
+    $("recvDo").disabled = !on.length || recvBusy;
+    $("recvDo").textContent = t("recv.do", { q: fmt(q) });
+    dlg.querySelectorAll(".recv-all").forEach((all) => {
+      const boxes = [...dlg.querySelectorAll(`.recv-one[data-store="${CSS.escape(all.dataset.store)}"]`)];
+      const n = boxes.filter((b) => b.checked).length;
+      all.checked = n > 0 && n === boxes.length;
+      all.indeterminate = n > 0 && n < boxes.length;
+    });
+  }
+  async function moveReturns(receive, unreceive) {
+    recvBusy = true;
+    updateRecvSel();
+    try {
+      if (shared) await postReturns({ receive, unreceive });
+      else {
+        receive.forEach((k) => { if (saved[k]) { received[k] = (received[k] || 0) + saved[k]; delete saved[k]; delete returns[k]; } });
+        unreceive.forEach((k) => { if (received[k]) { saved[k] = (saved[k] || 0) + received[k]; returns[k] = saved[k]; delete received[k]; } });
+        saveLocal();
+      }
+      lastSaved = new Date();
+      applyRemote();
+    } catch (e) {
+      console.error(e);
+      alert(t("ret.saveFailShared"));
+    } finally {
+      recvBusy = false;
+      renderRecv();
+    }
+  }
+  $("receiveReturns").addEventListener("click", () => { renderRecv(); dlg.showModal(); });
+  dlg.addEventListener("change", (e) => {
+    if (e.target.classList.contains("recv-all")) {
+      dlg.querySelectorAll(`.recv-one[data-store="${CSS.escape(e.target.dataset.store)}"]`).forEach((b) => (b.checked = e.target.checked));
+    }
+    updateRecvSel();
+  });
+  // summary 内のチェックボックスで開閉しないように
+  dlg.addEventListener("click", (e) => {
+    if (e.target.classList.contains("recv-all")) e.stopPropagation();
+    const undo = e.target.closest("[data-undo]");
+    if (undo && !recvBusy && confirm(t("recv.confirmUndo"))) moveReturns([], [undo.dataset.undo]);
+  });
+  $("recvDo").addEventListener("click", () => {
+    const keys = [...dlg.querySelectorAll(".recv-one:checked")].map((b) => b.dataset.k);
+    const q = sum(keys.map((k) => saved[k] || 0));
+    if (keys.length && confirm(t("recv.confirm", { n: fmt(keys.length), q: fmt(q) }))) moveReturns(keys, []);
+  });
+
   // Ctrl+S / ⌘+S でも保存
   document.addEventListener("keydown", (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
@@ -1096,7 +1244,7 @@
       rs.columns = [
         { header: "Code", width: COL_W.code }, { header: "Model", width: COL_W.model },
         { header: "Color", width: COL_W.color }, { header: "Size", width: COL_W.size },
-        { header: "Store", width: 24 }, { header: "Return", width: 10 },
+        { header: "Store", width: 24 }, { header: "Return", width: 10 }, { header: "Status", width: 16 },
       ];
       rs.getRow(1).eachCell((cell) => {
         cell.fill = fill(NAVY);
@@ -1105,7 +1253,9 @@
       });
       data.items.forEach((it) => data.stores.forEach((s, i) => {
         const v = hasRet(i) ? returns[rkey(it, i)] : 0;
-        if (v) rs.addRow([it.code || null, it.model, it.color, it.size, s, v]);
+        if (v) rs.addRow([it.code || null, it.model, it.color, it.size, s, v, t("recv.transit")]);
+        const rv = hasRet(i) ? received[rkey(it, i)] : 0;
+        if (rv) rs.addRow([it.code || null, it.model, it.color, it.size, s, rv, t("recv.done")]);
       }));
       if (rs.rowCount === 1) rs.addRow([t("xlsx.noReturns")]);
       rs.views = [{ state: "frozen", ySplit: 1 }];
@@ -1167,6 +1317,7 @@
       + (d.eventSource ? " " + t("foot.event", { n: fmt(d.eventMoved) }) : "")
       + (d.eventStock ? " " + t("foot.eventStock", { c: d.eventStock.cutoff, s: fmt(d.eventStock.start), o: fmt(d.eventStock.sold), r: fmt(d.eventStock.remain) }) : "")
       + (d.salesRate ? " " + t("foot.rate", { p: Object.entries(d.salesRate.months).map(([s, v]) => `${s === "Office" ? "Office (Online)" : s} ${v[2]}`).join(" / ") }) : "")
+      + (d.returnsSeed ? " " + t("foot.returnsSeed", { s: d.returnsSeed.source, n: fmt(Object.keys(d.returnsSeed.returns).length), q: fmt(sum(Object.values(d.returnsSeed.returns))) }) : "")
       + (d.generatedAt ? " " + t("foot.generated", { d: d.generatedAt }) : "");
     const an = $("allocNote");
     an.hidden = !d.allocSource;

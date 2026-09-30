@@ -252,7 +252,7 @@ def apply_sales_rate(items, store_names, path):
             "generatedAt": data["generatedAt"]}
 
 
-def main(path, office_path=None, alloc_path=None, event_path=None, event_stock_path=None, sales_rate_path=None):
+def main(path, office_path=None, alloc_path=None, event_path=None, event_stock_path=None, sales_rate_path=None, returns_import_path=None):
     wb = openpyxl.load_workbook(path, data_only=True)
     ws = wb[SHEET] if SHEET in wb.sheetnames else wb.worksheets[0]
     rows = list(ws.iter_rows(values_only=True))
@@ -341,6 +341,8 @@ def main(path, office_path=None, alloc_path=None, event_path=None, event_stock_p
                         "sold": event_stock["soldFromStart"], "remain": event_stock_added}
                        if office_path and event_stock else None),
         "salesRate": sales_rate if office_path else None,
+        # Excel に直接入力された Return。ダッシュボードが「返品輸送中」として 1 度だけ共有データに登録する
+        "returnsSeed": json.loads(Path(returns_import_path).read_text(encoding="utf-8")) if returns_import_path else None,
         "eventIndex": (store_names.index(EVENT_NAME) if office_path and event_src else None),  # Store Total に含めない
         "officeIndex": 0 if office_src else None,  # Office 列 (Return なし)
         "stores": store_names,
@@ -360,4 +362,5 @@ if __name__ == "__main__":
          sys.argv[3] if len(sys.argv) > 3 else None,
          sys.argv[4] if len(sys.argv) > 4 else None,
          sys.argv[5] if len(sys.argv) > 5 else None,
-         sys.argv[6] if len(sys.argv) > 6 else None)
+         sys.argv[6] if len(sys.argv) > 6 else None,
+         sys.argv[7] if len(sys.argv) > 7 else None)
