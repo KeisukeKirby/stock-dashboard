@@ -293,10 +293,15 @@
   //   num:  groups の番号 → { op: "gt0" | "eq0" | "range", min, max }
   const TEXT_COLS = ["code", "model", "color", "size"];
   const colFilters = { text: {}, num: {} };
+  // 拠点フィルター: 非表示にする列グループ (groups の番号)。空 = 全拠点を表示
+  const locHidden = new Set();
+  const locShown = () => groups.map((_, g) => g).filter((g) => !locHidden.has(g));
+  // 表示中の拠点 (Store Total / Company Total を除く)
+  const locStores = () => locShown().filter((g) => g < data.stores.length);
   const numOk = (v, f) =>
     f.op === "gt0" ? v > 0 : f.op === "eq0" ? v === 0 :
     (f.min == null || v >= f.min) && (f.max == null || v <= f.max);
-  const hasColFilters = () => Object.keys(colFilters.text).length + Object.keys(colFilters.num).length > 0;
+  const hasColFilters = () => Object.keys(colFilters.text).length + Object.keys(colFilters.num).length > 0 || locHidden.size > 0;
 
   // skip: そのフィルター自身を除いて判定する (▼ の候補一覧を作るため)
   function matches(it, skip) {
@@ -304,9 +309,18 @@
     {
       for (const k of TEXT_COLS) if (`t${k}` !== skip && colFilters.text[k] && !colFilters.text[k].has(it[k])) return false;
       for (const g in colFilters.num) if (`n${g}` !== skip && !numOk(rowQty(it)[+g], colFilters.num[g])) return false;
-      if (state.stock === "in" && it._tq <= 0) return false;
-      if (state.stock === "low" && it._tq !== 1) return false;
-      if (state.stock === "out" && it._tq !== 0) return false;
+      // 拠点を絞り込んだときは、選んだ拠点に在庫も月販もない行を隠し、在庫の条件も選んだ拠点の合計で見る
+      let stockQty = it._tq;
+      if (locHidden.size && skip !== "loc") {
+        const ls = locStores();
+        if (ls.length) {
+          stockQty = sum(ls.map((g) => it._adj[g]));
+          if (!ls.some((g) => it._adj[g] || (it.rate && it.rate[g]))) return false;
+        }
+      }
+      if (state.stock === "in" && stockQty <= 0) return false;
+      if (state.stock === "low" && stockQty !== 1) return false;
+      if (state.stock === "out" && stockQty !== 0) return false;
       if (q && !it._search.includes(q)) return false;
       return true;
     }
@@ -326,9 +340,14 @@
   let popFor = null;
 
   function colLabel(id) {
+    if (id === "loc") return t("f.loc");
     return id[0] === "t" ? { code: "Code", model: "Model", color: "Color", size: "Size" }[id.slice(1)] : `${groups[+id.slice(1)]} Quantity`;
   }
   function filterSummary(id) {
+    if (id === "loc") {
+      const vals = locShown().map((g) => shortGroup(groups[g]));
+      return vals.length <= 2 ? vals.join(", ") : `${vals.slice(0, 2).join(", ")} +${vals.length - 2}`;
+    }
     if (id[0] === "t") {
       const set = colFilters.text[id.slice(1)];
       const vals = [...set].map((v) => v || t("af.blank"));
@@ -340,7 +359,7 @@
     return `${f.min ?? ""} – ${f.max ?? ""}`;
   }
   function activeIds() {
-    return [...Object.keys(colFilters.text).map((k) => `t${k}`), ...Object.keys(colFilters.num).map((g) => `n${g}`)];
+    return [...(locHidden.size ? ["loc"] : []), ...Object.keys(colFilters.text).map((k) => `t${k}`), ...Object.keys(colFilters.num).map((g) => `n${g}`)];
   }
 
   function updateFilterUi() {
@@ -349,7 +368,8 @@
     document.querySelectorAll(".ms").forEach((b) => {
       const id = b.dataset.af;
       b.querySelector(".ms-val").textContent = act.has(id) ? filterSummary(id) : t("f.all");
-      b.title = act.has(id) ? [...colFilters.text[id.slice(1)]].map((v) => v || t("af.blank")).join("\n") : "";
+      b.title = !act.has(id) ? "" : id === "loc" ? locShown().map((g) => groups[g]).join("\n")
+        : [...colFilters.text[id.slice(1)]].map((v) => v || t("af.blank")).join("\n");
     });
     const box = $("activeFilters");
     if (!act.size) { box.hidden = true; box.innerHTML = ""; return; }
@@ -361,11 +381,14 @@
   $("activeFilters").addEventListener("click", (e) => {
     const b = e.target.closest("[data-rm]");
     if (!b) return;
-    if (b.dataset.rm === "*") { colFilters.text = {}; colFilters.num = {}; } else removeFilter(b.dataset.rm);
+    const hadLoc = locHidden.size > 0;
+    if (b.dataset.rm === "*") { colFilters.text = {}; colFilters.num = {}; locHidden.clear(); } else removeFilter(b.dataset.rm);
+    if (hadLoc && !locHidden.size) renderFrame(data);
     render();
   });
   function removeFilter(id) {
-    if (id[0] === "t") delete colFilters.text[id.slice(1)]; else delete colFilters.num[id.slice(1)];
+    if (id === "loc") locHidden.clear();
+    else if (id[0] === "t") delete colFilters.text[id.slice(1)]; else delete colFilters.num[id.slice(1)];
   }
 
   function closePop() { pop.hidden = true; popFor = null; }
@@ -373,7 +396,7 @@
     const id = btn.dataset.af;
     if (popFor === id) return closePop();
     popFor = id;
-    pop.innerHTML = id[0] === "t" ? textPopHtml(id.slice(1)) : numPopHtml(+id.slice(1));
+    pop.innerHTML = id === "loc" ? locPopHtml() : id[0] === "t" ? textPopHtml(id.slice(1)) : numPopHtml(+id.slice(1));
     pop.hidden = false;
     const r = btn.getBoundingClientRect();
     const w = pop.offsetWidth, h = pop.offsetHeight;
@@ -400,6 +423,22 @@
         <label class="af-all"><input type="checkbox" data-all> ${esc(t("af.selectAll"))}</label>
         ${vals.map((v) => `<label data-v="${esc(v.toLowerCase())}"><input type="checkbox" value="${esc(v)}" ${!cur || cur.has(v) ? "checked" : ""}> <span>${esc(v || t("af.blank"))}</span><em>${counts.get(v)}</em></label>`).join("")}
       </div>
+      <div class="af-foot">
+        <button type="button" class="ghost small" data-act="clear">${esc(t("af.clear"))}</button>
+        <span></span>
+        <button type="button" class="ghost small" data-act="cancel">${esc(t("af.cancel"))}</button>
+        <button type="button" class="primary small" data-act="ok">OK</button>
+      </div>`;
+  }
+
+  // 拠点 (列) の選択: 選んだ拠点の列だけを表示する
+  function locPopHtml() {
+    return `<div class="af-head">${esc(t("f.loc"))}</div>
+      <div class="af-list">
+        <label class="af-all"><input type="checkbox" data-all> ${esc(t("af.selectAll"))}</label>
+        ${groups.map((g, i) => `<label data-v="${esc(g.toLowerCase())}"${i === data.stores.length ? ' class="af-sep"' : ""}><input type="checkbox" value="${i}" ${locHidden.has(i) ? "" : "checked"}> <span>${esc(g)}</span></label>`).join("")}
+      </div>
+      <p class="af-note">${esc(t("f.locNote"))}</p>
       <div class="af-foot">
         <button type="button" class="ghost small" data-act="clear">${esc(t("af.clear"))}</button>
         <span></span>
@@ -442,6 +481,18 @@
 
   function applyPop() {
     const id = popFor;
+    if (id === "loc") {
+      const boxes = [...pop.querySelectorAll(".af-list label:not(.af-all) input")];
+      if (!boxes.some((b) => b.checked)) return; // 1 つも選ばないのは不可
+      locHidden.clear();
+      boxes.forEach((b) => b.checked || locHidden.add(+b.value));
+      // 隠した拠点の数量フィルターは外す
+      locHidden.forEach((g) => delete colFilters.num[g]);
+      closePop();
+      renderFrame(data);
+      render();
+      return;
+    }
     if (id[0] === "t") {
       const key = id.slice(1);
       const boxes = [...pop.querySelectorAll(".af-list label:not(.af-all) input")];
@@ -485,7 +536,7 @@
     if (!act) return;
     if (act.dataset.act === "ok") applyPop();
     else if (act.dataset.act === "cancel") closePop();
-    else if (act.dataset.act === "clear") { removeFilter(popFor); closePop(); render(); }
+    else if (act.dataset.act === "clear") { const f = popFor; removeFilter(f); closePop(); if (f === "loc") renderFrame(data); render(); }
   });
   pop.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closePop();
@@ -581,7 +632,7 @@
       <tr class="asof"><th colspan="${ncol}">${esc(d.asOf)}</th></tr>
       <tr class="h1">
         ${["Model", "Color", "Size"].map((h, k) => `<th rowspan="2">${h}${afBtn(`t${VIEW_TEXT[k]}`, h)}</th>`).join("")}
-        ${groups.map((g, i) => `<th class="grp" colspan="${colKinds(i).length}" title="${esc(g)}">${esc(shortGroup(g))}</th>`).join("")}
+        ${groups.map((g, i) => (colKinds(i).length ? `<th class="grp" colspan="${colKinds(i).length}" title="${esc(g)}">${esc(shortGroup(g))}</th>` : "")).join("")}
       </tr>
       <tr class="h2">${groups.map((g, i) => colKinds(i).map((k) =>
         k === "qty" ? `<th title="Quantity">Qty${afBtn(`n${i}`, `${g} Quantity`)}</th>`
@@ -609,7 +660,7 @@
   const fmtRate = (v) => (v == null ? "" : v === 0 ? "-" : v.toFixed(1)); // 小数第 2 位を四捨五入
   const fmtMos = (v) => (v == null ? "" : v <= 0 ? (v === 0 ? "-" : `(${Math.abs(v).toFixed(1)})`) : v.toFixed(1));
   // 列グループごとの列の並び: [月平均販売] Quantity [在庫月数] [Return]
-  const colKinds = (g) => [...(hasRate(g) ? ["rate"] : []), "qty", ...(hasRate(g) ? ["mos"] : []), ...(hasRet(g) ? ["ret"] : [])];
+  const colKinds = (g) => locHidden.has(g) ? [] : [...(hasRate(g) ? ["rate"] : []), "qty", ...(hasRate(g) ? ["mos"] : []), ...(hasRet(g) ? ["ret"] : [])];
   const numCols = () => VIEW_TEXT.length + sum(groups.map((_, i) => colKinds(i).length));
 
   // 1 行分の Quantity / Return を groups の並びで返す
@@ -972,6 +1023,7 @@
       const XLBL = { qty: "Quantity", ret: "Return", rate: t("col.rate"), mos: t("col.mos") };
       groups.forEach((g, gi) => {
         const kinds = colKinds(gi);
+        if (!kinds.length) return;
         if (kinds.length > 1) ws.mergeCells(3, c, 3, c + kinds.length - 1);
         ws.getCell(3, c).value = g;
         kinds.forEach((k, j) => (ws.getCell(4, c + j).value = XLBL[k]));
@@ -1101,6 +1153,7 @@
     Object.assign(state, { q: "", stock: "", sort: "" });
     colFilters.text = {};
     colFilters.num = {};
+    if (locHidden.size) { locHidden.clear(); renderFrame(data); }
     ["q", "fStock", "fSort"].forEach((id) => ($(id).value = ""));
     render();
   });
