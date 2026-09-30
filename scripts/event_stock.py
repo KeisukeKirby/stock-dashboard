@@ -2,8 +2,11 @@
 
   残り在庫 = スタート在庫 (EVENT_*.xlsx の「Event Asoke」列) − 販売数 (POS 注文明細、締め日の営業終了まで)
 
+  スタート在庫は「Event Asoke」列があるすべてのシートの VFF シューズを合計する
+  (「VFF」シート + 「Not all sizes&Slow seller」シートなど)。靴下 (VFF0027〜0029) は在庫表にないので除く。
+
 使い方:
-    python scripts/event_stock.py data/EVENT_SeP2026_start_stock.xlsx 2026-09-25 data/event_orders/*.xlsx
+    python scripts/event_stock.py data/EVENT_SeP2026.xlsx 2026-09-25 data/event_orders/order_detail_202609300944_275z.xlsx
 
 結果は data/event_asok_stock.json に保存され、convert.py の 5 つ目の引数に渡すと
 Event Asok 列に加算される (Office は動かさない)。
@@ -37,19 +40,34 @@ def parse_date(v):
     return None
 
 
+SOCKS_RE = re.compile(r"^VFF00(27|28|29)\(")
+
+
 def read_start(path):
-    ws = openpyxl.load_workbook(path, data_only=True).worksheets[0]
-    rows = list(ws.iter_rows(values_only=True))
-    head = [str(h or "").replace("\n", " ").strip() for h in rows[0]]
-    c_qty = next(i for i, h in enumerate(head) if "event" in h.lower())
     start = collections.Counter()
-    for r in rows[1:]:
-        if not r[0]:
+    sheets = {}
+    for ws in openpyxl.load_workbook(path, data_only=True).worksheets:
+        rows = list(ws.iter_rows(values_only=True))
+        if not rows:
             continue
-        code = str(r[0]).strip()
-        if code.count("(") > code.count(")"):  # Excel 上で ")" が欠けているコードを補う
-            code += ")"
-        start[code] += int(r[c_qty] or 0)
+        head = [str(h or "").replace("\n", " ").strip().lower() for h in rows[0]]
+        cols = [i for i, h in enumerate(head) if "asok" in h]
+        if not cols:
+            continue
+        n = 0
+        for r in rows[1:]:
+            if not r[0] or not isinstance(r[cols[0]], (int, float)) or not r[cols[0]]:
+                continue
+            code = str(r[0]).strip()
+            if code.count("(") > code.count(")"):  # Excel 上で ")" が欠けているコードを補う
+                code += ")"
+            if not SKU_RE.match(code) or SOCKS_RE.match(code):
+                continue  # VFF シューズのみ
+            start[code] += int(r[cols[0]])
+            n += int(r[cols[0]])
+        if n:
+            sheets[ws.title] = n
+    print("start stock by sheet:", sheets)
     return start
 
 

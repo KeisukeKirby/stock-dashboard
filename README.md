@@ -83,11 +83,11 @@ cd public && python3 -m http.server 8000
 
 ## イベント (Event Asok) の残り在庫
 
-`scripts/event_stock.py` で「スタート在庫 − 締め日までの販売数」を計算し、`data/event_asok_stock.json` に保存します。
+`scripts/event_stock.py` で「スタート在庫（EVENT_*.xlsx の「Event Asoke」列がある全シートの VFF シューズ）− 締め日までの販売数」を計算し、`data/event_asok_stock.json` に保存します。
 convert.py の 5 つ目の引数に渡すと Event Asok 列に加算されます（Office は動かしません）。
 
 ```bash
-python scripts/event_stock.py data/EVENT_SeP2026_start_stock.xlsx 2026-09-25 data/event_orders/order_detail_202609300944_275z.xlsx
+python scripts/event_stock.py data/EVENT_SeP2026.xlsx 2026-09-25 data/event_orders/order_detail_202609300944_275z.xlsx
 python scripts/convert.py data/Store_Stock_092526.xlsx data/VFF_Stock_25-09-26.xlsx \
     data/New_Arrival_Allocation.xlsx data/import_9.26_move_to_branch.xlsx data/event_asok_stock.json
 ```
