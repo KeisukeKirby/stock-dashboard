@@ -250,6 +250,8 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 }
 .field input:focus, .field select:focus { outline: 2px solid var(--accent-soft); border-color: var(--accent); }
 .filters .ghost { height: 36px; }
+.check-toggle { display: inline-flex; align-items: center; gap: 6px; height: 36px; font-size: 13px; color: var(--ink-2); cursor: pointer; white-space: nowrap; }
+.check-toggle[hidden] { display: none; }
 /* 複数選択のドロップダウン (モデル・カラー・サイズ) */
 .ms {
   display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; min-width: 150px; max-width: 240px;
@@ -332,6 +334,9 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 .sheet thead tr.h1 th { top: calc(var(--title-h) + var(--row-h)); }
 .sheet thead tr.h2 th { top: calc(var(--title-h) + var(--row-h) + var(--head-h)); }
 .sheet thead tr.h2 th.ret-h { background: var(--x-header-ret); }
+.sheet thead tr.h2 th.rate-h, .sheet thead tr.h2 th.mos-h { background: #2f75b5; font-size: 8.5pt; white-space: normal; line-height: 1.05; padding: 0 1px; }
+.sheet td.rate { color: #1f4e78; }
+.sheet td.mos { color: #1f4e78; font-style: italic; }
 .sheet tr.total td { background: var(--x-total-fill); font-weight: 700; }
 .sheet td.empty { text-align: center; color: #595959; height: 40px; }
 

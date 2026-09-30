@@ -93,3 +93,24 @@ python scripts/convert.py data/Store_Stock_092526.xlsx data/VFF_Stock_25-09-26.x
 ```
 
 POS の注文明細（data/event_orders/）は顧客情報を含むため Git には入れていません。注文明細は全期間・全系列（RC-12 / RC-15 / RB）を含む 1 ファイルを使います（複数ファイルを渡すと重複して数えるので注意）。
+
+## 月平均販売・在庫月数
+
+各店舗（K Village / Central CL / Siam Discovery / Paradise Park / Central LP）と Store Total の在庫数の左に「月平均販売」、右に「在庫月数（在庫 ÷ 月平均販売）」を表示します（フィルター欄のチェックで表示／非表示）。
+
+`scripts/sales_rate.py` が 2026年1〜8月の店頭販売（VFF シューズ、オンライン注文を除く）から SKU×店舗の月平均販売足数を計算し `data/sales_rate.json` に保存、convert.py の 6 つ目の引数で在庫データに付けます。
+
+```bash
+python scripts/sales_rate.py        # data/sales_raw/ の販売明細を読む（顧客情報を含むため Git 管理外）
+python scripts/convert.py data/Store_Stock_092526.xlsx data/VFF_Stock_25-09-26.xlsx data/New_Arrival_Allocation.xlsx \
+    data/import_9.26_move_to_branch.xlsx data/event_asok_stock.json data/sales_rate.json
+```
+
+| 店舗 | 元データ | 対象月 |
+|---|---|---|
+| K Village / Central LP | EDV 受注明細 order_detail_*_7duk（倉庫 Kvillage / Coollabo Cen LP 3F） | 1〜8月 |
+| Paradise Park | Barefoot 受注明細 order_detail_*_dint（倉庫 Paradise Park、店頭レジのみ） | 4〜8月（4月開店） |
+| Central CL | BFT_Central_Total_Department（CHIDLOM のみ） | 1〜6月・8月（7月の明細なし） |
+| Siam Discovery | Sales_Siam_Dis（商品名から SKU を判定） | 1〜8月 |
+
+照合: K Village・Central LP は EDV 販売ダッシュボードと SKU×月で一致、Paradise Park・Central CL・Siam Discovery は販売ダッシュボードの店舗別月次と照合済み（差異は README 外のチャット記録参照）。

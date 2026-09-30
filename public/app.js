@@ -13,7 +13,7 @@
   };
 
   // Excel の列幅 (文字数) → px : width * 7 + 5
-  const COL_W = { code: 23.63, model: 15.27, color: 16.63, size: 10.91, qty: 12.36, ret: 11.18 };
+  const COL_W = { code: 23.63, model: 15.27, color: 16.63, size: 10.91, qty: 12.36, ret: 11.18, rate: 8.5, mos: 8.5 };
   const px = (w) => Math.round(w * 7 + 5);
 
   // sort: "" = Excel の並び / "0".. = 店舗・オフィス / "store" = Store Total / "total" = Company Total
@@ -259,6 +259,7 @@
       const q = rowQty(it);
       tr.querySelectorAll("td.q").forEach((td, k) => (td.textContent = nf(q[k])));
       tr.querySelector("td.tr").textContent = nf(it._tr);
+      updateMos(tr, it);
       tr.querySelectorAll(".ret-in").forEach((inp) => {
         if (inp === active) return;
         const v = String(it._ret[+inp.dataset.s] ?? "");
@@ -566,26 +567,40 @@
     const ncol = numCols();
     $("cols").innerHTML =
       [COL_W.code, COL_W.model, COL_W.color, COL_W.size].map((w) => `<col style="width:${px(w)}px">`).join("") +
-      groups.map((_, g) => {
+      groups.map((_, g) => colKinds(g).map((k) => {
         // Company Total は Return がないので見出しが収まる幅にする
-        const w = !hasRet(g) && g >= data.stores.length ? 15.5 : COL_W.qty;
-        return `<col style="width:${px(w)}px">` + (hasRet(g) ? `<col style="width:${px(COL_W.ret)}px">` : "");
-      }).join("");
+        const w = k === "qty" ? (!hasRet(g) && g >= data.stores.length ? 15.5 : COL_W.qty) : COL_W[k];
+        return `<col style="width:${px(w)}px">`;
+      }).join("")).join("");
     $("thead").innerHTML = `
       <tr class="title"><th colspan="${ncol}">${esc(d.title)}</th></tr>
       <tr class="asof"><th colspan="${ncol}">${esc(d.asOf)}</th></tr>
       <tr class="h1">
         ${["Code", "Model", "Color", "Size"].map((h, k) => `<th rowspan="2">${h}${afBtn(`t${TEXT_COLS[k]}`, h)}</th>`).join("")}
-        ${groups.map((g, i) => `<th colspan="${hasRet(i) ? 2 : 1}">${esc(g)}</th>`).join("")}
+        ${groups.map((g, i) => `<th colspan="${colKinds(i).length}">${esc(g)}</th>`).join("")}
       </tr>
-      <tr class="h2">${groups.map((g, i) => `<th>Quantity${afBtn(`n${i}`, `${g} Quantity`)}</th>` + (hasRet(i) ? `<th class="ret-h">Return</th>` : "")).join("")}</tr>`;
+      <tr class="h2">${groups.map((g, i) => colKinds(i).map((k) =>
+        k === "qty" ? `<th>Quantity${afBtn(`n${i}`, `${g} Quantity`)}</th>`
+        : k === "ret" ? `<th class="ret-h">Return</th>`
+        : `<th class="${k}-h" title="${esc(t(`col.${k}.title`))}">${esc(t(`col.${k}`))}</th>`).join("")).join("")}</tr>`;
     updateFilterUi();
   }
 
   const afBtn = (id, label) =>
     `<button type="button" class="af" data-af="${id}" aria-haspopup="dialog" aria-label="${esc(label)} ${esc(t("af.title"))}"><svg viewBox="0 0 10 10" aria-hidden="true"><path class="af-arrow" d="M2 3.5h6L5 7z"/><path class="af-funnel" d="M1.5 2h7L6 5.2V8.5L4 7.5V5.2z"/></svg></button>`;
 
-  const numCols = () => 4 + sum(groups.map((_, i) => (hasRet(i) ? 2 : 1)));
+  // 月平均販売・在庫月数: 販売データのある店舗と Store Total に付ける (Office・Event・Company Total には付けない)
+  let showRate = true;
+  try { showRate = localStorage.getItem("showRate") !== "0"; } catch (_) {}
+  const rateStores = () => (data.salesRate && showRate ? data.stores.map((s, i) => (s in data.salesRate.months ? i : -1)).filter((i) => i >= 0) : []);
+  const hasRate = (g) => rateStores().includes(g) || (rateStores().length > 0 && hasOffice() && g === data.stores.length);
+  const rowRate = (it, g) => (g < data.stores.length ? (it.rate ? it.rate[g] : null) : sum(rateStores().map((i) => (it.rate ? it.rate[i] : 0))));
+  const mos = (q, r) => (r ? q / r : null); // 在庫月数 = 在庫 ÷ 月平均販売
+  const fmtRate = (v) => (v == null ? "" : v === 0 ? "-" : v.toFixed(2));
+  const fmtMos = (v) => (v == null ? "" : v <= 0 ? (v === 0 ? "-" : `(${Math.abs(v).toFixed(1)})`) : v.toFixed(1));
+  // 列グループごとの列の並び: [月平均販売] Quantity [在庫月数] [Return]
+  const colKinds = (g) => [...(hasRate(g) ? ["rate"] : []), "qty", ...(hasRate(g) ? ["mos"] : []), ...(hasRet(g) ? ["ret"] : [])];
+  const numCols = () => 4 + sum(groups.map((_, i) => colKinds(i).length));
 
   // 1 行分の Quantity / Return を groups の並びで返す
   const rowQty = (it) => (hasOffice() ? [...it._adj, it._st, it._tq] : [...it._adj, it._tq]);
@@ -594,11 +609,25 @@
   function totalsOf(items) {
     const qty = groups.map((_, g) => sum(items.map((it) => rowQty(it)[g])));
     const ret = groups.map((_, g) => sum(items.map((it) => rowRet(it)[g])));
-    return { qty, ret };
+    const rate = groups.map((_, g) => (hasRate(g) ? sum(items.map((it) => rowRate(it, g))) : null));
+    return { qty, ret, rate };
   }
 
   const totalRowHtml = (tot) => `<td>Total</td><td></td><td></td><td></td>
-      ${groups.map((_, i) => `<td class="c">${nf(tot.qty[i])}</td>` + (hasRet(i) ? `<td class="c">${nf(tot.ret[i])}</td>` : "")).join("")}`;
+      ${groups.map((_, i) => colKinds(i).map((k) =>
+        k === "qty" ? `<td class="c">${nf(tot.qty[i])}</td>`
+        : k === "ret" ? `<td class="c">${nf(tot.ret[i])}</td>`
+        : k === "rate" ? `<td class="c rate">${fmtRate(tot.rate[i])}</td>`
+        : `<td class="c mos">${fmtMos(mos(tot.qty[i], tot.rate[i]))}</td>`).join("")).join("")}`;
+
+  // Return で在庫が変わったときに在庫月数を更新
+  function updateMos(tr, it) {
+    const q = rowQty(it);
+    tr.querySelectorAll("td.mos").forEach((td) => {
+      const g = +td.dataset.g;
+      td.textContent = fmtMos(mos(q[g], rowRate(it, g)));
+    });
+  }
 
   let shown = []; // 表示中の行 (Total 行の再計算用)
   function renderTable(items) {
@@ -608,10 +637,13 @@
         <td>${esc(it.code)}</td><td>${esc(it.model)}</td><td>${esc(it.color)}</td><td class="c">${esc(it.size)}</td>
         ${rowQty(it).map((q, g) => {
           const tot = g >= data.stores.length;
-          const qc = `<td class="c q${tot ? " b" : ""}">${nf(q)}</td>`;
-          if (!hasRet(g)) return qc;
-          if (tot) return qc + `<td class="c b tr">${nf(it._tr)}</td>`;
-          return qc + `<td class="c ret"><input class="ret-in" type="text" inputmode="numeric" autocomplete="off" data-s="${g}" value="${it._ret[g] ?? ""}" aria-label="${esc(data.stores[g])} Return"></td>`;
+          return colKinds(g).map((k) => {
+            if (k === "qty") return `<td class="c q${tot ? " b" : ""}">${nf(q)}</td>`;
+            if (k === "rate") return `<td class="c rate">${fmtRate(rowRate(it, g))}</td>`;
+            if (k === "mos") return `<td class="c mos" data-g="${g}">${fmtMos(mos(q, rowRate(it, g)))}</td>`;
+            if (tot) return `<td class="c b tr">${nf(it._tr)}</td>`;
+            return `<td class="c ret"><input class="ret-in" type="text" inputmode="numeric" autocomplete="off" data-s="${g}" value="${it._ret[g] ?? ""}" aria-label="${esc(data.stores[g])} Return"></td>`;
+          }).join("");
         }).join("")}
       </tr>`);
     if (!items.length) rows.push(`<tr><td class="empty" colspan="${numCols()}">${esc(t("empty"))}</td></tr>`);
@@ -647,6 +679,7 @@
     const q = rowQty(it);
     tr.querySelectorAll("td.q").forEach((td, k) => (td.textContent = nf(q[k])));
     tr.querySelector("td.tr").textContent = nf(it._tr);
+    updateMos(tr, it);
     $("totalRow").innerHTML = totalRowHtml(totalsOf(shown));
     data._grand = sum(data.items.map((x) => x._tq));
     const rows = filtered();
@@ -859,9 +892,15 @@
   $("dlCsv").addEventListener("click", () => {
     const rows = filtered();
     const q = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
-    const head = ["Code", "Model", "Color", "Size", ...groups.flatMap((g, i) => (hasRet(i) ? [`${g} Quantity`, `${g} Return`] : [`${g} Quantity`]))];
-    const body = rows.map((it) => [it.code, it.model, it.color, it.size,
-      ...rowQty(it).flatMap((v, g) => (hasRet(g) ? [v, rowRet(it)[g] ?? ""] : [v]))]);
+    const LBL = { qty: "Quantity", ret: "Return", rate: "Monthly avg sales", mos: "Months of stock" };
+    const head = ["Code", "Model", "Color", "Size", ...groups.flatMap((g, i) => colKinds(i).map((k) => `${g} ${LBL[k]}`))];
+    const body = rows.map((it) => {
+      const q = rowQty(it), rt = rowRet(it);
+      return [it.code, it.model, it.color, it.size, ...groups.flatMap((_, g) => colKinds(g).map((k) => {
+        const r = rowRate(it, g), m = mos(q[g], r);
+        return k === "qty" ? q[g] : k === "ret" ? rt[g] ?? "" : k === "rate" ? (r == null ? "" : +r.toFixed(3)) : (m == null ? "" : +m.toFixed(1));
+      }))];
+    });
     const csv = "﻿" + [head, ...body].map((r) => r.map(q).join(",")).join("\r\n");
     const a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
@@ -901,11 +940,11 @@
       const headBorder = { top: white, left: white, bottom: white, right: white };
 
       // 列の並び: Code, Model, Color, Size, [拠点ごとに Quantity (+ Return)], Store Total, Company Total
-      const layout = []; // { g, kind: "qty" | "ret" }
-      groups.forEach((_, g) => { layout.push({ g, kind: "qty" }); if (hasRet(g)) layout.push({ g, kind: "ret" }); });
+      const layout = []; // { g, kind: "rate" | "qty" | "mos" | "ret" }
+      groups.forEach((_, g) => colKinds(g).forEach((kind) => layout.push({ g, kind })));
       ws.columns = [
         { width: COL_W.code }, { width: COL_W.model }, { width: COL_W.color }, { width: COL_W.size },
-        ...layout.map((c) => ({ width: c.kind === "ret" ? COL_W.ret : (!hasRet(c.g) && c.g >= data.stores.length ? 15.5 : COL_W.qty) })),
+        ...layout.map((c) => ({ width: c.kind === "qty" ? (!hasRet(c.g) && c.g >= data.stores.length ? 15.5 : COL_W.qty) : COL_W[c.kind] })),
       ];
       const lastCol = 4 + layout.length;
 
@@ -920,20 +959,20 @@
         ws.getCell(3, k + 1).value = h;
       });
       let c = 5;
+      const XLBL = { qty: "Quantity", ret: "Return", rate: t("col.rate"), mos: t("col.mos") };
       groups.forEach((g, gi) => {
-        const span = hasRet(gi) ? 2 : 1;
-        if (span === 2) ws.mergeCells(3, c, 3, c + 1);
+        const kinds = colKinds(gi);
+        if (kinds.length > 1) ws.mergeCells(3, c, 3, c + kinds.length - 1);
         ws.getCell(3, c).value = g;
-        ws.getCell(4, c).value = "Quantity";
-        if (span === 2) ws.getCell(4, c + 1).value = "Return";
-        c += span;
+        kinds.forEach((k, j) => (ws.getCell(4, c + j).value = XLBL[k]));
+        c += kinds.length;
       });
       for (let r = 3; r <= 4; r++) {
         ws.getRow(r).height = 20;
         for (let k = 1; k <= lastCol; k++) {
           const cell = ws.getCell(r, k);
-          const isRet = r === 4 && layout[k - 5] && layout[k - 5].kind === "ret";
-          cell.fill = fill(isRet ? GOLD : NAVY);
+          const kind = r === 4 && layout[k - 5] ? layout[k - 5].kind : null;
+          cell.fill = fill(kind === "ret" ? GOLD : kind === "rate" || kind === "mos" ? "FF2F75B5" : NAVY);
           cell.font = { name: "Calibri", size: 11, bold: true, color: { argb: "FFFFFFFF" } };
           cell.alignment = { horizontal: "center", vertical: "middle" };
           cell.border = headBorder;
@@ -946,7 +985,11 @@
         const r = 5 + n;
         const q = rowQty(it), rt = rowRet(it);
         const vals = [it.code || null, it.model, it.color, it.size,
-          ...layout.map((col) => (col.kind === "qty" ? q[col.g] : rt[col.g] || null))];
+          ...layout.map((col) => {
+            const rr = rowRate(it, col.g), m = mos(q[col.g], rr);
+            return col.kind === "qty" ? q[col.g] : col.kind === "ret" ? rt[col.g] || null
+              : col.kind === "rate" ? (rr == null ? null : +rr.toFixed(3)) : (m == null ? null : +m.toFixed(1));
+          })];
         const row = ws.getRow(r);
         row.values = vals;
         vals.forEach((_, k) => {
@@ -956,7 +999,7 @@
           cell.font = { name: "Calibri", size: 11 };
           if (k >= 3) cell.alignment = { horizontal: "center" };
           if (!col) return;
-          cell.numFmt = NF;
+          cell.numFmt = col.kind === "rate" ? "0.00;(0.00);-" : col.kind === "mos" ? "0.0;(0.0);-" : NF;
           const isTotal = col.g >= data.stores.length;
           if (col.kind === "ret" && !isTotal) {
             cell.fill = fill(RETFILL);
@@ -969,13 +1012,21 @@
       // Total 行
       const tot = totalsOf(items);
       const tr = ws.getRow(5 + items.length);
-      tr.values = ["Total", null, null, null, ...layout.map((col) => (col.kind === "qty" ? tot.qty[col.g] : tot.ret[col.g]))];
+      tr.values = ["Total", null, null, null, ...layout.map((col) => {
+        const m = mos(tot.qty[col.g], tot.rate[col.g]);
+        return col.kind === "qty" ? tot.qty[col.g] : col.kind === "ret" ? tot.ret[col.g]
+          : col.kind === "rate" ? +(tot.rate[col.g] || 0).toFixed(3) : (m == null ? null : +m.toFixed(1));
+      })];
       for (let k = 1; k <= lastCol; k++) {
         const cell = tr.getCell(k);
+        const col = layout[k - 5];
         cell.fill = fill(TOTFILL);
         cell.font = { name: "Calibri", size: 11, bold: true };
         cell.border = { top: { style: "thin", color: { argb: LINE } } };
-        if (k >= 4) { cell.alignment = { horizontal: "center" }; cell.numFmt = NF; }
+        if (k >= 4) {
+          cell.alignment = { horizontal: "center" };
+          cell.numFmt = col && col.kind === "rate" ? "0.00;(0.00);-" : col && col.kind === "mos" ? "0.0;(0.0);-" : NF;
+        }
       }
 
       // 2 枚目: 入力された返品の一覧
@@ -1014,6 +1065,15 @@
   }
   $("dlXlsxOut").addEventListener("click", exportExcel);
 
+  /* ---------- 月平均販売・在庫月数の表示切り替え ---------- */
+  $("showRate").checked = showRate;
+  $("showRate").addEventListener("change", (e) => {
+    showRate = e.target.checked;
+    try { localStorage.setItem("showRate", showRate ? "1" : "0"); } catch (_) {}
+    renderFrame(data);
+    render();
+  });
+
   /* ---------- controls ---------- */
   const bind = (id, key, ev = "change") => $(id).addEventListener(ev, (e) => { state[key] = e.target.value; render(); });
   bind("q", "q", "input");
@@ -1043,6 +1103,7 @@
     $("foot").textContent = t("foot", { src }) + (d.allocSource ? " " + t("foot.alloc", { n: fmt(d.allocMoved) }) : "")
       + (d.eventSource ? " " + t("foot.event", { n: fmt(d.eventMoved) }) : "")
       + (d.eventStock ? " " + t("foot.eventStock", { c: d.eventStock.cutoff, s: fmt(d.eventStock.start), o: fmt(d.eventStock.sold), r: fmt(d.eventStock.remain) }) : "")
+      + (d.salesRate ? " " + t("foot.rate", { p: Object.entries(d.salesRate.months).map(([s, v]) => `${s} ${v[2]}`).join(" / ") }) : "")
       + (d.generatedAt ? " " + t("foot.generated", { d: d.generatedAt }) : "");
     const an = $("allocNote");
     an.hidden = !d.allocSource;
@@ -1092,6 +1153,7 @@
 
       $("dlOffice").hidden = !d.officeSource;
       fillSortOptions();
+      $("rateToggle").hidden = !d.salesRate;
       renderFrame(d);
       render();
       showView(view);

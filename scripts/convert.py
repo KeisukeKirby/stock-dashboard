@@ -233,7 +233,18 @@ def apply_event_stock(items, store_names, path):
     return data, added
 
 
-def main(path, office_path=None, alloc_path=None, event_path=None, event_stock_path=None):
+def apply_sales_rate(items, store_names, path):
+    """scripts/sales_rate.py の月平均販売足数を各商品に付ける (店舗の列のみ。Office・Event は None)。"""
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    rate = data["rate"]
+    for i in items:
+        r = rate.get(i["code"], {}) if i["code"] else {}
+        i["rate"] = [(round(r.get(s, 0), 3) if s in data["months"] else None) for s in store_names]
+    print(f"sales rate: {sum(1 for i in items if any(i['rate']))} items with sales, stores {list(data['months'])}")
+    return {"months": {s: [m[0], m[-1], len(m)] for s, m in data["months"].items()}, "generatedAt": data["generatedAt"]}
+
+
+def main(path, office_path=None, alloc_path=None, event_path=None, event_stock_path=None, sales_rate_path=None):
     wb = openpyxl.load_workbook(path, data_only=True)
     ws = wb[SHEET] if SHEET in wb.sheetnames else wb.worksheets[0]
     rows = list(ws.iter_rows(values_only=True))
@@ -298,6 +309,7 @@ def main(path, office_path=None, alloc_path=None, event_path=None, event_stock_p
         event_stock, event_stock_added = None, 0
         if event_stock_path:
             event_stock, event_stock_added = apply_event_stock(items, store_names, event_stock_path)
+        sales_rate = apply_sales_rate(items, store_names, sales_rate_path) if sales_rate_path else None
         qty = [sum(i["qty"][k] for i in items) for k in range(n)]
         ret = [sum(i["ret"][k] or 0 for i in items) for k in range(n)]
         total_row = {"qty": qty + [sum(qty)], "ret": ret + [sum(ret)]}
@@ -320,6 +332,7 @@ def main(path, office_path=None, alloc_path=None, event_path=None, event_stock_p
         "eventStock": ({"cutoff": event_stock["cutoff"], "start": event_stock["startTotal"],
                         "sold": event_stock["soldFromStart"], "remain": event_stock_added}
                        if office_path and event_stock else None),
+        "salesRate": sales_rate if office_path else None,
         "eventIndex": (store_names.index(EVENT_NAME) if office_path and event_src else None),  # Store Total に含めない
         "officeIndex": 0 if office_src else None,  # Office 列 (Return なし)
         "stores": store_names,
@@ -338,4 +351,5 @@ if __name__ == "__main__":
          sys.argv[2] if len(sys.argv) > 2 else None,
          sys.argv[3] if len(sys.argv) > 3 else None,
          sys.argv[4] if len(sys.argv) > 4 else None,
-         sys.argv[5] if len(sys.argv) > 5 else None)
+         sys.argv[5] if len(sys.argv) > 5 else None,
+         sys.argv[6] if len(sys.argv) > 6 else None)

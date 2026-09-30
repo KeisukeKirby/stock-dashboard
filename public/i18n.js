@@ -3,6 +3,12 @@
 (() => {
   const DICT = {
     ja: {
+      "rate.toggle": "月平均販売・在庫月数を表示",
+      "col.rate": "月平均販売",
+      "col.rate.title": "2026年1〜8月の店頭販売（VFFシューズ）の月平均足数",
+      "col.mos": "在庫月数",
+      "col.mos.title": "在庫 ÷ 月平均販売（何ヶ月分の在庫か）",
+      "foot.rate": "月平均販売は 2026年1〜8月の店頭販売（VFFシューズ、オンライン注文を除く）の月平均で、在庫月数 = 在庫 ÷ 月平均販売です。対象月数: {p}（Paradise Park は 4月開店、Central CL は 7月の明細なし）。",
       "foot.eventStock": "Event Asok にはイベントのスタート在庫 {s} 足から {c} 営業終了までの販売 {o} 足を引いた残り {r} 足も含みます（Office は変更なし）。",
       "kpi.noteOfficeEvent": "{n} 店舗＋オフィス＋イベントの合計",
       "foot.event": "店舗移動表の Asok 分（{n} 足）を Office から Event Asok 列へ移しています。Event Asok は Store Total には含まず、Company Total に含みます。",
@@ -100,6 +106,12 @@
       "foot": "データ元: {src} — 数値は Excel 保存時の計算結果です。Store Total は店舗のみ、Company Total は店舗とオフィスの合計です。絞り込み中の Total 行は表示中の行の合計です。",
     },
     en: {
+      "rate.toggle": "Show avg sales & months of stock",
+      "col.rate": "Avg Sales/Mo",
+      "col.rate.title": "Average monthly in-store sales (VFF shoes, pairs), Jan–Aug 2026",
+      "col.mos": "Months of Stock",
+      "col.mos.title": "Stock ÷ average monthly sales",
+      "foot.rate": "Avg Sales/Mo is the monthly average of in-store sales (VFF shoes, online orders excluded) for Jan–Aug 2026; Months of Stock = stock ÷ Avg Sales/Mo. Months used: {p} (Paradise Park opened in April; no July detail for Central CL).",
       "foot.eventStock": "Event Asok also includes the event starting stock of {s} pairs minus {o} pairs sold through the end of {c}, i.e. {r} pairs remaining (Office unchanged).",
       "kpi.noteOfficeEvent": "{n} stores + office + event",
       "foot.event": "The Asok quantities from the move-to-branch sheet ({n} pairs) have been moved from Office to the Event Asok column. Event Asok is included in Company Total but not in Store Total.",
@@ -197,6 +209,12 @@
       "foot": "Source: {src} — Figures are the values calculated when the Excel file was saved. Store Total = stores only; Company Total = stores + office. When filtered, the Total row is the sum of the rows shown.",
     },
     th: {
+      "rate.toggle": "แสดงยอดขายเฉลี่ยและสต็อกพอขาย",
+      "col.rate": "ยอดขายเฉลี่ย/เดือน",
+      "col.rate.title": "ยอดขายหน้าร้านเฉลี่ยต่อเดือน (รองเท้า VFF, คู่) ม.ค.–ส.ค. 2026",
+      "col.mos": "สต็อกพอขาย (เดือน)",
+      "col.mos.title": "สต็อก ÷ ยอดขายเฉลี่ยต่อเดือน",
+      "foot.rate": "ยอดขายเฉลี่ย/เดือน คือค่าเฉลี่ยรายเดือนของยอดขายหน้าร้าน (รองเท้า VFF ไม่รวมออนไลน์) ม.ค.–ส.ค. 2026 และ สต็อกพอขาย = สต็อก ÷ ยอดขายเฉลี่ย จำนวนเดือนที่ใช้: {p} (Paradise Park เปิดเดือนเมษายน, Central CL ไม่มีรายละเอียดเดือนกรกฎาคม)",
       "foot.eventStock": "Event Asok รวมสต็อกเริ่มต้นของอีเวนต์ {s} คู่ หักยอดขาย {o} คู่ จนถึงปิดทำการวันที่ {c} เหลือ {r} คู่ (ออฟฟิศไม่เปลี่ยนแปลง)",
       "kpi.noteOfficeEvent": "{n} สาขา + ออฟฟิศ + อีเวนต์",
       "foot.event": "ย้ายจำนวน Asok จากตารางย้ายสินค้า ({n} คู่) จากออฟฟิศไปยังคอลัมน์ Event Asok แล้ว Event Asok รวมอยู่ใน Company Total แต่ไม่รวมใน Store Total",

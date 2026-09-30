@@ -5,3 +5,5 @@ __pycache__/
 
 # POS の注文明細 (顧客情報を含むため Git に入れない)
 data/event_orders/
+# 販売明細 (顧客情報を含むため Git に入れない)
+data/sales_raw/
