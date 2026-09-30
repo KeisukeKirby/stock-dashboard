@@ -19,6 +19,9 @@
   const VIEW_TEXT = ["model", "color", "size"];
   const shortModel = (m) => String(m || "").replace(/^VFF\s+/, "");
   const shortGroup = (g) => String(g).replace(" (Department)", " (Dept.)");
+  // Excel で黄色に塗られていたマス ("<商品コード>@<店舗>@qty|ret")
+  let HL = new Set();
+  const isHl = (it, g, kind) => HL.size > 0 && g < data.stores.length && HL.has(`${it.code}@${data.stores[g]}@${kind}`);
   const px = (w) => Math.round(w * 7 + 5);
 
   // sort: "" = Excel の並び / "0".. = 店舗・オフィス / "store" = Store Total / "total" = Company Total
@@ -753,11 +756,11 @@
         ${rowQty(it).map((q, g) => {
           const tot = g >= data.stores.length;
           return colKinds(g).map((k) => {
-            if (k === "qty") return `<td class="c q${tot ? " b" : ""}">${nf(q)}</td>`;
+            if (k === "qty") return `<td class="c q${tot ? " b" : ""}${isHl(it, g, "qty") ? " hl" : ""}">${nf(q)}</td>`;
             if (k === "rate") return `<td class="c rate">${fmtRate(rowRate(it, g))}</td>`;
             if (k === "mos") return `<td class="c mos" data-g="${g}">${fmtMos(mos(q, rowRate(it, g)))}</td>`;
             if (tot) return `<td class="c b tr">${nf(it._tr)}</td>`;
-            return `<td class="c ret"><input class="ret-in" type="text" inputmode="numeric" autocomplete="off" data-s="${g}" value="${it._ret[g] ?? ""}" aria-label="${esc(data.stores[g])} Return"${it._rc[g] ? ` title="${esc(t("recv.cellTitle", { q: it._rc[g] }))}"` : ""}></td>`;
+            return `<td class="c ret${isHl(it, g, "ret") ? " hl" : ""}"><input class="ret-in" type="text" inputmode="numeric" autocomplete="off" data-s="${g}" value="${it._ret[g] ?? ""}" aria-label="${esc(data.stores[g])} Return"${it._rc[g] ? ` title="${esc(t("recv.cellTitle", { q: it._rc[g] }))}"` : ""}></td>`;
           }).join("");
         }).join("")}
       </tr>`);
@@ -1269,6 +1272,7 @@
             cell.fill = fill(RETFILL);
             cell.font = { name: "Calibri", size: 11, color: { argb: "FF0000FF" } };
           }
+          if (isHl(it, col.g, col.kind === "ret" ? "ret" : "qty") && (col.kind === "ret" || col.kind === "qty")) cell.fill = fill("FFFFFF00");
           if (isTotal) cell.font = { name: "Calibri", size: 11, bold: true };
         });
       });
@@ -1406,6 +1410,7 @@
       data = d;
       groups = d.officeIndex != null ? [...d.stores, "Store Total", "Company Total"] : [...d.stores, "Total"];
       RKEY = `returns:${d.asOfDate || d.source}`;
+      HL = new Set(((d.returnsSeed && d.returnsSeed.highlights) || []).map((h) => `${h.code}@${h.store}@${h.kind}`));
       return initReturns().then(() => d);
     })
     .then((d) => {

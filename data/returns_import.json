@@ -80,5 +80,107 @@
   "VFF0023(LGN/BK,M44)@K Village": 1,
   "VFF0023(LGN/BK,M46)@K Village": 1,
   "VFF0023(LGN/BK,M47)@K Village": 1
- }
+ },
+ "highlights": [
+  {
+   "code": "VFF0017(BK/BK,M40)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(BK/BK,M41)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(BK/BK,M42)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(BK/BK,M43)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(BK/BK,M44)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(BK/BK,M45)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(BK/BK,M46)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(BK/BK,M47)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(BK/BK,W36)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(BK/BK,W37)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(BK/BK,W38)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(BK/BK,W39)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(BK/BK,W40)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(MIL/DGY,M40)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(MIL/DGY,M41)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(MIL/DGY,M42)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(MIL/DGY,M43)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(MIL/DGY,M44)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(MIL/DGY,M45)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  },
+  {
+   "code": "VFF0017(MIL/DGY,M46)",
+   "store": "Siam Discovery",
+   "kind": "ret"
+  }
+ ]
 }

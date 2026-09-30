@@ -311,6 +311,8 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 .sheet td.b { font-weight: 700; }
 .sheet td.ret { background: var(--x-ret-fill); color: var(--x-ret-ink); }
 .sheet td.ret { padding: 0; }
+/* Excel で黄色に塗られていたマス */
+.sheet td.hl, .sheet td.ret.hl { background: #ffff00; }
 .sheet .ret-in {
   display: block; width: 100%; height: calc(var(--row-h) - 1px); margin: 0; padding: 0 3px;
   border: 0; background: transparent; color: var(--x-ret-ink);
