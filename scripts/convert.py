@@ -234,14 +234,22 @@ def apply_event_stock(items, store_names, path):
 
 
 def apply_sales_rate(items, store_names, path):
-    """scripts/sales_rate.py の月平均販売足数を各商品に付ける (店舗の列のみ。Office・Event は None)。"""
+    """scripts/sales_rate.py の月平均販売足数を各商品に付ける。
+    店舗の列は店頭販売、Office の列はオンライン販売 (Online)。Event Asok の列は None。
+    イベント販売 (Event) は rateEvent に入れ、Company Total の合計にだけ使う。"""
     data = json.loads(Path(path).read_text(encoding="utf-8"))
-    rate = data["rate"]
+    rate, months = data["rate"], dict(data["months"])
+    src = {s: s for s in store_names}
+    if "Online" in months:
+        src[OFFICE_NAME] = "Online"
+        months[OFFICE_NAME] = months["Online"]
     for i in items:
         r = rate.get(i["code"], {}) if i["code"] else {}
-        i["rate"] = [(round(r.get(s, 0), 3) if s in data["months"] else None) for s in store_names]
-    print(f"sales rate: {sum(1 for i in items if any(i['rate']))} items with sales, stores {list(data['months'])}")
-    return {"months": {s: [m[0], m[-1], len(m)] for s, m in data["months"].items()}, "generatedAt": data["generatedAt"]}
+        i["rate"] = [(round(r.get(src[s], 0), 3) if s in months else None) for s in store_names]
+        i["rateEvent"] = round(r.get("Event", 0), 3) if "Event" in months else None
+    print(f"sales rate: {sum(1 for i in items if any(i['rate']))} items with sales, locations {list(months)}")
+    return {"months": {s: [m[0], m[-1], len(m)] for s, m in months.items() if s in store_names or s == "Event"},
+            "generatedAt": data["generatedAt"]}
 
 
 def main(path, office_path=None, alloc_path=None, event_path=None, event_stock_path=None, sales_rate_path=None):

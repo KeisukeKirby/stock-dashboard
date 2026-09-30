@@ -9,13 +9,20 @@
   K Village / Central LP : order_detail_*_7duk.xlsx  (EDV の受注明細。倉庫 Kvillage / Coollabo Cen LP 3F)
   Paradise Park          : order_detail_*_dint.xlsx  (Barefoot の受注明細。倉庫 Paradise Park)
   Central CL (Chidlom)   : BFT_Central_Total_Department_Jan-Jun_26_new.xlsx (Export シート)
-                           + BFT_Sale_Online_Shopee_Lazada_Paradise_Central_Jul-Aug.xlsx (Central シート)
+                           + BFT_Central_Total_Department_07-2026.xlsx (Export シート, 7 月)
+                           + BFT_Sale_Online_Shopee_Lazada_Paradise_Central_Jul-Aug.xlsx (Central シート, 8 月)
+  Online (Office 列)     : order_detail_*_dint.xlsx のオンライン注文 (Shopee / Lazada / Facebook / LINE /
+                           Instagram / Website、販売チャネル空欄の TX 注文、倉庫 Online)
+  Event (Company Total)  : 両受注明細の倉庫 Event 1 / Event 2 + CART Central LP のイベント分
+                           (R# RC-127- のレシート、5/21-5/24 の RV 注文)
   Siam Discovery         : Sales_Siam_Dis_Jan-Jun_26.xlsx + BFT_Siam_Discovery_Jul-Aug_26.xlsx
 
 集計ルール:
   - VFF シューズのみ (サイズが数字の商品。靴下・Furoshiki 等は除く)、取消 (Voided) は除外
-  - 店頭の販売のみ。店舗在庫から発送したオンライン注文 (Shopee / Lazada / Facebook / LINE /
-    Instagram、販売チャネル空欄の TX 注文) は含めない (EDV 販売ダッシュボードの「K village」と同じ定義)
+  - 店舗の列は店頭の販売のみ。店舗在庫から発送したオンライン注文は「Online」に数える
+    (EDV 販売ダッシュボードの「K village」と同じ定義)
+  - Online / Event は受注明細の全期間 (1 月〜) の月数で割る (販売のない月も 0 として数える)
+  - 上記以外 (本社倉庫のチャネル空欄の販売、EDV の CART Central LP の通常販売、委託・輸出) は含めない
   - Central 百貨店は CHIDLOM のみ (CHIDLOM ONLINE・Central World・Lardprao・Eastville は含めない)
   - 月平均 = 期間の販売足数 ÷ データのある月数
 """
@@ -35,13 +42,15 @@ STOCK = ROOT / "public" / "stock.json"
 F_EDV = "order_detail_202609291711_7duk.xlsx"
 F_BFT = "order_detail_202609301006_dint.xlsx"
 F_CEN_H1 = "BFT_Central_Total_Department_Jan-Jun_26_new.xlsx"
+F_CEN_JUL = "BFT_Central_Total_Department_07-2026.xlsx"
 F_CEN_H2 = "BFT_Sale_Online_Shopee_Lazada_Paradise_Central_Jul-Aug.xlsx"
 F_SIAM_H1 = "Sales_Siam_Dis_Jan-Jun_26.xlsx"
 F_SIAM_H2 = "BFT_Siam_Discovery_Jul-Aug_26.xlsx"
 
 KV, LP, PP, CL, SD = "K Village", "Central LP", "Paradise Park", "Central CL (Department)", "Siam Discovery"
+ONLINE, EVENT = "Online", "Event"  # 全期間で割る区分
 STORE_WAREHOUSE = {"Kvillage": KV, "Coollabo Cen LP 3F": LP, "Paradise Park": PP}
-ONLINE_CHANNELS = {"Shopee", "Shopee VFF", "Shopee BFI", "Lazada", "Facebook", "LINE", "Instagram", "Website"}
+ONLINE_CHANNELS = {"Shopee", "Shopee VFF", "Shopee BFI", "Lazada", "Facebook", "LINE", "Instagram", "Website", "barefootinc"}
 SHOE_SIZE = re.compile(r"^[MWU]?\d+(?:\.\d+)?$")
 CODE_RE = re.compile(r"^VFF(\d{4})\((.+),([MWU]?\d+)\)$")
 N = lambda s: re.sub(r"[\s/.\-]", "", str(s).upper()).replace("DARKGY", "DARKGRAY")
@@ -70,8 +79,8 @@ def parse_dmy(v):
     return datetime.date(y, m, d)
 
 
-def read_orders(path, sales, meta):
-    """受注明細 (order_detail_*.xlsx)。店頭販売の VFF シューズを店舗・月・コード別に数える。"""
+def read_orders(path, sales, meta, periods):
+    """受注明細 (order_detail_*.xlsx)。VFF シューズを 店舗 / Online / Event・月・コード別に数える。"""
     ws = openpyxl.load_workbook(path, read_only=True, data_only=True).worksheets[0]
     rows = list(ws.iter_rows(values_only=True))
     ix = {h: i for i, h in enumerate(rows[1]) if h}
@@ -82,11 +91,21 @@ def read_orders(path, sales, meta):
         code, name = g(r, "Product code"), g(r, "Product name")
         if not code or not str(code).startswith("VFF") or not vff_shoe(name):
             continue
-        store = STORE_WAREHOUSE.get(g(r, "Warehouse/Branch"))
+        wh = g(r, "Warehouse/Branch") or ""
         ch, order_no = g(r, "Sales channel") or "", str(g(r, "Sales order No.") or "")
-        if not store or ch in ONLINE_CHANNELS or (not ch and order_no.startswith("TX")):
+        date = parse_dmy(g(r, "Date"))
+        if ch in ONLINE_CHANNELS or (not ch and order_no.startswith("TX")) or wh == "Online":
+            store = ONLINE
+        elif wh in ("Event 1", "Event 2") or (wh == "CART Central LP" and (
+                order_no.startswith("R# RC-127-")
+                or (order_no.startswith("RV") and datetime.date(2026, 5, 21) <= date <= datetime.date(2026, 5, 24)))):
+            store = EVENT
+        else:
+            store = STORE_WAREHOUSE.get(wh)
+        month = date.strftime("%Y-%m")
+        periods.add(month)
+        if not store:
             continue
-        month = parse_dmy(g(r, "Date")).strftime("%Y-%m")
         code = str(code).strip()
         sales[code][(store, month)] += float(g(r, "Quantity") or 0)
         meta.setdefault(code, name)
@@ -142,6 +161,7 @@ MON = {m: i for i, m in enumerate(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Ju
 def read_central(sales, matcher, unmatched):
     for fname, sheet, (c_store, c_name, c_code, c_mon, c_qty) in [
         (F_CEN_H1, "Export", (0, 1, 2, 3, 4)),
+        (F_CEN_JUL, "Export", (0, 1, 2, 3, 4)),
         (F_CEN_H2, "Central", (0, 3, 2, 1, 4)),
     ]:
         rows = list(openpyxl.load_workbook(RAW / fname, read_only=True, data_only=True)[sheet].iter_rows(values_only=True))
@@ -174,9 +194,9 @@ def read_siam(sales, matcher, unmatched):
 
 def main():
     sales = collections.defaultdict(collections.Counter)
-    meta = {}
-    read_orders(RAW / F_EDV, sales, meta)
-    read_orders(RAW / F_BFT, sales, meta)
+    meta, periods = {}, set()
+    read_orders(RAW / F_EDV, sales, meta, periods)
+    read_orders(RAW / F_BFT, sales, meta, periods)
 
     stock = json.loads(STOCK.read_text(encoding="utf-8"))
     known = {i["code"]: (i["model"], i["color"]) for i in stock["items"] if i["code"]}
@@ -194,6 +214,8 @@ def main():
             if q:
                 months_present[s].add(m)
     months = {s: sorted(v) for s, v in months_present.items()}
+    for s in (ONLINE, EVENT):
+        months[s] = sorted(periods)
     rate = {}
     for code, c in sales.items():
         per = {}
@@ -210,7 +232,7 @@ def main():
         "totals": totals,
         "rate": rate,
         "unmatched": unmatched,
-        "sources": [F_EDV, F_BFT, F_CEN_H1, F_CEN_H2, F_SIAM_H1, F_SIAM_H2],
+        "sources": [F_EDV, F_BFT, F_CEN_H1, F_CEN_JUL, F_CEN_H2, F_SIAM_H1, F_SIAM_H2],
     }
     OUT.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     for s in months:

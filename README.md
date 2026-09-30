@@ -96,9 +96,9 @@ POS の注文明細（data/event_orders/）は顧客情報を含むため Git �
 
 ## 月平均販売・在庫月数
 
-各店舗（K Village / Central CL / Siam Discovery / Paradise Park / Central LP）と Store Total の在庫数の左に「月平均販売」、右に「在庫月数（在庫 ÷ 月平均販売）」を表示します（フィルター欄のチェックで表示／非表示）。
+各店舗（K Village / Central CL / Siam Discovery / Paradise Park / Central LP）、Office（オンライン販売）、Store Total、Company Total（オンライン + イベント + 全店舗）の在庫数の左に「月平均販売」、右に「在庫月数（在庫 ÷ 月平均販売）」を表示します（フィルター欄のチェックで表示／非表示）。
 
-`scripts/sales_rate.py` が 2026年1〜8月の店頭販売（VFF シューズ、オンライン注文を除く）から SKU×店舗の月平均販売足数を計算し `data/sales_rate.json` に保存、convert.py の 6 つ目の引数で在庫データに付けます。
+`scripts/sales_rate.py` が 2026年1〜8月の VFF シューズの販売から SKU×店舗（店頭販売）・Online・Event の月平均販売足数を計算し `data/sales_rate.json` に保存、convert.py の 6 つ目の引数で在庫データに付けます。
 
 ```bash
 python scripts/sales_rate.py        # data/sales_raw/ の販売明細を読む（顧客情報を含むため Git 管理外）
@@ -110,7 +110,9 @@ python scripts/convert.py data/Store_Stock_092526.xlsx data/VFF_Stock_25-09-26.x
 |---|---|---|
 | K Village / Central LP | EDV 受注明細 order_detail_*_7duk（倉庫 Kvillage / Coollabo Cen LP 3F） | 1〜8月 |
 | Paradise Park | Barefoot 受注明細 order_detail_*_dint（倉庫 Paradise Park、店頭レジのみ） | 4〜8月（4月開店） |
-| Central CL | BFT_Central_Total_Department（CHIDLOM のみ） | 1〜6月・8月（7月の明細なし） |
+| Central CL | BFT_Central_Total_Department（1〜6月・7月の Export、8月は Jul-Aug ファイルの Central シート。CHIDLOM のみ） | 1〜8月 |
 | Siam Discovery | Sales_Siam_Dis（商品名から SKU を判定） | 1〜8月 |
+| Office（Online） | dint のオンライン注文（Shopee / Lazada / LINE / Facebook / Instagram / Website、チャネル空欄の TX 注文、倉庫 Online。店舗から発送したものも含む） | 1〜8月（8ヶ月で割る） |
+| Event（Company Total のみ） | 両受注明細の倉庫 Event 1 / 2 と CART Central LP のイベント分 | 1〜8月（8ヶ月で割る） |
 
-照合: K Village・Central LP は EDV 販売ダッシュボードと SKU×月で一致。Paradise Park は販売ダッシュボードと 4・6・7・8 月一致（5 月は 2 台目レジ RC-14 系の 4 足がダッシュボード側に未計上）。Central CL は 1〜6・8 月一致。Siam Discovery は 1〜6 月一致、7 月は照合できない 1 足（LOT เก่า 表記）、8 月は今回のファイルが 6 足多い。
+照合: K Village・Central LP は EDV 販売ダッシュボードと SKU×月で一致。Paradise Park は販売ダッシュボードと 4・6・7・8 月一致（5 月は 2 台目レジ RC-14 系の 4 足がダッシュボード側に未計上）。Central CL は 1〜8 月一致。Online は販売ダッシュボード 1,508 足に対し 1,518 足（月ごとに ±7 以内）、Event は 587 + EDV 227 足（販売ダッシュボード 589、EDV ダッシュボード 227）。Siam Discovery は 1〜6 月一致、7 月は照合できない 1 足（LOT เก่า 表記）、8 月は今回のファイルが 6 足多い。

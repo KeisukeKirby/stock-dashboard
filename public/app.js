@@ -589,12 +589,18 @@
   const afBtn = (id, label) =>
     `<button type="button" class="af" data-af="${id}" aria-haspopup="dialog" aria-label="${esc(label)} ${esc(t("af.title"))}"><svg viewBox="0 0 10 10" aria-hidden="true"><path class="af-arrow" d="M2 3.5h6L5 7z"/><path class="af-funnel" d="M1.5 2h7L6 5.2V8.5L4 7.5V5.2z"/></svg></button>`;
 
-  // 月平均販売・在庫月数: 販売データのある店舗と Store Total に付ける (Office・Event・Company Total には付けない)
+  // 月平均販売・在庫月数: 販売データのある店舗 (店頭販売)、Office (オンライン販売)、
+  // Store Total (店舗の合計)、Company Total (オンライン + イベント + 店舗) に付ける (Event Asok には付けない)
   let showRate = true;
   try { showRate = localStorage.getItem("showRate") !== "0"; } catch (_) {}
   const rateStores = () => (data.salesRate && showRate ? data.stores.map((s, i) => (s in data.salesRate.months ? i : -1)).filter((i) => i >= 0) : []);
-  const hasRate = (g) => rateStores().includes(g) || (rateStores().length > 0 && hasOffice() && g === data.stores.length);
-  const rowRate = (it, g) => (g < data.stores.length ? (it.rate ? it.rate[g] : null) : sum(rateStores().map((i) => (it.rate ? it.rate[i] : 0))));
+  const hasRate = (g) => rateStores().includes(g) || (rateStores().length > 0 && hasOffice() && g >= data.stores.length);
+  const rowRate = (it, g) => {
+    const r = (i) => (it.rate ? it.rate[i] || 0 : 0);
+    if (g < data.stores.length) return it.rate ? it.rate[g] : null;
+    if (g === data.stores.length) return sum(rateStores().filter((i) => i !== data.officeIndex).map(r)); // Store Total
+    return sum(rateStores().map(r)) + (it.rateEvent || 0); // Company Total
+  };
   const mos = (q, r) => (r ? q / r : null); // 在庫月数 = 在庫 ÷ 月平均販売
   const fmtRate = (v) => (v == null ? "" : v === 0 ? "-" : v.toFixed(2));
   const fmtMos = (v) => (v == null ? "" : v <= 0 ? (v === 0 ? "-" : `(${Math.abs(v).toFixed(1)})`) : v.toFixed(1));
@@ -1103,7 +1109,7 @@
     $("foot").textContent = t("foot", { src }) + (d.allocSource ? " " + t("foot.alloc", { n: fmt(d.allocMoved) }) : "")
       + (d.eventSource ? " " + t("foot.event", { n: fmt(d.eventMoved) }) : "")
       + (d.eventStock ? " " + t("foot.eventStock", { c: d.eventStock.cutoff, s: fmt(d.eventStock.start), o: fmt(d.eventStock.sold), r: fmt(d.eventStock.remain) }) : "")
-      + (d.salesRate ? " " + t("foot.rate", { p: Object.entries(d.salesRate.months).map(([s, v]) => `${s} ${v[2]}`).join(" / ") }) : "")
+      + (d.salesRate ? " " + t("foot.rate", { p: Object.entries(d.salesRate.months).map(([s, v]) => `${s === "Office" ? "Office (Online)" : s} ${v[2]}`).join(" / ") }) : "")
       + (d.generatedAt ? " " + t("foot.generated", { d: d.generatedAt }) : "");
     const an = $("allocNote");
     an.hidden = !d.allocSource;
