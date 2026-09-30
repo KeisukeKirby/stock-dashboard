@@ -113,4 +113,4 @@ python scripts/convert.py data/Store_Stock_092526.xlsx data/VFF_Stock_25-09-26.x
 | Central CL | BFT_Central_Total_Department（CHIDLOM のみ） | 1〜6月・8月（7月の明細なし） |
 | Siam Discovery | Sales_Siam_Dis（商品名から SKU を判定） | 1〜8月 |
 
-照合: K Village・Central LP は EDV 販売ダッシュボードと SKU×月で一致、Paradise Park・Central CL・Siam Discovery は販売ダッシュボードの店舗別月次と照合済み（差異は README 外のチャット記録参照）。
+照合: K Village・Central LP は EDV 販売ダッシュボードと SKU×月で一致。Paradise Park は販売ダッシュボードと 4・6・7・8 月一致（5 月は 2 台目レジ RC-14 系の 4 足がダッシュボード側に未計上）。Central CL は 1〜6・8 月一致。Siam Discovery は 1〜6 月一致、7 月は照合できない 1 足（LOT เก่า 表記）、8 月は今回のファイルが 6 足多い。
