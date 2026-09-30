@@ -632,7 +632,7 @@
       <tr class="asof"><th colspan="${ncol}">${esc(d.asOf)}</th></tr>
       <tr class="h1">
         ${["Model", "Color", "Size"].map((h, k) => `<th rowspan="2">${h}${afBtn(`t${VIEW_TEXT[k]}`, h)}</th>`).join("")}
-        ${groups.map((g, i) => (colKinds(i).length ? `<th class="grp" colspan="${colKinds(i).length}" title="${esc(g)}">${esc(shortGroup(g))}</th>` : "")).join("")}
+        ${groups.map((g, i) => (colKinds(i).length ? `<th class="grp" colspan="${colKinds(i).length}" title="${esc(g)}">${esc(shortGroup(g))}${afBtn("loc", t("f.loc"))}</th>` : "")).join("")}
       </tr>
       <tr class="h2">${groups.map((g, i) => colKinds(i).map((k) =>
         k === "qty" ? `<th title="Quantity">Qty${afBtn(`n${i}`, `${g} Quantity`)}</th>`

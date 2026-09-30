@@ -131,6 +131,7 @@ h1 { font-size: 26px; font-weight: 700; margin: 4px 0 6px; letter-spacing: -.01e
 .sheet .af.on .af-arrow { display: none; }
 .sheet .af.on .af-funnel { display: block; }
 .sheet thead tr.h1 th[rowspan] { padding-right: 18px; }
+.sheet thead tr.h1 th.grp { padding-right: 18px; }  /* 拠点の ▼ (表示する拠点を選ぶ) */
 .sheet thead tr.h2 th { padding-right: 18px; }
 .sheet thead tr.h2 th.ret-h { padding-right: 3px; }
 
