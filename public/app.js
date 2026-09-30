@@ -13,7 +13,12 @@
   };
 
   // Excel の列幅 (文字数) → px : width * 7 + 5
-  const COL_W = { code: 23.63, model: 15.27, color: 16.63, size: 10.91, qty: 12.36, ret: 11.18, rate: 8.5, mos: 8.5 };
+  const COL_W = { code: 23.63, model: 15.27, color: 16.63, size: 10.91, qty: 12.36, ret: 11.18, rate: 8.5, mos: 8.5 }; // Excel 出力用
+  // 画面の表は見やすさ優先で Code 列を隠し、各列を狭くする
+  const VIEW_W = { model: 12.5, color: 14.5, size: 4.6, qty: 6, totQty: 6.6, ret: 5.6, rate: 5, mos: 5 };
+  const VIEW_TEXT = ["model", "color", "size"];
+  const shortModel = (m) => String(m || "").replace(/^VFF\s+/, "");
+  const shortGroup = (g) => String(g).replace(" (Department)", " (Dept.)");
   const px = (w) => Math.round(w * 7 + 5);
 
   // sort: "" = Excel の並び / "0".. = 店舗・オフィス / "store" = Store Total / "total" = Company Total
@@ -566,21 +571,20 @@
   function renderFrame(d) {
     const ncol = numCols();
     $("cols").innerHTML =
-      [COL_W.code, COL_W.model, COL_W.color, COL_W.size].map((w) => `<col style="width:${px(w)}px">`).join("") +
+      VIEW_TEXT.map((k) => `<col style="width:${px(VIEW_W[k])}px">`).join("") +
       groups.map((_, g) => colKinds(g).map((k) => {
-        // Company Total は Return がないので見出しが収まる幅にする
-        const w = k === "qty" ? (!hasRet(g) && g >= data.stores.length ? 15.5 : COL_W.qty) : COL_W[k];
+        const w = k === "qty" && g >= data.stores.length ? VIEW_W.totQty : VIEW_W[k];
         return `<col style="width:${px(w)}px">`;
       }).join("")).join("");
     $("thead").innerHTML = `
       <tr class="title"><th colspan="${ncol}">${esc(d.title)}</th></tr>
       <tr class="asof"><th colspan="${ncol}">${esc(d.asOf)}</th></tr>
       <tr class="h1">
-        ${["Code", "Model", "Color", "Size"].map((h, k) => `<th rowspan="2">${h}${afBtn(`t${TEXT_COLS[k]}`, h)}</th>`).join("")}
-        ${groups.map((g, i) => `<th colspan="${colKinds(i).length}">${esc(g)}</th>`).join("")}
+        ${["Model", "Color", "Size"].map((h, k) => `<th rowspan="2">${h}${afBtn(`t${VIEW_TEXT[k]}`, h)}</th>`).join("")}
+        ${groups.map((g, i) => `<th class="grp" colspan="${colKinds(i).length}" title="${esc(g)}">${esc(shortGroup(g))}</th>`).join("")}
       </tr>
       <tr class="h2">${groups.map((g, i) => colKinds(i).map((k) =>
-        k === "qty" ? `<th>Quantity${afBtn(`n${i}`, `${g} Quantity`)}</th>`
+        k === "qty" ? `<th title="Quantity">Qty${afBtn(`n${i}`, `${g} Quantity`)}</th>`
         : k === "ret" ? `<th class="ret-h">Return</th>`
         : `<th class="${k}-h" title="${esc(t(`col.${k}.title`))}">${esc(t(`col.${k}`))}</th>`).join("")).join("")}</tr>`;
     updateFilterUi();
@@ -602,11 +606,11 @@
     return sum(rateStores().map(r)) + (it.rateEvent || 0); // Company Total
   };
   const mos = (q, r) => (r ? q / r : null); // 在庫月数 = 在庫 ÷ 月平均販売
-  const fmtRate = (v) => (v == null ? "" : v === 0 ? "-" : v.toFixed(2));
+  const fmtRate = (v) => (v == null ? "" : v === 0 ? "-" : v.toFixed(1)); // 小数第 2 位を四捨五入
   const fmtMos = (v) => (v == null ? "" : v <= 0 ? (v === 0 ? "-" : `(${Math.abs(v).toFixed(1)})`) : v.toFixed(1));
   // 列グループごとの列の並び: [月平均販売] Quantity [在庫月数] [Return]
   const colKinds = (g) => [...(hasRate(g) ? ["rate"] : []), "qty", ...(hasRate(g) ? ["mos"] : []), ...(hasRet(g) ? ["ret"] : [])];
-  const numCols = () => 4 + sum(groups.map((_, i) => colKinds(i).length));
+  const numCols = () => VIEW_TEXT.length + sum(groups.map((_, i) => colKinds(i).length));
 
   // 1 行分の Quantity / Return を groups の並びで返す
   const rowQty = (it) => (hasOffice() ? [...it._adj, it._st, it._tq] : [...it._adj, it._tq]);
@@ -619,7 +623,7 @@
     return { qty, ret, rate };
   }
 
-  const totalRowHtml = (tot) => `<td>Total</td><td></td><td></td><td></td>
+  const totalRowHtml = (tot) => `<td>Total</td><td></td><td></td>
       ${groups.map((_, i) => colKinds(i).map((k) =>
         k === "qty" ? `<td class="c">${nf(tot.qty[i])}</td>`
         : k === "ret" ? `<td class="c">${nf(tot.ret[i])}</td>`
@@ -640,7 +644,7 @@
     shown = items;
     const all = items.length === data.items.length;
     const rows = items.map((it) => `<tr data-id="${it._id}">
-        <td>${esc(it.code)}</td><td>${esc(it.model)}</td><td>${esc(it.color)}</td><td class="c">${esc(it.size)}</td>
+        <td title="${esc(it.code)}">${esc(shortModel(it.model))}</td><td title="${esc(it.color)}">${esc(it.color)}</td><td class="c">${esc(it.size)}</td>
         ${rowQty(it).map((q, g) => {
           const tot = g >= data.stores.length;
           return colKinds(g).map((k) => {
@@ -904,7 +908,7 @@
       const q = rowQty(it), rt = rowRet(it);
       return [it.code, it.model, it.color, it.size, ...groups.flatMap((_, g) => colKinds(g).map((k) => {
         const r = rowRate(it, g), m = mos(q[g], r);
-        return k === "qty" ? q[g] : k === "ret" ? rt[g] ?? "" : k === "rate" ? (r == null ? "" : +r.toFixed(3)) : (m == null ? "" : +m.toFixed(1));
+        return k === "qty" ? q[g] : k === "ret" ? rt[g] ?? "" : k === "rate" ? (r == null ? "" : +r.toFixed(1)) : (m == null ? "" : +m.toFixed(1));
       }))];
     });
     const csv = "﻿" + [head, ...body].map((r) => r.map(q).join(",")).join("\r\n");
@@ -1005,7 +1009,7 @@
           cell.font = { name: "Calibri", size: 11 };
           if (k >= 3) cell.alignment = { horizontal: "center" };
           if (!col) return;
-          cell.numFmt = col.kind === "rate" ? "0.00;(0.00);-" : col.kind === "mos" ? "0.0;(0.0);-" : NF;
+          cell.numFmt = col.kind === "rate" ? "0.0;(0.0);-" : col.kind === "mos" ? "0.0;(0.0);-" : NF;
           const isTotal = col.g >= data.stores.length;
           if (col.kind === "ret" && !isTotal) {
             cell.fill = fill(RETFILL);
@@ -1031,7 +1035,7 @@
         cell.border = { top: { style: "thin", color: { argb: LINE } } };
         if (k >= 4) {
           cell.alignment = { horizontal: "center" };
-          cell.numFmt = col && col.kind === "rate" ? "0.00;(0.00);-" : col && col.kind === "mos" ? "0.0;(0.0);-" : NF;
+          cell.numFmt = col && col.kind === "rate" ? "0.0;(0.0);-" : col && col.kind === "mos" ? "0.0;(0.0);-" : NF;
         }
       }
 

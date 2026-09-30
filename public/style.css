@@ -56,7 +56,7 @@ body {
 h1, h2, p { margin: 0; }
 button, select, input { font: inherit; color: inherit; }
 
-.page { max-width: 1640px; margin: 0 auto; padding: 28px 24px 40px; }
+.page { max-width: 1800px; margin: 0 auto; padding: 28px 24px 40px; }
 
 .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 22px; }
 .top-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
@@ -336,6 +336,13 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 .sheet thead tr.h2 th.ret-h { background: var(--x-header-ret); }
 .sheet thead tr.h2 th.rate-h, .sheet thead tr.h2 th.mos-h { background: #2f75b5; font-size: 8.5pt; white-space: normal; line-height: 1.05; padding: 0 1px; }
 .sheet td.rate { color: #1f4e78; }
+/* 画面用に列を狭くしたので見出しは小さめ・折り返し可 */
+.sheet thead tr.h1 th.grp { font-size: 9.5pt; white-space: normal; line-height: 1.05; padding: 0 2px; }
+.sheet thead tr.h2 th { font-size: 9pt; padding-left: 1px; }
+.sheet thead tr.h2 th.ret-h { padding: 0 1px; }
+.sheet tbody td { padding: 0 2px; }
+.sheet tbody td.ret { padding: 0; }
+.sheet .ret-in { padding: 0 1px; }
 .sheet td.mos { color: #1f4e78; font-style: italic; }
 .sheet tr.total td { background: var(--x-total-fill); font-weight: 700; }
 .sheet td.empty { text-align: center; color: #595959; height: 40px; }
