@@ -999,39 +999,87 @@
       .map(([store, rows]) => [store, rows.sort((a, b) => (a.it ? a.it._id : 1e9) - (b.it ? b.it._id : 1e9))]);
   }
   const itemLabel = (r) => (r.it ? `${shortModel(r.it.model)} / ${r.it.color} / ${r.it.size}` : r.k.slice(0, r.k.lastIndexOf("@")));
+  // 手順 1: 店舗の一覧 → 手順 2: 選んだ店舗のモデルごとの明細 (チェックして「受領完了」)
+  let recvStore = null;
   function renderRecv() {
-    const pend = recvGroups(saved), done = recvGroups(received);
+    const pend = new Map(recvGroups(saved)), done = new Map(recvGroups(received));
+    if (recvStore && !pend.has(recvStore) && !done.has(recvStore)) recvStore = null;
+    const keep = new Set([...dlg.querySelectorAll(".recv-one:checked")].map((b) => b.dataset.k)); // 再描画してもチェックを残す
     const dirty = isDirty();
     $("recvWarn").hidden = !dirty;
     $("recvWarn").textContent = dirty ? t("recv.unsaved") : "";
-    const sec = (store, rows, kind) => `
-      <details class="recv-store">
-        <summary>
-          ${kind === "pend" ? `<input type="checkbox" class="recv-all" data-store="${esc(store)}" aria-label="${esc(store)}">` : ""}
-          <b>${esc(store)}</b><span class="recv-count">${t("recv.count", { n: fmt(rows.length), q: fmt(sum(rows.map((r) => r.q))) })}</span>
-        </summary>
-        <ul>${rows.map((r) => kind === "pend"
-          ? `<li><label><input type="checkbox" class="recv-one" data-k="${esc(r.k)}" data-store="${esc(store)}"> <span>${esc(itemLabel(r))}</span></label><em>${fmt(r.q)}</em></li>`
-          : `<li><span>${esc(itemLabel(r))}</span><em>${fmt(r.q)}</em><button type="button" class="link-btn" data-undo="${esc(r.k)}">${esc(t("recv.undo"))}</button></li>`).join("")}</ul>
-      </details>`;
-    $("recvBody").innerHTML =
-      `<h3>${esc(t("recv.transit"))}</h3>` +
-      (pend.length ? pend.map(([s, rows]) => sec(s, rows, "pend")).join("") : `<p class="recv-empty">${esc(t("recv.none"))}</p>`) +
-      (done.length ? `<h3>${esc(t("recv.done"))}</h3>` + done.map(([s, rows]) => sec(s, rows, "done")).join("") : "");
+    const cnt = (rows) => t("recv.count", { n: fmt(rows.length), q: fmt(sum(rows.map((r) => r.q))) });
+    $("recvFoot").hidden = !recvStore;
+    if (!recvStore) {
+      const stores = [...new Set([...pend.keys(), ...done.keys()])].sort((a, b) => data.stores.indexOf(a) - data.stores.indexOf(b));
+      $("recvBody").innerHTML = `<p class="recv-step">${esc(t("recv.step1"))}</p>` + (stores.length
+        ? `<div class="recv-stores">${stores.map((st) => {
+            const p = pend.get(st) || [], d = done.get(st) || [];
+            return `<button type="button" class="recv-storebtn" data-store="${esc(st)}">
+              <b>${esc(st)}</b>
+              <span class="recv-pend">${p.length ? `${esc(t("recv.transitShort"))} ${esc(cnt(p))}` : esc(t("recv.allDone"))}</span>
+              <span class="recv-doneinfo">${d.length ? `${esc(t("recv.doneShort"))} ${esc(cnt(d))}` : ""}</span>
+              <span class="recv-go" aria-hidden="true">›</span>
+            </button>`;
+          }).join("")}</div>`
+        : `<p class="recv-empty">${esc(t("recv.none"))}</p>`);
+      return;
+    }
+    const p = pend.get(recvStore) || [], d = done.get(recvStore) || [];
+    // モデルごとにまとめる (在庫表の並び順)
+    const models = new Map();
+    p.forEach((r) => {
+      const m = r.it ? shortModel(r.it.model) : r.k.slice(0, r.k.lastIndexOf("@"));
+      if (!models.has(m)) models.set(m, []);
+      models.get(m).push(r);
+    });
+    $("recvBody").innerHTML = `
+      <div class="recv-nav">
+        <button type="button" class="link-btn" data-back>‹ ${esc(t("recv.back"))}</button>
+        <b>${esc(recvStore)}</b>
+        <span class="recv-count">${p.length ? `${esc(t("recv.transitShort"))} ${esc(cnt(p))}` : esc(t("recv.allDone"))}</span>
+      </div>` +
+      (p.length ? `
+      <p class="recv-step">${esc(t("recv.step2"))}</p>
+      <label class="recv-selall"><input type="checkbox" class="recv-all"> ${esc(t("af.selectAll"))}</label>
+      ${[...models.entries()].map(([m, rows], mi) => `
+        <div class="recv-model">
+          <div class="recv-mhead">
+            <label><input type="checkbox" class="recv-m" data-m="${mi}"> <b>${esc(m)}</b></label>
+            <span class="recv-count">${esc(cnt(rows))}</span>
+          </div>
+          <table class="recv-tbl">
+            <thead><tr><th></th><th>${esc(t("recv.colColor"))}</th><th>${esc(t("recv.colSize"))}</th><th>${esc(t("recv.colQty"))}</th></tr></thead>
+            <tbody>${rows.map((r) => `
+              <tr>
+                <td><input type="checkbox" class="recv-one" id="rc-${esc(r.k)}" data-k="${esc(r.k)}" data-m="${mi}" ${keep.has(r.k) ? "checked" : ""}></td>
+                <td><label for="rc-${esc(r.k)}">${esc(r.it ? r.it.color : "")}</label></td>
+                <td class="c"><label for="rc-${esc(r.k)}">${esc(r.it ? r.it.size : "")}</label></td>
+                <td class="n">${fmt(r.q)}</td>
+              </tr>`).join("")}</tbody>
+          </table>
+        </div>`).join("")}` : `<p class="recv-empty">${esc(t("recv.storeNone"))}</p>`) +
+      (d.length ? `
+      <details class="recv-done">
+        <summary>${esc(t("recv.done"))}: ${esc(cnt(d))}</summary>
+        <ul>${d.map((r) => `<li><span>${esc(itemLabel(r))}</span><em>${fmt(r.q)}</em><button type="button" class="link-btn" data-undo="${esc(r.k)}">${esc(t("recv.undo"))}</button></li>`).join("")}</ul>
+      </details>` : "");
     updateRecvSel();
   }
   function updateRecvSel() {
     const on = [...dlg.querySelectorAll(".recv-one:checked")];
     const q = sum(on.map((b) => saved[b.dataset.k] || 0));
-    $("recvSel").textContent = on.length ? t("recv.sel", { n: fmt(on.length), q: fmt(q) }) : "";
+    $("recvSel").textContent = on.length ? t("recv.sel", { n: fmt(on.length), q: fmt(q) }) : t("recv.selNone");
     $("recvDo").disabled = !on.length || recvBusy;
     $("recvDo").textContent = t("recv.do", { q: fmt(q) });
-    dlg.querySelectorAll(".recv-all").forEach((all) => {
-      const boxes = [...dlg.querySelectorAll(`.recv-one[data-store="${CSS.escape(all.dataset.store)}"]`)];
+    const setBox = (box, boxes) => {
       const n = boxes.filter((b) => b.checked).length;
-      all.checked = n > 0 && n === boxes.length;
-      all.indeterminate = n > 0 && n < boxes.length;
-    });
+      box.checked = n > 0 && n === boxes.length;
+      box.indeterminate = n > 0 && n < boxes.length;
+    };
+    dlg.querySelectorAll(".recv-m").forEach((m) => setBox(m, [...dlg.querySelectorAll(`.recv-one[data-m="${m.dataset.m}"]`)]));
+    const all = dlg.querySelector(".recv-all");
+    if (all) setBox(all, [...dlg.querySelectorAll(".recv-one")]);
   }
   async function moveReturns(receive, unreceive) {
     recvBusy = true;
@@ -1053,16 +1101,22 @@
       renderRecv();
     }
   }
-  $("receiveReturns").addEventListener("click", () => { renderRecv(); dlg.showModal(); });
+  $("receiveReturns").addEventListener("click", () => {
+    recvStore = null;
+    renderRecv();
+    dlg.showModal();
+  });
   dlg.addEventListener("change", (e) => {
-    if (e.target.classList.contains("recv-all")) {
-      dlg.querySelectorAll(`.recv-one[data-store="${CSS.escape(e.target.dataset.store)}"]`).forEach((b) => (b.checked = e.target.checked));
+    if (e.target.classList.contains("recv-all")) dlg.querySelectorAll(".recv-one").forEach((b) => (b.checked = e.target.checked));
+    if (e.target.classList.contains("recv-m")) {
+      dlg.querySelectorAll(`.recv-one[data-m="${e.target.dataset.m}"]`).forEach((b) => (b.checked = e.target.checked));
     }
     updateRecvSel();
   });
-  // summary 内のチェックボックスで開閉しないように
   dlg.addEventListener("click", (e) => {
-    if (e.target.classList.contains("recv-all")) e.stopPropagation();
+    const storeBtn = e.target.closest(".recv-storebtn");
+    if (storeBtn) { recvStore = storeBtn.dataset.store; renderRecv(); $("recvBody").scrollTop = 0; return; }
+    if (e.target.closest("[data-back]")) { recvStore = null; renderRecv(); return; }
     const undo = e.target.closest("[data-undo]");
     if (undo && !recvBusy && confirm(t("recv.confirmUndo"))) moveReturns([], [undo.dataset.undo]);
   });

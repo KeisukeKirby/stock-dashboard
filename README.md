@@ -120,7 +120,7 @@ python scripts/convert.py data/Store_Stock_092526.xlsx data/VFF_Stock_25-09-26.x
 ## 返品の受領（輸送中 → Office 在庫）
 
 - Return 欄に入力した返品は、その店舗の在庫から引かれ「輸送中」になります（Office にはまだ足さない。Company Total には含む）。
-- 商品がオフィスに届いたら「返品受領」ボタン → 店舗ごと／商品ごとにチェック → 「受領完了」で Office の在庫に加算します。誤って受領した分は「受領済み」の一覧から「取り消し」で輸送中に戻せます。
+- 商品がオフィスに届いたら「返品受領」ボタン → 店舗を選ぶ → モデルごとの明細（カラー・サイズ・数量）にチェック → 「受領完了」で Office の在庫に加算します。誤って受領した分は「受領済み」の一覧から「取り消し」で輸送中に戻せます。
 - 共有データ: 輸送中 = Redis ハッシュ `returns:<基準日>`、受領済み = `returns:<基準日>:received`（api/returns.js の `receive` / `unreceive`）。
 
 ### Excel に直接入力された Return の取り込み
