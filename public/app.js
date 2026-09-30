@@ -624,7 +624,7 @@
     $("cols").innerHTML =
       VIEW_TEXT.map((k) => `<col style="width:${px(VIEW_W[k])}px">`).join("") +
       groups.map((_, g) => colKinds(g).map((k) => {
-        const w = k === "qty" && g >= data.stores.length ? VIEW_W.totQty : VIEW_W[k];
+        const w = k === "qty" && g >= data.stores.length ? VIEW_W.totQty : k === "qty" && g === data.eventIndex ? 8.5 : VIEW_W[k]; // Event Asok は見出しが収まる幅
         return `<col style="width:${px(w)}px">`;
       }).join("")).join("");
     $("thead").innerHTML = `
