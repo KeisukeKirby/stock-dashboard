@@ -8,13 +8,19 @@ import type { Phrase } from '@/lib/types'
 let cachedCheck: AudioCheck | null = null
 let checkPromise: Promise<AudioCheck> | null = null
 
+/** 成功した結果だけキャッシュする。失敗（音声未検出）は毎回やり直す。 */
 export function runAudioCheck(force = false): Promise<AudioCheck> {
-  if (cachedCheck && !force) return Promise.resolve(cachedCheck)
+  if (cachedCheck?.ok && !force) return Promise.resolve(cachedCheck)
   if (!checkPromise || force) {
-    checkPromise = audioProvider.check().then((r) => {
-      cachedCheck = r
-      return r
-    })
+    checkPromise = audioProvider
+      .check()
+      .then((r) => {
+        cachedCheck = r
+        return r
+      })
+      .finally(() => {
+        checkPromise = null
+      })
   }
   return checkPromise
 }
@@ -24,8 +30,15 @@ export function useAudioCheck(): { check: AudioCheck | null; recheck: () => void
   useEffect(() => {
     let alive = true
     runAudioCheck().then((r) => alive && setCheck(r))
+    // 音声一覧が後から増えたら（Windows の Chrome/Edge でよくある）自動で再判定
+    const onVoices = () => {
+      runAudioCheck(true).then((r) => alive && setCheck(r))
+    }
+    const s = typeof window !== 'undefined' && 'speechSynthesis' in window ? window.speechSynthesis : null
+    s?.addEventListener('voiceschanged', onVoices)
     return () => {
       alive = false
+      s?.removeEventListener('voiceschanged', onVoices)
     }
   }, [])
   const recheck = useCallback(() => {

@@ -4,8 +4,11 @@ function synth(): SpeechSynthesis | null {
   return typeof window !== 'undefined' && 'speechSynthesis' in window ? window.speechSynthesis : null
 }
 
-/** getVoices() は非同期に埋まることがあるので voiceschanged を少し待つ */
-export function loadVoices(timeoutMs = 1500): Promise<SpeechSynthesisVoice[]> {
+/**
+ * getVoices() はブラウザ起動直後やページ読込直後は空のことが多い（特に Windows の Chrome/Edge）。
+ * voiceschanged を待ちつつ、一定間隔でポーリングして最大 timeoutMs まで待つ。
+ */
+export function loadVoices(timeoutMs = 4000): Promise<SpeechSynthesisVoice[]> {
   const s = synth()
   if (!s) return Promise.resolve([])
   const now = s.getVoices()
@@ -15,15 +18,26 @@ export function loadVoices(timeoutMs = 1500): Promise<SpeechSynthesisVoice[]> {
     const finish = () => {
       if (done) return
       done = true
+      clearInterval(poll)
+      clearTimeout(timer)
+      s.removeEventListener('voiceschanged', finish)
       resolve(s.getVoices())
     }
-    s.addEventListener('voiceschanged', finish, { once: true })
-    setTimeout(finish, timeoutMs)
+    const poll = setInterval(() => {
+      if (s.getVoices().length > 0) finish()
+    }, 250)
+    const timer = setTimeout(finish, timeoutMs)
+    s.addEventListener('voiceschanged', finish)
   })
 }
 
+export function isThaiVoice(v: SpeechSynthesisVoice): boolean {
+  const lang = (v.lang || '').toLowerCase().replace('_', '-')
+  return lang.startsWith('th') || /thai|ไทย/i.test(v.name)
+}
+
 export function thaiVoices(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice[] {
-  return voices.filter((v) => v.lang.toLowerCase().replace('_', '-').startsWith('th'))
+  return voices.filter(isThaiVoice)
 }
 
 export class WebSpeechProvider implements AudioProvider {
@@ -32,16 +46,25 @@ export class WebSpeechProvider implements AudioProvider {
 
   async check(): Promise<AudioCheck> {
     const s = synth()
-    if (!s) return { ok: false, reason: 'このブラウザは音声合成 (speechSynthesis) に対応していません。' }
-    const voices = thaiVoices(await loadVoices())
+    if (!s) return { ok: false, reason: 'このブラウザは音声合成 (speechSynthesis) に対応していません。', allVoices: 0 }
+    const all = await loadVoices()
+    const voices = thaiVoices(all)
+    const summary = {
+      allVoices: all.length,
+      languages: [...new Set(all.map((v) => v.lang))].sort(),
+    }
     if (voices.length === 0) {
       return {
         ok: false,
-        reason: 'タイ語 (th-TH) の音声が端末にありません。',
+        reason:
+          all.length === 0
+            ? 'ブラウザが音声を 1 件も読み込めていません。ページを再読み込みするか、ブラウザを完全に終了して開き直してください。'
+            : `タイ語 (th-TH) の音声が端末にありません（ブラウザが検出した音声は ${all.length} 件、タイ語は 0 件）。`,
         voices: [],
+        ...summary,
       }
     }
-    return { ok: true, voices: voices.map((v) => ({ name: v.name, voiceURI: v.voiceURI, lang: v.lang })) }
+    return { ok: true, voices: voices.map((v) => ({ name: v.name, voiceURI: v.voiceURI, lang: v.lang })), ...summary }
   }
 
   async speak(item: AudioItem, opts: SpeakOptions): Promise<void> {

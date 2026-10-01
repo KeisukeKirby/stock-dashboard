@@ -65,7 +65,7 @@ export default function Settings() {
             <p className="text-xs text-slate-400">確認中…</p>
           ) : check.ok ? (
             <div className="mt-1 text-sm text-emerald-300">
-              ✓ th-TH の音声が使えます（{check.voices?.length} 件）
+              ✓ th-TH の音声が使えます（{check.voices?.length} 件 / 全 {check.allVoices ?? '?'} 件）
               {check.voices && check.voices.length > 1 && (
                 <select
                   className="mt-2 block w-full rounded-lg border border-slate-700 bg-slate-900 p-2 text-sm text-slate-100"
@@ -87,20 +87,30 @@ export default function Settings() {
           ) : (
             <div className="mt-1 rounded-xl border border-rose-800/60 bg-rose-950/40 p-3 text-sm text-rose-100">
               <p className="font-semibold">✗ {check.reason}</p>
-              <ul className="mt-2 list-disc space-y-1 pl-5 text-xs text-rose-100/90">
+              <p className="mt-2 text-xs font-semibold text-rose-100">いちばん早い解決策</p>
+              <ul className="mt-1 list-disc space-y-1 pl-5 text-xs text-rose-100/90">
                 <li>
-                  <b>iPhone / iPad</b>：設定 → アクセシビリティ → 読み上げコンテンツ → 声 → タイ語 → 「Kanya」などをダウンロード。Safari で開き直す
+                  <b>Windows PC</b>：このページを <b>Microsoft Edge</b> で開く。Edge にはオンラインのタイ語音声（Premwadee / Niwat）が最初から入っていて、追加設定なしで使えます
                 </li>
                 <li>
-                  <b>Android</b>：設定 → システム → 言語と入力 → テキスト読み上げ → Google 音声認識と合成 → 音声データをインストール → タイ語
+                  <b>iPhone / iPad</b>：Safari で開く。設定 → アクセシビリティ → 読み上げコンテンツ → 声 → タイ語 → 「Kanya」をダウンロードしてから Safari を開き直す
                 </li>
                 <li>
-                  <b>Windows</b>：設定 → 時刻と言語 → 言語 → 言語の追加 → ไทย（音声合成にチェック）
-                </li>
-                <li>
-                  <b>macOS</b>：システム設定 → アクセシビリティ → 読み上げコンテンツ → システムの声 → 管理 → タイ語
+                  <b>Android</b>：Chrome で開く。設定 → システム → 言語と入力 → テキスト読み上げ → Google 音声認識と合成 → 音声データをインストール → タイ語
                 </li>
               </ul>
+              <p className="mt-2 text-xs font-semibold text-rose-100">Chrome のまま使いたい場合（Windows）</p>
+              <ol className="mt-1 list-decimal space-y-1 pl-5 text-xs text-rose-100/90">
+                <li>設定 → 時刻と言語 → 言語と地域 → 「ไทย」の右の「…」→ 言語のオプション</li>
+                <li>「音声」の中の <b>テキスト読み上げ</b> をインストール（言語パックとは別の項目。タイ語がグレーアウトして追加できないのは、言語自体は追加済みだが読み上げ機能が未インストールのため）</li>
+                <li>Chrome を右上の × ではなく <b>完全に終了</b>（タスクバーのアイコンを右クリック → 終了）してから開き直す。Windows の音声はブラウザ起動時にしか読み込まれません</li>
+                <li>この画面の「再チェック」を押す</li>
+              </ol>
+              {check.languages && check.languages.length > 0 && (
+                <p className="mt-2 text-[11px] text-rose-200/70">
+                  このブラウザが検出した言語: {check.languages.join(', ')}
+                </p>
+              )}
               <Button variant="secondary" size="sm" className="mt-2" onClick={recheck}>
                 再チェック
               </Button>
