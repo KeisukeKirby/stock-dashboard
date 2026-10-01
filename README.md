@@ -154,3 +154,11 @@ python scripts/vivo_sales.py data/sales_raw/vivo_BFT.xlsx data/sales_raw/vivo_ED
 販売場所は Warehouse/Branch（Event〜 → イベント、空欄・Online・本社倉庫 → オンライン・その他、それ以外 → 店舗）。
 モデル・カラー・サイズは商品名から判定（商品コードの番号は BFT と EDV で別のモデルを指すことがあるため）。金額は明細の Total amount。
 vivo.json には顧客情報を含めません。
+
+### 単体版（独立した URL で公開）
+
+データ・CSS・JS を 1 つの HTML に埋め込んだ単体版を作れます（在庫ダッシュボードへのリンクと CSV 保存は外し、代わりに「表をコピー」で Excel に貼り付け）。
+
+```bash
+python scripts/build_vivo_standalone.py vivo-sales.html
+```

@@ -52,6 +52,8 @@
       "t.model": "モデル", "t.color": "カラー", "t.size": "サイズ", "t.total": "合計", "t.amount": "金額 (฿)",
       "t.sum": "合計",
       csv: "CSV で保存",
+      copy: "表をコピー",
+      copied: "コピーしました",
       empty: "条件に合う販売がありません",
       pairs: "{n} 足",
       "tip.qty": "販売数量",
@@ -105,6 +107,8 @@
       "t.model": "Model", "t.color": "Colour", "t.size": "Size", "t.total": "Total", "t.amount": "Amount (฿)",
       "t.sum": "Total",
       csv: "Save CSV",
+      copy: "Copy table",
+      copied: "Copied",
       empty: "No sales match the filters",
       pairs: "{n} pairs",
       "tip.qty": "Pairs",
@@ -158,6 +162,8 @@
       "t.model": "รุ่น", "t.color": "สี", "t.size": "ไซซ์", "t.total": "รวม", "t.amount": "ยอดเงิน (฿)",
       "t.sum": "รวม",
       csv: "บันทึก CSV",
+      copy: "คัดลอกตาราง",
+      copied: "คัดลอกแล้ว",
       empty: "ไม่มียอดขายที่ตรงกับเงื่อนไข",
       pairs: "{n} คู่",
       "tip.qty": "จำนวน",
@@ -195,11 +201,13 @@
   let theme = "auto";
   try { theme = localStorage.getItem("theme") || "auto"; } catch (_) {}
   function applyTheme() {
+    if (!$("themeToggle")) return;
     if (theme === "auto") document.documentElement.removeAttribute("data-theme");
     else document.documentElement.setAttribute("data-theme", theme);
-    $("themeLabel").textContent = t(`theme.${theme}`);
+    if ($("themeLabel")) $("themeLabel").textContent = t(`theme.${theme}`);
   }
-  $("themeToggle").addEventListener("click", () => {
+  // 単体版 (公開ページ) ではテーマ切り替えボタンがなく、閲覧画面のテーマに従う
+  if ($("themeToggle")) $("themeToggle").addEventListener("click", () => {
     theme = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
     try { localStorage.setItem("theme", theme); } catch (_) {}
     applyTheme();
@@ -478,7 +486,21 @@
     sort = sort.key === k ? { key: k, dir: -sort.dir } : { key: k, dir: ["model", "color", "size"].includes(k) ? 1 : -1 };
     renderTable(current, activeLocIds());
   });
-  $("dlCsv").addEventListener("click", () => {
+  // 表をタブ区切りでコピー (Excel・スプレッドシートにそのまま貼り付けできる)
+  $("copyTable").addEventListener("click", () => {
+    if (!tableCache) return;
+    const { cols, items, val } = tableCache;
+    const tsv = [cols.map((c) => c.label).join("\t"), ...items.map((it) => cols.map((c) => (c.num ? Math.round(val(it, c.key) * 100) / 100 : val(it, c.key))).join("\t"))].join("\n");
+    const done = () => { $("copyTable").textContent = t("copied"); setTimeout(() => ($("copyTable").textContent = t("copy")), 1600); };
+    const fallback = () => {
+      const ta = document.createElement("textarea");
+      ta.value = tsv; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); done(); } catch (_) {}
+      ta.remove();
+    };
+    if (navigator.clipboard) navigator.clipboard.writeText(tsv).then(done, fallback); else fallback();
+  });
+  if ($("dlCsv")) $("dlCsv").addEventListener("click", () => {
     if (!tableCache) return;
     const { cols, items, val } = tableCache;
     const q = (s) => `"${String(s).replace(/"/g, '""')}"`;
@@ -493,8 +515,8 @@
   let rt;
   addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => data && render(), 150); });
 
-  fetch("vivo.json", { cache: "no-store" })
-    .then((r) => r.json())
+  // 単体版は window.VIVO_DATA にデータを埋め込む
+  (window.VIVO_DATA ? Promise.resolve(window.VIVO_DATA) : fetch("vivo.json", { cache: "no-store" }).then((r) => r.json()))
     .then((d) => {
       data = d;
       LOC = Object.fromEntries(d.locations.map((l) => [l.id, l]));
