@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-thai: 'Noto Sans Thai', 'Sarabun', 'Thonburi', 'Leelawadee UI', 'Tahoma', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+:root {
+  color-scheme: dark;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  height: 100%;
+  overscroll-behavior-y: none;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic UI', sans-serif;
+  font-feature-settings: 'palt';
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-thai {
+  font-family: var(--font-thai);
+  line-height: 1.5;
+}
+
+button {
+  touch-action: manipulation;
+}

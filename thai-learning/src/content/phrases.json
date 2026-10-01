@@ -1,0 +1,3105 @@
+[
+  {
+    "id": "pro-01",
+    "scene": "pronunciation",
+    "thai": "ครับ",
+    "roman": "kráp",
+    "kana": "クラップ",
+    "ja": "（男性の丁寧な文末詞）〜です／はい",
+    "register": "polite",
+    "note": "男性が文末に付ける丁寧語。返事の「はい」「うん」としても使える。会話では kráp の p はほとんど聞こえず「カッ」に近い。女性は ค่ะ (kâ) / คะ (ká)。",
+    "tags": [
+      "core",
+      "particle"
+    ]
+  },
+  {
+    "id": "pro-02",
+    "scene": "pronunciation",
+    "thai": "ผม",
+    "roman": "pǒm",
+    "kana": "ポム",
+    "ja": "私（男性）",
+    "register": "neutral",
+    "note": "男性の一人称。上がり調子（上声）。親しい相手なら เรา (rao) や自分の名前で言うこともあるが、まずは ผม で統一。",
+    "tags": [
+      "core",
+      "pronoun"
+    ]
+  },
+  {
+    "id": "pro-03",
+    "scene": "pronunciation",
+    "thai": "คุณ",
+    "roman": "kun",
+    "kana": "クン",
+    "ja": "あなた",
+    "register": "polite",
+    "note": "丁寧な「あなた」。親しくなったら相手の名前やニックネームで呼ぶ方が自然（คุณ+名前 → 名前だけ）。",
+    "tags": [
+      "core",
+      "pronoun"
+    ]
+  },
+  {
+    "id": "pro-04",
+    "scene": "pronunciation",
+    "thai": "ไม่",
+    "roman": "mâi",
+    "kana": "マイ（下がる）",
+    "ja": "〜ない（否定）",
+    "register": "neutral",
+    "note": "下降調。疑問の ไหม (mái 高声) と声調が違うので注意。動詞・形容詞の前に置く。",
+    "tags": [
+      "core",
+      "grammar"
+    ]
+  },
+  {
+    "id": "pro-05",
+    "scene": "pronunciation",
+    "thai": "ไหม",
+    "roman": "mái",
+    "kana": "マイ（高い）",
+    "ja": "〜ですか？（疑問の文末詞）",
+    "register": "neutral",
+    "note": "文末に付けて Yes/No 疑問文にする。会話では高声 mái。書き言葉の声調は上声 mǎi だが口語は高声で言う。",
+    "tags": [
+      "core",
+      "grammar",
+      "particle"
+    ]
+  },
+  {
+    "id": "pro-06",
+    "scene": "pronunciation",
+    "thai": "นะ",
+    "roman": "ná",
+    "kana": "ナ",
+    "ja": "〜ね／〜よ（柔らかくする文末詞）",
+    "register": "casual",
+    "note": "命令や提案、別れ際を柔らかくする。ครับ と組み合わせて นะครับ (ná kráp) も可。",
+    "tags": [
+      "core",
+      "particle"
+    ]
+  },
+  {
+    "id": "pro-07",
+    "scene": "pronunciation",
+    "thai": "เหรอ",
+    "roman": "rə̌ə",
+    "kana": "ロー（上がる）",
+    "ja": "〜なの？／そうなの？",
+    "register": "casual",
+    "note": "確認・驚きの疑問。会話では หรอ (rɔ̌ɔ) と発音されることが多い。相づちとしても「へぇ、そう？」と使える。",
+    "tags": [
+      "core",
+      "particle"
+    ]
+  },
+  {
+    "id": "pro-08",
+    "scene": "pronunciation",
+    "thai": "ครับผม",
+    "roman": "kráp pǒm",
+    "kana": "クラッポム",
+    "ja": "はい（丁寧な返事）",
+    "register": "polite",
+    "note": "目上や店員への「はい、わかりました」。ครับ だけより少し丁寧。",
+    "tags": [
+      "particle",
+      "reply"
+    ]
+  },
+  {
+    "id": "grt-01",
+    "scene": "greetings",
+    "thai": "สวัสดีครับ",
+    "roman": "sà-wàt-dii kráp",
+    "kana": "サワッディー クラップ",
+    "ja": "こんにちは／さようなら",
+    "register": "polite",
+    "variants": [
+      {
+        "register": "casual",
+        "thai": "หวัดดี",
+        "roman": "wàt-dii",
+        "kana": "ワッディー",
+        "ja": "やあ／おっす"
+      }
+    ],
+    "note": "時間帯を問わず使える万能あいさつ。初対面・店員・年上には ครับ 付き。友達には หวัดดี。",
+    "tags": [
+      "core"
+    ],
+    "replies": [
+      "grt-01"
+    ]
+  },
+  {
+    "id": "grt-02",
+    "scene": "greetings",
+    "thai": "สบายดีไหมครับ",
+    "roman": "sà-baai-dii mái kráp",
+    "kana": "サバーイディー マイ クラップ",
+    "ja": "元気ですか？",
+    "register": "polite",
+    "variants": [
+      {
+        "register": "casual",
+        "thai": "เป็นไงบ้าง",
+        "roman": "bpen ngai bâang",
+        "kana": "ペンガイ バーン",
+        "ja": "調子どう？"
+      }
+    ],
+    "note": "知り合いに会ったときに。初対面にはあまり使わない。",
+    "tags": [
+      "question"
+    ],
+    "replies": [
+      "grt-03"
+    ]
+  },
+  {
+    "id": "grt-03",
+    "scene": "greetings",
+    "thai": "สบายดีครับ",
+    "roman": "sà-baai-dii kráp",
+    "kana": "サバーイディー クラップ",
+    "ja": "元気です",
+    "register": "polite",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "grt-04",
+    "scene": "greetings",
+    "thai": "ยินดีที่ได้รู้จักครับ",
+    "roman": "yin-dii tîi dâai rúu-jàk kráp",
+    "kana": "インディー ティー ダーイ ルージャック クラップ",
+    "ja": "はじめまして（知り合えてうれしいです）",
+    "register": "polite",
+    "note": "名前を言い合った後に。別れ際に言うと「知り合えてよかった」の意味にもなる。",
+    "tags": [
+      "core"
+    ],
+    "replies": [
+      "grt-05"
+    ]
+  },
+  {
+    "id": "grt-05",
+    "scene": "greetings",
+    "thai": "เช่นกันครับ",
+    "roman": "chên gan kráp",
+    "kana": "チェンガン クラップ",
+    "ja": "こちらこそ",
+    "register": "polite",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "grt-06",
+    "scene": "greetings",
+    "thai": "ขอบคุณครับ",
+    "roman": "kɔ̀ɔp-kun kráp",
+    "kana": "コープクン クラップ",
+    "ja": "ありがとうございます",
+    "register": "polite",
+    "variants": [
+      {
+        "register": "casual",
+        "thai": "ขอบคุณนะ",
+        "roman": "kɔ̀ɔp-kun ná",
+        "kana": "コープクン ナ",
+        "ja": "ありがとね"
+      }
+    ],
+    "note": "ขอบคุณมาก (mâak) で「どうもありがとう」。",
+    "tags": [
+      "core"
+    ],
+    "replies": [
+      "grt-07"
+    ]
+  },
+  {
+    "id": "grt-07",
+    "scene": "greetings",
+    "thai": "ไม่เป็นไรครับ",
+    "roman": "mâi bpen rai kráp",
+    "kana": "マイペンライ クラップ",
+    "ja": "どうぞ気にしないで／大丈夫です",
+    "register": "polite",
+    "note": "「ありがとう」「すみません」への返答、断られたときの「気にしないで」まで万能。",
+    "tags": [
+      "core",
+      "reply"
+    ]
+  },
+  {
+    "id": "grt-08",
+    "scene": "greetings",
+    "thai": "ขอโทษครับ",
+    "roman": "kɔ̌ɔ-tôot kráp",
+    "kana": "コートート クラップ",
+    "ja": "すみません／ごめんなさい",
+    "register": "polite",
+    "variants": [
+      {
+        "register": "casual",
+        "thai": "โทษที",
+        "roman": "tôot tii",
+        "kana": "トートティー",
+        "ja": "ごめんね／わるい"
+      }
+    ],
+    "note": "謝罪にも、声をかけるときの「すみません」にも使える。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "grt-09",
+    "scene": "greetings",
+    "thai": "ไปก่อนนะครับ",
+    "roman": "bpai gɔ̀ɔn ná kráp",
+    "kana": "パイ ゴーン ナ クラップ",
+    "ja": "お先に失礼します（先に行きますね）",
+    "register": "polite",
+    "note": "別れ際の実用表現。ลาก่อน は教科書的でほとんど使わない。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "grt-10",
+    "scene": "greetings",
+    "thai": "แล้วเจอกันนะ",
+    "roman": "lɛ́ɛo jəə gan ná",
+    "kana": "レーオ ジュー ガン ナ",
+    "ja": "またね（また会おう）",
+    "register": "casual",
+    "variants": [
+      {
+        "register": "polite",
+        "thai": "แล้วเจอกันครับ",
+        "roman": "lɛ́ɛo jəə gan kráp",
+        "kana": "レーオ ジュー ガン クラップ"
+      }
+    ],
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "grt-11",
+    "scene": "greetings",
+    "thai": "ฝันดีนะ",
+    "roman": "fǎn dii ná",
+    "kana": "ファン ディー ナ",
+    "ja": "おやすみ（良い夢を）",
+    "register": "casual",
+    "note": "夜の別れ際やチャットの締めに。",
+    "tags": []
+  },
+  {
+    "id": "int-01",
+    "scene": "self_intro",
+    "thai": "ผมชื่อ...ครับ",
+    "roman": "pǒm chʉ̂ʉ ... kráp",
+    "kana": "ポム チュー ... クラップ",
+    "ja": "私の名前は…です",
+    "register": "polite",
+    "note": "名前の後に ครับ。ニックネームがあれば เรียกผมว่า... (rîak pǒm wâa ...)「…と呼んでください」も便利。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "int-02",
+    "scene": "self_intro",
+    "thai": "เรียกผมว่า...ก็ได้",
+    "roman": "rîak pǒm wâa ... gɔ̂ɔ dâai",
+    "kana": "リアック ポム ワー ... ゴ ダーイ",
+    "ja": "…と呼んでくれていいよ",
+    "register": "casual",
+    "note": "タイ人は短いニックネームで呼び合う。自分も短い呼び名を用意しておくと親しくなりやすい。",
+    "tags": []
+  },
+  {
+    "id": "int-03",
+    "scene": "self_intro",
+    "thai": "ผมเป็นคนญี่ปุ่นครับ",
+    "roman": "pǒm bpen kon yîi-bpùn kráp",
+    "kana": "ポム ペン コン イープン クラップ",
+    "ja": "私は日本人です",
+    "register": "polite",
+    "tags": [
+      "core"
+    ],
+    "replies": [
+      "int-13",
+      "smt-21"
+    ]
+  },
+  {
+    "id": "int-04",
+    "scene": "self_intro",
+    "thai": "ผมมาจากญี่ปุ่น",
+    "roman": "pǒm maa jàak yîi-bpùn",
+    "kana": "ポム マー ジャーク イープン",
+    "ja": "日本から来ました",
+    "register": "neutral",
+    "note": "出身地を言うなら ญี่ปุ่น を โตเกียว (dtoo-giao) / โอซาก้า (oo-saa-gâa) などに差し替え。",
+    "tags": []
+  },
+  {
+    "id": "int-05",
+    "scene": "self_intro",
+    "thai": "ผมอยู่กรุงเทพครับ",
+    "roman": "pǒm yùu grung-têep kráp",
+    "kana": "ポム ユー クルンテープ クラップ",
+    "ja": "バンコクに住んでいます",
+    "register": "polite",
+    "note": "กรุงเทพ の発音は grung-têep。「バンコク」は外国人向けの呼び方。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "int-06",
+    "scene": "self_intro",
+    "thai": "ผมอยู่แถว...",
+    "roman": "pǒm yùu tɛ̌ɛo ...",
+    "kana": "ポム ユー テーオ ...",
+    "ja": "…のあたりに住んでいます",
+    "register": "neutral",
+    "note": "แถว (tɛ̌ɛo)＝〜のあたり。駅名・エリア名を入れる（ทองหล่อ, อโศก, สุขุมวิท など）。",
+    "tags": []
+  },
+  {
+    "id": "int-07",
+    "scene": "self_intro",
+    "thai": "ผมเพิ่งย้ายมาครับ",
+    "roman": "pǒm pə̂ng yáai maa kráp",
+    "kana": "ポム プン ヤーイ マー クラップ",
+    "ja": "引っ越してきたばかりです",
+    "register": "polite",
+    "note": "เพิ่ง (pə̂ng)＝〜したばかり。「タイに来て間もない」の説明に。",
+    "tags": []
+  },
+  {
+    "id": "int-08",
+    "scene": "self_intro",
+    "thai": "ผมทำงานที่กรุงเทพครับ",
+    "roman": "pǒm tam-ngaan tîi grung-têep kráp",
+    "kana": "ポム タムガーン ティー クルンテープ クラップ",
+    "ja": "バンコクで働いています",
+    "register": "polite",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "int-09",
+    "scene": "self_intro",
+    "thai": "ผมทำงานบริษัทญี่ปุ่น",
+    "roman": "pǒm tam-ngaan bɔɔ-rí-sàt yîi-bpùn",
+    "kana": "ポム タムガーン ボーリサット イープン",
+    "ja": "日本の会社で働いています",
+    "register": "neutral",
+    "note": "職種を言うなら ผมเป็น... (pǒm bpen ...)：วิศวกร (wít-sà-wá-gɔɔn エンジニア), นักการตลาด (nák gaan-dtà-làat マーケター), ผู้จัดการ (pûu-jàt-gaan マネージャー)。",
+    "tags": []
+  },
+  {
+    "id": "int-10",
+    "scene": "self_intro",
+    "thai": "ผมอายุสามสิบสี่",
+    "roman": "pǒm aa-yú sǎam-sìp-sìi",
+    "kana": "ポム アーユ サームシップシー",
+    "ja": "34歳です",
+    "register": "neutral",
+    "note": "タイでは年齢を聞かれるのは普通。聞くときは อายุเท่าไหร่ (aa-yú tâo-rài)。",
+    "tags": [
+      "number"
+    ]
+  },
+  {
+    "id": "int-11",
+    "scene": "self_intro",
+    "thai": "ผมพูดไทยได้นิดหน่อยครับ",
+    "roman": "pǒm pûut tai dâai nít-nɔ̀i kráp",
+    "kana": "ポム プート タイ ダーイ ニットノイ クラップ",
+    "ja": "タイ語は少しだけ話せます",
+    "register": "polite",
+    "tags": [
+      "core"
+    ],
+    "replies": [
+      "int-14"
+    ]
+  },
+  {
+    "id": "int-12",
+    "scene": "self_intro",
+    "thai": "ผมกำลังเรียนภาษาไทยอยู่ครับ",
+    "roman": "pǒm gam-lang rian paa-sǎa tai yùu kráp",
+    "kana": "ポム ガムラン リアン パーサー タイ ユー クラップ",
+    "ja": "今タイ語を勉強中です",
+    "register": "polite",
+    "note": "これを言うと相手がゆっくり話してくれたり、教えてくれたりする。会話のきっかけとして最強。",
+    "tags": [
+      "core"
+    ],
+    "replies": [
+      "int-14"
+    ]
+  },
+  {
+    "id": "int-13",
+    "scene": "self_intro",
+    "thai": "คนญี่ปุ่นเหรอ",
+    "roman": "kon yîi-bpùn rə̌ə",
+    "kana": "コン イープン ロー",
+    "ja": "日本人なの？",
+    "register": "casual",
+    "tags": [
+      "reply",
+      "question"
+    ]
+  },
+  {
+    "id": "int-14",
+    "scene": "self_intro",
+    "thai": "พูดไทยเก่งนะ",
+    "roman": "pûut tai gèng ná",
+    "kana": "プート タイ ゲン ナ",
+    "ja": "タイ語うまいね",
+    "register": "casual",
+    "note": "相手がよく言ってくれるお決まりの褒め言葉。返しは ยังไม่เก่งครับ (yang mâi gèng kráp まだまだです) や ขอบคุณครับ。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "int-15",
+    "scene": "self_intro",
+    "thai": "ยังไม่เก่งครับ",
+    "roman": "yang mâi gèng kráp",
+    "kana": "ヤン マイ ゲン クラップ",
+    "ja": "まだまだです",
+    "register": "polite",
+    "note": "「タイ語うまいね」への謙遜の返し。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "sur-01",
+    "scene": "survival",
+    "thai": "พูดอีกทีได้ไหมครับ",
+    "roman": "pûut ìik tii dâai mái kráp",
+    "kana": "プート イーク ティー ダーイ マイ クラップ",
+    "ja": "もう一度言ってもらえますか？",
+    "register": "polite",
+    "variants": [
+      {
+        "register": "casual",
+        "thai": "อะไรนะ",
+        "roman": "à-rai ná",
+        "kana": "アライ ナ",
+        "ja": "何て？"
+      }
+    ],
+    "note": "一番使うサバイバル表現。アイコンタクト＋笑顔で。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "sur-02",
+    "scene": "survival",
+    "thai": "พูดช้าๆ หน่อยได้ไหมครับ",
+    "roman": "pûut cháa-cháa nɔ̀i dâai mái kráp",
+    "kana": "プート チャーチャー ノイ ダーイ マイ クラップ",
+    "ja": "ゆっくり話してもらえますか？",
+    "register": "polite",
+    "note": "หน่อย (nɔ̀i)＝ちょっと。頼みごとを柔らかくする。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "sur-03",
+    "scene": "survival",
+    "thai": "อันนี้ภาษาไทยเรียกว่าอะไรครับ",
+    "roman": "an-níi paa-sǎa tai rîak wâa à-rai kráp",
+    "kana": "アンニー パーサー タイ リアック ワー アライ クラップ",
+    "ja": "これはタイ語で何と言いますか？",
+    "register": "polite",
+    "note": "物を指しながら。会話を広げる最高のネタになる。",
+    "tags": [
+      "core",
+      "question"
+    ]
+  },
+  {
+    "id": "sur-04",
+    "scene": "survival",
+    "thai": "...แปลว่าอะไรครับ",
+    "roman": "... bplɛɛ wâa à-rai kráp",
+    "kana": "... プレー ワー アライ クラップ",
+    "ja": "…ってどういう意味ですか？",
+    "register": "polite",
+    "note": "聞き取れた単語を繰り返して + แปลว่าอะไร。",
+    "tags": [
+      "question"
+    ]
+  },
+  {
+    "id": "sur-05",
+    "scene": "survival",
+    "thai": "ไม่เข้าใจครับ",
+    "roman": "mâi kâo-jai kráp",
+    "kana": "マイ カオジャイ クラップ",
+    "ja": "分かりません（理解できません）",
+    "register": "polite",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "sur-06",
+    "scene": "survival",
+    "thai": "เข้าใจแล้วครับ",
+    "roman": "kâo-jai lɛ́ɛo kráp",
+    "kana": "カオジャイ レーオ クラップ",
+    "ja": "分かりました",
+    "register": "polite",
+    "note": "แล้ว (lɛ́ɛo)＝もう／〜した。「あ、分かった！」のニュアンス。",
+    "tags": [
+      "core",
+      "reply"
+    ]
+  },
+  {
+    "id": "sur-07",
+    "scene": "survival",
+    "thai": "พูดภาษาอังกฤษได้ไหมครับ",
+    "roman": "pûut paa-sǎa ang-grìt dâai mái kráp",
+    "kana": "プート パーサー アングリット ダーイ マイ クラップ",
+    "ja": "英語は話せますか？",
+    "register": "polite",
+    "tags": [
+      "question"
+    ]
+  },
+  {
+    "id": "sur-08",
+    "scene": "survival",
+    "thai": "ช่วยเขียนให้หน่อยได้ไหมครับ",
+    "roman": "chûai kǐan hâi nɔ̀i dâai mái kráp",
+    "kana": "チュアイ キアン ハイ ノイ ダーイ マイ クラップ",
+    "ja": "書いてもらえますか？",
+    "register": "polite",
+    "note": "スマホのメモを渡しながら。店名・地名・名前を確認するときに。",
+    "tags": []
+  },
+  {
+    "id": "sur-09",
+    "scene": "survival",
+    "thai": "ขอโทษนะ ผมไม่ค่อยเข้าใจ",
+    "roman": "kɔ̌ɔ-tôot ná pǒm mâi kɔ̂i kâo-jai",
+    "kana": "コートート ナ ポム マイ コイ カオジャイ",
+    "ja": "ごめん、あんまり分からなかった",
+    "register": "casual",
+    "note": "ไม่ค่อย (mâi kɔ̂i)＝あまり〜ない。全否定より柔らかい。",
+    "tags": []
+  },
+  {
+    "id": "sur-10",
+    "scene": "survival",
+    "thai": "ถูกไหมครับ",
+    "roman": "tùuk mái kráp",
+    "kana": "トゥーク マイ クラップ",
+    "ja": "合ってますか？（正しい？）",
+    "register": "polite",
+    "note": "自分のタイ語を確認するときに。相手は ถูกแล้ว (tùuk lɛ́ɛo 合ってる) と返す。",
+    "tags": [
+      "question"
+    ],
+    "replies": [
+      "sur-11"
+    ]
+  },
+  {
+    "id": "sur-11",
+    "scene": "survival",
+    "thai": "ถูกแล้ว",
+    "roman": "tùuk lɛ́ɛo",
+    "kana": "トゥーク レーオ",
+    "ja": "合ってるよ",
+    "register": "casual",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "sur-12",
+    "scene": "survival",
+    "thai": "ว่าไงนะ",
+    "roman": "wâa ngai ná",
+    "kana": "ワー ンガイ ナ",
+    "ja": "え、何て言った？",
+    "register": "casual",
+    "note": "友達同士のカジュアルな聞き返し。初対面には sur-01 を使う。",
+    "tags": []
+  },
+  {
+    "id": "sur-13",
+    "scene": "survival",
+    "thai": "รอแป๊บนึงนะ",
+    "roman": "rɔɔ bpɛ́p nʉng ná",
+    "kana": "ロー ペップ ヌン ナ",
+    "ja": "ちょっと待ってね",
+    "register": "casual",
+    "variants": [
+      {
+        "register": "polite",
+        "thai": "รอสักครู่ครับ",
+        "roman": "rɔɔ sàk krûu kráp",
+        "kana": "ロー サック クルー クラップ",
+        "ja": "少々お待ちください"
+      }
+    ],
+    "note": "แป๊บนึง (bpɛ́p nʉng)＝ほんの一瞬。翻訳アプリを出すときなどに。",
+    "tags": []
+  },
+  {
+    "id": "sur-14",
+    "scene": "survival",
+    "thai": "ห้องน้ำอยู่ไหนครับ",
+    "roman": "hɔ̂ng-náam yùu nǎi kráp",
+    "kana": "ホンナーム ユー ナイ クラップ",
+    "ja": "トイレはどこですか？",
+    "register": "polite",
+    "tags": [
+      "question"
+    ],
+    "replies": [
+      "num-23"
+    ]
+  },
+  {
+    "id": "sur-15",
+    "scene": "survival",
+    "thai": "ช่วยสอนผมหน่อย",
+    "roman": "chûai sɔ̌ɔn pǒm nɔ̀i",
+    "kana": "チュアイ ソーン ポム ノイ",
+    "ja": "ちょっと教えて",
+    "register": "casual",
+    "note": "「タイ語教えて」は距離を縮める定番。ช่วย (chûai) + 動詞 + หน่อย で「〜してちょうだい」。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "sur-16",
+    "scene": "survival",
+    "thai": "พูดว่ายังไงนะ",
+    "roman": "pûut wâa yang-ngai ná",
+    "kana": "プート ワー ヤンガイ ナ",
+    "ja": "（それ）どう言うんだっけ？",
+    "register": "casual",
+    "note": "自分が言いたい言葉が出てこないとき、相手に助けてもらう。",
+    "tags": []
+  },
+  {
+    "id": "rea-01",
+    "scene": "reactions",
+    "thai": "อ๋อ",
+    "roman": "ɔ̌ɔ",
+    "kana": "オー（上がる）",
+    "ja": "ああ、なるほど",
+    "register": "neutral",
+    "note": "納得の相づち。อ๋อ เข้าใจแล้ว で「ああ、分かった」。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "rea-02",
+    "scene": "reactions",
+    "thai": "จริงเหรอ",
+    "roman": "jing rə̌ə",
+    "kana": "ジン ロー",
+    "ja": "ほんとに？",
+    "register": "casual",
+    "variants": [
+      {
+        "register": "polite",
+        "thai": "จริงเหรอครับ",
+        "roman": "jing rə̌ə kráp",
+        "kana": "ジン ロー クラップ"
+      }
+    ],
+    "note": "驚き・興味を示す万能相づち。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "rea-03",
+    "scene": "reactions",
+    "thai": "จริงดิ",
+    "roman": "jing dì",
+    "kana": "ジン ディ",
+    "ja": "マジで？",
+    "register": "casual",
+    "note": "若者のカジュアルな言い方。親しくなってから。",
+    "tags": []
+  },
+  {
+    "id": "rea-04",
+    "scene": "reactions",
+    "thai": "เจ๋ง",
+    "roman": "jěng",
+    "kana": "ジェン（上がる）",
+    "ja": "かっこいい／すごい",
+    "register": "casual",
+    "note": "若い世代の「イケてる」「ヤバい（良い意味）」。เจ๋งมาก (jěng mâak) で強調。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "rea-05",
+    "scene": "reactions",
+    "thai": "สุดยอด",
+    "roman": "sùt-yɔ̂ɔt",
+    "kana": "スットヨート",
+    "ja": "最高！",
+    "register": "casual",
+    "tags": []
+  },
+  {
+    "id": "rea-06",
+    "scene": "reactions",
+    "thai": "เยี่ยม",
+    "roman": "yîam",
+    "kana": "イアム",
+    "ja": "すばらしい／いいね",
+    "register": "neutral",
+    "tags": []
+  },
+  {
+    "id": "rea-07",
+    "scene": "reactions",
+    "thai": "ดีมาก",
+    "roman": "dii mâak",
+    "kana": "ディー マーク",
+    "ja": "とてもいい",
+    "register": "neutral",
+    "tags": []
+  },
+  {
+    "id": "rea-08",
+    "scene": "reactions",
+    "thai": "น่าสนใจ",
+    "roman": "nâa sǒn-jai",
+    "kana": "ナー ソンジャイ",
+    "ja": "面白そう／興味深い",
+    "register": "neutral",
+    "tags": []
+  },
+  {
+    "id": "rea-09",
+    "scene": "reactions",
+    "thai": "ใช่เลย",
+    "roman": "châi ləəi",
+    "kana": "チャイ ルーイ",
+    "ja": "そのとおり！",
+    "register": "casual",
+    "note": "強い同意。เลย (ləəi) は強調。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "rea-10",
+    "scene": "reactions",
+    "thai": "ใช่ครับ",
+    "roman": "châi kráp",
+    "kana": "チャイ クラップ",
+    "ja": "はい、そうです",
+    "register": "polite",
+    "variants": [
+      {
+        "register": "casual",
+        "thai": "ใช่",
+        "roman": "châi",
+        "kana": "チャイ",
+        "ja": "そう"
+      }
+    ],
+    "tags": [
+      "core",
+      "reply"
+    ]
+  },
+  {
+    "id": "rea-11",
+    "scene": "reactions",
+    "thai": "ไม่ใช่ครับ",
+    "roman": "mâi châi kráp",
+    "kana": "マイ チャイ クラップ",
+    "ja": "いいえ、違います",
+    "register": "polite",
+    "tags": [
+      "core",
+      "reply"
+    ]
+  },
+  {
+    "id": "rea-12",
+    "scene": "reactions",
+    "thai": "เห็นด้วย",
+    "roman": "hěn dûai",
+    "kana": "ヘン ドゥアイ",
+    "ja": "同感／賛成",
+    "register": "neutral",
+    "tags": []
+  },
+  {
+    "id": "rea-13",
+    "scene": "reactions",
+    "thai": "แน่นอน",
+    "roman": "nɛ̂ɛ-nɔɔn",
+    "kana": "ネーノーン",
+    "ja": "もちろん",
+    "register": "neutral",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "rea-14",
+    "scene": "reactions",
+    "thai": "ได้เลย",
+    "roman": "dâai ləəi",
+    "kana": "ダーイ ルーイ",
+    "ja": "いいよ！／喜んで",
+    "register": "casual",
+    "note": "誘い・依頼への快諾。ได้ (dâai) だけでも OK。",
+    "tags": [
+      "core",
+      "reply"
+    ]
+  },
+  {
+    "id": "rea-15",
+    "scene": "reactions",
+    "thai": "ไม่มีปัญหา",
+    "roman": "mâi mii bpan-hǎa",
+    "kana": "マイ ミー パンハー",
+    "ja": "問題ないよ",
+    "register": "neutral",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "rea-16",
+    "scene": "reactions",
+    "thai": "แล้วก็...",
+    "roman": "lɛ́ɛo gɔ̂ɔ ...",
+    "kana": "レーオ ゴー ...",
+    "ja": "それから…／そして…",
+    "register": "neutral",
+    "note": "話を続けるつなぎ言葉。間を埋めるのに便利。",
+    "tags": [
+      "filler"
+    ]
+  },
+  {
+    "id": "rea-17",
+    "scene": "reactions",
+    "thai": "แบบว่า...",
+    "roman": "bɛ̀ɛp wâa ...",
+    "kana": "ベープ ワー ...",
+    "ja": "なんていうか…／えっと…",
+    "register": "casual",
+    "note": "若者が多用する filler。考えている間に挟む。",
+    "tags": [
+      "filler"
+    ]
+  },
+  {
+    "id": "rea-18",
+    "scene": "reactions",
+    "thai": "คือ...",
+    "roman": "kʉʉ ...",
+    "kana": "クー ...",
+    "ja": "つまり…／えっと…",
+    "register": "neutral",
+    "note": "説明を始めるときの filler。",
+    "tags": [
+      "filler"
+    ]
+  },
+  {
+    "id": "rea-19",
+    "scene": "reactions",
+    "thai": "ไม่รู้",
+    "roman": "mâi rúu",
+    "kana": "マイ ルー",
+    "ja": "知らない／分からない",
+    "register": "casual",
+    "variants": [
+      {
+        "register": "polite",
+        "thai": "ไม่ทราบครับ",
+        "roman": "mâi sâap kráp",
+        "kana": "マイ サープ クラップ"
+      }
+    ],
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "rea-20",
+    "scene": "reactions",
+    "thai": "ไม่แน่ใจ",
+    "roman": "mâi nɛ̂ɛ-jai",
+    "kana": "マイ ネージャイ",
+    "ja": "自信がない／よく分からない",
+    "register": "neutral",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "rea-21",
+    "scene": "reactions",
+    "thai": "โอเค",
+    "roman": "oo-kee",
+    "kana": "オーケー",
+    "ja": "OK",
+    "register": "casual",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "rea-22",
+    "scene": "reactions",
+    "thai": "ตลกมาก",
+    "roman": "dtà-lòk mâak",
+    "kana": "タロック マーク",
+    "ja": "めっちゃ面白い（笑える）",
+    "register": "casual",
+    "tags": []
+  },
+  {
+    "id": "rea-23",
+    "scene": "reactions",
+    "thai": "เหรอ",
+    "roman": "rə̌ə",
+    "kana": "ロー",
+    "ja": "へぇ、そうなの？",
+    "register": "casual",
+    "note": "相手の話に軽く反応する相づち。語尾を上げる。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "rea-24",
+    "scene": "reactions",
+    "thai": "ดีจัง",
+    "roman": "dii jang",
+    "kana": "ディー ジャン",
+    "ja": "いいなぁ",
+    "register": "casual",
+    "note": "จัง (jang)＝〜だなぁ（感嘆）。",
+    "tags": []
+  },
+  {
+    "id": "num-01",
+    "scene": "numbers_time",
+    "thai": "หนึ่ง",
+    "roman": "nʉ̀ng",
+    "kana": "ヌン",
+    "ja": "1",
+    "register": "neutral",
+    "tags": [
+      "number"
+    ]
+  },
+  {
+    "id": "num-02",
+    "scene": "numbers_time",
+    "thai": "สอง",
+    "roman": "sɔ̌ɔng",
+    "kana": "ソーン",
+    "ja": "2",
+    "register": "neutral",
+    "tags": [
+      "number"
+    ]
+  },
+  {
+    "id": "num-03",
+    "scene": "numbers_time",
+    "thai": "สาม",
+    "roman": "sǎam",
+    "kana": "サーム",
+    "ja": "3",
+    "register": "neutral",
+    "tags": [
+      "number"
+    ]
+  },
+  {
+    "id": "num-04",
+    "scene": "numbers_time",
+    "thai": "สี่",
+    "roman": "sìi",
+    "kana": "シー",
+    "ja": "4",
+    "register": "neutral",
+    "tags": [
+      "number"
+    ]
+  },
+  {
+    "id": "num-05",
+    "scene": "numbers_time",
+    "thai": "ห้า",
+    "roman": "hâa",
+    "kana": "ハー",
+    "ja": "5",
+    "register": "neutral",
+    "note": "チャットの 555 は ห้าห้าห้า＝「ハハハ」(笑)。",
+    "tags": [
+      "number"
+    ]
+  },
+  {
+    "id": "num-06",
+    "scene": "numbers_time",
+    "thai": "หก",
+    "roman": "hòk",
+    "kana": "ホック",
+    "ja": "6",
+    "register": "neutral",
+    "tags": [
+      "number"
+    ]
+  },
+  {
+    "id": "num-07",
+    "scene": "numbers_time",
+    "thai": "เจ็ด",
+    "roman": "jèt",
+    "kana": "ジェット",
+    "ja": "7",
+    "register": "neutral",
+    "tags": [
+      "number"
+    ]
+  },
+  {
+    "id": "num-08",
+    "scene": "numbers_time",
+    "thai": "แปด",
+    "roman": "bpɛ̀ɛt",
+    "kana": "ペート",
+    "ja": "8",
+    "register": "neutral",
+    "tags": [
+      "number"
+    ]
+  },
+  {
+    "id": "num-09",
+    "scene": "numbers_time",
+    "thai": "เก้า",
+    "roman": "gâo",
+    "kana": "ガオ",
+    "ja": "9",
+    "register": "neutral",
+    "tags": [
+      "number"
+    ]
+  },
+  {
+    "id": "num-10",
+    "scene": "numbers_time",
+    "thai": "สิบ",
+    "roman": "sìp",
+    "kana": "シップ",
+    "ja": "10",
+    "register": "neutral",
+    "note": "11 は สิบเอ็ด (sìp-èt)、12 は สิบสอง。20 は ยี่สิบ (yîi-sìp)、21 は ยี่สิบเอ็ด。",
+    "tags": [
+      "number"
+    ]
+  },
+  {
+    "id": "num-11",
+    "scene": "numbers_time",
+    "thai": "ยี่สิบ",
+    "roman": "yîi-sìp",
+    "kana": "イーシップ",
+    "ja": "20",
+    "register": "neutral",
+    "note": "20 だけ สองสิบ ではなく ยี่สิบ。30 以降は สามสิบ, สี่สิบ … と規則的。",
+    "tags": [
+      "number"
+    ]
+  },
+  {
+    "id": "num-12",
+    "scene": "numbers_time",
+    "thai": "ร้อย",
+    "roman": "rɔ́ɔi",
+    "kana": "ローイ",
+    "ja": "100",
+    "register": "neutral",
+    "note": "หนึ่งร้อย／ร้อยนึง。150 は ร้อยห้าสิบ。1000 は พัน (pan)。",
+    "tags": [
+      "number"
+    ]
+  },
+  {
+    "id": "num-13",
+    "scene": "numbers_time",
+    "thai": "กี่โมงแล้วครับ",
+    "roman": "gìi moong lɛ́ɛo kráp",
+    "kana": "ギー モーン レーオ クラップ",
+    "ja": "今何時ですか？",
+    "register": "polite",
+    "tags": [
+      "question"
+    ],
+    "replies": [
+      "num-14"
+    ]
+  },
+  {
+    "id": "num-14",
+    "scene": "numbers_time",
+    "thai": "สองทุ่ม",
+    "roman": "sɔ̌ɔng tûm",
+    "kana": "ソーン トゥム",
+    "ja": "夜8時",
+    "register": "neutral",
+    "note": "タイ式の時刻：19時〜23時は ทุ่ม (tûm) で 1〜5 と数える（19時=หนึ่งทุ่ม, 20時=สองทุ่ม, 22時=สี่ทุ่ม）。24時=เที่ยงคืน (tîang kʉʉn)、深夜1〜5時=ตีหนึ่ง〜ตีห้า (dtii)。",
+    "tags": [
+      "number",
+      "reply"
+    ]
+  },
+  {
+    "id": "num-15",
+    "scene": "numbers_time",
+    "thai": "ตอนนี้",
+    "roman": "dtɔɔn-níi",
+    "kana": "トーンニー",
+    "ja": "今",
+    "register": "neutral",
+    "tags": []
+  },
+  {
+    "id": "num-16",
+    "scene": "numbers_time",
+    "thai": "คืนนี้",
+    "roman": "kʉʉn-níi",
+    "kana": "クーンニー",
+    "ja": "今夜",
+    "register": "neutral",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "num-17",
+    "scene": "numbers_time",
+    "thai": "พรุ่งนี้",
+    "roman": "prûng-níi",
+    "kana": "プルンニー",
+    "ja": "明日",
+    "register": "neutral",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "num-18",
+    "scene": "numbers_time",
+    "thai": "วันนี้",
+    "roman": "wan-níi",
+    "kana": "ワンニー",
+    "ja": "今日",
+    "register": "neutral",
+    "tags": []
+  },
+  {
+    "id": "num-19",
+    "scene": "numbers_time",
+    "thai": "เสาร์อาทิตย์นี้",
+    "roman": "sǎo aa-tít níi",
+    "kana": "サオ アーティット ニー",
+    "ja": "今週末（この土日）",
+    "register": "neutral",
+    "note": "口語では สุดสัปดาห์ より เสาร์อาทิตย์（土日）と言う方が自然。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "num-20",
+    "scene": "numbers_time",
+    "thai": "วันศุกร์",
+    "roman": "wan sùk",
+    "kana": "ワン スック",
+    "ja": "金曜日",
+    "register": "neutral",
+    "note": "月 วันจันทร์ (wan jan) / 火 วันอังคาร (wan ang-kaan) / 水 วันพุธ (wan pút) / 木 วันพฤหัส (wan pá-rʉ́-hàt) / 金 วันศุกร์ / 土 วันเสาร์ (wan sǎo) / 日 วันอาทิตย์ (wan aa-tít)。",
+    "tags": []
+  },
+  {
+    "id": "num-21",
+    "scene": "numbers_time",
+    "thai": "วันเสาร์",
+    "roman": "wan sǎo",
+    "kana": "ワン サオ",
+    "ja": "土曜日",
+    "register": "neutral",
+    "tags": []
+  },
+  {
+    "id": "num-22",
+    "scene": "numbers_time",
+    "thai": "ที่ไหน",
+    "roman": "tîi-nǎi",
+    "kana": "ティーナイ",
+    "ja": "どこ",
+    "register": "neutral",
+    "note": "อยู่ที่ไหน／อยู่ไหน (yùu nǎi)＝どこにある？どこにいる？",
+    "tags": [
+      "question"
+    ]
+  },
+  {
+    "id": "num-23",
+    "scene": "numbers_time",
+    "thai": "อยู่ตรงนั้น",
+    "roman": "yùu dtrong nán",
+    "kana": "ユー トロン ナン",
+    "ja": "そこにあるよ",
+    "register": "neutral",
+    "note": "ตรงนี้ (dtrong níi) ここ / ตรงนั้น そこ / ข้างหลัง (kâang lǎng) 後ろ / ชั้นสอง (chán sɔ̌ɔng) 2階。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "num-24",
+    "scene": "numbers_time",
+    "thai": "ใกล้ๆ นี้",
+    "roman": "glâi-glâi níi",
+    "kana": "クライクライ ニー",
+    "ja": "この近く",
+    "register": "neutral",
+    "note": "ใกล้ (glâi 下降調)＝近い、ไกล (glai 平声)＝遠い。声調だけで反対の意味になる最重要ペア。",
+    "tags": []
+  },
+  {
+    "id": "num-25",
+    "scene": "numbers_time",
+    "thai": "ทองหล่อ",
+    "roman": "tɔɔng-lɔ̀ɔ",
+    "kana": "トーンロー",
+    "ja": "トンロー（エリア名）",
+    "register": "neutral",
+    "note": "他：อโศก (à-sòok アソーク), สยาม (sà-yǎam サイアム), เอกมัย (èek-gà-mai エカマイ), อารีย์ (aa-rii アーリー), RCA (อาร์ซีเอ)。",
+    "tags": [
+      "place"
+    ]
+  },
+  {
+    "id": "num-26",
+    "scene": "numbers_time",
+    "thai": "ตอนเย็น",
+    "roman": "dtɔɔn-yen",
+    "kana": "トーン イェン",
+    "ja": "夕方／夜（18時前後）",
+    "register": "neutral",
+    "note": "ตอนเช้า (dtɔɔn-cháao 朝) / ตอนบ่าย (dtɔɔn-bàai 午後) / ตอนดึก (dtɔɔn-dʉ̀k 深夜)。",
+    "tags": []
+  },
+  {
+    "id": "fod-01",
+    "scene": "food_drink",
+    "thai": "ขอ...ครับ",
+    "roman": "kɔ̌ɔ ... kráp",
+    "kana": "コー ... クラップ",
+    "ja": "…をください",
+    "register": "polite",
+    "note": "注文・依頼の基本形。ขอ + 物 + 数 + 類別詞 + ครับ。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "fod-02",
+    "scene": "food_drink",
+    "thai": "ขอเบียร์สองขวดครับ",
+    "roman": "kɔ̌ɔ bia sɔ̌ɔng kùat kráp",
+    "kana": "コー ビア ソーン クアット クラップ",
+    "ja": "ビールを2本ください",
+    "register": "polite",
+    "note": "ขวด (kùat)＝瓶。グラス／杯なら แก้ว (gɛ̂ɛo)。缶なら กระป๋อง (grà-bpɔ̌ng)。",
+    "tags": [
+      "core",
+      "number"
+    ]
+  },
+  {
+    "id": "fod-03",
+    "scene": "food_drink",
+    "thai": "ขอน้ำเปล่าครับ",
+    "roman": "kɔ̌ɔ náam-bplào kráp",
+    "kana": "コー ナーム プラオ クラップ",
+    "ja": "お水をください",
+    "register": "polite",
+    "tags": []
+  },
+  {
+    "id": "fod-04",
+    "scene": "food_drink",
+    "thai": "ดื่มอะไรดี",
+    "roman": "dʉ̀ʉm à-rai dii",
+    "kana": "ドゥーム アライ ディー",
+    "ja": "何飲む？（何がいいかな）",
+    "register": "casual",
+    "note": "〜อะไรดี (à-rai dii)＝何が良い？ 一緒に選ぶニュアンス。",
+    "tags": [
+      "core",
+      "question"
+    ]
+  },
+  {
+    "id": "fod-05",
+    "scene": "food_drink",
+    "thai": "อยากดื่มอะไรครับ",
+    "roman": "yàak dʉ̀ʉm à-rai kráp",
+    "kana": "ヤーク ドゥーム アライ クラップ",
+    "ja": "何を飲みたいですか？",
+    "register": "polite",
+    "tags": [
+      "question"
+    ],
+    "replies": [
+      "fod-06",
+      "fod-07"
+    ]
+  },
+  {
+    "id": "fod-06",
+    "scene": "food_drink",
+    "thai": "เอาเบียร์",
+    "roman": "ao bia",
+    "kana": "アオ ビア",
+    "ja": "ビールにする",
+    "register": "casual",
+    "note": "เอา (ao)＝取る／〜にする。注文時の「〜をお願い」にも。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "fod-07",
+    "scene": "food_drink",
+    "thai": "อะไรก็ได้",
+    "roman": "à-rai gɔ̂ɔ dâai",
+    "kana": "アライ ゴ ダーイ",
+    "ja": "何でもいいよ",
+    "register": "casual",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "fod-08",
+    "scene": "food_drink",
+    "thai": "ผมเลี้ยงเอง",
+    "roman": "pǒm líang eeng",
+    "kana": "ポム リアン エーン",
+    "ja": "僕がおごるよ",
+    "register": "casual",
+    "variants": [
+      {
+        "register": "polite",
+        "thai": "ผมเลี้ยงครับ",
+        "roman": "pǒm líang kráp",
+        "kana": "ポム リアン クラップ"
+      }
+    ],
+    "note": "เลี้ยง (líang)＝ごちそうする。เอง (eeng) で「自分が」を強調。押しつけがましくならないよう笑顔で軽く。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "fod-09",
+    "scene": "food_drink",
+    "thai": "แก้วนี้ผมเลี้ยงนะ",
+    "roman": "gɛ̂ɛo níi pǒm líang ná",
+    "kana": "ゲーオ ニー ポム リアン ナ",
+    "ja": "この一杯は僕のおごりね",
+    "register": "casual",
+    "tags": []
+  },
+  {
+    "id": "fod-10",
+    "scene": "food_drink",
+    "thai": "ชนแก้ว",
+    "roman": "chon gɛ̂ɛo",
+    "kana": "チョン ゲーオ",
+    "ja": "乾杯！",
+    "register": "casual",
+    "note": "直訳「グラスをぶつける」。ไชโย (chai-yoo) は掛け声の「カンパーイ」。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "fod-11",
+    "scene": "food_drink",
+    "thai": "อีกแก้วไหม",
+    "roman": "ìik gɛ̂ɛo mái",
+    "kana": "イーク ゲーオ マイ",
+    "ja": "もう一杯どう？",
+    "register": "casual",
+    "tags": [
+      "question"
+    ],
+    "replies": [
+      "rea-14",
+      "fod-12"
+    ]
+  },
+  {
+    "id": "fod-12",
+    "scene": "food_drink",
+    "thai": "พอแล้ว ขอบคุณนะ",
+    "roman": "pɔɔ lɛ́ɛo kɔ̀ɔp-kun ná",
+    "kana": "ポー レーオ コープクン ナ",
+    "ja": "もう十分、ありがとう",
+    "register": "casual",
+    "note": "พอแล้ว (pɔɔ lɛ́ɛo)＝もう足りる。やんわり断るとき。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "fod-13",
+    "scene": "food_drink",
+    "thai": "เช็คบิลครับ",
+    "roman": "chék bin kráp",
+    "kana": "チェック ビン クラップ",
+    "ja": "お会計お願いします",
+    "register": "polite",
+    "note": "英語 check bill から。เก็บเงินด้วยครับ (gèp ngən dûai kráp) も同義。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "fod-14",
+    "scene": "food_drink",
+    "thai": "เท่าไหร่ครับ",
+    "roman": "tâo-rài kráp",
+    "kana": "タオライ クラップ",
+    "ja": "いくらですか？",
+    "register": "polite",
+    "tags": [
+      "core",
+      "question"
+    ]
+  },
+  {
+    "id": "fod-15",
+    "scene": "food_drink",
+    "thai": "อร่อยมาก",
+    "roman": "à-rɔ̀i mâak",
+    "kana": "アロイ マーク",
+    "ja": "とてもおいしい",
+    "register": "neutral",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "fod-16",
+    "scene": "food_drink",
+    "thai": "เผ็ดไหม",
+    "roman": "pèt mái",
+    "kana": "ペット マイ",
+    "ja": "辛い？",
+    "register": "casual",
+    "tags": [
+      "question"
+    ],
+    "replies": [
+      "fod-17"
+    ]
+  },
+  {
+    "id": "fod-17",
+    "scene": "food_drink",
+    "thai": "ไม่เผ็ดครับ",
+    "roman": "mâi pèt kráp",
+    "kana": "マイ ペット クラップ",
+    "ja": "辛くないです（辛くしないで）",
+    "register": "polite",
+    "note": "注文時に ขอไม่เผ็ด (kɔ̌ɔ mâi pèt) で「辛くしないでください」。เผ็ดน้อย (pèt nɔ́ɔi) 少し辛め。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "fod-18",
+    "scene": "food_drink",
+    "thai": "หิวแล้ว",
+    "roman": "hǐu lɛ́ɛo",
+    "kana": "ヒウ レーオ",
+    "ja": "お腹すいた",
+    "register": "casual",
+    "tags": []
+  },
+  {
+    "id": "fod-19",
+    "scene": "food_drink",
+    "thai": "ขอน้ำแข็งด้วยครับ",
+    "roman": "kɔ̌ɔ náam-kɛ̌ng dûai kráp",
+    "kana": "コー ナームケン ドゥアイ クラップ",
+    "ja": "氷もください",
+    "register": "polite",
+    "note": "タイではビールに氷を入れるのが普通。ด้วย (dûai)＝〜も。",
+    "tags": []
+  },
+  {
+    "id": "fod-20",
+    "scene": "food_drink",
+    "thai": "ร้านนี้อร่อยนะ",
+    "roman": "ráan níi à-rɔ̀i ná",
+    "kana": "ラーン ニー アロイ ナ",
+    "ja": "この店おいしいね",
+    "register": "casual",
+    "tags": []
+  },
+  {
+    "id": "smt-01",
+    "scene": "small_talk",
+    "thai": "คุณมาจากไหนครับ",
+    "roman": "kun maa jàak nǎi kráp",
+    "kana": "クン マー ジャーク ナイ クラップ",
+    "ja": "どこから来たんですか？（出身は？）",
+    "register": "polite",
+    "variants": [
+      {
+        "register": "casual",
+        "thai": "มาจากไหน",
+        "roman": "maa jàak nǎi",
+        "kana": "マー ジャーク ナイ"
+      }
+    ],
+    "tags": [
+      "core",
+      "question"
+    ],
+    "replies": [
+      "smt-03",
+      "smt-04"
+    ]
+  },
+  {
+    "id": "smt-02",
+    "scene": "small_talk",
+    "thai": "เป็นคนที่ไหนครับ",
+    "roman": "bpen kon tîi-nǎi kráp",
+    "kana": "ペン コン ティーナイ クラップ",
+    "ja": "どこの人ですか？（出身地は？）",
+    "register": "polite",
+    "note": "タイ人同士は「どの県の人？」とよく聞く。เป็นคนกรุงเทพเหรอ (bpen kon grung-têep rə̌ə) バンコクの人？",
+    "tags": [
+      "question"
+    ],
+    "replies": [
+      "smt-03",
+      "smt-04"
+    ]
+  },
+  {
+    "id": "smt-03",
+    "scene": "small_talk",
+    "thai": "เป็นคนกรุงเทพ",
+    "roman": "bpen kon grung-têep",
+    "kana": "ペン コン クルンテープ",
+    "ja": "バンコクの人だよ",
+    "register": "casual",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "smt-04",
+    "scene": "small_talk",
+    "thai": "มาจากเชียงใหม่",
+    "roman": "maa jàak chiang-mài",
+    "kana": "マー ジャーク チエンマイ",
+    "ja": "チェンマイから",
+    "register": "casual",
+    "note": "よく聞く地名：เชียงใหม่ (chiang-mài), ขอนแก่น (kɔ̌ɔn-gɛ̀n), โคราช (koo-râat), ภูเก็ต (puu-gèt), อุดร (ù-dɔɔn)。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "smt-05",
+    "scene": "small_talk",
+    "thai": "ทำงานอะไรครับ",
+    "roman": "tam-ngaan à-rai kráp",
+    "kana": "タムガーン アライ クラップ",
+    "ja": "お仕事は何ですか？",
+    "register": "polite",
+    "variants": [
+      {
+        "register": "casual",
+        "thai": "ทำงานอะไรเหรอ",
+        "roman": "tam-ngaan à-rai rə̌ə",
+        "kana": "タムガーン アライ ロー"
+      }
+    ],
+    "tags": [
+      "core",
+      "question"
+    ],
+    "replies": [
+      "smt-06",
+      "smt-07"
+    ]
+  },
+  {
+    "id": "smt-06",
+    "scene": "small_talk",
+    "thai": "เป็นพนักงานออฟฟิศ",
+    "roman": "bpen pá-nák-ngaan ɔ́ɔp-fít",
+    "kana": "ペン パナックガーン オッフィット",
+    "ja": "会社員（オフィスワーカー）だよ",
+    "register": "casual",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "smt-07",
+    "scene": "small_talk",
+    "thai": "ยังเรียนอยู่",
+    "roman": "yang rian yùu",
+    "kana": "ヤン リアン ユー",
+    "ja": "まだ学生だよ",
+    "register": "casual",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "smt-08",
+    "scene": "small_talk",
+    "thai": "อยู่แถวไหนครับ",
+    "roman": "yùu tɛ̌ɛo nǎi kráp",
+    "kana": "ユー テーオ ナイ クラップ",
+    "ja": "どのあたりに住んでるんですか？",
+    "register": "polite",
+    "tags": [
+      "question"
+    ]
+  },
+  {
+    "id": "smt-09",
+    "scene": "small_talk",
+    "thai": "แล้วคุณล่ะ",
+    "roman": "lɛ́ɛo kun là",
+    "kana": "レーオ クン ラ",
+    "ja": "で、あなたは？",
+    "register": "casual",
+    "note": "会話を往復させる最重要フレーズ。自分が答えたらすぐこれで返す。名前が分かったら คุณ を名前に。",
+    "tags": [
+      "core",
+      "question"
+    ]
+  },
+  {
+    "id": "smt-10",
+    "scene": "small_talk",
+    "thai": "ชอบทำอะไรตอนว่าง",
+    "roman": "chɔ̂ɔp tam à-rai dtɔɔn wâang",
+    "kana": "チョープ タム アライ トーン ワーン",
+    "ja": "暇なとき何するのが好き？（趣味は？）",
+    "register": "casual",
+    "note": "งานอดิเรก (ngaan à-dì-rèek 趣味) は硬い。こちらが自然。",
+    "tags": [
+      "core",
+      "question"
+    ],
+    "replies": [
+      "smt-12",
+      "smt-13"
+    ]
+  },
+  {
+    "id": "smt-11",
+    "scene": "small_talk",
+    "thai": "วันหยุดชอบทำอะไร",
+    "roman": "wan yùt chɔ̂ɔp tam à-rai",
+    "kana": "ワン ユット チョープ タム アライ",
+    "ja": "休みの日は何してる？",
+    "register": "casual",
+    "tags": [
+      "question"
+    ],
+    "replies": [
+      "smt-12",
+      "smt-13",
+      "smt-14"
+    ]
+  },
+  {
+    "id": "smt-12",
+    "scene": "small_talk",
+    "thai": "ผมชอบฟังเพลง",
+    "roman": "pǒm chɔ̂ɔp fang pleeng",
+    "kana": "ポム チョープ ファン プレーン",
+    "ja": "音楽を聴くのが好き",
+    "register": "neutral",
+    "note": "ชอบ + 動詞 で「〜するのが好き」。ชอบเที่ยว (tîao 遊びに行く), ชอบดูหนัง (duu nǎng 映画), ชอบออกกำลังกาย (ɔ̀ɔk gam-lang gaai 運動)。",
+    "tags": [
+      "core",
+      "reply"
+    ]
+  },
+  {
+    "id": "smt-13",
+    "scene": "small_talk",
+    "thai": "ชอบไปปาร์ตี้",
+    "roman": "chɔ̂ɔp bpai bpaa-dtîi",
+    "kana": "チョープ パイ パーティー",
+    "ja": "パーティーに行くのが好き",
+    "register": "casual",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "smt-14",
+    "scene": "small_talk",
+    "thai": "นอนอยู่บ้าน",
+    "roman": "nɔɔn yùu bâan",
+    "kana": "ノーン ユー バーン",
+    "ja": "家で寝てる（ごろごろしてる）",
+    "register": "casual",
+    "note": "タイ人の休日の定番回答。笑いながら言う。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "smt-15",
+    "scene": "small_talk",
+    "thai": "ชอบกินอะไร",
+    "roman": "chɔ̂ɔp gin à-rai",
+    "kana": "チョープ ギン アライ",
+    "ja": "好きな食べ物は？",
+    "register": "casual",
+    "tags": [
+      "question"
+    ],
+    "replies": [
+      "smt-16"
+    ]
+  },
+  {
+    "id": "smt-16",
+    "scene": "small_talk",
+    "thai": "ผมชอบอาหารไทย โดยเฉพาะส้มตำ",
+    "roman": "pǒm chɔ̂ɔp aa-hǎan tai dooi-chà-pɔ́ sôm-dtam",
+    "kana": "ポム チョープ アーハーン タイ ドーイチャポ ソムタム",
+    "ja": "タイ料理が好き、特にソムタム",
+    "register": "neutral",
+    "note": "โดยเฉพาะ (dooi-chà-pɔ́)＝特に。好きな料理：ผัดกะเพรา (pàt gà-prao), ต้มยำ (dtôm-yam), ข้าวมันไก่ (kâao man gài)。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "smt-17",
+    "scene": "small_talk",
+    "thai": "กินเผ็ดได้ไหม",
+    "roman": "gin pèt dâai mái",
+    "kana": "ギン ペット ダーイ マイ",
+    "ja": "辛いの食べられる？",
+    "register": "casual",
+    "note": "外国人への定番質問。ได้นิดหน่อย (dâai nít-nɔ̀i 少しなら) と返せる。",
+    "tags": [
+      "question",
+      "reply"
+    ]
+  },
+  {
+    "id": "smt-18",
+    "scene": "small_talk",
+    "thai": "อยู่เมืองไทยนานแล้วเหรอ",
+    "roman": "yùu mʉang tai naan lɛ́ɛo rə̌ə",
+    "kana": "ユー ムアン タイ ナーン レーオ ロー",
+    "ja": "タイにはもう長いの？",
+    "register": "casual",
+    "note": "相手がよく聞いてくる質問。มาได้...เดือนแล้ว (maa dâai ... dʉan lɛ́ɛo 来て…か月) で答える。",
+    "tags": [
+      "reply",
+      "question"
+    ],
+    "replies": [
+      "smt-19"
+    ]
+  },
+  {
+    "id": "smt-19",
+    "scene": "small_talk",
+    "thai": "เพิ่งมาได้ไม่นาน",
+    "roman": "pə̂ng maa dâai mâi naan",
+    "kana": "プン マー ダーイ マイ ナーン",
+    "ja": "来てまだそんなに経ってない",
+    "register": "casual",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "smt-20",
+    "scene": "small_talk",
+    "thai": "มาเมืองไทยทำไม",
+    "roman": "maa mʉang tai tam-mai",
+    "kana": "マー ムアン タイ タムマイ",
+    "ja": "どうしてタイに来たの？",
+    "register": "casual",
+    "tags": [
+      "reply",
+      "question"
+    ]
+  },
+  {
+    "id": "smt-21",
+    "scene": "small_talk",
+    "thai": "ชอบเมืองไทยไหม",
+    "roman": "chɔ̂ɔp mʉang tai mái",
+    "kana": "チョープ ムアン タイ マイ",
+    "ja": "タイは好き？",
+    "register": "casual",
+    "tags": [
+      "reply",
+      "question"
+    ],
+    "replies": [
+      "smt-22"
+    ]
+  },
+  {
+    "id": "smt-22",
+    "scene": "small_talk",
+    "thai": "ชอบมาก คนไทยใจดี",
+    "roman": "chɔ̂ɔp mâak kon tai jai-dii",
+    "kana": "チョープ マーク コン タイ ジャイディー",
+    "ja": "大好き、タイの人は優しいから",
+    "register": "neutral",
+    "note": "ใจดี (jai-dii)＝心が良い＝優しい。อาหารอร่อย (aa-hǎan à-rɔ̀i 料理がおいしい) を足してもよい。",
+    "tags": [
+      "core",
+      "reply"
+    ]
+  },
+  {
+    "id": "smt-23",
+    "scene": "small_talk",
+    "thai": "อากาศร้อนมาก",
+    "roman": "aa-gàat rɔ́ɔn mâak",
+    "kana": "アーガート ローン マーク",
+    "ja": "めっちゃ暑いね",
+    "register": "neutral",
+    "note": "天気ネタは万国共通。ฝนตก (fǒn dtòk 雨が降る) も。",
+    "tags": []
+  },
+  {
+    "id": "smt-24",
+    "scene": "small_talk",
+    "thai": "เคยไปญี่ปุ่นไหม",
+    "roman": "kəəi bpai yîi-bpùn mái",
+    "kana": "クーイ パイ イープン マイ",
+    "ja": "日本に行ったことある？",
+    "register": "casual",
+    "note": "เคย (kəəi)＝〜したことがある。日本好きのタイ人は多いので会話が広がる。",
+    "tags": [
+      "core",
+      "question"
+    ],
+    "replies": [
+      "smt-25",
+      "smt-26"
+    ]
+  },
+  {
+    "id": "smt-25",
+    "scene": "small_talk",
+    "thai": "เคย ไปโตเกียวมา",
+    "roman": "kəəi bpai dtoo-giao maa",
+    "kana": "クーイ パイ トーキアオ マー",
+    "ja": "あるよ、東京に行った",
+    "register": "casual",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "smt-26",
+    "scene": "small_talk",
+    "thai": "ยังไม่เคย แต่อยากไป",
+    "roman": "yang mâi kəəi dtɛ̀ɛ yàak bpai",
+    "kana": "ヤン マイ クーイ テー ヤーク パイ",
+    "ja": "まだない、でも行きたい",
+    "register": "casual",
+    "note": "แต่ (dtɛ̀ɛ)＝でも。อยาก (yàak)＝〜したい。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "smt-27",
+    "scene": "small_talk",
+    "thai": "ถ้าไปญี่ปุ่น บอกผมนะ",
+    "roman": "tâa bpai yîi-bpùn bɔ̀ɔk pǒm ná",
+    "kana": "ター パイ イープン ボーク ポム ナ",
+    "ja": "日本に行くなら教えてね",
+    "register": "casual",
+    "note": "ถ้า (tâa)＝もし。次につながる一言。",
+    "tags": []
+  },
+  {
+    "id": "mus-01",
+    "scene": "music",
+    "thai": "ชอบเพลงแนวไหน",
+    "roman": "chɔ̂ɔp pleeng nɛɛo nǎi",
+    "kana": "チョープ プレーン ネーオ ナイ",
+    "ja": "どんなジャンルの音楽が好き？",
+    "register": "casual",
+    "note": "แนว (nɛɛo)＝ジャンル・系統。",
+    "tags": [
+      "core",
+      "question"
+    ],
+    "replies": [
+      "mus-02",
+      "mus-03"
+    ]
+  },
+  {
+    "id": "mus-02",
+    "scene": "music",
+    "thai": "ผมชอบฮิปฮอป",
+    "roman": "pǒm chɔ̂ɔp híp-hɔ́p",
+    "kana": "ポム チョープ ヒップホップ",
+    "ja": "ヒップホップが好き",
+    "register": "neutral",
+    "note": "他ジャンル：อาร์แอนด์บี (R&B), เฮาส์ (háo ハウス), เทคโน (ték-nôo), เพลงไทย (pleeng tai), ลูกทุ่ง (lûuk-tûng タイ演歌)。",
+    "tags": [
+      "core",
+      "reply"
+    ]
+  },
+  {
+    "id": "mus-03",
+    "scene": "music",
+    "thai": "ฟังได้ทุกแนว",
+    "roman": "fang dâai túk nɛɛo",
+    "kana": "ファン ダーイ トゥック ネーオ",
+    "ja": "何でも聴くよ",
+    "register": "casual",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "mus-04",
+    "scene": "music",
+    "thai": "ดีเจคนนี้เจ๋งมาก",
+    "roman": "dii-jee kon níi jěng mâak",
+    "kana": "ディージェー コン ニー ジェン マーク",
+    "ja": "このDJめっちゃいいね",
+    "register": "casual",
+    "tags": [
+      "core"
+    ],
+    "replies": [
+      "rea-09",
+      "mus-14"
+    ]
+  },
+  {
+    "id": "mus-05",
+    "scene": "music",
+    "thai": "เพลงนี้มันมาก",
+    "roman": "pleeng níi man mâak",
+    "kana": "プレーン ニー マン マーク",
+    "ja": "この曲アゲるね（めっちゃノれる）",
+    "register": "casual",
+    "note": "มัน (man)＝ノリがいい・楽しい・ハマる、という若者の褒め言葉。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "mus-06",
+    "scene": "music",
+    "thai": "เพลงนี้ชื่ออะไร",
+    "roman": "pleeng níi chʉ̂ʉ à-rai",
+    "kana": "プレーン ニー チュー アライ",
+    "ja": "この曲、何て曲？",
+    "register": "casual",
+    "tags": [
+      "question"
+    ],
+    "replies": [
+      "rea-19"
+    ]
+  },
+  {
+    "id": "mus-07",
+    "scene": "music",
+    "thai": "ศิลปินที่ชอบคือใคร",
+    "roman": "sǐn-lá-bpin tîi chɔ̂ɔp kʉʉ krai",
+    "kana": "シンラピン ティー チョープ クー クライ",
+    "ja": "好きなアーティストは誰？",
+    "register": "casual",
+    "tags": [
+      "question"
+    ],
+    "replies": [
+      "mus-09"
+    ]
+  },
+  {
+    "id": "mus-08",
+    "scene": "music",
+    "thai": "ชอบแร็ปเปอร์คนไหน",
+    "roman": "chɔ̂ɔp rɛ́p-bpə̂ə kon nǎi",
+    "kana": "チョープ ラッパー コン ナイ",
+    "ja": "好きなラッパーは誰？",
+    "register": "casual",
+    "note": "タイのヒップホップ：Thaitanium, Youngohm, F.HERO, MILLI, Daboyway, 1MILL など名前を2〜3人知っておくと話が弾む。",
+    "tags": [
+      "question"
+    ],
+    "replies": [
+      "mus-09"
+    ]
+  },
+  {
+    "id": "mus-09",
+    "scene": "music",
+    "thai": "ผมชอบ... รู้จักไหม",
+    "roman": "pǒm chɔ̂ɔp ... rúu-jàk mái",
+    "kana": "ポム チョープ ... ルージャック マイ",
+    "ja": "…が好き。知ってる？",
+    "register": "casual",
+    "note": "自分の好きなアーティストを入れる。รู้จักไหม (rúu-jàk mái)＝知ってる？",
+    "tags": [
+      "core",
+      "reply"
+    ]
+  },
+  {
+    "id": "mus-10",
+    "scene": "music",
+    "thai": "ฟังเพลงไทยไหม",
+    "roman": "fang pleeng tai mái",
+    "kana": "ファン プレーン タイ マイ",
+    "ja": "タイの音楽は聴く？",
+    "register": "casual",
+    "tags": [
+      "question",
+      "reply"
+    ]
+  },
+  {
+    "id": "mus-11",
+    "scene": "music",
+    "thai": "แนะนำเพลงไทยให้หน่อย",
+    "roman": "nɛ́-nam pleeng tai hâi nɔ̀i",
+    "kana": "ネナム プレーン タイ ハイ ノイ",
+    "ja": "タイの曲おすすめ教えて",
+    "register": "casual",
+    "note": "แนะนำ (nɛ́-nam)＝おすすめする・紹介する。後で LINE を聞く自然な口実にもなる。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "mus-12",
+    "scene": "music",
+    "thai": "มาที่นี่บ่อยไหม",
+    "roman": "maa tîi-nîi bɔ̀i mái",
+    "kana": "マー ティーニー ボイ マイ",
+    "ja": "ここよく来る？",
+    "register": "casual",
+    "tags": [
+      "core",
+      "question"
+    ],
+    "replies": [
+      "mus-13",
+      "mus-14"
+    ]
+  },
+  {
+    "id": "mus-13",
+    "scene": "music",
+    "thai": "มาบ่อย",
+    "roman": "maa bɔ̀i",
+    "kana": "マー ボイ",
+    "ja": "よく来るよ",
+    "register": "casual",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "mus-14",
+    "scene": "music",
+    "thai": "ครั้งแรก",
+    "roman": "kráng rɛ̂ɛk",
+    "kana": "クラン レーク",
+    "ja": "初めて",
+    "register": "neutral",
+    "note": "ผมมาครั้งแรก (pǒm maa kráng rɛ̂ɛk)＝初めて来た。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "mus-15",
+    "scene": "music",
+    "thai": "งานนี้สนุกมาก",
+    "roman": "ngaan níi sà-nùk mâak",
+    "kana": "ガーン ニー サヌック マーク",
+    "ja": "このイベント楽しいね",
+    "register": "casual",
+    "note": "งาน (ngaan)＝イベント・催し（仕事の意味もある）。",
+    "tags": []
+  },
+  {
+    "id": "mus-16",
+    "scene": "music",
+    "thai": "บีทมันมาก",
+    "roman": "bìit man mâak",
+    "kana": "ビート マン マーク",
+    "ja": "このビートやばい（いい）",
+    "register": "casual",
+    "tags": []
+  },
+  {
+    "id": "mus-17",
+    "scene": "music",
+    "thai": "ผมก็ชอบเหมือนกัน",
+    "roman": "pǒm gɔ̂ɔ chɔ̂ɔp mʉ̌an gan",
+    "kana": "ポム ゴ チョープ ムアン ガン",
+    "ja": "僕も好き（同じだね）",
+    "register": "neutral",
+    "note": "ก็ (gɔ̂ɔ)＝〜も。เหมือนกัน (mʉ̌an gan)＝同じく。共通点を見つけたら即これ。",
+    "tags": [
+      "core",
+      "reply"
+    ]
+  },
+  {
+    "id": "mus-18",
+    "scene": "music",
+    "thai": "เสียงดังมาก",
+    "roman": "sǐang dang mâak",
+    "kana": "シアン ダン マーク",
+    "ja": "音がでかいね",
+    "register": "neutral",
+    "tags": []
+  },
+  {
+    "id": "mus-19",
+    "scene": "music",
+    "thai": "ไปข้างนอกคุยกันไหม",
+    "roman": "bpai kâang nɔ̂ɔk kui gan mái",
+    "kana": "パイ カーン ノーク クイ ガン マイ",
+    "ja": "外で話さない？",
+    "register": "casual",
+    "note": "音がうるさいときの自然な誘い。相手が乗らなければ無理に押さない。",
+    "tags": [
+      "core",
+      "question"
+    ],
+    "replies": [
+      "rea-14",
+      "cls-15"
+    ]
+  },
+  {
+    "id": "mus-20",
+    "scene": "music",
+    "thai": "คุณเต้นเก่งมาก",
+    "roman": "kun dtên gèng mâak",
+    "kana": "クン テン ゲン マーク",
+    "ja": "ダンス上手いね",
+    "register": "casual",
+    "tags": []
+  },
+  {
+    "id": "apr-01",
+    "scene": "event_approach",
+    "thai": "สวัสดีครับ ขอคุยด้วยได้ไหม",
+    "roman": "sà-wàt-dii kráp kɔ̌ɔ kui dûai dâai mái",
+    "kana": "サワッディー クラップ コー クイ ドゥアイ ダーイ マイ",
+    "ja": "こんにちは、ちょっと話してもいい？",
+    "register": "polite",
+    "note": "声かけの基本。笑顔＋少し距離を取って。ด้วย (dûai)＝一緒に。",
+    "tags": [
+      "core",
+      "question"
+    ],
+    "replies": [
+      "rea-14",
+      "apr-15"
+    ]
+  },
+  {
+    "id": "apr-02",
+    "scene": "event_approach",
+    "thai": "ขอโทษนะ รบกวนแป๊บนึง",
+    "roman": "kɔ̌ɔ-tôot ná róp-guan bpɛ́p nʉng",
+    "kana": "コートート ナ ロップグアン ペップ ヌン",
+    "ja": "ごめんね、ちょっとだけいいかな",
+    "register": "casual",
+    "note": "รบกวน (róp-guan)＝お邪魔する。控えめな入り方。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "apr-03",
+    "scene": "event_approach",
+    "thai": "คุณชื่ออะไรครับ",
+    "roman": "kun chʉ̂ʉ à-rai kráp",
+    "kana": "クン チュー アライ クラップ",
+    "ja": "お名前は？",
+    "register": "polite",
+    "variants": [
+      {
+        "register": "casual",
+        "thai": "ชื่ออะไรเหรอ",
+        "roman": "chʉ̂ʉ à-rai rə̌ə",
+        "kana": "チュー アライ ロー",
+        "ja": "名前なんていうの？"
+      }
+    ],
+    "tags": [
+      "core",
+      "question"
+    ],
+    "replies": [
+      "apr-04"
+    ]
+  },
+  {
+    "id": "apr-04",
+    "scene": "event_approach",
+    "thai": "ชื่อ...ค่ะ",
+    "roman": "chʉ̂ʉ ... kâ",
+    "kana": "チュー ... カ",
+    "ja": "…です（女性の答え方）",
+    "register": "polite",
+    "note": "女性は文末に ค่ะ (kâ)。ニックネームで名乗るのが普通（例：ฟ้า Fáa, มายด์ Mind, แนน Nan）。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "apr-05",
+    "scene": "event_approach",
+    "thai": "ชื่ออะไรนะ",
+    "roman": "chʉ̂ʉ à-rai ná",
+    "kana": "チュー アライ ナ",
+    "ja": "名前、もう一回いい？",
+    "register": "casual",
+    "note": "聞き取れなかったときに。名前を聞き返すのは失礼ではない。",
+    "tags": [
+      "question"
+    ]
+  },
+  {
+    "id": "apr-06",
+    "scene": "event_approach",
+    "thai": "ชื่อเพราะนะ",
+    "roman": "chʉ̂ʉ prá ná",
+    "kana": "チュー プラ ナ",
+    "ja": "きれいな名前だね",
+    "register": "casual",
+    "note": "เพราะ (prá)＝（音が）きれい。名前を聞いた直後の軽い褒め。",
+    "tags": []
+  },
+  {
+    "id": "apr-07",
+    "scene": "event_approach",
+    "thai": "มาคนเดียวเหรอ",
+    "roman": "maa kon diao rə̌ə",
+    "kana": "マー コン ディアオ ロー",
+    "ja": "一人で来たの？",
+    "register": "casual",
+    "tags": [
+      "core",
+      "question"
+    ],
+    "replies": [
+      "apr-09",
+      "apr-10"
+    ]
+  },
+  {
+    "id": "apr-08",
+    "scene": "event_approach",
+    "thai": "มากับเพื่อนเหรอ",
+    "roman": "maa gàp pʉ̂an rə̌ə",
+    "kana": "マー ガップ プアン ロー",
+    "ja": "友達と来たの？",
+    "register": "casual",
+    "tags": [
+      "question"
+    ],
+    "replies": [
+      "apr-09",
+      "apr-10"
+    ]
+  },
+  {
+    "id": "apr-09",
+    "scene": "event_approach",
+    "thai": "มากับเพื่อน",
+    "roman": "maa gàp pʉ̂an",
+    "kana": "マー ガップ プアン",
+    "ja": "友達と来た",
+    "register": "casual",
+    "note": "自分が言うときは ผมมากับเพื่อน。",
+    "tags": [
+      "core",
+      "reply"
+    ]
+  },
+  {
+    "id": "apr-10",
+    "scene": "event_approach",
+    "thai": "มาคนเดียว",
+    "roman": "maa kon diao",
+    "kana": "マー コン ディアオ",
+    "ja": "一人で来た",
+    "register": "casual",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "apr-11",
+    "scene": "event_approach",
+    "thai": "สนุกไหม",
+    "roman": "sà-nùk mái",
+    "kana": "サヌック マイ",
+    "ja": "楽しんでる？",
+    "register": "casual",
+    "tags": [
+      "core",
+      "question"
+    ],
+    "replies": [
+      "apr-12"
+    ]
+  },
+  {
+    "id": "apr-12",
+    "scene": "event_approach",
+    "thai": "สนุกมาก",
+    "roman": "sà-nùk mâak",
+    "kana": "サヌック マーク",
+    "ja": "めっちゃ楽しい",
+    "register": "casual",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "apr-13",
+    "scene": "event_approach",
+    "thai": "ขอโทษนะ ผมพูดไทยได้นิดเดียว",
+    "roman": "kɔ̌ɔ-tôot ná pǒm pûut tai dâai nít-diao",
+    "kana": "コートート ナ ポム プート タイ ダーイ ニットディアオ",
+    "ja": "ごめん、タイ語ほんの少ししか話せないんだ",
+    "register": "casual",
+    "note": "先に言っておくと相手がゆっくり話してくれる。นิดเดียว (nít-diao)＝ほんの少し。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "apr-14",
+    "scene": "event_approach",
+    "thai": "ไม่รบกวนใช่ไหม",
+    "roman": "mâi róp-guan châi mái",
+    "kana": "マイ ロップグアン チャイ マイ",
+    "ja": "邪魔じゃないよね？",
+    "register": "casual",
+    "note": "相手への配慮を見せる一言。ใช่ไหม (châi mái)＝〜だよね？",
+    "tags": [
+      "question"
+    ]
+  },
+  {
+    "id": "apr-15",
+    "scene": "event_approach",
+    "thai": "ได้สิ",
+    "roman": "dâai sì",
+    "kana": "ダーイ シ",
+    "ja": "いいよ",
+    "register": "casual",
+    "note": "สิ (sì) は「もちろん」の軽い強調。相手がよく使う返し。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "apr-16",
+    "scene": "event_approach",
+    "thai": "ยืนตรงนี้ได้ไหม",
+    "roman": "yʉʉn dtrong-níi dâai mái",
+    "kana": "ユーン トロンニー ダーイ マイ",
+    "ja": "ここに立ってもいい？",
+    "register": "casual",
+    "tags": [
+      "question"
+    ]
+  },
+  {
+    "id": "apr-17",
+    "scene": "event_approach",
+    "thai": "ผมชื่อ... ยินดีที่ได้รู้จักนะ",
+    "roman": "pǒm chʉ̂ʉ ... yin-dii tîi dâai rúu-jàk ná",
+    "kana": "ポム チュー ... インディー ティー ダーイ ルージャック ナ",
+    "ja": "僕は…。知り合えてうれしいよ",
+    "register": "casual",
+    "note": "相手が名乗ったらすぐこれ。นะ で柔らかく。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "apr-18",
+    "scene": "event_approach",
+    "thai": "เพื่อนคุณก็มาด้วยเหรอ",
+    "roman": "pʉ̂an kun gɔ̂ɔ maa dûai rə̌ə",
+    "kana": "プアン クン ゴ マー ドゥアイ ロー",
+    "ja": "友達も一緒に来てるの？",
+    "register": "casual",
+    "note": "友達グループにも目を向けると印象が良い。",
+    "tags": [
+      "question"
+    ]
+  },
+  {
+    "id": "con-01",
+    "scene": "event_connect",
+    "thai": "ชุดสวยมาก",
+    "roman": "chút sǔai mâak",
+    "kana": "チュット スアイ マーク",
+    "ja": "服すてきだね",
+    "register": "casual",
+    "note": "外見は「服・スタイル・雰囲気」を褒めるのが安全で好印象。สวย (sǔai 上声) は ซวย (suai 平声＝不運) と声調違いなので注意！",
+    "tags": [
+      "core"
+    ],
+    "replies": [
+      "con-14"
+    ]
+  },
+  {
+    "id": "con-02",
+    "scene": "event_connect",
+    "thai": "เต้นเก่งมากเลย",
+    "roman": "dtên gèng mâak ləəi",
+    "kana": "テン ゲン マーク ルーイ",
+    "ja": "ダンスめっちゃ上手いね",
+    "register": "casual",
+    "tags": [
+      "core"
+    ],
+    "replies": [
+      "con-14"
+    ]
+  },
+  {
+    "id": "con-03",
+    "scene": "event_connect",
+    "thai": "ยิ้มสวยนะ",
+    "roman": "yím sǔai ná",
+    "kana": "イム スアイ ナ",
+    "ja": "笑顔がすてきだね",
+    "register": "casual",
+    "note": "会話が盛り上がってから。初手で言うと軽く見える。",
+    "tags": []
+  },
+  {
+    "id": "con-04",
+    "scene": "event_connect",
+    "thai": "คุณดูสนุกมากเลย",
+    "roman": "kun duu sà-nùk mâak ləəi",
+    "kana": "クン ドゥー サヌック マーク ルーイ",
+    "ja": "すごく楽しそうだね",
+    "register": "casual",
+    "note": "ดู (duu)＝〜に見える。雰囲気を褒める安全な表現。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "con-05",
+    "scene": "event_connect",
+    "thai": "รสนิยมเพลงดีนะ",
+    "roman": "rót-ní-yom pleeng dii ná",
+    "kana": "ロットニヨム プレーン ディー ナ",
+    "ja": "音楽の趣味いいね",
+    "register": "casual",
+    "note": "รสนิยม (rót-ní-yom)＝センス・趣味。",
+    "tags": []
+  },
+  {
+    "id": "con-06",
+    "scene": "event_connect",
+    "thai": "คุยกับคุณสนุกมาก",
+    "roman": "kui gàp kun sà-nùk mâak",
+    "kana": "クイ ガップ クン サヌック マーク",
+    "ja": "あなたと話すの楽しい",
+    "register": "casual",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "con-07",
+    "scene": "event_connect",
+    "thai": "ดื่มอะไรอยู่",
+    "roman": "dʉ̀ʉm à-rai yùu",
+    "kana": "ドゥーム アライ ユー",
+    "ja": "何飲んでるの？",
+    "register": "casual",
+    "note": "อยู่ (yùu) 文末＝〜している（進行）。",
+    "tags": [
+      "question"
+    ],
+    "replies": [
+      "fod-06"
+    ]
+  },
+  {
+    "id": "con-08",
+    "scene": "event_connect",
+    "thai": "ขอเลี้ยงเครื่องดื่มได้ไหม",
+    "roman": "kɔ̌ɔ líang krʉ̂ang-dʉ̀ʉm dâai mái",
+    "kana": "コー リアン クルアンドゥーム ダーイ マイ",
+    "ja": "一杯おごらせてもらえる？",
+    "register": "casual",
+    "note": "เครื่องดื่ม (krʉ̂ang-dʉ̀ʉm)＝飲み物。ได้ไหม で許可を求める形にすると押しつけがましくない。",
+    "tags": [
+      "core",
+      "question"
+    ],
+    "replies": [
+      "rea-14",
+      "con-15"
+    ]
+  },
+  {
+    "id": "con-09",
+    "scene": "event_connect",
+    "thai": "ไปเต้นกันไหม",
+    "roman": "bpai dtên gan mái",
+    "kana": "パイ テン ガン マイ",
+    "ja": "一緒に踊らない？",
+    "register": "casual",
+    "note": "กัน (gan)＝一緒に。",
+    "tags": [
+      "core",
+      "question"
+    ],
+    "replies": [
+      "rea-14",
+      "con-16"
+    ]
+  },
+  {
+    "id": "con-10",
+    "scene": "event_connect",
+    "thai": "ไปเอาเครื่องดื่มกันไหม",
+    "roman": "bpai ao krʉ̂ang-dʉ̀ʉm gan mái",
+    "kana": "パイ アオ クルアンドゥーム ガン マイ",
+    "ja": "飲み物取りに行かない？",
+    "register": "casual",
+    "tags": [
+      "question"
+    ]
+  },
+  {
+    "id": "con-11",
+    "scene": "event_connect",
+    "thai": "ชนแก้วกัน",
+    "roman": "chon gɛ̂ɛo gan",
+    "kana": "チョン ゲーオ ガン",
+    "ja": "乾杯しよ",
+    "register": "casual",
+    "tags": []
+  },
+  {
+    "id": "con-12",
+    "scene": "event_connect",
+    "thai": "ขอบคุณที่คุยด้วยนะ",
+    "roman": "kɔ̀ɔp-kun tîi kui dûai ná",
+    "kana": "コープクン ティー クイ ドゥアイ ナ",
+    "ja": "話してくれてありがとう",
+    "register": "casual",
+    "note": "ที่ (tîi) + 動詞＝〜してくれて。会話の締めに。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "con-13",
+    "scene": "event_connect",
+    "thai": "ดีใจที่ได้เจอคุณ",
+    "roman": "dii-jai tîi dâai jəə kun",
+    "kana": "ディージャイ ティー ダーイ ジュー クン",
+    "ja": "会えてうれしい",
+    "register": "casual",
+    "tags": []
+  },
+  {
+    "id": "con-14",
+    "scene": "event_connect",
+    "thai": "ขอบคุณค่ะ",
+    "roman": "kɔ̀ɔp-kun kâ",
+    "kana": "コープクン カ",
+    "ja": "ありがとう（女性の返事）",
+    "register": "polite",
+    "note": "褒めたときの相手の返し。照れて ไม่หรอก (mâi rɔ̀ɔk そんなことないよ) と言うことも。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "con-15",
+    "scene": "event_connect",
+    "thai": "ไม่เป็นไร มีแล้ว",
+    "roman": "mâi bpen rai mii lɛ́ɛo",
+    "kana": "マイペンライ ミー レーオ",
+    "ja": "大丈夫、もうあるから",
+    "register": "casual",
+    "note": "おごりの申し出を断る返し。これを言われたら โอเค ครับ で引く。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "con-16",
+    "scene": "event_connect",
+    "thai": "เดี๋ยวก่อนนะ",
+    "roman": "dǐao gɔ̀ɔn ná",
+    "kana": "ディアオ ゴーン ナ",
+    "ja": "ちょっと待ってね（今はいいかな）",
+    "register": "casual",
+    "note": "誘いへのやんわりした保留。深追いせず話を続ける。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "con-17",
+    "scene": "event_connect",
+    "thai": "คุณน่ารักมาก",
+    "roman": "kun nâa-rák mâak",
+    "kana": "クン ナーラック マーク",
+    "ja": "（あなた）とてもかわいい／素敵",
+    "register": "casual",
+    "note": "น่ารัก は外見にも性格にも使える。盛り上がってから一度だけ。連発しない。",
+    "tags": []
+  },
+  {
+    "id": "con-18",
+    "scene": "event_connect",
+    "thai": "เพื่อนคุณน่ารักกันทุกคนเลย",
+    "roman": "pʉ̂an kun nâa-rák gan túk kon ləəi",
+    "kana": "プアン クン ナーラック ガン トゥック コン ルーイ",
+    "ja": "友達みんな良い人だね",
+    "register": "casual",
+    "note": "友達グループごと褒めると場の空気が良くなる。",
+    "tags": []
+  },
+  {
+    "id": "cls-01",
+    "scene": "event_close",
+    "thai": "ขอไลน์ได้ไหม",
+    "roman": "kɔ̌ɔ lai dâai mái",
+    "kana": "コー ライ ダーイ マイ",
+    "ja": "LINE 教えてもらえる？",
+    "register": "casual",
+    "note": "タイでは LINE が主流。ขอ (kɔ̌ɔ)＝ください／お願い。盛り上がった流れで自然に。",
+    "tags": [
+      "core",
+      "question"
+    ],
+    "replies": [
+      "cls-12",
+      "cls-13",
+      "cls-16"
+    ]
+  },
+  {
+    "id": "cls-02",
+    "scene": "event_close",
+    "thai": "มีไอจีไหม",
+    "roman": "mii ai-jii mái",
+    "kana": "ミー アイジー マイ",
+    "ja": "インスタやってる？",
+    "register": "casual",
+    "note": "ไอจี (ai-jii)＝IG。LINE より軽く聞けるので最初に聞きやすい。",
+    "tags": [
+      "core",
+      "question"
+    ],
+    "replies": [
+      "cls-12",
+      "cls-13",
+      "cls-16"
+    ]
+  },
+  {
+    "id": "cls-03",
+    "scene": "event_close",
+    "thai": "ขอไอจีได้ไหม",
+    "roman": "kɔ̌ɔ ai-jii dâai mái",
+    "kana": "コー アイジー ダーイ マイ",
+    "ja": "インスタ教えてもらえる？",
+    "register": "casual",
+    "tags": [
+      "question"
+    ],
+    "replies": [
+      "cls-12",
+      "cls-16"
+    ]
+  },
+  {
+    "id": "cls-04",
+    "scene": "event_close",
+    "thai": "แอดไลน์ผมหน่อย",
+    "roman": "ɛ̀t lai pǒm nɔ̀i",
+    "kana": "アット ライ ポム ノイ",
+    "ja": "僕の LINE 追加して",
+    "register": "casual",
+    "note": "แอด (ɛ̀t)＝add。自分の QR を見せながら。",
+    "tags": []
+  },
+  {
+    "id": "cls-05",
+    "scene": "event_close",
+    "thai": "นี่คิวอาร์ของผม",
+    "roman": "nîi kiu-aa kɔ̌ɔng pǒm",
+    "kana": "ニー キウアー コーン ポム",
+    "ja": "これ僕の QR",
+    "register": "casual",
+    "tags": []
+  },
+  {
+    "id": "cls-06",
+    "scene": "event_close",
+    "thai": "ไว้คุยกันต่อนะ",
+    "roman": "wái kui gan dtɔ̀ɔ ná",
+    "kana": "ワイ クイ ガン トー ナ",
+    "ja": "また（LINEで）話そうね",
+    "register": "casual",
+    "note": "ไว้ (wái)＝後で／改めて。ต่อ (dtɔ̀ɔ)＝続けて。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "cls-07",
+    "scene": "event_close",
+    "thai": "เสาร์อาทิตย์นี้ว่างไหม",
+    "roman": "sǎo aa-tít níi wâang mái",
+    "kana": "サオ アーティット ニー ワーン マイ",
+    "ja": "今週末、空いてる？",
+    "register": "casual",
+    "note": "ว่าง (wâang)＝空いている。",
+    "tags": [
+      "core",
+      "question"
+    ],
+    "replies": [
+      "cls-12",
+      "cls-14",
+      "cls-15"
+    ]
+  },
+  {
+    "id": "cls-08",
+    "scene": "event_close",
+    "thai": "ไปกินข้าวด้วยกันไหม",
+    "roman": "bpai gin kâao dûai-gan mái",
+    "kana": "パイ ギン カーオ ドゥアイガン マイ",
+    "ja": "一緒にご飯行かない？",
+    "register": "casual",
+    "note": "กินข้าว (gin kâao)＝食事する（直訳：ご飯を食べる）。",
+    "tags": [
+      "core",
+      "question"
+    ],
+    "replies": [
+      "cls-12",
+      "cls-14",
+      "cls-15"
+    ]
+  },
+  {
+    "id": "cls-09",
+    "scene": "event_close",
+    "thai": "ไปดื่มกาแฟกันไหม",
+    "roman": "bpai dʉ̀ʉm gaa-fɛɛ gan mái",
+    "kana": "パイ ドゥーム ガーフェー ガン マイ",
+    "ja": "コーヒーでも行かない？",
+    "register": "casual",
+    "note": "食事より軽い誘い。相手も断りやすい＝受けやすい。",
+    "tags": [
+      "question"
+    ],
+    "replies": [
+      "cls-12",
+      "cls-14"
+    ]
+  },
+  {
+    "id": "cls-10",
+    "scene": "event_close",
+    "thai": "คราวหน้าไปปาร์ตี้ด้วยกันไหม",
+    "roman": "kraao nâa bpai bpaa-dtîi dûai-gan mái",
+    "kana": "クラーオ ナー パイ パーティー ドゥアイガン マイ",
+    "ja": "次はパーティー一緒に行かない？",
+    "register": "casual",
+    "note": "คราวหน้า (kraao nâa)＝次回。",
+    "tags": [
+      "question"
+    ]
+  },
+  {
+    "id": "cls-11",
+    "scene": "event_close",
+    "thai": "ไว้ผมทักไปนะ",
+    "roman": "wái pǒm ták bpai ná",
+    "kana": "ワイ ポム タック パイ ナ",
+    "ja": "後でメッセージするね",
+    "register": "casual",
+    "note": "ทัก (ták)＝声をかける／チャットを送る。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "cls-12",
+    "scene": "event_close",
+    "thai": "ได้เลย",
+    "roman": "dâai ləəi",
+    "kana": "ダーイ ルーイ",
+    "ja": "いいよ！（快諾）",
+    "register": "casual",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "cls-13",
+    "scene": "event_close",
+    "thai": "ขอไลน์คุณดีกว่า",
+    "roman": "kɔ̌ɔ lai kun dii gwàa",
+    "kana": "コー ライ クン ディー グワー",
+    "ja": "あなたの LINE のほうを教えて",
+    "register": "casual",
+    "note": "相手がこう返したら自分の QR を出す。ดีกว่า (dii gwàa)＝〜のほうがいい。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "cls-14",
+    "scene": "event_close",
+    "thai": "ไว้ดูก่อนนะ",
+    "roman": "wái duu gɔ̀ɔn ná",
+    "kana": "ワイ ドゥー ゴーン ナ",
+    "ja": "ちょっと考えておくね",
+    "register": "casual",
+    "note": "やんわり保留＝実質やや No。しつこくせず โอเค ไม่เป็นไร で受ける。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "cls-15",
+    "scene": "event_close",
+    "thai": "ไม่สะดวก ขอโทษนะ",
+    "roman": "mâi sà-dùak kɔ̌ɔ-tôot ná",
+    "kana": "マイ サドゥアック コートート ナ",
+    "ja": "都合が悪くて、ごめんね",
+    "register": "casual",
+    "note": "ไม่สะดวก (mâi sà-dùak)＝都合が悪い・気乗りしない。はっきりした断り。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "cls-16",
+    "scene": "event_close",
+    "thai": "มีแฟนแล้ว",
+    "roman": "mii fɛɛn lɛ́ɛo",
+    "kana": "ミー フェーン レーオ",
+    "ja": "彼氏いるの",
+    "register": "casual",
+    "note": "แฟน (fɛɛn)＝恋人（男女どちらにも）。言われたら潔く cls-18 へ。",
+    "tags": [
+      "reply"
+    ]
+  },
+  {
+    "id": "cls-17",
+    "scene": "event_close",
+    "thai": "ไม่เป็นไรครับ ยินดีที่ได้รู้จักนะ",
+    "roman": "mâi bpen rai kráp yin-dii tîi dâai rúu-jàk ná",
+    "kana": "マイペンライ クラップ インディー ティー ダーイ ルージャック ナ",
+    "ja": "大丈夫、知り合えてうれしかったよ",
+    "register": "polite",
+    "note": "断られたときの爽やかな返し①。笑顔で。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "cls-18",
+    "scene": "event_close",
+    "thai": "โอเค ไม่เป็นไร ขอให้สนุกนะ",
+    "roman": "oo-kee mâi bpen rai kɔ̌ɔ hâi sà-nùk ná",
+    "kana": "オーケー マイペンライ コー ハイ サヌック ナ",
+    "ja": "OK、気にしないで。楽しんでね",
+    "register": "casual",
+    "note": "断られたときの爽やかな返し②。ขอให้ (kɔ̌ɔ hâi)＝〜であるように（祈る）。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "cls-19",
+    "scene": "event_close",
+    "thai": "เข้าใจครับ ขอบคุณที่คุยด้วยนะ",
+    "roman": "kâo-jai kráp kɔ̀ɔp-kun tîi kui dûai ná",
+    "kana": "カオジャイ クラップ コープクン ティー クイ ドゥアイ ナ",
+    "ja": "分かった、話してくれてありがとう",
+    "register": "polite",
+    "note": "断られたときの爽やかな返し③。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "cls-20",
+    "scene": "event_close",
+    "thai": "โชคดีนะ",
+    "roman": "chôok dii ná",
+    "kana": "チョーク ディー ナ",
+    "ja": "じゃあね（幸運を）",
+    "register": "casual",
+    "note": "別れ際の定番。Good luck の意味だが「じゃあね」の感覚で使う。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "cls-21",
+    "scene": "event_close",
+    "thai": "ไว้เจอกันใหม่นะ",
+    "roman": "wái jəə gan mài ná",
+    "kana": "ワイ ジュー ガン マイ ナ",
+    "ja": "また会おうね",
+    "register": "casual",
+    "note": "ใหม่ (mài 低声)＝また／新たに。ไม่ (mâi 下降)・ไหม (mái 高) と区別。",
+    "tags": [
+      "core"
+    ]
+  },
+  {
+    "id": "cls-22",
+    "scene": "event_close",
+    "thai": "กลับดีๆ นะ",
+    "roman": "glàp dii-dii ná",
+    "kana": "グラップ ディーディー ナ",
+    "ja": "気をつけて帰ってね",
+    "register": "casual",
+    "note": "帰り際の優しい一言。กลับ (glàp)＝帰る。",
+    "tags": []
+  },
+  {
+    "id": "cls-23",
+    "scene": "event_close",
+    "thai": "ดีใจที่ได้คุยกันนะ",
+    "roman": "dii-jai tîi dâai kui gan ná",
+    "kana": "ディージャイ ティー ダーイ クイ ガン ナ",
+    "ja": "話せてうれしかったよ",
+    "register": "casual",
+    "tags": []
+  },
+  {
+    "id": "cls-24",
+    "scene": "event_close",
+    "thai": "ขอโทษนะ ไม่ให้ดีกว่า",
+    "roman": "kɔ̌ɔ-tôot ná mâi hâi dii gwàa",
+    "kana": "コートート ナ マイ ハイ ディー グワー",
+    "ja": "ごめん、教えないほうがいいかな",
+    "register": "casual",
+    "note": "連絡先の断り。言われたら即 cls-17。",
+    "tags": [
+      "reply"
+    ]
+  }
+]

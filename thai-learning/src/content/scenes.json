@@ -1,0 +1,14 @@
+[
+  {"id":"pronunciation","order":1,"icon":"🔤","title":"発音・声調の基礎","description":"文末詞・代名詞・否定と疑問。声調トレーナーとセットで"},
+  {"id":"greetings","order":2,"icon":"👋","title":"挨拶","description":"こんにちは・ありがとう・ごめん・またね"},
+  {"id":"self_intro","order":3,"icon":"🙋","title":"自己紹介","description":"名前・日本人・バンコク在住・仕事・タイ語勉強中"},
+  {"id":"survival","order":4,"icon":"🆘","title":"サバイバル表現","description":"もう一度・ゆっくり・タイ語で何て言う？・分からない"},
+  {"id":"reactions","order":5,"icon":"💬","title":"相づち・リアクション","description":"へぇ・ほんと？・いいね・つなぎ言葉"},
+  {"id":"numbers_time","order":6,"icon":"🔢","title":"数字・時間・場所","description":"1〜100・何時・今夜・週末・どこ"},
+  {"id":"food_drink","order":7,"icon":"🍻","title":"食事・飲み物","description":"注文・おごる・乾杯・会計"},
+  {"id":"small_talk","order":8,"icon":"☕","title":"雑談","description":"出身・仕事・趣味・休日・好きな食べ物"},
+  {"id":"music","order":9,"icon":"🎧","title":"音楽・HipHop","description":"このDJいいね・ジャンル・アーティスト・よく来る？"},
+  {"id":"event_approach","order":10,"icon":"🎤","title":"イベント① 声をかける","description":"声かけ・名前を聞く・一人？・タイ語少しだけ"},
+  {"id":"event_connect","order":11,"icon":"🕺","title":"イベント② つながる","description":"自然に褒める・一緒に飲む・踊る"},
+  {"id":"event_close","order":12,"icon":"📱","title":"イベント③ 連絡先・次の約束","description":"LINE/IG 交換・次に誘う・断られたときの返し"}
+]

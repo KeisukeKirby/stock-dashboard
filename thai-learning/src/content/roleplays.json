@@ -1,0 +1,249 @@
+[
+  {
+    "id":"rp-survival","title":"聞き返しの練習","scene":"survival","estMinutes":3,
+    "description":"相手が速く話す → もう一度・ゆっくりとお願いする → 分かったと伝える。",
+    "start":"n1",
+    "nodes":{
+      "n1":{"kind":"partner","thai":"มาจากไหนคะ","roman":"maa jàak nǎi ká","ja":"どこから来たんですか？","kana":"マー ジャーク ナイ カ","next":"n2"},
+      "n2":{"kind":"you","hintJa":"もう一度言ってもらえますか？","thai":"พูดอีกทีได้ไหมครับ","roman":"pûut ìik tii dâai mái kráp","ja":"もう一度言ってもらえますか？","phraseId":"sur-01","next":"n3"},
+      "n3":{"kind":"partner","thai":"มา-จาก-ไหน-คะ","roman":"maa jàak nǎi ká","ja":"ど・こ・か・ら・来たんですか？（ゆっくり）","next":"n4"},
+      "n4":{"kind":"you","hintJa":"ああ、分かりました。日本から来ました","thai":"อ๋อ เข้าใจแล้วครับ ผมมาจากญี่ปุ่น","roman":"ɔ̌ɔ kâo-jai lɛ́ɛo kráp pǒm maa jàak yîi-bpùn","ja":"ああ、分かりました。日本から来ました","phraseId":"sur-06","next":"n5"},
+      "n5":{"kind":"partner","thai":"คนญี่ปุ่นเหรอ พูดไทยเก่งนะ","roman":"kon yîi-bpùn rə̌ə pûut tai gèng ná","ja":"日本人なの？タイ語うまいね","next":"n6"},
+      "n6":{"kind":"you","hintJa":"まだまだです。タイ語勉強中なんです","thai":"ยังไม่เก่งครับ ผมกำลังเรียนภาษาไทยอยู่","roman":"yang mâi gèng kráp pǒm gam-lang rian paa-sǎa tai yùu","ja":"まだまだです。タイ語勉強中なんです","phraseId":"int-15","next":"n7"},
+      "n7":{"kind":"partner","thai":"สู้ๆ นะ","roman":"sûu-sûu ná","ja":"がんばってね！","next":"e"},
+      "e":{"kind":"end","mood":"good","messageJa":"聞き返しは失礼ではない。笑顔で堂々と使おう。"}
+    }
+  },
+  {
+    "id":"rp-intro","title":"自己紹介＋相づち","scene":"self_intro","estMinutes":4,
+    "description":"名前を言い合い、相手の話に相づちを返す。",
+    "start":"n1",
+    "nodes":{
+      "n1":{"kind":"you","hintJa":"こんにちは、僕は…です（自分の名前）","thai":"สวัสดีครับ ผมชื่อ...ครับ","roman":"sà-wàt-dii kráp pǒm chʉ̂ʉ ... kráp","ja":"こんにちは、僕は…です","phraseId":"int-01","next":"n2"},
+      "n2":{"kind":"partner","thai":"สวัสดีค่ะ ชื่อฟ้าค่ะ","roman":"sà-wàt-dii kâ chʉ̂ʉ fáa kâ","ja":"こんにちは、ファーです","next":"n3"},
+      "n3":{"kind":"you","hintJa":"はじめまして（知り合えてうれしい）","thai":"ยินดีที่ได้รู้จักครับ","roman":"yin-dii tîi dâai rúu-jàk kráp","ja":"はじめまして","phraseId":"grt-04","next":"n4"},
+      "n4":{"kind":"partner","thai":"เช่นกันค่ะ เป็นคนญี่ปุ่นเหรอ","roman":"chên gan kâ bpen kon yîi-bpùn rə̌ə","ja":"こちらこそ。日本人なの？","next":"n5"},
+      "n5":{"kind":"you","hintJa":"はい、日本人です。バンコクに住んでます","thai":"ใช่ครับ ผมเป็นคนญี่ปุ่น อยู่กรุงเทพครับ","roman":"châi kráp pǒm bpen kon yîi-bpùn yùu grung-têep kráp","ja":"はい、日本人です。バンコクに住んでます","phraseId":"int-03","next":"n6"},
+      "n6":{"kind":"partner","thai":"ฟ้าก็อยู่กรุงเทพ แต่มาจากเชียงใหม่","roman":"fáa gɔ̂ɔ yùu grung-têep dtɛ̀ɛ maa jàak chiang-mài","ja":"私もバンコク住み。でもチェンマイ出身なの","next":"n7"},
+      "n7":{"kind":"you","hintJa":"へぇ、そうなの？いいなぁ","thai":"เหรอ ดีจัง","roman":"rə̌ə dii jang","ja":"へぇ、そうなの？いいなぁ","phraseId":"rea-24","next":"n8"},
+      "n8":{"kind":"partner","thai":"เคยไปเชียงใหม่ไหม","roman":"kəəi bpai chiang-mài mái","ja":"チェンマイ行ったことある？","next":"n9"},
+      "n9":{"kind":"you","hintJa":"まだない、でも行きたい","thai":"ยังไม่เคยครับ แต่อยากไป","roman":"yang mâi kəəi kráp dtɛ̀ɛ yàak bpai","ja":"まだない、でも行きたい","phraseId":"smt-26","next":"e"},
+      "e":{"kind":"end","mood":"good","messageJa":"相手の話には เหรอ / จริงเหรอ / ดีจัง で必ず反応する。沈黙を作らない。"}
+    }
+  },
+  {
+    "id":"rp-bar","title":"バーで注文しておごる","scene":"food_drink","estMinutes":4,
+    "description":"相手に何を飲むか聞き、注文し、乾杯する。",
+    "start":"n1",
+    "nodes":{
+      "n1":{"kind":"you","hintJa":"何飲む？","thai":"ดื่มอะไรดี","roman":"dʉ̀ʉm à-rai dii","ja":"何飲む？","phraseId":"fod-04","next":"n2"},
+      "n2":{"kind":"partner","thai":"เอาเบียร์ค่ะ","roman":"ao bia kâ","ja":"ビールにする","next":"n3"},
+      "n3":{"kind":"you","hintJa":"この一杯は僕のおごりね","thai":"แก้วนี้ผมเลี้ยงนะ","roman":"gɛ̂ɛo níi pǒm líang ná","ja":"この一杯は僕のおごりね","phraseId":"fod-09","next":"b1"},
+      "b1":{"kind":"branch","promptJa":"相手の反応は？","options":[
+        {"mood":"good","label":"喜んで受ける","thai":"ขอบคุณค่ะ","roman":"kɔ̀ɔp-kun kâ","ja":"ありがとう！","next":"n4"},
+        {"mood":"neutral","label":"遠慮する","thai":"ไม่เป็นไร มีแล้ว","roman":"mâi bpen rai mii lɛ́ɛo","ja":"大丈夫、もうあるから","next":"n4b"}
+      ]},
+      "n4":{"kind":"you","hintJa":"（店員に）ビール2本ください","thai":"ขอเบียร์สองขวดครับ","roman":"kɔ̌ɔ bia sɔ̌ɔng kùat kráp","ja":"ビール2本ください","phraseId":"fod-02","next":"n5"},
+      "n5":{"kind":"you","hintJa":"乾杯！","thai":"ชนแก้ว","roman":"chon gɛ̂ɛo","ja":"乾杯！","phraseId":"fod-10","next":"n6"},
+      "n6":{"kind":"partner","thai":"ชนแก้ว! อร่อยมาก","roman":"chon gɛ̂ɛo à-rɔ̀i mâak","ja":"乾杯！おいしい","next":"e1"},
+      "n4b":{"kind":"you","hintJa":"OK、じゃあ乾杯しよ","thai":"โอเคครับ ชนแก้วกัน","roman":"oo-kee kráp chon gɛ̂ɛo gan","ja":"OK、じゃあ乾杯しよ","phraseId":"con-11","next":"e2"},
+      "e1":{"kind":"end","mood":"good","messageJa":"おごるときは軽く、一回だけ。相手の「もうある」は素直に受け取る。"},
+      "e2":{"kind":"end","mood":"neutral","messageJa":"遠慮されても気にしない。流れを止めずに乾杯へ。"}
+    }
+  },
+  {
+    "id":"rp-smalltalk","title":"初対面の雑談","scene":"small_talk","estMinutes":4,
+    "description":"出身・仕事・住まいを聞き合い、แล้วคุณล่ะ で往復させる。",
+    "start":"n1",
+    "nodes":{
+      "n1":{"kind":"partner","thai":"ทำงานอะไรเหรอ","roman":"tam-ngaan à-rai rə̌ə","ja":"仕事は何してるの？","next":"n2"},
+      "n2":{"kind":"you","hintJa":"日本の会社で働いてる。で、あなたは？","thai":"ผมทำงานบริษัทญี่ปุ่น แล้วคุณล่ะ","roman":"pǒm tam-ngaan bɔɔ-rí-sàt yîi-bpùn lɛ́ɛo kun là","ja":"日本の会社で働いてる。で、あなたは？","phraseId":"smt-09","next":"n3"},
+      "n3":{"kind":"partner","thai":"เป็นพนักงานออฟฟิศค่ะ อยู่เมืองไทยนานแล้วเหรอ","roman":"bpen pá-nák-ngaan ɔ́ɔp-fít kâ yùu mʉang tai naan lɛ́ɛo rə̌ə","ja":"会社員だよ。タイにはもう長いの？","next":"n4"},
+      "n4":{"kind":"you","hintJa":"来てまだそんなに経ってない。引っ越してきたばかり","thai":"เพิ่งมาได้ไม่นานครับ เพิ่งย้ายมา","roman":"pə̂ng maa dâai mâi naan kráp pə̂ng yáai maa","ja":"来てまだそんなに経ってない。引っ越してきたばかり","phraseId":"smt-19","next":"n5"},
+      "n5":{"kind":"partner","thai":"ชอบเมืองไทยไหม","roman":"chɔ̂ɔp mʉang tai mái","ja":"タイは好き？","next":"n6"},
+      "n6":{"kind":"you","hintJa":"大好き、タイの人は優しいから","thai":"ชอบมากครับ คนไทยใจดี","roman":"chɔ̂ɔp mâak kráp kon tai jai-dii","ja":"大好き、タイの人は優しいから","phraseId":"smt-22","next":"n7"},
+      "n7":{"kind":"partner","thai":"จริงเหรอ ดีใจที่ชอบนะ","roman":"jing rə̌ə dii-jai tîi chɔ̂ɔp ná","ja":"ほんと？気に入ってくれてうれしい","next":"n8"},
+      "n8":{"kind":"you","hintJa":"どのあたりに住んでるの？","thai":"อยู่แถวไหนครับ","roman":"yùu tɛ̌ɛo nǎi kráp","ja":"どのあたりに住んでるの？","phraseId":"smt-08","next":"n9"},
+      "n9":{"kind":"partner","thai":"อยู่แถวอารีย์ค่ะ","roman":"yùu tɛ̌ɛo aa-rii kâ","ja":"アーリーのあたりだよ","next":"e"},
+      "e":{"kind":"end","mood":"good","messageJa":"答えたら必ず แล้วคุณล่ะ で返す。会話はキャッチボール。"}
+    }
+  },
+  {
+    "id":"rp-music","title":"DJ の話から広げる","scene":"music","estMinutes":4,
+    "description":"DJ を褒め、ジャンルの話から共通点を見つける。",
+    "start":"n1",
+    "nodes":{
+      "n1":{"kind":"you","hintJa":"このDJめっちゃいいね","thai":"ดีเจคนนี้เจ๋งมาก","roman":"dii-jee kon níi jěng mâak","ja":"このDJめっちゃいいね","phraseId":"mus-04","next":"n2"},
+      "n2":{"kind":"partner","thai":"ใช่เลย เพลงนี้มันมาก","roman":"châi ləəi pleeng níi man mâak","ja":"そのとおり！この曲アゲるよね","next":"n3"},
+      "n3":{"kind":"you","hintJa":"どんなジャンルの音楽が好き？","thai":"ชอบเพลงแนวไหน","roman":"chɔ̂ɔp pleeng nɛɛo nǎi","ja":"どんなジャンルの音楽が好き？","phraseId":"mus-01","next":"n4"},
+      "n4":{"kind":"partner","thai":"ชอบฮิปฮอปกับอาร์แอนด์บี","roman":"chɔ̂ɔp híp-hɔ́p gàp aa-ɛɛn-bii","ja":"ヒップホップと R&B が好き","next":"n5"},
+      "n5":{"kind":"you","hintJa":"僕も好き（同じだね）。…が好き、知ってる？","thai":"ผมก็ชอบเหมือนกัน ผมชอบ... รู้จักไหม","roman":"pǒm gɔ̂ɔ chɔ̂ɔp mʉ̌an gan pǒm chɔ̂ɔp ... rúu-jàk mái","ja":"僕も好き。…が好き、知ってる？","phraseId":"mus-17","next":"b1"},
+      "b1":{"kind":"branch","promptJa":"相手の反応は？","options":[
+        {"mood":"good","label":"知ってる","thai":"รู้จัก! ชอบเหมือนกัน","roman":"rúu-jàk chɔ̂ɔp mʉ̌an gan","ja":"知ってる！私も好き","next":"n6"},
+        {"mood":"neutral","label":"知らない","thai":"ไม่รู้จัก เป็นใครเหรอ","roman":"mâi rúu-jàk bpen krai rə̌ə","ja":"知らない、誰？","next":"n6b"}
+      ]},
+      "n6":{"kind":"you","hintJa":"ここよく来る？","thai":"มาที่นี่บ่อยไหม","roman":"maa tîi-nîi bɔ̀i mái","ja":"ここよく来る？","phraseId":"mus-12","next":"n7"},
+      "n7":{"kind":"partner","thai":"มาบ่อยค่ะ แล้วคุณล่ะ","roman":"maa bɔ̀i kâ lɛ́ɛo kun là","ja":"よく来るよ。あなたは？","next":"n8"},
+      "n8":{"kind":"you","hintJa":"初めて来た","thai":"ผมมาครั้งแรกครับ","roman":"pǒm maa kráng rɛ̂ɛk kráp","ja":"初めて来た","phraseId":"mus-14","next":"e1"},
+      "n6b":{"kind":"you","hintJa":"タイの曲おすすめ教えて","thai":"แนะนำเพลงไทยให้หน่อย","roman":"nɛ́-nam pleeng tai hâi nɔ̀i","ja":"タイの曲おすすめ教えて","phraseId":"mus-11","next":"n7b"},
+      "n7b":{"kind":"partner","thai":"ได้สิ ลองฟัง MILLI ดู","roman":"dâai sì lɔɔng fang MILLI duu","ja":"いいよ、MILLI 聴いてみて","next":"e2"},
+      "e1":{"kind":"end","mood":"good","messageJa":"共通点が見つかったら ผมก็ชอบเหมือนกัน。そこから「よく来る？」で次につなげる。"},
+      "e2":{"kind":"end","mood":"neutral","messageJa":"知らないと言われたら「教えて」に切り替える。後で LINE を聞く口実にもなる。"}
+    }
+  },
+  {
+    "id":"rp-approach","title":"声をかける（分岐あり）","scene":"event_approach","estMinutes":5,
+    "description":"押しつけない入り方で声をかけ、名前を聞く。反応が良い／普通／断られた の3分岐。",
+    "start":"n1",
+    "nodes":{
+      "n1":{"kind":"you","hintJa":"こんにちは、ちょっと話してもいい？","thai":"สวัสดีครับ ขอคุยด้วยได้ไหม","roman":"sà-wàt-dii kráp kɔ̌ɔ kui dûai dâai mái","ja":"こんにちは、ちょっと話してもいい？","phraseId":"apr-01","next":"b1"},
+      "b1":{"kind":"branch","promptJa":"相手の反応は？","options":[
+        {"mood":"good","label":"良い反応","thai":"ได้สิ สวัสดีค่ะ","roman":"dâai sì sà-wàt-dii kâ","ja":"いいよ、こんにちは","next":"n2"},
+        {"mood":"neutral","label":"普通","thai":"ค่ะ มีอะไรเหรอ","roman":"kâ mii à-rai rə̌ə","ja":"はい、何かな？","next":"n2n"},
+        {"mood":"declined","label":"断られた","thai":"ขอโทษนะ ไม่สะดวก","roman":"kɔ̌ɔ-tôot ná mâi sà-dùak","ja":"ごめん、ちょっと今は","next":"n2d"}
+      ]},
+      "n2":{"kind":"you","hintJa":"ごめん、タイ語ほんの少ししか話せないんだ。お名前は？","thai":"ขอโทษนะ ผมพูดไทยได้นิดเดียว คุณชื่ออะไรครับ","roman":"kɔ̌ɔ-tôot ná pǒm pûut tai dâai nít-diao kun chʉ̂ʉ à-rai kráp","ja":"ごめん、タイ語ほんの少ししか話せないんだ。お名前は？","phraseId":"apr-03","next":"n3"},
+      "n3":{"kind":"partner","thai":"ชื่อมายด์ค่ะ","roman":"chʉ̂ʉ mai kâ","ja":"マイです","next":"n4"},
+      "n4":{"kind":"you","hintJa":"僕は…。知り合えてうれしいよ","thai":"ผมชื่อ... ยินดีที่ได้รู้จักนะ","roman":"pǒm chʉ̂ʉ ... yin-dii tîi dâai rúu-jàk ná","ja":"僕は…。知り合えてうれしいよ","phraseId":"apr-17","next":"n5"},
+      "n5":{"kind":"partner","thai":"เช่นกันค่ะ","roman":"chên gan kâ","ja":"こちらこそ","next":"n6"},
+      "n6":{"kind":"you","hintJa":"一人で来たの？","thai":"มาคนเดียวเหรอ","roman":"maa kon diao rə̌ə","ja":"一人で来たの？","phraseId":"apr-07","next":"n7"},
+      "n7":{"kind":"partner","thai":"มากับเพื่อนค่ะ แล้วคุณล่ะ","roman":"maa gàp pʉ̂an kâ lɛ́ɛo kun là","ja":"友達と来た。あなたは？","next":"n8"},
+      "n8":{"kind":"you","hintJa":"僕も友達と来た。楽しんでる？","thai":"ผมก็มากับเพื่อน สนุกไหม","roman":"pǒm gɔ̂ɔ maa gàp pʉ̂an sà-nùk mái","ja":"僕も友達と来た。楽しんでる？","phraseId":"apr-11","next":"n9"},
+      "n9":{"kind":"partner","thai":"สนุกมากค่ะ","roman":"sà-nùk mâak kâ","ja":"めっちゃ楽しい","next":"e1"},
+      "n2n":{"kind":"you","hintJa":"邪魔じゃないよね？ごめん、タイ語少しだけなんだ","thai":"ไม่รบกวนใช่ไหม ขอโทษนะ ผมพูดไทยได้นิดเดียว","roman":"mâi róp-guan châi mái kɔ̌ɔ-tôot ná pǒm pûut tai dâai nít-diao","ja":"邪魔じゃないよね？ごめん、タイ語少しだけなんだ","phraseId":"apr-14","next":"n3n"},
+      "n3n":{"kind":"partner","thai":"ไม่เป็นไรค่ะ พูดเก่งนะ","roman":"mâi bpen rai kâ pûut gèng ná","ja":"大丈夫だよ。上手だね","next":"n4n"},
+      "n4n":{"kind":"you","hintJa":"ありがとう。お名前は？","thai":"ขอบคุณครับ คุณชื่ออะไรครับ","roman":"kɔ̀ɔp-kun kráp kun chʉ̂ʉ à-rai kráp","ja":"ありがとう。お名前は？","phraseId":"apr-03","next":"n3"},
+      "n2d":{"kind":"you","hintJa":"OK、気にしないで。楽しんでね","thai":"โอเค ไม่เป็นไร ขอให้สนุกนะ","roman":"oo-kee mâi bpen rai kɔ̌ɔ hâi sà-nùk ná","ja":"OK、気にしないで。楽しんでね","phraseId":"cls-18","next":"e3"},
+      "e1":{"kind":"end","mood":"good","messageJa":"名前を聞いたら自分も名乗る → 一人？ → 楽しんでる？ の順で自然に続く。"},
+      "e3":{"kind":"end","mood":"declined","messageJa":"断られたら笑顔で一言、すぐ引く。それが一番かっこいい。"}
+    }
+  },
+  {
+    "id":"rp-connect","title":"褒めて一緒に飲む（分岐あり）","scene":"event_connect","estMinutes":5,
+    "description":"服やダンスを自然に褒め、一杯おごる・踊るに誘う。",
+    "start":"n1",
+    "nodes":{
+      "n1":{"kind":"you","hintJa":"ダンスめっちゃ上手いね","thai":"เต้นเก่งมากเลย","roman":"dtên gèng mâak ləəi","ja":"ダンスめっちゃ上手いね","phraseId":"con-02","next":"n2"},
+      "n2":{"kind":"partner","thai":"ขอบคุณค่ะ ไม่หรอก","roman":"kɔ̀ɔp-kun kâ mâi rɔ̀ɔk","ja":"ありがとう、そんなことないよ","next":"n3"},
+      "n3":{"kind":"you","hintJa":"何飲んでるの？","thai":"ดื่มอะไรอยู่","roman":"dʉ̀ʉm à-rai yùu","ja":"何飲んでるの？","phraseId":"con-07","next":"n4"},
+      "n4":{"kind":"partner","thai":"เบียร์ค่ะ","roman":"bia kâ","ja":"ビールだよ","next":"n5"},
+      "n5":{"kind":"you","hintJa":"一杯おごらせてもらえる？","thai":"ขอเลี้ยงเครื่องดื่มได้ไหม","roman":"kɔ̌ɔ líang krʉ̂ang-dʉ̀ʉm dâai mái","ja":"一杯おごらせてもらえる？","phraseId":"con-08","next":"b1"},
+      "b1":{"kind":"branch","promptJa":"相手の反応は？","options":[
+        {"mood":"good","label":"いいよ","thai":"ได้เลย ขอบคุณนะ","roman":"dâai ləəi kɔ̀ɔp-kun ná","ja":"いいよ、ありがと","next":"n6"},
+        {"mood":"neutral","label":"もうある","thai":"ไม่เป็นไร มีแล้ว","roman":"mâi bpen rai mii lɛ́ɛo","ja":"大丈夫、もうあるから","next":"n6n"},
+        {"mood":"declined","label":"今はいいかな","thai":"เดี๋ยวก่อนนะ","roman":"dǐao gɔ̀ɔn ná","ja":"ちょっと待ってね（今はいいかな）","next":"n6d"}
+      ]},
+      "n6":{"kind":"you","hintJa":"乾杯しよ！","thai":"ชนแก้วกัน","roman":"chon gɛ̂ɛo gan","ja":"乾杯しよ！","phraseId":"con-11","next":"n7"},
+      "n7":{"kind":"partner","thai":"ชนแก้ว!","roman":"chon gɛ̂ɛo","ja":"乾杯！","next":"n8"},
+      "n8":{"kind":"you","hintJa":"一緒に踊らない？","thai":"ไปเต้นกันไหม","roman":"bpai dtên gan mái","ja":"一緒に踊らない？","phraseId":"con-09","next":"n9"},
+      "n9":{"kind":"partner","thai":"ไปสิ!","roman":"bpai sì","ja":"行こう！","next":"e1"},
+      "n6n":{"kind":"you","hintJa":"OK。あなたと話すの楽しいよ","thai":"โอเคครับ คุยกับคุณสนุกมาก","roman":"oo-kee kráp kui gàp kun sà-nùk mâak","ja":"OK。あなたと話すの楽しいよ","phraseId":"con-06","next":"n7n"},
+      "n7n":{"kind":"partner","thai":"ขอบคุณค่ะ คุยสนุกเหมือนกัน","roman":"kɔ̀ɔp-kun kâ kui sà-nùk mʉ̌an gan","ja":"ありがとう、私も楽しいよ","next":"e2"},
+      "n6d":{"kind":"you","hintJa":"OK、気にしないで。すごく楽しそうだね","thai":"โอเคครับ ไม่เป็นไร คุณดูสนุกมากเลย","roman":"oo-kee kráp mâi bpen rai kun duu sà-nùk mâak ləəi","ja":"OK、気にしないで。すごく楽しそうだね","phraseId":"con-04","next":"e3"},
+      "e1":{"kind":"end","mood":"good","messageJa":"褒める → 飲み物 → 乾杯 → 踊る。テンポよく、でも一歩ずつ。"},
+      "e2":{"kind":"end","mood":"neutral","messageJa":"おごりを断られても会話は続けられる。話が楽しいと伝えるのが一番の褒め言葉。"},
+      "e3":{"kind":"end","mood":"declined","messageJa":"保留されたら深追いしない。雰囲気を褒めて空気を軽くする。"}
+    }
+  },
+  {
+    "id":"rp-exchange","title":"連絡先交換（分岐あり）","scene":"event_close","estMinutes":5,
+    "description":"盛り上がった流れで IG/LINE を聞き、次の約束に誘う。",
+    "start":"n1",
+    "nodes":{
+      "n1":{"kind":"you","hintJa":"あなたと話すの楽しい。インスタやってる？","thai":"คุยกับคุณสนุกมาก มีไอจีไหม","roman":"kui gàp kun sà-nùk mâak mii ai-jii mái","ja":"あなたと話すの楽しい。インスタやってる？","phraseId":"cls-02","next":"b1"},
+      "b1":{"kind":"branch","promptJa":"相手の反応は？","options":[
+        {"mood":"good","label":"いいよ","thai":"มีค่ะ ขอไลน์คุณดีกว่า","roman":"mii kâ kɔ̌ɔ lai kun dii gwàa","ja":"あるよ。LINE のほうがいいかな","next":"n2"},
+        {"mood":"neutral","label":"考える","thai":"ไว้ดูก่อนนะ","roman":"wái duu gɔ̀ɔn ná","ja":"ちょっと考えておくね","next":"n2n"},
+        {"mood":"declined","label":"断られた","thai":"ขอโทษนะ ไม่ให้ดีกว่า","roman":"kɔ̌ɔ-tôot ná mâi hâi dii gwàa","ja":"ごめん、教えないほうがいいかな","next":"n2d"}
+      ]},
+      "n2":{"kind":"you","hintJa":"いいよ！これ僕の QR","thai":"ได้เลย นี่คิวอาร์ของผม","roman":"dâai ləəi nîi kiu-aa kɔ̌ɔng pǒm","ja":"いいよ！これ僕の QR","phraseId":"cls-05","next":"n3"},
+      "n3":{"kind":"partner","thai":"แอดแล้วนะ","roman":"ɛ̀t lɛ́ɛo ná","ja":"追加したよ","next":"n4"},
+      "n4":{"kind":"you","hintJa":"今週末、空いてる？一緒にご飯行かない？","thai":"เสาร์อาทิตย์นี้ว่างไหม ไปกินข้าวด้วยกันไหม","roman":"sǎo aa-tít níi wâang mái bpai gin kâao dûai-gan mái","ja":"今週末、空いてる？一緒にご飯行かない？","phraseId":"cls-08","next":"b2"},
+      "b2":{"kind":"branch","promptJa":"相手の反応は？","options":[
+        {"mood":"good","label":"OK","thai":"ได้เลย วันเสาร์ว่าง","roman":"dâai ləəi wan sǎo wâang","ja":"いいよ、土曜なら空いてる","next":"n5"},
+        {"mood":"neutral","label":"保留","thai":"ไว้ดูก่อนนะ ไว้ทักมา","roman":"wái duu gɔ̀ɔn ná wái ták maa","ja":"考えておく。あとで連絡して","next":"n5n"}
+      ]},
+      "n5":{"kind":"you","hintJa":"やった！後でメッセージするね","thai":"เยี่ยม ไว้ผมทักไปนะ","roman":"yîam wái pǒm ták bpai ná","ja":"やった！後でメッセージするね","phraseId":"cls-11","next":"e1"},
+      "n5n":{"kind":"you","hintJa":"OK、また（LINEで）話そうね","thai":"โอเค ไว้คุยกันต่อนะ","roman":"oo-kee wái kui gan dtɔ̀ɔ ná","ja":"OK、また（LINEで）話そうね","phraseId":"cls-06","next":"e2"},
+      "n2n":{"kind":"you","hintJa":"OK、気にしないで。話せてうれしかったよ","thai":"โอเค ไม่เป็นไร ดีใจที่ได้คุยกันนะ","roman":"oo-kee mâi bpen rai dii-jai tîi dâai kui gan ná","ja":"OK、気にしないで。話せてうれしかったよ","phraseId":"cls-23","next":"e2"},
+      "n2d":{"kind":"you","hintJa":"大丈夫、知り合えてうれしかったよ。楽しんでね","thai":"ไม่เป็นไรครับ ยินดีที่ได้รู้จักนะ ขอให้สนุกนะ","roman":"mâi bpen rai kráp yin-dii tîi dâai rúu-jàk ná kɔ̌ɔ hâi sà-nùk ná","ja":"大丈夫、知り合えてうれしかったよ。楽しんでね","phraseId":"cls-17","next":"e3"},
+      "e1":{"kind":"end","mood":"good","messageJa":"連絡先 → すぐ次の約束 → 「後で連絡する」で締める。当日中に一言送る。"},
+      "e2":{"kind":"end","mood":"neutral","messageJa":"保留は保留。しつこくせず、楽しかったと伝えて終える。"},
+      "e3":{"kind":"end","mood":"declined","messageJa":"断られても感謝で締める。周りの友達にも良い印象が残る。"}
+    }
+  },
+  {
+    "id":"rp-declined","title":"断られる練習","scene":"event_close","estMinutes":3,
+    "description":"3 種類の断りに、爽やかな返しを即答する。",
+    "start":"n1",
+    "nodes":{
+      "n1":{"kind":"you","hintJa":"LINE 教えてもらえる？","thai":"ขอไลน์ได้ไหม","roman":"kɔ̌ɔ lai dâai mái","ja":"LINE 教えてもらえる？","phraseId":"cls-01","next":"n2"},
+      "n2":{"kind":"partner","thai":"มีแฟนแล้วค่ะ","roman":"mii fɛɛn lɛ́ɛo kâ","ja":"彼氏いるの","next":"n3"},
+      "n3":{"kind":"you","hintJa":"分かった、話してくれてありがとう","thai":"เข้าใจครับ ขอบคุณที่คุยด้วยนะ","roman":"kâo-jai kráp kɔ̀ɔp-kun tîi kui dûai ná","ja":"分かった、話してくれてありがとう","phraseId":"cls-19","next":"n4"},
+      "n4":{"kind":"partner","thai":"ขอบคุณนะ โชคดีค่ะ","roman":"kɔ̀ɔp-kun ná chôok dii kâ","ja":"ありがとう、じゃあね","next":"n5"},
+      "n5":{"kind":"you","hintJa":"じゃあね。気をつけて帰ってね","thai":"โชคดีนะ กลับดีๆ นะ","roman":"chôok dii ná glàp dii-dii ná","ja":"じゃあね。気をつけて帰ってね","phraseId":"cls-20","next":"e"},
+      "e":{"kind":"end","mood":"declined","messageJa":"断りはチャンスの終わりではなく印象の勝負。笑顔・感謝・即引き。"}
+    }
+  },
+  {
+    "id":"rp-full-a","title":"通し①：声かけ → 会話 → 交換","scene":"event_close","estMinutes":8,
+    "description":"イベント本番の流れを最初から最後まで通す（反応が良いルート中心）。",
+    "start":"n1",
+    "nodes":{
+      "n1":{"kind":"you","hintJa":"こんにちは、ちょっと話してもいい？","thai":"สวัสดีครับ ขอคุยด้วยได้ไหม","roman":"sà-wàt-dii kráp kɔ̌ɔ kui dûai dâai mái","ja":"こんにちは、ちょっと話してもいい？","phraseId":"apr-01","next":"n2"},
+      "n2":{"kind":"partner","thai":"ได้สิ","roman":"dâai sì","ja":"いいよ","next":"n3"},
+      "n3":{"kind":"you","hintJa":"ごめん、タイ語少しだけなんだ。お名前は？","thai":"ขอโทษนะ ผมพูดไทยได้นิดเดียว คุณชื่ออะไรครับ","roman":"kɔ̌ɔ-tôot ná pǒm pûut tai dâai nít-diao kun chʉ̂ʉ à-rai kráp","ja":"ごめん、タイ語少しだけなんだ。お名前は？","phraseId":"apr-13","next":"n4"},
+      "n4":{"kind":"partner","thai":"ชื่อแนนค่ะ คุณชื่ออะไร","roman":"chʉ̂ʉ nɛɛn kâ kun chʉ̂ʉ à-rai","ja":"ナンです。あなたは？","next":"n5"},
+      "n5":{"kind":"you","hintJa":"僕は…。知り合えてうれしいよ","thai":"ผมชื่อ... ยินดีที่ได้รู้จักนะ","roman":"pǒm chʉ̂ʉ ... yin-dii tîi dâai rúu-jàk ná","ja":"僕は…。知り合えてうれしいよ","phraseId":"apr-17","next":"n6"},
+      "n6":{"kind":"partner","thai":"เช่นกันค่ะ คนญี่ปุ่นเหรอ","roman":"chên gan kâ kon yîi-bpùn rə̌ə","ja":"こちらこそ。日本人なの？","next":"n7"},
+      "n7":{"kind":"you","hintJa":"そう、バンコクに住んでる。ここよく来る？","thai":"ใช่ครับ ผมอยู่กรุงเทพ มาที่นี่บ่อยไหม","roman":"châi kráp pǒm yùu grung-têep maa tîi-nîi bɔ̀i mái","ja":"そう、バンコクに住んでる。ここよく来る？","phraseId":"mus-12","next":"n8"},
+      "n8":{"kind":"partner","thai":"มาบ่อยค่ะ ชอบดีเจคนนี้","roman":"maa bɔ̀i kâ chɔ̂ɔp dii-jee kon níi","ja":"よく来るよ。このDJ好きなの","next":"n9"},
+      "n9":{"kind":"you","hintJa":"このDJめっちゃいいね。音楽の趣味いいね","thai":"ดีเจคนนี้เจ๋งมาก รสนิยมเพลงดีนะ","roman":"dii-jee kon níi jěng mâak rót-ní-yom pleeng dii ná","ja":"このDJめっちゃいいね。音楽の趣味いいね","phraseId":"con-05","next":"n10"},
+      "n10":{"kind":"partner","thai":"ขอบคุณค่ะ ชอบเพลงแนวไหน","roman":"kɔ̀ɔp-kun kâ chɔ̂ɔp pleeng nɛɛo nǎi","ja":"ありがとう。どんなジャンルが好き？","next":"n11"},
+      "n11":{"kind":"you","hintJa":"ヒップホップが好き。何飲んでるの？","thai":"ผมชอบฮิปฮอป ดื่มอะไรอยู่","roman":"pǒm chɔ̂ɔp híp-hɔ́p dʉ̀ʉm à-rai yùu","ja":"ヒップホップが好き。何飲んでるの？","phraseId":"con-07","next":"n12"},
+      "n12":{"kind":"partner","thai":"เบียร์ค่ะ","roman":"bia kâ","ja":"ビール","next":"n13"},
+      "n13":{"kind":"you","hintJa":"一杯おごらせてもらえる？","thai":"ขอเลี้ยงเครื่องดื่มได้ไหม","roman":"kɔ̌ɔ líang krʉ̂ang-dʉ̀ʉm dâai mái","ja":"一杯おごらせてもらえる？","phraseId":"con-08","next":"n14"},
+      "n14":{"kind":"partner","thai":"ได้เลย ขอบคุณนะ","roman":"dâai ləəi kɔ̀ɔp-kun ná","ja":"いいよ、ありがと","next":"n15"},
+      "n15":{"kind":"you","hintJa":"乾杯！あなたと話すの楽しい。インスタやってる？","thai":"ชนแก้ว คุยกับคุณสนุกมาก มีไอจีไหม","roman":"chon gɛ̂ɛo kui gàp kun sà-nùk mâak mii ai-jii mái","ja":"乾杯！あなたと話すの楽しい。インスタやってる？","phraseId":"cls-02","next":"b1"},
+      "b1":{"kind":"branch","promptJa":"相手の反応は？","options":[
+        {"mood":"good","label":"いいよ","thai":"มีค่ะ แอดกันเลย","roman":"mii kâ ɛ̀t gan ləəi","ja":"あるよ、追加しよ","next":"n16"},
+        {"mood":"declined","label":"断られた","thai":"ขอโทษนะ ไม่ให้ดีกว่า","roman":"kɔ̌ɔ-tôot ná mâi hâi dii gwàa","ja":"ごめん、教えないほうがいいかな","next":"n16d"}
+      ]},
+      "n16":{"kind":"you","hintJa":"今週末空いてる？コーヒーでも行かない？","thai":"เสาร์อาทิตย์นี้ว่างไหม ไปดื่มกาแฟกันไหม","roman":"sǎo aa-tít níi wâang mái bpai dʉ̀ʉm gaa-fɛɛ gan mái","ja":"今週末空いてる？コーヒーでも行かない？","phraseId":"cls-09","next":"n17"},
+      "n17":{"kind":"partner","thai":"ได้เลย","roman":"dâai ləəi","ja":"いいよ","next":"n18"},
+      "n18":{"kind":"you","hintJa":"後でメッセージするね。また会おうね","thai":"ไว้ผมทักไปนะ ไว้เจอกันใหม่นะ","roman":"wái pǒm ták bpai ná wái jəə gan mài ná","ja":"後でメッセージするね。また会おうね","phraseId":"cls-21","next":"e1"},
+      "n16d":{"kind":"you","hintJa":"大丈夫、知り合えてうれしかったよ。楽しんでね","thai":"ไม่เป็นไรครับ ยินดีที่ได้รู้จักนะ ขอให้สนุกนะ","roman":"mâi bpen rai kráp yin-dii tîi dâai rúu-jàk ná kɔ̌ɔ hâi sà-nùk ná","ja":"大丈夫、知り合えてうれしかったよ。楽しんでね","phraseId":"cls-17","next":"e2"},
+      "e1":{"kind":"end","mood":"good","messageJa":"これが本番の理想ルート。全部で 10 往復もない。ゆっくり、笑顔で。"},
+      "e2":{"kind":"end","mood":"declined","messageJa":"最後まで感じ良く。次のチャンスはいくらでもある。"}
+    }
+  },
+  {
+    "id":"rp-full-b","title":"通し②：相手から話が来る","scene":"event_close","estMinutes":7,
+    "description":"相手に質問されて答え、聞き返しも使いながら、連絡先交換までつなげる。",
+    "start":"n1",
+    "nodes":{
+      "n1":{"kind":"partner","thai":"มาคนเดียวเหรอคะ","roman":"maa kon diao rə̌ə ká","ja":"一人で来たの？","next":"n2"},
+      "n2":{"kind":"you","hintJa":"友達と来た。あなたは？","thai":"มากับเพื่อนครับ แล้วคุณล่ะ","roman":"maa gàp pʉ̂an kráp lɛ́ɛo kun là","ja":"友達と来た。あなたは？","phraseId":"apr-09","next":"n3"},
+      "n3":{"kind":"partner","thai":"มากับเพื่อนเหมือนกัน เป็นคนที่ไหนคะ","roman":"maa gàp pʉ̂an mʉ̌an gan bpen kon tîi-nǎi ká","ja":"私も友達と。どこの人？","next":"n4"},
+      "n4":{"kind":"you","hintJa":"（聞き取れない）ゆっくり話してもらえますか？","thai":"พูดช้าๆ หน่อยได้ไหมครับ","roman":"pûut cháa-cháa nɔ̀i dâai mái kráp","ja":"ゆっくり話してもらえますか？","phraseId":"sur-02","next":"n5"},
+      "n5":{"kind":"partner","thai":"เป็น-คน-ที่-ไหน-คะ","roman":"bpen kon tîi-nǎi ká","ja":"ど・こ・の・人？（ゆっくり）","next":"n6"},
+      "n6":{"kind":"you","hintJa":"ああ、日本人です。タイ語勉強中なんだ","thai":"อ๋อ ผมเป็นคนญี่ปุ่นครับ กำลังเรียนภาษาไทยอยู่","roman":"ɔ̌ɔ pǒm bpen kon yîi-bpùn kráp gam-lang rian paa-sǎa tai yùu","ja":"ああ、日本人です。タイ語勉強中なんだ","phraseId":"int-12","next":"n7"},
+      "n7":{"kind":"partner","thai":"เก่งมาก! ชื่ออะไรคะ","roman":"gèng mâak chʉ̂ʉ à-rai ká","ja":"すごい！名前は？","next":"n8"},
+      "n8":{"kind":"you","hintJa":"僕は…。あなたは？","thai":"ผมชื่อ...ครับ แล้วคุณล่ะ","roman":"pǒm chʉ̂ʉ ... kráp lɛ́ɛo kun là","ja":"僕は…。あなたは？","phraseId":"int-01","next":"n9"},
+      "n9":{"kind":"partner","thai":"ชื่อพลอยค่ะ","roman":"chʉ̂ʉ plɔɔi kâ","ja":"プロイです","next":"n10"},
+      "n10":{"kind":"you","hintJa":"きれいな名前だね。知り合えてうれしいよ","thai":"ชื่อเพราะนะ ยินดีที่ได้รู้จักนะ","roman":"chʉ̂ʉ prá ná yin-dii tîi dâai rúu-jàk ná","ja":"きれいな名前だね。知り合えてうれしいよ","phraseId":"apr-06","next":"n11"},
+      "n11":{"kind":"partner","thai":"ชอบเพลงแนวไหนคะ","roman":"chɔ̂ɔp pleeng nɛɛo nǎi ká","ja":"どんなジャンルが好き？","next":"n12"},
+      "n12":{"kind":"you","hintJa":"ヒップホップ。この曲アゲるね","thai":"ฮิปฮอปครับ เพลงนี้มันมาก","roman":"híp-hɔ́p kráp pleeng níi man mâak","ja":"ヒップホップ。この曲アゲるね","phraseId":"mus-05","next":"n13"},
+      "n13":{"kind":"partner","thai":"ใช่เลย! ไปเต้นกันไหม","roman":"châi ləəi bpai dtên gan mái","ja":"ほんとそれ！一緒に踊らない？","next":"n14"},
+      "n14":{"kind":"you","hintJa":"いいよ！（踊った後）タイの曲おすすめ教えて。LINE 教えてもらえる？","thai":"ได้เลย ... แนะนำเพลงไทยให้หน่อย ขอไลน์ได้ไหม","roman":"dâai ləəi ... nɛ́-nam pleeng tai hâi nɔ̀i kɔ̌ɔ lai dâai mái","ja":"いいよ！…タイの曲おすすめ教えて。LINE 教えてもらえる？","phraseId":"cls-01","next":"b1"},
+      "b1":{"kind":"branch","promptJa":"相手の反応は？","options":[
+        {"mood":"good","label":"いいよ","thai":"ได้สิ","roman":"dâai sì","ja":"いいよ","next":"n15"},
+        {"mood":"neutral","label":"保留","thai":"ไว้ดูก่อนนะ","roman":"wái duu gɔ̀ɔn ná","ja":"考えておくね","next":"n15n"}
+      ]},
+      "n15":{"kind":"you","hintJa":"これ僕の QR。また話そうね","thai":"นี่คิวอาร์ของผม ไว้คุยกันต่อนะ","roman":"nîi kiu-aa kɔ̌ɔng pǒm wái kui gan dtɔ̀ɔ ná","ja":"これ僕の QR。また話そうね","phraseId":"cls-06","next":"e1"},
+      "n15n":{"kind":"you","hintJa":"OK、気にしないで。話せてうれしかった。気をつけて帰ってね","thai":"โอเค ไม่เป็นไร ดีใจที่ได้คุยกันนะ กลับดีๆ นะ","roman":"oo-kee mâi bpen rai dii-jai tîi dâai kui gan ná glàp dii-dii ná","ja":"OK、気にしないで。話せてうれしかった。気をつけて帰ってね","phraseId":"cls-22","next":"e2"},
+      "e1":{"kind":"end","mood":"good","messageJa":"聞き返しを挟んでも流れは切れない。むしろ「勉強中」が好印象になる。"},
+      "e2":{"kind":"end","mood":"neutral","messageJa":"保留でも最後は優しい一言で。印象がすべて。"}
+    }
+  }
+]
