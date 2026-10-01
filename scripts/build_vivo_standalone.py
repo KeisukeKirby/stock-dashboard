@@ -3,7 +3,8 @@
 在庫ダッシュボードとは別の URL で公開する単体版に使う。
 
 使い方:
-    python scripts/build_vivo_standalone.py OUT.html
+    python scripts/build_vivo_standalone.py vivo/index.html --full   # Vercel の Vivo 専用プロジェクト (Root Directory: vivo)
+    python scripts/build_vivo_standalone.py OUT.html                 # claude.ai の Artifact 用 (<html>/<head> なし)
 
 public/vivo.html・style.css・vivo.css・vivo.js・vivo.json を読み、
 在庫ダッシュボードへのリンク・テーマ切り替え (閲覧画面のテーマに従う)・CSV 保存ボタン (公開ページではダウンロード不可) を外す。
@@ -16,8 +17,10 @@ PUB = Path(__file__).resolve().parent.parent / "public"
 
 
 def main():
-    if len(sys.argv) != 2:
+    args = [a for a in sys.argv[1:] if a != "--full"]
+    if len(args) != 1:
         sys.exit(__doc__)
+    full = "--full" in sys.argv
     html = (PUB / "vivo.html").read_text(encoding="utf-8")
     body = re.search(r"<body>(.*)</body>", html, re.S).group(1)
     body = re.sub(r"\s*<script[^>]*></script>", "", body)
@@ -34,8 +37,17 @@ def main():
         f"<script>window.VIVO_DATA = {data};</script>\n"
         f"<script>\n{js}\n</script>\n"
     )
-    Path(sys.argv[1]).write_text(out, encoding="utf-8")
-    print(f"{sys.argv[1]} ({len(out.encode()) // 1024} KB)")
+    if full:
+        # Vercel で配信する完全な HTML 文書 (<title> と <style> は <head> に入れる)
+        head, rest = out.split("</style>\n", 1)
+        out = (
+            '<!doctype html>\n<html lang="ja">\n<head>\n<meta charset="utf-8">\n'
+            '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+            f'<meta name="robots" content="noindex">\n{head}</style>\n</head>\n<body>\n{rest}</body>\n</html>\n'
+        )
+    Path(args[0]).parent.mkdir(parents=True, exist_ok=True)
+    Path(args[0]).write_text(out, encoding="utf-8")
+    print(f"{args[0]} ({len(out.encode()) // 1024} KB)")
 
 
 if __name__ == "__main__":

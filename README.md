@@ -160,5 +160,8 @@ vivo.json には顧客情報を含めません。
 データ・CSS・JS を 1 つの HTML に埋め込んだ単体版を作れます（在庫ダッシュボードへのリンクと CSV 保存は外し、代わりに「表をコピー」で Excel に貼り付け）。
 
 ```bash
-python scripts/build_vivo_standalone.py vivo-sales.html
+python scripts/build_vivo_standalone.py vivo/index.html --full   # Vercel の Vivo 専用プロジェクト用 (vivo/ フォルダ)
+python scripts/build_vivo_standalone.py vivo-sales.html          # claude.ai の Artifact 用
 ```
+
+`vivo/` は Vivo 専用の Vercel プロジェクト（Root Directory を `vivo` に設定）で、在庫ダッシュボードとは別の URL で配信します。
