@@ -12,7 +12,7 @@ export function VoiceBanner() {
         <Link to="/settings" className="underline">
           設定
         </Link>
-        に端末ごとの追加手順があります。音声なしでもローマ字・録音で学習は続けられます。
+        に端末ごとの追加手順があります。Windows PC なら <b>Microsoft Edge</b> で開くと追加設定なしでタイ語音声が使えます。音声なしでもローマ字・録音で学習は続けられます。
       </p>
     </div>
   )

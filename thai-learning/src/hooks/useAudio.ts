@@ -8,13 +8,42 @@ import type { Phrase } from '@/lib/types'
 let cachedCheck: AudioCheck | null = null
 let checkPromise: Promise<AudioCheck> | null = null
 
+// ---- 直近の再生結果（診断用）----
+export interface AudioStatus {
+  ok: boolean
+  message: string
+  at: number
+}
+let lastStatus: AudioStatus | null = null
+const statusListeners = new Set<(s: AudioStatus | null) => void>()
+function setStatus(s: AudioStatus | null) {
+  lastStatus = s
+  for (const fn of statusListeners) fn(s)
+}
+export function useAudioStatus(): AudioStatus | null {
+  const [st, setSt] = useState<AudioStatus | null>(lastStatus)
+  useEffect(() => {
+    statusListeners.add(setSt)
+    return () => {
+      statusListeners.delete(setSt)
+    }
+  }, [])
+  return st
+}
+
+/** 成功した結果だけキャッシュする。失敗（音声未検出）は毎回やり直す。 */
 export function runAudioCheck(force = false): Promise<AudioCheck> {
-  if (cachedCheck && !force) return Promise.resolve(cachedCheck)
+  if (cachedCheck?.ok && !force) return Promise.resolve(cachedCheck)
   if (!checkPromise || force) {
-    checkPromise = audioProvider.check().then((r) => {
-      cachedCheck = r
-      return r
-    })
+    checkPromise = audioProvider
+      .check()
+      .then((r) => {
+        cachedCheck = r
+        return r
+      })
+      .finally(() => {
+        checkPromise = null
+      })
   }
   return checkPromise
 }
@@ -24,8 +53,15 @@ export function useAudioCheck(): { check: AudioCheck | null; recheck: () => void
   useEffect(() => {
     let alive = true
     runAudioCheck().then((r) => alive && setCheck(r))
+    // 音声一覧が後から増えたら（Windows の Chrome/Edge でよくある）自動で再判定
+    const onVoices = () => {
+      runAudioCheck(true).then((r) => alive && setCheck(r))
+    }
+    const s = typeof window !== 'undefined' && 'speechSynthesis' in window ? window.speechSynthesis : null
+    s?.addEventListener('voiceschanged', onVoices)
     return () => {
       alive = false
+      s?.removeEventListener('voiceschanged', onVoices)
     }
   }, [])
   const recheck = useCallback(() => {
@@ -60,8 +96,11 @@ export function useAudio() {
       try {
         const s = settingsRef.current
         await audioProvider.speak(it, { rate: rateOverride ?? s.rate, voiceURI: s.voiceURI })
+        const used = (audioProvider as unknown as { tts?: { lastVoiceName?: string | null } }).tts?.lastVoiceName
+        setStatus({ ok: true, message: used ? `再生しました（${used}）` : '再生しました', at: Date.now() })
       } catch (e) {
         console.warn(e)
+        setStatus({ ok: false, message: `再生エラー: ${(e as Error).message}`, at: Date.now() })
       } finally {
         if (token.current === my) setSpeaking(false)
       }
