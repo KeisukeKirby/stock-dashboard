@@ -1,0 +1,103 @@
+/* Vivo 販売ダッシュボード (vivo.html)。基本の配色・部品は style.css を使う */
+:root { --co-bft: #2a78d6; --co-edv: #eb6834; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --co-bft: #3987e5; --co-edv: #d95926; }
+}
+:root[data-theme="dark"] { --co-bft: #3987e5; --co-edv: #d95926; }
+
+.sw { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; flex: none; }
+.sw[data-co="BFT"] { background: var(--co-bft); }
+.sw[data-co="EDV"] { background: var(--co-edv); }
+.legend { display: flex; gap: 14px; font-size: 12px; color: var(--ink-2); }
+
+/* フィルター */
+.vf { margin-bottom: 14px; display: flex; flex-direction: column; gap: 14px; }
+.vf-row { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: flex-end; }
+.vf-group { display: flex; flex-direction: column; gap: 4px; }
+.vf-label { font-size: 12px; color: var(--muted); }
+.vf-input { height: 36px; padding: 0 10px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface); min-width: 140px; }
+.vf-input:focus { outline: 2px solid var(--accent-soft); border-color: var(--accent); }
+.vf .ghost { height: 36px; }
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface); padding: 2px; gap: 2px; }
+.seg button {
+  display: inline-flex; align-items: center; border: 0; background: none; cursor: pointer;
+  height: 30px; padding: 0 14px; border-radius: 8px; font-size: 13px; color: var(--ink-2); white-space: nowrap;
+}
+.seg button:hover { background: var(--surface-2); color: var(--ink); }
+.seg button[aria-pressed="true"] { background: var(--accent); color: #fff; font-weight: 600; }
+.seg button[aria-pressed="true"] .sw { box-shadow: 0 0 0 2px #fff; }
+.loc-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.loc-chip {
+  display: inline-flex; align-items: center; gap: 2px; cursor: pointer; font-size: 13px;
+  border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink-2);
+  border-radius: 999px; padding: 5px 12px;
+}
+.loc-chip:hover { border-color: var(--accent); }
+.loc-chip[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); font-weight: 600; }
+.loc-chip .co { font-size: 11px; color: var(--muted); font-weight: 600; margin-right: 4px; }
+.loc-chip .n { font-size: 12px; color: var(--muted); margin-left: 6px; font-variant-numeric: tabular-nums; font-weight: 400; }
+.loc-chip.all { font-weight: 600; }
+
+.kpi-main .kpi-value { color: var(--accent); }
+.kpi-note .sw { width: 8px; height: 8px; margin-right: 4px; vertical-align: 0; }
+.kpi-note .co-split { margin-right: 12px; white-space: nowrap; }
+
+.vc { margin-bottom: 14px; }
+.vgrid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+
+/* 縦棒 (日別・サイズ別)。会社ごとに積み上げ、間に 2px のすき間 */
+.vbars { position: relative; height: 220px; padding: 0 0 22px 34px; }
+.vbars.short { height: 200px; }
+.vbars .grid { position: absolute; left: 34px; right: 0; border-top: 1px solid var(--line); }
+.vbars .grid span { position: absolute; left: -34px; top: -8px; width: 28px; text-align: right; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.vbars .grid.base { border-top-color: var(--line-strong); }
+.vbars .cols { position: relative; display: flex; align-items: flex-end; height: 100%; gap: 2px; }
+.vbars .col { flex: 1 1 0; min-width: 0; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 2px; position: relative; cursor: default; }
+.vbars .col:hover { background: var(--surface-2); border-radius: 4px 4px 0 0; }
+.vbars .seg-b { width: 72%; max-width: 30px; }
+.vbars .seg-b[data-co="BFT"] { background: var(--co-bft); }
+.vbars .seg-b[data-co="EDV"] { background: var(--co-edv); }
+.vbars .seg-b.cap { border-radius: 4px 4px 0 0; }
+.vbars .xl { position: absolute; bottom: -20px; font-size: 11px; color: var(--muted); white-space: nowrap; }
+.vbars .vtot { font-size: 11px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+
+/* 横棒 (会社別に積み上げ) */
+.bar-row.static { cursor: default; }
+.bar-row.static:hover { background: var(--surface-2); }
+.bar-track.stack { display: flex; gap: 2px; }
+.bar-track.stack .bar-fill { border-radius: 0; transition: width .35s ease; }
+.bar-track.stack .bar-fill:last-child { border-radius: 0 4px 4px 0; }
+.bar-fill[data-co="BFT"] { background: var(--co-bft); }
+.bar-fill[data-co="EDV"] { background: var(--co-edv); }
+.bar-row:hover .bar-fill[data-co], .bar-row.active .bar-fill[data-co] { filter: brightness(1.08); }
+.bar-label .co { font-size: 11px; color: var(--muted); font-weight: 600; margin-right: 4px; }
+.empty-note { color: var(--muted); font-size: 13px; padding: 20px 0; text-align: center; }
+
+/* 明細表 */
+.vtable-wrap { overflow: auto; max-height: 640px; border: 1px solid var(--line); border-radius: 10px; }
+.vtable { border-collapse: collapse; width: 100%; font-size: 13px; }
+.vtable th, .vtable td { padding: 6px 10px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+.vtable thead th { font-size: 12px; color: var(--ink-2); font-weight: 600; background: var(--surface-2); position: sticky; top: 0; cursor: pointer; user-select: none; }
+.vtable thead th:hover { color: var(--ink); }
+.vtable thead th[aria-sort]::after { content: " ▼"; font-size: 9px; color: var(--accent); }
+.vtable thead th[aria-sort="ascending"]::after { content: " ▲"; }
+.vtable .num { text-align: right; font-variant-numeric: tabular-nums; }
+.vtable td.zero { color: var(--muted); }
+.vtable tfoot td { font-weight: 700; background: var(--surface-2); border-bottom: 0; position: sticky; bottom: 0; }
+.vtable tbody tr:hover td { background: var(--surface-2); }
+
+@media (max-width: 960px) {
+  .vgrid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .vf-row { gap: 10px; }
+  .vf-group { width: 100%; }
+  .vf-row label.vf-group { width: calc(50% - 5px); }
+  .vf-input { min-width: 0; width: 100%; }
+  .seg { width: 100%; }
+  .seg button { flex: 1 1 auto; justify-content: center; padding: 0 8px; }
+  .vbars { padding-left: 28px; }
+  .vbars .grid { left: 28px; }
+  .vbars .grid span { left: -28px; width: 24px; }
+  .vbars .vtot { display: none; }
+}

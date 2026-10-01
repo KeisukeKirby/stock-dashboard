@@ -133,3 +133,24 @@ python scripts/convert.py ... data/sales_rate.json data/returns_import.json     
 
 ダッシュボードを最初に開いたときに「輸送中」として 1 度だけ共有データに登録します（同じ id では再登録しない。既に入力があるマスは上書きしない）。
 現在の取り込み: VFF_Stock_with_returns_20260929_1620.xlsx の 78 件・102 足（K Village 33 / Central CL 18 / Siam Discovery 7 / Central LP 44）。
+
+## Vivo 販売ダッシュボード (vivo.html)
+
+`/vivo` で開く、BFT と EDV の受注明細から作った Vivo の販売実績ダッシュボードです（在庫ダッシュボード右上の「Vivo Sales →」からも開けます）。
+
+- 合計の販売数量・売上金額・注文数・平均販売単価（BFT / EDV の内訳つき）
+- **会社**（すべて / BFT / EDV）、**販売場所の種類**（店舗 / イベント / オンライン・その他）、**販売場所**（複数選択）、期間、モデルで絞り込み
+- BFT のイベントと EDV のイベントは、同じ「Event 1」でも別の販売場所として扱う
+- 日別・販売場所別・モデル別・サイズ別・カラー別のグラフ（BFT / EDV で色分け）と、商品別（モデル × カラー × サイズ）× 販売場所の表（CSV 保存可）
+
+データの更新:
+
+```bash
+# 受注明細 (POS の Orders シート) を data/sales_raw/ に置く (顧客情報を含むため Git 管理外)
+python scripts/vivo_sales.py data/sales_raw/vivo_BFT.xlsx data/sales_raw/vivo_EDV.xlsx   # -> public/vivo.json
+```
+
+集計ルール: Category が Vivo の行のみ、取消 (Voided) は除外、Pending は含む（画面のチェックで除外可）。
+販売場所は Warehouse/Branch（Event〜 → イベント、空欄・Online・本社倉庫 → オンライン・その他、それ以外 → 店舗）。
+モデル・カラー・サイズは商品名から判定（商品コードの番号は BFT と EDV で別のモデルを指すことがあるため）。金額は明細の Total amount。
+vivo.json には顧客情報を含めません。
