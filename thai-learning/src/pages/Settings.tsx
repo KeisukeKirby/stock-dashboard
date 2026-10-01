@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useSettings } from '@/hooks/useSettings'
-import { useAudioCheck, useAudio } from '@/hooks/useAudio'
+import { useAudioCheck, useAudio, useAudioStatus } from '@/hooks/useAudio'
 import { downloadPhrasesCsv, downloadProgressJson, importProgressFile } from '@/lib/exportImport'
 import { resetAll } from '@/lib/db'
 import { phrases } from '@/lib/content'
@@ -14,6 +14,7 @@ export default function Settings() {
   const { settings, update } = useSettings()
   const { check, recheck } = useAudioCheck()
   const { speak } = useAudio()
+  const status = useAudioStatus()
   const fileRef = useRef<HTMLInputElement>(null)
   const [msg, setMsg] = useState<string | null>(null)
   const [importMode, setImportMode] = useState<'merge' | 'replace'>('merge')
@@ -80,9 +81,33 @@ export default function Settings() {
                   ))}
                 </select>
               )}
+              <ul className="mt-1 list-disc pl-5 text-xs text-emerald-200/80">
+                {check.voices?.map((v) => (
+                  <li key={v.voiceURI}>
+                    {v.name} <span className="text-slate-400">({v.lang})</span>
+                  </li>
+                ))}
+              </ul>
               <Button variant="secondary" size="sm" className="mt-2" onClick={() => void speak('สวัสดีครับ ยินดีที่ได้รู้จัก')}>
                 ▶ テスト再生
               </Button>
+              {status && (
+                <p className={status.ok ? 'mt-2 text-xs text-emerald-300' : 'mt-2 text-xs text-rose-300'}>
+                  {status.ok ? '✓ ' : '✗ '}
+                  {status.message}
+                </p>
+              )}
+              {status && !status.ok && (
+                <div className="mt-2 rounded-xl bg-slate-800/60 p-2 text-xs text-slate-300">
+                  <p className="font-semibold">音声はあるのに聞こえないとき</p>
+                  <ul className="mt-1 list-disc space-y-1 pl-5">
+                    <li>タブのミュート：ブラウザのタブを右クリック → 「サイトのミュートを解除」。アドレスバー左の 🔒 → サイトの設定 → 「音声」が許可か</li>
+                    <li>Windows の音量ミキサー：タスクバーのスピーカー → 音量ミキサー → ブラウザの音量が 0 になっていないか</li>
+                    <li>Edge のオンライン音声はネットワーク経由で生成されます。会社のプロキシ／VPN で止まることがあるので、スマホのテザリングなど別回線で試す</li>
+                    <li>ブラウザを完全に終了して開き直す</li>
+                  </ul>
+                </div>
+              )}
             </div>
           ) : (
             <div className="mt-1 rounded-xl border border-rose-800/60 bg-rose-950/40 p-3 text-sm text-rose-100">

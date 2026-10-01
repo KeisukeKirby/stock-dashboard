@@ -67,37 +67,82 @@ export class WebSpeechProvider implements AudioProvider {
     return { ok: true, voices: voices.map((v) => ({ name: v.name, voiceURI: v.voiceURI, lang: v.lang })), ...summary }
   }
 
+  /** 直近で実際に使った音声名（診断用） */
+  lastVoiceName: string | null = null
+
   async speak(item: AudioItem, opts: SpeakOptions): Promise<void> {
     const s = synth()
     if (!s) throw new Error('音声合成に対応していません')
     this.stop()
+    // cancel() 直後の speak() が無視される Chrome/Edge の既知の問題を避ける
+    await new Promise((r) => setTimeout(r, 60))
+    if (s.paused) s.resume()
+
     const voices = thaiVoices(await loadVoices())
-    const voice = voices.find((v) => v.voiceURI === opts.voiceURI) ?? voices[0]
-    const u = new SpeechSynthesisUtterance(item.text)
+    const preferred = voices.find((v) => v.voiceURI === opts.voiceURI)
+    // 候補：選択した音声 → 他のタイ語音声 → 音声指定なし（lang だけ）
+    const candidates: (SpeechSynthesisVoice | null)[] = [
+      ...(preferred ? [preferred] : []),
+      ...voices.filter((v) => v !== preferred),
+      null,
+    ]
+    let lastErr: Error | null = null
+    for (const voice of candidates) {
+      try {
+        await this.speakWith(s, item.text, voice, opts.rate)
+        this.lastVoiceName = voice ? `${voice.name} (${voice.lang})` : 'lang=th-TH（音声指定なし）'
+        return
+      } catch (e) {
+        lastErr = e as Error
+        if (/interrupted|canceled/.test(lastErr.message)) return
+      }
+    }
+    throw lastErr ?? new Error('音声を再生できませんでした')
+  }
+
+  private speakWith(s: SpeechSynthesis, text: string, voice: SpeechSynthesisVoice | null, rate: number): Promise<void> {
+    const u = new SpeechSynthesisUtterance(text)
     u.lang = voice?.lang ?? 'th-TH'
     if (voice) u.voice = voice
-    u.rate = opts.rate
+    u.rate = rate
     u.pitch = 1
+    u.volume = 1
     this.current = u
     return new Promise((resolve, reject) => {
       let settled = false
+      let started = false
       const finish = () => {
         if (settled) return
         settled = true
         if (this.current === u) this.current = null
         resolve()
       }
+      u.onstart = () => {
+        started = true
+      }
       u.onend = finish
       u.onerror = (e) => {
         if (settled) return
         settled = true
         if (this.current === u) this.current = null
-        if (e.error === 'interrupted' || e.error === 'canceled') resolve()
-        else reject(new Error(`音声再生エラー: ${e.error}`))
+        reject(new Error(`${e.error}${voice ? ` [${voice.name}]` : ' [lang only]'}`))
       }
-      // Safari/Chrome で稀に onend が来ない対策
-      const guard = Math.max(4000, (item.text.length * 450) / opts.rate)
-      setTimeout(finish, guard)
+      // onend が来ないブラウザ対策。開始すらしなければ失敗扱いにして次の候補へ
+      const guard = Math.max(4000, (text.length * 450) / rate)
+      setTimeout(() => {
+        if (settled) return
+        if (started) finish()
+        else {
+          settled = true
+          if (this.current === u) this.current = null
+          try {
+            s.cancel()
+          } catch {
+            /* noop */
+          }
+          reject(new Error(`timeout: 再生が始まりませんでした${voice ? ` [${voice.name}]` : ' [lang only]'}`))
+        }
+      }, guard)
       s.speak(u)
     })
   }
