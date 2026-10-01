@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vivo Sales Dashboard</title>
+  <meta name="description" content="Vivo sales by company (BFT / EDV) and sales location">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23eb6834'/><rect x='7' y='16' width='4' height='9' rx='1.5' fill='white'/><rect x='14' y='10' width='4' height='15' rx='1.5' fill='white'/><rect x='21' y='13' width='4' height='12' rx='1.5' fill='white'/></svg>">
+  <link rel="stylesheet" href="style.css?v=20261001">
+  <link rel="stylesheet" href="vivo.css?v=20261001">
+</head>
+<body>
+  <div class="page vivo">
+    <header class="top">
+      <div>
+        <p class="eyebrow">Vivo Sales Dashboard</p>
+        <h1 data-i18n="h1"></h1>
+        <p class="sub"><span id="period" data-i18n="loading"></span><span class="dot">·</span><span id="source"></span></p>
+      </div>
+      <div class="top-actions">
+        <a class="ghost" href="./" data-i18n="link.stock"></a>
+        <div class="lang-switch" role="group" data-i18n-aria="lang.aria">
+          <button type="button" data-lang="ja" lang="ja">日本語</button>
+          <button type="button" data-lang="en" lang="en">EN</button>
+          <button type="button" data-lang="th" lang="th">ไทย</button>
+        </div>
+        <button id="themeToggle" class="ghost" type="button" data-i18n-aria="theme.aria">
+          <span aria-hidden="true">◐</span> <span id="themeLabel"></span>
+        </button>
+      </div>
+    </header>
+
+    <section class="card vf" role="search" data-i18n-aria="f.aria">
+      <div class="vf-row">
+        <div class="vf-group">
+          <span class="vf-label" data-i18n="f.company"></span>
+          <div class="seg" id="segCompany">
+            <button type="button" data-v="" data-i18n="all"></button>
+            <button type="button" data-v="BFT"><i class="sw" data-co="BFT"></i>BFT</button>
+            <button type="button" data-v="EDV"><i class="sw" data-co="EDV"></i>EDV</button>
+          </div>
+        </div>
+        <div class="vf-group">
+          <span class="vf-label" data-i18n="f.type"></span>
+          <div class="seg" id="segType">
+            <button type="button" data-v="" data-i18n="all"></button>
+            <button type="button" data-v="store" data-i18n="type.store"></button>
+            <button type="button" data-v="event" data-i18n="type.event"></button>
+            <button type="button" data-v="online" data-i18n="type.online"></button>
+          </div>
+        </div>
+        <label class="vf-group">
+          <span class="vf-label" data-i18n="f.from"></span>
+          <input type="date" id="dFrom" class="vf-input">
+        </label>
+        <label class="vf-group">
+          <span class="vf-label" data-i18n="f.to"></span>
+          <input type="date" id="dTo" class="vf-input">
+        </label>
+        <label class="vf-group">
+          <span class="vf-label" data-i18n="f.model"></span>
+          <select id="fModel" class="vf-input"></select>
+        </label>
+        <label class="check-toggle"><input type="checkbox" id="incPending" checked> <span data-i18n="f.pending"></span></label>
+        <button id="reset" class="ghost" type="button" data-i18n="reset"></button>
+      </div>
+      <div class="vf-group vf-locs">
+        <span class="vf-label"><span data-i18n="f.loc"></span> <span class="hint" data-i18n="f.locHint"></span></span>
+        <div class="loc-chips" id="locChips"></div>
+      </div>
+    </section>
+
+    <section class="kpis">
+      <div class="kpi kpi-main">
+        <p class="kpi-label" data-i18n="kpi.qty"></p>
+        <p class="kpi-value" id="kQty">–</p>
+        <p class="kpi-note" id="kQtyNote"></p>
+      </div>
+      <div class="kpi">
+        <p class="kpi-label" data-i18n="kpi.amount"></p>
+        <p class="kpi-value" id="kAmt">–</p>
+        <p class="kpi-note" id="kAmtNote"></p>
+      </div>
+      <div class="kpi">
+        <p class="kpi-label" data-i18n="kpi.orders"></p>
+        <p class="kpi-value" id="kOrders">–</p>
+        <p class="kpi-note" id="kOrdersNote"></p>
+      </div>
+      <div class="kpi">
+        <p class="kpi-label" data-i18n="kpi.avg"></p>
+        <p class="kpi-value" id="kAvg">–</p>
+        <p class="kpi-note" data-i18n="kpi.avgNote"></p>
+      </div>
+    </section>
+
+    <section class="card vc">
+      <div class="card-head">
+        <h2 data-i18n="c.daily"></h2>
+        <div class="legend" aria-hidden="true">
+          <span><i class="sw" data-co="BFT"></i>BFT</span><span><i class="sw" data-co="EDV"></i>EDV</span>
+        </div>
+      </div>
+      <div id="dailyChart" class="vbars"></div>
+    </section>
+
+    <section class="charts vgrid">
+      <div class="card">
+        <div class="card-head">
+          <h2 data-i18n="c.loc"></h2>
+          <p class="hint" data-i18n="c.locHint"></p>
+        </div>
+        <div id="locChart" class="bars"></div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <h2 data-i18n="c.model"></h2>
+          <p class="hint" data-i18n="c.modelHint"></p>
+        </div>
+        <div id="modelChart" class="bars compact"></div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <h2 data-i18n="c.size"></h2>
+          <div class="legend" aria-hidden="true">
+            <span><i class="sw" data-co="BFT"></i>BFT</span><span><i class="sw" data-co="EDV"></i>EDV</span>
+          </div>
+        </div>
+        <div id="sizeChart" class="vbars short"></div>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <h2 data-i18n="c.color"></h2>
+        </div>
+        <div id="colorChart" class="bars compact"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2><span data-i18n="t.title"></span> <span class="count" id="tCount"></span></h2>
+        <div class="head-actions">
+          <button id="copyTable" class="ghost small" type="button" data-i18n="copy"></button>
+          <button id="dlCsv" class="ghost small" type="button" data-i18n="csv"></button>
+        </div>
+      </div>
+      <div class="vtable-wrap">
+        <table class="vtable">
+          <thead id="tHead"></thead>
+          <tbody id="tBody"></tbody>
+          <tfoot id="tFoot"></tfoot>
+        </table>
+      </div>
+    </section>
+
+    <footer class="foot" id="foot"></footer>
+  </div>
+  <div id="tip" class="tip" role="tooltip" hidden></div>
+  <script src="vivo.js?v=20261001"></script>
+</body>
+</html>
