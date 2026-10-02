@@ -133,3 +133,9 @@ python scripts/convert.py ... data/sales_rate.json data/returns_import.json     
 
 ダッシュボードを最初に開いたときに「輸送中」として 1 度だけ共有データに登録します（同じ id では再登録しない。既に入力があるマスは上書きしない）。
 現在の取り込み: VFF_Stock_with_returns_20260929_1620.xlsx の 78 件・102 足（K Village 33 / Central CL 18 / Siam Discovery 7 / Central LP 44）。
+
+---
+
+## thai-learning/（別プロジェクト）
+
+タイ語学習ダッシュボード（個人用 PWA）。在庫ダッシュボードとは独立しており、Vercel では Root Directory を `thai-learning` にした別プロジェクトとしてデプロイする。詳細は [`thai-learning/README.md`](thai-learning/README.md) と [`thai-learning/docs/DESIGN.md`](thai-learning/docs/DESIGN.md)。
