@@ -165,6 +165,7 @@ python scripts/build_vivo_standalone.py vivo-sales.html          # claude.ai の
 ```
 
 `vivo/` は Vivo 専用の Vercel プロジェクト（Root Directory を `vivo` に設定）で、在庫ダッシュボードとは別の URL で配信します。
+
 ---
 
 ## thai-learning/（別プロジェクト）
