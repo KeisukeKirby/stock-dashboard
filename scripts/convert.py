@@ -293,6 +293,25 @@ def apply_counts(items, store_names, paths):
     return done
 
 
+def apply_adjustments(items, store_names, path):
+    """個別の在庫調整 (data/adjustments.json): [{date, store, code, qty(増減), note}]。棚卸の後に適用する。"""
+    if not Path(path).exists():
+        return []
+    rows = json.loads(Path(path).read_text(encoding="utf-8"))
+    by_code = {i["code"]: i for i in items if i["code"]}
+    for r in rows:
+        it = by_code.get(r["code"])
+        if not it:
+            raise SystemExit(f"在庫調整の商品がダッシュボードにありません: {r['code']}")
+        k = store_names.index(r["store"])
+        if it["qty"][k] + r["qty"] < 0:
+            raise SystemExit(f"在庫調整で在庫がマイナスになります: {r['store']} {r['code']}")
+        it["qty"][k] += r["qty"]
+        it["totalQty"] = sum(it["qty"])
+        print(f"adjust: {r['store']} {r['code']} {r['qty']:+d} ({r.get('note', '')})")
+    return rows
+
+
 def apply_sales_rate(items, store_names, path):
     """scripts/sales_rate.py の月平均販売足数を各商品に付ける。
     店舗の列は店頭販売、Office の列はオンライン販売 (Online)。Event Asok の列は None。
@@ -381,6 +400,7 @@ def main(path, office_path=None, alloc_path=None, event_path=None, event_stock_p
         if event_stock_path:
             event_stock, event_stock_added = apply_event_stock(items, store_names, event_stock_path)
         counts = apply_counts(items, store_names, sorted(str(x) for x in (ROOT / "data" / "counts").glob("*.json")))
+        adjustments = apply_adjustments(items, store_names, ROOT / "data" / "adjustments.json")
         sales_rate = apply_sales_rate(items, store_names, sales_rate_path) if sales_rate_path else None
         qty = [sum(i["qty"][k] for i in items) for k in range(n)]
         ret = [sum(i["ret"][k] or 0 for i in items) for k in range(n)]
@@ -406,6 +426,7 @@ def main(path, office_path=None, alloc_path=None, event_path=None, event_stock_p
                        if office_path and event_stock else None),
         "salesRate": sales_rate if office_path else None,
         "counts": counts if office_path else [],
+        "adjustments": adjustments if office_path else [],
         # Excel に直接入力された Return。ダッシュボードが「返品輸送中」として 1 度だけ共有データに登録する
         "returnsSeed": json.loads(Path(returns_import_path).read_text(encoding="utf-8")) if returns_import_path else None,
         "eventIndex": (store_names.index(EVENT_NAME) if office_path and event_src else None),  # Store Total に含めない
