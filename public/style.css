@@ -329,6 +329,7 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 }
 .sheet thead tr.title th { top: 0; height: var(--title-h); font-size: 14pt; font-weight: 700; }
 .sheet thead tr.asof th { top: var(--title-h); }
+.sheet thead tr.asof th.grp-label { text-align: center; font-weight: 700; }
 .sheet thead tr.h1 th, .sheet thead tr.h2 th {
   position: sticky; z-index: 2; height: var(--head-h);
   background: var(--x-header); color: #ffffff; font-weight: 700; text-align: center; vertical-align: middle;

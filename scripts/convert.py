@@ -284,7 +284,8 @@ def apply_counts(items, store_names, paths):
             n += 1
         if missing:
             raise SystemExit(f"棚卸表の商品がダッシュボードにありません: {missing}")
-        done.append({"store": data["store"], "source": data.get("source", Path(path).name), "items": n,
+        done.append({"store": data["store"], "label": data.get("label"),
+                     "source": data.get("source", Path(path).name), "items": n,
                      "before": before, "after": after})
         print(f"count: {data['store']} {n} items, {before} -> {after} pairs ({Path(path).name})")
     for i in items:

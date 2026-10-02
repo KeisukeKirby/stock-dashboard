@@ -686,7 +686,7 @@
       }).join("")).join("");
     $("thead").innerHTML = `
       <tr class="title"><th colspan="${ncol}">${esc(d.title)}</th></tr>
-      <tr class="asof"><th colspan="${ncol}">${esc(d.asOf)}</th></tr>
+      <tr class="asof">${asofRowHtml(d)}</tr>
       <tr class="h1">
         ${["Model", "Color", "Size"].map((h, k) => `<th rowspan="2">${h}${afBtn(`t${VIEW_TEXT[k]}`, h)}</th>`).join("")}
         ${groups.map((g, i) => (colKinds(i).length ? `<th class="grp" colspan="${colKinds(i).length}" title="${esc(g)}">${esc(shortGroup(g))}${afBtn("loc", t("f.loc"))}</th>` : "")).join("")}
@@ -696,6 +696,31 @@
         : k === "ret" ? `<th class="ret-h">Return</th>`
         : `<th class="${k}-h" title="${esc(t(`col.${k}.title`))}">${esc(t(`col.${k}`))}</th>`).join("")).join("")}</tr>`;
     updateFilterUi();
+  }
+
+  // 列グループの上 (As of の行) に出すラベル。例: 棚卸した店舗の上に「9/30(Before)」
+  const groupLabels = () => Object.fromEntries((data.counts || []).filter((c) => c.label).map((c) => [data.stores.indexOf(c.store), c.label]));
+  // As of の行: ラベルのある列グループの上だけ別のマスにし、残りは As of の文言のマスにまとめる
+  function asofRowHtml(d) {
+    const labels = groupLabels();
+    const cells = [];
+    let span = VIEW_TEXT.length, first = true;
+    const flush = () => {
+      if (!span) return;
+      cells.push(`<th colspan="${span}">${first ? esc(d.asOf) : ""}</th>`);
+      first = false;
+      span = 0;
+    };
+    groups.forEach((_, g) => {
+      const n = colKinds(g).length;
+      if (!n) return;
+      if (labels[g] == null) { span += n; return; }
+      flush();
+      first = false;
+      cells.push(`<th class="grp-label" colspan="${n}">${esc(labels[g])}</th>`);
+    });
+    flush();
+    return cells.join("");
   }
 
   const afBtn = (id, label) =>
@@ -1218,6 +1243,16 @@
       ws.getCell(1, 1).font = { name: "Calibri", size: 14, bold: true };
       ws.getRow(1).height = 18.5;
       ws.getCell(2, 1).value = `${data.asOf}   —   Returns applied / exported ${stamp}`;
+      {
+        const labels = groupLabels();
+        layout.forEach((col, k) => {
+          if (labels[col.g] != null && (k === 0 || layout[k - 1].g !== col.g)) {
+            const cell = ws.getCell(2, 5 + k);
+            cell.value = labels[col.g];
+            cell.font = { name: "Calibri", size: 11, bold: true };
+          }
+        });
+      }
 
       // 見出し 3〜4 行目
       ["Code", "Model", "Color", "Size"].forEach((h, k) => {
