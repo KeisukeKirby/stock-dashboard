@@ -1,0 +1,10 @@
+[
+  {"id":"about_me","order":1,"icon":"🙋","title":"自分について語る","kind":"phrase","description":"仕事・住まい・趣味・経歴。反射的に出てくるまでストックする"},
+  {"id":"store","order":2,"icon":"🛍️","title":"店舗・接客","kind":"phrase","description":"シューズストアでの接客・サイズ・在庫・返品。外国人客への対応"},
+  {"id":"business","order":3,"icon":"💼","title":"ビジネス・会議","kind":"phrase","description":"会議の進行・意見・依頼・メール・数字の報告"},
+  {"id":"small_talk","order":4,"icon":"☕","title":"雑談と文化","kind":"phrase","description":"英語圏の行動様式：スモールトーク・褒める・断る・相づち"},
+  {"id":"prepositions","order":5,"icon":"📐","title":"前置詞をイメージで","kind":"preposition","description":"日本語を介さず、図で丸ごと身に付ける"},
+  {"id":"roots","order":6,"icon":"🧩","title":"語源：接頭辞・語幹・接尾辞","kind":"root","description":"ラテン語・ギリシャ語の部品。1 万語の壁を越える鍵"},
+  {"id":"toeic","order":7,"icon":"📘","title":"ビジネス基本語彙","kind":"word","description":"TOEIC 頻出の動詞・形容詞。例文ごと声に出す"},
+  {"id":"academic","order":8,"icon":"🎓","title":"英語で学ぶための語彙","kind":"word","description":"大学の講義・シラバス・論文で使う言葉。「英語を学ぶ」から「英語で学ぶ」へ"}
+]

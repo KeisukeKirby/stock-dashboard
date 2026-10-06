@@ -1,0 +1,31 @@
+{
+  "shadowing": [
+    {"id":"mt-ted","title":"TED Talk（お気に入りを 1 本選ぶ）","source":"TED","url":"https://www.ted.com/talks","kind":"video","level":"B1","note":"英語字幕 ON → 字幕 OFF の順。トランスクリプトが公式で読める。1 本を 500 回聞く候補。"},
+    {"id":"mt-60min","title":"60 Minutes","source":"CBS","url":"https://www.cbsnews.com/60-minutes/","kind":"video","level":"B2","note":"インタビュー形式。ゆっくりめで聞き取りやすい。10 分だけ切り出して繰り返す。"},
+    {"id":"mt-cbs","title":"CBS Evening News","source":"CBS","url":"https://www.cbsnews.com/evening-news/","kind":"news","level":"B2","note":"ディクテーション素材。冒頭 1 分を書き取る。"},
+    {"id":"mt-discovery","title":"Discovery Channel","source":"Discovery","url":"https://www.discovery.com/","kind":"video","level":"B1","note":"映像で単語のイメージを蓄積。字幕なしでも映像で意味が取れる。"},
+    {"id":"mt-nhk","title":"NHK World RADIO Japan（English）","source":"NHK","url":"https://www3.nhk.or.jp/nhkworld/en/radio/","kind":"audio","level":"B1","note":"日本のニュースを英語で。背景知識があるので聞き取りやすい。"},
+    {"id":"mt-scholastic","title":"Scholastic Video Collection（Harold and the Purple Crayon など）","source":"Scholastic","kind":"video","level":"A1","note":"絵本の朗読アニメ。短く、フルセンテンスで音読 → シャドーイングに最適。"},
+    {"id":"mt-cat","title":"The Cat in the Hat（朗読）","source":"Dr. Seuss","kind":"audio","level":"A1","note":"韻とリズム。発音・リンキングの練習に。"},
+    {"id":"mt-president","title":"歴史が作られた瞬間のアメリカ大統領の英語","source":"書籍 + 音声","kind":"audio","level":"B2","note":"スピーチは区切りが明確でシャドーイング向き。1 本を決めて 500 回。"},
+    {"id":"mt-worldenglish","title":"World English","source":"National Geographic Learning","kind":"video","level":"A2","note":"教材用動画。英語字幕付き → なし。"}
+  ],
+  "dictation": [
+    {"id":"dc-01","en":"The store opens at ten and closes at nine.","ja":"店は 10 時に開いて 9 時に閉まる。","level":"A1"},
+    {"id":"dc-02","en":"Can I try these on in a size nine?","ja":"これを 9 サイズで試着できますか？","level":"A1"},
+    {"id":"dc-03","en":"I've been living in Bangkok for three years.","ja":"バンコクに住んで 3 年になる。","level":"A2"},
+    {"id":"dc-04","en":"We're out of that size, but I can order it for you.","ja":"そのサイズは切らしているが、取り寄せられる。","level":"A2"},
+    {"id":"dc-05","en":"Sales were up twelve percent compared to last year.","ja":"売上は前年比 12% 増だった。","level":"B1"},
+    {"id":"dc-06","en":"It takes a couple of weeks to get used to them.","ja":"慣れるのに 2 週間ほどかかる。","level":"B1"},
+    {"id":"dc-07","en":"Would it be possible to extend the deadline by a week?","ja":"締め切りを 1 週間延ばせますか？","level":"B1"},
+    {"id":"dc-08","en":"The shipment left the warehouse on the third and should arrive by the fifteenth.","ja":"出荷は 3 日に倉庫を出て 15 日までに届くはずだ。","level":"B2"},
+    {"id":"dc-09","en":"If we cut the price by ten percent, the margin would drop below forty percent.","ja":"10% 値下げすると利益率が 40% を割る。","level":"B2"},
+    {"id":"dc-10","en":"The new policy, which was announced last week, will be implemented in March.","ja":"先週発表された新方針は 3 月に導入される。","level":"B2"},
+    {"id":"dc-11","en":"Researchers found that regular exercise significantly improves memory in older adults.","ja":"研究者は定期的な運動が高齢者の記憶力を大きく改善すると発見した。","level":"C1"},
+    {"id":"dc-12","en":"Despite the economic slowdown, consumer spending remained surprisingly resilient throughout the quarter.","ja":"景気減速にもかかわらず、四半期を通じて消費支出は驚くほど堅調だった。","level":"C1"},
+    {"id":"dc-13","en":"Could you walk us through the numbers before we move on?","ja":"次に進む前に数字を順に説明してもらえますか？","level":"B1"},
+    {"id":"dc-14","en":"I'd love to, but I have an early start tomorrow.","ja":"行きたいけど、明日は朝が早い。","level":"A2"},
+    {"id":"dc-15","en":"What I like about this job is that every day is different.","ja":"この仕事で好きなのは毎日が違うこと。","level":"B1"},
+    {"id":"dc-16","en":"The central bank is expected to hold interest rates steady at its meeting next week.","ja":"中央銀行は来週の会合で金利を据え置くと見られる。","level":"C1"}
+  ]
+}

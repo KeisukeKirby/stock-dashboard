@@ -25,6 +25,8 @@
 
 ## 構成
 
+> このリポジトリには別プロジェクトとして `thai-learning/`（タイ語学習ダッシュボード）と `lingodash/`（英語学習ダッシュボード。Vercel の Root Directory をそれぞれのフォルダにして運用）も入っています。各フォルダの README を参照。
+
 ```
 public/          # Vercel が配信する静的ファイル（ビルド不要）
   index.html

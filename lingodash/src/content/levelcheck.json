@@ -1,0 +1,95 @@
+{
+  "vocab": [
+    {"id":"v1a","band":1,"word":"often","choices":["めったに～ない","しばしば","すぐに","ついに"],"answer":1},
+    {"id":"v1b","band":1,"word":"cheap","choices":["高価な","安い","新しい","壊れた"],"answer":1},
+    {"id":"v1c","band":1,"word":"arrive","choices":["出発する","到着する","待つ","探す"],"answer":1},
+    {"id":"v1d","band":1,"word":"borrow","choices":["貸す","借りる","買う","売る"],"answer":1},
+    {"id":"v1e","band":1,"word":"weather","choices":["天気","季節","気温","風"],"answer":0},
+    {"id":"v2a","band":2,"word":"improve","choices":["証明する","改善する","輸入する","印刷する"],"answer":1},
+    {"id":"v2b","band":2,"word":"available","choices":["高価な","有名な","利用できる","危険な"],"answer":2},
+    {"id":"v2c","band":2,"word":"appointment","choices":["約束・予約","失望","任命式","感謝"],"answer":0},
+    {"id":"v2d","band":2,"word":"comfortable","choices":["快適な","比較できる","普通の","完全な"],"answer":0},
+    {"id":"v2e","band":2,"word":"receipt","choices":["レシピ","受付","レシート","受取人"],"answer":2},
+    {"id":"v3a","band":3,"word":"reliable","choices":["宗教的な","信頼できる","関連する","安心した"],"answer":1},
+    {"id":"v3b","band":3,"word":"estimate","choices":["見積もる","尊敬する","確立する","強調する"],"answer":0},
+    {"id":"v3c","band":3,"word":"attitude","choices":["高度","態度","注意","魅力"],"answer":1},
+    {"id":"v3d","band":3,"word":"negotiate","choices":["無視する","交渉する","航行する","否定する"],"answer":1},
+    {"id":"v3e","band":3,"word":"obvious","choices":["明らかな","義務的な","曖昧な","執着した"],"answer":0},
+    {"id":"v4a","band":4,"word":"reluctant","choices":["関連する","気が進まない","頼りになる","裕福な"],"answer":1},
+    {"id":"v4b","band":4,"word":"adequate","choices":["正確な","十分な","隣接した","適応する"],"answer":1},
+    {"id":"v4c","band":4,"word":"comprehensive","choices":["理解できる","圧縮された","包括的な","競争的な"],"answer":2},
+    {"id":"v4d","band":4,"word":"deteriorate","choices":["決定する","悪化する","抑止する","分解する"],"answer":1},
+    {"id":"v4e","band":4,"word":"incentive","choices":["偶然","動機づけ・報奨","発明","洞察"],"answer":1},
+    {"id":"v5a","band":5,"word":"ambiguous","choices":["野心的な","曖昧な","両生の","豊富な"],"answer":1},
+    {"id":"v5b","band":5,"word":"scrutinize","choices":["精査する","逃げる","彫刻する","分泌する"],"answer":0},
+    {"id":"v5c","band":5,"word":"pragmatic","choices":["劇的な","断片的な","実用的な","楽観的な"],"answer":2},
+    {"id":"v5d","band":5,"word":"mitigate","choices":["移住する","軽減する","模倣する","瞑想する"],"answer":1},
+    {"id":"v5e","band":5,"word":"ubiquitous","choices":["至る所にある","独特な","不明瞭な","都会的な"],"answer":0},
+    {"id":"v6a","band":6,"word":"ephemeral","choices":["永遠の","つかの間の","上品な","効果的な"],"answer":1},
+    {"id":"v6b","band":6,"word":"meticulous","choices":["金属の","細心の","悲惨な","数学的な"],"answer":1},
+    {"id":"v6c","band":6,"word":"exacerbate","choices":["誇張する","悪化させる","免除する","興奮させる"],"answer":1},
+    {"id":"v6d","band":6,"word":"quintessential","choices":["5 番目の","典型的な","疑わしい","静かな"],"answer":1},
+    {"id":"v6e","band":6,"word":"obfuscate","choices":["観察する","分かりにくくする","義務づける","得る"],"answer":1}
+  ],
+  "grammar": [
+    {"id":"gq01","level":"A1","q":"She ___ in a shoe store.","choices":["work","works","working"],"answer":1},
+    {"id":"gq02","level":"A1","q":"___ you like coffee?","choices":["Are","Do","Does"],"answer":1},
+    {"id":"gq03","level":"A1","q":"There ___ two stores in this mall.","choices":["is","are","be"],"answer":1},
+    {"id":"gq04","level":"A2","q":"I ___ to Chiang Mai last year.","choices":["go","went","have gone"],"answer":1},
+    {"id":"gq05","level":"A2","q":"This pair is ___ than that one.","choices":["cheap","cheaper","more cheap"],"answer":1},
+    {"id":"gq06","level":"A2","q":"I'm ___ the supplier tomorrow at 10. It's in my calendar.","choices":["meet","meeting","will meet"],"answer":1},
+    {"id":"gq07","level":"B1","q":"I ___ here since 2023.","choices":["live","lived","have lived"],"answer":2},
+    {"id":"gq08","level":"B1","q":"If it rains tomorrow, we ___ the event.","choices":["cancel","will cancel","would cancel"],"answer":1},
+    {"id":"gq09","level":"B1","q":"The shoes ___ in Portugal.","choices":["make","are made","are making"],"answer":1},
+    {"id":"gq10","level":"B1","q":"Do you know where ___?","choices":["is the fitting room","the fitting room is","does the fitting room"],"answer":1},
+    {"id":"gq11","level":"B2","q":"If I ___ more time, I would travel more.","choices":["have","had","would have"],"answer":1},
+    {"id":"gq12","level":"B2","q":"She said she ___ send the invoice the next day.","choices":["will","would","is going to"],"answer":1},
+    {"id":"gq13","level":"B2","q":"The customer ___ shoes we exchanged yesterday came back again.","choices":["who","whose","which"],"answer":1},
+    {"id":"gq14","level":"C1","q":"___ the delay, the launch was a success.","choices":["Despite","Although","Even"],"answer":0},
+    {"id":"gq15","level":"C1","q":"Had we known about the strike, we ___ the shipment earlier.","choices":["would send","would have sent","had sent"],"answer":1}
+  ],
+  "reading": [
+    {"id":"rd1","level":"A2","title":"Store notice","text":"Thank you for shopping with us! You can return or exchange any item within 14 days. Please bring your receipt. Shoes must be unworn and in the original box. Sale items can be exchanged but not refunded. If you have any questions, ask a member of staff or email us at help@example.com.","questions":[
+      {"q":"How long do customers have to return an item?","choices":["7 days","14 days","30 days","There is no limit"],"answer":1},
+      {"q":"What must customers bring?","choices":["A credit card","A passport","The receipt","A photo"],"answer":2},
+      {"q":"What is true about sale items?","choices":["They can be refunded","They cannot be exchanged","They can be exchanged but not refunded","They must be returned in 7 days"],"answer":2}]},
+    {"id":"rd2","level":"B2","title":"Retail trends","text":"Although online sales continue to grow, physical stores remain essential for footwear brands, largely because customers still want to try shoes on before buying. However, the role of the store is changing. Rather than simply holding inventory, successful stores now act as showrooms where staff educate customers and build loyalty. One brand reported that customers who visited a store first were twice as likely to make repeat purchases online, even though their initial purchase was smaller. The implication is clear: measuring a store only by the sales rung up at its own register underestimates its true contribution.","questions":[
+      {"q":"Why do physical stores remain important for footwear brands?","choices":["Online shipping is too expensive","Customers want to try shoes on","Stores hold more inventory","Staff prefer working in stores"],"answer":1},
+      {"q":"What did the brand find about customers who visited a store first?","choices":["They spent more on their first purchase","They were less likely to buy online","They were more likely to buy again online","They returned more items"],"answer":2},
+      {"q":"What does the final sentence imply?","choices":["Stores should close their registers","In-store sales alone understate a store's value","Online sales should be measured in stores","Showrooms do not sell anything"],"answer":1}]}
+  ],
+  "listening": [
+    {"id":"ls01","level":"A1","en":"The store opens at ten.","choices":["店は 10 時に開く","店は 2 時に閉まる","店は今日休み","店は 10 階にある"],"answer":0},
+    {"id":"ls02","level":"A1","en":"Can I try these on?","choices":["これはいくらですか？","これを試着できますか？","これを返品できますか？","これは何色ですか？"],"answer":1},
+    {"id":"ls03","level":"A2","en":"I'm afraid we're out of that size.","choices":["そのサイズは人気です","そのサイズは奥にあります","あいにくそのサイズは切らしています","そのサイズは大きすぎます"],"answer":2},
+    {"id":"ls04","level":"A2","en":"How long have you been in Thailand?","choices":["タイのどこに住んでいますか？","タイに来てどのくらいですか？","タイはどうですか？","いつタイに来ますか？"],"answer":1},
+    {"id":"ls05","level":"B1","en":"These run a little small, so I'd go half a size up.","choices":["これは少し大きめなので小さいサイズを","これは少し小さめなのでハーフサイズ上を","これは走るのに向いている","これは半額です"],"answer":1},
+    {"id":"ls06","level":"B1","en":"Would it be possible to extend the deadline by a week?","choices":["締め切りは 1 週間後です","締め切りを 1 週間延ばせますか？","1 週間で終わりますか？","締め切りは延ばせません"],"answer":1},
+    {"id":"ls07","level":"B2","en":"Sales were slightly below target, mainly because of the rainy season.","choices":["雨季のおかげで売上は目標を超えた","雨季のせいで売上は目標をやや下回った","雨季に売上目標を立てた","雨季の売上は過去最高だった"],"answer":1},
+    {"id":"ls08","level":"B2","en":"I see your point, but I'm not sure that's realistic this quarter.","choices":["賛成です。今四半期にやりましょう","分かりますが今四半期では現実的でないと思います","今四半期の数字が見えません","あなたの意見は現実的です"],"answer":1},
+    {"id":"ls09","level":"C1","en":"Had we known about the delay, we would have placed the order earlier.","choices":["遅れを知っていたので早く発注した","遅れを知っていれば早く発注していたのに","遅れたので発注を取り消した","早く発注したのに遅れた"],"answer":1},
+    {"id":"ls10","level":"C1","en":"Measuring a store only by its own register sales underestimates its true contribution.","choices":["店の売上だけで評価すると本当の貢献を過小評価する","店のレジは正確に売上を測る","店の貢献は売上で十分測れる","店のレジ売上は過大評価されている"],"answer":0}
+  ],
+  "dictation": ["dc-03","dc-06","dc-09","dc-12"],
+  "sounds": ["r_l","b_v","s_th","i_long_short","ae_uh","s_sh","f_h","u_long_short","ou_o","n_ng"],
+  "speaking": [
+    {"id":"lsp1","en":"Introduce yourself: where you're from, what you do, and one hobby. (about 30 seconds)","ja":"自己紹介：出身・仕事・趣味を 1 つ（30 秒ほど）","seconds":30},
+    {"id":"lsp2","en":"Describe what you did last weekend. (about 30 seconds)","ja":"先週末にしたことを説明（30 秒ほど）","seconds":30},
+    {"id":"lsp3","en":"A customer says the shoes are too tight and wants a refund, but has no receipt. What do you say? (about 30 seconds)","ja":"レシートなしで返金を求める客に何と言う？（30 秒ほど）","seconds":30}
+  ],
+  "speakingRubric": [
+    {"id":"start","text":"3 秒以内に話し始められた（反応速度）"},
+    {"id":"full","text":"フルセンテンスで 3 文以上言えた"},
+    {"id":"tense","text":"時制（過去・現在・未来）を正しく使えた"},
+    {"id":"stuck","text":"途中で日本語や長い沈黙にならなかった"},
+    {"id":"sound","text":"録音を聞いて r/l・th・語尾の s が聞き取れる"}
+  ],
+  "writing": {"id":"lwr1","en":"Write about your job and why you are learning English. Write as much as you can in 5 minutes.","ja":"自分の仕事と英語を学ぶ理由について、5 分でできるだけ書く","minutes":5},
+  "writingRubric": [
+    {"id":"w60","text":"60 語以上書けた"},
+    {"id":"w100","text":"100 語以上書けた"},
+    {"id":"wtense","text":"過去・現在・未来のうち 2 つ以上の時制を使った"},
+    {"id":"wlink","text":"because / so / but / although などで文をつないだ"},
+    {"id":"wtopic","text":"最初の 1 文で主題が分かる"}
+  ]
+}
