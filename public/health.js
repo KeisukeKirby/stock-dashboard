@@ -151,8 +151,13 @@
       const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type: mime })); a.download = filename; a.click();
       setTimeout(() => URL.revokeObjectURL(a.href), 1000); return;
     }
-    $("dlName").textContent = filename; $("dlText").value = text; $("dlCopy").textContent = "コピー";
-    $("dlDlg").hidden = false; $("dlText").focus(); $("dlText").select();
+    const showText = () => { $("dlName").textContent = filename; $("dlText").value = text; $("dlCopy").textContent = "コピー"; $("dlDlg").hidden = false; $("dlText").focus(); $("dlText").select(); };
+    // claude.ai の Artifact: downloads 機能で保存 (閲覧者が確認してから保存)。使えない・断られた以外はテキスト表示に切り替える
+    const use = window.claude && typeof window.claude.use === "function" ? window.claude.use("downloads") : Promise.resolve(null);
+    Promise.resolve(use).then((dl) => {
+      if (!dl) { showText(); return; }
+      return dl.save({ filename, data: text }).then(() => showMsg(`${filename} を保存しました`), (e) => { if (!e || e.code !== "declined") showText(); });
+    }).catch(showText);
   };
   $("dlClose").addEventListener("click", () => { $("dlDlg").hidden = true; });
   $("dlCopy").addEventListener("click", () => {
