@@ -451,8 +451,9 @@
   })();
 
   /* ---------- 読み込み ---------- */
-  fetch("memo.json?v=" + Date.now(), { cache: "no-store" })
-    .then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+  // 単体版 (memo/index.html) はデータを window.MEMO_DATA に埋め込む
+  (window.MEMO_DATA ? Promise.resolve(window.MEMO_DATA)
+    : fetch("memo.json?v=" + Date.now(), { cache: "no-store" }).then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); }))
     .then((data) => {
       sections = data.sections || [];
       items = [];
