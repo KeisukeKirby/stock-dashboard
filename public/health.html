@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>筋トレ・健康管理ダッシュボード</title>
+  <meta name="description" content="週間トレーニング計画、食事・生活習慣のチェック、体重・トレーニング記録">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Health">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231baf7a'/><rect x='5' y='13' width='4' height='6' rx='1' fill='white'/><rect x='23' y='13' width='4' height='6' rx='1' fill='white'/><rect x='9' y='11' width='3' height='10' rx='1' fill='white'/><rect x='20' y='11' width='3' height='10' rx='1' fill='white'/><rect x='12' y='15' width='8' height='2' fill='white'/></svg>">
+  <link rel="stylesheet" href="style.css?v=20261006">
+  <link rel="stylesheet" href="health.css?v=20261006">
+</head>
+<body>
+  <div class="page health">
+    <header class="top">
+      <div>
+        <p class="eyebrow">Training &amp; Health Dashboard</p>
+        <h1>筋トレ・健康管理</h1>
+        <p class="sub"><span id="todayLabel">–</span><span class="dot">·</span><span id="todayMenu">–</span></p>
+      </div>
+      <div class="top-actions">
+        <a class="ghost" href="./">← 在庫ダッシュボード</a>
+        <button id="exportBtn" class="ghost" type="button" title="記録を JSON ファイルで保存">記録を書き出す</button>
+        <button id="importBtn" class="ghost" type="button" title="書き出した JSON ファイルを読み込む">読み込む</button>
+        <input id="importFile" type="file" accept="application/json,.json" hidden>
+        <button id="themeToggle" class="ghost" type="button" aria-label="表示テーマの切り替え">
+          <span aria-hidden="true">◐</span> <span id="themeLabel"></span>
+        </button>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="部門">
+      <button class="tab" role="tab" id="tab-today" data-view="today" aria-controls="view-today">今日</button>
+      <button class="tab" role="tab" id="tab-train" data-view="train" aria-controls="view-train">筋トレ部門</button>
+      <button class="tab" role="tab" id="tab-health" data-view="health" aria-controls="view-health">健康部門</button>
+      <button class="tab" role="tab" id="tab-log" data-view="log" aria-controls="view-log">記録</button>
+    </nav>
+
+    <!-- ========== 今日 ========== -->
+    <section id="view-today" class="view" role="tabpanel" aria-labelledby="tab-today">
+      <section class="kpis" aria-label="今週の状況">
+        <div class="kpi">
+          <p class="kpi-label">今週のトレーニング</p>
+          <p class="kpi-value"><span id="kWeek">–</span><span class="kpi-unit"> / 6 日</span></p>
+          <p class="kpi-note" id="kWeekNote">月〜土の計画のうち完了した日</p>
+        </div>
+        <div class="kpi">
+          <p class="kpi-label">今日の習慣</p>
+          <p class="kpi-value"><span id="kHabit">–</span><span class="kpi-unit" id="kHabitAll"></span></p>
+          <p class="kpi-note">健康部門のチェック</p>
+        </div>
+        <div class="kpi">
+          <p class="kpi-label">連続記録</p>
+          <p class="kpi-value"><span id="kStreak">–</span><span class="kpi-unit"> 日</span></p>
+          <p class="kpi-note">トレーニングか習慣を記録した日が続いた数</p>
+        </div>
+        <div class="kpi">
+          <p class="kpi-label">体重（最新）</p>
+          <p class="kpi-value"><span id="kWeight">–</span><span class="kpi-unit"> kg</span></p>
+          <p class="kpi-note" id="kWeightNote">記録タブで入力</p>
+        </div>
+      </section>
+
+      <section class="today-grid">
+        <section class="card">
+          <div class="card-head">
+            <h2><span id="todayTitle">今日のメニュー</span> <span class="count" id="todayDone"></span></h2>
+            <div class="head-actions">
+              <label class="day-pick">表示する曜日
+                <select id="daySelect"></select>
+              </label>
+            </div>
+          </div>
+          <p class="menu-goal" id="todayGoal"></p>
+          <div class="ex-list" id="todayList"></div>
+          <p class="hint ex-hint">チェックはこのブラウザに日付ごとに保存。「休憩」を押すと右のタイマーが種目に合った秒数で始まります。</p>
+        </section>
+
+        <aside class="side">
+          <section class="card timer-card">
+            <div class="card-head"><h2>休憩タイマー</h2><p class="hint" id="timerFor"></p></div>
+            <div class="timer-ring" id="timerRing" style="--p:0">
+              <div class="timer-face">
+                <p class="timer-time" id="timerTime">1:30</p>
+                <p class="timer-sub" id="timerSub">待機中</p>
+              </div>
+            </div>
+            <div class="timer-presets" id="timerPresets">
+              <button type="button" data-sec="30">30秒</button>
+              <button type="button" data-sec="60">60秒</button>
+              <button type="button" data-sec="90" class="on">90秒</button>
+              <button type="button" data-sec="120">120秒</button>
+              <button type="button" data-sec="180">3分</button>
+              <button type="button" data-sec="300">5分</button>
+            </div>
+            <div class="timer-actions">
+              <button id="timerStart" class="primary" type="button">スタート</button>
+              <button id="timerReset" class="ghost" type="button">リセット</button>
+            </div>
+            <label class="check-toggle"><input type="checkbox" id="timerSound" checked> 終了時に音を鳴らす</label>
+          </section>
+
+          <section class="card">
+            <div class="card-head"><h2>プログラムの周期</h2></div>
+            <label class="field"><span>今の種目を始めた日（2〜3か月で種目を変える）</span><input type="date" id="cycleStart"></label>
+            <div class="meter" id="cycleMeter"><span class="meter-fill" style="width:0%"></span></div>
+            <p class="hint" id="cycleNote">開始日を入れると経過週数を表示します。</p>
+          </section>
+
+          <section class="card">
+            <div class="card-head"><h2>今日の健康チェック</h2><p class="hint"><button class="link-btn" type="button" data-goto="health">健康部門へ →</button></p></div>
+            <div class="habit-list compact" id="todayHabits"></div>
+          </section>
+        </aside>
+      </section>
+    </section>
+
+    <!-- ========== 筋トレ部門 ========== -->
+    <section id="view-train" class="view" role="tabpanel" aria-labelledby="tab-train" hidden>
+      <section class="card">
+        <div class="card-head">
+          <h2>週間プラン</h2>
+          <p class="hint">クリックで種目を展開。「今日」タブで実行・チェックできます。</p>
+        </div>
+        <div class="week-grid" id="weekGrid"></div>
+      </section>
+
+      <section class="charts tgrid">
+        <section class="card">
+          <div class="card-head"><h2>レストタイム（休憩）の目安</h2><p class="hint">大きな種目＝休憩長め、補助・瞬発・自重＝短め</p></div>
+          <div class="rest-table" id="restTable"></div>
+          <p class="hint" style="margin-top:10px">実際のイメージ：ベンチプレス（8〜12回）→ 90秒／ダンベルロー（8〜12回）→ 75秒／ジャンプスクワット（12回）→ 60秒／プランク（60秒）→ 30秒</p>
+        </section>
+        <section class="card">
+          <div class="card-head"><h2>トレーニングの原則</h2></div>
+          <ul class="rule-list">
+            <li><b>先にウエイト → 後で有酸素。</b>伸ばしたい多関節種目（ベンチ・スクワット・デッドリフト・懸垂）を先に、体幹トレは後半に。</li>
+            <li><b>限界まで：重量 100% → 80% → 60%。</b>100% を 2 セット（追い込めなければ 3 セット）。この高重量セットのインターバルは 3〜6 分。</li>
+            <li><b>多いセット（5）と少ないセット（15〜20 回）の両方をやる。</b>筋持久力 15〜20 回／筋力 3〜5 回。最終的には 1 セット 5 回くらいまで。</li>
+            <li><b>2〜3 か月で種目を変える。</b>3 か月くらいで体が変わる。慣れてきたら種目を増やす。</li>
+            <li><b>毎日はトレーニングしない。</b>軽い筋肉痛で OK。重量が伸びていれば筋肉痛がなくても効いている。ちゃんと休む（日曜は回復日。ここで筋肉が仕上がる）。</li>
+            <li><b>トレーニング前に身体をアップ。</b>終わったらお風呂などで温める。ただし筋肉痛や炎症は温めず冷やす。</li>
+          </ul>
+        </section>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2>セット数の目安</h2><p class="hint">「セット数はどうなのか？」への答え</p></div>
+        <div class="sets-grid">
+          <div class="sets-box">
+            <p class="sets-k">1 種目あたり</p>
+            <p class="sets-v">2〜4 セット</p>
+            <p class="sets-n">100% の限界セットを 2 セット（追い込めなければ 3）、＋80%・60% のドロップで合計 3〜4 セット。週間プランの 3〜4 セットもこの範囲。</p>
+          </div>
+          <div class="sets-box">
+            <p class="sets-k">1 部位あたり・1 週間で</p>
+            <p class="sets-v">10〜20 セット</p>
+            <p class="sets-n">筋肥大の一般的な目安（限界近くまで追い込んだセットを数える）。週間プランなら胸は月曜 4+3+3 ＋ 土曜の腕立てで約 12〜13 セット、脚は火・金で約 16〜20 セット。</p>
+          </div>
+          <div class="sets-box">
+            <p class="sets-k">回数の使い分け</p>
+            <p class="sets-v">5 回 / 8〜12 回 / 15〜20 回</p>
+            <p class="sets-n">筋力 3〜5 回（高重量・少セット数でも可）、筋肥大 8〜12 回、筋持久力 15〜20 回。同じ種目でも週の中で両方入れる。</p>
+          </div>
+          <div class="sets-box">
+            <p class="sets-k">増やすとき</p>
+            <p class="sets-v">週 +1〜2 セット</p>
+            <p class="sets-n">重量が伸びなくなったら部位ごとに少しずつ増やす。20 セットを超えて疲労が抜けないなら減らす。セット数より「重量が伸びているか」を記録タブで見る。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="charts tgrid">
+        <section class="card">
+          <div class="card-head"><h2>胸</h2><p class="hint">インクライン 1・デクライン 1・フラット 2 を各セット</p></div>
+          <ul class="rule-list">
+            <li><b>ダンベルベンチプレス（内側）</b>：インクラインは 30 度。上げ切らない（肘を伸ばし切らず胸に負荷を残す）。</li>
+            <li><b>ダンベルプルオーバー／デクライン</b>：下部・胸郭を使う。</li>
+            <li><b>ダンベルフライ（外側）</b>：腕が垂直になる直前で止める。内転させる（胸を寄せる意識）。</li>
+          </ul>
+        </section>
+        <section class="card">
+          <div class="card-head"><h2>上腕二頭筋</h2><p class="hint">肘は動かさない</p></div>
+          <ul class="rule-list">
+            <li><b>バーベルカール</b>：グリップを内・外・真ん中で変える。</li>
+            <li><b>インクラインダンベルカール</b>：ベンチ 45 度。後にインクラインハンマーカール。</li>
+            <li><b>プローン（うつ伏せ）ダンベルカール</b>：反動を使わない。</li>
+          </ul>
+        </section>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2>やるべき基本エクササイズ</h2><p class="hint">この順番で。15 回 × 2〜3 セット（筋持久力 15〜20 回／筋力 3〜5 回、最終的には 5 回まで）→ 慣れたら種目を増やす</p></div>
+        <div class="five-grid" id="fiveGrid"></div>
+      </section>
+
+      <section class="charts tgrid">
+        <section class="card ng-card">
+          <div class="card-head"><h2>筋肉が付かない NG</h2></div>
+          <ul class="rule-list">
+            <li>毎日トレーニングする（休まない）。</li>
+            <li>回復・アフターケアをしない。お風呂などで温める。筋肉痛・炎症は冷やす。</li>
+            <li>トレーニング前にアップしない。</li>
+            <li>脂肪を取らない。テストステロンは脂肪が原料。アミノ酸のバランスをとる。</li>
+            <li>タンパク源が偏る。卵、ささみ、ブロッコリー。色んな食材からアミノ酸を取る。プロテインは飲む。</li>
+          </ul>
+        </section>
+        <section class="card">
+          <div class="card-head"><h2>テストステロンを増やす</h2></div>
+          <div class="pill-row">
+            <span class="pill">亜鉛</span><span class="pill">ビタミン D</span><span class="pill">ビタミン E</span><span class="pill">マグネシウム</span><span class="pill">良質な脂肪</span><span class="pill">睡眠</span><span class="pill">日光</span>
+          </div>
+          <p class="hint" style="margin-top:10px">サプリは健康部門の毎日チェックに入っています。</p>
+        </section>
+      </section>
+    </section>
+
+    <!-- ========== 健康部門 ========== -->
+    <section id="view-health" class="view" role="tabpanel" aria-labelledby="tab-health" hidden>
+      <section class="card">
+        <div class="card-head">
+          <h2><span>毎日の習慣チェック</span> <span class="count" id="habitDone"></span></h2>
+          <div class="head-actions">
+            <label class="day-pick">日付 <input type="date" id="habitDate"></label>
+          </div>
+        </div>
+        <p class="menu-goal">腹八分目・高タンパク・低加工</p>
+        <div class="habit-groups" id="habitGroups"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2>直近 4 週間の達成率</h2><p class="hint">1 マス = 1 日。濃いほど達成率が高い。クリックでその日を編集</p></div>
+        <div class="heat-wrap">
+          <div class="heat" id="heat"></div>
+          <div class="heat-legend"><span>低</span><i class="hl" data-l="0"></i><i class="hl" data-l="1"></i><i class="hl" data-l="2"></i><i class="hl" data-l="3"></i><i class="hl" data-l="4"></i><span>高</span></div>
+        </div>
+      </section>
+
+      <section class="charts hgrid">
+        <section class="card">
+          <div class="card-head"><h2>食事の選び方</h2></div>
+          <div class="food-cols">
+            <div class="food ok">
+              <p class="food-h">○ OK</p>
+              <ul>
+                <li>魚・シーフード（EPA / DHA）</li>
+                <li>野菜（葉物・繊維質を毎食の中心に）</li>
+                <li>ゆで卵、ささみ、大豆、プロテイン</li>
+                <li>さつまいも・根茎類</li>
+                <li>ナッツ・種子・豆類・全粒穀物</li>
+                <li>玉ねぎ、きのこ、海藻、ごぼう</li>
+                <li>ベリー、リンゴ、フルーツ</li>
+                <li>発酵食品：納豆、キムチ、ヨーグルト</li>
+                <li>スムージー：バナナ＋ミルク＋ベリー＋プロテイン</li>
+              </ul>
+            </div>
+            <div class="food ng">
+              <p class="food-h">× NG</p>
+              <ul>
+                <li>ジャンクフード</li>
+                <li>スナック菓子</li>
+                <li>加工食品</li>
+                <li>パン</li>
+                <li>白米（精製穀物）</li>
+                <li>急速に消化される炭水化物を夕食時に</li>
+                <li>夜遅くの食事</li>
+                <li>アルコール 2 杯目以降</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="card">
+          <div class="card-head"><h2>食事のルール</h2></div>
+          <ul class="rule-list">
+            <li><b>時間：</b>一日のカロリーの大部分を午前中〜午後の早い時間に。夕食は 19〜20 時までに終える。毎日同じ時間に食べる。</li>
+            <li><b>タンパク質：</b>毎食 30g 以上（肉、魚、大豆、プロテインパウダーなど高品質な源から）。</li>
+            <li><b>食物繊維：</b>毎食、繊維質の野菜を食事の中心に。葉物野菜は必ず。ナッツ・豆・全粒穀物を定期的に。</li>
+            <li><b>シーフード：</b>もっと取り入れる。EPA + DHA を一日 500〜1000mg。</li>
+            <li><b>ベリー：</b>週に何回かは食事に。</li>
+            <li><b>嗜好品：</b>アルコールは一日 1 杯まで。カフェインは午前中〜午後の早い時間まで。</li>
+            <li><b>発酵食品：</b>納豆・キムチ・ヨーグルトを毎日どれか。</li>
+          </ul>
+        </section>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2>古代との違い（現代の生活で調整すること）</h2><p class="hint">多すぎるものを減らし、少なすぎるものを増やし、新しすぎるものから距離を置く</p></div>
+        <div class="anc-grid">
+          <div class="anc too-much">
+            <p class="anc-h">多すぎる ↓</p>
+            <div class="pill-row">
+              <span class="pill">摂取カロリー</span><span class="pill">精製穀物</span><span class="pill">アルコール</span><span class="pill">オメガ 6 脂肪酸</span><span class="pill">塩分</span><span class="pill">乳製品</span><span class="pill">飽和脂肪酸</span><span class="pill">人口密度</span><span class="pill">人生の設備</span>
+            </div>
+          </div>
+          <div class="anc too-little">
+            <p class="anc-h">少なすぎる ↑</p>
+            <div class="pill-row">
+              <span class="pill">有酸素運動</span><span class="pill">筋肉運動</span><span class="pill">睡眠</span><span class="pill">ビタミン</span><span class="pill">ミネラル</span><span class="pill">食物繊維</span><span class="pill">たんぱく質</span><span class="pill">オメガ 3 脂肪酸</span><span class="pill">自然との触れ合い</span><span class="pill">日光</span><span class="pill">他者とのコミュニケーション</span><span class="pill">他者への貢献</span>
+            </div>
+          </div>
+          <div class="anc too-new">
+            <p class="anc-h">新しすぎる ✕</p>
+            <div class="pill-row">
+              <span class="pill">加工食品</span><span class="pill">トランス脂肪酸</span><span class="pill">果糖ブドウ糖液糖</span><span class="pill">人工照明</span><span class="pill">デジタルデバイス</span><span class="pill">インターネット</span><span class="pill">慢性的ストレス</span><span class="pill">化学物質</span><span class="pill">薬</span><span class="pill">仕事のプレッシャー</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ========== 記録 ========== -->
+    <section id="view-log" class="view" role="tabpanel" aria-labelledby="tab-log" hidden>
+      <section class="charts lgrid">
+        <section class="card">
+          <div class="card-head"><h2>体の記録</h2><p class="hint">毎朝同じ条件で</p></div>
+          <form class="log-form" id="bodyForm">
+            <label class="field"><span>日付</span><input type="date" name="date" required></label>
+            <label class="field"><span>体重 (kg)</span><input type="number" name="weight" step="0.1" min="20" max="250" inputmode="decimal"></label>
+            <label class="field"><span>体脂肪率 (%)</span><input type="number" name="fat" step="0.1" min="2" max="60" inputmode="decimal"></label>
+            <label class="field"><span>睡眠 (時間)</span><input type="number" name="sleep" step="0.1" min="0" max="16" inputmode="decimal"></label>
+            <button class="primary" type="submit">保存</button>
+          </form>
+          <div class="chart-head"><h3>体重の推移</h3><span class="hint" id="weightRange"></span></div>
+          <div class="line-chart" id="weightChart"></div>
+          <div class="chart-head"><h3>睡眠時間</h3><span class="hint">目標 7 時間以上</span></div>
+          <div class="line-chart short" id="sleepChart"></div>
+        </section>
+
+        <section class="card">
+          <div class="card-head"><h2>トレーニング記録</h2><p class="hint">重量が伸びているかを見る</p></div>
+          <form class="log-form" id="setForm">
+            <label class="field"><span>日付</span><input type="date" name="date" required></label>
+            <label class="field grow"><span>種目</span><input name="ex" list="exList" required placeholder="ベンチプレス" autocomplete="off"><datalist id="exList"></datalist></label>
+            <label class="field"><span>重量 (kg)</span><input type="number" name="weight" step="0.5" min="0" max="500" inputmode="decimal"></label>
+            <label class="field"><span>回数</span><input type="number" name="reps" min="1" max="200" inputmode="numeric" required></label>
+            <label class="field"><span>セット</span><input type="number" name="sets" min="1" max="20" inputmode="numeric" value="1" required></label>
+            <button class="primary" type="submit">記録</button>
+          </form>
+          <div class="chart-head">
+            <h3>種目ごとの最高重量（日別）</h3>
+            <select id="exSelect" class="vf-input"></select>
+          </div>
+          <div class="line-chart" id="exChart"></div>
+          <p class="hint" id="exNote"></p>
+        </section>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2>週ごとのセット数（限界まで追い込んだセット）</h2><p class="hint">部位あたり週 10〜20 セットが目安</p></div>
+        <div class="vbars short" id="volChart"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2><span>記録の一覧</span> <span class="count" id="logCount"></span></h2>
+          <div class="head-actions"><button id="dlCsv" class="ghost small" type="button">CSV で保存</button></div>
+        </div>
+        <div class="vtable-wrap">
+          <table class="vtable">
+            <thead><tr><th>日付</th><th>種類</th><th>内容</th><th class="num">重量</th><th class="num">回数</th><th class="num">セット</th><th></th></tr></thead>
+            <tbody id="logBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <footer class="foot">記録はこのブラウザの localStorage に保存され、他の端末とは共有されません。端末を変えるときは「記録を書き出す」で JSON を保存して、新しい端末で「読み込む」。</footer>
+  </div>
+  <div id="tip" class="tip" role="tooltip" hidden></div>
+  <script src="health.js?v=20261006"></script>
+</body>
+</html>
