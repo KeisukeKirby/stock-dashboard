@@ -1,3 +1,5 @@
 [
- {"date": "2026-10-02", "store": "Paradise Park", "code": "VFF0005(BK/BK,M42)", "qty": -1, "note": "VFF V-Train 2.0(M42, Black/Black) x1 を Paradise Park の在庫から引く"}
+ {"date": "2026-09-30", "store": "Paradise Park", "code": "VFF0005(BK/BK,M42)", "qty": -1, "note": "販売 VFF V-Train 2.0(M42, Black/Black) x1（10/2 の個別調整を 9/30 の販売として記録し直し）"},
+ {"date": "2026-09-30", "store": "Paradise Park", "code": "VFF0008(BK,W38)", "qty": -1, "note": "販売 VFF V-Soul(W38, Black) x1（9/30 18:53 の売上票。BK26 の W38 は在庫 0 のため BK から）"},
+ {"date": "2026-09-30", "store": "Paradise Park", "code": "VFF0008(SV,W40)", "qty": -1, "note": "販売 VFF V-Soul(W40, Silver) x1（9/30 18:53 の売上票）"}
 ]
