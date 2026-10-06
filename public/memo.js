@@ -75,8 +75,8 @@
     if (it.lead) lines.push(it.lead, "");
     if (it.quote) lines.push("“" + it.quote + "”", "");
     (it.body || []).forEach((p) => lines.push(p, ""));
-    (it.bullets || []).forEach((b) => { lines.push("・" + b.text); (b.sub || []).forEach((s) => lines.push("　　- " + s)); });
     (it.defs || []).forEach((d) => lines.push(d.term + "：" + d.desc));
+    (it.bullets || []).forEach((b) => { lines.push("・" + b.text); (b.sub || []).forEach((s) => lines.push("　　- " + s)); });
     if (it.compare) ["bad", "good"].forEach((k) => { lines.push("", it.compare[k].title); it.compare[k].rows.forEach((r) => lines.push("・" + r)); });
     if (it.tags && it.tags.length) lines.push("", "#" + it.tags.join(" #"));
     if (notes[it.id]) lines.push("", "自分の書き足し：", notes[it.id]);
@@ -106,12 +106,12 @@
     if (it.lead) h += `<p class="lead">${hl(it.lead)}</p>`;
     if (it.quote) h += `<blockquote lang="en">${hl(it.quote)}</blockquote>`;
     (it.body || []).forEach((p) => { h += `<p>${hl(p)}</p>`; });
+    if (it.defs && it.defs.length) h += "<dl>" + it.defs.map((d) => `<dt>${hl(d.term)}</dt><dd>${hl(d.desc)}</dd>`).join("") + "</dl>";
     if (it.bullets && it.bullets.length) {
       h += "<ul>" + it.bullets.map((b) =>
         `<li>${hl(b.text)}${b.sub && b.sub.length ? "<ul>" + b.sub.map((s) => `<li>${hl(s)}</li>`).join("") + "</ul>" : ""}</li>`
       ).join("") + "</ul>";
     }
-    if (it.defs && it.defs.length) h += "<dl>" + it.defs.map((d) => `<dt>${hl(d.term)}</dt><dd>${hl(d.desc)}</dd>`).join("") + "</dl>";
     if (it.compare) {
       h += '<div class="compare">' + ["bad", "good"].map((k) => {
         const c = it.compare[k];
