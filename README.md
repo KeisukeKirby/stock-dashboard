@@ -33,6 +33,7 @@ public/          # Vercel が配信する静的ファイル（ビルド不要）
   stock.json     # Excel から生成したデータ
   source.xlsx    # 店舗在庫の Excel（ダウンロード用、convert.py がコピー）
   source_office.xlsx  # オフィス在庫の Excel（同上）
+  memo.html / memo.css / memo.js / memo.json  # ビジネスメモダッシュボード（/memo）
 scripts/convert.py  # Excel → public/stock.json 変換
 data/            # 元の Excel ファイル
 vercel.json
@@ -60,6 +61,17 @@ vercel.json
    移動表の店舗列（Paradise / K-village / Ladprao 3F = Central LP / Chidlom = Central CL / Siamdis）も反映し、移動表にある SKU は配分表の配分を取り消して移動表の数を正とします（実際に店舗へ移動した数）。
 
 3. `git add . && git commit -m "在庫データ更新" && git push` — Vercel が自動で再デプロイします
+
+## ビジネスメモダッシュボード（/memo）
+
+成功者の特徴、ジェフ・ベゾス、ピーター・ティール、Sam Altman「How To Be Successful」、生産性の習慣、構造力、起業初期の原則などの学びをカードで一覧する画面です（在庫ダッシュボード右上の「Business Memo →」から）。
+
+- メモの内容は `public/memo.json`（カテゴリ `sections` → `items`）。項目は `title` と、`body`（段落）・`bullets`（`text` と任意の `sub`）・`quote`（英文の引用）・`lead`・`defs`（用語と説明）・`compare`（悪い構造／良い構造の対比）・`tags` を組み合わせて書きます。追加・修正はこの JSON を編集して push するだけです
+- 検索（タイトル・本文・タグ・自分のメモを AND 検索、該当箇所をハイライト）、カテゴリ・タグのチップで絞り込み、カテゴリごとの開閉（状態を記憶）
+- カードの ☆ でピン留め、「自分のメモ」で気づきを書き込み（入力すると自動保存）、「コピー」でカードの内容をテキストでコピー。ピン留め・自分のメモがあるカードだけの表示は上の KPI をクリック
+- 「今日の一言」は日付で決まる 1 枚（「別の一言」でランダム、「カードへ」でそのカードに移動）
+- 「今日の3つ」「今週の3つ」「週末レビュー」は生産性メモの実践用。日付・ISO 週ごとに保存され、「過去」から見返せます
+- ピン留め・自分のメモ・今日の3つはブラウザの localStorage に保存され、他の人・他の端末とは共有されません
 
 ## ローカルで確認
 
