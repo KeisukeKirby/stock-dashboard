@@ -13,10 +13,20 @@
 //
 // 保存先: Upstash Redis (Vercel の Storage / Marketplace から作成してプロジェクトに接続)
 //   環境変数 KV_REST_API_URL / KV_REST_API_TOKEN
-//   (または UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN)
+//   (または UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN。頭に任意の Prefix が付いていてもよい)
 
-const URL_ = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-const TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+// Vercel で Storage を接続するときに Custom Prefix を付けると、変数名の頭が変わる
+// (例: STORAGE_KV_REST_API_URL)。末尾の名前で探すので、どの Prefix でも動く。
+const envBySuffix = (...suffixes) => {
+  for (const suf of suffixes) {
+    if (process.env[suf]) return process.env[suf];
+    const key = Object.keys(process.env).find((k) => k.endsWith(`_${suf}`) && process.env[k]);
+    if (key) return process.env[key];
+  }
+  return undefined;
+};
+const URL_ = envBySuffix("KV_REST_API_URL", "UPSTASH_REDIS_REST_URL", "REST_API_URL");
+const TOKEN = envBySuffix("KV_REST_API_TOKEN", "UPSTASH_REDIS_REST_TOKEN", "REST_API_TOKEN");
 
 const KEY_RE = /^returns:[\w\/\-.]{1,40}$/;
 const MAX_FIELDS = 5000;
