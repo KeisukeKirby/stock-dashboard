@@ -265,3 +265,13 @@
   .vbars { padding-left: 28px; } .vbars .grid { left: 28px; } .vbars .grid span { left: -28px; width: 24px; }
   .vbars .vtot { display: none; }
 }
+
+/* 通知・テキスト保存ダイアログ (ダウンロードできない環境用) */
+.msg { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 80; background: var(--ink); color: var(--surface); padding: 9px 16px; border-radius: 999px; font-size: 13px; box-shadow: 0 8px 24px rgba(0,0,0,.25); max-width: calc(100vw - 32px); }
+.msg.err { background: var(--crit); color: #fff; }
+.vtable .del.arm { color: #fff; background: var(--crit); font-size: 12px; padding: 2px 8px; }
+.dl-dlg { position: fixed; inset: 0; z-index: 90; background: rgba(20,24,30,.45); display: grid; place-items: center; padding: 16px; }
+.dl-box { width: min(640px, 100%); background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 16px 48px rgba(0,0,0,.3); }
+.dl-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.dl-box textarea { width: 100%; height: 240px; font: 12px/1.4 ui-monospace, Menlo, Consolas, monospace; border: 1px solid var(--line-strong); border-radius: 10px; padding: 8px; background: var(--surface-2); color: var(--ink); resize: vertical; }
+.dl-foot { display: flex; justify-content: flex-end; }

@@ -144,6 +144,25 @@
   ];
   const HABIT_ALL = HABITS.flatMap((g) => g.items);
 
+  /* ---------- ファイルの受け渡し (ダウンロードできない環境ではテキストを表示してコピー) ---------- */
+  const NO_DL = !!window.HEALTH_NO_DOWNLOAD;
+  const deliver = (text, filename, mime) => {
+    if (!NO_DL) {
+      const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type: mime })); a.download = filename; a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000); return;
+    }
+    $("dlName").textContent = filename; $("dlText").value = text; $("dlCopy").textContent = "コピー";
+    $("dlDlg").hidden = false; $("dlText").focus(); $("dlText").select();
+  };
+  $("dlClose").addEventListener("click", () => { $("dlDlg").hidden = true; });
+  $("dlCopy").addEventListener("click", () => {
+    const done = () => { $("dlCopy").textContent = "コピーしました"; };
+    const fallback = () => { $("dlText").select(); try { document.execCommand("copy"); done(); } catch (_) {} };
+    if (navigator.clipboard) navigator.clipboard.writeText($("dlText").value).then(done, fallback); else fallback();
+  });
+  let msgT;
+  const showMsg = (text, err) => { const m = $("msg"); m.textContent = text; m.classList.toggle("err", !!err); m.hidden = false; clearTimeout(msgT); msgT = setTimeout(() => { m.hidden = true; }, 4000); };
+
   /* ---------- 保存 ---------- */
   const KEY = "health.v1";
   const blank = () => ({ ex: {}, habits: {}, body: [], sets: [], cycleStart: "", timerSec: 90 });
@@ -504,19 +523,22 @@
     ].sort((a, b) => b.date.localeCompare(a.date));
     $("logCount").textContent = `${rows.length} 件`;
     $("logBody").innerHTML = rows.length ? rows.map((r, i) => `<tr><td>${esc(r.date)}</td><td class="kind">${r.kind}</td><td>${esc(r.desc)}</td><td class="num">${r.w}</td><td class="num">${r.reps}</td><td class="num">${r.sets}</td><td><button class="del" type="button" data-i="${i}" title="削除">×</button></td></tr>`).join("") : `<tr><td colspan="7" class="empty-note">まだ記録がありません</td></tr>`;
-    $("logBody").querySelectorAll(".del").forEach((b) => b.addEventListener("click", () => { if (!confirm("この記録を削除しますか？")) return; rows[Number(b.dataset.i)].del(); save(); renderKpis(); renderCharts(); renderLog(); }));
+    $("logBody").querySelectorAll(".del").forEach((b) => b.addEventListener("click", () => {
+      if (!b.classList.contains("arm")) { b.classList.add("arm"); b.textContent = "削除する"; setTimeout(() => { b.classList.remove("arm"); b.textContent = "×"; }, 3000); return; }
+      rows[Number(b.dataset.i)].del(); save(); renderKpis(); renderCharts(); renderLog();
+    }));
   }
   $("dlCsv").addEventListener("click", () => {
     const q = (s) => `"${String(s ?? "").replace(/"/g, '""')}"`;
     const lines = [["date", "kind", "item", "weight_kg", "reps", "sets", "fat_pct", "sleep_h"].join(",")];
     db.body.forEach((b) => lines.push([b.date, "body", "", b.weight ?? "", "", "", b.fat ?? "", b.sleep ?? ""].map(q).join(",")));
     db.sets.forEach((s) => lines.push([s.date, "training", s.ex, s.weight ?? "", s.reps, s.sets, "", ""].map(q).join(",")));
-    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(["﻿" + lines.join("\r\n")], { type: "text/csv" })); a.download = `health_log_${today()}.csv`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    deliver("\ufeff" + lines.join("\r\n"), `health_log_${today()}.csv`, "text/csv");
   });
 
   /* ---------- 書き出し・読み込み ---------- */
   $("exportBtn").addEventListener("click", () => {
-    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([JSON.stringify(db, null, 1)], { type: "application/json" })); a.download = `health_${today()}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    deliver(JSON.stringify(db, null, 1), `health_${today()}.json`, "application/json");
   });
   $("importBtn").addEventListener("click", () => $("importFile").click());
   $("importFile").addEventListener("change", () => {
@@ -524,13 +546,12 @@
     f.text().then((txt) => {
       const d = JSON.parse(txt);
       if (!d || typeof d !== "object" || !("ex" in d || "habits" in d || "body" in d || "sets" in d)) throw new Error("bad");
-      if (!confirm("今の記録と統合します（同じ日の記録は読み込んだ方で上書き）。よろしいですか？")) return;
       Object.assign(db.ex, d.ex || {}); Object.assign(db.habits, d.habits || {});
       (d.body || []).forEach((b) => { const i = db.body.findIndex((x) => x.date === b.date); if (i >= 0) db.body[i] = b; else db.body.push(b); });
       const ids = new Set(db.sets.map((s) => s.id)); (d.sets || []).forEach((s) => { if (!ids.has(s.id)) db.sets.push(s); });
       if (d.cycleStart) { db.cycleStart = d.cycleStart; $("cycleStart").value = d.cycleStart; }
-      save(); renderAll();
-    }).catch(() => alert("読み込めませんでした。このダッシュボードで書き出した JSON ファイルを選んでください。")).finally(() => { $("importFile").value = ""; });
+      save(); renderAll(); showMsg("読み込みました（同じ日の記録は読み込んだ方で上書き）");
+    }).catch(() => showMsg("読み込めませんでした。このダッシュボードで書き出した JSON ファイルを選んでください。", true)).finally(() => { $("importFile").value = ""; });
   });
 
   /* ---------- 起動 ---------- */

@@ -366,6 +366,15 @@
 
     <footer class="foot">記録はこのブラウザの localStorage に保存され、他の端末とは共有されません。端末を変えるときは「記録を書き出す」で JSON を保存して、新しい端末で「読み込む」。</footer>
   </div>
+  <div id="msg" class="msg" role="status" hidden></div>
+  <div id="dlDlg" class="dl-dlg" hidden>
+    <div class="dl-box">
+      <div class="dl-head"><b id="dlName"></b><button id="dlClose" class="ghost small" type="button">閉じる</button></div>
+      <p class="hint">この画面ではファイルを直接保存できないので、内容をコピーしてテキストファイル（メモ帳など）に貼り付けて保存してください。</p>
+      <textarea id="dlText" readonly spellcheck="false"></textarea>
+      <div class="dl-foot"><button id="dlCopy" class="primary" type="button">コピー</button></div>
+    </div>
+  </div>
   <div id="tip" class="tip" role="tooltip" hidden></div>
   <script src="health.js?v=20261006"></script>
 </body>

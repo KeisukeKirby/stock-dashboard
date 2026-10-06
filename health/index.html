@@ -1,0 +1,1679 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="週間トレーニング計画、食事・生活習慣のチェック、体重・トレーニング記録">
+<meta name="robots" content="noindex">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Health">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231baf7a'/><rect x='5' y='13' width='4' height='6' rx='1' fill='white'/><rect x='23' y='13' width='4' height='6' rx='1' fill='white'/><rect x='9' y='11' width='3' height='10' rx='1' fill='white'/><rect x='20' y='11' width='3' height='10' rx='1' fill='white'/><rect x='12' y='15' width='8' height='2' fill='white'/></svg>">
+<title>筋トレ・健康管理ダッシュボード</title>
+<style>
+/* =========================================================
+   ダッシュボード部分 (やさしい配色)
+   ========================================================= */
+:root {
+  color-scheme: light;
+  --page: #f6f5f1;
+  --surface: #fdfdfb;
+  --surface-2: #f1f0eb;
+  --ink: #23262b;
+  --ink-2: #555a61;
+  --muted: #8a8c8f;
+  --line: #e4e2da;
+  --line-strong: #cfcdc4;
+  --accent: #3b82c4;
+  --accent-soft: #e5f0fb;
+  --bar: #6da7ec;
+  --bar-hover: #3987e5;
+  --crit: #d03b3b;
+  --warn: #d99100;
+  --shadow: 0 1px 2px rgba(30, 40, 50, .04), 0 4px 16px rgba(30, 40, 50, .05);
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #121314; --surface: #1b1c1e; --surface-2: #232427;
+    --ink: #eceae4; --ink-2: #c3c2b7; --muted: #8d8c86;
+    --line: #2d2e30; --line-strong: #3b3c3f;
+    --accent: #6da7ec; --accent-soft: #1d2a3a;
+    --bar: #3987e5; --bar-hover: #6da7ec;
+    --crit: #e66767; --warn: #fab219;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #121314; --surface: #1b1c1e; --surface-2: #232427;
+  --ink: #eceae4; --ink-2: #c3c2b7; --muted: #8d8c86;
+  --line: #2d2e30; --line-strong: #3b3c3f;
+  --accent: #6da7ec; --accent-soft: #1d2a3a;
+  --bar: #3987e5; --bar-hover: #6da7ec;
+  --crit: #e66767; --warn: #fab219;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Noto Sans JP", "Noto Sans Thai", "Leelawadee UI", "Thonburi", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, p { margin: 0; }
+button, select, input { font: inherit; color: inherit; }
+
+.page { max-width: 1800px; margin: 0 auto; padding: 28px 24px 40px; }
+
+.top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 22px; }
+.top-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+h1 { font-size: 26px; font-weight: 700; margin: 4px 0 6px; letter-spacing: -.01em; }
+.sub { color: var(--ink-2); font-size: 13px; }
+.alloc-note {
+  display: inline-block; margin-top: 8px; font-size: 12px; color: #1f5f3a; background: #e3f4ea;
+  border: 1px solid #b7e0c6; border-radius: 999px; padding: 3px 12px;
+}
+.alloc-note[hidden] { display: none; }
+.sub .dot { margin: 0 8px; color: var(--muted); }
+
+.ghost {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+  padding: 7px 14px; cursor: pointer; color: var(--ink-2); white-space: nowrap; text-decoration: none; font-size: 13px;
+}
+.ghost:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); }
+.ghost.small { padding: 4px 12px; font-size: 12px; }
+
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 18px 20px;
+}
+.card-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.card-head h2 { font-size: 15px; font-weight: 650; }
+.hint { font-size: 12px; color: var(--muted); }
+.count { font-weight: 500; color: var(--muted); font-size: 13px; margin-left: 6px; }
+
+.head-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.ret-info { font-size: 12px; color: var(--ink-2); background: #fff2cc; border-radius: 999px; padding: 3px 10px; color: #7f6000; }
+.ret-info:empty { display: none; }
+.primary {
+  display: inline-flex; align-items: center; gap: 4px; cursor: pointer; white-space: nowrap;
+  background: var(--accent); color: #fff; border: 1px solid var(--accent); border-radius: 999px;
+  padding: 7px 18px; font-size: 13px; font-weight: 600;
+}
+.primary.small { padding: 4px 16px; font-size: 12px; }
+.primary:hover:not(:disabled) { filter: brightness(1.08); }
+.primary:disabled { background: var(--surface-2); color: var(--muted); border-color: var(--line); cursor: default; }
+.save-state { font-size: 12px; color: var(--muted); }
+.sync-state { font-size: 12px; color: var(--muted); display: inline-flex; align-items: center; gap: 5px; }
+.sync-state::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+.sync-state.shared::before { background: #1f9d55; box-shadow: 0 0 0 3px rgba(31,157,85,.18); }
+.sync-state.error { color: var(--crit); }
+.sync-state.error::before { background: var(--crit); }
+.sync-state.flash { color: #1f7a45; font-weight: 600; }
+.save-state.dirty { color: #b45309; font-weight: 600; }
+.save-state.dirty::before { content: "● "; }
+.ret-hint { font-size: 12px; color: var(--muted); margin: -4px 0 10px; }
+
+/* 言語切り替え */
+.lang-switch { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); padding: 2px; }
+.lang-switch button {
+  border: 0; background: none; cursor: pointer; padding: 5px 12px; border-radius: 999px; font-size: 13px; color: var(--ink-2);
+}
+.lang-switch button:hover { color: var(--ink); background: var(--surface-2); }
+.lang-switch button[aria-pressed="true"] { background: var(--accent); color: #fff; font-weight: 600; }
+
+/* 見出しの ▼ フィルター (Excel のオートフィルター風) */
+.sheet thead th { position: sticky; }
+.sheet .af {
+  position: absolute; right: 2px; bottom: 3px; width: 15px; height: 15px; padding: 0; margin: 0;
+  display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+  background: #f2f2f2; border: 1px solid #a6a6a6; border-radius: 2px;
+}
+.sheet .af svg { width: 10px; height: 10px; fill: #404040; }
+.sheet .af .af-funnel { display: none; }
+.sheet .af:hover { background: #ffffff; }
+.sheet .af.on { background: #ffd966; border-color: #bf8f00; }
+.sheet .af.on .af-arrow { display: none; }
+.sheet .af.on .af-funnel { display: block; }
+.sheet thead tr.h1 th[rowspan] { padding-right: 18px; }
+.sheet thead tr.h1 th.grp { padding-right: 18px; }  /* 拠点の ▼ (表示する拠点を選ぶ) */
+.sheet thead tr.h2 th { padding-right: 18px; }
+.sheet thead tr.h2 th.ret-h { padding-right: 3px; }
+
+.af-hint { font-size: 12px; color: var(--muted); margin: -6px 0 10px; }
+.chips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 10px; font-size: 12px; }
+.chips-label { color: var(--muted); }
+.chip {
+  display: inline-flex; align-items: center; gap: 4px; background: #fff2cc; color: #5c4600;
+  border: 1px solid #f1d27a; border-radius: 999px; padding: 2px 4px 2px 10px;
+}
+.chip b { font-weight: 600; }
+.chip button { border: 0; background: none; cursor: pointer; color: #7f6000; font-size: 14px; line-height: 1; padding: 0 4px; border-radius: 999px; }
+.chip button:hover { background: #f1d27a; }
+.chip-clear { border: 0; background: none; color: var(--accent); cursor: pointer; font-size: 12px; text-decoration: underline; }
+
+.af-pop {
+  position: fixed; z-index: 60; width: 280px; background: var(--surface); color: var(--ink);
+  border: 1px solid var(--line-strong); border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  padding: 10px; font-size: 13px;
+}
+.af-head { font-weight: 650; margin-bottom: 8px; }
+.af-search { width: 100%; height: 30px; border: 1px solid var(--line-strong); border-radius: 8px; padding: 0 8px; background: var(--surface); margin-bottom: 6px; }
+.af-list { max-height: 260px; overflow: auto; border: 1px solid var(--line); border-radius: 8px; padding: 4px 0; }
+.af-list label { display: flex; align-items: center; gap: 6px; padding: 3px 10px; cursor: pointer; }
+.af-list label:hover { background: var(--surface-2); }
+.af-list label[hidden] { display: none; }
+.af-list label span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.af-list label em { font-style: normal; color: var(--muted); font-size: 11px; }
+.af-list .af-all { border-bottom: 1px solid var(--line); margin-bottom: 2px; font-weight: 600; }
+.af-num { display: flex; flex-direction: column; gap: 6px; padding: 2px 2px 4px; }
+.af-num label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+.af-range { display: flex; align-items: center; gap: 6px; padding-left: 22px; }
+.af-range input { width: 90px; height: 30px; border: 1px solid var(--line-strong); border-radius: 8px; padding: 0 8px; background: var(--surface); }
+.af-foot { display: flex; align-items: center; gap: 6px; margin-top: 10px; }
+.af-foot span { flex: 1; }
+
+/* 範囲選択 (Excel と同じ緑の枠) */
+.sheet tbody td { cursor: cell; }
+.sheet tbody td.sel { background-color: #d9eadf !important; }
+.sheet tbody td.ret.sel { background-color: #e6efcf !important; }
+.sheet tbody td.sel {
+  --st: 0px; --sb: 0px; --sl: 0px; --sr: 0px;
+  box-shadow: inset 0 var(--st) 0 #217346, inset 0 calc(-1 * var(--sb)) 0 #217346,
+              inset var(--sl) 0 0 #217346, inset calc(-1 * var(--sr)) 0 0 #217346;
+}
+.sheet tbody td.sel-t { --st: 2px; }
+.sheet tbody td.sel-b { --sb: 2px; }
+.sheet tbody td.sel-l { --sl: 2px; }
+.sheet tbody td.sel-r { --sr: 2px; }
+body.selecting, body.selecting * { user-select: none; -webkit-user-select: none; }
+.sel-bar {
+  position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 70;
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center;
+  background: #217346; color: #fff; border-radius: 999px; padding: 8px 10px 8px 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25); font-size: 13px; max-width: calc(100vw - 32px);
+}
+.sel-bar b { font-size: 15px; font-variant-numeric: tabular-nums; }
+.sel-bar .sel-size, .sel-bar .sel-copy { opacity: .75; font-size: 12px; }
+.sel-bar.copied .sel-copy { opacity: 1; font-weight: 700; }
+.sel-bar button { border: 0; background: rgba(255,255,255,.18); color: #fff; width: 26px; height: 26px; border-radius: 999px; cursor: pointer; font-size: 16px; line-height: 1; }
+.sel-bar button:hover { background: rgba(255,255,255,.3); }
+@media (max-width: 560px) { .sel-bar .sel-copy { display: none; } }
+
+/* tabs */
+.tabs { display: flex; gap: 4px; margin-bottom: 14px; border-bottom: 1px solid var(--line-strong); }
+.tab {
+  border: 0; background: none; cursor: pointer; padding: 10px 18px; font-size: 14px; font-weight: 600; color: var(--muted);
+  border-bottom: 3px solid transparent; margin-bottom: -1px;
+}
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+.view[hidden] { display: none; }
+.view-note { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+.view-note:empty { display: none; }
+
+/* KPI */
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 14px; }
+.kpi {
+  display: block; text-align: left; width: 100%;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px 18px;
+}
+.kpi > span { display: block; }
+.kpi-btn { cursor: pointer; }
+.kpi-btn:hover { border-color: var(--accent); }
+.kpi-btn[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.kpi-label { color: var(--ink-2); font-size: 13px; display: flex !important; align-items: center; gap: 6px; }
+.kpi-value { font-size: 30px; font-weight: 700; margin: 4px 0 2px; letter-spacing: -.01em; }
+.kpi-note { color: var(--muted); font-size: 12px; }
+.status-ic { font-size: 11px; }
+.status-ic.crit { color: var(--crit); }
+.status-ic.warn { color: var(--warn); }
+
+/* charts */
+.charts { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 14px; margin-bottom: 14px; }
+.bars { display: flex; flex-direction: column; gap: 2px; }
+.bar-row {
+  display: grid; grid-template-columns: minmax(96px, 34%) 1fr 52px; align-items: center; gap: 10px;
+  padding: 5px 6px; border-radius: 8px; cursor: pointer; border: 0; background: none; text-align: left; width: 100%;
+}
+.bar-row:hover, .bar-row:focus-visible { background: var(--surface-2); outline: none; }
+.bar-row.active { background: var(--accent-soft); }
+.bar-label { font-size: 13px; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-track { display: block; height: 14px; }
+.bar-fill { display: block; height: 100%; background: var(--bar); border-radius: 0 4px 4px 0; min-width: 2px; transition: width .35s ease, background .15s; }
+.bar-row:hover .bar-fill, .bar-row.active .bar-fill { background: var(--bar-hover); }
+.bar-val { font-size: 13px; text-align: right; font-variant-numeric: tabular-nums; }
+.bars.compact .bar-row { padding: 2px 6px; }
+.bars.compact .bar-track { height: 11px; }
+
+/* filters */
+.filters { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: flex-end; margin-bottom: 14px; }
+.field { display: flex; flex-direction: column; gap: 4px; min-width: 130px; }
+.field.grow { flex: 1 1 220px; }
+.field > span { font-size: 12px; color: var(--muted); }
+.field input, .field select {
+  height: 36px; padding: 0 10px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface);
+}
+.field input:focus, .field select:focus { outline: 2px solid var(--accent-soft); border-color: var(--accent); }
+.filters .ghost { height: 36px; }
+.check-toggle { display: inline-flex; align-items: center; gap: 6px; height: 36px; font-size: 13px; color: var(--ink-2); cursor: pointer; white-space: nowrap; }
+.check-toggle[hidden] { display: none; }
+/* 複数選択のドロップダウン (モデル・カラー・サイズ) */
+.ms {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; min-width: 150px; max-width: 240px;
+  height: 36px; padding: 0 10px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface);
+  cursor: pointer; text-align: left;
+}
+.ms .ms-val { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ms svg { width: 10px; height: 10px; fill: var(--ink-2); flex: none; }
+.ms:hover { border-color: var(--accent); }
+.ms.on { border-color: #bf8f00; background: #fff8e1; color: #5c4600; font-weight: 600; }
+:root[data-theme="dark"] .ms.on { background: #3a3020; color: #fde9a8; }
+
+.tip {
+  position: fixed; pointer-events: none; z-index: 50; background: var(--ink); color: var(--surface);
+  padding: 7px 10px; border-radius: 8px; font-size: 12px; line-height: 1.45; box-shadow: 0 6px 20px rgba(0,0,0,.18);
+  max-width: 260px;
+}
+.foot { color: var(--muted); font-size: 12px; margin-top: 18px; text-align: center; }
+
+/* =========================================================
+   在庫表: Store_Stock_*.xlsx「VFF Shoes Stock」シートの書式をそのまま再現
+   (ダークモードでも Excel と同じ白地のまま)
+   ========================================================= */
+.sheet {
+  --x-header: #1f4e78;      /* 見出し (Quantity) */
+  --x-header-ret: #bf8f00;  /* 見出し (Return) */
+  --x-ret-fill: #fff2cc;    /* Return 列 */
+  --x-ret-ink: #0000ff;
+  --x-total-fill: #d9e1f2;  /* Total 行 */
+  --x-row-border: #d9d9d9;  /* 行の下罫線 */
+  --x-gridline: #e1e1e1;    /* Excel の枠線 */
+  --row-h: 20px;            /* 14.5pt */
+  --head-h: 27px;           /* 20pt */
+  --title-h: 25px;          /* 18.5pt */
+
+  color-scheme: light;
+  background: #ffffff;
+  color: #000000;
+  font-family: Calibri, Carlito, "Segoe UI", Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 1;
+  border: 1px solid var(--line-strong);
+}
+/* 画面幅に収まるよう JS で zoom を設定 (縦・横ともスクロールなし) */
+.sheet table { zoom: var(--fit, 1); }
+.sheet table { border-collapse: separate; border-spacing: 0; table-layout: fixed; width: max-content; }
+.sheet th, .sheet td {
+  height: var(--row-h);
+  padding: 0 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 1px solid var(--x-gridline);
+  border-bottom: 1px solid var(--x-row-border);
+}
+.sheet td.c { text-align: center; }
+.sheet td.b { font-weight: 700; }
+.sheet td.ret { background: var(--x-ret-fill); color: var(--x-ret-ink); }
+.sheet td.ret { padding: 0; }
+/* Excel で黄色に塗られていたマス */
+.sheet td.hl, .sheet td.ret.hl { background: #ffff00; }
+.sheet .ret-in {
+  display: block; width: 100%; height: calc(var(--row-h) - 1px); margin: 0; padding: 0 3px;
+  border: 0; background: transparent; color: var(--x-ret-ink);
+  font: inherit; text-align: center; cursor: cell;
+}
+.sheet .ret-in:hover { background: #ffe699; }
+.sheet .ret-in:focus { outline: 2px solid #217346; outline-offset: -2px; background: #ffffff; cursor: text; }
+.sheet .ret-in.invalid { outline: 2px solid #d03b3b; outline-offset: -2px; }
+
+/* ウィンドウ枠の固定 (A5): 1〜4 行目は常に表示 */
+.sheet thead tr.title th, .sheet thead tr.asof th {
+  position: sticky; z-index: 3; background: #ffffff; text-align: left; font-weight: 400;
+  border-right: 0; border-bottom: 1px solid var(--x-gridline);
+}
+.sheet thead tr.title th { top: 0; height: var(--title-h); font-size: 14pt; font-weight: 700; }
+.sheet thead tr.asof th { top: var(--title-h); }
+.sheet thead tr.asof th.grp-label { text-align: center; font-weight: 700; }
+.sheet thead tr.h1 th, .sheet thead tr.h2 th {
+  position: sticky; z-index: 2; height: var(--head-h);
+  background: var(--x-header); color: #ffffff; font-weight: 700; text-align: center; vertical-align: middle;
+  border-right: 1px solid #ffffff; border-bottom: 1px solid #ffffff;
+}
+.sheet thead tr.h1 th { top: calc(var(--title-h) + var(--row-h)); }
+.sheet thead tr.h2 th { top: calc(var(--title-h) + var(--row-h) + var(--head-h)); }
+.sheet thead tr.h2 th.ret-h { background: var(--x-header-ret); }
+.sheet thead tr.h2 th.rate-h, .sheet thead tr.h2 th.mos-h { background: #2f75b5; font-size: 8.5pt; white-space: normal; line-height: 1.05; padding: 0 1px; }
+.sheet td.rate { color: #1f4e78; }
+/* 画面用に列を狭くしたので見出しは小さめ・折り返し可 */
+.sheet thead tr.h1 th.grp { font-size: 9.5pt; white-space: normal; line-height: 1.05; padding: 0 2px; }
+.sheet thead tr.h2 th { font-size: 9pt; padding-left: 1px; }
+.sheet thead tr.h2 th.ret-h { padding: 0 1px; }
+.sheet tbody td { padding: 0 2px; }
+.sheet tbody td.ret { padding: 0; }
+.sheet .ret-in { padding: 0 1px; }
+.sheet td.mos { color: #1f4e78; font-style: italic; }
+.sheet tr.total td { background: var(--x-total-fill); font-weight: 700; }
+.sheet td.empty { text-align: center; color: #595959; height: 40px; }
+
+@media (max-width: 960px) {
+  .charts { grid-template-columns: 1fr; }
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .page { padding: 18px 16px 32px; }
+  h1 { font-size: 21px; }
+  .kpi-value { font-size: 24px; }
+  .card { padding: 14px; }
+  .field { min-width: calc(50% - 6px); flex: 1 1 calc(50% - 6px); }
+  .field.grow { flex-basis: 100%; }
+  .top { flex-direction: column; }
+  .top-actions { justify-content: flex-start; }
+}
+
+@media print {
+  body { background: #fff; }
+  .top-actions, .kpis, .charts, .filters, #dlCsv, .foot { display: none; }
+  .card { border: 0; box-shadow: none; padding: 0; }
+  .sel-bar, .tabs, .view-note, .ret-hint, .af-hint, .chips, .head-actions, .sheet .af { display: none; }
+  #view-table { display: block !important; }
+  .sheet { border: 0; }
+  .sheet thead th { position: static; }
+  .sheet th, .sheet td { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+[hidden] { display: none !important; }
+
+/* 拠点フィルター: Store Total の前に区切り線 */
+.af-list label.af-sep { border-top: 1px solid var(--line); margin-top: 4px; padding-top: 6px; }
+.af-note { margin: 6px 0 0; font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+/* 詳細タブ: 在庫一覧の使い方 */
+.guide { margin-bottom: 16px; }
+.guide h2 { font-size: 15px; margin: 0 0 8px; }
+.guide .alloc-note { margin: 0 0 12px; }
+.guide-list { margin: 0; padding-left: 20px; font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+.guide-list li + li { margin-top: 4px; }
+
+/* 返品の受領 */
+.recv-btn {
+  border: 1px solid #b7e0c6; background: #e3f4ea; color: #1f5f3a; border-radius: 999px;
+  font: inherit; font-size: 12px; font-weight: 600; padding: 5px 12px; cursor: pointer;
+}
+.recv-btn:hover { background: #d2ecdc; }
+.recv-btn[hidden] { display: none; }
+.recv-dlg {
+  width: min(720px, calc(100vw - 32px)); max-height: calc(100vh - 48px); padding: 0;
+  border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink);
+  box-shadow: 0 16px 48px rgba(0,0,0,.25);
+}
+.recv-dlg::backdrop { background: rgba(20, 24, 30, .35); }
+.recv-inner { display: flex; flex-direction: column; max-height: calc(100vh - 50px); }
+.recv-head { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px 0; }
+.recv-head h2 { margin: 0; font-size: 18px; }
+.recv-x { border: 0; background: none; font-size: 22px; line-height: 1; cursor: pointer; color: var(--ink-2); }
+.recv-note { margin: 8px 20px 0; font-size: 13px; color: var(--ink-2); line-height: 1.55; }
+.recv-warn { margin: 8px 20px 0; font-size: 13px; color: #8a5a00; background: #fff4d6; border: 1px solid #f0d68a; border-radius: 8px; padding: 6px 10px; }
+.recv-warn[hidden] { display: none; }
+.recv-body { overflow: auto; padding: 4px 20px 8px; flex: 1; }
+.recv-body h3 { font-size: 14px; margin: 14px 0 6px; }
+.recv-empty { font-size: 13px; color: var(--muted); }
+.link-btn { border: 0; background: none; color: var(--accent); cursor: pointer; font: inherit; font-size: 12px; text-decoration: underline; }
+.recv-foot { display: flex; align-items: center; gap: 8px; padding: 12px 20px 16px; border-top: 1px solid var(--line); }
+.recv-sel { margin-right: auto; font-size: 13px; color: var(--ink-2); }
+.recv-foot[hidden] { display: none; }
+.recv-step { font-size: 13px; color: var(--ink); margin: 12px 0 8px; font-weight: 600; }
+.recv-stores { display: grid; gap: 8px; }
+.recv-storebtn {
+  display: grid; grid-template-columns: 1fr auto 16px; grid-template-rows: auto auto; column-gap: 12px; align-items: center;
+  text-align: left; width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px;
+  background: var(--surface); color: var(--ink); font: inherit; cursor: pointer;
+}
+.recv-storebtn:hover { border-color: var(--accent); background: var(--accent-soft, #eef5fc); }
+.recv-storebtn b { font-size: 15px; }
+.recv-storebtn .recv-pend { font-size: 13px; font-weight: 700; color: #8a5a00; }
+.recv-storebtn .recv-doneinfo { grid-column: 1 / 3; font-size: 12px; color: var(--muted); }
+.recv-storebtn .recv-go { grid-row: 1 / 3; grid-column: 3; font-size: 22px; color: var(--muted); }
+.recv-nav { display: flex; align-items: center; gap: 12px; margin-top: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.recv-nav b { font-size: 16px; }
+.recv-nav .recv-count { margin-left: auto; font-size: 13px; color: #8a5a00; font-weight: 700; }
+.recv-selall { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; margin-bottom: 6px; cursor: pointer; }
+.recv-model { border: 1px solid var(--line); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+.recv-mhead { display: flex; align-items: center; padding: 8px 12px; background: var(--surface-2); }
+.recv-mhead label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.recv-mhead .recv-count { margin-left: auto; font-size: 12px; color: var(--muted); }
+.recv-tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+.recv-tbl th { font-size: 11px; font-weight: 600; color: var(--muted); text-align: left; padding: 4px 8px; }
+.recv-tbl td { padding: 5px 8px; border-top: 1px solid var(--line); }
+.recv-tbl td:first-child, .recv-tbl th:first-child { width: 28px; padding-left: 12px; }
+.recv-tbl td.c { text-align: center; } .recv-tbl th:nth-child(3) { text-align: center; }
+.recv-tbl td.n, .recv-tbl th:last-child { text-align: right; padding-right: 14px; width: 60px; }
+.recv-tbl td.n { font-weight: 700; }
+.recv-tbl label { cursor: pointer; display: block; }
+.recv-tbl tr:has(input:checked) td { background: #e3f4ea; }
+.recv-done { margin-top: 12px; border: 1px solid var(--line); border-radius: 10px; }
+.recv-done summary { padding: 8px 12px; cursor: pointer; font-size: 13px; color: var(--ink-2); }
+.recv-done ul { list-style: none; margin: 0; padding: 0 12px 8px; }
+.recv-done li { display: flex; align-items: center; gap: 10px; padding: 4px 0; border-top: 1px solid var(--line); font-size: 13px; }
+.recv-done li > span { flex: 1; }
+.recv-done li em { font-style: normal; font-weight: 700; }
+
+/* 筋トレ・健康管理ダッシュボード (health.html)。基本の配色・部品は style.css を使う */
+:root {
+  --h-accent: #1baf7a;        /* 健康部門のアクセント (categorical slot 3) */
+  --h-accent-soft: #e3f4ea;
+  --h-train: #2a78d6;         /* 筋トレ (slot 1) */
+  --h-sleep: #eb6834;         /* 睡眠 (slot 2) */
+  --h-ok-bg: #e3f4ea; --h-ok-ink: #1f5f3a; --h-ok-line: #b7e0c6;
+  --h-ng-bg: #fdecec; --h-ng-ink: #8a2a2a; --h-ng-line: #f3c0c0;
+  --h-warn-bg: #fff4d6; --h-warn-ink: #8a5a00; --h-warn-line: #f0d68a;
+  --heat-0: var(--surface-2); --heat-1: #cde2fb; --heat-2: #86b6ef; --heat-3: #3987e5; --heat-4: #1c5cab;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --h-accent: #199e70; --h-accent-soft: #15302a; --h-train: #3987e5; --h-sleep: #d95926;
+    --h-ok-bg: #15302a; --h-ok-ink: #9fdcbb; --h-ok-line: #245a42;
+    --h-ng-bg: #3a1f1f; --h-ng-ink: #f2a3a3; --h-ng-line: #6a3030;
+    --h-warn-bg: #3a3020; --h-warn-ink: #fde9a8; --h-warn-line: #6a5a2a;
+    --heat-1: #184f95; --heat-2: #256abf; --heat-3: #3987e5; --heat-4: #86b6ef;
+  }
+}
+:root[data-theme="dark"] {
+  --h-accent: #199e70; --h-accent-soft: #15302a; --h-train: #3987e5; --h-sleep: #d95926;
+  --h-ok-bg: #15302a; --h-ok-ink: #9fdcbb; --h-ok-line: #245a42;
+  --h-ng-bg: #3a1f1f; --h-ng-ink: #f2a3a3; --h-ng-line: #6a3030;
+  --h-warn-bg: #3a3020; --h-warn-ink: #fde9a8; --h-warn-line: #6a5a2a;
+  --heat-1: #184f95; --heat-2: #256abf; --heat-3: #3987e5; --heat-4: #86b6ef;
+}
+.health .eyebrow { color: var(--h-accent); }
+.health .tab[aria-selected="true"] { color: var(--h-accent); border-bottom-color: var(--h-accent); }
+.health .primary { background: var(--h-accent); border-color: var(--h-accent); }
+.health .ghost:hover { background: var(--h-accent-soft); border-color: var(--h-accent); }
+.health .foot { line-height: 1.6; }
+.kpi-unit { font-size: 14px; font-weight: 500; color: var(--muted); margin-left: 2px; }
+.card + .card, .charts + .card, .card + .charts { margin-top: 14px; }
+.today-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr); gap: 14px; align-items: start; }
+.side { display: flex; flex-direction: column; gap: 14px; }
+.side .card + .card { margin-top: 0; }
+.menu-goal { font-size: 13px; color: var(--ink-2); margin: -6px 0 12px; }
+.menu-goal::before { content: "👉 "; }
+.day-pick { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
+.day-pick select, .day-pick input { height: 32px; padding: 0 8px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--surface); font-size: 13px; }
+.ex-hint { margin-top: 10px; }
+
+/* 今日の種目リスト */
+.ex-list { display: flex; flex-direction: column; gap: 6px; }
+.ex {
+  display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 10px;
+  padding: 9px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface);
+}
+.ex.done { background: var(--h-ok-bg); border-color: var(--h-ok-line); }
+.ex.done .ex-name { text-decoration: line-through; color: var(--muted); }
+.ex input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--h-accent); cursor: pointer; margin: 0; }
+.ex-main { min-width: 0; }
+.ex-name { font-weight: 600; font-size: 14px; }
+.ex-meta { font-size: 12px; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 2px; }
+.ex-meta .cat { color: var(--muted); }
+.ex-note { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.ex-rest { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.ex-rest .ghost.small { padding: 4px 10px; }
+.ex.sub { margin-left: 28px; border-style: dashed; }
+.ex-head { font-size: 12px; font-weight: 600; color: var(--muted); margin: 8px 0 0; letter-spacing: .04em; }
+.rest-day { padding: 14px; background: var(--h-accent-soft); border-radius: 10px; font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+
+/* 休憩タイマー */
+.timer-card { text-align: center; }
+.timer-card .card-head { text-align: left; }
+.timer-ring {
+  width: 168px; height: 168px; border-radius: 50%; margin: 4px auto 14px; display: grid; place-items: center;
+  background: conic-gradient(var(--h-accent) calc(var(--p) * 1%), var(--surface-2) 0);
+  transition: background .25s linear;
+}
+.timer-ring.running { background: conic-gradient(var(--h-train) calc(var(--p) * 1%), var(--surface-2) 0); }
+.timer-ring.finished { background: var(--h-accent); }
+.timer-face { width: 140px; height: 140px; border-radius: 50%; background: var(--surface); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.timer-time { font-size: 38px; font-weight: 700; letter-spacing: -.02em; line-height: 1; }
+.timer-sub { font-size: 12px; color: var(--muted); margin-top: 6px; }
+.timer-presets { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-bottom: 10px; }
+.timer-presets button {
+  border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink-2); cursor: pointer;
+  border-radius: 999px; padding: 4px 12px; font-size: 12px;
+}
+.timer-presets button:hover { border-color: var(--h-accent); }
+.timer-presets button.on { background: var(--h-accent); border-color: var(--h-accent); color: #fff; font-weight: 600; }
+.timer-actions { display: flex; justify-content: center; gap: 8px; margin-bottom: 8px; }
+.timer-card .check-toggle { height: auto; justify-content: center; font-size: 12px; }
+
+/* 周期メーター */
+.meter { height: 10px; border-radius: 999px; background: var(--heat-1); overflow: hidden; margin: 10px 0 6px; }
+.meter-fill { display: block; height: 100%; background: var(--h-train); border-radius: 999px; transition: width .35s ease; }
+.meter.over .meter-fill { background: var(--warn); }
+.health .field input[type="date"] { min-width: 0; }
+
+/* 週間プラン */
+.week-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+.day-card { border: 1px solid var(--line); border-radius: 10px; padding: 10px 10px 8px; background: var(--surface); min-width: 0; }
+.day-card.today { border-color: var(--h-accent); box-shadow: 0 0 0 2px var(--h-accent-soft); }
+.day-card.rest { background: var(--surface-2); }
+.day-card .dow { font-size: 12px; font-weight: 700; color: var(--muted); display: flex; justify-content: space-between; align-items: center; }
+.day-card.today .dow { color: var(--h-accent); }
+.day-card .dow .badge { font-size: 10px; background: var(--h-accent); color: #fff; border-radius: 999px; padding: 1px 7px; font-weight: 600; }
+.day-card .dname { font-size: 13px; font-weight: 650; margin: 4px 0 2px; line-height: 1.3; }
+.day-card .dgoal { font-size: 11px; color: var(--ink-2); line-height: 1.4; margin-bottom: 6px; }
+.day-card ul { list-style: none; margin: 0; padding: 0; font-size: 11px; color: var(--ink-2); line-height: 1.45; }
+.day-card li { padding: 2px 0; border-top: 1px solid var(--line); }
+.day-card li b { font-weight: 600; color: var(--ink); display: block; }
+.day-card li.more { color: var(--muted); border-top: 0; }
+.day-card details summary { cursor: pointer; font-size: 11px; color: var(--accent); margin-top: 4px; list-style: none; }
+.day-card details summary::-webkit-details-marker { display: none; }
+.day-card details[open] summary { display: none; }
+
+/* レストタイム表 */
+.rest-table { display: flex; flex-direction: column; gap: 6px; }
+.rest-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 8px 10px; border-radius: 8px; background: var(--surface-2); align-items: center; }
+.rest-row .rn { font-weight: 600; font-size: 13px; }
+.rest-row .rx { font-size: 11px; color: var(--muted); grid-column: 1 / 3; }
+.rest-row .rs { font-size: 15px; font-weight: 700; color: var(--h-train); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.rest-row .rs small { font-size: 11px; font-weight: 500; color: var(--muted); display: block; text-align: right; }
+.rule-list { margin: 0; padding-left: 18px; font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+.rule-list li + li { margin-top: 6px; }
+.rule-list b { color: var(--ink); font-weight: 650; }
+.tgrid, .hgrid, .lgrid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.charts { margin-bottom: 0; }
+.sets-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.sets-box { background: var(--surface-2); border-radius: 10px; padding: 12px 14px; }
+.sets-k { font-size: 12px; color: var(--muted); }
+.sets-v { font-size: 20px; font-weight: 700; margin: 2px 0 4px; color: var(--ink); }
+.sets-n { font-size: 12px; color: var(--ink-2); line-height: 1.5; }
+.five-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.five { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.five .no { font-size: 11px; font-weight: 700; color: var(--h-accent); }
+.five .fn { font-size: 14px; font-weight: 650; margin: 2px 0 6px; }
+.five ul { margin: 0; padding-left: 16px; font-size: 12px; color: var(--ink-2); line-height: 1.5; }
+.pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.pill { display: inline-block; font-size: 12px; padding: 4px 10px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--line); }
+.ng-card .rule-list li::marker { color: var(--crit); }
+
+/* 健康部門: 習慣チェック */
+.habit-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.habit-group { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; min-width: 0; }
+.habit-group h3 { font-size: 13px; margin: 0 0 6px; display: flex; justify-content: space-between; align-items: center; }
+.habit-group h3 .count { margin: 0; }
+.habit-list { display: flex; flex-direction: column; gap: 2px; }
+.habit { display: flex; align-items: flex-start; gap: 8px; padding: 5px 6px; border-radius: 8px; cursor: pointer; font-size: 13px; line-height: 1.4; }
+.habit:hover { background: var(--surface-2); }
+.habit input { width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--h-accent); flex: none; cursor: pointer; }
+.habit.on { color: var(--muted); }
+.habit.on .hn { text-decoration: line-through; }
+.habit .hd { font-size: 11px; color: var(--muted); display: block; }
+.habit-list.compact .habit { padding: 3px 4px; font-size: 12px; }
+.habit-list.compact .hd { display: none; }
+
+/* ヒートマップ */
+.heat-wrap { display: flex; flex-direction: column; gap: 8px; }
+.heat { display: grid; grid-template-columns: 36px repeat(7, minmax(0, 1fr)); gap: 4px; max-width: 560px; }
+.heat .wk { font-size: 11px; color: var(--muted); align-self: center; white-space: nowrap; }
+.heat .dh { font-size: 11px; color: var(--muted); text-align: center; }
+.heat .cell { aspect-ratio: 1; border-radius: 4px; background: var(--heat-0); border: 0; cursor: pointer; padding: 0; position: relative; }
+.heat .cell[data-l="1"] { background: var(--heat-1); }
+.heat .cell[data-l="2"] { background: var(--heat-2); }
+.heat .cell[data-l="3"] { background: var(--heat-3); }
+.heat .cell[data-l="4"] { background: var(--heat-4); }
+.heat .cell.today { outline: 2px solid var(--h-accent); outline-offset: 1px; }
+.heat .cell.sel { box-shadow: inset 0 0 0 2px var(--ink); }
+.heat .cell.future { opacity: .35; cursor: default; }
+.heat .cell:hover:not(.future) { filter: brightness(1.08); }
+.heat-legend { display: flex; align-items: center; gap: 4px; font-size: 11px; color: var(--muted); }
+.heat-legend .hl { width: 14px; height: 14px; border-radius: 3px; background: var(--heat-0); }
+.heat-legend .hl[data-l="1"] { background: var(--heat-1); }
+.heat-legend .hl[data-l="2"] { background: var(--heat-2); }
+.heat-legend .hl[data-l="3"] { background: var(--heat-3); }
+.heat-legend .hl[data-l="4"] { background: var(--heat-4); }
+
+/* 食事 OK / NG */
+.food-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.food { border-radius: 10px; padding: 10px 12px; border: 1px solid; }
+.food.ok { background: var(--h-ok-bg); border-color: var(--h-ok-line); }
+.food.ng { background: var(--h-ng-bg); border-color: var(--h-ng-line); }
+.food-h { font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+.food.ok .food-h { color: var(--h-ok-ink); }
+.food.ng .food-h { color: var(--h-ng-ink); }
+.food ul { margin: 0; padding-left: 16px; font-size: 12.5px; color: var(--ink-2); line-height: 1.6; }
+.anc-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.anc { border-radius: 10px; padding: 10px 12px; border: 1px solid var(--line); }
+.anc-h { font-weight: 700; font-size: 13px; margin-bottom: 8px; }
+.anc.too-much { background: var(--h-warn-bg); border-color: var(--h-warn-line); } .anc.too-much .anc-h { color: var(--h-warn-ink); }
+.anc.too-little { background: var(--h-ok-bg); border-color: var(--h-ok-line); } .anc.too-little .anc-h { color: var(--h-ok-ink); }
+.anc.too-new { background: var(--h-ng-bg); border-color: var(--h-ng-line); } .anc.too-new .anc-h { color: var(--h-ng-ink); }
+.anc .pill { background: var(--surface); }
+
+/* 記録 */
+.log-form { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: flex-end; margin-bottom: 14px; }
+.log-form .field { min-width: 110px; }
+.log-form .field input { height: 36px; padding: 0 10px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface); width: 100%; }
+.log-form .field input:focus { outline: 2px solid var(--h-accent-soft); border-color: var(--h-accent); }
+.log-form .primary { height: 36px; }
+.chart-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin: 12px 0 6px; }
+.chart-head h3 { font-size: 13px; font-weight: 650; margin: 0; }
+.chart-head .vf-input { height: 32px; min-width: 160px; }
+.line-chart { position: relative; height: 200px; }
+.line-chart.short { height: 150px; }
+.line-chart svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.line-chart .grid line { stroke: var(--line); stroke-width: 1; }
+.line-chart .tick { font-size: 11px; fill: var(--muted); }
+.line-chart .ln { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.line-chart .ar { opacity: .1; }
+.line-chart .dot { stroke: var(--surface); stroke-width: 2; }
+.line-chart .hit { fill: transparent; }
+.line-chart .end-label { font-size: 12px; font-weight: 600; fill: var(--ink); }
+.line-chart .goal { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 0; opacity: .6; }
+.line-chart .empty { position: absolute; inset: 0; display: grid; place-items: center; font-size: 13px; color: var(--muted); }
+.line-chart .cross { stroke: var(--line-strong); stroke-width: 1; }
+.series-train { stroke: var(--h-train); fill: var(--h-train); }
+.series-sleep { stroke: var(--h-sleep); fill: var(--h-sleep); }
+.series-body { stroke: var(--h-accent); fill: var(--h-accent); }
+.vbars .seg-b[data-g] { background: var(--h-train); }
+.vbars .seg-b[data-g="chest"] { background: #2a78d6; } .vbars .seg-b[data-g="back"] { background: #eb6834; }
+.vbars .seg-b[data-g="legs"] { background: #1baf7a; } .vbars .seg-b[data-g="shoulders"] { background: #eda100; }
+.vbars .seg-b[data-g="arms"] { background: #e87ba4; } .vbars .seg-b[data-g="core"] { background: #4a3aa7; }
+.vbars .seg-b[data-g="other"] { background: #8a8c8f; }
+:root[data-theme="dark"] .vbars .seg-b[data-g="chest"], :root:not([data-theme="light"]) .vbars .seg-b[data-g="chest"] { background: #3987e5; }
+.vol-legend { display: flex; flex-wrap: wrap; gap: 10px 14px; font-size: 12px; color: var(--ink-2); margin-top: 8px; }
+.vol-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+.vbars { position: relative; height: 200px; padding: 0 0 22px 34px; }
+.vbars .grid { position: absolute; left: 34px; right: 0; border-top: 1px solid var(--line); }
+.vbars .grid span { position: absolute; left: -34px; top: -8px; width: 28px; text-align: right; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.vbars .grid.base { border-top-color: var(--line-strong); }
+.vbars .grid.goal { border-top: 1px solid var(--h-accent); }
+.vbars .grid.goal span { color: var(--h-accent); }
+.vbars .cols { position: relative; display: flex; align-items: flex-end; height: 100%; gap: 6px; }
+.vbars .col { flex: 1 1 0; min-width: 0; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 2px; position: relative; }
+.vbars .col:hover { background: var(--surface-2); border-radius: 4px 4px 0 0; }
+.vbars .seg-b { width: 60%; max-width: 24px; }
+.vbars .seg-b.cap { border-radius: 4px 4px 0 0; }
+.vbars .xl { position: absolute; bottom: -20px; font-size: 11px; color: var(--muted); white-space: nowrap; }
+.vbars .vtot { font-size: 11px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.vtable-wrap { overflow: auto; max-height: 480px; border: 1px solid var(--line); border-radius: 10px; }
+.vtable { border-collapse: collapse; width: 100%; font-size: 13px; }
+.vtable th, .vtable td { padding: 6px 10px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+.vtable thead th { font-size: 12px; color: var(--ink-2); font-weight: 600; background: var(--surface-2); position: sticky; top: 0; }
+.vtable .num { text-align: right; font-variant-numeric: tabular-nums; }
+.vtable tbody tr:hover td { background: var(--surface-2); }
+.vtable .del { border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 14px; padding: 0 6px; border-radius: 6px; }
+.vtable .del:hover { color: var(--crit); background: var(--h-ng-bg); }
+.vtable td.kind { color: var(--muted); font-size: 12px; }
+.empty-note { color: var(--muted); font-size: 13px; padding: 20px 0; text-align: center; }
+
+@media (max-width: 1100px) {
+  .week-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .five-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .sets-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 960px) {
+  .today-grid, .tgrid, .hgrid, .lgrid { grid-template-columns: minmax(0, 1fr); }
+  .habit-groups, .anc-grid { grid-template-columns: minmax(0, 1fr); }
+  .food-cols { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .week-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .five-grid { grid-template-columns: minmax(0, 1fr); }
+  .sets-grid { grid-template-columns: minmax(0, 1fr); }
+  .ex { grid-template-columns: 24px minmax(0, 1fr); }
+  .ex-rest { grid-column: 2; justify-content: flex-start; }
+  .log-form .field { min-width: calc(50% - 6px); flex: 1 1 calc(50% - 6px); }
+  .heat { grid-template-columns: 30px repeat(7, minmax(0, 1fr)); }
+  .vbars { padding-left: 28px; } .vbars .grid { left: 28px; } .vbars .grid span { left: -28px; width: 24px; }
+  .vbars .vtot { display: none; }
+}
+
+/* 通知・テキスト保存ダイアログ (ダウンロードできない環境用) */
+.msg { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 80; background: var(--ink); color: var(--surface); padding: 9px 16px; border-radius: 999px; font-size: 13px; box-shadow: 0 8px 24px rgba(0,0,0,.25); max-width: calc(100vw - 32px); }
+.msg.err { background: var(--crit); color: #fff; }
+.vtable .del.arm { color: #fff; background: var(--crit); font-size: 12px; padding: 2px 8px; }
+.dl-dlg { position: fixed; inset: 0; z-index: 90; background: rgba(20,24,30,.45); display: grid; place-items: center; padding: 16px; }
+.dl-box { width: min(640px, 100%); background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 16px 48px rgba(0,0,0,.3); }
+.dl-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.dl-box textarea { width: 100%; height: 240px; font: 12px/1.4 ui-monospace, Menlo, Consolas, monospace; border: 1px solid var(--line-strong); border-radius: 10px; padding: 8px; background: var(--surface-2); color: var(--ink); resize: vertical; }
+.dl-foot { display: flex; justify-content: flex-end; }
+
+</style>
+</head>
+<body>
+<div class="page health">
+    <header class="top">
+      <div>
+        <p class="eyebrow">Training &amp; Health Dashboard</p>
+        <h1>筋トレ・健康管理</h1>
+        <p class="sub"><span id="todayLabel">–</span><span class="dot">·</span><span id="todayMenu">–</span></p>
+      </div>
+      <div class="top-actions">
+        <button id="exportBtn" class="ghost" type="button" title="記録を JSON ファイルで保存">記録を書き出す</button>
+        <button id="importBtn" class="ghost" type="button" title="書き出した JSON ファイルを読み込む">読み込む</button>
+        <input id="importFile" type="file" accept="application/json,.json" hidden>
+        <button id="themeToggle" class="ghost" type="button" aria-label="表示テーマの切り替え">
+          <span aria-hidden="true">◐</span> <span id="themeLabel"></span>
+        </button>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="部門">
+      <button class="tab" role="tab" id="tab-today" data-view="today" aria-controls="view-today">今日</button>
+      <button class="tab" role="tab" id="tab-train" data-view="train" aria-controls="view-train">筋トレ部門</button>
+      <button class="tab" role="tab" id="tab-health" data-view="health" aria-controls="view-health">健康部門</button>
+      <button class="tab" role="tab" id="tab-log" data-view="log" aria-controls="view-log">記録</button>
+    </nav>
+
+    <!-- ========== 今日 ========== -->
+    <section id="view-today" class="view" role="tabpanel" aria-labelledby="tab-today">
+      <section class="kpis" aria-label="今週の状況">
+        <div class="kpi">
+          <p class="kpi-label">今週のトレーニング</p>
+          <p class="kpi-value"><span id="kWeek">–</span><span class="kpi-unit"> / 6 日</span></p>
+          <p class="kpi-note" id="kWeekNote">月〜土の計画のうち完了した日</p>
+        </div>
+        <div class="kpi">
+          <p class="kpi-label">今日の習慣</p>
+          <p class="kpi-value"><span id="kHabit">–</span><span class="kpi-unit" id="kHabitAll"></span></p>
+          <p class="kpi-note">健康部門のチェック</p>
+        </div>
+        <div class="kpi">
+          <p class="kpi-label">連続記録</p>
+          <p class="kpi-value"><span id="kStreak">–</span><span class="kpi-unit"> 日</span></p>
+          <p class="kpi-note">トレーニングか習慣を記録した日が続いた数</p>
+        </div>
+        <div class="kpi">
+          <p class="kpi-label">体重（最新）</p>
+          <p class="kpi-value"><span id="kWeight">–</span><span class="kpi-unit"> kg</span></p>
+          <p class="kpi-note" id="kWeightNote">記録タブで入力</p>
+        </div>
+      </section>
+
+      <section class="today-grid">
+        <section class="card">
+          <div class="card-head">
+            <h2><span id="todayTitle">今日のメニュー</span> <span class="count" id="todayDone"></span></h2>
+            <div class="head-actions">
+              <label class="day-pick">表示する曜日
+                <select id="daySelect"></select>
+              </label>
+            </div>
+          </div>
+          <p class="menu-goal" id="todayGoal"></p>
+          <div class="ex-list" id="todayList"></div>
+          <p class="hint ex-hint">チェックはこのブラウザに日付ごとに保存。「休憩」を押すと右のタイマーが種目に合った秒数で始まります。</p>
+        </section>
+
+        <aside class="side">
+          <section class="card timer-card">
+            <div class="card-head"><h2>休憩タイマー</h2><p class="hint" id="timerFor"></p></div>
+            <div class="timer-ring" id="timerRing" style="--p:0">
+              <div class="timer-face">
+                <p class="timer-time" id="timerTime">1:30</p>
+                <p class="timer-sub" id="timerSub">待機中</p>
+              </div>
+            </div>
+            <div class="timer-presets" id="timerPresets">
+              <button type="button" data-sec="30">30秒</button>
+              <button type="button" data-sec="60">60秒</button>
+              <button type="button" data-sec="90" class="on">90秒</button>
+              <button type="button" data-sec="120">120秒</button>
+              <button type="button" data-sec="180">3分</button>
+              <button type="button" data-sec="300">5分</button>
+            </div>
+            <div class="timer-actions">
+              <button id="timerStart" class="primary" type="button">スタート</button>
+              <button id="timerReset" class="ghost" type="button">リセット</button>
+            </div>
+            <label class="check-toggle"><input type="checkbox" id="timerSound" checked> 終了時に音を鳴らす</label>
+          </section>
+
+          <section class="card">
+            <div class="card-head"><h2>プログラムの周期</h2></div>
+            <label class="field"><span>今の種目を始めた日（2〜3か月で種目を変える）</span><input type="date" id="cycleStart"></label>
+            <div class="meter" id="cycleMeter"><span class="meter-fill" style="width:0%"></span></div>
+            <p class="hint" id="cycleNote">開始日を入れると経過週数を表示します。</p>
+          </section>
+
+          <section class="card">
+            <div class="card-head"><h2>今日の健康チェック</h2><p class="hint"><button class="link-btn" type="button" data-goto="health">健康部門へ →</button></p></div>
+            <div class="habit-list compact" id="todayHabits"></div>
+          </section>
+        </aside>
+      </section>
+    </section>
+
+    <!-- ========== 筋トレ部門 ========== -->
+    <section id="view-train" class="view" role="tabpanel" aria-labelledby="tab-train" hidden>
+      <section class="card">
+        <div class="card-head">
+          <h2>週間プラン</h2>
+          <p class="hint">クリックで種目を展開。「今日」タブで実行・チェックできます。</p>
+        </div>
+        <div class="week-grid" id="weekGrid"></div>
+      </section>
+
+      <section class="charts tgrid">
+        <section class="card">
+          <div class="card-head"><h2>レストタイム（休憩）の目安</h2><p class="hint">大きな種目＝休憩長め、補助・瞬発・自重＝短め</p></div>
+          <div class="rest-table" id="restTable"></div>
+          <p class="hint" style="margin-top:10px">実際のイメージ：ベンチプレス（8〜12回）→ 90秒／ダンベルロー（8〜12回）→ 75秒／ジャンプスクワット（12回）→ 60秒／プランク（60秒）→ 30秒</p>
+        </section>
+        <section class="card">
+          <div class="card-head"><h2>トレーニングの原則</h2></div>
+          <ul class="rule-list">
+            <li><b>先にウエイト → 後で有酸素。</b>伸ばしたい多関節種目（ベンチ・スクワット・デッドリフト・懸垂）を先に、体幹トレは後半に。</li>
+            <li><b>限界まで：重量 100% → 80% → 60%。</b>100% を 2 セット（追い込めなければ 3 セット）。この高重量セットのインターバルは 3〜6 分。</li>
+            <li><b>多いセット（5）と少ないセット（15〜20 回）の両方をやる。</b>筋持久力 15〜20 回／筋力 3〜5 回。最終的には 1 セット 5 回くらいまで。</li>
+            <li><b>2〜3 か月で種目を変える。</b>3 か月くらいで体が変わる。慣れてきたら種目を増やす。</li>
+            <li><b>毎日はトレーニングしない。</b>軽い筋肉痛で OK。重量が伸びていれば筋肉痛がなくても効いている。ちゃんと休む（日曜は回復日。ここで筋肉が仕上がる）。</li>
+            <li><b>トレーニング前に身体をアップ。</b>終わったらお風呂などで温める。ただし筋肉痛や炎症は温めず冷やす。</li>
+          </ul>
+        </section>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2>セット数の目安</h2><p class="hint">「セット数はどうなのか？」への答え</p></div>
+        <div class="sets-grid">
+          <div class="sets-box">
+            <p class="sets-k">1 種目あたり</p>
+            <p class="sets-v">2〜4 セット</p>
+            <p class="sets-n">100% の限界セットを 2 セット（追い込めなければ 3）、＋80%・60% のドロップで合計 3〜4 セット。週間プランの 3〜4 セットもこの範囲。</p>
+          </div>
+          <div class="sets-box">
+            <p class="sets-k">1 部位あたり・1 週間で</p>
+            <p class="sets-v">10〜20 セット</p>
+            <p class="sets-n">筋肥大の一般的な目安（限界近くまで追い込んだセットを数える）。週間プランなら胸は月曜 4+3+3 ＋ 土曜の腕立てで約 12〜13 セット、脚は火・金で約 16〜20 セット。</p>
+          </div>
+          <div class="sets-box">
+            <p class="sets-k">回数の使い分け</p>
+            <p class="sets-v">5 回 / 8〜12 回 / 15〜20 回</p>
+            <p class="sets-n">筋力 3〜5 回（高重量・少セット数でも可）、筋肥大 8〜12 回、筋持久力 15〜20 回。同じ種目でも週の中で両方入れる。</p>
+          </div>
+          <div class="sets-box">
+            <p class="sets-k">増やすとき</p>
+            <p class="sets-v">週 +1〜2 セット</p>
+            <p class="sets-n">重量が伸びなくなったら部位ごとに少しずつ増やす。20 セットを超えて疲労が抜けないなら減らす。セット数より「重量が伸びているか」を記録タブで見る。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="charts tgrid">
+        <section class="card">
+          <div class="card-head"><h2>胸</h2><p class="hint">インクライン 1・デクライン 1・フラット 2 を各セット</p></div>
+          <ul class="rule-list">
+            <li><b>ダンベルベンチプレス（内側）</b>：インクラインは 30 度。上げ切らない（肘を伸ばし切らず胸に負荷を残す）。</li>
+            <li><b>ダンベルプルオーバー／デクライン</b>：下部・胸郭を使う。</li>
+            <li><b>ダンベルフライ（外側）</b>：腕が垂直になる直前で止める。内転させる（胸を寄せる意識）。</li>
+          </ul>
+        </section>
+        <section class="card">
+          <div class="card-head"><h2>上腕二頭筋</h2><p class="hint">肘は動かさない</p></div>
+          <ul class="rule-list">
+            <li><b>バーベルカール</b>：グリップを内・外・真ん中で変える。</li>
+            <li><b>インクラインダンベルカール</b>：ベンチ 45 度。後にインクラインハンマーカール。</li>
+            <li><b>プローン（うつ伏せ）ダンベルカール</b>：反動を使わない。</li>
+          </ul>
+        </section>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2>やるべき基本エクササイズ</h2><p class="hint">この順番で。15 回 × 2〜3 セット（筋持久力 15〜20 回／筋力 3〜5 回、最終的には 5 回まで）→ 慣れたら種目を増やす</p></div>
+        <div class="five-grid" id="fiveGrid"></div>
+      </section>
+
+      <section class="charts tgrid">
+        <section class="card ng-card">
+          <div class="card-head"><h2>筋肉が付かない NG</h2></div>
+          <ul class="rule-list">
+            <li>毎日トレーニングする（休まない）。</li>
+            <li>回復・アフターケアをしない。お風呂などで温める。筋肉痛・炎症は冷やす。</li>
+            <li>トレーニング前にアップしない。</li>
+            <li>脂肪を取らない。テストステロンは脂肪が原料。アミノ酸のバランスをとる。</li>
+            <li>タンパク源が偏る。卵、ささみ、ブロッコリー。色んな食材からアミノ酸を取る。プロテインは飲む。</li>
+          </ul>
+        </section>
+        <section class="card">
+          <div class="card-head"><h2>テストステロンを増やす</h2></div>
+          <div class="pill-row">
+            <span class="pill">亜鉛</span><span class="pill">ビタミン D</span><span class="pill">ビタミン E</span><span class="pill">マグネシウム</span><span class="pill">良質な脂肪</span><span class="pill">睡眠</span><span class="pill">日光</span>
+          </div>
+          <p class="hint" style="margin-top:10px">サプリは健康部門の毎日チェックに入っています。</p>
+        </section>
+      </section>
+    </section>
+
+    <!-- ========== 健康部門 ========== -->
+    <section id="view-health" class="view" role="tabpanel" aria-labelledby="tab-health" hidden>
+      <section class="card">
+        <div class="card-head">
+          <h2><span>毎日の習慣チェック</span> <span class="count" id="habitDone"></span></h2>
+          <div class="head-actions">
+            <label class="day-pick">日付 <input type="date" id="habitDate"></label>
+          </div>
+        </div>
+        <p class="menu-goal">腹八分目・高タンパク・低加工</p>
+        <div class="habit-groups" id="habitGroups"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2>直近 4 週間の達成率</h2><p class="hint">1 マス = 1 日。濃いほど達成率が高い。クリックでその日を編集</p></div>
+        <div class="heat-wrap">
+          <div class="heat" id="heat"></div>
+          <div class="heat-legend"><span>低</span><i class="hl" data-l="0"></i><i class="hl" data-l="1"></i><i class="hl" data-l="2"></i><i class="hl" data-l="3"></i><i class="hl" data-l="4"></i><span>高</span></div>
+        </div>
+      </section>
+
+      <section class="charts hgrid">
+        <section class="card">
+          <div class="card-head"><h2>食事の選び方</h2></div>
+          <div class="food-cols">
+            <div class="food ok">
+              <p class="food-h">○ OK</p>
+              <ul>
+                <li>魚・シーフード（EPA / DHA）</li>
+                <li>野菜（葉物・繊維質を毎食の中心に）</li>
+                <li>ゆで卵、ささみ、大豆、プロテイン</li>
+                <li>さつまいも・根茎類</li>
+                <li>ナッツ・種子・豆類・全粒穀物</li>
+                <li>玉ねぎ、きのこ、海藻、ごぼう</li>
+                <li>ベリー、リンゴ、フルーツ</li>
+                <li>発酵食品：納豆、キムチ、ヨーグルト</li>
+                <li>スムージー：バナナ＋ミルク＋ベリー＋プロテイン</li>
+              </ul>
+            </div>
+            <div class="food ng">
+              <p class="food-h">× NG</p>
+              <ul>
+                <li>ジャンクフード</li>
+                <li>スナック菓子</li>
+                <li>加工食品</li>
+                <li>パン</li>
+                <li>白米（精製穀物）</li>
+                <li>急速に消化される炭水化物を夕食時に</li>
+                <li>夜遅くの食事</li>
+                <li>アルコール 2 杯目以降</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="card">
+          <div class="card-head"><h2>食事のルール</h2></div>
+          <ul class="rule-list">
+            <li><b>時間：</b>一日のカロリーの大部分を午前中〜午後の早い時間に。夕食は 19〜20 時までに終える。毎日同じ時間に食べる。</li>
+            <li><b>タンパク質：</b>毎食 30g 以上（肉、魚、大豆、プロテインパウダーなど高品質な源から）。</li>
+            <li><b>食物繊維：</b>毎食、繊維質の野菜を食事の中心に。葉物野菜は必ず。ナッツ・豆・全粒穀物を定期的に。</li>
+            <li><b>シーフード：</b>もっと取り入れる。EPA + DHA を一日 500〜1000mg。</li>
+            <li><b>ベリー：</b>週に何回かは食事に。</li>
+            <li><b>嗜好品：</b>アルコールは一日 1 杯まで。カフェインは午前中〜午後の早い時間まで。</li>
+            <li><b>発酵食品：</b>納豆・キムチ・ヨーグルトを毎日どれか。</li>
+          </ul>
+        </section>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2>古代との違い（現代の生活で調整すること）</h2><p class="hint">多すぎるものを減らし、少なすぎるものを増やし、新しすぎるものから距離を置く</p></div>
+        <div class="anc-grid">
+          <div class="anc too-much">
+            <p class="anc-h">多すぎる ↓</p>
+            <div class="pill-row">
+              <span class="pill">摂取カロリー</span><span class="pill">精製穀物</span><span class="pill">アルコール</span><span class="pill">オメガ 6 脂肪酸</span><span class="pill">塩分</span><span class="pill">乳製品</span><span class="pill">飽和脂肪酸</span><span class="pill">人口密度</span><span class="pill">人生の設備</span>
+            </div>
+          </div>
+          <div class="anc too-little">
+            <p class="anc-h">少なすぎる ↑</p>
+            <div class="pill-row">
+              <span class="pill">有酸素運動</span><span class="pill">筋肉運動</span><span class="pill">睡眠</span><span class="pill">ビタミン</span><span class="pill">ミネラル</span><span class="pill">食物繊維</span><span class="pill">たんぱく質</span><span class="pill">オメガ 3 脂肪酸</span><span class="pill">自然との触れ合い</span><span class="pill">日光</span><span class="pill">他者とのコミュニケーション</span><span class="pill">他者への貢献</span>
+            </div>
+          </div>
+          <div class="anc too-new">
+            <p class="anc-h">新しすぎる ✕</p>
+            <div class="pill-row">
+              <span class="pill">加工食品</span><span class="pill">トランス脂肪酸</span><span class="pill">果糖ブドウ糖液糖</span><span class="pill">人工照明</span><span class="pill">デジタルデバイス</span><span class="pill">インターネット</span><span class="pill">慢性的ストレス</span><span class="pill">化学物質</span><span class="pill">薬</span><span class="pill">仕事のプレッシャー</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ========== 記録 ========== -->
+    <section id="view-log" class="view" role="tabpanel" aria-labelledby="tab-log" hidden>
+      <section class="charts lgrid">
+        <section class="card">
+          <div class="card-head"><h2>体の記録</h2><p class="hint">毎朝同じ条件で</p></div>
+          <form class="log-form" id="bodyForm">
+            <label class="field"><span>日付</span><input type="date" name="date" required></label>
+            <label class="field"><span>体重 (kg)</span><input type="number" name="weight" step="0.1" min="20" max="250" inputmode="decimal"></label>
+            <label class="field"><span>体脂肪率 (%)</span><input type="number" name="fat" step="0.1" min="2" max="60" inputmode="decimal"></label>
+            <label class="field"><span>睡眠 (時間)</span><input type="number" name="sleep" step="0.1" min="0" max="16" inputmode="decimal"></label>
+            <button class="primary" type="submit">保存</button>
+          </form>
+          <div class="chart-head"><h3>体重の推移</h3><span class="hint" id="weightRange"></span></div>
+          <div class="line-chart" id="weightChart"></div>
+          <div class="chart-head"><h3>睡眠時間</h3><span class="hint">目標 7 時間以上</span></div>
+          <div class="line-chart short" id="sleepChart"></div>
+        </section>
+
+        <section class="card">
+          <div class="card-head"><h2>トレーニング記録</h2><p class="hint">重量が伸びているかを見る</p></div>
+          <form class="log-form" id="setForm">
+            <label class="field"><span>日付</span><input type="date" name="date" required></label>
+            <label class="field grow"><span>種目</span><input name="ex" list="exList" required placeholder="ベンチプレス" autocomplete="off"><datalist id="exList"></datalist></label>
+            <label class="field"><span>重量 (kg)</span><input type="number" name="weight" step="0.5" min="0" max="500" inputmode="decimal"></label>
+            <label class="field"><span>回数</span><input type="number" name="reps" min="1" max="200" inputmode="numeric" required></label>
+            <label class="field"><span>セット</span><input type="number" name="sets" min="1" max="20" inputmode="numeric" value="1" required></label>
+            <button class="primary" type="submit">記録</button>
+          </form>
+          <div class="chart-head">
+            <h3>種目ごとの最高重量（日別）</h3>
+            <select id="exSelect" class="vf-input"></select>
+          </div>
+          <div class="line-chart" id="exChart"></div>
+          <p class="hint" id="exNote"></p>
+        </section>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2>週ごとのセット数（限界まで追い込んだセット）</h2><p class="hint">部位あたり週 10〜20 セットが目安</p></div>
+        <div class="vbars short" id="volChart"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2><span>記録の一覧</span> <span class="count" id="logCount"></span></h2>
+          <div class="head-actions"><button id="dlCsv" class="ghost small" type="button">CSV で保存</button></div>
+        </div>
+        <div class="vtable-wrap">
+          <table class="vtable">
+            <thead><tr><th>日付</th><th>種類</th><th>内容</th><th class="num">重量</th><th class="num">回数</th><th class="num">セット</th><th></th></tr></thead>
+            <tbody id="logBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <footer class="foot">記録はこのブラウザの localStorage に保存され、他の端末とは共有されません。端末を変えるときは「記録を書き出す」で JSON を保存して、新しい端末で「読み込む」。</footer>
+  </div>
+  <div id="msg" class="msg" role="status" hidden></div>
+  <div id="dlDlg" class="dl-dlg" hidden>
+    <div class="dl-box">
+      <div class="dl-head"><b id="dlName"></b><button id="dlClose" class="ghost small" type="button">閉じる</button></div>
+      <p class="hint">この画面ではファイルを直接保存できないので、内容をコピーしてテキストファイル（メモ帳など）に貼り付けて保存してください。</p>
+      <textarea id="dlText" readonly spellcheck="false"></textarea>
+      <div class="dl-foot"><button id="dlCopy" class="primary" type="button">コピー</button></div>
+    </div>
+  </div>
+  <div id="tip" class="tip" role="tooltip" hidden></div>
+<script>
+/* 筋トレ・健康管理ダッシュボード。計画・ルールはこのファイルに、記録はブラウザの localStorage に保存 */
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const pad = (n) => String(n).padStart(2, "0");
+  const ymd = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  const parse = (s) => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
+  const addDays = (s, n) => { const d = parse(s); d.setDate(d.getDate() + n); return ymd(d); };
+  const today = () => ymd(new Date());
+  const DOW = ["日", "月", "火", "水", "木", "金", "土"];
+  const mdLabel = (s) => { const d = parse(s); return `${d.getMonth() + 1}/${d.getDate()}`; };
+
+  /* ---------- テーマ (在庫ダッシュボードと同じ localStorage "theme") ---------- */
+  const THEMES = ["auto", "light", "dark"];
+  const THEME_LABEL = { auto: "自動", light: "ライト", dark: "ダーク" };
+  let theme = "auto";
+  try { theme = localStorage.getItem("theme") || "auto"; } catch (_) {}
+  const applyTheme = () => {
+    if (theme === "auto") document.documentElement.removeAttribute("data-theme");
+    else document.documentElement.setAttribute("data-theme", theme);
+    $("themeLabel").textContent = THEME_LABEL[theme];
+  };
+  applyTheme();
+  $("themeToggle").addEventListener("click", () => {
+    theme = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
+    try { localStorage.setItem("theme", theme); } catch (_) {}
+    applyTheme();
+    renderCharts();
+  });
+
+  /* ---------- レストタイムの区分 ---------- */
+  const REST = {
+    big: { name: "大筋群・高重量種目", ex: "ベンチ、スクワット、デッドリフト、懸垂など", range: "90〜120秒", sec: 90, why: "大きな筋肉をしっかり回復させて、高重量でもフォームを崩さない。筋力＆筋肥大の両方に最適" },
+    mid: { name: "中重量・補助種目", ex: "ショルダープレス、ローイング、ランジ、ヒップスラストなど", range: "60〜90秒", sec: 75, why: "ある程度の回復を確保しつつ、代謝・パンプ感も狙う。バランス体型を作る補助に最適" },
+    power: { name: "瞬発系・ジャンプ系", ex: "ジャンプスクワット、スプリント、ケトルベルスイングなど", range: "60〜90秒（全力なら90秒）", sec: 60, why: "疲労が残りすぎると動作が鈍るので、しっかり回復させつつスピード重視" },
+    body: { name: "自重・体幹系", ex: "プランク、バーピー、腹筋ローラーなど", range: "30〜60秒", sec: 30, why: "心拍数を保ったまま継続して、体幹・持久力に効かせる" },
+    circuit: { name: "サーキット・HIIT", ex: "種目間 15〜30秒、サイクル間 1〜2分", range: "15〜30秒 / 1〜2分", sec: 20, why: "心肺機能アップ・脂肪燃焼を狙うので、心拍数を落としすぎない" },
+    cardio: { name: "有酸素", ex: "ランニング、バイク、スイム", range: "—", sec: 0, why: "ウエイトの後に行う" },
+  };
+
+  /* ---------- 週間プラン (曜日 0=日) ---------- */
+  const PLAN = {
+    1: { name: "上半身プッシュ（胸・肩・三頭筋）＋体幹", goal: "厚い胸・肩を作りつつ、体幹安定", ex: [
+      { n: "ベンチプレス or ダンベルプレス", r: "8〜12回 × 4セット", c: "big", s: 90, g: "chest", note: "インクライン30度・デクライン・フラットを組み合わせる。上げ切らない" },
+      { n: "ショルダープレス（バーベル or ダンベル）", r: "8〜12回 × 3セット", c: "mid", s: 75, g: "shoulders" },
+      { n: "ディップス or プッシュアップ", r: "限界まで × 3セット", c: "body", s: 60, g: "chest" },
+      { n: "サイドレイズ（肩）", r: "12〜15回 × 3セット", c: "mid", s: 60, g: "shoulders", note: "肩を動かさない・小指を上げない・地面と平行まで・肘は少し曲げたまま" },
+      { n: "プランク", r: "60秒 × 3セット", c: "body", s: 30, g: "core" },
+    ] },
+    2: { name: "下半身（脚・お尻）＋ジャンプ系", goal: "パワフルな下半身＋爆発力", ex: [
+      { n: "スクワット（バーベル or 自重）", r: "8〜12回 × 4セット", c: "big", s: 120, g: "legs", note: "足は肩幅くらい・太ももが地面と平行になるまで・下ろすとき腰を丸めない" },
+      { n: "デッドリフト", r: "6〜10回 × 3セット", c: "big", s: 120, g: "legs" },
+      { n: "ランジ or ブルガリアンスクワット", r: "10〜12回 × 3セット", c: "mid", s: 75, g: "legs" },
+      { n: "ジャンプスクワット・ボックスジャンプ", r: "12回 × 3セット", c: "power", s: 60, g: "legs" },
+      { n: "カーフレイズ", r: "15〜20回 × 3セット", c: "mid", s: 60, g: "legs" },
+    ] },
+    3: { name: "有酸素＋サーキット", goal: "脂肪燃焼＋格闘技的持久力", ex: [
+      { n: "ランニング 5km（中強度） or インターバル走 400m × 6本", r: "", c: "cardio", s: 0, g: "cardio" },
+      { n: "サーキット（30秒ずつ × 3セット）", r: "種目間 15〜30秒・サイクル間 1〜2分", c: "circuit", s: 60, g: "cardio", head: true },
+      { n: "バーピー", r: "30秒", c: "circuit", s: 20, g: "cardio", sub: true },
+      { n: "マウンテンクライマー", r: "30秒", c: "circuit", s: 20, g: "core", sub: true },
+      { n: "ジャンプスクワット", r: "30秒", c: "circuit", s: 20, g: "legs", sub: true },
+      { n: "腕立て伏せ", r: "30秒", c: "circuit", s: 20, g: "chest", sub: true },
+    ] },
+    4: { name: "上半身プル（背中・二頭筋）＋体幹", goal: "引きの強さ＋逆三角形の背中", ex: [
+      { n: "懸垂", r: "限界まで × 4セット", c: "big", s: 120, g: "back", note: "できるだけ負荷を上げる（加重）" },
+      { n: "バーベルロー or ダンベルロー", r: "8〜12回 × 3セット", c: "mid", s: 75, g: "back" },
+      { n: "フェイスプル", r: "12〜15回 × 3セット", c: "mid", s: 60, g: "shoulders" },
+      { n: "アームカール（ダンベル / バーベル）", r: "10〜12回 × 3セット", c: "mid", s: 60, g: "arms", note: "肘は動かさない。グリップを内・外・真ん中で変える" },
+      { n: "腹筋ローラー", r: "10〜15回 × 3セット", c: "body", s: 45, g: "core" },
+    ] },
+    5: { name: "下半身（瞬発＋安定）", goal: "爆発力＋横の動きの安定性", ex: [
+      { n: "フロントスクワット", r: "6〜8回 × 3セット", c: "big", s: 120, g: "legs" },
+      { n: "ケトルベルスイング", r: "12〜15回 × 3セット", c: "power", s: 90, g: "legs" },
+      { n: "レッグカール or ヒップスラスト", r: "10〜12回 × 3セット", c: "mid", s: 75, g: "legs" },
+      { n: "サイドランジ", r: "10〜12回 × 3セット", c: "mid", s: 60, g: "legs" },
+    ] },
+    6: { name: "全身サーキット＋HIIT", goal: "全身の燃焼＋俊敏性", ex: [
+      { n: "サーキット（3〜5セット・インターバル 1分）", r: "", c: "circuit", s: 60, g: "cardio", head: true },
+      { n: "バーピー", r: "20回", c: "circuit", s: 20, g: "cardio", sub: true },
+      { n: "懸垂", r: "10回", c: "circuit", s: 20, g: "back", sub: true },
+      { n: "腕立て伏せ", r: "20回", c: "circuit", s: 20, g: "chest", sub: true },
+      { n: "ジャンプスクワット", r: "20回", c: "circuit", s: 20, g: "legs", sub: true },
+      { n: "HIIT：バイク or 100m ダッシュ × 8本", r: "", c: "power", s: 90, g: "cardio" },
+    ] },
+    0: { name: "休養 or アクティブリカバリー", goal: "回復日（ここで筋肉が仕上がる）", rest: true, ex: [
+      { n: "ヨガ・ストレッチ", r: "30分", c: "cardio", s: 0, g: "recovery" },
+      { n: "軽いジョグ or スイム", r: "", c: "cardio", s: 0, g: "recovery" },
+      { n: "サウナ＋水風呂", r: "", c: "cardio", s: 0, g: "recovery", note: "筋肉痛・炎症があるところは温めず冷やす" },
+    ] },
+  };
+  const GROUP = { chest: "胸", back: "背中", legs: "脚・お尻", shoulders: "肩", arms: "腕", core: "体幹", cardio: "有酸素", recovery: "回復", other: "その他" };
+  const GROUP_ORDER = ["chest", "back", "legs", "shoulders", "arms", "core", "other"];
+  const guessGroup = (name) => {
+    const n = name.toLowerCase();
+    if (/プランク|腹筋|クランチ|ローラー|マウンテン|体幹/.test(n)) return "core";
+    if (/カール(?!.*レッグ)|二頭|三頭|トライセ|アーム/.test(n)) return /レッグカール/.test(n) ? "legs" : "arms";
+    if (/ショルダー|サイドレイズ|フェイスプル|肩|リアレイズ|フロントレイズ/.test(n)) return "shoulders";
+    if (/懸垂|ロー|プルダウン|プルアップ|チンニング|背中|ラット/.test(n)) return "back";
+    if (/スクワット|デッド|ランジ|レッグ|ヒップ|カーフ|スイング|ジャンプ|脚/.test(n)) return "legs";
+    if (/ベンチ|プレス|腕立て|プッシュ|ディップス|フライ|プルオーバー|胸/.test(n)) return "chest";
+    return "other";
+  };
+
+  /* ---------- 基本エクササイズ ---------- */
+  const FIVE = [
+    { n: "ベンチプレス", tips: ["胸の基本種目。インクライン 30 度も組み合わせる", "上げ切らず、胸に負荷を残す"] },
+    { n: "フロントプルダウン", tips: ["肩幅より一こぶし分広く握る", "胸を張って引く", "バーが顎より下まで引く"] },
+    { n: "サイドレイズ", tips: ["肩を動かさない", "小指を上げない", "地面と平行になるまで上げる", "肘は少し曲げたまま", "座りでも立ちでも OK"] },
+    { n: "スクワット", tips: ["足は肩幅くらい", "太ももが地面と平行になるまでしゃがむ", "下ろすとき腰を丸めない"] },
+    { n: "ワンレッグ自重デッドリフト", tips: ["フォームを意識する", "バランスと裏もも・お尻"] },
+    { n: "クランチ", tips: ["肩甲骨が浮くくらいまで", "手は後ろ", "息を吐きながら上げる、吸いながら戻す", "ボールクランチも"] },
+  ];
+
+  /* ---------- 健康部門: 毎日の習慣 ---------- */
+  const HABITS = [
+    { g: "食事", items: [
+      { id: "dinner", n: "夕食を 19〜20 時までに終えた", d: "夜遅くの食事は避ける" },
+      { id: "early", n: "カロリーの大部分を午前〜午後の早い時間に" },
+      { id: "protein", n: "毎食タンパク質 30g 以上", d: "肉、魚、大豆、プロテインなど" },
+      { id: "veg", n: "毎食、繊維質の野菜を中心に（葉物野菜は必ず）" },
+      { id: "fish", n: "シーフード or EPA / DHA 500〜1000mg" },
+      { id: "ferment", n: "発酵食品（納豆・キムチ・ヨーグルト）" },
+      { id: "nuts", n: "ナッツ・豆・全粒穀物" },
+      { id: "berry", n: "ベリー（週に何回か）" },
+      { id: "nojunk", n: "ジャンク・スナック・加工食品・パン・白米を避けた" },
+      { id: "nocarb", n: "夕食に急速に消化される炭水化物を取らなかった" },
+      { id: "sametime", n: "毎日同じ時間に食事", d: "腹八分目" },
+    ] },
+    { g: "嗜好品・サプリ", items: [
+      { id: "alcohol", n: "アルコールは 1 杯まで" },
+      { id: "caffeine", n: "カフェインは午前〜午後の早い時間まで" },
+      { id: "whey", n: "プロテインを飲んだ" },
+      { id: "supp", n: "亜鉛・ビタミン D・E・マグネシウム", d: "テストステロンを増やす" },
+    ] },
+    { g: "生活・回復", items: [
+      { id: "sleep", n: "睡眠 7 時間以上" },
+      { id: "sun", n: "日光を浴びた" },
+      { id: "nature", n: "自然との触れ合い" },
+      { id: "social", n: "他者とのコミュニケーション・貢献" },
+      { id: "digital", n: "夜はデジタルデバイス・人工照明を控えた" },
+      { id: "care", n: "回復ケア（お風呂で温める・ストレッチ）", d: "筋肉痛・炎症は温めず冷やす" },
+    ] },
+  ];
+  const HABIT_ALL = HABITS.flatMap((g) => g.items);
+
+  /* ---------- ファイルの受け渡し (ダウンロードできない環境ではテキストを表示してコピー) ---------- */
+  const NO_DL = !!window.HEALTH_NO_DOWNLOAD;
+  const deliver = (text, filename, mime) => {
+    if (!NO_DL) {
+      const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type: mime })); a.download = filename; a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000); return;
+    }
+    $("dlName").textContent = filename; $("dlText").value = text; $("dlCopy").textContent = "コピー";
+    $("dlDlg").hidden = false; $("dlText").focus(); $("dlText").select();
+  };
+  $("dlClose").addEventListener("click", () => { $("dlDlg").hidden = true; });
+  $("dlCopy").addEventListener("click", () => {
+    const done = () => { $("dlCopy").textContent = "コピーしました"; };
+    const fallback = () => { $("dlText").select(); try { document.execCommand("copy"); done(); } catch (_) {} };
+    if (navigator.clipboard) navigator.clipboard.writeText($("dlText").value).then(done, fallback); else fallback();
+  });
+  let msgT;
+  const showMsg = (text, err) => { const m = $("msg"); m.textContent = text; m.classList.toggle("err", !!err); m.hidden = false; clearTimeout(msgT); msgT = setTimeout(() => { m.hidden = true; }, 4000); };
+
+  /* ---------- 保存 ---------- */
+  const KEY = "health.v1";
+  const blank = () => ({ ex: {}, habits: {}, body: [], sets: [], cycleStart: "", timerSec: 90 });
+  let db = blank();
+  try { db = Object.assign(blank(), JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (_) {}
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(db)); } catch (_) {} };
+  const exKey = (dow, i) => `${dow}-${i}`;
+  const exDone = (date, dow, i) => !!(db.ex[date] && db.ex[date][exKey(dow, i)]);
+  const setEx = (date, dow, i, v) => { db.ex[date] = db.ex[date] || {}; if (v) db.ex[date][exKey(dow, i)] = 1; else delete db.ex[date][exKey(dow, i)]; if (!Object.keys(db.ex[date]).length) delete db.ex[date]; save(); };
+  const habitOn = (date, id) => !!(db.habits[date] && db.habits[date][id]);
+  const setHabit = (date, id, v) => { db.habits[date] = db.habits[date] || {}; if (v) db.habits[date][id] = 1; else delete db.habits[date][id]; if (!Object.keys(db.habits[date]).length) delete db.habits[date]; save(); };
+  const habitCount = (date) => Object.keys(db.habits[date] || {}).filter((id) => HABIT_ALL.some((h) => h.id === id)).length;
+  // その日の種目のうち、サーキットの見出し行以外がすべてチェックされているか
+  const dayStatus = (date) => {
+    const dow = parse(date).getDay();
+    const plan = PLAN[dow];
+    const items = plan.ex.map((e, i) => ({ e, i })).filter((x) => !x.e.head);
+    const done = items.filter((x) => exDone(date, dow, x.i)).length;
+    return { total: items.length, done, full: done === items.length, rest: !!plan.rest };
+  };
+
+  /* ---------- タブ ---------- */
+  const VIEWS = ["today", "train", "health", "log"];
+  const showView = (v) => {
+    if (!VIEWS.includes(v)) v = "today";
+    VIEWS.forEach((x) => { $(`view-${x}`).hidden = x !== v; $(`tab-${x}`).setAttribute("aria-selected", x === v); $(`tab-${x}`).tabIndex = x === v ? 0 : -1; });
+    if (location.hash !== `#${v}`) history.replaceState(null, "", `#${v}`);
+    if (v === "log") renderCharts();
+  };
+  document.querySelectorAll(".tab").forEach((b) => b.addEventListener("click", () => showView(b.dataset.view)));
+  document.querySelectorAll("[data-goto]").forEach((b) => b.addEventListener("click", () => showView(b.dataset.goto)));
+  addEventListener("hashchange", () => showView(location.hash.slice(1)));
+
+  /* ---------- 今日 ---------- */
+  let viewDow = new Date().getDay();
+  const sel = $("daySelect");
+  [1, 2, 3, 4, 5, 6, 0].forEach((d) => { const o = document.createElement("option"); o.value = d; o.textContent = `${DOW[d]}曜${d === new Date().getDay() ? "（今日）" : ""}`; sel.appendChild(o); });
+  sel.value = viewDow;
+  sel.addEventListener("change", () => { viewDow = Number(sel.value); renderToday(); });
+
+  const restBtn = (e) => (e.s > 0 ? `<span class="ex-rest"><button class="ghost small" type="button" data-rest="${e.s}" data-for="${esc(e.n)}">休憩 ${e.s}秒</button></span>` : `<span class="ex-rest"><span class="hint">${esc(REST[e.c].range === "—" ? "" : REST[e.c].range)}</span></span>`);
+
+  function renderToday() {
+    const d = new Date();
+    const date = today();
+    $("todayLabel").textContent = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${DOW[d.getDay()]}）`;
+    $("todayMenu").textContent = PLAN[d.getDay()].name;
+    const plan = PLAN[viewDow];
+    $("todayTitle").textContent = `${DOW[viewDow]}曜：${plan.name}`;
+    $("todayGoal").textContent = plan.goal;
+    const list = $("todayList");
+    const items = plan.ex.map((e, i) => ({ e, i }));
+    list.innerHTML = items.map(({ e, i }) => {
+      if (e.head) return `<p class="ex-head">${esc(e.n)}${e.r ? ` — ${esc(e.r)}` : ""}</p>`;
+      const on = exDone(date, viewDow, i);
+      return `<label class="ex${on ? " done" : ""}${e.sub ? " sub" : ""}">
+        <input type="checkbox" data-i="${i}" ${on ? "checked" : ""}>
+        <span class="ex-main"><span class="ex-name">${esc(e.n)}</span>
+          <span class="ex-meta">${e.r ? `<span>${esc(e.r)}</span>` : ""}<span class="cat">${esc(REST[e.c].name)}</span><span class="cat">${esc(GROUP[e.g] || "")}</span></span>
+          ${e.note ? `<span class="ex-note">${esc(e.note)}</span>` : ""}</span>
+        ${restBtn(e)}</label>`;
+    }).join("");
+    if (plan.rest) list.insertAdjacentHTML("afterbegin", `<p class="rest-day">今日は回復日。筋肉はここで仕上がります。軽く動かして血流を良くし、しっかり寝る。筋肉痛や炎症があるところは温めず冷やす。</p>`);
+    const st = dayStatus(date);
+    $("todayDone").textContent = viewDow === d.getDay() ? `${st.done} / ${st.total} 完了` : "";
+    list.querySelectorAll("input[type=checkbox]").forEach((cb) => cb.addEventListener("change", () => {
+      setEx(date, viewDow, Number(cb.dataset.i), cb.checked);
+      cb.closest(".ex").classList.toggle("done", cb.checked);
+      const s = dayStatus(date); $("todayDone").textContent = viewDow === d.getDay() ? `${s.done} / ${s.total} 完了` : "";
+      renderKpis(); renderWeek();
+    }));
+    list.querySelectorAll("[data-rest]").forEach((b) => b.addEventListener("click", (ev) => {
+      ev.preventDefault();
+      startTimer(Number(b.dataset.rest), b.dataset.for);
+    }));
+    renderTodayHabits();
+  }
+
+  function renderTodayHabits() {
+    const date = today();
+    const el = $("todayHabits");
+    el.innerHTML = HABIT_ALL.map((h) => `<label class="habit${habitOn(date, h.id) ? " on" : ""}"><input type="checkbox" data-id="${h.id}" ${habitOn(date, h.id) ? "checked" : ""}><span><span class="hn">${esc(h.n)}</span></span></label>`).join("");
+    el.querySelectorAll("input").forEach((cb) => cb.addEventListener("change", () => {
+      setHabit(date, cb.dataset.id, cb.checked);
+      cb.closest(".habit").classList.toggle("on", cb.checked);
+      renderKpis(); if ($("habitDate").value === date) renderHabits(); renderHeat();
+    }));
+  }
+
+  /* ---------- KPI ---------- */
+  const weekDates = (base) => { const d = parse(base); const off = (d.getDay() + 6) % 7; const mon = addDays(base, -off); return Array.from({ length: 7 }, (_, i) => addDays(mon, i)); };
+  const dayHasAny = (date) => !!(db.ex[date] && Object.keys(db.ex[date]).length) || !!(db.habits[date] && Object.keys(db.habits[date]).length) || db.body.some((b) => b.date === date) || db.sets.some((s) => s.date === date);
+  function renderKpis() {
+    const t = today();
+    const wk = weekDates(t).slice(0, 6);
+    const full = wk.filter((d) => d <= t && dayStatus(d).full).length;
+    const part = wk.filter((d) => d <= t && !dayStatus(d).full && dayStatus(d).done > 0).length;
+    $("kWeek").textContent = full;
+    $("kWeekNote").textContent = part ? `すべて完了した日。一部だけ実施 ${part} 日` : "月〜土の計画をすべて完了した日";
+    const hc = habitCount(t);
+    $("kHabit").textContent = hc;
+    $("kHabitAll").textContent = ` / ${HABIT_ALL.length}`;
+    let streak = 0; let d = dayHasAny(t) ? t : addDays(t, -1);
+    while (dayHasAny(d) && streak < 3650) { streak++; d = addDays(d, -1); }
+    $("kStreak").textContent = streak;
+    const body = [...db.body].filter((b) => b.weight != null).sort((a, b) => a.date.localeCompare(b.date));
+    const last = body[body.length - 1];
+    if (last) {
+      $("kWeight").textContent = last.weight.toFixed(1);
+      const prev = body.length > 1 ? body[body.length - 2] : null;
+      const first = body[0];
+      let note = `${mdLabel(last.date)} 時点`;
+      if (prev) { const diff = last.weight - prev.weight; note += `、前回比 ${diff >= 0 ? "+" : ""}${diff.toFixed(1)} kg`; }
+      if (first && first !== last) { const diff = last.weight - first.weight; note += `、開始から ${diff >= 0 ? "+" : ""}${diff.toFixed(1)} kg`; }
+      $("kWeightNote").textContent = note;
+    } else { $("kWeight").textContent = "–"; $("kWeightNote").textContent = "記録タブで入力"; }
+  }
+
+  /* ---------- 休憩タイマー ---------- */
+  let tSec = db.timerSec || 90, tEnd = 0, tTick = null, tFor = "";
+  const fmtT = (s) => `${Math.floor(s / 60)}:${pad(s % 60)}`;
+  const setPreset = (sec) => { tSec = sec; db.timerSec = sec; save(); document.querySelectorAll("#timerPresets button").forEach((b) => b.classList.toggle("on", Number(b.dataset.sec) === sec)); };
+  const drawTimer = () => {
+    const ring = $("timerRing");
+    if (!tEnd) { $("timerTime").textContent = fmtT(tSec); $("timerSub").textContent = "待機中"; ring.style.setProperty("--p", 0); ring.className = "timer-ring"; document.title = "筋トレ・健康管理ダッシュボード"; return; }
+    const remain = Math.max(0, Math.ceil((tEnd - Date.now()) / 1000));
+    $("timerTime").textContent = fmtT(remain);
+    ring.style.setProperty("--p", ((tSec - remain) / tSec) * 100);
+    document.title = `${fmtT(remain)} 休憩`;
+    if (remain <= 0) { finishTimer(); }
+  };
+  const beep = () => {
+    if (!$("timerSound").checked) return;
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      [0, 0.25, 0.5].forEach((t) => { const o = ctx.createOscillator(); const g = ctx.createGain(); o.connect(g); g.connect(ctx.destination); o.frequency.value = 880; g.gain.setValueAtTime(0.0001, ctx.currentTime + t); g.gain.exponentialRampToValueAtTime(0.3, ctx.currentTime + t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + t + 0.2); o.start(ctx.currentTime + t); o.stop(ctx.currentTime + t + 0.22); });
+    } catch (_) {}
+    if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+  };
+  function startTimer(sec, label) {
+    if (sec) setPreset(sec);
+    tFor = label || "";
+    $("timerFor").textContent = tFor ? `${tFor} の後` : "";
+    tEnd = Date.now() + tSec * 1000;
+    clearInterval(tTick); tTick = setInterval(drawTimer, 200);
+    $("timerRing").className = "timer-ring running";
+    $("timerSub").textContent = "休憩中";
+    $("timerStart").textContent = "やり直す";
+    drawTimer();
+    if (location.hash !== "#today") showView("today");
+    $("timerRing").scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+  function finishTimer() {
+    clearInterval(tTick); tTick = null; tEnd = 0;
+    $("timerTime").textContent = "0:00"; $("timerSub").textContent = "次のセット！";
+    $("timerRing").className = "timer-ring finished"; $("timerRing").style.setProperty("--p", 100);
+    $("timerStart").textContent = "もう一度";
+    document.title = "次のセット！";
+    beep();
+  }
+  $("timerStart").addEventListener("click", () => startTimer(0, tFor));
+  $("timerReset").addEventListener("click", () => { clearInterval(tTick); tTick = null; tEnd = 0; tFor = ""; $("timerFor").textContent = ""; $("timerStart").textContent = "スタート"; drawTimer(); });
+  document.querySelectorAll("#timerPresets button").forEach((b) => b.addEventListener("click", () => { setPreset(Number(b.dataset.sec)); if (!tEnd) drawTimer(); }));
+  setPreset(tSec); drawTimer();
+
+  /* ---------- プログラムの周期 ---------- */
+  $("cycleStart").value = db.cycleStart || "";
+  const renderCycle = () => {
+    const m = $("cycleMeter"), note = $("cycleNote");
+    if (!db.cycleStart) { m.querySelector(".meter-fill").style.width = "0%"; m.classList.remove("over"); note.textContent = "開始日を入れると経過週数を表示します。3 か月くらいで体が変わります。"; return; }
+    const days = Math.floor((parse(today()) - parse(db.cycleStart)) / 86400000);
+    const weeks = Math.floor(days / 7);
+    const pct = Math.min(100, (days / 91) * 100);
+    m.querySelector(".meter-fill").style.width = `${pct}%`;
+    m.classList.toggle("over", weeks >= 12);
+    note.textContent = weeks >= 12 ? `${weeks} 週目。3 か月を超えました。種目を入れ替える時期です（2〜3 か月で変える）。`
+      : weeks >= 8 ? `${weeks} 週目（${days} 日）。2 か月を超えました。そろそろ種目を変える準備を。`
+      : `${weeks} 週目（${days} 日）。3 か月まであと ${Math.max(0, 91 - days)} 日。`;
+  };
+  $("cycleStart").addEventListener("change", () => { db.cycleStart = $("cycleStart").value; save(); renderCycle(); });
+  renderCycle();
+
+  /* ---------- 筋トレ部門 ---------- */
+  function renderWeek() {
+    const t = today(); const dow = new Date().getDay();
+    const wk = weekDates(t);
+    $("weekGrid").innerHTML = [1, 2, 3, 4, 5, 6, 0].map((d) => {
+      const p = PLAN[d]; const date = wk[(d + 6) % 7];
+      const st = dayStatus(date);
+      const badge = d === dow ? `<span class="badge">今日</span>` : st.full && !st.rest ? `<span class="badge">完了</span>` : "";
+      const main = p.ex.filter((e) => !e.sub && !e.head);
+      const subs = p.ex.filter((e) => e.sub);
+      const heads = p.ex.filter((e) => e.head);
+      const li = (e) => `<li><b>${esc(e.n)}</b>${e.r ? esc(e.r) : ""}</li>`;
+      const circuit = heads.length ? `<li><b>${esc(heads[0].n)}</b>${subs.map((e) => esc(e.n + (e.r ? ` ${e.r}` : ""))).join(" / ")}</li>` : "";
+      return `<div class="day-card${d === dow ? " today" : ""}${p.rest ? " rest" : ""}">
+        <p class="dow"><span>${DOW[d]}曜 <span class="hint">${mdLabel(date)}</span></span>${badge}</p>
+        <p class="dname">${esc(p.name)}</p>
+        <p class="dgoal">👉 ${esc(p.goal)}</p>
+        <ul>${main.slice(0, 3).map(li).join("")}${d === 3 || d === 6 ? circuit : ""}${main.length > 3 ? `<details><summary>あと ${main.length - 3} 種目 ▾</summary><ul>${main.slice(3).map(li).join("")}</ul></details>` : ""}</ul>
+      </div>`;
+    }).join("");
+  }
+  $("restTable").innerHTML = ["big", "mid", "power", "body", "circuit"].map((k) => { const r = REST[k]; return `<div class="rest-row"><span class="rn">${esc(r.name)}</span><span class="rs">${esc(r.range)}</span><span class="rx">${esc(r.ex)}。${esc(r.why)}</span></div>`; }).join("");
+  $("fiveGrid").innerHTML = FIVE.map((f, i) => `<div class="five"><p class="no">${i + 1}</p><p class="fn">${esc(f.n)}</p><ul>${f.tips.map((t) => `<li>${esc(t)}</li>`).join("")}</ul></div>`).join("");
+
+  /* ---------- 健康部門 ---------- */
+  $("habitDate").value = today(); $("habitDate").max = today();
+  $("habitDate").addEventListener("change", () => { if (!$("habitDate").value) $("habitDate").value = today(); renderHabits(); renderHeat(); });
+  function renderHabits() {
+    const date = $("habitDate").value || today();
+    const el = $("habitGroups");
+    el.innerHTML = HABITS.map((g) => {
+      const on = g.items.filter((h) => habitOn(date, h.id)).length;
+      return `<div class="habit-group"><h3><span>${esc(g.g)}</span><span class="count">${on} / ${g.items.length}</span></h3><div class="habit-list">${g.items.map((h) => `<label class="habit${habitOn(date, h.id) ? " on" : ""}"><input type="checkbox" data-id="${h.id}" ${habitOn(date, h.id) ? "checked" : ""}><span><span class="hn">${esc(h.n)}</span>${h.d ? `<span class="hd">${esc(h.d)}</span>` : ""}</span></label>`).join("")}</div></div>`;
+    }).join("");
+    $("habitDone").textContent = `${habitCount(date)} / ${HABIT_ALL.length}（${date === today() ? "今日" : mdLabel(date)}）`;
+    el.querySelectorAll("input").forEach((cb) => cb.addEventListener("change", () => {
+      setHabit(date, cb.dataset.id, cb.checked);
+      renderHabits(); renderHeat(); renderKpis(); if (date === today()) renderTodayHabits();
+    }));
+  }
+  function renderHeat() {
+    const t = today(); const wk = weekDates(t);
+    const weeks = [3, 2, 1, 0].map((n) => wk.map((d) => addDays(d, -7 * n)));
+    const sel = $("habitDate").value;
+    let html = `<span class="wk"></span>${[1, 2, 3, 4, 5, 6, 0].map((d) => `<span class="dh">${DOW[d]}</span>`).join("")}`;
+    weeks.forEach((w) => {
+      html += `<span class="wk">${mdLabel(w[0])}〜</span>`;
+      w.forEach((date) => {
+        const c = habitCount(date), r = c / HABIT_ALL.length;
+        const lvl = c === 0 ? 0 : r >= 0.9 ? 4 : r >= 0.7 ? 3 : r >= 0.4 ? 2 : 1;
+        const future = date > t; const st = dayStatus(date);
+        const tr = !future && st.done > 0 && !st.rest ? `、トレ ${st.done}/${st.total}` : "";
+        html += `<button type="button" class="cell${date === t ? " today" : ""}${future ? " future" : ""}${date === sel ? " sel" : ""}" data-l="${future ? 0 : lvl}" data-date="${date}" data-tip="${esc(`${mdLabel(date)}（${DOW[parse(date).getDay()]}）習慣 ${c}/${HABIT_ALL.length}${tr}`)}" ${future ? "disabled" : ""} aria-label="${esc(date)}"></button>`;
+      });
+    });
+    $("heat").innerHTML = html;
+    $("heat").querySelectorAll(".cell:not(.future)").forEach((b) => b.addEventListener("click", () => { $("habitDate").value = b.dataset.date; renderHabits(); renderHeat(); }));
+  }
+
+  /* ---------- ツールチップ ---------- */
+  const tip = $("tip");
+  const showTip = (x, y, html) => { tip.innerHTML = html; tip.hidden = false; const r = tip.getBoundingClientRect(); tip.style.left = `${Math.min(innerWidth - r.width - 8, Math.max(8, x + 12))}px`; tip.style.top = `${y - r.height - 12 < 8 ? y + 16 : y - r.height - 12}px`; };
+  const hideTip = () => { tip.hidden = true; };
+  document.addEventListener("mousemove", (e) => { const el = e.target.closest("[data-tip]"); if (el) showTip(e.clientX, e.clientY, esc(el.dataset.tip)); else if (!tip.hidden && !e.target.closest(".line-chart")) hideTip(); });
+  document.addEventListener("touchstart", (e) => { const el = e.target.closest("[data-tip]"); if (el) { const t = e.touches[0]; showTip(t.clientX, t.clientY, esc(el.dataset.tip)); setTimeout(hideTip, 1800); } }, { passive: true });
+
+  /* ---------- 記録: 体 ---------- */
+  $("bodyForm").date.value = today(); $("setForm").date.value = today();
+  $("bodyForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const f = e.target; const date = f.date.value; if (!date) return;
+    const num = (v) => (v === "" ? null : Number(v));
+    const rec = { date, weight: num(f.weight.value), fat: num(f.fat.value), sleep: num(f.sleep.value) };
+    if (rec.weight == null && rec.fat == null && rec.sleep == null) return;
+    const i = db.body.findIndex((b) => b.date === date);
+    if (i >= 0) db.body[i] = Object.assign({}, db.body[i], Object.fromEntries(Object.entries(rec).filter(([, v]) => v != null))); else db.body.push(rec);
+    save(); f.weight.value = f.fat.value = f.sleep.value = "";
+    renderKpis(); renderCharts(); renderLog();
+  });
+  /* ---------- 記録: トレーニング ---------- */
+  let exFilter = "";
+  $("setForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const f = e.target; const name = f.ex.value.trim(); if (!name || !f.date.value) return;
+    db.sets.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), date: f.date.value, ex: name, weight: f.weight.value === "" ? null : Number(f.weight.value), reps: Number(f.reps.value), sets: Number(f.sets.value) || 1 });
+    save(); exFilter = name; f.weight.value = ""; f.reps.value = ""; f.sets.value = 1;
+    renderKpis(); renderCharts(); renderLog();
+  });
+  const exNames = () => { const seen = new Map(); [...db.sets].sort((a, b) => b.date.localeCompare(a.date)).forEach((s) => { if (!seen.has(s.ex)) seen.set(s.ex, 1); }); return [...seen.keys()]; };
+  const PLAN_NAMES = [...new Set(Object.values(PLAN).flatMap((p) => p.ex.filter((e) => !e.head).flatMap((e) => e.n.split(/ or |・/).map((s) => s.replace(/（.*?）|[:：].*$|\s*\d.*$/g, "").trim()).filter(Boolean))).concat(["ダンベルフライ", "インクラインダンベルプレス", "ダンベルプルオーバー", "バーベルカール", "インクラインダンベルカール", "フロントプルダウン", "ワンレッグ自重デッドリフト", "クランチ"]))];
+  $("exSelect").addEventListener("change", () => { exFilter = $("exSelect").value; renderExChart(); });
+
+  /* ---------- 折れ線グラフ (SVG) ---------- */
+  function lineChart(el, pts, { cls, unit, goal, fmt = (v) => v, decimals = 1 }) {
+    el.innerHTML = "";
+    if (!pts.length) { el.innerHTML = `<div class="empty">まだ記録がありません</div>`; return; }
+    const W = el.clientWidth || 600, H = el.clientHeight || 200, L = 40, R = 48, T = 12, B = 24;
+    const xs = pts.map((p) => parse(p.date).getTime());
+    let x0 = Math.min(...xs), x1 = Math.max(...xs); if (x0 === x1) { x0 -= 86400000 * 3; x1 += 86400000 * 3; }
+    let ys = pts.map((p) => p.y); if (goal != null) ys = ys.concat(goal);
+    let y0 = Math.min(...ys), y1 = Math.max(...ys); let span = y1 - y0; if (span < Math.max(1, Math.abs(y1) * 0.08)) span = Math.max(1, Math.abs(y1) * 0.08); y0 -= span * 0.3; y1 += span * 0.3; if (y0 < 0 && Math.min(...ys) >= 0) y0 = 0;
+    let step = niceStep((y1 - y0) / 4); if (decimals === 0 && step < 1) step = 1; y0 = Math.floor(y0 / step) * step; y1 = Math.ceil(y1 / step) * step;
+    const X = (t) => L + ((t - x0) / (x1 - x0)) * (W - L - R), Y = (v) => T + (1 - (v - y0) / (y1 - y0)) * (H - T - B);
+    let s = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><g class="grid">`;
+    for (let v = y0; v <= y1 + 1e-9; v += step) s += `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}"></line><text class="tick" x="${L - 6}" y="${Y(v) + 4}" text-anchor="end">${fmt(Math.round(v * 100) / 100)}</text>`;
+    s += `</g>`;
+    const n = pts.length; const every = Math.max(1, Math.ceil(n / Math.max(2, Math.floor((W - L - R) / 56))));
+    pts.forEach((p, i) => { if (i % every === 0 || i === n - 1) s += `<text class="tick" x="${X(parse(p.date).getTime())}" y="${H - 6}" text-anchor="middle">${mdLabel(p.date)}</text>`; });
+    if (goal != null) s += `<line class="goal" x1="${L}" x2="${W - R}" y1="${Y(goal)}" y2="${Y(goal)}"></line>`;
+    const path = pts.map((p, i) => `${i ? "L" : "M"}${X(parse(p.date).getTime())},${Y(p.y)}`).join(" ");
+    if (n > 1) s += `<path class="ar ${cls}" stroke="none" d="${path} L${X(parse(pts[n - 1].date).getTime())},${Y(y0)} L${X(parse(pts[0].date).getTime())},${Y(y0)} Z"></path><path class="ln ${cls}" d="${path}"></path>`;
+    s += `<line class="cross" id="cross" x1="0" x2="0" y1="${T}" y2="${H - B}" style="display:none"></line>`;
+    pts.forEach((p) => { s += `<circle class="dot ${cls}" cx="${X(parse(p.date).getTime())}" cy="${Y(p.y)}" r="4"></circle>`; });
+    const last = pts[n - 1];
+    s += `<text class="end-label" x="${X(parse(last.date).getTime()) + 8}" y="${Y(last.y) + 4}">${last.y.toFixed(decimals)}${unit}</text>`;
+    pts.forEach((p, i) => { const x = X(parse(p.date).getTime()); const xl = i ? (x + X(parse(pts[i - 1].date).getTime())) / 2 : L; const xr = i < n - 1 ? (x + X(parse(pts[i + 1].date).getTime())) / 2 : W - R; s += `<rect class="hit" x="${xl}" y="${T}" width="${Math.max(1, xr - xl)}" height="${H - T - B}" data-i="${i}"></rect>`; });
+    s += `</svg>`;
+    el.innerHTML = s;
+    const svg = el.querySelector("svg"), cross = el.querySelector("#cross");
+    el.querySelectorAll(".hit").forEach((r) => {
+      const p = pts[Number(r.dataset.i)]; const x = X(parse(p.date).getTime());
+      const on = (ev) => { cross.style.display = ""; cross.setAttribute("x1", x); cross.setAttribute("x2", x); const t = ev.touches ? ev.touches[0] : ev; showTip(t.clientX, t.clientY, `${esc(p.date)}<br><b>${p.y.toFixed(decimals)}${unit}</b>${p.extra ? `<br>${esc(p.extra)}` : ""}`); };
+      r.addEventListener("mousemove", on); r.addEventListener("touchstart", on, { passive: true });
+    });
+    svg.addEventListener("mouseleave", () => { cross.style.display = "none"; hideTip(); });
+  }
+  const niceStep = (raw) => { const p = Math.pow(10, Math.floor(Math.log10(raw || 1))); const m = raw / p; return (m <= 1 ? 1 : m <= 2 ? 2 : m <= 2.5 ? 2.5 : m <= 5 ? 5 : 10) * p; };
+
+  function renderCharts() {
+    const body = [...db.body].sort((a, b) => a.date.localeCompare(b.date));
+    const w = body.filter((b) => b.weight != null).map((b) => ({ date: b.date, y: b.weight, extra: b.fat != null ? `体脂肪率 ${b.fat}%` : "" }));
+    lineChart($("weightChart"), w, { cls: "series-body", unit: " kg" });
+    $("weightRange").textContent = w.length ? `${mdLabel(w[0].date)} 〜 ${mdLabel(w[w.length - 1].date)}（${w.length} 件）` : "";
+    lineChart($("sleepChart"), body.filter((b) => b.sleep != null).map((b) => ({ date: b.date, y: b.sleep })), { cls: "series-sleep", unit: " h", goal: 7 });
+    renderExChart(); renderVolume();
+  }
+  function renderExChart() {
+    const names = exNames();
+    const selEl = $("exSelect");
+    if (!names.includes(exFilter)) exFilter = names[0] || "";
+    selEl.innerHTML = names.map((n) => `<option value="${esc(n)}" ${n === exFilter ? "selected" : ""}>${esc(n)}</option>`).join("") || `<option value="">（記録なし）</option>`;
+    $("exList").innerHTML = [...new Set(names.concat(PLAN_NAMES))].map((n) => `<option value="${esc(n)}">`).join("");
+    const rows = db.sets.filter((s) => s.ex === exFilter);
+    const weighted = rows.some((s) => s.weight != null && s.weight > 0);
+    const byDate = {};
+    rows.forEach((s) => { const v = weighted ? (s.weight || 0) : s.reps; const cur = byDate[s.date]; if (!cur || v > cur.y) byDate[s.date] = { date: s.date, y: v, extra: weighted ? `${s.weight} kg × ${s.reps} 回 × ${s.sets} セット` : `${s.reps} 回 × ${s.sets} セット` }; });
+    const pts = Object.values(byDate).sort((a, b) => a.date.localeCompare(b.date));
+    lineChart($("exChart"), pts, { cls: "series-train", unit: weighted ? " kg" : " 回", decimals: weighted ? 1 : 0 });
+    if (pts.length) {
+      const best = pts.reduce((m, p) => (p.y > m.y ? p : m), pts[0]);
+      const first = pts[0], last = pts[pts.length - 1];
+      const diff = last.y - first.y;
+      $("exNote").textContent = `${exFilter}：最高 ${best.y}${weighted ? " kg" : " 回"}（${mdLabel(best.date)}）。${pts.length > 1 ? `最初の記録から ${diff >= 0 ? "+" : ""}${Math.round(diff * 10) / 10}${weighted ? " kg" : " 回"}。` : ""}${diff > 0 ? "重量が伸びていれば筋肉痛がなくても効いています。" : pts.length > 3 && diff <= 0 ? "伸びが止まったら種目を変える・セット数を少し増やす。" : ""}`;
+    } else $("exNote").textContent = weighted ? "" : "自重種目は回数を記録してください。";
+  }
+  function renderVolume() {
+    const el = $("volChart"); const t = today();
+    const wk = weekDates(t); const weeks = [7, 6, 5, 4, 3, 2, 1, 0].map((n) => addDays(wk[0], -7 * n));
+    const data = weeks.map((mon) => { const sun = addDays(mon, 6); const g = {}; db.sets.filter((s) => s.date >= mon && s.date <= sun).forEach((s) => { const k = guessGroup(s.ex); g[k] = (g[k] || 0) + (s.sets || 1); }); return { mon, g, total: Object.values(g).reduce((a, b) => a + b, 0) }; });
+    const max = Math.max(20, ...data.map((d) => d.total)); const step = niceStep(max / 4); const top = Math.ceil(max / step) * step;
+    let html = "";
+    for (let v = 0; v <= top; v += step) html += `<div class="grid${v === 0 ? " base" : ""}" style="bottom:${22 + (v / top) * (el.clientHeight - 22 || 178)}px"><span>${v}</span></div>`;
+    html += `<div class="grid goal" style="bottom:${22 + (10 / top) * (el.clientHeight - 22 || 178)}px"><span>10</span></div>`;
+    html += `<div class="cols">${data.map((d) => `<div class="col" data-tip="${esc(`${mdLabel(d.mon)}〜の週：${d.total} セット${GROUP_ORDER.filter((k) => d.g[k]).map((k) => ` / ${GROUP[k]} ${d.g[k]}`).join("")}`)}"><span class="vtot">${d.total || ""}</span>${GROUP_ORDER.filter((k) => d.g[k]).reverse().map((k, i, arr) => `<span class="seg-b${i === 0 ? " cap" : ""}" data-g="${k}" style="height:${(d.g[k] / top) * 100}%"></span>`).join("")}<span class="xl">${mdLabel(d.mon)}</span></div>`).join("")}</div>`;
+    el.innerHTML = html;
+    let lg = el.nextElementSibling; if (!lg || !lg.classList.contains("vol-legend")) { lg = document.createElement("div"); lg.className = "vol-legend"; el.after(lg); }
+    const used = GROUP_ORDER.filter((k) => data.some((d) => d.g[k]));
+    lg.innerHTML = used.length ? used.map((k) => `<span><i style="background:${{ chest: "#2a78d6", back: "#eb6834", legs: "#1baf7a", shoulders: "#eda100", arms: "#e87ba4", core: "#4a3aa7", other: "#8a8c8f" }[k]}"></i>${GROUP[k]}</span>`).join("") : `<span class="hint">トレーニング記録を入れると部位ごとに積み上がります（種目名から部位を判定）</span>`;
+  }
+
+  /* ---------- 記録の一覧 ---------- */
+  function renderLog() {
+    const rows = [
+      ...db.body.map((b) => ({ date: b.date, kind: "体", desc: [b.weight != null ? `体重 ${b.weight} kg` : "", b.fat != null ? `体脂肪 ${b.fat}%` : "", b.sleep != null ? `睡眠 ${b.sleep} h` : ""].filter(Boolean).join("・"), w: "", reps: "", sets: "", del: () => { db.body = db.body.filter((x) => x !== b); } })),
+      ...db.sets.map((s) => ({ date: s.date, kind: "筋トレ", desc: s.ex, w: s.weight != null ? s.weight : "", reps: s.reps, sets: s.sets, del: () => { db.sets = db.sets.filter((x) => x !== s); } })),
+    ].sort((a, b) => b.date.localeCompare(a.date));
+    $("logCount").textContent = `${rows.length} 件`;
+    $("logBody").innerHTML = rows.length ? rows.map((r, i) => `<tr><td>${esc(r.date)}</td><td class="kind">${r.kind}</td><td>${esc(r.desc)}</td><td class="num">${r.w}</td><td class="num">${r.reps}</td><td class="num">${r.sets}</td><td><button class="del" type="button" data-i="${i}" title="削除">×</button></td></tr>`).join("") : `<tr><td colspan="7" class="empty-note">まだ記録がありません</td></tr>`;
+    $("logBody").querySelectorAll(".del").forEach((b) => b.addEventListener("click", () => {
+      if (!b.classList.contains("arm")) { b.classList.add("arm"); b.textContent = "削除する"; setTimeout(() => { b.classList.remove("arm"); b.textContent = "×"; }, 3000); return; }
+      rows[Number(b.dataset.i)].del(); save(); renderKpis(); renderCharts(); renderLog();
+    }));
+  }
+  $("dlCsv").addEventListener("click", () => {
+    const q = (s) => `"${String(s ?? "").replace(/"/g, '""')}"`;
+    const lines = [["date", "kind", "item", "weight_kg", "reps", "sets", "fat_pct", "sleep_h"].join(",")];
+    db.body.forEach((b) => lines.push([b.date, "body", "", b.weight ?? "", "", "", b.fat ?? "", b.sleep ?? ""].map(q).join(",")));
+    db.sets.forEach((s) => lines.push([s.date, "training", s.ex, s.weight ?? "", s.reps, s.sets, "", ""].map(q).join(",")));
+    deliver("\ufeff" + lines.join("\r\n"), `health_log_${today()}.csv`, "text/csv");
+  });
+
+  /* ---------- 書き出し・読み込み ---------- */
+  $("exportBtn").addEventListener("click", () => {
+    deliver(JSON.stringify(db, null, 1), `health_${today()}.json`, "application/json");
+  });
+  $("importBtn").addEventListener("click", () => $("importFile").click());
+  $("importFile").addEventListener("change", () => {
+    const f = $("importFile").files[0]; if (!f) return;
+    f.text().then((txt) => {
+      const d = JSON.parse(txt);
+      if (!d || typeof d !== "object" || !("ex" in d || "habits" in d || "body" in d || "sets" in d)) throw new Error("bad");
+      Object.assign(db.ex, d.ex || {}); Object.assign(db.habits, d.habits || {});
+      (d.body || []).forEach((b) => { const i = db.body.findIndex((x) => x.date === b.date); if (i >= 0) db.body[i] = b; else db.body.push(b); });
+      const ids = new Set(db.sets.map((s) => s.id)); (d.sets || []).forEach((s) => { if (!ids.has(s.id)) db.sets.push(s); });
+      if (d.cycleStart) { db.cycleStart = d.cycleStart; $("cycleStart").value = d.cycleStart; }
+      save(); renderAll(); showMsg("読み込みました（同じ日の記録は読み込んだ方で上書き）");
+    }).catch(() => showMsg("読み込めませんでした。このダッシュボードで書き出した JSON ファイルを選んでください。", true)).finally(() => { $("importFile").value = ""; });
+  });
+
+  /* ---------- 起動 ---------- */
+  function renderAll() { renderToday(); renderKpis(); renderWeek(); renderHabits(); renderHeat(); renderCycle(); renderLog(); renderCharts(); }
+  renderAll();
+  showView(location.hash.slice(1) || "today");
+  let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(renderCharts, 150); });
+  // 日付が変わったら今日の表示を更新 (開きっぱなしのとき)
+  let curDay = today(); setInterval(() => { if (today() !== curDay) { curDay = today(); $("habitDate").value = curDay; $("habitDate").max = curDay; $("bodyForm").date.value = $("setForm").date.value = curDay; renderAll(); } }, 60000);
+})();
+
+</script>
+</body>
+</html>
