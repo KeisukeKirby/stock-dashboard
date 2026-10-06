@@ -15,7 +15,12 @@ export interface SpeakOptions {
 export interface AudioCheck {
   ok: boolean
   reason?: string
+  /** タイ語の音声 */
   voices?: { name: string; voiceURI: string; lang: string }[]
+  /** ブラウザが検出した全音声の数（診断用） */
+  allVoices?: number
+  /** 検出した言語コード一覧（診断用） */
+  languages?: string[]
 }
 
 export interface AudioProvider {

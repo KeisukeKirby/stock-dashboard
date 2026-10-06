@@ -15,7 +15,9 @@ export function AppShell() {
   useTimeTracker(true)
   return (
     <div className="min-h-dvh bg-slate-950 text-slate-100">
-      <header className="sticky top-0 z-20 hidden border-b border-slate-800 bg-slate-950/90 backdrop-blur md:block">
+      {/* iOS ホーム画面アプリ：ステータスバー（時計・電波）の裏に内容が入り込まないよう、上の安全領域を塗りつぶす */}
+      <div className="fixed inset-x-0 top-0 z-30 bg-slate-950/90 backdrop-blur md:hidden" style={{ height: 'env(safe-area-inset-top)' }} aria-hidden />
+      <header className="sticky top-0 z-20 hidden border-b border-slate-800 bg-slate-950/90 backdrop-blur md:block" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
         <div className="mx-auto flex max-w-2xl items-center justify-between px-4 py-2">
           <span className="text-sm font-bold tracking-wide text-amber-300">ThaiDash</span>
           <nav className="flex gap-1">
@@ -34,7 +36,7 @@ export function AppShell() {
           </nav>
         </div>
       </header>
-      <main key={loc.pathname} className="mx-auto w-full max-w-2xl px-4 pb-28 pt-4 md:pb-10">
+      <main key={loc.pathname} className="mx-auto w-full max-w-2xl px-4 pb-28 md:pb-10" style={{ paddingTop: 'calc(env(safe-area-inset-top) + 1rem)' }}>
         <Outlet />
       </main>
       <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-slate-800 bg-slate-950/95 backdrop-blur md:hidden" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
