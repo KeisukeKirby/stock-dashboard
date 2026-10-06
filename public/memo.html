@@ -2,112 +2,127 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Business Memo Dashboard</title>
-  <meta name="description" content="ビジネスメモ：成功者の特徴、ベゾス、ティール、Sam Altman、構造力などの学びを一覧・検索・ピン留めできるダッシュボード">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%235b8c5a'/><rect x='8' y='8' width='16' height='3' rx='1.5' fill='white'/><rect x='8' y='14.5' width='16' height='3' rx='1.5' fill='white'/><rect x='8' y='21' width='10' height='3' rx='1.5' fill='white'/></svg>">
-  <link rel="stylesheet" href="style.css?v=20261006">
-  <link rel="stylesheet" href="memo.css?v=20261006">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ビジネスメモ帳</title>
+  <meta name="description" content="成功者の特徴、ジェフ・ベゾス、ピーター・ティール、Sam Altman、構造力。ビジネスの学びを章立てで読み、印をつけ、自分の言葉で書き足す手帳。">
+  <meta name="theme-color" content="#f3f2ed" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#15171a" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232b4c7e'/><rect x='9' y='7' width='2' height='18' fill='white'/><rect x='14' y='7' width='2' height='18' fill='white' opacity='.7'/><rect x='19' y='7' width='2' height='18' fill='white' opacity='.45'/><circle cx='24' cy='24' r='3.5' fill='%23c5443a'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="memo.css?v=20261006b">
 </head>
 <body>
-  <div class="page memo">
-    <header class="top">
-      <div>
-        <p class="eyebrow">Business Memo Dashboard</p>
-        <h1>ビジネスメモ</h1>
-        <p class="sub"><span id="updated">読み込み中…</span><span class="dot">·</span><span id="counts"></span></p>
-      </div>
-      <div class="top-actions">
-        <a class="ghost" href="./">← Stock</a>
-        <a class="ghost" href="vivo">Vivo Sales →</a>
-        <button id="themeToggle" class="ghost" type="button" aria-label="表示テーマの切り替え">
-          <span aria-hidden="true">◐</span> <span id="themeLabel"></span>
-        </button>
-      </div>
-    </header>
+<a class="skip" href="#chapters">本文へ</a>
 
-    <section class="kpis memo-kpis" aria-label="集計">
-      <div class="kpi">
-        <p class="kpi-label">メモ</p>
-        <p class="kpi-value" id="kItems">–</p>
-        <p class="kpi-note" id="kItemsNote"></p>
-      </div>
-      <div class="kpi">
-        <p class="kpi-label">カテゴリ</p>
-        <p class="kpi-value" id="kSections">–</p>
-        <p class="kpi-note">クリックで絞り込み（下のチップ）</p>
-      </div>
-      <button class="kpi kpi-btn" id="kPinsBtn" type="button" aria-pressed="false">
-        <span class="kpi-label"><span class="pin-ic" aria-hidden="true">★</span>ピン留め</span>
-        <span class="kpi-value" id="kPins">–</span>
-        <span class="kpi-note">クリックでピン留めだけ表示</span>
-      </button>
-      <button class="kpi kpi-btn" id="kNotesBtn" type="button" aria-pressed="false">
-        <span class="kpi-label"><span class="note-ic" aria-hidden="true">✎</span>自分のメモ</span>
-        <span class="kpi-value" id="kNotes">–</span>
-        <span class="kpi-note">クリックで書き込みのあるカードだけ表示</span>
-      </button>
-    </section>
+<header class="bar">
+  <span class="progress" id="progress" aria-hidden="true"></span>
+  <a class="brand" href="#top">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-name">ビジネスメモ帳</span>
+  </a>
+  <nav class="bar-nav" aria-label="ほかのダッシュボード">
+    <a href="./">Stock</a>
+    <a href="vivo">Vivo Sales</a>
+    <button id="themeToggle" class="theme" type="button" aria-label="表示テーマの切り替え">
+      <span class="theme-dot" aria-hidden="true"></span><span id="themeLabel">自動</span>
+    </button>
+  </nav>
+</header>
 
-    <section class="memo-grid2">
-      <div class="card quote-card" id="quoteCard">
-        <div class="card-head">
-          <h2>今日の一言</h2>
-          <div class="head-actions">
-            <button id="quoteNext" class="ghost small" type="button">別の一言</button>
-            <a id="quoteLink" class="ghost small" href="#">カードへ</a>
-          </div>
-        </div>
-        <p class="quote-section" id="quoteSection"></p>
-        <p class="quote-title" id="quoteTitle"></p>
-        <p class="quote-text" id="quoteText"></p>
-      </div>
+<div class="frame" id="top">
 
-      <div class="card three-card">
-        <div class="card-head">
-          <h2>今日の3つ <span class="count" id="threeDate"></span></h2>
-          <p class="hint">毎朝3つ書き出して実践。今週の3つも</p>
+  <!-- ===== 扉 (hero) ===== -->
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="tate" aria-hidden="true">
+      <span class="tate-main">ビジネスメモ帳</span>
+      <span class="tate-sub" id="tateDate"></span>
+    </div>
+
+    <div class="hero-body">
+      <p class="eyebrow"><span>今日の一則</span><span class="eyebrow-sec" id="quoteSection"></span></p>
+      <h1 id="heroTitle" class="hero-title"><span id="quoteTitle">読み込み中…</span></h1>
+      <p class="hero-text" id="quoteText"></p>
+      <div class="hero-actions">
+        <a id="quoteLink" class="btn-ink" href="#">この則を読む <span aria-hidden="true">↓</span></a>
+        <button id="quoteNext" class="btn-ghost" type="button">別の一則</button>
+      </div>
+      <nav class="hero-toc" aria-label="目次">
+        <p class="hero-toc-head"><span>目次</span><span class="hero-meta" id="counts"></span></p>
+        <ol id="heroToc"></ol>
+      </nav>
+    </div>
+
+    <aside class="practice" aria-labelledby="practiceTitle">
+      <div class="practice-head">
+        <h2 id="practiceTitle">今日の三つ</h2>
+        <span class="practice-date" id="threeDate"></span>
+        <span class="practice-progress" id="threeProgress" aria-live="polite"></span>
+      </div>
+      <p class="practice-lead">毎朝、やり遂げたいことを三つ書き出す。終わったら丸をつける。</p>
+      <ol class="three" id="threeToday" aria-label="今日の三つ"></ol>
+      <div class="practice-head sub">
+        <h3>今週の三つ</h3>
+        <span class="practice-date" id="threeWeek"></span>
+      </div>
+      <ol class="three" id="threeWeekList" aria-label="今週の三つ"></ol>
+      <details class="review">
+        <summary>週末レビュー</summary>
+        <div class="review-cols">
+          <label>うまくいった点<textarea id="reviewGood" rows="3" placeholder="三つ"></textarea></label>
+          <label>改善点<textarea id="reviewImprove" rows="3" placeholder="三つ"></textarea></label>
         </div>
-        <div class="three-cols">
-          <div>
-            <p class="three-label">今日</p>
-            <ol class="three-list" id="threeToday"></ol>
-          </div>
-          <div>
-            <p class="three-label">今週 <span class="hint" id="threeWeek"></span></p>
-            <ol class="three-list" id="threeWeekList"></ol>
-          </div>
+      </details>
+      <details class="history" id="threeHistory">
+        <summary>これまで</summary>
+        <div id="threeHistoryBody"></div>
+      </details>
+      <p class="practice-note">このブラウザにだけ残ります。</p>
+    </aside>
+  </section>
+
+  <!-- ===== 本文: 索引 + 章 ===== -->
+  <div class="book">
+    <aside class="index" aria-label="索引と絞り込み">
+      <div class="index-inner">
+        <label class="search">
+          <span class="visually-hidden">検索</span>
+          <input type="search" id="q" placeholder="検索　/ キー" autocomplete="off" spellcheck="false">
+          <kbd aria-hidden="true">/</kbd>
+        </label>
+        <div class="index-group" role="group" aria-label="表示">
+          <button type="button" class="view-btn" id="viewAll" aria-pressed="true">すべて <span class="n" id="nAll"></span></button>
+          <button type="button" class="view-btn" id="viewPins" aria-pressed="false"><i class="mark-pin" aria-hidden="true"></i>印をつけた <span class="n" id="nPins"></span></button>
+          <button type="button" class="view-btn" id="viewNotes" aria-pressed="false"><i class="mark-note" aria-hidden="true"></i>書き足した <span class="n" id="nNotes"></span></button>
         </div>
-        <details class="review">
-          <summary>週末レビュー（うまくいった点・改善点を3つ）</summary>
-          <div class="review-cols">
-            <label>うまくいった点<textarea id="reviewGood" rows="3" placeholder="1.&#10;2.&#10;3."></textarea></label>
-            <label>改善点<textarea id="reviewImprove" rows="3" placeholder="1.&#10;2.&#10;3."></textarea></label>
-          </div>
+        <nav class="toc" aria-label="章"><ol id="toc"></ol></nav>
+        <details class="index-tags" id="tagBox">
+          <summary>タグで絞る <span class="n" id="tagCur"></span></summary>
+          <div class="tag-cloud" id="tagChips"></div>
         </details>
-        <p class="hint three-note">このブラウザにだけ保存されます（localStorage）。日付が変わると新しい欄になり、前日の分は「過去」から見られます。</p>
-        <details class="history" id="threeHistory"><summary>過去</summary><div id="threeHistoryBody"></div></details>
-      </div>
-    </section>
-
-    <section class="card toolbar" role="search">
-      <div class="tb-row">
-        <input type="search" id="q" class="tb-search" placeholder="検索（タイトル・本文・タグ・自分のメモ）" autocomplete="off">
-        <div class="tb-actions">
-          <button id="expandAll" class="ghost small" type="button">すべて開く</button>
-          <button id="collapseAll" class="ghost small" type="button">すべて閉じる</button>
-          <button id="reset" class="ghost small" type="button">リセット</button>
+        <div class="index-foot">
+          <button id="expandAll" class="link" type="button">すべて開く</button>
+          <span aria-hidden="true">·</span>
+          <button id="collapseAll" class="link" type="button">すべて閉じる</button>
+          <span aria-hidden="true">·</span>
+          <button id="reset" class="link" type="button">絞り込みを解除</button>
         </div>
       </div>
-      <div class="chips-row" id="secChips"></div>
-      <div class="chips-row tags" id="tagChips"></div>
-    </section>
+    </aside>
 
-    <main id="sections"></main>
-    <p class="empty-note" id="empty" hidden>該当するメモはありません。</p>
-
-    <footer class="foot">メモの内容は public/memo.json。ピン留め・自分のメモ・今日の3つはこのブラウザの localStorage に保存され、他の人・他の端末とは共有されません。</footer>
+    <main class="chapters" id="chapters">
+      <p class="result-line" id="resultLine" aria-live="polite"></p>
+      <div id="sections"></div>
+      <p class="empty" id="empty" hidden>該当する則はありません。</p>
+    </main>
   </div>
-  <script src="memo.js?v=20261006"></script>
+
+  <footer class="colophon">
+    <p>則の本文は <code>public/memo.json</code>。印・書き足し・今日の三つは、このブラウザの localStorage に残り、他の人や端末には共有されません。</p>
+    <p id="updated"></p>
+  </footer>
+</div>
+<script src="memo.js?v=20261006b"></script>
 </body>
 </html>
