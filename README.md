@@ -33,6 +33,8 @@ public/          # Vercel が配信する静的ファイル（ビルド不要）
   stock.json     # Excel から生成したデータ
   source.xlsx    # 店舗在庫の Excel（ダウンロード用、convert.py がコピー）
   source_office.xlsx  # オフィス在庫の Excel（同上）
+  memo.html / memo.css / memo.js / memo.json  # ビジネスメモ帳（/memo）
+memo/            # メモ帳の単体版（別 URL の Vercel プロジェクト用、build_memo_standalone.py が生成）
 scripts/convert.py  # Excel → public/stock.json 変換
 data/            # 元の Excel ファイル
 vercel.json
@@ -60,6 +62,25 @@ vercel.json
    移動表の店舗列（Paradise / K-village / Ladprao 3F = Central LP / Chidlom = Central CL / Siamdis）も反映し、移動表にある SKU は配分表の配分を取り消して移動表の数を正とします（実際に店舗へ移動した数）。
 
 3. `git add . && git commit -m "在庫データ更新" && git push` — Vercel が自動で再デプロイします
+
+## ビジネスメモ帳（/memo）
+
+成功者の特徴、ジェフ・ベゾス、ピーター・ティール、Sam Altman「How To Be Successful」、生産性の習慣、構造力、起業初期の原則を「章」と「則」で読む手帳です（在庫ダッシュボード右上の「Business Memo →」から）。在庫・Vivo とは別の見た目（縦書きの背、章立て、罫線のカード）で、ライト／ダークに対応しています。
+
+- 本文は `public/memo.json`（`sections` = 章 → `items` = 則）。則は `title` と、`body`（段落）・`bullets`（`text` と任意の `sub`）・`quote`（英文の引用）・`lead`・`defs`（用語と説明）・`compare`（悪い構造／良い構造の対比）・`tags` を組み合わせて書きます。`short` は索引に出す短い章名。追加・修正はこの JSON を編集して push するだけです
+- **扉**: 日付で決まる「今日の一則」（「別の一則」でランダム、「この則を読む」で本文へ）、目次、「今日の三つ」「今週の三つ」「週末レビュー」（生産性メモの実践用。日付・ISO 週ごとに保存され「これまで」から見返せます）
+- **索引**（左、追従）: 検索（`/` キーで入力、タイトル・本文・タグ・書き足しを AND 検索して該当箇所を強調）、表示の切り替え（すべて／印をつけた／書き足した）、章の一覧（読んでいる章を追従表示）、タグで絞る（2 回以上使われたタグだけ表示、「他 N 件」で全部）
+- **則のカード**: ☆ で印をつける（左に朱の線）、「書き足す」で自分の言葉を残す（入力すると自動保存）、「写す」で本文をテキストとしてコピー。章ごとに開閉でき、状態を記憶します
+- 印・書き足し・今日の三つはブラウザの localStorage に保存され、他の人・他の端末とは共有されません
+
+### 単体版（独立した URL で公開）
+
+Vivo と同じく、データ・CSS・JS を 1 つの HTML に埋め込んだ単体版を `memo/` に置き、メモ帳専用の Vercel プロジェクト `business-memo`（Root Directory: `memo`）で配信します。`public/memo.json` を直したら必ず再生成してください。
+
+```bash
+python scripts/build_memo_standalone.py memo/index.html --full   # Vercel のメモ帳専用プロジェクト用 (memo/ フォルダ)
+python scripts/build_memo_standalone.py business-memo.html      # claude.ai の Artifact 用
+```
 
 ## ローカルで確認
 

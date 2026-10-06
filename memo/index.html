@@ -1,0 +1,2128 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="description" content="成功者の特徴、ジェフ・ベゾス、ピーター・ティール、Sam Altman、構造力。ビジネスの学びを章立てで読み、印をつけ、自分の言葉で書き足す手帳。">
+<meta name="theme-color" content="#f3f2ed" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15171a" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'>
+<title>ビジネスメモ帳</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+/* ビジネスメモ帳 (memo.html)
+   レイアウト: 扉 (縦書きの背・今日の一則・今日の三つ) → 索引 (左、追従) + 章 (罫線で区切ったカード)。
+   色: 生成りの紙と墨、藍 (一点の強調)、朱 (印をつけた、という意味色)。 */
+:root {
+  color-scheme: light;
+  --paper: #f3f2ed;
+  --paper-2: #ebeae3;
+  --paper-3: #e2e1d9;
+  --ink: #1b1d21;
+  --ink-2: #4c5057;
+  --ink-3: #868a91;
+  --rule: #d4d3ca;
+  --rule-2: #c2c1b7;
+  --ai: #2b4c7e;          /* 藍 */
+  --ai-soft: #dde6f2;
+  --ai-ink: #1e365b;
+  --shu: #c5443a;         /* 朱 */
+  --shu-soft: #f6e1dd;
+  --mark: #f1d98b;        /* 検索ハイライト */
+  --mark-ink: #3a2d00;
+  --good: #3f7d4e;
+
+  --f-display: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  --f-body: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", system-ui, sans-serif;
+  --f-latin: "Newsreader", "Iowan Old Style", "Palatino", Georgia, serif;
+
+  --gutter: clamp(16px, 4vw, 48px);
+  --maxw: 1360px;
+  --t-fast: .18s;
+  --t-slow: .6s;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: #15171a; --paper-2: #1c1f23; --paper-3: #24272c;
+    --ink: #ebe9e2; --ink-2: #b9b8af; --ink-3: #7e8188;
+    --rule: #2d3035; --rule-2: #3a3d43;
+    --ai: #8fb0e0; --ai-soft: #1d2a3c; --ai-ink: #b7cdee;
+    --shu: #e0695f; --shu-soft: #3a211f;
+    --mark: #6e5410; --mark-ink: #fff1c8;
+    --good: #7fbb8d;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #15171a; --paper-2: #1c1f23; --paper-3: #24272c;
+  --ink: #ebe9e2; --ink-2: #b9b8af; --ink-3: #7e8188;
+  --rule: #2d3035; --rule-2: #3a3d43;
+  --ai: #8fb0e0; --ai-soft: #1d2a3c; --ai-ink: #b7cdee;
+  --shu: #e0695f; --shu-soft: #3a211f;
+  --mark: #6e5410; --mark-ink: #fff1c8;
+  --good: #7fbb8d;
+}
+
+/* ---------- 基本 ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--f-body); font-size: 15px; line-height: 1.8; font-feature-settings: "palt";
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+/* 紙の質感 (ごく薄く) */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+h1, h2, h3, h4, p, figure, ol, ul, dl, dd { margin: 0; }
+button, input, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+a { color: var(--ai); text-decoration-thickness: 1px; text-underline-offset: .18em; }
+:focus-visible { outline: 2px solid var(--ai); outline-offset: 3px; border-radius: 2px; }
+::selection { background: var(--ai-soft); }
+mark { background: var(--mark); color: var(--mark-ink); padding: 0 .08em; border-radius: 2px; }
+code { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: .9em; background: var(--paper-2); padding: .1em .35em; border-radius: 3px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: 16px; top: -48px; background: var(--ink); color: var(--paper); padding: 8px 14px; z-index: 100; }
+.skip:focus { top: 12px; }
+.link { border: 0; background: none; padding: 0; color: var(--ai); text-decoration: underline; text-underline-offset: .18em; text-decoration-thickness: 1px; }
+.link:hover { color: var(--ai-ink); }
+
+/* ---------- 上部バー ---------- */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 0 var(--gutter); height: 52px;
+  background: color-mix(in srgb, var(--paper) 93%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+.progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; background: var(--ai); transform: scaleX(0); transform-origin: left; pointer-events: none; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-family: var(--f-display); font-weight: 700; letter-spacing: .04em; }
+.brand-mark { width: 10px; height: 22px; background: var(--ai); position: relative; }
+.brand-mark::after { content: ""; position: absolute; right: -6px; bottom: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--shu); }
+.bar-nav { display: flex; align-items: center; gap: 4px; font-size: 13px; }
+.bar-nav a { color: var(--ink-2); text-decoration: none; padding: 6px 10px; border-radius: 4px; }
+.bar-nav a:hover { color: var(--ink); background: var(--paper-2); }
+.theme { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--rule-2); background: none; border-radius: 999px; padding: 4px 12px 4px 9px; font-size: 12.5px; color: var(--ink-2); margin-left: 6px; }
+.theme:hover { border-color: var(--ink-3); color: var(--ink); }
+.theme-dot { width: 9px; height: 9px; border-radius: 50%; background: linear-gradient(90deg, var(--ink) 50%, var(--paper) 50%); border: 1px solid var(--ink-3); }
+
+.frame { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--gutter); }
+
+/* ---------- 扉 ---------- */
+.hero {
+  display: grid; grid-template-columns: auto minmax(0, 1.25fr) minmax(300px, .85fr);
+  gap: clamp(24px, 4vw, 64px); align-items: stretch;
+  padding-block: clamp(36px, 6vw, 88px) clamp(32px, 5vw, 64px);
+  border-bottom: 1px solid var(--rule-2);
+}
+.tate {
+  writing-mode: vertical-rl; text-orientation: mixed; display: flex; gap: 14px; align-items: flex-start;
+  font-family: var(--f-display); color: var(--ink-2); padding-top: 4px; border-right: 1px solid var(--rule-2); padding-right: 14px;
+  user-select: none;
+}
+.tate-main { font-size: clamp(22px, 2.4vw, 30px); font-weight: 700; letter-spacing: .22em; color: var(--ink); }
+.tate-sub { font-size: 13px; letter-spacing: .3em; color: var(--ink-3); }
+
+.hero-body { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.eyebrow { display: flex; align-items: center; gap: 12px; font-size: 12.5px; letter-spacing: .18em; color: var(--ai); font-weight: 500; }
+.eyebrow-sec { color: var(--ink-3); letter-spacing: .1em; }
+.eyebrow-sec::before { content: "—"; margin-right: 12px; color: var(--rule-2); }
+.hero-title {
+  font-family: var(--f-display); font-weight: 700; font-size: clamp(28px, 3.6vw, 48px); line-height: 1.32; letter-spacing: .01em;
+  text-wrap: balance; max-width: 22em;
+}
+.hero-text { font-size: clamp(15px, 1.25vw, 17px); line-height: 2; color: var(--ink-2); max-width: 36em; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 4px; }
+.btn-ink, .btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px; height: 42px; padding: 0 20px; font-size: 14px; font-weight: 500;
+  border-radius: 999px; text-decoration: none; transition: transform var(--t-fast) var(--ease), background var(--t-fast), color var(--t-fast), border-color var(--t-fast);
+}
+.btn-ink { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
+.btn-ink:hover { background: var(--ai); border-color: var(--ai); color: #fff; transform: translateY(-1px); }
+.btn-ghost { background: none; color: var(--ink-2); border: 1px solid var(--rule-2); }
+.btn-ghost:hover { color: var(--ink); border-color: var(--ink-3); }
+.hero-meta { font-family: var(--f-latin); font-size: 15px; color: var(--ink-3); letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+.hero-meta b { color: var(--ink); font-weight: 500; }
+/* 扉の目次 */
+.hero-toc { margin-top: auto; padding-top: 28px; }
+.hero-toc-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-size: 12.5px; letter-spacing: .18em; color: var(--ink-3); padding-bottom: 6px; border-bottom: 1px solid var(--ink); }
+.hero-toc ol { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4, auto); grid-auto-flow: column; column-gap: 28px; }
+.hero-toc a {
+  display: grid; grid-template-columns: 1.6em 1fr auto; gap: 10px; align-items: baseline; padding: 9px 0; border-bottom: 1px solid var(--rule);
+  color: var(--ink); text-decoration: none; font-size: 14px; line-height: 1.5; position: relative;
+}
+.hero-toc a .ch { font-family: var(--f-display); color: var(--ai); font-size: 13px; letter-spacing: .05em; }
+.hero-toc a .t { font-family: var(--f-display); font-weight: 500; transition: transform var(--t-fast) var(--ease); }
+.hero-toc a .n { font-family: var(--f-latin); color: var(--ink-3); font-size: 14px; font-variant-numeric: tabular-nums; }
+.hero-toc a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--ai); transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease); }
+.hero-toc a:hover::after { transform: scaleX(1); }
+.hero-toc a:hover .t { transform: translateX(3px); }
+
+/* 今日の三つ: 罫線の手帳 */
+.practice {
+  background: var(--paper-2); border: 1px solid var(--rule); padding: 22px 22px 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0;
+  position: relative;
+}
+.practice::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--ai); }
+.practice-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.practice-head h2, .practice-head h3 { font-family: var(--f-display); font-weight: 700; font-size: 20px; letter-spacing: .04em; }
+.practice-head h3 { font-size: 15px; }
+.practice-head.sub { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--rule-2); }
+.practice-date { font-size: 12.5px; color: var(--ink-3); letter-spacing: .06em; }
+.practice-progress { margin-left: auto; font-family: var(--f-latin); font-size: 18px; color: var(--ai); font-variant-numeric: tabular-nums; }
+.practice-progress.all { color: var(--shu); }
+.practice-lead { font-size: 13px; color: var(--ink-2); margin-top: -4px; }
+.three { list-style: none; padding: 0; display: flex; flex-direction: column; }
+.three li { display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--rule-2); }
+.three .n { font-family: var(--f-latin); font-size: 15px; color: var(--ink-3); width: 1.1em; text-align: center; font-variant-numeric: tabular-nums; }
+.three input[type="text"] { flex: 1; min-width: 0; border: 0; background: none; height: 40px; padding: 0 4px; font-size: 15px; outline: none; }
+.three input[type="text"]::placeholder { color: var(--ink-3); opacity: .7; }
+.three li:focus-within { border-bottom-color: var(--ai); }
+.three li.done input[type="text"] { color: var(--ink-3); text-decoration: line-through; text-decoration-color: var(--shu); }
+/* 丸をつける */
+.maru { appearance: none; -webkit-appearance: none; width: 22px; height: 22px; margin: 0; border-radius: 50%; border: 1.5px solid var(--ink-3); position: relative; flex: none; transition: border-color var(--t-fast), transform var(--t-fast) var(--ease); }
+.maru:hover { border-color: var(--shu); }
+.maru::after { content: ""; position: absolute; inset: 3px; border-radius: 50%; background: var(--shu); transform: scale(0); transition: transform .25s var(--ease); }
+.maru:checked { border-color: var(--shu); }
+.maru:checked::after { transform: scale(1); }
+.review, .history { font-size: 13px; }
+.review summary, .history summary { cursor: pointer; color: var(--ink-2); padding: 6px 0; list-style: none; display: flex; align-items: center; gap: 8px; }
+.review summary::before, .history summary::before { content: ""; width: 6px; height: 6px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: rotate(-45deg); transition: transform var(--t-fast); }
+.review[open] summary::before, .history[open] summary::before { transform: rotate(45deg); }
+.review summary::-webkit-details-marker, .history summary::-webkit-details-marker { display: none; }
+.review-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 4px 0 8px; }
+.review-cols label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--ink-3); letter-spacing: .06em; }
+textarea { width: 100%; resize: vertical; padding: 8px 10px; border: 1px solid var(--rule-2); background: var(--paper); color: var(--ink); font-size: 13.5px; line-height: 1.7; border-radius: 3px; }
+textarea:focus { outline: none; border-color: var(--ai); }
+.history table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+.history td { padding: 4px 8px 4px 0; vertical-align: top; border-bottom: 1px solid var(--rule); }
+.history td:first-child { white-space: nowrap; color: var(--ink-3); font-family: var(--f-latin); font-size: 13px; font-variant-numeric: tabular-nums; }
+.history .done { color: var(--ink-3); text-decoration: line-through; text-decoration-color: var(--shu); }
+.history .none, .history .rv { color: var(--ink-3); }
+.history .rv { font-size: 12px; }
+.practice-note { font-size: 11.5px; color: var(--ink-3); letter-spacing: .04em; }
+
+/* ---------- 本文 ---------- */
+.book { display: grid; grid-template-columns: 236px minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); padding-block: 28px 64px; }
+.index { align-self: start; position: sticky; top: calc(52px + env(safe-area-inset-top, 0px) + 20px); }
+.index-inner { display: flex; flex-direction: column; gap: 22px; max-height: calc(100vh - 52px - env(safe-area-inset-top, 0px) - 40px); overflow: auto; padding-right: 4px; scrollbar-width: thin; }
+
+.search { position: relative; display: block; }
+.search input {
+  width: 100%; height: 40px; border: 0; border-bottom: 1px solid var(--rule-2); background: none; padding: 0 28px 0 0; font-size: 14.5px; outline: none;
+  transition: border-color var(--t-fast);
+}
+.search input:focus { border-bottom-color: var(--ai); }
+.search input::placeholder { color: var(--ink-3); }
+.search input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; width: 14px; height: 14px; cursor: pointer; background: var(--ink-3); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2 2l10 10M12 2L2 12' stroke='black' stroke-width='1.6'/%3E%3C/svg%3E") center/contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2 2l10 10M12 2L2 12' stroke='black' stroke-width='1.6'/%3E%3C/svg%3E") center/contain no-repeat; }
+.search kbd { position: absolute; right: 2px; top: 50%; transform: translateY(-50%); font-family: var(--f-latin); font-size: 13px; color: var(--ink-3); border: 1px solid var(--rule-2); border-radius: 3px; padding: 0 6px; line-height: 1.4; pointer-events: none; }
+.search input:focus ~ kbd, .search input:not(:placeholder-shown) ~ kbd { opacity: 0; }
+
+.index-group { display: flex; flex-direction: column; }
+.view-btn { display: flex; align-items: center; gap: 8px; border: 0; background: none; padding: 7px 0; font-size: 13.5px; color: var(--ink-2); text-align: left; border-bottom: 1px solid var(--rule); }
+.view-btn:hover { color: var(--ink); }
+.view-btn[aria-pressed="true"] { color: var(--ink); font-weight: 700; }
+.view-btn .n { margin-left: auto; font-family: var(--f-latin); font-size: 14px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.mark-pin, .mark-note { width: 10px; height: 10px; flex: none; display: inline-block; }
+.mark-pin { background: var(--shu); clip-path: polygon(50% 0, 63% 36% , 100% 38%, 70% 60%, 80% 100%, 50% 76%, 20% 100%, 30% 60%, 0 38%, 37% 36%); }
+.mark-note { border-bottom: 2px solid var(--ai); height: 8px; width: 12px; }
+
+.toc ol { list-style: none; padding: 0; display: flex; flex-direction: column; }
+.toc li { border-bottom: 1px solid var(--rule); }
+.toc a {
+  display: grid; grid-template-columns: 2.2em 1fr auto; align-items: baseline; gap: 8px; padding: 9px 0; color: var(--ink-2); text-decoration: none; font-size: 13.5px; line-height: 1.5;
+  position: relative; transition: color var(--t-fast);
+}
+.toc a::before { content: ""; position: absolute; left: -12px; top: 10px; bottom: 10px; width: 2px; background: var(--ai); transform: scaleY(0); transition: transform var(--t-fast) var(--ease); }
+.toc a .ch { font-family: var(--f-display); color: var(--ink-3); font-size: 12.5px; letter-spacing: .05em; }
+.toc a .n { font-family: var(--f-latin); color: var(--ink-3); font-size: 13.5px; font-variant-numeric: tabular-nums; }
+.toc a:hover { color: var(--ink); }
+.toc a.active { color: var(--ink); font-weight: 700; }
+.toc a.active::before { transform: scaleY(1); }
+.toc a.active .ch { color: var(--ai); }
+.toc a.dim { opacity: .4; }
+
+.index-tags summary { cursor: pointer; font-size: 13px; color: var(--ink-2); list-style: none; display: flex; gap: 8px; align-items: center; padding: 4px 0; }
+.index-tags summary::-webkit-details-marker { display: none; }
+.index-tags summary::before { content: ""; width: 6px; height: 6px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: rotate(-45deg); transition: transform var(--t-fast); }
+.index-tags[open] summary::before { transform: rotate(45deg); }
+.index-tags summary .n { color: var(--ai); font-weight: 700; }
+.tag-cloud { display: flex; flex-wrap: wrap; gap: 4px 10px; padding-top: 8px; }
+.tag-chip { border: 0; background: none; padding: 2px 0; font-size: 12.5px; color: var(--ink-2); border-bottom: 1px dotted var(--rule-2); line-height: 1.4; }
+.tag-chip .n { color: var(--ink-3); font-family: var(--f-latin); font-size: 12px; margin-left: 2px; }
+.tag-chip:hover { color: var(--ai); border-bottom-color: var(--ai); }
+.tag-chip[aria-pressed="true"] { color: var(--ai); font-weight: 700; border-bottom: 2px solid var(--ai); }
+.tag-chip.more { color: var(--ai); border-bottom: 0; }
+.index-foot { display: flex; gap: 8px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-3); }
+
+/* 章 */
+.result-line { font-size: 13px; color: var(--ink-3); min-height: 1.6em; margin-bottom: 12px; font-variant-numeric: tabular-nums; }
+.result-line:empty { display: none; }
+.chapter { margin-bottom: 56px; scroll-margin-top: calc(52px + env(safe-area-inset-top, 0px) + 20px); }
+.ch-head { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "num toggle" "title toggle" "sub sub"; align-items: end; gap: 2px 16px; padding-bottom: 14px; margin-bottom: 1px; border-bottom: 1px solid var(--ink); }
+.ch-num { grid-area: num; font-family: var(--f-display); font-size: 13px; letter-spacing: .24em; color: var(--ai); }
+.ch-head h2 { grid-area: title; font-family: var(--f-display); font-weight: 700; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.35; letter-spacing: .02em; text-wrap: balance; }
+.ch-head h2 .cnt { font-family: var(--f-latin); font-weight: 400; font-size: .62em; color: var(--ink-3); margin-left: .5em; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+.ch-sub { grid-area: sub; font-size: 13.5px; color: var(--ink-2); margin-top: 6px; }
+.ch-toggle { grid-area: toggle; border: 0; background: none; font-size: 12.5px; color: var(--ink-3); padding: 4px 0; letter-spacing: .06em; }
+.ch-toggle:hover { color: var(--ink); }
+.chapter[data-collapsed="true"] .grid { display: none; }
+.chapter[data-collapsed="true"] .ch-head { border-bottom-color: var(--rule-2); }
+
+/* 罫線で区切ったカードのグリッド */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 1px; padding-bottom: 1px; }
+.card {
+  position: relative; background: var(--paper); padding: 22px 22px 16px; display: flex; flex-direction: column; gap: 12px; min-width: 0;
+  outline: 1px solid var(--rule); outline-offset: 0;
+  transition: background var(--t-fast);
+}
+.card:hover { background: var(--paper-2); }
+.card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--shu); transform: scaleY(0); transform-origin: top; transition: transform .3s var(--ease); }
+.card.pinned::before { transform: scaleY(1); }
+.card.flash { box-shadow: inset 0 0 0 2px var(--ai); }
+.card-head { display: flex; gap: 10px; align-items: flex-start; }
+.card-head h3 { flex: 1; font-family: var(--f-display); font-weight: 700; font-size: 17px; line-height: 1.5; letter-spacing: .01em; text-wrap: pretty; }
+.card-head h3 .num { font-family: var(--f-latin); font-weight: 400; font-size: 1.5em; line-height: 1; color: var(--ai); margin-right: .25em; vertical-align: -.08em; }
+.card-head h3 .en { font-family: var(--f-latin); font-weight: 500; font-size: 1.45em; line-height: 1.15; letter-spacing: -.005em; display: inline; }
+.card-head h3 .ja { display: block; font-size: 13.5px; font-weight: 500; color: var(--ink-2); margin-top: 6px; letter-spacing: .02em; }
+.pin {
+  flex: none; width: 30px; height: 30px; border: 0; background: none; color: var(--ink-3); display: grid; place-items: center; border-radius: 50%; margin: -4px -6px 0 0;
+  transition: color var(--t-fast), transform .35s var(--ease);
+}
+.pin svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linejoin: round; }
+.pin:hover { color: var(--shu); }
+.pin[aria-pressed="true"] { color: var(--shu); }
+.pin[aria-pressed="true"] svg { fill: currentColor; }
+.pin.pop { transform: rotate(72deg) scale(1.15); }
+.tags { display: flex; flex-wrap: wrap; gap: 2px 12px; margin-top: -4px; }
+.tag { border: 0; background: none; padding: 0; font-size: 12px; color: var(--ink-3); letter-spacing: .04em; }
+.tag::before { content: "#"; opacity: .6; margin-right: 1px; }
+.tag:hover { color: var(--ai); }
+.body { font-size: 14px; line-height: 1.9; color: var(--ink); display: flex; flex-direction: column; gap: 10px; }
+.body .lead { font-family: var(--f-display); font-size: 16px; font-weight: 700; line-height: 1.6; }
+.body blockquote { margin: 0; font-family: var(--f-latin); font-style: italic; font-size: 17.5px; line-height: 1.5; color: var(--ink-2); padding-left: 14px; border-left: 2px solid var(--ai); }
+.body ul { padding-left: 1.1em; display: flex; flex-direction: column; gap: 4px; }
+.body li::marker { color: var(--ai); }
+.body ul ul { margin-top: 4px; gap: 2px; color: var(--ink-2); font-size: 13.5px; }
+.body ul ul li::marker { color: var(--ink-3); }
+.body dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; }
+.body dt { font-family: var(--f-display); font-weight: 700; color: var(--ai); white-space: nowrap; }
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule-2); border: 1px solid var(--rule-2); }
+.compare > div { background: var(--paper); padding: 10px 12px; }
+.compare h4 { font-family: var(--f-display); font-size: 13.5px; margin-bottom: 4px; letter-spacing: .06em; }
+.compare .bad h4 { color: var(--shu); }
+.compare .good h4 { color: var(--good); }
+.compare ul { font-size: 13px; padding-left: 1.1em; }
+.compare .bad li::marker { color: var(--shu); }
+.compare .good li::marker { color: var(--good); }
+.card-foot { display: flex; align-items: center; gap: 14px; margin-top: auto; padding-top: 10px; border-top: 1px dotted var(--rule-2); font-size: 12.5px; }
+.card-foot .src { color: var(--ink-3); flex: 1; letter-spacing: .04em; }
+.card-foot button { border: 0; background: none; padding: 0; color: var(--ink-2); display: inline-flex; align-items: center; gap: 5px; }
+.card-foot button:hover { color: var(--ai); }
+.card-foot button.on { color: var(--ai); font-weight: 700; }
+.card-foot .has::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ai); }
+.card-foot .copied { color: var(--good); }
+.note { display: flex; flex-direction: column; gap: 4px; }
+.note[hidden] { display: none; }
+.note textarea { background: var(--paper); }
+.note .st { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--ink-3); min-height: 1.4em; }
+.empty { color: var(--ink-3); text-align: center; padding: 48px 0; font-family: var(--f-display); }
+
+.colophon { border-top: 1px solid var(--rule-2); padding-block: 22px 40px; font-size: 12px; color: var(--ink-3); display: flex; flex-direction: column; gap: 4px; }
+
+/* ---------- 動き ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .js .hero-body > * { animation: rise .7s var(--ease) both; }
+  .js .hero-body > :nth-child(2) { animation-delay: .06s; }
+  .js .hero-body > :nth-child(3) { animation-delay: .12s; }
+  .js .hero-body > :nth-child(4) { animation-delay: .18s; }
+  .js .hero-body > :nth-child(5) { animation-delay: .24s; }
+  .js .hero-body > :nth-child(6) { animation-delay: .3s; }
+  .js .tate { animation: fade .9s var(--ease) both; }
+  .js .practice { animation: rise .7s var(--ease) .2s both; }
+  .js .card { transition: background var(--t-fast), opacity .5s var(--ease), transform .5s var(--ease); }
+  .js .card.wait { opacity: 0; transform: translateY(10px); }
+  .hero-title span { display: inline; }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* ---------- 画面幅 ---------- */
+@media (max-width: 1100px) {
+  .hero { grid-template-columns: auto minmax(0, 1fr); }
+  .practice { grid-column: 2; }
+}
+@media (max-width: 1100px) and (min-width: 641px) {
+  /* 横長になる幅では 今日 / 今週 を左右に */
+  .practice { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; row-gap: 8px; align-items: start;
+    grid-template-areas: "head weekhead" "today week" "lead lead" "review review" "history history" "note note"; }
+  .practice > .practice-head:first-child { grid-area: head; }
+  .practice > .practice-lead { grid-area: lead; margin-top: 6px; }
+  .practice > #threeToday { grid-area: today; }
+  .practice > .practice-head.sub { grid-area: weekhead; margin-top: 0; padding-top: 0; border-top: 0; }
+  .practice > .practice-head.sub h3 { font-size: 20px; }
+  .practice > #threeWeekList { grid-area: week; }
+  .practice > .review { grid-area: review; }
+  .practice > .history { grid-area: history; }
+  .practice > .practice-note { grid-area: note; }
+}
+@media (max-width: 860px) {
+  .book { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .index { position: static; margin-bottom: 22px; }
+  .index-inner { max-height: none; overflow: visible; gap: 12px; padding: 0; }
+  .index-group { flex-direction: row; gap: 16px; flex-wrap: wrap; }
+  .view-btn { border-bottom: 0; padding: 4px 0; font-size: 13px; }
+  .view-btn .n { margin-left: 2px; }
+  .book > .toc { position: sticky; top: calc(52px + env(safe-area-inset-top, 0px)); z-index: 40; background: color-mix(in srgb, var(--paper) 94%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); border-bottom: 1px solid var(--rule-2); margin-bottom: 20px; }
+  .toc ol { flex-direction: row; overflow-x: auto; gap: 18px; scrollbar-width: none; }
+  .toc ol::-webkit-scrollbar { display: none; }
+  .toc li { border-bottom: 0; flex: none; }
+  .toc a { display: flex; gap: 6px; padding: 10px 0; white-space: nowrap; }
+  .toc a::before { left: 0; right: 0; top: auto; bottom: 0; width: auto; height: 2px; transform: scaleX(0); }
+  .toc a.active::before { transform: scaleX(1); }
+  .index-foot { display: none; }
+  .index-tags { font-size: 12.5px; }
+  .chapter { scroll-margin-top: calc(52px + env(safe-area-inset-top, 0px) + 56px); }
+}
+@media (max-width: 640px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-block: 28px 32px; }
+  .tate { writing-mode: horizontal-tb; border-right: 0; padding: 0; border-bottom: 1px solid var(--rule-2); padding-bottom: 10px; flex-direction: row; align-items: baseline; }
+  .tate-main { display: none; }
+  .tate-sub { letter-spacing: .14em; font-size: 13.5px; color: var(--ink-2); }
+  .hero-toc ol { grid-template-columns: 1fr; grid-auto-flow: row; grid-template-rows: none; }
+  .practice { grid-column: auto; }
+  .review-cols, .compare { grid-template-columns: 1fr; }
+  .bar-nav a { padding: 6px 7px; }
+  .brand-name { font-size: 14px; }
+  .card { padding: 18px 16px 14px; }
+}
+@media print {
+  .bar, .index, .practice, .hero-actions, .card-foot, .pin, .ch-toggle, .note { display: none !important; }
+  body::before { display: none; }
+  .book { display: block; }
+  .chapter[data-collapsed="true"] .grid { display: grid; }
+  .card { break-inside: avoid; }
+}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#chapters">本文へ</a>
+
+<header class="bar">
+  <span class="progress" id="progress" aria-hidden="true"></span>
+  <a class="brand" href="#top">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-name">ビジネスメモ帳</span>
+  </a>
+  <nav class="bar-nav" aria-label="ほかのダッシュボード">
+    <button id="themeToggle" class="theme" type="button" aria-label="表示テーマの切り替え">
+      <span class="theme-dot" aria-hidden="true"></span><span id="themeLabel">自動</span>
+    </button>
+  </nav>
+</header>
+
+<div class="frame" id="top">
+
+  <!-- ===== 扉 (hero) ===== -->
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="tate" aria-hidden="true">
+      <span class="tate-main">ビジネスメモ帳</span>
+      <span class="tate-sub" id="tateDate"></span>
+    </div>
+
+    <div class="hero-body">
+      <p class="eyebrow"><span>今日の一則</span><span class="eyebrow-sec" id="quoteSection"></span></p>
+      <h1 id="heroTitle" class="hero-title"><span id="quoteTitle">読み込み中…</span></h1>
+      <p class="hero-text" id="quoteText"></p>
+      <div class="hero-actions">
+        <a id="quoteLink" class="btn-ink" href="#">この則を読む <span aria-hidden="true">↓</span></a>
+        <button id="quoteNext" class="btn-ghost" type="button">別の一則</button>
+      </div>
+      <nav class="hero-toc" aria-label="目次">
+        <p class="hero-toc-head"><span>目次</span><span class="hero-meta" id="counts"></span></p>
+        <ol id="heroToc"></ol>
+      </nav>
+    </div>
+
+    <aside class="practice" aria-labelledby="practiceTitle">
+      <div class="practice-head">
+        <h2 id="practiceTitle">今日の三つ</h2>
+        <span class="practice-date" id="threeDate"></span>
+        <span class="practice-progress" id="threeProgress" aria-live="polite"></span>
+      </div>
+      <p class="practice-lead">毎朝、やり遂げたいことを三つ書き出す。終わったら丸をつける。</p>
+      <ol class="three" id="threeToday" aria-label="今日の三つ"></ol>
+      <div class="practice-head sub">
+        <h3>今週の三つ</h3>
+        <span class="practice-date" id="threeWeek"></span>
+      </div>
+      <ol class="three" id="threeWeekList" aria-label="今週の三つ"></ol>
+      <details class="review">
+        <summary>週末レビュー</summary>
+        <div class="review-cols">
+          <label>うまくいった点<textarea id="reviewGood" rows="3" placeholder="三つ"></textarea></label>
+          <label>改善点<textarea id="reviewImprove" rows="3" placeholder="三つ"></textarea></label>
+        </div>
+      </details>
+      <details class="history" id="threeHistory">
+        <summary>これまで</summary>
+        <div id="threeHistoryBody"></div>
+      </details>
+      <p class="practice-note">このブラウザにだけ残ります。</p>
+    </aside>
+  </section>
+
+  <!-- ===== 本文: 索引 + 章 ===== -->
+  <div class="book">
+    <aside class="index" aria-label="索引と絞り込み">
+      <div class="index-inner">
+        <label class="search">
+          <span class="visually-hidden">検索</span>
+          <input type="search" id="q" placeholder="検索　/ キー" autocomplete="off" spellcheck="false">
+          <kbd aria-hidden="true">/</kbd>
+        </label>
+        <div class="index-group" role="group" aria-label="表示">
+          <button type="button" class="view-btn" id="viewAll" aria-pressed="true">すべて <span class="n" id="nAll"></span></button>
+          <button type="button" class="view-btn" id="viewPins" aria-pressed="false"><i class="mark-pin" aria-hidden="true"></i>印をつけた <span class="n" id="nPins"></span></button>
+          <button type="button" class="view-btn" id="viewNotes" aria-pressed="false"><i class="mark-note" aria-hidden="true"></i>書き足した <span class="n" id="nNotes"></span></button>
+        </div>
+        <nav class="toc" aria-label="章"><ol id="toc"></ol></nav>
+        <details class="index-tags" id="tagBox">
+          <summary>タグで絞る <span class="n" id="tagCur"></span></summary>
+          <div class="tag-cloud" id="tagChips"></div>
+        </details>
+        <div class="index-foot">
+          <button id="expandAll" class="link" type="button">すべて開く</button>
+          <span aria-hidden="true">·</span>
+          <button id="collapseAll" class="link" type="button">すべて閉じる</button>
+          <span aria-hidden="true">·</span>
+          <button id="reset" class="link" type="button">絞り込みを解除</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="chapters" id="chapters">
+      <p class="result-line" id="resultLine" aria-live="polite"></p>
+      <div id="sections"></div>
+      <p class="empty" id="empty" hidden>該当する則はありません。</p>
+    </main>
+  </div>
+
+  <footer class="colophon">
+    <p>則の本文は <code>public/memo.json</code>。印・書き足し・今日の三つは、このブラウザの localStorage に残り、他の人や端末には共有されません。</p>
+    <p id="updated"></p>
+  </footer>
+</div>
+<script>window.MEMO_DATA = {
+  "updated": "2026-10-06",
+  "sections": [
+    {
+      "id": "traits",
+      "title": "成功者の特徴",
+      "subtitle": "〝何者かになる人〟に共通する 4 つの体質",
+      "items": [
+        {
+          "id": "traits-move",
+          "title": "「動きながら考える、を徹底する」",
+          "tags": [
+            "行動",
+            "スピード",
+            "仮説検証"
+          ],
+          "body": [
+            "完璧に準備が整うのを待っていたら、チャンスを逃す。そんなことを感覚的に理解しているのがこのタイプ。たとえ6割の完成度でもまずは走り出して、動きながら修正していく柔軟性とスピード感がある。",
+            "思考と行動を同時に回せる人は仮説検証のサイクルも速いので、結果として成果にも早くたどり着く。口で「やりたい」と言う前に、手と足が動いてる。その〝前のめりさ〟が、未来をぐっと引き寄せている。"
+          ]
+        },
+        {
+          "id": "traits-tedious",
+          "title": "「めんどうくさいことに圧倒的に強い」",
+          "tags": [
+            "継続",
+            "積み上げ",
+            "信頼"
+          ],
+          "body": [
+            "面倒なことを避けるのが普通。でも、〝何者かになる人〟は逆を行く。むしろ「面倒なことに価値がある」と知っていて、あえてそこに飛び込んでいく。",
+            "地味な作業、繰り返しの努力、表に出ない準備。そういった見えない積み上げを、サボらず継続できる人が、最終的に圧倒的な差をつけてくる。派手な才能より、面倒に強い体質のほうがよっぽど強い。だからこそ、信頼されるし、最終的に勝つ。"
+          ]
+        },
+        {
+          "id": "traits-mood",
+          "title": "「自分の機嫌を自分でとる」",
+          "tags": [
+            "メンタル",
+            "内発的動機",
+            "継続"
+          ],
+          "body": [
+            "忙しさやストレスが多い環境でも、常に自分の状態を自分で整えられる人は強い。他人や環境に振り回されず、自分の内側に軸を持っている。",
+            "感情に支配されないからこそ、ブレずに継続できるし、周囲に与える印象も安定している。内発的な情熱やモチベーションを燃料にして動いている人は、周囲からの応援も自然と集まりやすい。メンタルの安定は、じつは〝継続のエンジン〟なのです。"
+          ]
+        },
+        {
+          "id": "traits-time",
+          "title": "「時間の使い方が明らかに戦略的」",
+          "tags": [
+            "時間",
+            "優先順位",
+            "集中"
+          ],
+          "body": [
+            "〝何者かになる人〟には時間の使い方に共通点がある。ただ忙しいのではなく、何に時間をかけるか、何を捨てるかが明確。ToDoを管理するだけでなく、〝やらないこと〟を明確に決めている人ほど、成長スピードが速い。",
+            "優先順位がクリアだからこそ、必要なことに集中できるし、無駄がない。カレンダーの中身やタスクの選び方には、その人の思考の質が表れる。「時間の使い方＝未来の使い方」です。"
+          ]
+        },
+        {
+          "id": "traits-talent",
+          "title": "成功者は才能があるから成功した —— それは“結果だけ”を見ているから",
+          "tags": [
+            "誤解",
+            "努力",
+            "試行錯誤"
+          ],
+          "bullets": [
+            {
+              "text": "誤解： 多くの人は成功者の「到達点」だけを見て判断する。"
+            },
+            {
+              "text": "実際： 地道な努力、試行錯誤、失敗の連続が背景にある。",
+              "sub": [
+                "継続的な学習と訓練",
+                "成功より多くの失敗と軌道修正",
+                "思考と行動を繰り返す試行錯誤"
+              ]
+            }
+          ]
+        }
+      ],
+      "short": "成功者の特徴"
+    },
+    {
+      "id": "bezos",
+      "title": "ジェフ・ベゾス：若い起業家へのアドバイス",
+      "subtitle": "Customer Obsession と Day One 文化",
+      "items": [
+        {
+          "id": "bezos-career",
+          "title": "キャリア哲学",
+          "tags": [
+            "選択",
+            "挑戦",
+            "誇り"
+          ],
+          "bullets": [
+            {
+              "text": "90歳で人生を振り返ったとき、「楽さ」よりも奉仕と冒険を選んだことに誇りを感じるはず"
+            },
+            {
+              "text": "人生は先天的な才能ではなく、選択の積み重ねで形作られる"
+            },
+            {
+              "text": "才能は祝福すべきものだが、誇るべきではない――それは「授かった」もの"
+            },
+            {
+              "text": "誇りは、自らの努力や困難への挑戦、そして不快さを受け入れて得た成果に対して持つもの"
+            }
+          ]
+        },
+        {
+          "id": "bezos-customer",
+          "title": "顧客志向",
+          "tags": [
+            "顧客",
+            "根本原因",
+            "改善"
+          ],
+          "bullets": [
+            {
+              "text": "競合ではなく顧客への執着（Customer Obsession）を最優先に"
+            },
+            {
+              "text": "顧客は常に「神聖なる不満」を抱えており、それが継続的な改善を促す"
+            },
+            {
+              "text": "怒りをぶつけるような声も含めて、すべての顧客の声に耳を傾けること"
+            },
+            {
+              "text": "表面的な問題解決ではなく、根本原因を特定し対処すること"
+            },
+            {
+              "text": "根本原因を解決することで、同じ問題の再発を防ぎ、組織としての運用の卓越性が高まる"
+            }
+          ]
+        },
+        {
+          "id": "bezos-scale",
+          "title": "規模を拡大しても卓越性を保つには",
+          "tags": [
+            "Day One",
+            "意思決定",
+            "長期"
+          ],
+          "bullets": [
+            {
+              "text": "「Day One」文化（創業初日のような気概）を維持し、スケールの強みと起業家的な機動力を両立させる"
+            },
+            {
+              "text": "成長の過程で陥りがちな罠を避ける：",
+              "sub": [
+                "顧客との直接接点を失い、間接的な管理に頼る",
+                "可逆的な意思決定に対して過度に複雑にし、意思決定のスピードが鈍る",
+                "長期的な視点を持たず、一時的な「借家人」的思考になる"
+              ]
+            },
+            {
+              "text": "株価の上下ではなく、事業の本質的な健全性に集中する"
+            }
+          ]
+        },
+        {
+          "id": "bezos-leadership",
+          "title": "リーダーシップの柱",
+          "tags": [
+            "リーダーシップ",
+            "発明",
+            "長期"
+          ],
+          "bullets": [
+            {
+              "text": "顧客への執着：顧客のニーズを最優先に"
+            },
+            {
+              "text": "発明：既存の模倣ではなく、本質的な革新を追求"
+            },
+            {
+              "text": "長期的思考：短期的な利益よりも、未来に目を向けた判断を"
+            },
+            {
+              "text": "運用の卓越性：問題の根本を断ち、継続的に改善を続ける"
+            }
+          ]
+        },
+        {
+          "id": "bezos-personal",
+          "title": "個人としての成果を最大化するには",
+          "tags": [
+            "時間",
+            "委任",
+            "情熱"
+          ],
+          "bullets": [
+            {
+              "text": "どんな仕事にも「面倒な雑務」はつきものと理解する"
+            },
+            {
+              "text": "仕事の半分を楽しめれば、それは幸運なこと"
+            },
+            {
+              "text": "時間の使い方を守ることで、過剰な約束や疲弊を防ぐ"
+            },
+            {
+              "text": "思考の余白を生むために、柔軟性を持つこと"
+            },
+            {
+              "text": "苦しみの原因は「大変さ」ではなく、自分でコントロールできない感覚"
+            },
+            {
+              "text": "リーダーとしては、ストレスを委任することも必要（すべてを背負わなくてよい）"
+            },
+            {
+              "text": "若手には、情熱を感じる仕事を選ぶよう勧めたい"
+            },
+            {
+              "text": "真の卓越性は、心から打ち込めることからしか生まれない"
+            }
+          ]
+        }
+      ],
+      "short": "ベゾス"
+    },
+    {
+      "id": "thiel",
+      "title": "ピーター・ティール：「競争するのは負け犬だ」",
+      "subtitle": "競争を避け、独占を目指す",
+      "items": [
+        {
+          "id": "thiel-monopoly",
+          "title": "独占か、完全競争か",
+          "tags": [
+            "独占",
+            "競争",
+            "利益"
+          ],
+          "bullets": [
+            {
+              "text": "企業を立ち上げる際、起業家は常に独占を目指し、競争を避けるべきである。"
+            },
+            {
+              "text": "価値創造（X）と価値獲得（Y）は完全に独立した変数である",
+              "sub": [
+                "米国の航空会社は高い価値（X）を生み出すが、ほとんどの利益（Y）を獲得できていない",
+                "Google検索は比較的低い価値創造だが、大きな利益を獲得している"
+              ]
+            },
+            {
+              "text": "ビジネスには大きく分けて「完全競争」と「独占」の2種類しかなく、その中間はほとんど存在しない"
+            },
+            {
+              "text": "競争の激しい業界（レストランなど）は利益を出しづらい"
+            },
+            {
+              "text": "独占企業は圧倒的なキャッシュフローを生み出し、市場を支配する"
+            }
+          ]
+        },
+        {
+          "id": "thiel-positioning",
+          "title": "市場ポジショニングの表現",
+          "tags": [
+            "市場定義",
+            "ポジショニング"
+          ],
+          "bullets": [
+            {
+              "text": "市場ポジショニングの表現はビジネスの種類によって異なる"
+            },
+            {
+              "text": "非独占企業は市場を狭く定義する（市場の交差点を強調）"
+            },
+            {
+              "text": "独占企業は市場を広く定義する（市場の和集合を強調）"
+            },
+            {
+              "text": "例：Googleは「検索企業」ではなく「テクノロジー/広告企業」として自らを定義"
+            }
+          ]
+        },
+        {
+          "id": "thiel-strategy",
+          "title": "独占を築くための戦略",
+          "tags": [
+            "小さな市場",
+            "拡大",
+            "戦略"
+          ],
+          "bullets": [
+            {
+              "text": "「非常に小さな市場から始め、それを支配し、徐々に拡大する」",
+              "sub": [
+                "Amazon（書籍） → 全小売市場",
+                "Facebook（ハーバード大学） → 全ソーシャルネットワーク",
+                "PayPal（eBayのパワーセラー） → 全決済市場"
+              ]
+            },
+            {
+              "text": "失敗したクリーンテック企業は最初から巨大市場を狙いすぎた"
+            }
+          ]
+        },
+        {
+          "id": "thiel-traits",
+          "title": "成功する独占企業の主な特徴",
+          "tags": [
+            "独自技術",
+            "ネットワーク効果",
+            "ブランド"
+          ],
+          "bullets": [
+            {
+              "text": "独自技術（他の選択肢より10倍優れている）"
+            },
+            {
+              "text": "ネットワーク効果（ユーザーが増えるほど価値が高まる）"
+            },
+            {
+              "text": "規模の経済（固定費を多くのユーザーで分担できる）"
+            },
+            {
+              "text": "強力なブランド"
+            },
+            {
+              "text": "長期的な耐久性（「最後に動く者」として長期的価値を獲得する）"
+            }
+          ]
+        },
+        {
+          "id": "thiel-mimic",
+          "title": "社会の競争重視は誤解を生みやすい",
+          "tags": [
+            "模倣",
+            "心理",
+            "価値創造"
+          ],
+          "bullets": [
+            {
+              "text": "人間は模倣行動をとる心理的傾向がある"
+            },
+            {
+              "text": "競争が正当性の証明だと考えると、不適切な戦略に走りがち"
+            },
+            {
+              "text": "競争に囚われると、本質的な価値創造の問いを見失う"
+            }
+          ]
+        },
+        {
+          "id": "thiel-alt",
+          "title": "代替的なビジネス戦略",
+          "tags": [
+            "垂直統合",
+            "ソフトウェア",
+            "飛躍"
+          ],
+          "bullets": [
+            {
+              "text": "垂直統合は複雑で調整された独占を生み出す（Tesla、SpaceX）"
+            },
+            {
+              "text": "ソフトウェア企業は規模拡大と急速な普及によって成功する"
+            },
+            {
+              "text": "量子的な飛躍の方が、漸進的な改善よりも大きな成功を生む（リーンスタートアップへの懐疑）"
+            }
+          ]
+        }
+      ],
+      "short": "ティール"
+    },
+    {
+      "id": "altman",
+      "title": "Sam Altman：How To Be Successful",
+      "subtitle": "2019年1月のブログ記事。何千人もの創業者を観察して分かった「並外れた成功（Outlier Success）」のための 13 の思考法",
+      "items": [
+        {
+          "id": "altman-1",
+          "title": "1. Compound yourself（自分自身を複利で成長させる）",
+          "tags": [
+            "複利",
+            "成長"
+          ],
+          "quote": "You want to be an exponential curve yourself—you should aim for your life to follow an ever-increasing up-and-to-the-right trajectory.",
+          "body": [
+            "資産だけでなく、自分自身のキャリアや能力も「複利」で伸ばすべきです。毎年50%成長するビジネスが短期間で巨大化するように、あなた自身も常に学習し、前年の成果を土台にさらに大きな成果を出せるようになりましょう。「10年の経験がある人」と「1年の経験を10回繰り返しただけの人」の差は、この複利効果にあります。"
+          ]
+        },
+        {
+          "id": "altman-2",
+          "title": "2. Have almost too much self-belief（自信過剰なくらいの自信を持つ）",
+          "tags": [
+            "自信",
+            "レジリエンス"
+          ],
+          "quote": "The most successful people I know believe in themselves almost to the point of delusion.",
+          "body": [
+            "最も成功している人々は、他人が「無理だ」と思うようなことでも、自分ならできると信じています（時には妄想に近いほどに）。イーロン・マスクがSpaceXを立ち上げたとき、成功すると信じていたのは彼自身だけでした。批判や懐疑論に耐えるためには、この強烈な自信が必要です。ただし、単なる妄想で終わらないよう、真実を見極める力とのバランスも必要です。"
+          ]
+        },
+        {
+          "id": "altman-3",
+          "title": "3. Learn to think independently（独立した思考を身につける）",
+          "tags": [
+            "独創",
+            "第一原理"
+          ],
+          "quote": "Entrepreneurship is very difficult to teach because original thinking is very difficult to teach.",
+          "body": [
+            "学校では教えられない「独創的な思考」が必要です。第一原理（First Principles）から考え、新しいアイデアを生み出し、周りの人が賛成しなくても自分の考えを信じる勇気を持つこと。失敗しても何度も立ち上がる「レジリエンス（回復力）」もここに含まれます。"
+          ]
+        },
+        {
+          "id": "altman-4",
+          "title": "4. Get good at \"sales\"（「セールス」が得意になる）",
+          "tags": [
+            "説得",
+            "コミュニケーション"
+          ],
+          "quote": "Self-belief alone is not sufficient—you also have to be able to convince other people of what you believe.",
+          "body": [
+            "どんなに素晴らしいアイデアも、人を説得できなければ実現しません。ここで言う「セールス」とは、顧客への販売だけでなく、投資家へのピッチ、優秀な人材の採用、メディアへの広報など、あらゆる「説得」を含みます。明確なビジョンを持ち、強力なコミュニケーション能力を磨くことが必須です。"
+          ]
+        },
+        {
+          "id": "altman-5",
+          "title": "5. Make it easy to take risks（リスクを取りやすい環境を作る）",
+          "tags": [
+            "リスク",
+            "身軽さ"
+          ],
+          "quote": "Most people overestimate risk and underestimate reward.",
+          "body": [
+            "多くの人はリスクを過大評価し、リターンを過小評価しています。失うものが少ないキャリアの初期段階のうちに、あるいは生活コストを低く抑えることで、いつでも「賭け」に出られる身軽さを維持しましょう。安定した給料や地位に縛られると、リスクを取れなくなります。"
+          ]
+        },
+        {
+          "id": "altman-6",
+          "title": "6. Focus（集中する）",
+          "tags": [
+            "集中",
+            "優先順位"
+          ],
+          "quote": "Focus is a force multiplier on work.",
+          "body": [
+            "多くのことを少しずつやるよりも、本当に重要な数少ないことに全力を注ぐべきです。自分が何をすべきかを特定するのに時間をかけ、一度決めたら、それ以外は容赦なく切り捨てて、圧倒的なスピードで実行します。"
+          ]
+        },
+        {
+          "id": "altman-7",
+          "title": "7. Work hard（ハードワークする）",
+          "tags": [
+            "ハードワーク",
+            "複利"
+          ],
+          "quote": "You can get to about the 90th percentile in your field by working either smart or hard, which is still a great accomplishment. But getting to the 99th percentile requires both.",
+          "body": [
+            "「賢く働く（Work Smart）」だけでは不十分です。トップ1%の並外れた成功を収める人は、賢く、かつ猛烈に働いています（Work Hard）。極端なハードワークは長続きしないため、人生の特定の時期に集中して行う必要がありますが、複利効果を最大化するにはキャリアの初期に行うのが最も効果的です。"
+          ]
+        },
+        {
+          "id": "altman-8",
+          "title": "8. Be bold（大胆になる）",
+          "tags": [
+            "野心",
+            "大胆"
+          ],
+          "quote": "It's easier to do a hard startup than an easy startup.",
+          "body": [
+            "逆説的ですが、野心的なプロジェクトの方が成功しやすい場合があります。なぜなら、困難だが重要な問題には優秀な人材が集まり、人々が応援したくなるからです。退屈なプロジェクトには情熱を持続させるのが難しく、競争も激しくなりがちです。"
+          ]
+        },
+        {
+          "id": "altman-9",
+          "title": "9. Be willful（意志を強く持つ）",
+          "tags": [
+            "意志",
+            "執念"
+          ],
+          "quote": "People have an enormous capacity to make things happen.",
+          "body": [
+            "多くの人は「思い通りにならないこと」を受け入れてしまいますが、成功者は世界を自分の意志で曲げようとします。「何がなんでも実現させる」という執念と、諦めずに解決策を探し続ける姿勢が、不可能を可能にします。"
+          ]
+        },
+        {
+          "id": "altman-10",
+          "title": "10. Be hard to compete with（競争しにくい存在になる）",
+          "tags": [
+            "レバレッジ",
+            "独自性"
+          ],
+          "quote": "Most people understand that companies are more valuable if they are difficult to compete with. This is important and true for you as an individual as well.",
+          "body": [
+            "代替可能な存在であってはなりません。誰にでもできる仕事をしていると、価格競争に巻き込まれます。強力なブランド、独自のネットワーク、複数の専門分野の掛け合わせなど、他人が模倣できない「レバレッジ（てこ）」を持つことで、競争を避けられます。"
+          ]
+        },
+        {
+          "id": "altman-11",
+          "title": "11. Build a network（ネットワークを築く）",
+          "tags": [
+            "ネットワーク",
+            "チーム"
+          ],
+          "quote": "Great work requires teams.",
+          "body": [
+            "一人でできることには限界があります。才能ある人々とネットワークを築き、彼らと協力することが重要です。ネットワークを広げる最良の方法は、まず自分が誰かを助けることです。また、本当に優秀な人材を見極める目を養うことも大切です。"
+          ]
+        },
+        {
+          "id": "altman-12",
+          "title": "12. You get rich by owning things（所有することで富を得る）",
+          "tags": [
+            "所有",
+            "資産"
+          ],
+          "quote": "Almost no one in the history of the Forbes list has gotten there with a salary.",
+          "body": [
+            "給料（時間の切り売り）だけで大富豪になることはほぼ不可能です。真の富は、価値が急上昇する資産（株式、不動産、知的財産、自らのビジネスなど）を「所有」することから生まれます。"
+          ]
+        },
+        {
+          "id": "altman-13",
+          "title": "13. Be internally driven（内発的動機を持つ）",
+          "tags": [
+            "内発的動機",
+            "インパクト"
+          ],
+          "quote": "The most successful people I know are primarily internally driven; they do what they do to impress themselves.",
+          "body": [
+            "他人からの評価や地位のために動く人は、ある程度までしか行けません。並外れた成功者は、「自分自身を感心させたい」「世界にインパクトを与えたい」という内なる衝動に突き動かされています。富や地位を得た後も走り続けられるのは、この内発的動機がある人だけです。"
+          ]
+        }
+      ],
+      "short": "Sam Altman"
+    },
+    {
+      "id": "productivity",
+      "title": "生産性の習慣",
+      "subtitle": "決まった間隔・決まった数で、今ここに集中する",
+      "items": [
+        {
+          "id": "prod-rhythm",
+          "title": "生産性が高い人ほど決まった間隔で仕事をしている",
+          "tags": [
+            "リズム",
+            "休憩",
+            "締め切り"
+          ],
+          "bullets": [
+            {
+              "text": "55分働いたら15分休む"
+            },
+            {
+              "text": "ルール化して未来を細かく刻み、今ここを生きる"
+            },
+            {
+              "text": "自分で締め切りを作り、未来の姿を明確にする"
+            }
+          ]
+        },
+        {
+          "id": "prod-three",
+          "title": "毎日・毎週・毎月・毎年「3つ」",
+          "tags": [
+            "3つ",
+            "レビュー",
+            "フィードバック"
+          ],
+          "bullets": [
+            {
+              "text": "今日やり遂げたいことを毎朝3つ書き出して実践"
+            },
+            {
+              "text": "今週、今月、今年も3つ"
+            },
+            {
+              "text": "毎週末レビューを行い、うまくいった点、改善点を3つ"
+            },
+            {
+              "text": "毎日の自分へのフィードバックもする"
+            }
+          ]
+        }
+      ],
+      "short": "生産性の習慣"
+    },
+    {
+      "id": "structure",
+      "title": "構造力",
+      "subtitle": "「何のために？」という本質的な問いに向き合う",
+      "items": [
+        {
+          "id": "structure-why",
+          "title": "構造のない行動は「目的のない運動」",
+          "tags": [
+            "目的",
+            "意志",
+            "AI"
+          ],
+          "bullets": [
+            {
+              "text": "これからは構造設計力が重要"
+            },
+            {
+              "text": "構造設計には意志と世界観が不可欠 → AIに代替不可能"
+            },
+            {
+              "text": "構造化された意思を持てるか。AIの活用にも不可欠"
+            },
+            {
+              "text": "未来を読む力より設計する力。構造は意図を持って未来をつくるための設計図"
+            },
+            {
+              "text": "社会が動くのは「構造と意思」によってであり、「数字と確率」ではない"
+            }
+          ]
+        },
+        {
+          "id": "structure-question",
+          "title": "構造を設計する際、最初に投げかける問い",
+          "tags": [
+            "問い",
+            "意味",
+            "文脈"
+          ],
+          "lead": "これは何のために存在するのか？",
+          "bullets": [
+            {
+              "text": "構造を作れる人間が、複雑な世界に意味を与え動かす力を持つ"
+            },
+            {
+              "text": "人間に残される本質的な役割は、意味を選び文脈を設計する力"
+            },
+            {
+              "text": "「問いを立てる」「意味を定める」「構造を設計する」"
+            },
+            {
+              "text": "これからは全体の構造を設計することが求められる。循環して持続し、進化し、広がるところまで設計"
+            }
+          ]
+        },
+        {
+          "id": "structure-purpose",
+          "title": "新しい事業で最も重要なのは目的",
+          "tags": [
+            "目的",
+            "課題",
+            "社会"
+          ],
+          "bullets": [
+            {
+              "text": "なぜそれをやるのか？"
+            },
+            {
+              "text": "誰の、どんな課題を解決するために存在するのか"
+            },
+            {
+              "text": "正しさだけでは社会と人は動かない、社会とどう繋がるか"
+            }
+          ]
+        },
+        {
+          "id": "structure-marketing",
+          "title": "優れたマーケティング構造",
+          "tags": [
+            "マーケティング",
+            "体験"
+          ],
+          "body": [
+            "「誰に」「何を」「どの順序で」「どう伝えるか」を体系的に設計した「体験の道筋」"
+          ]
+        },
+        {
+          "id": "structure-def",
+          "title": "構造とは「意味の設計図」",
+          "tags": [
+            "定義",
+            "良い構造",
+            "悪い構造"
+          ],
+          "lead": "構造とは目的、関係性、順序、優先順位によって構成される「意味の設計図」",
+          "compare": {
+            "bad": {
+              "title": "悪い構造",
+              "rows": [
+                "目的が曖昧・形骸化",
+                "関係性が断絶・機能していない",
+                "順序が場当たり的",
+                "優先度が全方位的"
+              ]
+            },
+            "good": {
+              "title": "良い構造",
+              "rows": [
+                "目的が明確、行動とつながる",
+                "関係性が有機的・相互補完的",
+                "順序が論理的かつ心理的に自然",
+                "優先順位に選択と集中がある"
+              ]
+            }
+          }
+        },
+        {
+          "id": "structure-will",
+          "title": "意志の構造化",
+          "tags": [
+            "目的",
+            "関係性",
+            "順序",
+            "優先順位"
+          ],
+          "defs": [
+            {
+              "term": "目的",
+              "desc": "何のためにこの意志は存在しているのか"
+            },
+            {
+              "term": "関係性",
+              "desc": "誰とつながることで実現可能になるか"
+            },
+            {
+              "term": "順序",
+              "desc": "どのようなステップで浸透させていくか"
+            },
+            {
+              "term": "優先順位",
+              "desc": "何を最初に、何を後に動かすべきか"
+            }
+          ]
+        }
+      ],
+      "short": "構造力"
+    },
+    {
+      "id": "startup",
+      "title": "起業初期の原則",
+      "subtitle": "「金もない、経験もない。だから、営業するしかなかった」",
+      "items": [
+        {
+          "id": "startup-sales",
+          "title": "「金もない、経験もない。だから、営業するしかなかった」",
+          "tags": [
+            "営業",
+            "主導権",
+            "自社商品"
+          ],
+          "bullets": [
+            {
+              "text": "⇒ 起業初期は、理想より今できることから始める。"
+            },
+            {
+              "text": "⇒ 人の商品を扱うだけでは、主導権を持てない。"
+            },
+            {
+              "text": "⇒ 今やっていることではなく、次にやることを、最初から決めておく。"
+            }
+          ]
+        },
+        {
+          "id": "startup-scale",
+          "title": "年商数十億規模に伸ばすために",
+          "tags": [
+            "成長",
+            "自社商品",
+            "主導権"
+          ],
+          "bullets": [
+            {
+              "text": "金も経験もなくても、今できることから始める"
+            },
+            {
+              "text": "人の商品を扱うだけでは、主導権は取れない"
+            },
+            {
+              "text": "自社の商品を持つことを、最初から決めておく"
+            }
+          ]
+        }
+      ],
+      "short": "起業初期"
+    },
+    {
+      "id": "strategy",
+      "title": "経営戦略論メモ",
+      "short": "経営戦略論",
+      "subtitle": "戦略とは何か、理念・ビジョン・戦略・戦術の階層、理念の浸透",
+      "items": [
+        {
+          "id": "strategy-what",
+          "title": "戦略とは",
+          "tags": [
+            "戦略",
+            "孫子",
+            "外部と内部"
+          ],
+          "lead": "戦術より広範な作戦計画。各種の戦闘を総合し、戦争を全局的に運用する方法。",
+          "bullets": [
+            {
+              "text": "彼を知り己を知れば百戦殆うからず",
+              "sub": [
+                "彼：直接に競合する相手を含め、自分以外、外部のこと",
+                "己：自分のこと、自分に置かれている状況、自分の特徴、得意な部分、不得意な部分のこと"
+              ]
+            },
+            {
+              "text": "① 事業の成長方向や目的の設定が大切"
+            },
+            {
+              "text": "② 成長するための意思決定ルールあるいはガイドライン ⇒ 戦略"
+            },
+            {
+              "text": "戦略を実行する土台：リーダーシップ、組織の団結・規律・制度"
+            }
+          ]
+        },
+        {
+          "id": "strategy-growth",
+          "title": "企業が成長するための方向性",
+          "tags": [
+            "成長",
+            "多角化",
+            "市場"
+          ],
+          "defs": [
+            {
+              "term": "① 市場浸透",
+              "desc": "Market Penetration。既存市場で既存製品の売上を増加させる"
+            },
+            {
+              "term": "② 市場開拓",
+              "desc": "Market Development。既存製品を新しい市場に展開する"
+            },
+            {
+              "term": "③ 製品開発",
+              "desc": "Product Development。既存市場に新製品を投入する"
+            },
+            {
+              "term": "④ 多角化",
+              "desc": "Diversification。新市場に新製品を投入する、新たな成長機会を創出する"
+            }
+          ],
+          "bullets": [
+            {
+              "text": "企業の長期的成長には「多角化」が不可欠"
+            }
+          ]
+        },
+        {
+          "id": "strategy-hierarchy",
+          "title": "理念 → ビジョン → 戦略 → 戦術",
+          "tags": [
+            "企業理念",
+            "ビジョン",
+            "戦略",
+            "戦術"
+          ],
+          "lead": "Why → What → How → 実行計画",
+          "defs": [
+            {
+              "term": "企業理念",
+              "desc": "Why「企業は何のために事業を行うか」。目的、企業のあるべき姿、果たすべき使命、ミッション"
+            },
+            {
+              "term": "ビジョン",
+              "desc": "What ある時点までに「こうなっていたい」と考える到達点。中期的なイメージ、企業が目指す具体的な目標、理想像、将来一緒に見たい景色"
+            },
+            {
+              "term": "戦略",
+              "desc": "How どのように。目標を実現していくための手段"
+            },
+            {
+              "term": "戦術",
+              "desc": "戦略を実行するための具体的な実行計画"
+            }
+          ]
+        },
+        {
+          "id": "strategy-philosophy",
+          "title": "理念と企業理念",
+          "tags": [
+            "企業理念",
+            "価値観",
+            "原則"
+          ],
+          "lead": "理念：ある物事について、こうあるべきだという根本の考え",
+          "bullets": [
+            {
+              "text": "企業理念：存在意義、経営哲学、ミッション・使命、価値観"
+            },
+            {
+              "text": "「この事業（企業）を行う、あるいは続ける必要がある理由、社会にどんな価値を提供していくか、どんな役割を果たすべきか」"
+            },
+            {
+              "text": "時代を越えて企業が経営活動を続けていくときに、守るべき「原則」、絶対的な価値観、こだわり、美意識"
+            },
+            {
+              "text": "企業におけるあらゆる意思決定や行動基準となる考え方"
+            }
+          ]
+        },
+        {
+          "id": "strategy-three",
+          "title": "企業理念・経営理念・ビジョンの違い",
+          "tags": [
+            "企業理念",
+            "経営理念",
+            "ビジョン",
+            "ビジョナリーカンパニー"
+          ],
+          "defs": [
+            {
+              "term": "企業理念",
+              "desc": "企業全体に関わる、一貫してほぼ半永久に変わらない企業の目的や姿勢"
+            },
+            {
+              "term": "経営理念",
+              "desc": "経営者・その代の経営者が掲げる経営活動に関する目的や姿勢。時代に合わせて方向を再設定、再定義して、新たな道を踏み出すための価値観・方針"
+            },
+            {
+              "term": "ビジョン",
+              "desc": "時代に合わせ変化していく、より具体的な目標"
+            }
+          ],
+          "bullets": [
+            {
+              "text": "ビジョナリーカンパニーは基本理念を大事に維持し、守るが、基本理念を表す具体的な行動は、いつでも変更し、発展させなければならない"
+            }
+          ]
+        },
+        {
+          "id": "strategy-gptw",
+          "title": "「働きがいのある会社」",
+          "tags": [
+            "信頼",
+            "誇り",
+            "尊敬",
+            "自律性"
+          ],
+          "body": [
+            "マネジメントと従業員との間に「信頼」があり、一人ひとりの能力が最大限に生かされている（For All）会社のこと。優れた価値観（バリュー）やリーダーシップがあり、イノベーションを通じて財務的な成長を果たすことができる。"
+          ],
+          "defs": [
+            {
+              "term": "信用",
+              "desc": "従業員とマネジメントの関係"
+            },
+            {
+              "term": "誇り",
+              "desc": "職務（仕事内容）と従業員との関係"
+            },
+            {
+              "term": "尊敬",
+              "desc": "従業員同士の関係"
+            }
+          ],
+          "bullets": [
+            {
+              "text": "自律性を高めるために有効となる施策は、“ミッション・ビジョン・バリューの共有と浸透”、“経営・管理者層からのオープンな情報共有”など"
+            }
+          ]
+        },
+        {
+          "id": "strategy-penetration",
+          "title": "企業理念の浸透",
+          "tags": [
+            "企業理念",
+            "浸透",
+            "行動"
+          ],
+          "lead": "なにをすることが経営理念を体現することなのか、イメージできる、あるいは実際に行動できることが大切。従業員が理念を理解し、共感して行動することが重要。",
+          "compare": {
+            "bad": {
+              "title": "浸透度が低い理由",
+              "rows": [
+                "経営層によるコミットメントが足りない",
+                "経営理念が意味する具体的な行動の共有が十分でない",
+                "日々の職場の中で実践される仕組みが不足している"
+              ]
+            },
+            "good": {
+              "title": "浸透させる取り組み",
+              "rows": [
+                "経営陣が継続的に理念を発信する",
+                "ワークショップやトレーニングを通じて、社員が理念を体感する機会を提供する",
+                "経営者や経営幹部が理念を踏まえた行動や言葉遣いを実践する",
+                "フィードバックや評価制度を導入し、理念に基づいた行動が評価される仕組みを作る",
+                "社内報やミーティング、掲示板で理念に関するメッセージやコラムを定期的に発信する"
+              ]
+            }
+          }
+        },
+        {
+          "id": "strategy-dream",
+          "title": "夢を語ることは経営者の使命",
+          "tags": [
+            "夢",
+            "ビジョン",
+            "松下幸之助"
+          ],
+          "lead": "夢なき者に理想なし、理想なき者に計画なし、計画なき者に実行なし、実行なき者に成功なし。故に、夢なき者に成功なし。",
+          "bullets": [
+            {
+              "text": "「社員に夢を語らない社長は失格」（松下幸之助）"
+            },
+            {
+              "text": "夢を語ることは経営者の使命"
+            },
+            {
+              "text": "過去を振り返ることはせず未来を想像すること"
+            },
+            {
+              "text": "基本的にはポジティブでワクワクするような未来 ⇒ ビジョン。「こんなことが実現するといいなぁ。」という未来"
+            }
+          ]
+        },
+        {
+          "id": "strategy-herd",
+          "title": "「群れ」で働く意味と、変化する組織",
+          "tags": [
+            "組織",
+            "意義",
+            "変化"
+          ],
+          "bullets": [
+            {
+              "text": "わざわざ「群れ」で働く意味はなんだろうか"
+            },
+            {
+              "text": "「利益を生み出す場」から「意義を生み出す場」にシフトしていく"
+            },
+            {
+              "text": "生残り繁栄する組織とは、最も大きな組織でも、最も優れた人が集まった組織でもなく、最も早く世界の変化に対応して自ら変化する組織"
+            }
+          ]
+        },
+        {
+          "id": "strategy-sense",
+          "title": "戦略を創るのは経営者の仕事、センスは経験で磨く",
+          "tags": [
+            "戦略",
+            "センス",
+            "経験",
+            "抽象化"
+          ],
+          "lead": "戦略を創る ＝ 商売全体を組み立てる ＝ 経営者の仕事",
+          "bullets": [
+            {
+              "text": "戦略にはセンスが必要 → 磨くには経験を積み場数を踏む"
+            },
+            {
+              "text": "それぞれの文脈に対応した固有の因果のロジックの引き出しの多さ。因果律の引き出しの質と量が経営者に求められる資質"
+            },
+            {
+              "text": "PDCAで経験を積んでセンスを錬成する"
+            },
+            {
+              "text": "経験が論理化されていないと同じ失敗を繰り返す。論理レベルに抽象化されていれば勘が働く"
+            },
+            {
+              "text": "センスの良い人を観察して自分と比較し相対化してセンスを磨く"
+            },
+            {
+              "text": "具体と抽象（原理原則）の幅と頻度とスピード"
+            }
+          ]
+        },
+        {
+          "id": "strategy-story",
+          "title": "戦略ストーリー",
+          "tags": [
+            "戦略",
+            "ストーリー",
+            "パッション",
+            "模倣障壁"
+          ],
+          "bullets": [
+            {
+              "text": "当の本人が面白がってることが戦略ストーリーの最低条件"
+            },
+            {
+              "text": "しかし、自分も全体の一部として客観的に見る醒めた目も必要"
+            },
+            {
+              "text": "全体を動かすには実行者にストーリーが共有されていなければならない"
+            },
+            {
+              "text": "戦略は全体がゴールに向かって動き流れていくストーリーでなければならない"
+            },
+            {
+              "text": "パッションが起点で論理が後押しするのが優れた戦略ストーリー"
+            },
+            {
+              "text": "競合にとっては非合理な要素が含まれている戦略なら、それ自体が模倣障壁となり得る → 長期的差別化、長期利益"
+            }
+          ]
+        },
+        {
+          "id": "strategy-innovation",
+          "title": "イノベーションの条件（佐々木力）",
+          "tags": [
+            "イノベーション",
+            "佐々木力"
+          ],
+          "bullets": [
+            {
+              "text": "全く新しい概念である"
+            },
+            {
+              "text": "それが社会生活の広い範囲にわたりインパクトを与える"
+            },
+            {
+              "text": "そのインパクトが短い期間に強烈に現れる"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};</script>
+<script>
+/* ビジネスメモ帳。memo.json を読み、索引・検索・印 (ピン)・書き足し・今日の三つを提供する */
+(() => {
+  "use strict";
+  document.documentElement.classList.add("js");
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (_) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (_) {} },
+  };
+  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const KANJI = "〇一二三四五六七八九";
+  const CH = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二"];
+  const kanjiNum = (n) => { // 1..31 → 一, 十, 十五, 二十三
+    if (n < 10) return KANJI[n];
+    const t = Math.floor(n / 10), o = n % 10;
+    return (t > 1 ? KANJI[t] : "") + "十" + (o ? KANJI[o] : "");
+  };
+  const kanjiYear = (y) => String(y).split("").map((d) => KANJI[+d]).join("");
+
+  /* ---------- テーマ (在庫ダッシュボードと同じ localStorage "theme") ---------- */
+  const THEMES = ["auto", "light", "dark"];
+  const THEME_LABEL = { auto: "自動", light: "昼", dark: "夜" };
+  let theme = "auto";
+  try { theme = localStorage.getItem("theme") || "auto"; } catch (_) {}
+  function applyTheme() {
+    if (theme === "auto") document.documentElement.removeAttribute("data-theme");
+    else document.documentElement.setAttribute("data-theme", theme);
+    $("themeLabel").textContent = THEME_LABEL[theme];
+  }
+  applyTheme();
+  $("themeToggle").addEventListener("click", () => {
+    theme = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
+    try { localStorage.setItem("theme", theme); } catch (_) {}
+    applyTheme();
+  });
+
+  /* ---------- 状態 ---------- */
+  const state = {
+    q: "", tag: "", view: "all", allTags: false,
+    collapsed: new Set(store.get("memo.collapsed", [])),
+    openNotes: new Set(),
+  };
+  const pins = new Set(store.get("memo.pins", []));
+  const notes = store.get("memo.notes", {});
+  let sections = [];
+  let items = [];
+
+  /* ---------- 文字列 ---------- */
+  function itemText(it) {
+    const parts = [it.title, it.lead, it.quote, ...(it.body || []), ...(it.tags || [])];
+    (it.bullets || []).forEach((b) => { parts.push(b.text); (b.sub || []).forEach((s) => parts.push(s)); });
+    (it.defs || []).forEach((d) => parts.push(d.term, d.desc));
+    if (it.compare) ["bad", "good"].forEach((k) => parts.push(it.compare[k].title, ...it.compare[k].rows));
+    if (notes[it.id]) parts.push(notes[it.id]);
+    return parts.filter(Boolean).join("\n");
+  }
+  const terms = () => state.q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  function matches(it) {
+    const ts = terms();
+    if (!ts.length) return true;
+    const text = itemText(it).toLowerCase();
+    return ts.every((t) => text.includes(t));
+  }
+  function hl(s) {
+    const ts = terms();
+    const out = esc(s);
+    if (!ts.length) return out;
+    const re = new RegExp("(" + ts.map((t) => esc(t).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") + ")", "gi");
+    return out.replace(re, "<mark>$1</mark>");
+  }
+  const summary = (it) => it.lead || it.quote || (it.body && it.body[0]) || (it.bullets && it.bullets[0] && it.bullets[0].text) || "";
+  function plainText(it) {
+    const lines = [it.title, ""];
+    if (it.lead) lines.push(it.lead, "");
+    if (it.quote) lines.push("“" + it.quote + "”", "");
+    (it.body || []).forEach((p) => lines.push(p, ""));
+    (it.defs || []).forEach((d) => lines.push(d.term + "：" + d.desc));
+    (it.bullets || []).forEach((b) => { lines.push("・" + b.text); (b.sub || []).forEach((s) => lines.push("　　- " + s)); });
+    if (it.compare) ["bad", "good"].forEach((k) => { lines.push("", it.compare[k].title); it.compare[k].rows.forEach((r) => lines.push("・" + r)); });
+    if (it.tags && it.tags.length) lines.push("", "#" + it.tags.join(" #"));
+    if (notes[it.id]) lines.push("", "自分の書き足し：", notes[it.id]);
+    return lines.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+  }
+  // "7. Work hard（…）" → 番号と残り
+  function splitNum(title) {
+    const m = /^(\d{1,2})\.\s*(.+)$/.exec(title);
+    return m ? { num: m[1], rest: m[2] } : { num: "", rest: title };
+  }
+  // "Work hard（ハードワークする）" → 英語の見出しと日本語の副題
+  function splitEnJa(rest) {
+    const m = /^([\x20-\x7E\u2019\u201c\u201d]+?)\s*（(.+)）$/.exec(rest);
+    return m ? { en: m[1], ja: m[2] } : null;
+  }
+  function renderTitle(it) {
+    const { num, rest } = splitNum(it.title);
+    const ej = num ? splitEnJa(rest) : null;
+    if (ej) return `<span class="num">${num}</span><span class="en" lang="en">${hl(ej.en)}</span><span class="ja">${hl(ej.ja)}</span>`;
+    return `${num ? `<span class="num">${num}</span>` : ""}${hl(rest)}`;
+  }
+
+  /* ---------- 描画 ---------- */
+  const PIN_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1.1 5.9L12 16.9l-5.3 2.8 1.1-5.9L3.5 9.7l5.9-.8z"/></svg>';
+  function renderBody(it) {
+    let h = "";
+    if (it.lead) h += `<p class="lead">${hl(it.lead)}</p>`;
+    if (it.quote) h += `<blockquote lang="en">${hl(it.quote)}</blockquote>`;
+    (it.body || []).forEach((p) => { h += `<p>${hl(p)}</p>`; });
+    if (it.defs && it.defs.length) h += "<dl>" + it.defs.map((d) => `<dt>${hl(d.term)}</dt><dd>${hl(d.desc)}</dd>`).join("") + "</dl>";
+    if (it.bullets && it.bullets.length) {
+      h += "<ul>" + it.bullets.map((b) =>
+        `<li>${hl(b.text)}${b.sub && b.sub.length ? "<ul>" + b.sub.map((s) => `<li>${hl(s)}</li>`).join("") + "</ul>" : ""}</li>`
+      ).join("") + "</ul>";
+    }
+    if (it.compare) {
+      h += '<div class="compare">' + ["bad", "good"].map((k) => {
+        const c = it.compare[k];
+        return `<div class="${k}"><h4>${hl(c.title)}</h4><ul>${c.rows.map((r) => `<li>${hl(r)}</li>`).join("")}</ul></div>`;
+      }).join("") + "</div>";
+    }
+    return h;
+  }
+  function renderCard(it, i) {
+    const pinned = pins.has(it.id);
+    const note = notes[it.id] || "";
+    const open = state.openNotes.has(it.id);
+    return `
+<article class="card${pinned ? " pinned" : ""}${reduceMotion ? "" : " wait"}" id="${esc(it.id)}" data-id="${esc(it.id)}" style="--i:${i}">
+  <div class="card-head">
+    <h3>${renderTitle(it)}</h3>
+    <button class="pin" type="button" data-act="pin" aria-pressed="${pinned}" aria-label="${pinned ? "印を外す" : "印をつける"}" title="${pinned ? "印を外す" : "印をつける"}">${PIN_SVG}</button>
+  </div>
+  ${it.tags && it.tags.length ? `<div class="tags">${it.tags.map((t) => `<button type="button" class="tag" data-act="tag" data-tag="${esc(t)}">${hl(t)}</button>`).join("")}</div>` : ""}
+  <div class="body">${renderBody(it)}</div>
+  <div class="card-foot">
+    <span class="src">${esc(it.section.short || it.section.title)}</span>
+    <button type="button" class="note-btn${note ? " has" : ""}${open ? " on" : ""}" data-act="note" aria-pressed="${open}">書き足す</button>
+    <button type="button" data-act="copy">写す</button>
+  </div>
+  <div class="note"${open ? "" : " hidden"}>
+    <textarea rows="3" data-act="note-text" aria-label="自分の書き足し" placeholder="気づき、自分の言葉での言い換え、やってみること">${esc(note)}</textarea>
+    <span class="st"><span>書くと自動で残ります</span><span class="note-state"></span></span>
+  </div>
+</article>`;
+  }
+
+  function passesView(it) {
+    return state.view === "all" || (state.view === "pins" && pins.has(it.id)) || (state.view === "notes" && !!notes[it.id]);
+  }
+  function visibleItems() {
+    return items.filter((it) => passesView(it) && (!state.tag || (it.tags || []).includes(state.tag)) && matches(it));
+  }
+
+  let observer = null;
+  function render() {
+    const vis = visibleItems();
+    const visIds = new Set(vis.map((it) => it.id));
+    let k = 0;
+    $("sections").innerHTML = sections.map((s, si) => {
+      const its = s.items.filter((it) => visIds.has(it.id));
+      if (!its.length) return "";
+      const collapsed = state.collapsed.has(s.id);
+      return `
+<section class="chapter" id="ch-${esc(s.id)}" data-sec="${esc(s.id)}" data-collapsed="${collapsed}" aria-labelledby="h-${esc(s.id)}">
+  <header class="ch-head">
+    <span class="ch-num">第${CH[si]}章</span>
+    <h2 id="h-${esc(s.id)}">${hl(s.title)}<span class="cnt">${its.length}${its.length !== s.items.length ? "/" + s.items.length : ""} 則</span></h2>
+    <button class="ch-toggle" type="button" data-act="toggle-sec" aria-expanded="${!collapsed}">${collapsed ? "開く" : "閉じる"}</button>
+    ${s.subtitle ? `<p class="ch-sub">${hl(s.subtitle)}</p>` : ""}
+  </header>
+  <div class="grid">${its.map((it) => renderCard(it, k++)).join("")}</div>
+</section>`;
+    }).join("");
+    $("empty").hidden = vis.length > 0;
+    const filtered = vis.length !== items.length;
+    const what = [state.q.trim() && `「${state.q.trim()}」`, state.tag && `#${state.tag}`, state.view === "pins" && "印をつけた則", state.view === "notes" && "書き足した則"].filter(Boolean).join("、");
+    $("resultLine").textContent = filtered ? `${what}：${vis.length} 則` : "";
+    renderToc(visIds);
+    renderTags();
+    revealCards();
+  }
+  function revealCards() {
+    if (observer) observer.disconnect();
+    const cards = [...document.querySelectorAll(".card.wait")];
+    if (!cards.length) return;
+    if (!("IntersectionObserver" in window)) { cards.forEach((c) => c.classList.remove("wait")); return; }
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const delay = Math.min(((+el.style.getPropertyValue("--i") || 0) % 6) * 50, 250);
+        setTimeout(() => el.classList.remove("wait"), delay);
+        observer.unobserve(el);
+      });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    cards.forEach((c) => observer.observe(c));
+    // 画面に見えないままの保険
+    setTimeout(() => cards.forEach((c) => c.classList.remove("wait")), 2500);
+  }
+  function renderHeroToc() {
+    $("heroToc").innerHTML = sections.map((s, i) =>
+      `<li><a href="#ch-${esc(s.id)}" data-sec="${esc(s.id)}"><span class="ch">${CH[i]}</span><span class="t">${esc(s.title)}</span><span class="n">${s.items.length}</span></a></li>`
+    ).join("");
+  }
+  $("heroToc").addEventListener("click", (e) => {
+    const a = e.target.closest("a"); if (!a) return;
+    const id = a.dataset.sec;
+    if (state.collapsed.has(id) || !$("ch-" + id)) {
+      e.preventDefault(); clearFilters(); state.collapsed.delete(id); store.set("memo.collapsed", [...state.collapsed]); updateCounts(); render();
+      const el = $("ch-" + id); if (el) el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+    }
+  });
+  (function progress() {
+    const bar = $("progress"); let raf = 0;
+    const tick = () => { raf = 0; const h = document.documentElement; const max = h.scrollHeight - h.clientHeight; bar.style.transform = `scaleX(${max > 0 ? Math.min(1, h.scrollTop / max) : 0})`; };
+    addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+    addEventListener("resize", tick); tick();
+  })();
+  function renderToc(visIds) {
+    $("toc").innerHTML = sections.map((s, i) => {
+      const n = s.items.filter((it) => visIds.has(it.id)).length;
+      return `<li><a href="#ch-${esc(s.id)}" class="${n ? "" : "dim"}" data-sec="${esc(s.id)}"><span class="ch">${CH[i]}</span><span>${esc(s.short || s.title)}</span><span class="n">${n}</span></a></li>`;
+    }).join("");
+    spy();
+  }
+  function renderTags() {
+    const base = items.filter((it) => passesView(it) && matches(it));
+    const counts = new Map();
+    base.forEach((it) => (it.tags || []).forEach((t) => counts.set(t, (counts.get(t) || 0) + 1)));
+    let tags = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "ja"));
+    if (state.tag && !counts.has(state.tag)) tags.unshift([state.tag, 0]);
+    const hidden = state.allTags ? [] : tags.filter(([t, n]) => n < 2 && t !== state.tag);
+    if (hidden.length && hidden.length < 4) hidden.length = 0;
+    if (hidden.length) tags = tags.filter((x) => !hidden.includes(x));
+    $("tagChips").innerHTML = tags.map(([t, n]) => `<button type="button" class="tag-chip" data-tag="${esc(t)}" aria-pressed="${state.tag === t}">${esc(t)}<span class="n">${n}</span></button>`).join("")
+      + (hidden.length ? `<button type="button" class="tag-chip more" data-more="1">他 ${hidden.length} 件…</button>` : state.allTags && counts.size ? `<button type="button" class="tag-chip more" data-more="0">主なものだけ</button>` : "");
+    $("tagCur").textContent = state.tag ? "#" + state.tag : "";
+    if (state.tag) $("tagBox").open = true;
+  }
+  function updateCounts() {
+    $("nAll").textContent = items.length;
+    $("nPins").textContent = pins.size;
+    $("nNotes").textContent = Object.keys(notes).filter((k) => notes[k]).length;
+    ["All", "Pins", "Notes"].forEach((v) => $("view" + v).setAttribute("aria-pressed", state.view === v.toLowerCase()));
+  }
+
+  /* ---------- 狭い画面では章の行だけを本文の上に出して追従させる ---------- */
+  (function placeToc() {
+    const mq = window.matchMedia("(max-width: 860px)");
+    const toc = document.querySelector(".toc"), book = document.querySelector(".book"), inner = document.querySelector(".index-inner"), tags = $("tagBox");
+    const place = () => { if (mq.matches) book.insertBefore(toc, $("chapters")); else inner.insertBefore(toc, tags); };
+    place();
+    if (mq.addEventListener) mq.addEventListener("change", place); else mq.addListener(place);
+  })();
+
+  /* ---------- 索引の追従 (scroll spy) ---------- */
+  let spyObs = null;
+  function spy() {
+    if (spyObs) spyObs.disconnect();
+    const chapters = [...document.querySelectorAll(".chapter")];
+    const links = [...document.querySelectorAll(".toc a")];
+    if (!chapters.length || !("IntersectionObserver" in window)) return;
+    const seen = new Map();
+    spyObs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => seen.set(e.target.dataset.sec, e.isIntersecting ? e.boundingClientRect.top : Infinity));
+      let best = null, bestTop = Infinity;
+      seen.forEach((top, id) => { if (top < bestTop) { bestTop = top; best = id; } });
+      if (best == null) return;
+      links.forEach((a) => a.classList.toggle("active", a.dataset.sec === best));
+    }, { rootMargin: "-20% 0px -60% 0px", threshold: [0, .1] });
+    chapters.forEach((c) => spyObs.observe(c));
+  }
+
+  /* ---------- 操作 ---------- */
+  function clearFilters() { state.q = ""; $("q").value = ""; state.tag = ""; state.view = "all"; }
+  $("q").addEventListener("input", () => { state.q = $("q").value; render(); });
+  document.addEventListener("keydown", (e) => {
+    const tag = (e.target.tagName || "").toLowerCase();
+    const typing = tag === "input" || tag === "textarea";
+    if (e.key === "/" && !typing) { e.preventDefault(); $("q").focus(); $("q").select(); }
+    if (e.key === "Escape" && e.target === $("q")) { if (state.q) { state.q = ""; $("q").value = ""; render(); } else $("q").blur(); }
+  });
+  [["All", "all"], ["Pins", "pins"], ["Notes", "notes"]].forEach(([id, v]) => $("view" + id).addEventListener("click", () => { state.view = v; updateCounts(); render(); }));
+  $("tagChips").addEventListener("click", (e) => {
+    const b = e.target.closest(".tag-chip"); if (!b) return;
+    if (b.dataset.more != null) { state.allTags = b.dataset.more === "1"; renderTags(); return; }
+    state.tag = state.tag === b.dataset.tag ? "" : b.dataset.tag; render();
+  });
+  $("reset").addEventListener("click", () => { clearFilters(); updateCounts(); render(); });
+  $("expandAll").addEventListener("click", () => { state.collapsed.clear(); store.set("memo.collapsed", []); render(); });
+  $("collapseAll").addEventListener("click", () => { sections.forEach((s) => state.collapsed.add(s.id)); store.set("memo.collapsed", [...state.collapsed]); render(); });
+  $("toc").addEventListener("click", (e) => {
+    const a = e.target.closest("a"); if (!a) return;
+    const id = a.dataset.sec;
+    if (state.collapsed.has(id)) { state.collapsed.delete(id); store.set("memo.collapsed", [...state.collapsed]); render(); }
+    if (a.classList.contains("dim")) { e.preventDefault(); clearFilters(); updateCounts(); render(); const el = $("ch-" + id); if (el) el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" }); }
+  });
+
+  $("sections").addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-act]"); if (!btn) return;
+    const act = btn.dataset.act;
+    if (act === "toggle-sec") {
+      const id = btn.closest(".chapter").dataset.sec;
+      if (state.collapsed.has(id)) state.collapsed.delete(id); else state.collapsed.add(id);
+      store.set("memo.collapsed", [...state.collapsed]); render(); return;
+    }
+    const card = btn.closest(".card"); if (!card) return;
+    const id = card.dataset.id;
+    if (act === "pin") {
+      const on = !pins.has(id);
+      if (on) pins.add(id); else pins.delete(id);
+      store.set("memo.pins", [...pins]);
+      card.classList.toggle("pinned", on);
+      btn.setAttribute("aria-pressed", on); btn.setAttribute("aria-label", on ? "印を外す" : "印をつける"); btn.title = on ? "印を外す" : "印をつける";
+      if (!reduceMotion) { btn.classList.add("pop"); setTimeout(() => btn.classList.remove("pop"), 350); }
+      updateCounts();
+      if (state.view === "pins" && !on) setTimeout(render, 300);
+      return;
+    }
+    if (act === "tag") { state.tag = state.tag === btn.dataset.tag ? "" : btn.dataset.tag; render(); $("tagBox").scrollIntoView({ block: "nearest" }); return; }
+    if (act === "note") {
+      if (state.openNotes.has(id)) state.openNotes.delete(id); else state.openNotes.add(id);
+      const open = state.openNotes.has(id);
+      btn.setAttribute("aria-pressed", open); btn.classList.toggle("on", open);
+      const box = card.querySelector(".note"); box.hidden = !open;
+      if (open) box.querySelector("textarea").focus();
+      return;
+    }
+    if (act === "copy") {
+      const text = plainText(items.find((x) => x.id === id));
+      const done = () => { btn.textContent = "写しました"; btn.classList.add("copied"); setTimeout(() => { btn.textContent = "写す"; btn.classList.remove("copied"); }, 1500); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, () => fallbackCopy(text, done));
+      else fallbackCopy(text, done);
+    }
+  });
+  function fallbackCopy(text, done) {
+    const ta = document.createElement("textarea"); ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (_) {}
+    document.body.removeChild(ta);
+  }
+  let noteTimer = null;
+  $("sections").addEventListener("input", (e) => {
+    const ta = e.target; if (!ta.matches("[data-act='note-text']")) return;
+    const card = ta.closest(".card"); const id = card.dataset.id;
+    if (ta.value.trim()) notes[id] = ta.value; else delete notes[id];
+    store.set("memo.notes", notes);
+    card.querySelector(".note-btn").classList.toggle("has", !!notes[id]);
+    const st = card.querySelector(".note-state"); st.textContent = "残しました";
+    clearTimeout(noteTimer); noteTimer = setTimeout(() => { st.textContent = ""; }, 1200);
+    updateCounts();
+  });
+
+  /* ---------- 今日の一則 ---------- */
+  let quoteIdx = -1;
+  function showQuote(idx) {
+    if (!items.length) return;
+    quoteIdx = ((idx % items.length) + items.length) % items.length;
+    const it = items[quoteIdx];
+    $("quoteSection").textContent = it.section.short || it.section.title;
+    $("quoteTitle").textContent = splitNum(it.title).rest;
+    $("quoteText").textContent = summary(it);
+    $("quoteLink").href = "#" + it.id;
+  }
+  $("quoteNext").addEventListener("click", () => {
+    let n; do { n = Math.floor(Math.random() * items.length); } while (items.length > 1 && n === quoteIdx);
+    const body = document.querySelector(".hero-body");
+    if (reduceMotion) { showQuote(n); return; }
+    body.style.transition = "opacity .18s"; body.style.opacity = "0";
+    setTimeout(() => { showQuote(n); body.style.opacity = "1"; }, 180);
+  });
+  $("quoteLink").addEventListener("click", (e) => {
+    e.preventDefault();
+    const it = items[quoteIdx]; if (!it) return;
+    if (!visibleItems().some((x) => x.id === it.id) || state.collapsed.has(it.section.id)) {
+      clearFilters(); state.collapsed.delete(it.section.id); store.set("memo.collapsed", [...state.collapsed]);
+      updateCounts(); render();
+    }
+    const el = $(it.id); if (!el) return;
+    el.classList.remove("wait");
+    el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+    el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 2200);
+    history.replaceState(null, "", "#" + it.id);
+  });
+
+  /* ---------- 今日の三つ / 今週の三つ / 週末レビュー ---------- */
+  const pad = (n) => String(n).padStart(2, "0");
+  const todayKey = () => { const d = new Date(); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; };
+  function weekKey(d = new Date()) { // ISO 週 (月曜始まり)
+    const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    const day = t.getUTCDay() || 7;
+    t.setUTCDate(t.getUTCDate() + 4 - day);
+    const y = t.getUTCFullYear();
+    return `W${y}-${pad(Math.ceil((((t - Date.UTC(y, 0, 1)) / 864e5) + 1) / 7))}`;
+  }
+  function weekRange(d = new Date()) {
+    const mon = new Date(d); mon.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+    const sun = new Date(mon); sun.setDate(mon.getDate() + 6);
+    return `${mon.getMonth() + 1}/${mon.getDate()} – ${sun.getMonth() + 1}/${sun.getDate()}`;
+  }
+  const three = store.get("memo.three", {});
+  const review = store.get("memo.review", {});
+  function getThree(key) {
+    const v = Array.isArray(three[key]) ? three[key] : [];
+    while (v.length < 3) v.push({ t: "", d: false });
+    return v;
+  }
+  function updateProgress() {
+    const list = getThree(todayKey());
+    const done = list.filter((x) => x.d).length, filled = list.filter((x) => x.t).length;
+    const el = $("threeProgress");
+    el.textContent = filled ? `${done} / ${filled}` : "";
+    el.classList.toggle("all", filled > 0 && done === filled);
+  }
+  function renderThreeList(el, key) {
+    const list = getThree(key);
+    el.innerHTML = list.map((x, i) =>
+      `<li class="${x.d ? "done" : ""}"><span class="n" aria-hidden="true">${i + 1}</span><input type="checkbox" class="maru" id="${el.id}-c${i}" data-i="${i}" ${x.d ? "checked" : ""} aria-label="${i + 1}つ目を完了"><input type="text" id="${el.id}-t${i}" data-i="${i}" value="${esc(x.t)}" placeholder="${["一つ目", "二つ目", "三つ目"][i]}" aria-label="${i + 1}つ目"></li>`
+    ).join("");
+    el.addEventListener("input", (e) => {
+      const i = +e.target.dataset.i; const list = getThree(key);
+      if (e.target.type === "checkbox") { list[i].d = e.target.checked; e.target.closest("li").classList.toggle("done", list[i].d); }
+      else list[i].t = e.target.value;
+      three[key] = list; store.set("memo.three", three); renderHistory(); updateProgress();
+    });
+  }
+  function renderHistory() {
+    const tk = todayKey(), wk = weekKey();
+    const days = Object.keys(three).filter((k) => /^\d{4}-\d{2}-\d{2}$/.test(k) && k !== tk && three[k].some((x) => x.t)).sort().reverse().slice(0, 30);
+    const weeks = Object.keys(three).filter((k) => /^W/.test(k) && k !== wk && three[k].some((x) => x.t)).sort().reverse().slice(0, 12);
+    const row = (k, label) => `<tr><td>${esc(label)}</td><td>${three[k].filter((x) => x.t).map((x) => `<span class="${x.d ? "done" : ""}">${esc(x.t)}</span>`).join("　/　")}${review[k] && (review[k].good || review[k].improve) ? `<div class="rv">レビュー: ${esc([review[k].good, review[k].improve].filter(Boolean).join(" ／ "))}</div>` : ""}</td></tr>`;
+    $("threeHistoryBody").innerHTML = (days.length || weeks.length)
+      ? `<table>${days.map((k) => row(k, k.slice(5).replace("-", "/"))).join("")}${weeks.map((k) => row(k, k.replace(/^W(\d{4})-(\d{2})$/, "$1 W$2"))).join("")}</table>`
+      : `<p class="none">まだありません。</p>`;
+  }
+  (function initThree() {
+    const tk = todayKey(), wk = weekKey();
+    const d = new Date();
+    $("threeDate").textContent = `${d.getMonth() + 1}月${d.getDate()}日（${"日月火水木金土"[d.getDay()]}）`;
+    $("threeWeek").textContent = weekRange(d);
+    $("tateDate").textContent = `${kanjiYear(d.getFullYear())}年${kanjiNum(d.getMonth() + 1)}月${kanjiNum(d.getDate())}日`;
+    renderThreeList($("threeToday"), tk);
+    renderThreeList($("threeWeekList"), wk);
+    const r = review[wk] || { good: "", improve: "" };
+    $("reviewGood").value = r.good || ""; $("reviewImprove").value = r.improve || "";
+    ["reviewGood", "reviewImprove"].forEach((id) => $(id).addEventListener("input", () => {
+      review[wk] = { good: $("reviewGood").value, improve: $("reviewImprove").value };
+      store.set("memo.review", review); renderHistory();
+    }));
+    renderHistory(); updateProgress();
+  })();
+
+  /* ---------- 読み込み ---------- */
+  // 単体版 (memo/index.html) はデータを window.MEMO_DATA に埋め込む
+  (window.MEMO_DATA ? Promise.resolve(window.MEMO_DATA)
+    : fetch("memo.json?v=" + Date.now(), { cache: "no-store" }).then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); }))
+    .then((data) => {
+      sections = data.sections || [];
+      items = [];
+      sections.forEach((s) => s.items.forEach((it) => { it.section = s; items.push(it); }));
+      $("counts").innerHTML = `<b>${sections.length}</b> 章 · <b>${items.length}</b> 則`;
+      $("updated").textContent = `最終更新 ${data.updated || "-"}`;
+      updateCounts();
+      renderHeroToc();
+      render();
+      showQuote(Number(todayKey().replace(/-/g, "")) % Math.max(items.length, 1)); // 同じ日は同じ則
+      if (location.hash) {
+        const el = $(location.hash.slice(1));
+        if (el && el.classList.contains("card")) { el.classList.remove("wait"); el.scrollIntoView({ block: "center" }); el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 2200); }
+      }
+    })
+    .catch((err) => {
+      $("quoteTitle").textContent = "memo.json を読み込めませんでした";
+      $("quoteText").textContent = `${err.message}。ローカルで見る場合は public/ で python3 -m http.server などのサーバーを起動してください。`;
+      $("empty").hidden = false;
+    });
+})();
+
+</script>
+</body>
+</html>
