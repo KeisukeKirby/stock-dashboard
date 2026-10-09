@@ -35,6 +35,7 @@ public/          # Vercel が配信する静的ファイル（ビルド不要）
   source_office.xlsx  # オフィス在庫の Excel（同上）
   memo.html / memo.css / memo.js / memo.json  # ビジネスメモ帳（/memo）
 memo/            # メモ帳の単体版（別 URL の Vercel プロジェクト用、build_memo_standalone.py が生成）
+terminal21-rama3-lp/  # Terminal 21 Rama 3 ポップアップストアの LP（専用 Vercel プロジェクト、Root Directory: terminal21-rama3-lp）
 scripts/convert.py  # Excel → public/stock.json 変換
 data/            # 元の Excel ファイル
 vercel.json
