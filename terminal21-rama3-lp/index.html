@@ -259,9 +259,21 @@
       .scroll-cue { display: none; }
     }
     @media (max-width: 640px) {
-      .hero-bg img { object-position: center 60%; }
-      .hero-bg .vivo img { object-position: 62% 78%; }
-      .hero-bg figure::after { background: linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(0,0,0,.25) 35%, rgba(0,0,0,.84) 100%); }
+      /* phones: FiveFingers photo on top, copy in the middle, Vivobarefoot photo below,
+         each photo cropped to the shoes and never covered by text */
+      .hero { padding-top: 0; }
+      .hero-bg { display: contents; }
+      .hero-bg figure { width: 100%; }
+      .hero-bg .vff { order: 1; height: 44svh; min-height: 280px; }
+      .hero-bg .vff img { object-position: center 88%; transform: none; animation: none !important; }
+      .hero-bg .vff::after { background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,.35) 100%); }
+      .hero-top { order: 2; padding-top: 1.3rem; }
+      .hero-body { order: 3; padding-bottom: 1.6rem; }
+      .hero-bg .vivo { order: 4; height: 36svh; min-height: 230px; margin-left: 0; }
+      .hero-bg .vivo img { object-position: 60% 92%; transform: none; animation: none !important; }
+      .hero-bg .vivo::after { background: linear-gradient(180deg, rgba(0,0,0,.4) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,.3) 100%); }
+      .hero-board { order: 5; margin-top: 0; }
+      .hero-grain { display: none; }
       .hero-top { flex-direction: column; align-items: flex-start; gap: .9rem; }
       .hero-top .eyebrow { font-size: .64rem; }
       .hero-brands img { height: 18px; }
