@@ -21,7 +21,7 @@ Terminal 21 Asok 版（`barefootinc-t21-asok-event`）と同じ構成で、会�
 
 ## v3 で追加したもの（本番実装前）
 
-- 「Why barefoot?」（ヒーロー直後）: 4 つの悩み → 靴の 3 つの構造 → 普通の靴 vs ベアフット 5 項目 → ブランドへの導線。医療的な断定は避けた表現にし、注意書きを添付
+- 「Why barefoot?」（ヒーロー直後、明るい背景）: 線画イラスト付きの 4 枚のカード（悩み + その裏にある靴の構造）→ 普通の靴 vs ベアフットを左右 2 列の短い言葉で → ブランドへの導線。医療的な断定は避けた表現にし、注意書きを添付
 - ブランド紹介の下にモデルカード各 4 つ（VFF: V-Run / V-Train 2.0 / V-Soul / Trailope、Vivo: Primus Lite IV / Motus Strength II / Gobi III Sneaker Leather / Primus Trail FG 3.5）。定価は在庫シート・ラインナップデータの値、ポップアップ価格は `[TODO]`
 - 「Start slowly」4 週間の慣らしガイド、FAQ（アコーディオン、FAQPage の JSON-LD 付き。店舗ポリシーの回答は `[TODO]`）
 - アクセスにフロアマップ枠（`images/floor-map-rama3.png` はプレースホルダー、タップで拡大）
