@@ -141,40 +141,7 @@
       [data-reveal], [data-reveal="clip"], [data-reveal="clip"] > .clip-in, [data-reveal="line"] { opacity: 1 !important; transform: none !important; clip-path: none !important; transition: none !important; }
     }
 
-    /* ---------- loader ---------- */
-    .loader {
-      position: fixed; inset: 0; z-index: 500; background: var(--black); color: var(--bone);
-      display: flex; align-items: flex-end; justify-content: space-between;
-      padding: var(--gutter); font-family: var(--display);
-      transition: transform .9s var(--ease-io), visibility 0s linear .9s; will-change: transform;
-    }
-    .loader.done { transform: translateY(-100%); visibility: hidden; }
-    .loader .lw { font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
-    .loader .lw small { display: block; font-size: .7rem; letter-spacing: .3em; opacity: .6; margin-bottom: .4rem; }
-    .loader .lc { font-size: clamp(4rem, 14vw, 11rem); font-weight: 700; line-height: .8; font-variant-numeric: tabular-nums; color: var(--gold); }
-    .loader .lbar { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: rgba(255,255,255,.08); }
-    .loader .lbar i { display: block; height: 100%; width: 0; background: var(--rainbow); transition: width .25s linear; }
-    @media (prefers-reduced-motion: reduce) { .loader { display: none; } }
 
-    /* ---------- cursor ---------- */
-    .cursor { display: none; }
-    @media (hover: hover) and (pointer: fine) {
-      .cursor {
-        display: block; position: fixed; left: 0; top: 0; z-index: 400; pointer-events: none;
-        width: 10px; height: 10px; border-radius: 50%; background: var(--bone);
-        mix-blend-mode: difference; transform: translate(-50%, -50%);
-        transition: width .35s var(--ease), height .35s var(--ease), background-color .3s ease, opacity .3s ease;
-        opacity: 0;
-      }
-      body.has-cursor .cursor { opacity: 1; }
-      .cursor.big { width: 72px; height: 72px; background: var(--bone); }
-      .cursor.big::after {
-        content: attr(data-label); position: absolute; inset: 0; display: grid; place-items: center;
-        font-family: var(--display); font-size: .62rem; letter-spacing: .2em; color: #000; font-weight: 600;
-        mix-blend-mode: normal;
-      }
-      .cursor.hide { opacity: 0 !important; }
-    }
 
     /* ---------- progress + nav ---------- */
     .progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; z-index: 110; transform-origin: 0 50%; transform: scaleX(0); background: var(--gold); }
@@ -232,8 +199,9 @@
 
     /* ---------- hero ---------- */
     .hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; background: #000; color: #fff; }
-    .hero-bg { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; }
-    .hero-bg figure { position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; background: #000; }
+    .hero-bg figure { position: relative; overflow: hidden; margin: 0; }
+    .hero-bg .vivo { margin-left: -3px; }
     .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 70%; transform: scale(1.12); will-change: transform; }
     .hero-bg .vivo img { object-position: center 80%; }
     .hero-bg figure::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.15) 40%, rgba(0,0,0,.78) 100%); }
@@ -253,15 +221,18 @@
     .hero-brands .sep { width: 1px; height: clamp(22px, 2.8vw, 32px); background: rgba(255,255,255,.55); }
     .hero-body { position: relative; z-index: 2; padding: clamp(2rem, 5vh, 4rem) var(--gutter) 0; }
     .hero h1 { font-size: clamp(3.4rem, 12.4vw, 12.5rem); font-weight: 700; text-transform: uppercase; line-height: .86; letter-spacing: -.015em; }
+    @media (min-width: 901px) { .hero h1 { font-size: min(8.4vw, 9rem); } }
     .hero h1 .hl { color: var(--coral); }
     :lang(th) .hero h1 { font-size: clamp(2.9rem, 10.2vw, 10.4rem); line-height: 1.02; }
+    @media (min-width: 901px) { :lang(th) .hero h1 { font-size: min(7.2vw, 7.8rem); } }
     :lang(th) .hero h1 .mask { padding: .06em 0; margin: -.06em 0; }
     :lang(th) .brand h2, :lang(th) .sec-head h2, :lang(th) .foot-big { line-height: 1.08; }
     :lang(th) .foot-big { white-space: normal; }
     .hero h1 .thin { font-weight: 700; }
-    .hero-tag { margin-top: clamp(1rem, 2.4vw, 1.8rem); display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1.4rem; }
+    .hero-tag { margin-top: clamp(1rem, 2.4vw, 1.8rem); display: flex; flex-direction: column; align-items: flex-start; gap: .6rem; }
+    @media (min-width: 901px) { .hero-body { width: 50%; padding-right: clamp(1rem, 3vw, 3rem); } }
     .hero-tag .serif { font-size: clamp(1.7rem, 3.4vw, 2.8rem); line-height: 1.1; letter-spacing: .01em; text-shadow: 0 2px 14px rgba(0,0,0,.45); }
-    .hero-tag p { max-width: 36ch; font-size: .95rem; color: rgba(255,255,255,.78); }
+    .hero-tag p { max-width: 40ch; font-size: .98rem; color: rgba(255,255,255,.82); }
     .hero-board {
       position: relative; z-index: 2; margin-top: clamp(1.6rem, 4vh, 3rem); border-top: 1px solid rgba(255,255,255,.22);
       display: grid; grid-template-columns: repeat(3, auto) 1fr; align-items: center; gap: 0 clamp(1rem, 3vw, 3rem);
@@ -498,12 +469,6 @@
 
 <body>
   <a class="skip" href="#vff">Skip to content</a>
-  <div class="loader" id="loader" aria-hidden="true">
-    <div class="lw"><small>Barefootinc · Popup store</small>Terminal 21 Rama 3</div>
-    <div class="lc" id="loaderNum">00</div>
-    <div class="lbar"><i id="loaderBar"></i></div>
-  </div>
-  <div class="cursor" id="cursor" aria-hidden="true"></div>
   <div class="progress" id="progress" aria-hidden="true"></div>
 
   <nav class="nav" id="nav">
@@ -568,7 +533,7 @@
 
   <section class="brand brand-vff" id="vff">
     <div class="wrap brand-grid">
-      <div class="brand-photo" data-reveal="clip" data-cursor="VIEW" role="button" tabindex="0" aria-label="View photo: Vibram FiveFingers V-Aqua" data-lb="image" data-lb-src="images/brand-vff.jpg" data-lb-alt="Vibram FiveFingers V-Aqua worn standing in shallow water">
+      <div class="brand-photo" data-reveal="clip" role="button" tabindex="0" aria-label="View photo: Vibram FiveFingers V-Aqua" data-lb="image" data-lb-src="images/brand-vff.jpg" data-lb-alt="Vibram FiveFingers V-Aqua worn standing in shallow water">
         <div class="clip-in">
           <picture><source type="image/webp" srcset="images/brand-vff.webp" /><img src="images/brand-vff.jpg" alt="Vibram FiveFingers V-Aqua worn standing in shallow water" width="1200" height="1800" loading="lazy" decoding="async" data-parallax="0.1" /></picture>
         </div>
@@ -595,7 +560,7 @@
 
   <section class="brand brand-vivo on-dark" id="vivo">
     <div class="wrap brand-grid">
-      <div class="brand-photo" data-reveal="clip" data-cursor="VIEW" role="button" tabindex="0" aria-label="View photo: Vivobarefoot Motus Strength II" data-lb="image" data-lb-src="images/brand-vivo.jpg" data-lb-alt="Vivobarefoot Motus Strength II in Obsidian, worn seated after training">
+      <div class="brand-photo" data-reveal="clip" role="button" tabindex="0" aria-label="View photo: Vivobarefoot Motus Strength II" data-lb="image" data-lb-src="images/brand-vivo.jpg" data-lb-alt="Vivobarefoot Motus Strength II in Obsidian, worn seated after training">
         <div class="clip-in">
           <picture><source type="image/webp" srcset="images/brand-vivo.webp" /><img src="images/brand-vivo.jpg" alt="Vivobarefoot Motus Strength II in Obsidian, worn seated after training" width="1200" height="1799" loading="lazy" decoding="async" data-parallax="0.1" /></picture>
         </div>
@@ -852,27 +817,8 @@
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-    /* ===================== loader ===================== */
-    (function () {
-      const el = document.getElementById("loader"), num = document.getElementById("loaderNum"), bar = document.getElementById("loaderBar");
-      if (!el || reduce) { document.body.classList.add("is-ready"); if (el) el.remove(); return; }
-      let p = 0, done = false;
-      const start = performance.now();
-      const finish = () => {
-        if (done) return; done = true;
-        num.textContent = "100"; bar.style.width = "100%";
-        setTimeout(() => { el.classList.add("done"); document.body.classList.add("is-ready"); window.dispatchEvent(new Event("hero:go")); }, 220);
-      };
-      const step = now => {
-        const k = Math.min(1, (now - start) / 1100);
-        p = Math.round(k * k * (3 - 2 * k) * 100);
-        num.textContent = String(Math.min(99, p)).padStart(2, "0"); bar.style.width = p + "%";
-        if (k < 1) requestAnimationFrame(step); else finish();
-      };
-      requestAnimationFrame(step);
-      window.addEventListener("load", () => setTimeout(finish, 1200));
-      setTimeout(finish, 2600);
-    })();
+    /* ===================== start ===================== */
+    setTimeout(() => { document.body.classList.add("is-ready"); window.dispatchEvent(new Event("hero:go")); }, reduce ? 0 : 140);
 
     /* ===================== reveal ===================== */
     (function () {
@@ -884,7 +830,6 @@
       }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
       const inHero = els.filter(e => hero.contains(e));
       els.filter(e => !hero.contains(e)).forEach(e => io.observe(e));
-      // hero waits for the loader so the type lands on a settled frame
       const go = () => inHero.forEach(e => e.classList.add("in"));
       if (document.body.classList.contains("is-ready")) go(); else window.addEventListener("hero:go", go, { once: true });
     })();
@@ -940,7 +885,7 @@
         ticking = false;
         const y = scrollTop(), vh = innerHeight, max = document.documentElement.scrollHeight - vh;
         bar.style.transform = "scaleX(" + (max > 0 ? Math.min(1, y / max) : 0) + ")";
-        nav.classList.toggle("solid", y > hero.offsetHeight - 80);
+        nav.classList.toggle("solid", y > 12);
         document.body.classList.toggle("past-hero", y > hero.offsetHeight * .6);
         lastNavY = y;
         if (!reduce) {
@@ -966,26 +911,16 @@
         const bg = document.getElementById("heroBg");
         hero.addEventListener("mousemove", e => {
           const x = (e.clientX / innerWidth - .5), yy = (e.clientY / innerHeight - .5);
-          bg.style.transform = "translate3d(" + (x * -14).toFixed(1) + "px," + (yy * -10).toFixed(1) + "px,0)";
+          bg.style.transform = "translate3d(" + Math.round(x * -14) + "px," + Math.round(yy * -10) + "px,0)";
         });
         hero.addEventListener("mouseleave", () => { bg.style.transform = ""; });
         bg.style.transition = "transform .6s cubic-bezier(.16,1,.3,1)";
       }
     })();
 
-    /* ===================== cursor + magnetic ===================== */
+    /* ===================== magnetic buttons (desktop) ===================== */
     (function () {
       if (!fine || reduce) return;
-      const cur = document.getElementById("cursor");
-      let cx = innerWidth / 2, cy = innerHeight / 2, tx = cx, ty = cy, raf;
-      const move = () => { cx += (tx - cx) * .22; cy += (ty - cy) * .22; cur.style.transform = "translate(" + cx + "px," + cy + "px) translate(-50%,-50%)"; raf = requestAnimationFrame(move); };
-      window.addEventListener("mousemove", e => { tx = e.clientX; ty = e.clientY; if (!document.body.classList.contains("has-cursor")) { document.body.classList.add("has-cursor"); move(); } }, { passive: true });
-      document.addEventListener("mouseleave", () => cur.classList.add("hide"));
-      document.addEventListener("mouseenter", () => cur.classList.remove("hide"));
-      document.querySelectorAll("[data-cursor]").forEach(el => {
-        el.addEventListener("mouseenter", () => { cur.dataset.label = el.dataset.cursor; cur.classList.add("big"); });
-        el.addEventListener("mouseleave", () => cur.classList.remove("big"));
-      });
       document.querySelectorAll("[data-magnet]").forEach(el => {
         el.addEventListener("mousemove", e => {
           const r = el.getBoundingClientRect();
