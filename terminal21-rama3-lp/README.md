@@ -19,6 +19,15 @@ Terminal 21 Asok 版（`barefootinc-t21-asok-event`）と同じ構成で、会�
 | `og-image.jpg` | 1200×630 の SNS シェア用画像（`og:image` / `twitter:image`） |
 | `vercel.json` | このフォルダをそのまま配信する設定 |
 
+## v3 で追加したもの（本番実装前）
+
+- 「Why barefoot?」（ヒーロー直後）: 4 つの悩み → 靴の 3 つの構造 → 普通の靴 vs ベアフット 5 項目 → ブランドへの導線。医療的な断定は避けた表現にし、注意書きを添付
+- ブランド紹介の下にモデルカード各 4 つ（VFF: V-Run / V-Train 2.0 / V-Soul / Trailope、Vivo: Primus Lite IV / Motus Strength II / Gobi III Sneaker Leather / Primus Trail FG 3.5）。定価は在庫シート・ラインナップデータの値、ポップアップ価格は `[TODO]`
+- 「Start slowly」4 週間の慣らしガイド、FAQ（アコーディオン、FAQPage の JSON-LD 付き。店舗ポリシーの回答は `[TODO]`）
+- アクセスにフロアマップ枠（`images/floor-map-rama3.png` はプレースホルダー、タップで拡大）
+- 「Add to calendar」は `popup-terminal21-rama3.ics` の静的ファイルに変更
+- ページ内の `[TODO]` は黄色のラベルで表示されるので、本番前にすべて差し替えること
+
 ## v2 の構成
 
 - ヒーロー（PC は 2 ブランドの写真を左右に並べ、左半分に収まる巨大タイポが行ごとに立ち上がる。マウス追従のパララックス付き。スマホは上に FiveFingers、見出し、下に Vivobarefoot の縦積みで、写真はシューズが見える位置で切り抜き）
