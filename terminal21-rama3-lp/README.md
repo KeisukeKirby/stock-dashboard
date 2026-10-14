@@ -21,12 +21,12 @@ Terminal 21 Asok 版（`barefootinc-t21-asok-event`）と同じ構成で、会�
 
 ## v3 で追加したもの（本番実装前）
 
-- 「Why barefoot?」（ヒーロー直後、明るい背景）: 線画イラスト付きの 4 枚のカード（悩み + その裏にある靴の構造）→ 普通の靴 vs ベアフットを左右 2 列の短い言葉で → ブランドへの導線。医療的な断定は避けた表現にし、注意書きを添付
-- ブランド紹介の下にモデルカード各 4 つ（VFF: V-Run / V-Train 2.0 / V-Soul / Trailope、Vivo: Primus Lite IV / Motus Strength II / Gobi III Sneaker Leather / Primus Trail FG 3.5）。定価は在庫シート・ラインナップデータの値、ポップアップ価格は `[TODO]`
-- 「Start slowly」4 週間の慣らしガイド、FAQ（アコーディオン、FAQPage の JSON-LD 付き。店舗ポリシーの回答は `[TODO]`）
+- 「Why barefoot?」（ヒーロー直後、明るい背景）: イラスト付きの 4 枚のカード（悩み + その裏にある靴の構造）→ 普通の靴 vs ベアフットを左右 2 列の短い言葉で。医療的な断定は避けた表現
+- ブランド紹介の下にモデルカード各 4 つ（VFF: V-Run / V-Soul / KSO EVO / Scramkey、Vivo: Primus Lite IV / Motus Strength II / Gobi III Sneaker Leather / Primus Flow）。通常価格とセール価格を表示（KSO EVO は *Selected color only）。写真は `images/models/`
+- 「Start slowly」（具体的な日数は書かず、少しずつ時間と頻度を増やす 4 ステップ）、FAQ（アコーディオン、FAQPage の JSON-LD 付き。返品・交換不可、支払いは現金・タイ銀行 QR・クレジットカード）
 - アクセスにフロアマップ枠（`images/floor-map-rama3.png` はプレースホルダー、タップで拡大）
 - 「Add to calendar」は `popup-terminal21-rama3.ics` の静的ファイルに変更
-- ページ内の `[TODO]` は黄色のラベルで表示されるので、本番前にすべて差し替えること
+- 残る `[TODO]` はフロアマップ画像の 1 件のみ（黄色のラベルで表示）
 
 ## v2 の構成
 
