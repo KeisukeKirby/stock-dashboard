@@ -230,7 +230,7 @@
     .hero h1 .thin { font-weight: 700; }
     .hero-tag { margin-top: clamp(1rem, 2.4vw, 1.8rem); display: flex; flex-direction: column; align-items: flex-start; gap: .6rem; }
     @media (min-width: 901px) { .hero-body { width: 50%; padding-right: clamp(1rem, 3vw, 3rem); } }
-    .hero-tag p { max-width: 40ch; font-size: .98rem; color: rgba(255,255,255,.82); }
+    .hero-tag p { max-width: 44ch; font-size: clamp(1.05rem, 1.35vw, 1.3rem); line-height: 1.55; font-weight: 600; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.7), 0 4px 22px rgba(0,0,0,.6); }
     .hero-board {
       position: relative; z-index: 2; margin-top: clamp(1.6rem, 4vh, 3rem); border-top: 1px solid rgba(255,255,255,.22);
       display: grid; grid-template-columns: repeat(3, auto) 1fr; align-items: center; gap: 0 clamp(1rem, 3vw, 3rem);
@@ -278,7 +278,7 @@
       .hero-brands img { height: 18px; }
       .hero-body { padding-top: 1.4rem; }
       .hero-tag { gap: .4rem; }
-      .hero-tag p { font-size: .9rem; max-width: 30ch; }
+      .hero-tag p { font-size: 1.02rem; max-width: 34ch; }
       .hero-board { grid-template-columns: 1fr 1fr; gap: .9rem 1rem; padding-top: .9rem; }
       .hero-board .board-item:first-child { grid-column: 1 / -1; }
       .flap { font-size: 1.3rem; }
@@ -635,7 +635,7 @@
         <span class="mask"><span data-reveal="line" style="--d:620" data-i18n="hero.l3"><span class="thin">G Floor</span></span></span>
       </h1>
       <div class="hero-tag">
-        <p data-reveal style="--d:860" data-i18n="hero.sub">Two barefoot brands, one booth. Try every model on your own feet, get measured properly, and walk out lighter.</p>
+        <p data-reveal style="--d:860" data-i18n-html="hero.sub">Two barefoot brands, one booth.<br />Try every model on your own feet,<br />get measured properly,<br />and walk out lighter.</p>
       </div>
     </div>
     </div>
@@ -1029,7 +1029,7 @@
         "access.floornote": "G Floor plan, booth marked. Tap to zoom", "access.floorgate": "Gate 4 side, next to the escalator",
         "hero.edition": "Popup store · Bangkok",
         "hero.l2": "<span class=\"hl\">Rama 3</span>", "hero.l3": "<span class=\"thin\">G Floor</span>",
-        "hero.sub": "Two barefoot brands, one booth. Try every model on your own feet, get measured properly, and walk out lighter.",
+        "hero.sub": "Two barefoot brands, one booth.<br />Try every model on your own feet,<br />get measured properly,<br />and walk out lighter.",
         "hero.scroll": "<span>Scroll</span><i></i>",
         "board.k1": "Dates", "board.k2": "Time", "board.k3": "Floor",
         "vff.sub": "Five separate toes, and nothing between you and the ground.",
@@ -1122,7 +1122,7 @@
         "access.floornote": "แผนผังชั้น G ทำเครื่องหมายตำแหน่งบูธไว้ แตะเพื่อซูม", "access.floorgate": "ฝั่ง Gate 4 ข้างบันไดเลื่อน",
         "hero.edition": "ป๊อปอัพสโตร์ · กรุงเทพฯ",
         "hero.l2": "<span class=\"hl\">พระราม 3</span>", "hero.l3": "<span class=\"thin\">ชั้น G</span>",
-        "hero.sub": "สองแบรนด์บาร์ฟุต บูธเดียว ลองทุกรุ่นด้วยเท้าของคุณเอง วัดไซซ์ให้พอดี แล้วเดินออกไปอย่างเบาสบาย",
+        "hero.sub": "สองแบรนด์บาร์ฟุต บูธเดียว<br />ลองทุกรุ่นด้วยเท้าของคุณเอง<br />วัดไซซ์ให้พอดี<br />แล้วเดินออกไปอย่างเบาสบาย",
         "hero.scroll": "<span>เลื่อนลง</span><i></i>",
         "board.k1": "วันที่", "board.k2": "เวลา", "board.k3": "ชั้น",
         "vff.sub": "ห้านิ้วแยกอิสระ ไม่มีอะไรมากั้นระหว่างเท้ากับพื้น",
