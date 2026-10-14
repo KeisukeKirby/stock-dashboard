@@ -239,7 +239,7 @@
     .board-item { display: grid; gap: .45rem; }
     .board-item .k { font-family: var(--display); font-size: .66rem; letter-spacing: .26em; text-transform: uppercase; color: var(--gold); }
     .flap { display: inline-flex; gap: .03em; font-family: var(--display); font-weight: 600; font-size: clamp(1.45rem, 2.6vw, 2.1rem); line-height: 1; letter-spacing: .05em; color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,.5); }
-    .flap .c { display: inline-block; height: 1em; overflow: hidden; }
+    .flap .c { display: inline-block; height: 1em; overflow: hidden; clip-path: inset(0); }
     .flap .c.sp { width: .32em; }
     .flap .c i { display: block; font-style: normal; }
     .flap .c i span { display: block; height: 1em; line-height: 1; }
@@ -1145,7 +1145,7 @@
 
     /* ===================== departures board (roll-up text) ===================== */
     (function () {
-      const CH = "ABCDEFGHJKLMNPQRSTUVWXYZ0123456789";
+      const CH = "ABCDEFGHKLMNPRSTUVWXYZ0123456789";
       const rnd = () => CH[Math.floor(Math.random() * CH.length)];
       const boards = [...document.querySelectorAll("[data-flap]")];
       boards.forEach(el => {
@@ -1157,6 +1157,11 @@
           const glyphs = (reduce || !/[A-Z0-9]/.test(ch)) ? [ch] : [rnd(), rnd(), ch];
           glyphs.forEach(g => { const sp = document.createElement("span"); sp.textContent = g; col.appendChild(sp); });
           if (glyphs.length === 1) col.style.animation = "none";
+          else col.addEventListener("animationend", () => {
+            // settle: keep only the final glyph so nothing from the rolled letters can peek into view
+            col.style.animation = "none"; col.style.transform = "none";
+            col.textContent = ""; const fin = document.createElement("span"); fin.textContent = ch; col.appendChild(fin);
+          }, { once: true });
           c.appendChild(col); el.appendChild(c);
         });
       });
