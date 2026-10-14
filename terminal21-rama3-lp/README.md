@@ -23,7 +23,7 @@ Terminal 21 Asok 版（`barefootinc-t21-asok-event`）と同じ構成で、会�
 
 - 「Why barefoot?」（ヒーロー直後、明るい背景）: イラスト付きの 4 枚のカード（悩み + その裏にある靴の構造）→ 普通の靴 vs ベアフットを左右 2 列の短い言葉で。医療的な断定は避けた表現
 - ブランド紹介の下にモデルカード各 4 つ（VFF: V-Run / V-Soul / KSO EVO / Scramkey、Vivo: Primus Lite IV / Motus Strength II / Gobi III Sneaker Leather / Primus Flow）。通常価格とセール価格を表示（KSO EVO は *Selected color only）。写真は `images/models/`
-- 「Start slowly」（具体的な日数は書かず、少しずつ時間と頻度を増やす 4 ステップ）、FAQ（アコーディオン、FAQPage の JSON-LD 付き。返品・交換不可、支払いは現金・タイ銀行 QR・クレジットカード）
+- 「At the booth」の下に「Start slowly」の注意書き（少しずつ時間と日数を増やす・痛みがあれば休む、を 1 段落に）、FAQ（アコーディオン、FAQPage の JSON-LD 付き。返品・交換不可、支払いは現金・タイ銀行 QR・クレジットカード）
 - アクセスにフロアマップ（`images/floor-map-rama3-g.jpg`、G Floor の図面。ブース位置は Gate 4 側・エスカレーター横。タップで拡大）
 - 「Add to calendar」は `popup-terminal21-rama3.ics` の静的ファイルに変更
 - `[TODO]` プレースホルダーは残っていません

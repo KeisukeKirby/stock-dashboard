@@ -73,7 +73,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
-  <link rel="preload" as="image" href="images/hero-vff.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="images/hero-vff-2.jpg" fetchpriority="high" />
 
   <style>
     :root {
@@ -396,20 +396,6 @@
     @media (max-width: 720px) { .models-head { grid-template-columns: 1fr; } }
     @media (max-width: 440px) { .mgrid { grid-template-columns: 1fr; } .mimg { aspect-ratio: 4 / 3; } }
 
-    /* ---------- transition guide ---------- */
-    .guide { background: var(--bone); color: var(--ink); padding: clamp(4.5rem, 10vw, 9rem) 0; }
-    .weeks { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-    .week { background: #fff; border: 1px solid rgba(27,26,31,.1); padding: clamp(1.3rem, 2.4vw, 2rem); }
-    .week .wk { font-family: var(--display); font-weight: 700; font-size: .8rem; letter-spacing: .2em; color: var(--gold); }
-    .week .wt { font-family: var(--display); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1; margin: .5rem 0 .9rem; color: var(--ink); }
-    .week .wt small { font-size: .5em; font-weight: 500; color: var(--mute); letter-spacing: .06em; margin-left: .3rem; }
-    .week p { font-size: .9rem; color: #4B4750; line-height: 1.75; }
-    .guide-note { margin-top: 1.6rem; display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; padding: 1.2rem 1.4rem; background: #fff; border-left: 4px solid var(--gold); }
-    .guide-note .gi { font-family: var(--display); font-weight: 700; color: var(--gold); font-size: 1.4rem; line-height: 1; }
-    .guide-note p { font-size: .9rem; line-height: 1.75; color: #3F3B45; }
-    @media (max-width: 960px) { .weeks { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 560px) { .weeks { grid-template-columns: 1fr; } }
-
     /* ---------- faq ---------- */
     .faq { background: #fff; color: var(--ink); padding: clamp(4.5rem, 10vw, 9rem) 0; }
     .faq-list { border-top: 2px solid var(--ink); }
@@ -508,6 +494,10 @@
     /* ---------- booth ---------- */
     .booth { background: var(--coal); color: var(--bone); padding: clamp(4.5rem, 10vw, 9rem) 0; }
     .booth .sec-head p { color: rgba(243,240,234,.7); }
+    .booth-note { margin-top: 1.6rem; display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; padding: 1.2rem 1.4rem; background: rgba(255,255,255,.05); border-left: 4px solid var(--gold); }
+    .booth-note .gi { font-family: var(--display); font-weight: 700; color: var(--gold); font-size: 1.4rem; line-height: 1; }
+    .booth-note p { font-size: .9rem; line-height: 1.75; color: rgba(243,240,234,.8); max-width: 80ch; }
+    .booth-note strong { color: var(--bone); font-weight: 600; }
     .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(243,240,234,.14); border: 1px solid rgba(243,240,234,.14); }
     .step { background: var(--coal); padding: clamp(1.4rem, 2.6vw, 2.4rem); position: relative; overflow: hidden; transition: background-color .4s ease; }
     .step:hover { background: #1B1B1F; }
@@ -624,7 +614,7 @@
   <header class="hero" id="top">
     <div class="hero-stage">
     <div class="hero-bg" id="heroBg">
-      <figure class="vff"><img src="images/hero-vff.jpg" alt="Vibram FiveFingers worn on asphalt" width="1000" height="1250" fetchpriority="high" /></figure>
+      <figure class="vff"><img src="images/hero-vff-2.jpg" alt="Vibram FiveFingers worn on asphalt" width="1000" height="1158" fetchpriority="high" /></figure>
       <figure class="vivo"><picture><source type="image/webp" srcset="images/hero-vivo.webp" /><img src="images/hero-vivo.jpg" alt="Vivobarefoot Primus Lite IV worn in a studio" width="960" height="1200" /></picture></figure>
     </div>
     <div class="hero-grain" aria-hidden="true"></div>
@@ -741,7 +731,7 @@
           <p data-i18n="models.note">Prices in THB.</p>
         </div>
         <div class="mgrid">
-          <article class="mcard" data-tilt><div class="mimg" role="button" tabindex="0" aria-label="View photo" data-lb="image" data-lb-src="images/models/vff-v-run-3.jpg" data-lb-alt="Vibram FiveFingers V-Run"><img src="images/models/vff-v-run-3.jpg" alt="Vibram FiveFingers V-Run in black and yellow" width="900" height="900" loading="lazy" decoding="async" /></div>
+          <article class="mcard" data-tilt><div class="mimg" role="button" tabindex="0" aria-label="View photo" data-lb="image" data-lb-src="images/models/vff-v-run-4.jpg" data-lb-alt="Vibram FiveFingers V-Run"><img src="images/models/vff-v-run-4.jpg" alt="Vibram FiveFingers V-Run in black and yellow" width="900" height="900" loading="lazy" decoding="async" /></div>
             <div class="mbody"><span class="muse" data-i18n="m.vrun.use">Road running</span><h4>V-Run</h4><p data-i18n="m.vrun.d">The running model. A light, breathable upper and a sole made for pavement, for anyone who wants to run with their toes free.</p>
               <div class="mprice"><span class="list"><span data-i18n="m.list">Regular price</span> <b>5,980.-</b></span><span class="sale">5,382.-</span></div></div></article>
           <article class="mcard" data-tilt><div class="mimg" role="button" tabindex="0" aria-label="View photo" data-lb="image" data-lb-src="images/models/vff-v-soul-3.jpg" data-lb-alt="Vibram FiveFingers V-Soul"><img src="images/models/vff-v-soul-3.jpg" alt="Vibram FiveFingers V-Soul" width="900" height="900" loading="lazy" decoding="async" /></div>
@@ -800,7 +790,7 @@
           <article class="mcard" data-tilt><div class="mimg" role="button" tabindex="0" aria-label="View photo" data-lb="image" data-lb-src="images/models/vivo-gobi-iii.jpg" data-lb-alt="Vivobarefoot Gobi III Sneaker Leather"><img src="images/models/vivo-gobi-iii.jpg" alt="Vivobarefoot Gobi III Sneaker Leather in Limestone" width="900" height="900" loading="lazy" decoding="async" /></div>
             <div class="mbody"><span class="muse" data-i18n="m.gobi.use">City and work</span><h4>Gobi III Sneaker Leather</h4><p data-i18n="m.gobi.d">A leather sneaker that passes at the office and at dinner, with the same wide, thin, flexible sole underneath.</p>
               <div class="mprice"><span class="list"><span data-i18n="m.list">Regular price</span> <b>5,990.-</b></span><span class="sale">5,391.-</span></div></div></article>
-          <article class="mcard" data-tilt><div class="mimg" role="button" tabindex="0" aria-label="View photo" data-lb="image" data-lb-src="images/models/vivo-primus-flow.jpg" data-lb-alt="Vivobarefoot Primus Flow"><img src="images/models/vivo-primus-flow.jpg" alt="Vivobarefoot Primus Flow in white" width="900" height="900" loading="lazy" decoding="async" /></div>
+          <article class="mcard" data-tilt><div class="mimg" role="button" tabindex="0" aria-label="View photo" data-lb="image" data-lb-src="images/models/vivo-primus-flow-2.jpg" data-lb-alt="Vivobarefoot Primus Flow"><img src="images/models/vivo-primus-flow-2.jpg" alt="Vivobarefoot Primus Flow in white" width="900" height="900" loading="lazy" decoding="async" /></div>
             <div class="mbody"><span class="muse" data-i18n="m.pflow.use">Running and training</span><h4>Primus Flow</h4><p data-i18n="m.pflow.d">The lightest Primus. A soft, breathable knit upper and a thin, flexible sole for road running, the gym and fast, light days on your feet.</p>
               <div class="mprice"><span class="list"><span data-i18n="m.list">Regular price</span> <b>6,630.-</b></span><span class="sale">5,304.-</span></div></div></article>
         </div>
@@ -870,28 +860,9 @@
           <p data-i18n="booth.p3">Going barefoot too fast is how calves get sore. We will tell you how much to wear them in the first weeks.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-
-  <section class="guide" id="start">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <span class="eyebrow" data-reveal data-i18n="guide.eyebrow">Getting started</span>
-          <h2 data-reveal style="--d:80" data-i18n="guide.title">Start <span class="serif">slowly</span></h2>
-        </div>
-        <p data-reveal style="--d:160" data-i18n="guide.note">Your feet have been cushioned for years, so give them time. Start with a little, then raise the time and the number of days gradually. Everyone is different, so go by how your feet feel.</p>
-      </div>
-      <div class="weeks">
-        <div class="week" data-tilt data-reveal><span class="wk">01</span><div class="wt" data-i18n="guide.s1t">Start short</div><p data-i18n="guide.s1">Wear them for a little while at a time on easy ground, and take them off when your feet feel tired.</p></div>
-        <div class="week" data-tilt data-reveal style="--d:100"><span class="wk">02</span><div class="wt" data-i18n="guide.s2t">Add time</div><p data-i18n="guide.s2">When that feels easy, wear them a bit longer each time, with shorter steps that land under your body.</p></div>
-        <div class="week" data-tilt data-reveal style="--d:200"><span class="wk">03</span><div class="wt" data-i18n="guide.s3t">Add days</div><p data-i18n="guide.s3">Wear them more often through the week, and keep your old shoes for the days your feet ask for a break.</p></div>
-        <div class="week" data-tilt data-reveal style="--d:300"><span class="wk">04</span><div class="wt" data-i18n="guide.s4t">Add activity</div><p data-i18n="guide.s4">Only then move on to longer walks, runs or training sessions, building up at your own pace.</p></div>
-      </div>
-      <div class="guide-note" data-reveal>
-        <span class="gi">!</span>
-        <p data-i18n="guide.calf">If something hurts rather than feels tired, stop for a few days, go back a step, and ask us or a professional.</p>
+      <div class="booth-note" data-reveal style="--d:200">
+        <span class="gi" aria-hidden="true">!</span>
+        <p data-i18n-html="booth.care"><strong>Start slowly.</strong> Your feet have been cushioned for years, so begin with short wears on easy ground and add time and days gradually, at your own pace. If something hurts rather than feels tired, stop for a few days, go back a step, and ask us or a professional.</p>
       </div>
     </div>
   </section>
@@ -909,7 +880,7 @@
         <details><summary><span data-i18n="faq.q1">How do I pick the right size?</span><span class="pm" aria-hidden="true"></span></summary><div class="fa"><p data-i18n="faq.a1">Barefoot sizing is not your usual sneaker size, and the two brands fit differently. At the booth we let you try the size up and down. If you are shopping from home, use the size charts above: measure your foot standing, from heel to the longest toe, and allow about a thumb-width of room in front.</p></div></details>
         <details><summary><span data-i18n="faq.q2">Do I need five-toe socks for FiveFingers?</span><span class="pm" aria-hidden="true"></span></summary><div class="fa"><p data-i18n="faq.a2">You can wear FiveFingers without socks. Many people prefer thin five-toe socks for comfort, sweat and longer days, and we sell them at the booth. Vivobarefoot works with any socks you already own.</p></div></details>
         <details><summary><span data-i18n="faq.q3">How do I wash them, and what about smell?</span><span class="pm" aria-hidden="true"></span></summary><div class="fa"><p data-i18n="faq.a3">Most models can be washed by hand or on a gentle cold cycle with mild detergent, then air-dried away from direct sun and heat. Letting them dry fully between wears is the main thing that keeps smell away. Ask the staff about leather models, which need a little more care.</p></div></details>
-        <details><summary><span data-i18n="faq.q4">Can I run in them?</span><span class="pm" aria-hidden="true"></span></summary><div class="fa"><p data-i18n="faq.a4">Yes, both brands have running models, like the FiveFingers V-Run and the Vivobarefoot Primus Flow. The key is to walk in them first and add running gradually, with shorter and lighter steps than you are used to. See the guide above.</p></div></details>
+        <details><summary><span data-i18n="faq.q4">Can I run in them?</span><span class="pm" aria-hidden="true"></span></summary><div class="fa"><p data-i18n="faq.a4">Yes, both brands have running models, like the FiveFingers V-Run and the Vivobarefoot Primus Flow. The key is to walk in them first and add running gradually, with shorter and lighter steps than you are used to.</p></div></details>
         <details><summary><span data-i18n="faq.q6">Can I exchange or return a pair?</span><span class="pm" aria-hidden="true"></span></summary><div class="fa"><p data-i18n="faq.a6">Items bought at the popup booth cannot be returned or exchanged, so please try them on and check the size carefully before you buy. Our staff will help you find the right fit.</p></div></details>
         <details><summary><span data-i18n="faq.q7">How can I pay?</span><span class="pm" aria-hidden="true"></span></summary><div class="fa"><p data-i18n="faq.a7">Cash, Thai bank QR payment and credit cards are accepted at the booth.</p></div></details>
       </div>
@@ -1003,14 +974,13 @@
       en: {
         "faq.a7": "Cash, Thai bank QR payment and credit cards are accepted at the booth.",
         "faq.a6": "Items bought at the popup booth cannot be returned or exchanged, so please try them on and check the size carefully before you buy. Our staff will help you find the right fit.",
-        "guide.s4": "Only then move on to longer walks, runs or training sessions, building up at your own pace.",
-        "guide.s4t": "Add activity",
-        "guide.s3": "Wear them more often through the week, and keep your old shoes for the days your feet ask for a break.",
-        "guide.s3t": "Add days",
-        "guide.s2": "When that feels easy, wear them a bit longer each time, with shorter steps that land under your body.",
-        "guide.s2t": "Add time",
-        "guide.s1": "Wear them for a little while at a time on easy ground, and take them off when your feet feel tired.",
-        "guide.s1t": "Start short",
+
+
+
+
+
+
+
         "m.pflow.d": "The lightest Primus. A soft, breathable knit upper and a thin, flexible sole for road running, the gym and fast, light days on your feet.",
         "m.pflow.use": "Running and training",
         "m.scram.d": "The outdoor model. A rugged Vibram Megagrip outsole for rock and wet ground, a double strap that locks the foot in, and a stretch ankle cuff that keeps grit out. Scrambling, trail walks and the water.",
@@ -1032,7 +1002,6 @@
         "why.vs.r1": "Posture", "why.vs.r2": "Toes", "why.vs.r3": "Ground feel", "why.vs.r4": "Impact", "why.vs.r5": "Muscles",
         "why.o1": "Heel lifted, body tilts forward", "why.o2": "Squeezed into a point", "why.o3": "Muted by thick foam", "why.o4": "Heavy heel landings", "why.o5": "Supports do the work",
         "why.b1": "Flat, you stand naturally", "why.b2": "Room to spread", "why.b3": "You feel the surface", "why.b4": "Light, short steps", "why.b5": "Your feet do the work",
-        "why.fine": "Barefoot footwear is not a medical treatment. If you have an injury or a diagnosed condition, talk to a professional before changing your shoes, and start slowly (see the four-week guide below).",
         "why.b1k": "Want to feel everything?", "why.b1d": "One pocket per toe, the thinnest sole, the most direct ground feel.",
         "why.b2k": "Want it to look like a sneaker?", "why.b2d": "Same wide, thin, flat principles in a shape you can wear anywhere.",
         "models.eyebrow": "At the popup", "models.vff.title": "Four FiveFingers <span class=\"serif\">to start with</span>", "models.vivo.title": "Four Vivobarefoot <span class=\"serif\">to start with</span>",
@@ -1045,19 +1014,18 @@
         "m.motus.use": "Strength and cross-training", "m.motus.d": "For lifting and training days: a flat, grippy base under the whole foot and a locked-in upper for sideways movement.",
         "m.gobi.use": "City and work", "m.gobi.d": "A leather sneaker that passes at the office and at dinner, with the same wide, thin, flexible sole underneath.",
         "m.ptrail.use": "Trail and hiking", "m.ptrail.d": "The trail version of the Primus, with firm-ground lugs for paths, parks and weekend hikes.",
-        "guide.eyebrow": "Getting started", "guide.title": "Start <span class=\"serif\">slowly</span>",
-        "guide.note": "Your feet have been cushioned for years, so give them time. Start with a little, then raise the time and the number of days gradually. Everyone is different, so go by how your feet feel.",
-        "guide.min": "min / day", "guide.hrs": "hours / day",
-        "guide.w1k": "Week 1", "guide.w1": "Walking only, on easy ground: at home, around the mall, a park path. Take them off when your feet feel tired.",
-        "guide.w2k": "Week 2", "guide.w2": "Short errands and commutes on pavement. Pay attention to shorter steps that land under your body rather than out in front.",
-        "guide.w3k": "Week 3", "guide.w3t": "Half days", "guide.w3": "Most of a normal day on your feet. If you run, add a few minutes of easy jogging at the end of a walk, not a full run yet.",
-        "guide.w4k": "Week 4 and on", "guide.w4t": "Your call", "guide.w4": "Build up activity gradually: longer walks, then runs or training sessions. Keep your old shoes for the days your feet ask for a break.",
-        "guide.calf": "If something hurts rather than feels tired, stop for a few days, go back a step, and ask us or a professional.",
+
+
+
+
+
+
+
         "faq.eyebrow": "Good to know", "faq.title": "Questions <span class=\"serif\">we hear a lot</span>", "faq.note": "Anything else, ask the staff at the booth or message us on LINE.",
         "faq.q1": "How do I pick the right size?", "faq.a1": "Barefoot sizing is not your usual sneaker size, and the two brands fit differently. At the booth we let you try the size up and down. If you are shopping from home, use the size charts above: measure your foot standing, from heel to the longest toe, and allow about a thumb-width of room in front.",
         "faq.q2": "Do I need five-toe socks for FiveFingers?", "faq.a2": "You can wear FiveFingers without socks. Many people prefer thin five-toe socks for comfort, sweat and longer days, and we sell them at the booth. Vivobarefoot works with any socks you already own.",
         "faq.q3": "How do I wash them, and what about smell?", "faq.a3": "Most models can be washed by hand or on a gentle cold cycle with mild detergent, then air-dried away from direct sun and heat. Letting them dry fully between wears is the main thing that keeps smell away. Ask the staff about leather models, which need a little more care.",
-        "faq.q4": "Can I run in them?", "faq.a4": "Yes, both brands have running models, like the FiveFingers V-Run and the Vivobarefoot Primus Flow. The key is to walk in them first and add running gradually, with shorter and lighter steps than you are used to. See the guide above.",
+        "faq.q4": "Can I run in them?", "faq.a4": "Yes, both brands have running models, like the FiveFingers V-Run and the Vivobarefoot Primus Flow. The key is to walk in them first and add running gradually, with shorter and lighter steps than you are used to.",
         "faq.q5": "Do you have kids' sizes?", "faq.q6": "Can I exchange or return a pair?", "faq.q7": "How can I pay?",
         "access.floornote": "G Floor plan, booth marked. Tap to zoom", "access.floorgate": "Gate 4 side, next to the escalator",
         "hero.edition": "Popup store · Bangkok",
@@ -1083,6 +1051,7 @@
         "booth.h1": "Walk in them first", "booth.p1": "Every model we have in stock is there to try on. Take a few laps of the floor before you decide anything.",
         "booth.h2": "Get sized properly", "booth.p2": "The two brands fit differently, and barefoot sizing is not your usual size. Our staff measure your feet and find the pair that fits.",
         "booth.h3": "Ask how to start", "booth.p3": "Going barefoot too fast is how calves get sore. We will tell you how much to wear them in the first weeks.",
+        "booth.care": "<strong>Start slowly.</strong> Your feet have been cushioned for years, so begin with short wears on easy ground and add time and days gradually, at your own pace. If something hurts rather than feels tired, stop for a few days, go back a step, and ask us or a professional.",
         "access.eyebrow": "Getting there", "access.title": "G Floor, <span class=\"serif\">Rama 3</span>",
         "access.note": "Terminal 21 Rama 3 sits on the river at the south end of Rama III Road. Here is how to reach the G Floor.",
         "access.k1": "Venue", "access.v1": "Terminal 21 Rama 3, G Floor<br>356 Rama III Road, Bang Khlo, Bang Kho Laem, Bangkok 10120",
@@ -1098,14 +1067,13 @@
       th: {
         "faq.a7": "ที่บูธรับชำระด้วยเงินสด สแกน QR ธนาคารไทย และบัตรเครดิต",
         "faq.a6": "สินค้าที่ซื้อจากบูธป๊อปอัพไม่สามารถคืนหรือเปลี่ยนได้ กรุณาลองสวมและตรวจสอบไซซ์ให้แน่ใจก่อนซื้อ ทีมงานยินดีช่วยหาคู่ที่พอดีให้",
-        "guide.s4": "จากนั้นจึงค่อยเดินไกลขึ้น วิ่ง หรือฝึกซ้อม โดยเพิ่มตามจังหวะของตัวเอง",
-        "guide.s4t": "เพิ่มกิจกรรม",
-        "guide.s3": "ใส่บ่อยขึ้นในแต่ละสัปดาห์ และเก็บรองเท้าคู่เดิมไว้สำหรับวันที่เท้าอยากพัก",
-        "guide.s3t": "เพิ่มจำนวนวัน",
-        "guide.s2": "เมื่อรู้สึกสบายแล้ว ค่อย ๆ ใส่นานขึ้นในแต่ละครั้ง ด้วยก้าวที่สั้นลงและลงเท้าใต้ลำตัว",
-        "guide.s2t": "เพิ่มเวลา",
-        "guide.s1": "ใส่ครั้งละไม่นานบนพื้นง่าย ๆ และถอดเมื่อรู้สึกว่าเท้าล้า",
-        "guide.s1t": "เริ่มจากช่วงสั้น ๆ",
+
+
+
+
+
+
+
         "m.pflow.d": "Primus ที่เบาที่สุด อัปเปอร์ถักนุ่มระบายอากาศดี พื้นบางยืดหยุ่น สำหรับวิ่งถนน ยิม และวันที่อยากเคลื่อนไหวเร็วและเบา",
         "m.pflow.use": "วิ่งและเทรนนิ่ง",
         "m.scram.d": "รุ่นสำหรับกลางแจ้ง พื้น Vibram Megagrip ทนทานสำหรับหินและพื้นเปียก สายรัดคู่ล็อกเท้าให้กระชับ และข้อเท้ายืดหยุ่นกันเศษหินเข้า เหมาะกับปีนป่าย เดินเทรล และลุยน้ำ",
@@ -1127,7 +1095,6 @@
         "why.vs.r1": "ท่าทาง", "why.vs.r2": "นิ้วเท้า", "why.vs.r3": "สัมผัสพื้น", "why.vs.r4": "แรงกระแทก", "why.vs.r5": "กล้ามเนื้อ",
         "why.o1": "ส้นยก ตัวเอียงไปข้างหน้า", "why.o2": "ถูกบีบเป็นปลายแหลม", "why.o3": "ถูกโฟมหนาบดบัง", "why.o4": "ลงส้นหนัก", "why.o5": "แผ่นรองทำงานแทน",
         "why.b1": "แบนราบ ยืนได้ตามธรรมชาติ", "why.b2": "มีที่ให้กาง", "why.b3": "รู้สึกถึงพื้นผิว", "why.b4": "ก้าวสั้นและเบา", "why.b5": "เท้าของคุณทำงานเอง",
-        "why.fine": "รองเท้าบาร์ฟุตไม่ใช่การรักษาทางการแพทย์ หากคุณมีอาการบาดเจ็บหรือโรคที่แพทย์วินิจฉัยแล้ว โปรดปรึกษาผู้เชี่ยวชาญก่อนเปลี่ยนรองเท้า และเริ่มอย่างช้า ๆ (ดูคำแนะนำ 4 สัปดาห์ด้านล่าง)",
         "why.b1k": "อยากรู้สึกถึงทุกอย่าง?", "why.b1d": "แยกช่องทุกนิ้ว พื้นบางที่สุด สัมผัสพื้นตรงที่สุด",
         "why.b2k": "อยากให้ดูเป็นสนีกเกอร์?", "why.b2d": "หลักการเดียวกัน กว้าง บาง แบน ในทรงที่ใส่ไปได้ทุกที่",
         "models.eyebrow": "ที่ป๊อปอัพ", "models.vff.title": "FiveFingers 4 รุ่น <span class=\"serif\">ที่แนะนำให้เริ่ม</span>", "models.vivo.title": "Vivobarefoot 4 รุ่น <span class=\"serif\">ที่แนะนำให้เริ่ม</span>",
@@ -1140,19 +1107,18 @@
         "m.motus.use": "เวทเทรนนิ่งและครอสเทรนนิ่ง", "m.motus.d": "สำหรับวันยกน้ำหนักและฝึกซ้อม ฐานแบนยึดเกาะดีใต้ทั้งเท้า อัปเปอร์กระชับรองรับการเคลื่อนไหวด้านข้าง",
         "m.gobi.use": "ในเมืองและที่ทำงาน", "m.gobi.d": "สนีกเกอร์หนังที่ใส่เข้าออฟฟิศหรือไปดินเนอร์ได้ โดยมีพื้นกว้าง บาง ยืดหยุ่นแบบเดียวกันอยู่ข้างใต้",
         "m.ptrail.use": "เทรลและเดินป่า", "m.ptrail.d": "Primus เวอร์ชันเทรล พื้นดอกยางสำหรับพื้นแข็ง เหมาะกับทางเดิน สวนสาธารณะ และเดินป่าวันหยุด",
-        "guide.eyebrow": "เริ่มต้นอย่างไร", "guide.title": "เริ่ม <span class=\"serif\">อย่างช้า ๆ</span>",
-        "guide.note": "เท้าของคุณถูกรองด้วยโฟมมาหลายปี จึงควรให้เวลา เริ่มจากน้อย ๆ แล้วค่อย ๆ เพิ่มเวลาและจำนวนวันที่ใส่ แต่ละคนต่างกัน ให้ฟังความรู้สึกของเท้าเป็นหลัก",
-        "guide.min": "นาที / วัน", "guide.hrs": "ชั่วโมง / วัน",
-        "guide.w1k": "สัปดาห์ที่ 1", "guide.w1": "เดินอย่างเดียวบนพื้นง่าย ๆ ที่บ้าน ในห้าง ทางเดินในสวน ถอดเมื่อรู้สึกว่าเท้าล้า",
-        "guide.w2k": "สัปดาห์ที่ 2", "guide.w2": "ธุระสั้น ๆ และการเดินทางบนพื้นถนน สังเกตให้ก้าวสั้นลงและลงเท้าใต้ลำตัว ไม่ใช่ยื่นไปข้างหน้า",
-        "guide.w3k": "สัปดาห์ที่ 3", "guide.w3t": "ครึ่งวัน", "guide.w3": "ใส่ได้เกือบทั้งวันตามปกติ ถ้าคุณวิ่ง ให้เพิ่มจ็อกกิ้งเบา ๆ สักสองสามนาทีท้ายการเดิน ยังไม่ต้องวิ่งเต็มระยะ",
-        "guide.w4k": "สัปดาห์ที่ 4 เป็นต้นไป", "guide.w4t": "ตามที่คุณพร้อม", "guide.w4": "ค่อย ๆ เพิ่มกิจกรรม เดินไกลขึ้น แล้วจึงวิ่งหรือฝึกซ้อม เก็บรองเท้าคู่เดิมไว้สำหรับวันที่เท้าอยากพัก",
-        "guide.calf": "ถ้าเจ็บมากกว่าล้า ให้หยุดสักสองสามวัน ถอยกลับไปหนึ่งขั้น แล้วถามเราหรือผู้เชี่ยวชาญ",
+
+
+
+
+
+
+
         "faq.eyebrow": "เรื่องน่ารู้", "faq.title": "คำถาม <span class=\"serif\">ที่ได้ยินบ่อย</span>", "faq.note": "มีคำถามอื่น ถามทีมงานที่บูธหรือทัก LINE หาเราได้เลย",
         "faq.q1": "เลือกไซซ์อย่างไรให้พอดี", "faq.a1": "ไซซ์รองเท้าบาร์ฟุตไม่ตรงกับไซซ์สนีกเกอร์ที่คุณใส่ประจำ และสองแบรนด์ก็ฟิตต่างกัน ที่บูธเราให้ลองทั้งไซซ์ขึ้นและลง ถ้าเลือกจากที่บ้าน ให้ใช้ตารางไซซ์ด้านบน วัดเท้าขณะยืนจากส้นถึงนิ้วที่ยาวที่สุด แล้วเผื่อด้านหน้าประมาณหนึ่งนิ้วโป้ง",
         "faq.q2": "ต้องใส่ถุงเท้าห้านิ้วกับ FiveFingers ไหม", "faq.a2": "ใส่ FiveFingers โดยไม่ใส่ถุงเท้าก็ได้ หลายคนชอบถุงเท้าห้านิ้วบาง ๆ เพื่อความสบาย ซับเหงื่อ และใส่ได้นานขึ้น ซึ่งมีจำหน่ายที่บูธ ส่วน Vivobarefoot ใส่กับถุงเท้าทั่วไปที่คุณมีอยู่แล้วได้เลย",
         "faq.q3": "ซักอย่างไร และจัดการกลิ่นอย่างไร", "faq.a3": "รุ่นส่วนใหญ่ซักมือหรือซักเครื่องโหมดถนอมผ้าน้ำเย็นด้วยผงซักฟอกอ่อน ๆ ได้ แล้วผึ่งให้แห้งโดยเลี่ยงแดดจัดและความร้อน การปล่อยให้แห้งสนิทก่อนใส่ครั้งถัดไปคือวิธีหลักในการกันกลิ่น รุ่นหนังต้องดูแลเพิ่มเล็กน้อย สอบถามทีมงานได้",
-        "faq.q4": "ใส่วิ่งได้ไหม", "faq.a4": "ได้ ทั้งสองแบรนด์มีรุ่นสำหรับวิ่ง เช่น FiveFingers V-Run และ Vivobarefoot Primus Flow หัวใจสำคัญคือเดินให้ชินก่อน แล้วค่อย ๆ เพิ่มการวิ่ง ด้วยก้าวที่สั้นและเบากว่าที่เคย ดูคำแนะนำด้านบน",
+        "faq.q4": "ใส่วิ่งได้ไหม", "faq.a4": "ได้ ทั้งสองแบรนด์มีรุ่นสำหรับวิ่ง เช่น FiveFingers V-Run และ Vivobarefoot Primus Flow หัวใจสำคัญคือเดินให้ชินก่อน แล้วค่อย ๆ เพิ่มการวิ่ง ด้วยก้าวที่สั้นและเบากว่าที่เคย",
         "faq.q5": "มีไซซ์เด็กไหม", "faq.q6": "เปลี่ยนหรือคืนสินค้าได้ไหม", "faq.q7": "ชำระเงินได้ช่องทางไหนบ้าง",
         "access.floornote": "แผนผังชั้น G ทำเครื่องหมายตำแหน่งบูธไว้ แตะเพื่อซูม", "access.floorgate": "ฝั่ง Gate 4 ข้างบันไดเลื่อน",
         "hero.edition": "ป๊อปอัพสโตร์ · กรุงเทพฯ",
@@ -1178,6 +1144,7 @@
         "booth.h1": "ลองเดินจริงก่อนตัดสินใจ", "booth.p1": "ทุกรุ่นที่มีสต็อกพร้อมให้ลองสวม เดินรอบบูธกี่รอบก็ได้ก่อนตัดสินใจ",
         "booth.h2": "วัดไซซ์ให้พอดี", "booth.p2": "สองแบรนด์นี้ทรงและไซซ์ไม่เหมือนกัน และไซซ์รองเท้าบาร์ฟุตก็มักไม่ตรงกับไซซ์ที่คุณใส่ประจำ ทีมงานจะวัดเท้าและช่วยเลือกคู่ที่พอดีให้",
         "booth.h3": "ถามวิธีเริ่มต้น", "booth.p3": "เปลี่ยนมาใส่บาร์ฟุตเร็วเกินไปมักทำให้น่องตึงและเจ็บ เราจะแนะนำว่าช่วงแรกควรใส่มากน้อยแค่ไหน",
+        "booth.care": "<strong>ค่อยเป็นค่อยไป</strong> เท้าของคุณอยู่ในรองเท้าพื้นนุ่มมาหลายปี เริ่มจากใส่ช่วงสั้น ๆ บนพื้นเรียบ แล้วค่อยเพิ่มเวลาและจำนวนวันตามจังหวะของตัวเอง ถ้าเจ็บมากกว่าล้า ให้หยุดสักสองสามวัน ถอยกลับไปหนึ่งขั้น แล้วถามเราหรือผู้เชี่ยวชาญ",
         "access.eyebrow": "วิธีเดินทาง", "access.title": "ชั้น G, <span class=\"serif\">พระราม 3</span>",
         "access.note": "เทอร์มินอล 21 พระราม 3 อยู่ริมแม่น้ำ ปลายถนนพระราม 3 ฝั่งใต้ นี่คือวิธีมาถึงชั้น G",
         "access.k1": "สถานที่", "access.v1": "เทอร์มินอล 21 พระราม 3 ชั้น G<br>356 ถนนพระราม 3 แขวงบางโคล่ เขตบางคอแหลม กรุงเทพฯ 10120",
