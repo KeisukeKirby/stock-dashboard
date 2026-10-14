@@ -319,9 +319,9 @@
     .ben-figure picture, .ben-figure img { display: block; width: 100%; height: auto; }
     .ben-figure .bt { position: absolute; text-shadow: 0 1px 2px rgba(0,0,0,.85), 0 2px 16px rgba(0,0,0,.6); }
     .bt-head { left: 4%; right: 4%; top: 5.5%; text-align: center; }
-    .bt-head .eyebrow { color: #F5E51C; justify-content: center; }
+    .bt-head .eyebrow { color: #F5E51C; justify-content: center; font-size: clamp(.9rem, 1.6vw, 1.3rem); font-weight: 600; letter-spacing: .3em; }
     .bt-head h3 { font-size: clamp(1.9rem, 4.4vw, 3.6rem); text-transform: uppercase; font-weight: 700; letter-spacing: -.01em; line-height: 1; margin: .35rem 0 .45rem; color: #fff; }
-    .bt-head h3 .serif { text-transform: none; font-weight: 400; color: #F5E51C; }
+    .bt-head h3 .hl { color: #F5E51C; }
     .bt-head .sub { font-size: clamp(.85rem, 1.4vw, 1.15rem); font-weight: 500; color: rgba(255,255,255,.9); }
     .ben-figure h4 { font-family: var(--display); font-weight: 700; font-size: clamp(1rem, 2vw, 1.7rem); line-height: 1.08; text-transform: uppercase; letter-spacing: .02em; color: #F5E51C; margin-bottom: .45em; }
     .ben-figure p { font-size: clamp(.8rem, 1.35vw, 1.15rem); line-height: 1.4; font-weight: 600; color: #fff; }
@@ -330,31 +330,28 @@
     .bt-left { left: 3.5%; width: 25%; top: 55%; text-align: left; }
     .bt-right { right: 3.5%; width: 26%; top: 55%; text-align: right; }
     @media (max-width: 720px) { .ben-figure img { aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 80%; } .ben-figure .bt { position: static; width: auto; padding: 1rem 1.1rem; text-shadow: none; } .ben-figure .bt + .bt { border-top: 1px solid rgba(255,255,255,.12); } .bt-head { text-align: left; order: -1; } .ben-figure h4 { font-size: 1.05rem; } .ben-figure p { font-size: .92rem; font-weight: 500; } .ben-figure .bt-top, .ben-figure .bt-right { text-align: left; } .ben-figure { display: flex; flex-direction: column; } .ben-figure picture { order: 0; } .bt-head { order: -1; background: #1C2A15; } }
-    .vs-col .vt { display: grid; gap: .15rem; }
-    .vs-col .vh { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .35em; line-height: 1.2; }
-    .vs-col .vi { width: 3.6rem; height: 3.6rem; display: grid; place-items: center; color: #2B2F33; }
-    .vs-col .vi svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-    .vs-col.barefoot .vi { color: #3F4A14; }
-    .vs-col .vd { font-family: var(--body); font-size: .9rem; line-height: 1.5; color: #2B2B2B; }
+    .vs-col .vt { display: grid; gap: .2rem; }
+    .vs-col .vi { width: 3.8rem; height: 3.8rem; display: grid; place-items: center; color: #1E2226; }
+    .vs-col .vi svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+    .vs-col.barefoot .vi { color: #2E3A10; }
+    .vs-col .vd { font-family: var(--body); font-weight: 500; font-size: clamp(.9rem, 1.3vw, 1.02rem); line-height: 1.4; color: #2B2B2B; }
     .pain .cause { margin-top: .5rem; padding-top: .7rem; border-top: 1px solid rgba(27,26,31,.12); font-size: .86rem; line-height: 1.65; color: var(--ink); display: grid; gap: .25rem; }
     .pain .cause .ck { font-family: var(--display); font-size: .62rem; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); }
     .vs { margin-top: clamp(3rem, 6vw, 5rem); }
     .vs h3 { font-size: clamp(1.6rem, 3.2vw, 2.4rem); text-transform: uppercase; font-weight: 700; letter-spacing: -.01em; margin-bottom: 1.4rem; }
     .vs h3 .serif { text-transform: none; font-weight: 400; }
     .vs-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-    .vs-col { padding: 0 0 .6rem; }
-    .vs-col.ordinary { background: linear-gradient(180deg, #E4E8E9 0%, #F3F5F5 100%); color: #2B2F33; }
-    .vs-col.barefoot { background: linear-gradient(180deg, #FFF6A8 0%, #FFFBDC 100%); color: #2B2F33; }
-    .vs-head { font-family: var(--display); font-weight: 700; font-size: clamp(1.3rem, 2.4vw, 1.9rem); letter-spacing: .02em; text-transform: uppercase; text-align: center; padding: .9rem 1rem; margin-bottom: .4rem; background: #3B4046; color: #fff; }
-    .vs-col.barefoot .vs-head { background: #FFE600; color: #1B1A1F; }
-    .vs-col ul { list-style: none; display: grid; padding: 0 clamp(1rem, 2.2vw, 1.8rem); }
-    .vs-col li { display: grid; grid-template-columns: 3.6rem 1fr; gap: 1rem; align-items: center; padding: .9rem 0; border-top: 2px dashed rgba(59,64,70,.35); }
-    .vs-col.barefoot li { border-color: rgba(120,110,30,.4); }
+    .vs-col { padding: 0 0 .4rem; }
+    .vs-col.ordinary { background: linear-gradient(180deg, #DAE3E8 0%, #F4F0ED 100%); color: #2B2F33; }
+    .vs-col.barefoot { background: linear-gradient(180deg, #FFFAC2 0%, #FCF7EB 100%); color: #2B2F33; }
+    .vs-head { font-family: var(--display); font-weight: 700; font-size: clamp(1.5rem, 2.8vw, 2.3rem); letter-spacing: .02em; text-transform: uppercase; text-align: center; padding: .7rem 1rem; margin-bottom: .3rem; background: #3D4247; color: #fff; }
+    .vs-col.barefoot .vs-head { background: #FFE500; color: #1B1A1F; }
+    .vs-col ul { list-style: none; display: grid; padding: 0 clamp(.8rem, 2vw, 1.6rem); }
+    .vs-col li { display: grid; grid-template-columns: 3.8rem 1fr; gap: 1.1rem; align-items: center; padding: .95rem 0; border-top: 2px dashed #9BA5AC; }
+    .vs-col.barefoot li { border-color: #AFAE7A; }
     .vs-col li:first-child { border-top: 0; }
-    .vs-col .vk { font-family: var(--display); font-weight: 700; font-size: clamp(1rem, 1.6vw, 1.2rem); letter-spacing: .03em; text-transform: uppercase; color: #3B4046; }
-    .vs-col .vk::after { content: " "; }
-    .vs-col .vv { font-family: var(--display); font-weight: 700; font-size: clamp(1rem, 1.6vw, 1.2rem); letter-spacing: .03em; text-transform: uppercase; line-height: 1.2; color: #3B4046; }
-    .vs-col.barefoot .vk, .vs-col.barefoot .vv { color: #6E7A14; }
+    .vs-col .vv { font-family: var(--body); font-weight: 700; font-size: clamp(1rem, 1.5vw, 1.2rem); letter-spacing: .01em; text-transform: uppercase; line-height: 1.15; color: #3D4247; }
+    .vs-col.barefoot .vv { color: #6B7A1C; }
     .bridge { margin-top: clamp(2.5rem, 5vw, 4rem); display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .bridge a { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 1rem; text-decoration: none; padding: clamp(1.2rem, 2.4vw, 1.8rem); background: #fff; border: 1px solid rgba(27,26,31,.1); transition: transform .5s var(--ease), box-shadow .5s ease; }
     .bridge a:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(0,0,0,.1); }
@@ -365,7 +362,7 @@
     .fine { margin-top: 1.4rem; font-size: .78rem; color: #6E6A72; line-height: 1.6; max-width: 70ch; }
     @media (max-width: 1100px) { .pains { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 720px) { .vs-cols { grid-template-columns: 1fr; } .vs-col.barefoot { margin-top: 1rem; } }
-    @media (max-width: 560px) { .pains, .bridge { grid-template-columns: 1fr; } .pain .pic { aspect-ratio: 16 / 7; } .pain .pic svg { width: 36%; } .vs-col li { grid-template-columns: 3rem 1fr; } .vs-col .vi { width: 3rem; height: 3rem; } }
+    @media (max-width: 560px) { .pains, .bridge { grid-template-columns: 1fr; } .pain .pic { aspect-ratio: 16 / 7; } .pain .pic svg { width: 36%; } .vs-col li { grid-template-columns: 3.2rem 1fr; } .vs-col .vi { width: 3.2rem; height: 3.2rem; } }
 
     [data-tilt] { transform-style: preserve-3d; will-change: transform; transition: transform .45s var(--ease), box-shadow .5s ease; }
     [data-tilt].tilting { transition: transform .08s linear, box-shadow .5s ease; }
@@ -660,10 +657,10 @@
 
       <div class="benefits" data-reveal>
         <div class="ben-figure">
-          <picture><source type="image/webp" srcset="images/why/benefits-bg-2.webp" /><img src="images/why/benefits-bg-2.jpg" alt="Bare feet standing on grass" width="1210" height="820" loading="lazy" decoding="async" /></picture>
+          <picture><source type="image/webp" srcset="images/why/benefits-bg-3.webp" /><img src="images/why/benefits-bg-3.jpg" alt="Bare feet standing on grass" width="1210" height="820" loading="lazy" decoding="async" /></picture>
           <div class="bt bt-head">
             <span class="eyebrow" data-i18n="why.ben.eyebrow">Your solution is here</span>
-            <h3 data-i18n="why.ben.title">Barefoot <span class="serif">benefits</span></h3>
+            <h3 data-i18n="why.ben.title">Barefoot <span class="hl">benefits</span></h3>
             <p class="sub" data-i18n="why.ben.sub">A natural answer to modern aches, through barefoot movement.</p>
           </div>
           <div class="bt bt-top"><h4 data-i18n="why.ben.h1">Development of the soles and the feet overall</h4><p data-i18n-html="why.ben.d1">Build core <b>foot strength</b> to naturally align your <b>body posture</b>.</p></div>
@@ -678,21 +675,21 @@
           <div class="vs-col ordinary">
             <div class="vs-head" data-i18n="why.vs.a">Normal shoes</div>
             <ul>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o1"/></svg></span><span class="vt"><span class="vh"><span class="vk" data-i18n="why.vs.r1">Posture</span><span class="vv" data-i18n="why.o1">Heel drop</span></span><span class="vd" data-i18n="why.o1d">Shifts gravity forward, causing back and shoulder tension.</span></span></li>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o2"/></svg></span><span class="vt"><span class="vh"><span class="vk" data-i18n="why.vs.r2">Toe freedom</span><span class="vv" data-i18n="why.o2">Constricted toes</span></span><span class="vd" data-i18n="why.o2d">Narrow toe box squeezes toes together.</span></span></li>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o3"/></svg></span><span class="vt"><span class="vh"><span class="vk" data-i18n="why.vs.r3">Sensory</span><span class="vv" data-i18n="why.o3">Thick soles</span></span><span class="vd" data-i18n="why.o3d">Block ground feedback, slowing balance reflexes.</span></span></li>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o4"/></svg></span><span class="vt"><span class="vh"><span class="vk" data-i18n="why.vs.r4">Impact</span><span class="vv" data-i18n="why.o4">Heel strike</span></span><span class="vd" data-i18n="why.o4d">Sends harsh impact directly into joints.</span></span></li>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o5"/></svg></span><span class="vt"><span class="vh"><span class="vk" data-i18n="why.vs.r5">Muscles</span><span class="vv" data-i18n="why.o5">Rehab like a “splint”</span></span><span class="vd" data-i18n="why.o5d">Restricts movement and weakens foot muscles.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o1"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.o1">Posture heel drop</span><span class="vd" data-i18n="why.o1d">Shifts gravity forward, causing back and shoulder tension.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o2"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.o2">Toe freedom<br />constricted toes</span><span class="vd" data-i18n="why.o2d">Narrow toe box squeezes toes together.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o3"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.o3">Sensory thick soles</span><span class="vd" data-i18n="why.o3d">Block ground feedback, slowing balance reflexes.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o4"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.o4">Impact heel strike</span><span class="vd" data-i18n="why.o4d">Sends harsh impact directly into joints.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o5"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.o5">Rehab like a “splint”</span><span class="vd" data-i18n="why.o5d">Restricts movement and weakens foot muscles.</span></span></li>
             </ul>
           </div>
           <div class="vs-col barefoot">
             <div class="vs-head" data-i18n="why.vs.b">Barefoot theory</div>
             <ul>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b1"/></svg></span><span class="vt"><span class="vh"><span class="vk" data-i18n="why.vs.r1">Posture</span><span class="vv" data-i18n="why.b1">Barefoot posture</span></span><span class="vd" data-i18n="why.b1d">Naturally aligns spine, hips and shoulders.</span></span></li>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b2"/></svg></span><span class="vt"><span class="vh"><span class="vk" data-i18n="why.vs.r2">Toe freedom</span><span class="vv" data-i18n="why.b2">Natural splay</span></span><span class="vd" data-i18n="why.b2d">Free to spread and move independently.</span></span></li>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b3"/></svg></span><span class="vt"><span class="vh"><span class="vk" data-i18n="why.vs.r3">Sensory</span><span class="vv" data-i18n="why.b3">Direct contact</span></span><span class="vd" data-i18n="why.b3d">Awakens nerves for instant balance and stability.</span></span></li>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b4"/></svg></span><span class="vt"><span class="vh"><span class="vk" data-i18n="why.vs.r4">Impact</span><span class="vv" data-i18n="why.b4">Natural cushion</span></span><span class="vd" data-i18n="why.b4d">Acts as a natural shock absorber for softer landings.</span></span></li>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b5"/></svg></span><span class="vt"><span class="vh"><span class="vk" data-i18n="why.vs.r5">Muscles</span><span class="vv" data-i18n="why.b5">Awakens muscles</span></span><span class="vd" data-i18n="why.b5d">Strengthens deep muscles, fixing root causes.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b1"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.b1">Posture barefoot</span><span class="vd" data-i18n="why.b1d">Naturally aligns spine, hips and shoulders.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b2"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.b2">Toe freedom<br />natural splay</span><span class="vd" data-i18n="why.b2d">Free to spread and move independently.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b3"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.b3">Sensory direct contact</span><span class="vd" data-i18n="why.b3d">Awakens nerves for instant balance and stability.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b4"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.b4">Natural cushion</span><span class="vd" data-i18n="why.b4d">Acts as a natural shock absorber for softer landings.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b5"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.b5">Awakens muscles</span><span class="vd" data-i18n="why.b5d">Strengthens deep muscles, fixing root causes.</span></span></li>
             </ul>
           </div>
         </div>
@@ -944,7 +941,6 @@
 
 
 
-
         "m.pflow.d": "The lightest Primus. A soft, breathable knit upper and a thin, flexible sole for road running, the gym and fast, light days on your feet.",
         "m.pflow.use": "Running and training",
         "m.scram.d": "The outdoor model. A rugged Vibram Megagrip outsole for rock and wet ground, a double strap that locks the foot in, and a stretch ankle cuff that keeps grit out. Scrambling, trail walks and the water.",
@@ -958,14 +954,13 @@
         "why.title": "Why <span class=\"serif\">barefoot?</span>", "why.p1": "A big toe that leans inward, a bump at the joint, toes that overlap.", "why.p2": "Arches that feel flat and tired, heels that ache after a day of standing.", "why.p3": "Heavy landings travel up the leg, and small balance corrections never happen.", "why.p4": "The hips and lower back spend the whole day quietly compensating.",
         "why.note": "Have you ever faced these issues?",
         "why.i1": "Bunions &amp; bent toes", "why.i2": "Heel pain &amp; flat feet", "why.i3": "Knee pain &amp; weak ankles", "why.i4": "Back pain",
-        "why.ben.eyebrow": "Your solution is here", "why.ben.title": "Barefoot <span class=\"serif\">benefits</span>", "why.ben.sub": "A natural answer to modern aches, through barefoot movement.",
+        "why.ben.eyebrow": "Your solution is here", "why.ben.title": "Barefoot <span class=\"hl\">benefits</span>", "why.ben.sub": "A natural answer to modern aches, through barefoot movement.",
         "why.ben.h1": "Development of the soles and the feet overall", "why.ben.d1": "Build core <b>foot strength</b> to naturally align your <b>body posture</b>.",
         "why.ben.h2": "Relation to health problems", "why.ben.d2": "Boost <b>blood circulation</b> to ease tension from conditions such as flat feet, bunions and more.",
         "why.ben.h3": "Relation to injury", "why.ben.d3": "Activate <b>sensory feedback</b> for faster reflexes and better foot landing.<br />This promotes <b>injury prevention</b> by optimizing impact mechanics, allowing muscles to better absorb the landing force.",
         "why.vs.title": "Normal shoes <span class=\"serif\">vs</span> barefoot theory", "why.vs.a": "Normal shoes", "why.vs.b": "Barefoot theory",
-        "why.vs.r1": "Posture", "why.vs.r2": "Toe freedom", "why.vs.r3": "Sensory", "why.vs.r4": "Impact", "why.vs.r5": "Muscles",
-        "why.o1": "Heel drop", "why.o1d": "Shifts gravity forward, causing back and shoulder tension.", "why.o2": "Constricted toes", "why.o2d": "Narrow toe box squeezes toes together.", "why.o3": "Thick soles", "why.o3d": "Block ground feedback, slowing balance reflexes.", "why.o4": "Heel strike", "why.o4d": "Sends harsh impact directly into joints.", "why.o5": "Rehab like a “splint”", "why.o5d": "Restricts movement and weakens foot muscles.",
-        "why.b1": "Barefoot posture", "why.b1d": "Naturally aligns spine, hips and shoulders.", "why.b2": "Natural splay", "why.b2d": "Free to spread and move independently.", "why.b3": "Direct contact", "why.b3d": "Awakens nerves for instant balance and stability.", "why.b4": "Natural cushion", "why.b4d": "Acts as a natural shock absorber for softer landings.", "why.b5": "Awakens muscles", "why.b5d": "Strengthens deep muscles, fixing root causes.",
+        "why.o1": "Posture heel drop", "why.o1d": "Shifts gravity forward, causing back and shoulder tension.", "why.o2": "Toe freedom<br />constricted toes", "why.o2d": "Narrow toe box squeezes toes together.", "why.o3": "Sensory thick soles", "why.o3d": "Block ground feedback, slowing balance reflexes.", "why.o4": "Impact heel strike", "why.o4d": "Sends harsh impact directly into joints.", "why.o5": "Rehab like a “splint”", "why.o5d": "Restricts movement and weakens foot muscles.",
+        "why.b1": "Posture barefoot", "why.b1d": "Naturally aligns spine, hips and shoulders.", "why.b2": "Toe freedom<br />natural splay", "why.b2d": "Free to spread and move independently.", "why.b3": "Sensory direct contact", "why.b3d": "Awakens nerves for instant balance and stability.", "why.b4": "Natural cushion", "why.b4d": "Acts as a natural shock absorber for softer landings.", "why.b5": "Awakens muscles", "why.b5d": "Strengthens deep muscles, fixing root causes.",
         "models.eyebrow": "At the popup", "models.vff.title": "4 FiveFingers <span class=\"serif\">to start with</span>", "models.vivo.title": "4 Vivobarefoot <span class=\"serif\">to start with</span>",
         "models.note": "Prices in THB.", "m.list": "Regular price",
         "m.vrun.use": "Road running", "m.vrun.d": "The running model. A light, breathable upper and a sole made for pavement, for anyone who wants to run with their toes free.",
@@ -976,7 +971,6 @@
         "m.motus.use": "Strength and cross-training", "m.motus.d": "For lifting and training days: a flat, grippy base under the whole foot and a locked-in upper for sideways movement.",
         "m.gobi.use": "City and work", "m.gobi.d": "A leather sneaker that passes at the office and at dinner, with the same wide, thin, flexible sole underneath.",
         "m.ptrail.use": "Trail and hiking", "m.ptrail.d": "The trail version of the Primus, with firm-ground lugs for paths, parks and weekend hikes.",
-
 
 
 
@@ -1027,7 +1021,6 @@
 
 
 
-
         "m.pflow.d": "Primus ที่เบาที่สุด อัปเปอร์ถักนุ่มระบายอากาศดี พื้นบางยืดหยุ่น สำหรับวิ่งถนน ยิม และวันที่อยากเคลื่อนไหวเร็วและเบา",
         "m.pflow.use": "วิ่งและเทรนนิ่ง",
         "m.scram.d": "รุ่นสำหรับกลางแจ้ง พื้น Vibram Megagrip ทนทานสำหรับหินและพื้นเปียก สายรัดคู่ล็อกเท้าให้กระชับ และข้อเท้ายืดหยุ่นกันเศษหินเข้า เหมาะกับปีนป่าย เดินเทรล และลุยน้ำ",
@@ -1041,14 +1034,13 @@
         "why.title": "ทำไมต้อง <span class=\"serif\">บาร์ฟุต</span>", "why.p1": "นิ้วโป้งเอียงเข้าด้านใน มีปุ่มนูนที่ข้อ นิ้วซ้อนทับกัน", "why.p2": "อุ้งเท้ารู้สึกแบนและเมื่อย ส้นเท้าตึงหลังยืนทั้งวัน", "why.p3": "การลงเท้าหนัก ๆ ส่งแรงขึ้นไปตามขา และการปรับสมดุลเล็ก ๆ ไม่เคยเกิดขึ้น", "why.p4": "สะโพกและหลังส่วนล่างต้องคอยชดเชยเงียบ ๆ ทั้งวัน",
         "why.note": "คุณเคยเจอปัญหาเหล่านี้ไหม",
         "why.i1": "ปุ่มนิ้วโป้งและนิ้วเท้างอ", "why.i2": "ปวดส้นเท้าและเท้าแบน", "why.i3": "ปวดเข่าและข้อเท้าอ่อนแรง", "why.i4": "ปวดหลัง",
-        "why.ben.eyebrow": "ทางออกอยู่ตรงนี้", "why.ben.title": "ประโยชน์ของ <span class=\"serif\">บาร์ฟุต</span>", "why.ben.sub": "คำตอบตามธรรมชาติสำหรับอาการปวดเมื่อยยุคใหม่ ด้วยการเคลื่อนไหวแบบเท้าเปล่า",
+        "why.ben.eyebrow": "ทางออกอยู่ตรงนี้", "why.ben.title": "ประโยชน์ของ <span class=\"hl\">บาร์ฟุต</span>", "why.ben.sub": "คำตอบตามธรรมชาติสำหรับอาการปวดเมื่อยยุคใหม่ ด้วยการเคลื่อนไหวแบบเท้าเปล่า",
         "why.ben.h1": "พัฒนาฝ่าเท้าและเท้าโดยรวม", "why.ben.d1": "สร้าง<b>ความแข็งแรงของเท้า</b>จากแกนกลาง เพื่อจัด<b>ท่าทางของร่างกาย</b>ให้ตรงตามธรรมชาติ",
         "why.ben.h2": "เกี่ยวกับปัญหาสุขภาพ", "why.ben.d2": "กระตุ้น<b>การไหลเวียนของเลือด</b> ช่วยคลายความตึงจากภาวะต่าง ๆ เช่น เท้าแบน ปุ่มนิ้วโป้ง และอื่น ๆ",
         "why.ben.h3": "เกี่ยวกับการบาดเจ็บ", "why.ben.d3": "กระตุ้น<b>การรับรู้ของประสาทสัมผัส</b>ให้ตอบสนองเร็วขึ้นและลงเท้าได้ดีขึ้น<br />ช่วย<b>ป้องกันการบาดเจ็บ</b>ด้วยกลไกการรับแรงกระแทกที่ดีขึ้น ให้กล้ามเนื้อดูดซับแรงตอนลงเท้าได้ดีกว่า",
         "why.vs.title": "รองเท้าทั่วไป <span class=\"serif\">vs</span> แนวคิดบาร์ฟุต", "why.vs.a": "รองเท้าทั่วไป", "why.vs.b": "แนวคิดบาร์ฟุต",
-        "why.vs.r1": "ท่าทาง", "why.vs.r2": "อิสระของนิ้วเท้า", "why.vs.r3": "ประสาทสัมผัส", "why.vs.r4": "แรงกระแทก", "why.vs.r5": "กล้ามเนื้อ",
-        "why.o1": "ส้นยกสูง", "why.o1d": "ดันจุดศูนย์ถ่วงไปข้างหน้า ทำให้หลังและไหล่ตึง", "why.o2": "นิ้วเท้าถูกบีบ", "why.o2d": "หัวรองเท้าแคบบีบนิ้วเท้าให้ชิดกัน", "why.o3": "พื้นหนา", "why.o3d": "ปิดกั้นการรับรู้พื้น ทำให้การทรงตัวตอบสนองช้าลง", "why.o4": "ลงส้นเท้า", "why.o4d": "ส่งแรงกระแทกรุนแรงเข้าข้อต่อโดยตรง", "why.o5": "เหมือนใส่เฝือก", "why.o5d": "จำกัดการเคลื่อนไหวและทำให้กล้ามเนื้อเท้าอ่อนแรง",
-        "why.b1": "ท่าทางแบบเท้าเปล่า", "why.b1d": "จัดกระดูกสันหลัง สะโพก และไหล่ให้ตรงตามธรรมชาติ", "why.b2": "กางนิ้วได้ตามธรรมชาติ", "why.b2d": "นิ้วเท้ากางและขยับได้อย่างอิสระ", "why.b3": "สัมผัสพื้นโดยตรง", "why.b3d": "ปลุกเส้นประสาทให้ทรงตัวได้ทันทีและมั่นคง", "why.b4": "กันกระแทกตามธรรมชาติ", "why.b4d": "ทำหน้าที่เป็นตัวดูดซับแรงกระแทกตามธรรมชาติ ให้ลงเท้าได้นุ่มนวลขึ้น", "why.b5": "ปลุกกล้ามเนื้อ", "why.b5d": "เสริมความแข็งแรงของกล้ามเนื้อชั้นลึก แก้ที่ต้นเหตุ",
+        "why.o1": "ท่าทาง: ส้นยกสูง", "why.o1d": "ดันจุดศูนย์ถ่วงไปข้างหน้า ทำให้หลังและไหล่ตึง", "why.o2": "อิสระของนิ้วเท้า<br />นิ้วเท้าถูกบีบ", "why.o2d": "หัวรองเท้าแคบบีบนิ้วเท้าให้ชิดกัน", "why.o3": "ประสาทสัมผัส: พื้นหนา", "why.o3d": "ปิดกั้นการรับรู้พื้น ทำให้การทรงตัวตอบสนองช้าลง", "why.o4": "แรงกระแทก: ลงส้นเท้า", "why.o4d": "ส่งแรงกระแทกรุนแรงเข้าข้อต่อโดยตรง", "why.o5": "เหมือนใส่เฝือก", "why.o5d": "จำกัดการเคลื่อนไหวและทำให้กล้ามเนื้อเท้าอ่อนแรง",
+        "why.b1": "ท่าทางแบบเท้าเปล่า", "why.b1d": "จัดกระดูกสันหลัง สะโพก และไหล่ให้ตรงตามธรรมชาติ", "why.b2": "อิสระของนิ้วเท้า<br />กางนิ้วได้ตามธรรมชาติ", "why.b2d": "นิ้วเท้ากางและขยับได้อย่างอิสระ", "why.b3": "ประสาทสัมผัส: สัมผัสพื้นโดยตรง", "why.b3d": "ปลุกเส้นประสาทให้ทรงตัวได้ทันทีและมั่นคง", "why.b4": "กันกระแทกตามธรรมชาติ", "why.b4d": "ทำหน้าที่เป็นตัวดูดซับแรงกระแทกตามธรรมชาติ ให้ลงเท้าได้นุ่มนวลขึ้น", "why.b5": "ปลุกกล้ามเนื้อ", "why.b5d": "เสริมความแข็งแรงของกล้ามเนื้อชั้นลึก แก้ที่ต้นเหตุ",
         "models.eyebrow": "ที่ป๊อปอัพ", "models.vff.title": "FiveFingers 4 รุ่น <span class=\"serif\">ที่แนะนำให้เริ่ม</span>", "models.vivo.title": "Vivobarefoot 4 รุ่น <span class=\"serif\">ที่แนะนำให้เริ่ม</span>",
         "models.note": "ราคาเป็นบาท", "m.list": "ราคาปกติ",
         "m.vrun.use": "วิ่งถนน", "m.vrun.d": "รุ่นสำหรับวิ่ง อัปเปอร์เบาระบายอากาศ พื้นออกแบบมาสำหรับพื้นถนน สำหรับคนที่อยากวิ่งโดยนิ้วเท้าเป็นอิสระ",
@@ -1059,7 +1051,6 @@
         "m.motus.use": "เวทเทรนนิ่งและครอสเทรนนิ่ง", "m.motus.d": "สำหรับวันยกน้ำหนักและฝึกซ้อม ฐานแบนยึดเกาะดีใต้ทั้งเท้า อัปเปอร์กระชับรองรับการเคลื่อนไหวด้านข้าง",
         "m.gobi.use": "ในเมืองและที่ทำงาน", "m.gobi.d": "สนีกเกอร์หนังที่ใส่เข้าออฟฟิศหรือไปดินเนอร์ได้ โดยมีพื้นกว้าง บาง ยืดหยุ่นแบบเดียวกันอยู่ข้างใต้",
         "m.ptrail.use": "เทรลและเดินป่า", "m.ptrail.d": "Primus เวอร์ชันเทรล พื้นดอกยางสำหรับพื้นแข็ง เหมาะกับทางเดิน สวนสาธารณะ และเดินป่าวันหยุด",
-
 
 
 
