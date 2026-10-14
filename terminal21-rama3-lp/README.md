@@ -21,7 +21,7 @@ Terminal 21 Asok 版（`barefootinc-t21-asok-event`）と同じ構成で、会�
 
 ## v3 で追加したもの（本番実装前）
 
-- 「Why barefoot?」（ヒーロー直後、明るい背景）: 4 つの悩み（インフォグラフィックの丸いイラスト `images/why/issue-*.png`）→ 「Barefoot benefits」（PC は元のインフォグラフィック `images/why/benefits-graphic.jpg` をそのまま表示・タップで拡大、スマホは `images/why/feet-grass-3.jpg` を背景に 3 項目のテキスト）→ 「Normal shoes vs Barefoot theory」の左右 2 列の比較。比較表の行には元画像のアイコン `images/why/cmp-*.png`。悩み 4 つと比較アイコンの元画像は低解像度（約 500px 幅）なので、高解像度版があれば差し替え推奨
+- 「Why barefoot?」（ヒーロー直後、明るい背景）: 4 つの悩み（インフォグラフィックを元に描き直したインライン SVG の丸いイラスト）→ 「Barefoot benefits」（元のインフォグラフィックを再現: 文字のない芝生と足の写真 `images/why/benefits-bg.jpg` の上に HTML テキストを元の配置で重ねる。スマホは写真の下にテキストを縦積み）→ 「Normal shoes vs Barefoot theory」の左右 2 列の比較。比較表の行には元画像を元に描き直した SVG アイコン（`<body>` 直後のスプライト `#ic-o1`〜`#ic-b5`）
 - ブランド紹介の下にモデルカード各 4 つ（VFF: V-Run / V-Soul / KSO EVO / Scramkey、Vivo: Primus Lite IV / Motus Strength II / Gobi III Sneaker Leather / Primus Flow）。通常価格とセール価格を表示（KSO EVO は *Selected color only）。写真は `images/models/`
 - 「At the booth」の下に「Start slowly」の注意書き（少しずつ時間と日数を増やす・痛みがあれば休む、を 1 段落に）、FAQ（アコーディオン、FAQPage の JSON-LD 付き。返品・交換不可、支払いは現金・タイ銀行 QR・クレジットカード）
 - アクセスにフロアマップ（`images/floor-map-rama3-g-2.jpg`、G Floor の図面。ブース位置は Gate 4 側・エスカレーター横。タップで拡大）
