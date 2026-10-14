@@ -316,21 +316,25 @@
     .pain { background: #fff; border: 1px solid rgba(27,26,31,.1); padding: clamp(1.3rem, 2.2vw, 1.8rem); display: grid; align-content: start; gap: .5rem; transition: transform .5s var(--ease), box-shadow .5s ease; }
     .pain:hover { box-shadow: 0 18px 40px rgba(0,0,0,.1); }
     .pain .pic { width: 100%; aspect-ratio: 5 / 3; background: var(--bone); display: grid; place-items: center; margin-bottom: .6rem; }
-    .pain .pic svg { width: 54%; height: auto; fill: none; stroke: var(--ink); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
-    .pain .pic svg .shoe { fill: #D9D4CA; }
-    .pain .pic svg .skin { fill: #fff; }
-    .pain .pic svg .ground { stroke: #B9B3A8; stroke-width: 2; }
-    .pain .pic svg .hl { stroke: var(--coral); stroke-width: 3; }
-    .pain .pic svg .hlf { fill: var(--coral); stroke: none; }
-    .pain .pic svg .limb { stroke: var(--ink); stroke-width: 9; fill: none; }
-    .pain .pic svg .body { fill: var(--ink); stroke: none; }
-    .pain .pic svg .ln { stroke: var(--ink); stroke-width: 1.4; fill: none; }
-    .pain .pic svg .tone { fill: #ECE8E0; stroke: none; }
-    .pain .pic svg .plumb { stroke: #B9B3A8; stroke-width: 2; stroke-dasharray: 4 4; }
-    .pain:nth-child(n+2) .pic svg { width: 62%; }
+    .pain .pic img { width: 46%; height: auto; }
     .pain .pn { font-family: var(--display); font-weight: 700; font-size: .8rem; letter-spacing: .2em; color: var(--coral); }
     .pain h3 { font-size: 1.15rem; font-weight: 600; line-height: 1.25; }
     .pain p { font-size: .9rem; color: #4B4750; line-height: 1.7; }
+    .benefits { margin-top: clamp(3rem, 6vw, 5rem); position: relative; background: #17171A url(images/why/feet-grass-2.jpg) center 40% / cover no-repeat; color: var(--bone); padding: clamp(1.6rem, 4vw, 3.5rem); overflow: hidden; }
+    .benefits::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(12,12,14,.93) 0%, rgba(12,12,14,.74) 50%, rgba(12,12,14,.93) 100%); }
+    .benefits > * { position: relative; }
+    .ben-head { margin-bottom: 1.6rem; }
+    .ben-head .eyebrow { color: var(--gold); }
+    .ben-head h3 { font-size: clamp(1.8rem, 3.6vw, 2.8rem); text-transform: uppercase; font-weight: 700; letter-spacing: -.01em; margin: .5rem 0 .6rem; }
+    .ben-head h3 .serif { text-transform: none; font-weight: 400; }
+    .ben-head p { max-width: 60ch; color: rgba(243,240,234,.82); line-height: 1.7; }
+    .ben-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .ben { padding: 1.2rem 1.3rem; background: rgba(255,255,255,.07); border-top: 3px solid var(--gold); backdrop-filter: blur(2px); }
+    .ben h4 { font-family: var(--display); font-weight: 600; font-size: 1.05rem; text-transform: uppercase; letter-spacing: .05em; line-height: 1.25; margin-bottom: .5rem; color: #fff; }
+    .ben p { font-size: .9rem; line-height: 1.7; color: rgba(243,240,234,.84); }
+    @media (max-width: 960px) { .ben-grid { grid-template-columns: 1fr; } }
+    .vs-col .vt { display: grid; gap: .25rem; }
+    .vs-col .vd { font-family: var(--body); font-size: .86rem; line-height: 1.55; opacity: .85; }
     .pain .cause { margin-top: .5rem; padding-top: .7rem; border-top: 1px solid rgba(27,26,31,.12); font-size: .86rem; line-height: 1.65; color: var(--ink); display: grid; gap: .25rem; }
     .pain .cause .ck { font-family: var(--display); font-size: .62rem; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); }
     .vs { margin-top: clamp(3rem, 6vw, 5rem); }
@@ -470,29 +474,13 @@
     }
 
     /* ---------- compare ---------- */
-    .choose { background: var(--bone); color: var(--ink); padding: clamp(4.5rem, 10vw, 9rem) 0; }
     .sec-head { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
     .sec-head h2 { font-size: clamp(2.2rem, 5.4vw, 4.6rem); text-transform: uppercase; font-weight: 700; letter-spacing: -.02em; margin-top: .8rem; }
     .sec-head h2 .serif { text-transform: none; font-weight: 400; font-size: .9em; }
     .sec-head p { max-width: 64ch; font-size: 1rem; line-height: 1.75; color: #4B4750; }
-    .table { border-top: 2px solid var(--ink); }
-    .trow { display: grid; grid-template-columns: 9rem 1fr 1fr; border-bottom: 1px solid rgba(27,26,31,.16); }
-    .trow > div { padding: 1.2rem 1rem; font-size: .95rem; }
-    .trow .rk { font-family: var(--display); letter-spacing: .14em; text-transform: uppercase; font-size: .72rem; color: var(--mute); padding-left: 0; }
-    .trow .cv { background: #fff; }
-    .trow .cw { background: var(--black); color: var(--bone); }
-    .thead .cv, .thead .cw { font-family: var(--display); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; font-size: .78rem; }
-    .thead .cv { border-bottom: 3px solid var(--gold); }
-    .thead .cw { border-bottom: 3px solid var(--coral); }
     @media (max-width: 720px) {
       .sec-head { grid-template-columns: 1fr; }
-      .table { border-top: 0; }
-      .trow { grid-template-columns: 1fr; border-bottom: 0; margin-bottom: 1.6rem; }
-      .trow > div { padding: .9rem 1rem; }
-      .trow .rk { padding: 0 0 .5rem; color: var(--ink); }
-      .thead { display: none; }
-      .trow .cv::before, .trow .cw::before { content: attr(data-b); display: block; font-family: var(--display); font-size: .64rem; letter-spacing: .18em; margin-bottom: .3rem; opacity: .7; }
-    }
+                }
 
     /* ---------- booth ---------- */
     .booth { background: var(--coal); color: var(--bone); padding: clamp(4.5rem, 10vw, 9rem) 0; }
@@ -664,41 +652,53 @@
         <div>
           <h2 data-reveal data-i18n="why.title">Why <span class="serif">barefoot?</span></h2>
         </div>
-        <p data-reveal style="--d:120" data-i18n="why.note">Most of us have spent decades in shoes that do the work our feet were built to do. These are the four things people tell us most often at the booth, and the part of the shoe that is usually behind each one.</p>
+        <p data-reveal style="--d:120" data-i18n="why.note">Have you ever faced these issues?</p>
       </div>
       <div class="pains">
-        <div class="pain" data-tilt data-reveal><div class="pic"><svg viewBox="0 0 100 100" aria-hidden="true"><path class="shoe" d="M31 98C21 78 18 56 21 42 24 22 36 8 50 2c14 6 26 20 29 40 3 14 0 36-10 56z"/><path class="tone" d="M35 94C28 78 26 60 28 46 30 30 40 14 50 10c10 4 20 20 22 36 2 14 0 32-7 48z"/><path class="skin" d="M39 94c-6 0-9-6-9-14 0-10 3-18 4-26 1-6-3-10-4-14-1-5 3-9 8-9l30 1c6 1 9 5 9 11 1 6-1 12-2 18-1 10 0 20-1 26-1 8-5 10-11 10z"/><path class="ln" d="M44 36l-3 20M54 33l-4 22M62 33l-5 20"/><path class="skin" d="M36 33c-3-5-3-15 2-19 5-4 12-1 12 6 0 7-4 12-9 13z"/><path class="ln" d="M41 18c2-2 5-2 7 0 1 2 1 5-1 6-2 1-5 1-6-1-1-2-1-4 0-5z"/><path class="skin" d="M50 29c0-8 2-14 6-14 4 0 5 6 4 14z"/><path class="ln" d="M54 19c1-1 3-1 4 0 1 1 0 3-1 4h-3c-1-1-1-3 0-4z"/><path class="skin" d="M59 29c0-7 2-12 5-12 3 0 4 5 3 12z"/><path class="ln" d="M62 21c1-1 3-1 4 0v3h-4c-1-1-1-2 0-3z"/><path class="skin" d="M66 31c0-6 2-10 4-10 3 0 3 5 2 10z"/><path class="ln" d="M68 24c1-1 3-1 4 0v3h-4c-1-1-1-2 0-3z"/><path class="skin" d="M71 35c0-5 2-9 4-9 2 0 2 5 1 9z"/><path class="ln" d="M72 29c1-1 3-1 4 0v2h-4z"/><circle class="hlf" cx="32" cy="43" r="4.5"/><path class="hl" d="M5 45h14M13 39l6 6-6 6"/><path class="hl" d="M95 45H81M87 39l-6 6 6 6"/></svg></div><span class="pn">01</span><h3 data-i18n="why.p1h">Toes pushed together</h3><p data-i18n="why.p1">A big toe that leans inward, a bump at the joint, toes that overlap.</p><div class="cause"><span class="ck" data-i18n="why.ck">Behind it</span><span data-i18n="why.p1c">A narrow, tapered toe box that holds the toes in a point, so they cannot spread to balance you.</span></div></div>
-        <div class="pain" data-tilt data-reveal style="--d:100"><div class="pic"><svg viewBox="0 0 120 100" aria-hidden="true"><path class="ground" d="M4 93h112"/><path class="shoe" d="M20 72h88c4 0 7 3 7 7v3c0 3-2 5-5 5H18c-3 0-5-2-5-5v-3c0-4 3-7 7-7z"/><path class="ln" d="M22 80h84"/><path class="skin" d="M36 2h12l1 34c2 6 8 12 16 16 8 4 18 6 30 8 10 2 16 4 18 8 1 2 0 4-3 4H30c-5 0-8-4-9-10-1-10 3-20 8-26 4-5 6-10 7-16z"/><path class="ln" d="M28 62c3-6 8-10 12-14"/><path class="ln" d="M32 72c6-8 14-12 26-10"/><path class="ln" d="M48 36c2 6 6 10 12 14"/><circle class="ln" cx="46" cy="44" r="3"/><path class="ln" d="M100 68c3 0 6 1 8 3"/><path class="ln" d="M94 64c-1 2-1 4 0 6"/><circle class="hlf" cx="30" cy="68" r="4"/><circle class="hlf" cx="82" cy="68" r="4"/><path class="hl" d="M24 87l-4 7M30 88v8M36 87l4 7"/><path class="hl" d="M76 87l-4 7M82 88v8M88 87l4 7"/></svg></div><span class="pn">02</span><h3 data-i18n="why.p2h">Sore soles and heels</h3><p data-i18n="why.p2">Arches that feel flat and tired, heels that ache after a day of standing.</p><div class="cause"><span class="ck" data-i18n="why.ck">Behind it</span><span data-i18n="why.p2c">A thick, stiff sole and arch support that do the work, so the foot muscles get little to do.</span></div></div>
-        <div class="pain" data-tilt data-reveal style="--d:200"><div class="pic"><svg viewBox="0 0 120 100" aria-hidden="true"><path class="ground" d="M4 94h112"/><path class="skin" d="M22 2h22l22 38c4 4 4 10 4 16v20c8-4 18-6 28-6 5 0 6 6 2 9L66 92c-4 2-10 2-12-2l2-14c-6-10-10-20-8-28C40 34 30 18 22 2z"/><path class="ln" d="M52 54c-4 6-4 14 0 22"/><path class="ln" d="M36 10c6 10 12 20 18 30"/><path class="ln" d="M64 52c-2 8-2 16-1 22"/><circle class="ln" cx="64" cy="80" r="2.5"/><path class="ln" d="M70 78c8-2 16-3 24-3"/><path class="ln" d="M60 90c6-1 12-3 18-6"/><circle class="skin" cx="62" cy="47" r="8"/><path class="ln" d="M57 43c2-2 8-2 10 0"/><circle class="hlf" cx="62" cy="47" r="3.2"/><path class="hl" d="M40 35l9 6M36 47h11M40 59l9-6"/><path class="hl" d="M108 88V54M101 61l7-7 7 7"/><path class="hl" d="M34 82l8 4M32 92h9"/></svg></div><span class="pn">03</span><h3 data-i18n="why.p3h">Knees that complain, ankles that wobble</h3><p data-i18n="why.p3">Heavy landings travel up the leg, and small balance corrections never happen.</p><div class="cause"><span class="ck" data-i18n="why.ck">Behind it</span><span data-i18n="why.p3c">Cushioning that mutes what the foot feels and invites a hard heel-first landing.</span></div></div>
-        <div class="pain" data-tilt data-reveal style="--d:300"><div class="pic"><svg viewBox="0 0 120 100" aria-hidden="true"><path class="ground" d="M4 96h112"/><path class="plumb" d="M72 2v94"/><path class="shoe" d="M62 86h12c8 0 16-2 22-6 3-2 6 0 6 3l-2 7c-1 4-4 6-8 6H62z"/><path class="shoe" d="M62 86h8v10h-8z"/><path class="ln" d="M74 86c4 0 10-1 16-3"/><path class="skin" d="M78 20c-8 6-14 14-16 24-2 6-4 12-2 16 2 6 8 10 10 16 0 6-2 10-4 12h12c0-6 2-10 4-16 2-6 0-10-2-14 6-8 10-16 10-26 0-6-2-10-6-12z"/><path class="ln" d="M63 48c6 2 14 2 20 0"/><path class="ln" d="M70 76c3 1 6 1 9 0"/><path class="skin" d="M84 26c4 8 4 18 2 26 0 6-2 10-4 12-2 0-4-2-4-4 2-6 4-12 2-18-2-6-2-12 4-16z"/><circle class="skin" cx="86" cy="11" r="8"/><path class="ln" d="M80 19c2 2 6 2 8 0"/><path class="ln" d="M92 9c1 2 1 4 0 6"/><circle class="hlf" cx="58" cy="46" r="4"/><path class="hl" d="M46 34c-6 6-8 16-4 24"/><path class="hl" d="M36 40l7 2M34 50h8M36 60l7-2"/></svg></div><span class="pn">04</span><h3 data-i18n="why.p4h">A stiff lower back</h3><p data-i18n="why.p4">The hips and lower back spend the whole day quietly compensating.</p><div class="cause"><span class="ck" data-i18n="why.ck">Behind it</span><span data-i18n="why.p4c">A raised heel. Even one or two centimetres tilts the whole body forward.</span></div></div>
+        <div class="pain" data-tilt data-reveal><div class="pic"><img src="images/why/issue-1.png" alt="" width="222" height="222" loading="lazy" decoding="async" /></div><span class="pn">01</span><h3 data-i18n="why.i1">Bunions &amp; bent toes</h3><p data-i18n="why.p1">A big toe that leans inward, a bump at the joint, toes that overlap.</p></div>
+        <div class="pain" data-tilt data-reveal style="--d:100"><div class="pic"><img src="images/why/issue-2.png" alt="" width="222" height="222" loading="lazy" decoding="async" /></div><span class="pn">02</span><h3 data-i18n="why.i2">Heel pain &amp; flat feet</h3><p data-i18n="why.p2">Arches that feel flat and tired, heels that ache after a day of standing.</p></div>
+        <div class="pain" data-tilt data-reveal style="--d:200"><div class="pic"><img src="images/why/issue-3.png" alt="" width="222" height="222" loading="lazy" decoding="async" /></div><span class="pn">03</span><h3 data-i18n="why.i3">Knee pain &amp; weak ankles</h3><p data-i18n="why.p3">Heavy landings travel up the leg, and small balance corrections never happen.</p></div>
+        <div class="pain" data-tilt data-reveal style="--d:300"><div class="pic"><img src="images/why/issue-4.png" alt="" width="222" height="222" loading="lazy" decoding="async" /></div><span class="pn">04</span><h3 data-i18n="why.i4">Back pain</h3><p data-i18n="why.p4">The hips and lower back spend the whole day quietly compensating.</p></div>
+      </div>
+
+      <div class="benefits" data-reveal>
+        <div class="ben-head">
+          <span class="eyebrow" data-i18n="why.ben.eyebrow">Your solution is here</span>
+          <h3 data-i18n="why.ben.title">Barefoot <span class="serif">benefits</span></h3>
+          <p data-i18n="why.ben.sub">A natural answer to modern aches, through barefoot movement.</p>
+        </div>
+        <div class="ben-grid">
+          <div class="ben"><h4 data-i18n="why.ben.h1">Development of the soles and the feet overall</h4><p data-i18n="why.ben.d1">Build core foot strength to naturally align your body posture.</p></div>
+          <div class="ben"><h4 data-i18n="why.ben.h2">Relation to health problems</h4><p data-i18n="why.ben.d2">Boost blood circulation to ease tension from conditions such as flat feet, bunions and more.</p></div>
+          <div class="ben"><h4 data-i18n="why.ben.h3">Relation to injury</h4><p data-i18n="why.ben.d3">Activate sensory feedback for faster reflexes and better foot landing. This promotes injury prevention by optimizing impact mechanics, allowing muscles to better absorb the landing force.</p></div>
+        </div>
       </div>
 
       <div class="vs" data-reveal>
-        <h3 data-i18n="why.vs.title">Ordinary shoes <span class="serif">vs</span> barefoot shoes</h3>
+        <h3 data-i18n="why.vs.title">Normal shoes <span class="serif">vs</span> barefoot theory</h3>
         <div class="vs-cols">
           <div class="vs-col ordinary">
-            <div class="vs-head" data-i18n="why.vs.a">Ordinary shoes</div>
+            <div class="vs-head" data-i18n="why.vs.a">Normal shoes</div>
             <ul>
-              <li><span class="vk" data-i18n="why.vs.r1">Posture</span><span class="vv" data-i18n="why.o1">Heel lifted, body tilts forward</span></li>
-              <li><span class="vk" data-i18n="why.vs.r2">Toes</span><span class="vv" data-i18n="why.o2">Squeezed into a point</span></li>
-              <li><span class="vk" data-i18n="why.vs.r3">Ground feel</span><span class="vv" data-i18n="why.o3">Muted by thick foam</span></li>
-              <li><span class="vk" data-i18n="why.vs.r4">Impact</span><span class="vv" data-i18n="why.o4">Heavy heel landings</span></li>
-              <li><span class="vk" data-i18n="why.vs.r5">Muscles</span><span class="vv" data-i18n="why.o5">Supports do the work</span></li>
+              <li><span class="vk" data-i18n="why.vs.r1">Posture</span><span class="vt"><span class="vv" data-i18n="why.o1">Heel drop</span><span class="vd" data-i18n="why.o1d">Shifts gravity forward, causing back and shoulder tension.</span></span></li>
+              <li><span class="vk" data-i18n="why.vs.r2">Toe freedom</span><span class="vt"><span class="vv" data-i18n="why.o2">Constricted toes</span><span class="vd" data-i18n="why.o2d">Narrow toe box squeezes toes together.</span></span></li>
+              <li><span class="vk" data-i18n="why.vs.r3">Sensory</span><span class="vt"><span class="vv" data-i18n="why.o3">Thick soles</span><span class="vd" data-i18n="why.o3d">Block ground feedback, slowing balance reflexes.</span></span></li>
+              <li><span class="vk" data-i18n="why.vs.r4">Impact</span><span class="vt"><span class="vv" data-i18n="why.o4">Heel strike</span><span class="vd" data-i18n="why.o4d">Sends harsh impact directly into joints.</span></span></li>
+              <li><span class="vk" data-i18n="why.vs.r5">Muscles</span><span class="vt"><span class="vv" data-i18n="why.o5">Rehab like a “splint”</span><span class="vd" data-i18n="why.o5d">Restricts movement and weakens foot muscles.</span></span></li>
             </ul>
           </div>
           <div class="vs-col barefoot">
-            <div class="vs-head" data-i18n="why.vs.b">Barefoot shoes</div>
+            <div class="vs-head" data-i18n="why.vs.b">Barefoot theory</div>
             <ul>
-              <li><span class="vk" data-i18n="why.vs.r1">Posture</span><span class="vv" data-i18n="why.b1">Flat, you stand naturally</span></li>
-              <li><span class="vk" data-i18n="why.vs.r2">Toes</span><span class="vv" data-i18n="why.b2">Room to spread</span></li>
-              <li><span class="vk" data-i18n="why.vs.r3">Ground feel</span><span class="vv" data-i18n="why.b3">You feel the surface</span></li>
-              <li><span class="vk" data-i18n="why.vs.r4">Impact</span><span class="vv" data-i18n="why.b4">Light, short steps</span></li>
-              <li><span class="vk" data-i18n="why.vs.r5">Muscles</span><span class="vv" data-i18n="why.b5">Your feet do the work</span></li>
+              <li><span class="vk" data-i18n="why.vs.r1">Posture</span><span class="vt"><span class="vv" data-i18n="why.b1">Barefoot posture</span><span class="vd" data-i18n="why.b1d">Naturally aligns spine, hips and shoulders.</span></span></li>
+              <li><span class="vk" data-i18n="why.vs.r2">Toe freedom</span><span class="vt"><span class="vv" data-i18n="why.b2">Natural splay</span><span class="vd" data-i18n="why.b2d">Free to spread and move independently.</span></span></li>
+              <li><span class="vk" data-i18n="why.vs.r3">Sensory</span><span class="vt"><span class="vv" data-i18n="why.b3">Direct contact</span><span class="vd" data-i18n="why.b3d">Awakens nerves for instant balance and stability.</span></span></li>
+              <li><span class="vk" data-i18n="why.vs.r4">Impact</span><span class="vt"><span class="vv" data-i18n="why.b4">Natural cushion</span><span class="vd" data-i18n="why.b4d">Acts as a natural shock absorber for softer landings.</span></span></li>
+              <li><span class="vk" data-i18n="why.vs.r5">Muscles</span><span class="vt"><span class="vv" data-i18n="why.b5">Awakens muscles</span><span class="vd" data-i18n="why.b5d">Strengthens deep muscles, fixing root causes.</span></span></li>
             </ul>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -799,40 +799,6 @@
         </div>
         <p class="more" data-reveal data-i18n="models.more">More models available at our booth</p>
       </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="choose" id="choose">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <span class="eyebrow" data-reveal data-i18n="choose.eyebrow">Two ways in</span>
-          <h2 data-reveal style="--d:80" data-i18n="choose.title">Which pair <span class="serif">is yours?</span></h2>
-        </div>
-        <p data-reveal style="--d:160" data-i18n="choose.note">Both let your feet work. They just get there differently – this is the short version, and the staff at the booth will take you through the rest.</p>
-      </div>
-      <div class="table">
-        <div class="trow thead" data-reveal>
-          <div class="rk"></div>
-          <div class="cv">Vibram FiveFingers</div>
-          <div class="cw">Vivobarefoot</div>
-        </div>
-        <div class="trow" data-reveal style="--d:80">
-          <div class="rk" data-i18n="choose.r1">Ground feel</div>
-          <div class="cv" data-b="VIBRAM FIVEFINGERS" data-i18n="choose.r1v">As direct as it gets, with toes moving independently</div>
-          <div class="cw" data-b="VIVOBAREFOOT" data-i18n="choose.r1w">Very direct, with the foot held as one</div>
-        </div>
-        <div class="trow" data-reveal style="--d:160">
-          <div class="rk" data-i18n="choose.r2">Look</div>
-          <div class="cv" data-b="VIBRAM FIVEFINGERS" data-i18n="choose.r2v">Unmistakably toed</div>
-          <div class="cw" data-b="VIVOBAREFOOT" data-i18n="choose.r2w">Reads as an ordinary sneaker</div>
-        </div>
-        <div class="trow" data-reveal style="--d:240">
-          <div class="rk" data-i18n="choose.r4">Socks</div>
-          <div class="cv" data-b="VIBRAM FIVEFINGERS" data-i18n="choose.r4v">Five-toe socks (we sell them at the booth)</div>
-          <div class="cw" data-b="VIVOBAREFOOT" data-i18n="choose.r4w">Any socks you already own</div>
-        </div>
       </div>
     </div>
   </section>
@@ -981,7 +947,6 @@
 
 
 
-
         "m.pflow.d": "The lightest Primus. A soft, breathable knit upper and a thin, flexible sole for road running, the gym and fast, light days on your feet.",
         "m.pflow.use": "Running and training",
         "m.scram.d": "The outdoor model. A rugged Vibram Megagrip outsole for rock and wet ground, a double strap that locks the foot in, and a stretch ankle cuff that keeps grit out. Scrambling, trail walks and the water.",
@@ -992,19 +957,17 @@
         "m.selected": "*Selected color only",
         "nav.booth": "At the booth", "nav.access": "Getting there",
         "nav.why": "Why barefoot?",
-        "why.title": "Why <span class=\"serif\">barefoot?</span>",
-        "why.note": "Most of us have spent decades in shoes that do the work our feet were built to do. These are the four things people tell us most often at the booth, and the part of the shoe that is usually behind each one.",
-        "why.ck": "Behind it",
-        "why.p1h": "Toes pushed together", "why.p1": "A big toe that leans inward, a bump at the joint, toes that overlap.", "why.p1c": "A narrow, tapered toe box that holds the toes in a point, so they cannot spread to balance you.",
-        "why.p2h": "Sore soles and heels", "why.p2": "Arches that feel flat and tired, heels that ache after a day of standing.", "why.p2c": "A thick, stiff sole and arch support that do the work, so the foot muscles get little to do.",
-        "why.p3h": "Knees that complain, ankles that wobble", "why.p3": "Heavy landings travel up the leg, and small balance corrections never happen.", "why.p3c": "Cushioning that mutes what the foot feels and invites a hard heel-first landing.",
-        "why.p4h": "A stiff lower back", "why.p4": "The hips and lower back spend the whole day quietly compensating.", "why.p4c": "A raised heel. Even one or two centimetres tilts the whole body forward.",
-        "why.vs.title": "Ordinary shoes <span class=\"serif\">vs</span> barefoot shoes", "why.vs.a": "Ordinary shoes", "why.vs.b": "Barefoot shoes",
-        "why.vs.r1": "Posture", "why.vs.r2": "Toes", "why.vs.r3": "Ground feel", "why.vs.r4": "Impact", "why.vs.r5": "Muscles",
-        "why.o1": "Heel lifted, body tilts forward", "why.o2": "Squeezed into a point", "why.o3": "Muted by thick foam", "why.o4": "Heavy heel landings", "why.o5": "Supports do the work",
-        "why.b1": "Flat, you stand naturally", "why.b2": "Room to spread", "why.b3": "You feel the surface", "why.b4": "Light, short steps", "why.b5": "Your feet do the work",
-        "why.b1k": "Want to feel everything?", "why.b1d": "One pocket per toe, the thinnest sole, the most direct ground feel.",
-        "why.b2k": "Want it to look like a sneaker?", "why.b2d": "Same wide, thin, flat principles in a shape you can wear anywhere.",
+        "why.title": "Why <span class=\"serif\">barefoot?</span>", "why.p1": "A big toe that leans inward, a bump at the joint, toes that overlap.", "why.p2": "Arches that feel flat and tired, heels that ache after a day of standing.", "why.p3": "Heavy landings travel up the leg, and small balance corrections never happen.", "why.p4": "The hips and lower back spend the whole day quietly compensating.",
+        "why.note": "Have you ever faced these issues?",
+        "why.i1": "Bunions &amp; bent toes", "why.i2": "Heel pain &amp; flat feet", "why.i3": "Knee pain &amp; weak ankles", "why.i4": "Back pain",
+        "why.ben.eyebrow": "Your solution is here", "why.ben.title": "Barefoot <span class=\"serif\">benefits</span>", "why.ben.sub": "A natural answer to modern aches, through barefoot movement.",
+        "why.ben.h1": "Development of the soles and the feet overall", "why.ben.d1": "Build core foot strength to naturally align your body posture.",
+        "why.ben.h2": "Relation to health problems", "why.ben.d2": "Boost blood circulation to ease tension from conditions such as flat feet, bunions and more.",
+        "why.ben.h3": "Relation to injury", "why.ben.d3": "Activate sensory feedback for faster reflexes and better foot landing. This promotes injury prevention by optimizing impact mechanics, allowing muscles to better absorb the landing force.",
+        "why.vs.title": "Normal shoes <span class=\"serif\">vs</span> barefoot theory", "why.vs.a": "Normal shoes", "why.vs.b": "Barefoot theory",
+        "why.vs.r1": "Posture", "why.vs.r2": "Toe freedom", "why.vs.r3": "Sensory", "why.vs.r4": "Impact", "why.vs.r5": "Muscles",
+        "why.o1": "Heel drop", "why.o1d": "Shifts gravity forward, causing back and shoulder tension.", "why.o2": "Constricted toes", "why.o2d": "Narrow toe box squeezes toes together.", "why.o3": "Thick soles", "why.o3d": "Block ground feedback, slowing balance reflexes.", "why.o4": "Heel strike", "why.o4d": "Sends harsh impact directly into joints.", "why.o5": "Rehab like a “splint”", "why.o5d": "Restricts movement and weakens foot muscles.",
+        "why.b1": "Barefoot posture", "why.b1d": "Naturally aligns spine, hips and shoulders.", "why.b2": "Natural splay", "why.b2d": "Free to spread and move independently.", "why.b3": "Direct contact", "why.b3d": "Awakens nerves for instant balance and stability.", "why.b4": "Natural cushion", "why.b4d": "Acts as a natural shock absorber for softer landings.", "why.b5": "Awakens muscles", "why.b5d": "Strengthens deep muscles, fixing root causes.",
         "models.eyebrow": "At the popup", "models.vff.title": "4 FiveFingers <span class=\"serif\">to start with</span>", "models.vivo.title": "4 Vivobarefoot <span class=\"serif\">to start with</span>",
         "models.note": "Prices in THB.", "m.list": "Regular price",
         "m.vrun.use": "Road running", "m.vrun.d": "The running model. A light, breathable upper and a sole made for pavement, for anyone who wants to run with their toes free.",
@@ -1015,7 +978,6 @@
         "m.motus.use": "Strength and cross-training", "m.motus.d": "For lifting and training days: a flat, grippy base under the whole foot and a locked-in upper for sideways movement.",
         "m.gobi.use": "City and work", "m.gobi.d": "A leather sneaker that passes at the office and at dinner, with the same wide, thin, flexible sole underneath.",
         "m.ptrail.use": "Trail and hiking", "m.ptrail.d": "The trail version of the Primus, with firm-ground lugs for paths, parks and weekend hikes.",
-
 
 
 
@@ -1041,11 +1003,6 @@
         "vivo.desc": "The same barefoot thinking in a familiar shape. A foot-shaped toe box lets your toes spread out, the sole is thin, flexible and puncture-resistant, and there is no thick foam or raised heel in the way.",
         "vivo.f1": "Wide, foot-shaped toe box", "vivo.f2": "Thin, flexible sole", "vivo.f3": "Flat from heel to toe", "vivo.f4": "Everyday wear and training",
         "vivo.sale": "All items 10–20% off", "vivo.size": "Check your size",
-        "choose.eyebrow": "Two ways in", "choose.title": "Which pair <span class=\"serif\">is yours?</span>",
-        "choose.note": "Both let your feet work. They just get there differently – this is the short version, and the staff at the booth will take you through the rest.",
-        "choose.r1": "Ground feel", "choose.r1v": "As direct as it gets, with toes moving independently", "choose.r1w": "Very direct, with the foot held as one",
-        "choose.r2": "Look", "choose.r2v": "Unmistakably toed", "choose.r2w": "Reads as an ordinary sneaker",
-        "choose.r4": "Socks", "choose.r4v": "Five-toe socks (we sell them at the booth)", "choose.r4w": "Any socks you already own",
         "booth.eyebrow": "Three things to do", "booth.title": "At the <span class=\"serif\">booth</span>",
         "booth.note": "No appointment, no pressure. Come in your usual shoes and leave the rest to us.",
         "booth.h1": "Walk in them first", "booth.p1": "Every model we have in stock is there to try on. Take a few laps of the floor before you decide anything.",
@@ -1073,7 +1030,6 @@
 
 
 
-
         "m.pflow.d": "Primus ที่เบาที่สุด อัปเปอร์ถักนุ่มระบายอากาศดี พื้นบางยืดหยุ่น สำหรับวิ่งถนน ยิม และวันที่อยากเคลื่อนไหวเร็วและเบา",
         "m.pflow.use": "วิ่งและเทรนนิ่ง",
         "m.scram.d": "รุ่นสำหรับกลางแจ้ง พื้น Vibram Megagrip ทนทานสำหรับหินและพื้นเปียก สายรัดคู่ล็อกเท้าให้กระชับ และข้อเท้ายืดหยุ่นกันเศษหินเข้า เหมาะกับปีนป่าย เดินเทรล และลุยน้ำ",
@@ -1084,19 +1040,17 @@
         "m.selected": "*เฉพาะสีที่ร่วมรายการ",
         "nav.booth": "ที่บูธ", "nav.access": "วิธีเดินทาง",
         "nav.why": "ทำไมต้องบาร์ฟุต",
-        "why.title": "ทำไมต้อง <span class=\"serif\">บาร์ฟุต</span>",
-        "why.note": "พวกเราส่วนใหญ่ใส่รองเท้าที่ทำงานแทนเท้ามานานหลายสิบปี นี่คือ 4 เรื่องที่ลูกค้าเล่าให้ฟังบ่อยที่สุดที่บูธ และส่วนของรองเท้าที่มักอยู่เบื้องหลังแต่ละเรื่อง",
-        "why.ck": "สาเหตุที่มักพบ",
-        "why.p1h": "นิ้วเท้าถูกเบียดชิดกัน", "why.p1": "นิ้วโป้งเอียงเข้าด้านใน มีปุ่มนูนที่ข้อ นิ้วซ้อนทับกัน", "why.p1c": "หัวรองเท้าแคบและสอบที่บีบนิ้วเท้าเป็นปลายแหลม จนกางออกเพื่อทรงตัวไม่ได้",
-        "why.p2h": "ฝ่าเท้าและส้นเท้าล้า", "why.p2": "อุ้งเท้ารู้สึกแบนและเมื่อย ส้นเท้าตึงหลังยืนทั้งวัน", "why.p2c": "พื้นหนาแข็งและแผ่นรองอุ้งเท้าที่ทำงานแทน กล้ามเนื้อเท้าจึงแทบไม่ได้ใช้",
-        "why.p3h": "เข่าบ่น ข้อเท้าโคลงเคลง", "why.p3": "การลงเท้าหนัก ๆ ส่งแรงขึ้นไปตามขา และการปรับสมดุลเล็ก ๆ ไม่เคยเกิดขึ้น", "why.p3c": "โฟมกันกระแทกที่บดบังสัมผัสของเท้า และชวนให้ลงส้นหนัก ๆ",
-        "why.p4h": "หลังส่วนล่างตึง", "why.p4": "สะโพกและหลังส่วนล่างต้องคอยชดเชยเงียบ ๆ ทั้งวัน", "why.p4c": "ส้นที่ยกสูง แม้เพียง 1–2 เซนติเมตรก็เอียงทั้งตัวไปข้างหน้า",
-        "why.vs.title": "รองเท้าทั่วไป <span class=\"serif\">vs</span> รองเท้าบาร์ฟุต", "why.vs.a": "รองเท้าทั่วไป", "why.vs.b": "รองเท้าบาร์ฟุต",
-        "why.vs.r1": "ท่าทาง", "why.vs.r2": "นิ้วเท้า", "why.vs.r3": "สัมผัสพื้น", "why.vs.r4": "แรงกระแทก", "why.vs.r5": "กล้ามเนื้อ",
-        "why.o1": "ส้นยก ตัวเอียงไปข้างหน้า", "why.o2": "ถูกบีบเป็นปลายแหลม", "why.o3": "ถูกโฟมหนาบดบัง", "why.o4": "ลงส้นหนัก", "why.o5": "แผ่นรองทำงานแทน",
-        "why.b1": "แบนราบ ยืนได้ตามธรรมชาติ", "why.b2": "มีที่ให้กาง", "why.b3": "รู้สึกถึงพื้นผิว", "why.b4": "ก้าวสั้นและเบา", "why.b5": "เท้าของคุณทำงานเอง",
-        "why.b1k": "อยากรู้สึกถึงทุกอย่าง?", "why.b1d": "แยกช่องทุกนิ้ว พื้นบางที่สุด สัมผัสพื้นตรงที่สุด",
-        "why.b2k": "อยากให้ดูเป็นสนีกเกอร์?", "why.b2d": "หลักการเดียวกัน กว้าง บาง แบน ในทรงที่ใส่ไปได้ทุกที่",
+        "why.title": "ทำไมต้อง <span class=\"serif\">บาร์ฟุต</span>", "why.p1": "นิ้วโป้งเอียงเข้าด้านใน มีปุ่มนูนที่ข้อ นิ้วซ้อนทับกัน", "why.p2": "อุ้งเท้ารู้สึกแบนและเมื่อย ส้นเท้าตึงหลังยืนทั้งวัน", "why.p3": "การลงเท้าหนัก ๆ ส่งแรงขึ้นไปตามขา และการปรับสมดุลเล็ก ๆ ไม่เคยเกิดขึ้น", "why.p4": "สะโพกและหลังส่วนล่างต้องคอยชดเชยเงียบ ๆ ทั้งวัน",
+        "why.note": "คุณเคยเจอปัญหาเหล่านี้ไหม",
+        "why.i1": "ปุ่มนิ้วโป้งและนิ้วเท้างอ", "why.i2": "ปวดส้นเท้าและเท้าแบน", "why.i3": "ปวดเข่าและข้อเท้าอ่อนแรง", "why.i4": "ปวดหลัง",
+        "why.ben.eyebrow": "ทางออกอยู่ตรงนี้", "why.ben.title": "ประโยชน์ของ <span class=\"serif\">บาร์ฟุต</span>", "why.ben.sub": "คำตอบตามธรรมชาติสำหรับอาการปวดเมื่อยยุคใหม่ ด้วยการเคลื่อนไหวแบบเท้าเปล่า",
+        "why.ben.h1": "พัฒนาฝ่าเท้าและเท้าโดยรวม", "why.ben.d1": "สร้างความแข็งแรงของเท้าจากแกนกลาง เพื่อจัดท่าทางของร่างกายให้ตรงตามธรรมชาติ",
+        "why.ben.h2": "เกี่ยวกับปัญหาสุขภาพ", "why.ben.d2": "กระตุ้นการไหลเวียนของเลือด ช่วยคลายความตึงจากภาวะต่าง ๆ เช่น เท้าแบน ปุ่มนิ้วโป้ง และอื่น ๆ",
+        "why.ben.h3": "เกี่ยวกับการบาดเจ็บ", "why.ben.d3": "กระตุ้นการรับรู้ของประสาทสัมผัสให้ตอบสนองเร็วขึ้นและลงเท้าได้ดีขึ้น ช่วยป้องกันการบาดเจ็บด้วยกลไกการรับแรงกระแทกที่ดีขึ้น ให้กล้ามเนื้อดูดซับแรงตอนลงเท้าได้ดีกว่า",
+        "why.vs.title": "รองเท้าทั่วไป <span class=\"serif\">vs</span> แนวคิดบาร์ฟุต", "why.vs.a": "รองเท้าทั่วไป", "why.vs.b": "แนวคิดบาร์ฟุต",
+        "why.vs.r1": "ท่าทาง", "why.vs.r2": "อิสระของนิ้วเท้า", "why.vs.r3": "ประสาทสัมผัส", "why.vs.r4": "แรงกระแทก", "why.vs.r5": "กล้ามเนื้อ",
+        "why.o1": "ส้นยกสูง", "why.o1d": "ดันจุดศูนย์ถ่วงไปข้างหน้า ทำให้หลังและไหล่ตึง", "why.o2": "นิ้วเท้าถูกบีบ", "why.o2d": "หัวรองเท้าแคบบีบนิ้วเท้าให้ชิดกัน", "why.o3": "พื้นหนา", "why.o3d": "ปิดกั้นการรับรู้พื้น ทำให้การทรงตัวตอบสนองช้าลง", "why.o4": "ลงส้นเท้า", "why.o4d": "ส่งแรงกระแทกรุนแรงเข้าข้อต่อโดยตรง", "why.o5": "เหมือนใส่เฝือก", "why.o5d": "จำกัดการเคลื่อนไหวและทำให้กล้ามเนื้อเท้าอ่อนแรง",
+        "why.b1": "ท่าทางแบบเท้าเปล่า", "why.b1d": "จัดกระดูกสันหลัง สะโพก และไหล่ให้ตรงตามธรรมชาติ", "why.b2": "กางนิ้วได้ตามธรรมชาติ", "why.b2d": "นิ้วเท้ากางและขยับได้อย่างอิสระ", "why.b3": "สัมผัสพื้นโดยตรง", "why.b3d": "ปลุกเส้นประสาทให้ทรงตัวได้ทันทีและมั่นคง", "why.b4": "กันกระแทกตามธรรมชาติ", "why.b4d": "ทำหน้าที่เป็นตัวดูดซับแรงกระแทกตามธรรมชาติ ให้ลงเท้าได้นุ่มนวลขึ้น", "why.b5": "ปลุกกล้ามเนื้อ", "why.b5d": "เสริมความแข็งแรงของกล้ามเนื้อชั้นลึก แก้ที่ต้นเหตุ",
         "models.eyebrow": "ที่ป๊อปอัพ", "models.vff.title": "FiveFingers 4 รุ่น <span class=\"serif\">ที่แนะนำให้เริ่ม</span>", "models.vivo.title": "Vivobarefoot 4 รุ่น <span class=\"serif\">ที่แนะนำให้เริ่ม</span>",
         "models.note": "ราคาเป็นบาท", "m.list": "ราคาปกติ",
         "m.vrun.use": "วิ่งถนน", "m.vrun.d": "รุ่นสำหรับวิ่ง อัปเปอร์เบาระบายอากาศ พื้นออกแบบมาสำหรับพื้นถนน สำหรับคนที่อยากวิ่งโดยนิ้วเท้าเป็นอิสระ",
@@ -1107,7 +1061,6 @@
         "m.motus.use": "เวทเทรนนิ่งและครอสเทรนนิ่ง", "m.motus.d": "สำหรับวันยกน้ำหนักและฝึกซ้อม ฐานแบนยึดเกาะดีใต้ทั้งเท้า อัปเปอร์กระชับรองรับการเคลื่อนไหวด้านข้าง",
         "m.gobi.use": "ในเมืองและที่ทำงาน", "m.gobi.d": "สนีกเกอร์หนังที่ใส่เข้าออฟฟิศหรือไปดินเนอร์ได้ โดยมีพื้นกว้าง บาง ยืดหยุ่นแบบเดียวกันอยู่ข้างใต้",
         "m.ptrail.use": "เทรลและเดินป่า", "m.ptrail.d": "Primus เวอร์ชันเทรล พื้นดอกยางสำหรับพื้นแข็ง เหมาะกับทางเดิน สวนสาธารณะ และเดินป่าวันหยุด",
-
 
 
 
@@ -1133,11 +1086,6 @@
         "vivo.desc": "แนวคิดบาร์ฟุตแบบเดียวกัน แต่มาในรูปทรงที่คุ้นตา หน้าเท้ากว้างตามรูปเท้าจริงให้นิ้วเท้ากางได้เต็มที่ พื้นบาง ยืดหยุ่น และทนต่อของมีคม ไม่มีโฟมหนาหรือส้นยกสูงมาขวางการเคลื่อนไหว",
         "vivo.f1": "หน้าเท้ากว้างตามรูปเท้า", "vivo.f2": "พื้นบางและยืดหยุ่น", "vivo.f3": "ส้นกับปลายเท้าอยู่ระดับเดียวกัน", "vivo.f4": "ใส่ประจำวันและออกกำลังกาย",
         "vivo.sale": "ทุกรายการ ลด 10–20%", "vivo.size": "ดูไซซ์ของคุณ",
-        "choose.eyebrow": "สองทางเลือก", "choose.title": "คู่ไหน <span class=\"serif\">เหมาะกับคุณ</span>",
-        "choose.note": "ทั้งสองแบรนด์ให้เท้าได้ทำงานเหมือนกัน ต่างกันที่วิธีไปถึงจุดนั้น นี่คือภาพรวมคร่าวๆ ส่วนรายละเอียดให้ทีมงานที่บูธอธิบายให้ฟัง",
-        "choose.r1": "สัมผัสพื้น", "choose.r1v": "รับรู้พื้นได้ตรงที่สุด นิ้วเท้าขยับแยกกันได้", "choose.r1w": "รับรู้พื้นได้ชัด แต่เท้ายังอยู่รวมกันทั้งเท้า",
-        "choose.r2": "รูปลักษณ์", "choose.r2v": "เห็นแล้วรู้ทันทีว่าเป็นรองเท้าแยกนิ้ว", "choose.r2w": "ดูเหมือนสนีกเกอร์ทั่วไป",
-        "choose.r4": "ถุงเท้า", "choose.r4v": "ถุงเท้าห้านิ้ว (มีจำหน่ายที่บูธ)", "choose.r4w": "ถุงเท้าทั่วไปที่ใส่อยู่แล้ว",
         "booth.eyebrow": "สามสิ่งที่ทำได้", "booth.title": "ที่ <span class=\"serif\">บูธของเรา</span>",
         "booth.note": "ไม่ต้องนัด ไม่มีการกดดัน ใส่รองเท้าคู่เดิมมาได้เลย ที่เหลือให้เราจัดการ",
         "booth.h1": "ลองเดินจริงก่อนตัดสินใจ", "booth.p1": "ทุกรุ่นที่มีสต็อกพร้อมให้ลองสวม เดินรอบบูธกี่รอบก็ได้ก่อนตัดสินใจ",

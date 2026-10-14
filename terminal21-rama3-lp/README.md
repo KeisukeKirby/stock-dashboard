@@ -21,7 +21,7 @@ Terminal 21 Asok 版（`barefootinc-t21-asok-event`）と同じ構成で、会�
 
 ## v3 で追加したもの（本番実装前）
 
-- 「Why barefoot?」（ヒーロー直後、明るい背景）: イラスト付きの 4 枚のカード（悩み + その裏にある靴の構造）→ 普通の靴 vs ベアフットを左右 2 列の短い言葉で。医療的な断定は避けた表現
+- 「Why barefoot?」（ヒーロー直後、明るい背景）: 4 つの悩み（インフォグラフィックの丸いイラスト `images/why/issue-*.png`）→ 「Barefoot benefits」（芝生の足の写真 `images/why/feet-grass-2.jpg` を背景に 3 項目）→ 「Normal shoes vs Barefoot theory」の左右 2 列の比較。元のインフォグラフィックは低解像度（約 500px 幅）なので、高解像度版があれば差し替え推奨
 - ブランド紹介の下にモデルカード各 4 つ（VFF: V-Run / V-Soul / KSO EVO / Scramkey、Vivo: Primus Lite IV / Motus Strength II / Gobi III Sneaker Leather / Primus Flow）。通常価格とセール価格を表示（KSO EVO は *Selected color only）。写真は `images/models/`
 - 「At the booth」の下に「Start slowly」の注意書き（少しずつ時間と日数を増やす・痛みがあれば休む、を 1 段落に）、FAQ（アコーディオン、FAQPage の JSON-LD 付き。返品・交換不可、支払いは現金・タイ銀行 QR・クレジットカード）
 - アクセスにフロアマップ（`images/floor-map-rama3-g-2.jpg`、G Floor の図面。ブース位置は Gate 4 側・エスカレーター横。タップで拡大）
@@ -31,7 +31,7 @@ Terminal 21 Asok 版（`barefootinc-t21-asok-event`）と同じ構成で、会�
 
 - ヒーロー（PC は 2 ブランドの写真を左右に並べ、左半分に収まる巨大タイポが行ごとに立ち上がる。写真は下端揃えでシューズが必ず写る。マウス追従や拡大の動きはなし。スマホは上に FiveFingers、見出し、下に Vivobarefoot の縦積みで、写真はシューズが見える位置で切り抜き）
 - ヒーロー下の会期・時間・フロアは、文字が縦にロールして確定する表示（出発案内板のイメージ）
-- スクロール速度で傾くマーキー、ブランド 2 セクション（写真はタップで拡大）、比較表、ブースでできること
+- スクロール速度で傾くマーキー、ブランド 2 セクション（写真はタップで拡大）、ブースでできること
 - アクセスは会場ロゴ + 住所・会期・時間・交通の一覧 + Google Maps 埋め込み。「Add to calendar」ボタンは廃止
 - PC はマグネットボタン、スマホは下部の固定バーから「Getting there」へ。ヘッダーはスクロールし始めるとすぐ半透明の明るい背景になる
 - フォントは Oswald（見出し）/ DM Serif Display（タグライン・サブコピー）/ Noto Sans Thai（本文・タイ語）の 3 種類
