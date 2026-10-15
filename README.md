@@ -192,3 +192,9 @@ python scripts/build_vivo_standalone.py vivo-sales.html          # claude.ai の
 ## thai-learning/（別プロジェクト）
 
 タイ語学習ダッシュボード（個人用 PWA）。在庫ダッシュボードとは独立しており、Vercel では Root Directory を `thai-learning` にした別プロジェクトとしてデプロイする。詳細は [`thai-learning/README.md`](thai-learning/README.md) と [`thai-learning/docs/DESIGN.md`](thai-learning/docs/DESIGN.md)。
+
+## Vivo 在庫（「Vivo 在庫」タブ）
+
+店舗の棚卸表から入力した Vivo の在庫を、在庫一覧と同じ書式で表示します。棚卸は `data/vivo_counts/*.json`（店舗ごと）に置き、
+`python scripts/vivo_stock.py` で `public/vivo_stock.json` を作ります。棚卸のない拠点は「未入力」（チェックで列を表示）。
+現在: K Village（2026-10-05、108 行・99 足）。

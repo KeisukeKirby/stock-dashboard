@@ -451,3 +451,10 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 .recv-done li { display: flex; align-items: center; gap: 10px; padding: 4px 0; border-top: 1px solid var(--line); font-size: 13px; }
 .recv-done li > span { flex: 1; }
 .recv-done li em { font-style: normal; font-weight: 700; }
+
+/* Vivo 在庫タブ */
+.vivo-sheet table { width: auto; }
+.vivo-sheet th, .vivo-sheet td { min-width: 70px; }
+.vivo-sheet td:first-child { min-width: 190px; }
+.vivo-sheet td:nth-child(2) { min-width: 120px; }
+.vivo-sheet thead tr.h1 th { top: calc(var(--title-h) + var(--row-h)); }

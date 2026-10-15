@@ -56,13 +56,14 @@
   applyTheme();
 
   /* ---------- tabs ---------- */
-  let view = location.hash === "#detail" ? "detail" : "table";
+  let view = ["#detail", "#vivo"].includes(location.hash) ? location.hash.slice(1) : "table";
   function showView(v, { scroll = false } = {}) {
     view = v;
     document.querySelectorAll(".tab").forEach((tab) => tab.setAttribute("aria-selected", tab.dataset.view === v));
     $("view-table").hidden = v !== "table";
     $("view-detail").hidden = v !== "detail";
-    history.replaceState(null, "", v === "detail" ? "#detail" : location.pathname + location.search);
+    $("view-vivo").hidden = v !== "vivo";
+    history.replaceState(null, "", v === "table" ? location.pathname + location.search : `#${v}`);
     if (v === "table") fitTable();
     if (scroll) $("view-table").scrollIntoView({ behavior: "smooth", block: "start" });
   }

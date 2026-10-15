@@ -1,0 +1,872 @@
+{
+ "store": "K Village",
+ "date": "2026-10-05",
+ "source": "手書きの棚卸表・2026-10-05",
+ "note": "「W39 Bright White」の横の手書き「40 = 1」は W40 = 1 として追加。名前横の小さい「|」は展示品の印とみなし加算しない。",
+ "items": [
+  {
+   "code": "VV0001(BI/WT,W35)",
+   "model": "Vivo Geo Court IV",
+   "color": "Bright White",
+   "size": "W35",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0001(BI/WT,W37)",
+   "model": "Vivo Geo Court IV",
+   "color": "Bright White",
+   "size": "W37",
+   "count": 2,
+   "mark": 0
+  },
+  {
+   "code": "VV0001(BI/WT,W38)",
+   "model": "Vivo Geo Court IV",
+   "color": "Bright White",
+   "size": "W38",
+   "count": 3,
+   "mark": 1
+  },
+  {
+   "code": "VV0001(BI/WT,W39)",
+   "model": "Vivo Geo Court IV",
+   "color": "Bright White",
+   "size": "W39",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0001(BI/WT,W40)",
+   "model": "Vivo Geo Court IV",
+   "color": "Bright White",
+   "size": "W40",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0001(BT/WT,M40)",
+   "model": "Vivo Geo Court IV",
+   "color": "Bright White",
+   "size": "M40",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0001(BT/WT,M41)",
+   "model": "Vivo Geo Court IV",
+   "color": "Bright White",
+   "size": "M41",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0001(BT/WT,M42)",
+   "model": "Vivo Geo Court IV",
+   "color": "Bright White",
+   "size": "M42",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0001(BT/WT,M43)",
+   "model": "Vivo Geo Court IV",
+   "color": "Bright White",
+   "size": "M43",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0001(BT/WT,M44)",
+   "model": "Vivo Geo Court IV",
+   "color": "Bright White",
+   "size": "M44",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0001(BT/WT,M45)",
+   "model": "Vivo Geo Court IV",
+   "color": "Bright White",
+   "size": "M45",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(LST,M41)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Limestone",
+   "size": "M41",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(LST,M42)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Limestone",
+   "size": "M42",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(LST,M43)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Limestone",
+   "size": "M43",
+   "count": 2,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(LST,M44)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Limestone",
+   "size": "M44",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(LST,M45)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Limestone",
+   "size": "M45",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(LST,M46)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Limestone",
+   "size": "M46",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(LST,W36)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Limestone",
+   "size": "W36",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(LST,W37)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Limestone",
+   "size": "W37",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(LST,W38)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Limestone",
+   "size": "W38",
+   "count": 1,
+   "mark": 1
+  },
+  {
+   "code": "VV0002(LST,W39)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Limestone",
+   "size": "W39",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(LST,W40)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Limestone",
+   "size": "W40",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(OSD,W36)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Obsidian",
+   "size": "W36",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(OSD,W37)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Obsidian",
+   "size": "W37",
+   "count": 2,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(OSD,W38)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Obsidian",
+   "size": "W38",
+   "count": 2,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(OSD,W39)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Obsidian",
+   "size": "W39",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(OSD,W40)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Obsidian",
+   "size": "W40",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(TP/OSD,M42)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Triple Obsidian",
+   "size": "M42",
+   "count": 1,
+   "mark": 1
+  },
+  {
+   "code": "VV0002(TP/OSD,M43)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Triple Obsidian",
+   "size": "M43",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(TP/OSD,M44)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Triple Obsidian",
+   "size": "M44",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(TP/OSD,M45)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Triple Obsidian",
+   "size": "M45",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0002(TP/OSD,M46)",
+   "model": "Vivo Gobi III Sneaker Leather",
+   "color": "Triple Obsidian",
+   "size": "M46",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0003(EC,M41)",
+   "model": "Vivo Motus Strength II",
+   "color": "Eclipse",
+   "size": "M41",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0003(EC,M42)",
+   "model": "Vivo Motus Strength II",
+   "color": "Eclipse",
+   "size": "M42",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0003(EC,M43)",
+   "model": "Vivo Motus Strength II",
+   "color": "Eclipse",
+   "size": "M43",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0003(EC,M44)",
+   "model": "Vivo Motus Strength II",
+   "color": "Eclipse",
+   "size": "M44",
+   "count": 1,
+   "mark": 1
+  },
+  {
+   "code": "VV0003(ST/CD,M41)",
+   "model": "Vivo Motus Strength II",
+   "color": "Storm Cloud",
+   "size": "M41",
+   "count": 1,
+   "mark": 1
+  },
+  {
+   "code": "VV0003(ST/CD,M42)",
+   "model": "Vivo Motus Strength II",
+   "color": "Storm Cloud",
+   "size": "M42",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0003(ST/CD,M43)",
+   "model": "Vivo Motus Strength II",
+   "color": "Storm Cloud",
+   "size": "M43",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(MNR,M40)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Mineral",
+   "size": "M40",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(MNR,M41)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Mineral",
+   "size": "M41",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(MNR,M42)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Mineral",
+   "size": "M42",
+   "count": 2,
+   "mark": 1
+  },
+  {
+   "code": "VV0004(MNR,M43)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Mineral",
+   "size": "M43",
+   "count": 2,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(MNR,M44)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Mineral",
+   "size": "M44",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(MNR,M45)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Mineral",
+   "size": "M45",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(MNR,W36)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Mineral",
+   "size": "W36",
+   "count": 2,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(MNR,W37)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Mineral",
+   "size": "W37",
+   "count": 2,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(MNR,W38)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Mineral",
+   "size": "W38",
+   "count": 1,
+   "mark": 1
+  },
+  {
+   "code": "VV0004(MNR,W39)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Mineral",
+   "size": "W39",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(MNR,W40)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Mineral",
+   "size": "W40",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(OSD,M41)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Obsidian",
+   "size": "M41",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(OSD,M42)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Obsidian",
+   "size": "M42",
+   "count": 3,
+   "mark": 1
+  },
+  {
+   "code": "VV0004(OSD,M43)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Obsidian",
+   "size": "M43",
+   "count": 2,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(OSD,M44)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Obsidian",
+   "size": "M44",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(OSD,M46)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Obsidian",
+   "size": "M46",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(OSD,W36)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Obsidian",
+   "size": "W36",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(OSD,W37)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Obsidian",
+   "size": "W37",
+   "count": 3,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(OSD,W38)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Obsidian",
+   "size": "W38",
+   "count": 3,
+   "mark": 1
+  },
+  {
+   "code": "VV0004(OSD,W39)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Obsidian",
+   "size": "W39",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(OSD,W40)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Obsidian",
+   "size": "W40",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(ST/CD,M41)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Storm Cloud",
+   "size": "M41",
+   "count": 1,
+   "mark": 1
+  },
+  {
+   "code": "VV0004(ST/CD,M42)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Storm Cloud",
+   "size": "M42",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(ST/CD,M43)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Storm Cloud",
+   "size": "M43",
+   "count": 2,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(ST/CD,M44)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Storm Cloud",
+   "size": "M44",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(ST/CD,W37)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Storm Cloud",
+   "size": "W37",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(ST/CD,W38)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Storm Cloud",
+   "size": "W38",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(ST/CD,W39)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Storm Cloud",
+   "size": "W39",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0004(ST/CD,W40)",
+   "model": "Vivo Primus Lite IV",
+   "color": "Storm Cloud",
+   "size": "W40",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0005(EC,M41)",
+   "model": "Vivo Primus Lite Knit Natural",
+   "color": "Eclipse",
+   "size": "M41",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0005(EC,M42)",
+   "model": "Vivo Primus Lite Knit Natural",
+   "color": "Eclipse",
+   "size": "M42",
+   "count": 2,
+   "mark": 1
+  },
+  {
+   "code": "VV0005(EC,M43)",
+   "model": "Vivo Primus Lite Knit Natural",
+   "color": "Eclipse",
+   "size": "M43",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0005(EC,M44)",
+   "model": "Vivo Primus Lite Knit Natural",
+   "color": "Eclipse",
+   "size": "M44",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0005(EC,M45)",
+   "model": "Vivo Primus Lite Knit Natural",
+   "color": "Eclipse",
+   "size": "M45",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0005(EC,W36)",
+   "model": "Vivo Primus Lite Knit Natural",
+   "color": "Eclipse",
+   "size": "W36",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0005(EC,W37)",
+   "model": "Vivo Primus Lite Knit Natural",
+   "color": "Eclipse",
+   "size": "W37",
+   "count": 2,
+   "mark": 0
+  },
+  {
+   "code": "VV0005(EC,W38)",
+   "model": "Vivo Primus Lite Knit Natural",
+   "color": "Eclipse",
+   "size": "W38",
+   "count": 3,
+   "mark": 1
+  },
+  {
+   "code": "VV0005(EC,W39)",
+   "model": "Vivo Primus Lite Knit Natural",
+   "color": "Eclipse",
+   "size": "W39",
+   "count": 2,
+   "mark": 0
+  },
+  {
+   "code": "VV0005(EC,W40)",
+   "model": "Vivo Primus Lite Knit Natural",
+   "color": "Eclipse",
+   "size": "W40",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0006(ISN/BL,W36)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Insignia Blue",
+   "size": "W36",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0006(ISN/BL,W37)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Insignia Blue",
+   "size": "W37",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0006(ISN/BL,W38)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Insignia Blue",
+   "size": "W38",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0006(MNR,M40)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Mineral",
+   "size": "M40",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0006(MNR,M41)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Mineral",
+   "size": "M41",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0006(MNR,M42)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Mineral",
+   "size": "M42",
+   "count": 1,
+   "mark": 1
+  },
+  {
+   "code": "VV0006(MNR,M43)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Mineral",
+   "size": "M43",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0006(MNR,M44)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Mineral",
+   "size": "M44",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0006(MNR,M45)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Mineral",
+   "size": "M45",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0006(OSD,M40)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Obsidian",
+   "size": "M40",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0006(OSD,M41)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Obsidian",
+   "size": "M41",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0006(OSD,M42)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Obsidian",
+   "size": "M42",
+   "count": 1,
+   "mark": 1
+  },
+  {
+   "code": "VV0006(OSD,M43)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Obsidian",
+   "size": "M43",
+   "count": 1,
+   "mark": 1
+  },
+  {
+   "code": "VV0006(OSD,M44)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Obsidian",
+   "size": "M44",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0006(OSD,M45)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Obsidian",
+   "size": "M45",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0006(OSD,W37)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Obsidian",
+   "size": "W37",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0006(OSD,W38)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Obsidian",
+   "size": "W38",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0006(OSD,W39)",
+   "model": "Vivo Primus Trail FG 3.5",
+   "color": "Obsidian",
+   "size": "W39",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0007(OSD,M40)",
+   "model": "Vivo Ra IV",
+   "color": "Obsidian",
+   "size": "M40",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0007(OSD,M41)",
+   "model": "Vivo Ra IV",
+   "color": "Obsidian",
+   "size": "M41",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0007(OSD,M42)",
+   "model": "Vivo Ra IV",
+   "color": "Obsidian",
+   "size": "M42",
+   "count": 2,
+   "mark": 0
+  },
+  {
+   "code": "VV0007(OSD,M43)",
+   "model": "Vivo Ra IV",
+   "color": "Obsidian",
+   "size": "M43",
+   "count": 2,
+   "mark": 0
+  },
+  {
+   "code": "VV0007(OSD,M44)",
+   "model": "Vivo Ra IV",
+   "color": "Obsidian",
+   "size": "M44",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0007(OSD,M45)",
+   "model": "Vivo Ra IV",
+   "color": "Obsidian",
+   "size": "M45",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0008(TN,M40)",
+   "model": "Vivo Sensus II",
+   "color": "Tan",
+   "size": "M40",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0008(TN,M41)",
+   "model": "Vivo Sensus II",
+   "color": "Tan",
+   "size": "M41",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0008(TN,M42)",
+   "model": "Vivo Sensus II",
+   "color": "Tan",
+   "size": "M42",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0008(TN,M43)",
+   "model": "Vivo Sensus II",
+   "color": "Tan",
+   "size": "M43",
+   "count": 0,
+   "mark": 0
+  },
+  {
+   "code": "VV0008(TN,M44)",
+   "model": "Vivo Sensus II",
+   "color": "Tan",
+   "size": "M44",
+   "count": 1,
+   "mark": 0
+  },
+  {
+   "code": "VV0008(TN,M45)",
+   "model": "Vivo Sensus II",
+   "color": "Tan",
+   "size": "M45",
+   "count": 0,
+   "mark": 0
+  }
+ ]
+}
