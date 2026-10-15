@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="th">
 
 <head>
   <meta charset="UTF-8" />
@@ -66,7 +66,7 @@
   }
   </script>
 
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do I need five-toe socks for Vibram FiveFingers?", "acceptedAnswer": {"@type": "Answer", "text": "You can wear FiveFingers without socks. Many people prefer thin five-toe socks for comfort, sweat and longer days, and we sell them at the booth. Vivobarefoot works with any socks you already own."}}, {"@type": "Question", "name": "How do I wash barefoot shoes, and what about smell?", "acceptedAnswer": {"@type": "Answer", "text": "Most models can be washed by hand or on a gentle cold cycle with mild detergent, then air-dried away from direct sun and heat. Letting them dry fully between wears is the main thing that keeps smell away. Leather models need a little more care."}}, {"@type": "Question", "name": "Can I run in barefoot shoes?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, both brands have running models, like the FiveFingers V-Run and the Vivobarefoot Primus Flow. Walk in them first and add running gradually, with shorter and lighter steps than you are used to."}}, {"@type": "Question", "name": "Can I exchange or return a pair bought at the popup?", "acceptedAnswer": {"@type": "Answer", "text": "Items bought at the popup booth cannot be returned or exchanged, so please try them on and check the size carefully before you buy."}}, {"@type": "Question", "name": "How can I pay at the popup?", "acceptedAnswer": {"@type": "Answer", "text": "Cash, Thai bank QR payment and credit cards are accepted at the booth."}}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I pick the right size?", "acceptedAnswer": {"@type": "Answer", "text": "Barefoot sizing is different from your usual sneaker size, and the two brands fit differently. The best way is to come to the booth and try the shoes on. Our staff will measure your feet and recommend the model and size that suit you best."}}, {"@type": "Question", "name": "Do I need five-toe socks for Vibram FiveFingers?", "acceptedAnswer": {"@type": "Answer", "text": "You can wear FiveFingers without socks. Many people prefer thin five-toe socks for comfort, sweat and longer days, and we sell them at the booth. Vivobarefoot works with any socks you already own."}}, {"@type": "Question", "name": "How do I wash barefoot shoes, and what about smell?", "acceptedAnswer": {"@type": "Answer", "text": "Most models can be washed by hand or on a gentle cold cycle with mild detergent, then air-dried away from direct sun and heat. Letting them dry fully between wears is the main thing that keeps smell away. Leather models need a little more care."}}, {"@type": "Question", "name": "Can I run in barefoot shoes?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, both brands have running models, like the FiveFingers V-Run and the Vivobarefoot Primus Flow. Walk in them first and add running gradually, with shorter and lighter steps than you are used to."}}, {"@type": "Question", "name": "Can I exchange or return a pair bought at the popup?", "acceptedAnswer": {"@type": "Answer", "text": "Items bought at the popup booth cannot be returned or exchanged, so please try them on and check the size carefully before you buy."}}, {"@type": "Question", "name": "How can I pay at the popup?", "acceptedAnswer": {"@type": "Answer", "text": "Cash, Thai bank QR payment and credit cards are accepted at the booth."}}]}</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -217,6 +217,7 @@
     }
     .hero-brands { display: flex; align-items: center; gap: clamp(.9rem, 2vw, 1.4rem); }
     .hero-brands img { height: clamp(18px, 2.2vw, 26px); width: auto; }
+    .hero-brands img:first-child { height: clamp(24px, 2.9vw, 34px); }
     .hero-brands .sep { width: 1px; height: clamp(22px, 2.8vw, 32px); background: rgba(255,255,255,.55); }
     .hero-body { position: relative; z-index: 2; padding: clamp(2rem, 5vh, 4rem) var(--gutter) 0; }
     .hero h1 { font-size: clamp(3.2rem, 11.6vw, 12.5rem); font-weight: 700; text-transform: uppercase; line-height: .92; letter-spacing: -.012em; }
@@ -230,6 +231,7 @@
     .hero h1 .thin { font-weight: 700; }
     .hero-tag { margin-top: clamp(1rem, 2.4vw, 1.8rem); display: flex; flex-direction: column; align-items: flex-start; gap: .6rem; }
     @media (min-width: 901px) { .hero-body { width: 50%; padding-right: clamp(1rem, 3vw, 3rem); } }
+    .hero-tag p .num { color: var(--gold); font-weight: 700; font-size: 1.25em; line-height: 1; }
     .hero-tag p { max-width: 44ch; font-size: clamp(1.05rem, 1.35vw, 1.3rem); line-height: 1.55; font-weight: 600; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.7), 0 4px 22px rgba(0,0,0,.6); }
     .hero-board {
       position: relative; z-index: 2; margin-top: clamp(1.6rem, 4vh, 3rem); border-top: 1px solid rgba(255,255,255,.22);
@@ -275,7 +277,8 @@
       .hero-grain { display: none; }
       .hero-top { flex-direction: column; align-items: flex-start; gap: .9rem; }
       .hero-top .eyebrow { font-size: .64rem; }
-      .hero-brands img { height: 18px; }
+      .hero-brands img { height: 17px; }
+      .hero-brands img:first-child { height: 23px; }
       .hero-body { padding-top: 1.4rem; }
       .hero-tag { gap: .4rem; }
       .hero-tag p { font-size: 1.02rem; max-width: 34ch; }
@@ -581,22 +584,22 @@
 
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="ic-o1" viewBox="0 0 64 64"><path d="M36 14c-4 2.5-6.5 7-5.5 13.5" style="stroke-width:7"/><path d="M36 14c-4 2.5-6.5 7-5.5 13.5" style="stroke:#fff;stroke-width:4.4"/><path d="M30.5 27.5l2.2 12" style="stroke-width:5"/><path d="M30.5 27.5l2.2 12" style="stroke:#fff;stroke-width:2.4"/><path d="M32.7 39.5l-1.2 13" style="stroke-width:4.4"/><path d="M32.7 39.5l-1.2 13" style="stroke:#fff;stroke-width:1.8000000000000003"/><path d="M32 27.5l-.2 12" style="stroke-width:5"/><path d="M32 27.5l-.2 12" style="stroke:#fff;stroke-width:2.4"/><path d="M31.8 39.5l.6 13" style="stroke-width:4.4"/><path d="M31.8 39.5l.6 13" style="stroke:#fff;stroke-width:1.8000000000000003"/><path d="M35.5 17c-1.4 4.5-1.6 9-.6 14" style="stroke-width:3.6"/><path d="M35.5 17c-1.4 4.5-1.6 9-.6 14" style="stroke:#fff;stroke-width:1.0"/><ellipse fill="#fff" cx="38" cy="8" rx="3.6" ry="4.1"/><path fill="currentColor" stroke="none" d="M28.6 52.3h6.2l1.4 2.4h-8.4zM31 52.3h5.8l1.4 2.4h-8z"/></symbol><symbol id="ic-o2" viewBox="0 0 64 64"><path fill="#fff" d="M32 61.5c-7.6 0-11.8-6.6-11.8-16 0-7.2 2.2-13.4 4-20 1.8-6.6 3.6-12.5 7.8-12.5s6 5.9 7.8 12.5c1.8 6.6 4 12.8 4 20 0 9.4-4.2 16-11.8 16z"/><path stroke-width="1.1" d="M24.4 21.2c1.6-3.4 4.4-5.2 7.6-5.2s6 1.8 7.6 5.2"/><path stroke-width="1.1" d="M26.2 20.6l.8 3.6M28.8 18.2l.5 3.8M32 17.2v3.9M35.2 18.2l-.5 3.8M37.8 20.6l-.8 3.6"/><path stroke-width=".9" opacity=".7" d="M25.4 27.6c3.6 2.4 9.6 2.4 13.2 0"/></symbol><symbol id="ic-o3" viewBox="0 0 64 64"><path fill="#fff" d="M6.5 41c.4-4.2 3-7.4 7.6-9.4l9-10.4c2.6-3 6-3.6 9.2-1.4l6.2 4.4c6.2 2.4 12.6 4.4 16.4 8 1 1 1.6 2.4 1.6 3.8v5z"/><path fill="#fff" d="M5.8 41h50.6c1.6 0 2.6 1.2 2.6 2.8v1.2c0 3.2-2.6 5.6-5.8 5.6H10c-2.8 0-4.6-1.8-4.6-4.4v-3.2c0-1.2.2-2 .4-2z"/><ellipse stroke-width="1.1" cx="13" cy="47" rx="3.2" ry="1.7"/><ellipse stroke-width="1.1" cx="21" cy="47" rx="3.2" ry="1.7"/><ellipse stroke-width="1.1" cx="29" cy="47" rx="3.2" ry="1.7"/><ellipse stroke-width="1.1" cx="37" cy="47" rx="3.2" ry="1.7"/><ellipse stroke-width="1.1" cx="45" cy="47" rx="3.2" ry="1.7"/><ellipse stroke-width="1.1" cx="52.5" cy="47" rx="2.6" ry="1.7"/><path stroke-width="1.1" d="M9.4 44.6h47.4"/><path stroke-width="1.1" d="M24.8 26.2l5 2M27.4 23.2l5 2M30 20.2l5 2M32.8 18l4.6 1.8M34.8 29.6l3.6-10.4"/><path stroke-width="1.1" d="M13.6 35.6c3.6-1.8 7.8-1.6 11.4.4M41 30.4c4 .8 8 2 11.6 3.8"/><path stroke-width="1.1" d="M50.4 23.4c.8-1.8 2-2.6 3-2 .8.6.6 2.4-.4 4.4"/><path stroke-width=".9" opacity=".7" d="M18 40.5c8-5 18-5 26 0"/></symbol><symbol id="ic-o4" viewBox="0 0 64 64"><path d="M43 13l-7 12.5" style="stroke-width:7"/><path d="M43 13l-7 12.5" style="stroke:#fff;stroke-width:4.4"/><path d="M41.5 17l-7.5 4.5" style="stroke-width:4"/><path d="M41.5 17l-7.5 4.5" style="stroke:#fff;stroke-width:1.4"/><path d="M34 21.5l1.6-7.4" style="stroke-width:3.6"/><path d="M34 21.5l1.6-7.4" style="stroke:#fff;stroke-width:1.0"/><path d="M44.5 17.5l5.5 6.5" style="stroke-width:4"/><path d="M44.5 17.5l5.5 6.5" style="stroke:#fff;stroke-width:1.4"/><path d="M50 24l4-5.5" style="stroke-width:3.6"/><path d="M50 24l4-5.5" style="stroke:#fff;stroke-width:1.0"/><path d="M36 25.5l-7.5 7" style="stroke-width:5"/><path d="M36 25.5l-7.5 7" style="stroke:#fff;stroke-width:2.4"/><path d="M28.5 32.5l-9.5-5" style="stroke-width:4.4"/><path d="M28.5 32.5l-9.5-5" style="stroke:#fff;stroke-width:1.8000000000000003"/><path fill="#fff" d="M19.5 25.5l-5 .3c-1 .1-1.3 1.7-.3 2.1l5.1 1.1z"/><path d="M36 25.5l6.5 9" style="stroke-width:5"/><path d="M36 25.5l6.5 9" style="stroke:#fff;stroke-width:2.4"/><path d="M42.5 34.5l1.5 14" style="stroke-width:4.4"/><path d="M42.5 34.5l1.5 14" style="stroke:#fff;stroke-width:1.8000000000000003"/><ellipse fill="#fff" cx="45.5" cy="7.5" rx="3.6" ry="4.1"/><path fill="#fff" d="M42 49l8-1c1.2-.1 1.7 1.5.6 2.1l-7 2.6c-1.6.6-3.2-1-2.4-2.6z"/><path stroke-width="1.1" d="M39.5 55l-2.4-3.2M43.6 55.3l-.5-3.6M36.4 53.6l-3-2"/><path fill="currentColor" stroke="none" d="M7 55.5h50c.6 0 .6 1.3 0 1.3H7c-.6 0-.6-1.3 0-1.3z"/></symbol><symbol id="ic-o5" viewBox="0 0 64 64"><g transform="rotate(-14 32 36)"><path fill="currentColor" stroke="none" d="M9.5 42c.4-4.2 3-7.6 7.8-9.8l9.6-11.2c2.6-3 6.2-3.6 9.4-1.2l6.4 4.6c6.4 2.6 12.6 4.8 16.2 8.4 1.2 1.2 1.6 2.8 1.2 4.4l-.8 3.6c-.6 2.4-2.6 3.8-5.2 3.8H14.4c-3 0-5-1.8-4.9-4.6z"/><path d="M11.6 44.4c12 .8 28 .8 44 0" style="stroke:#fff;stroke-width:1.4"/><path d="M25 34l9 2.6M27.4 31l9 2.6M29.8 28l8.6 2.6M32.2 25.4l6.8 2.2M28 38l6.2-13" style="stroke:#fff;stroke-width:1.3"/><path d="M16.6 36.8c4-1.4 8.4-.6 12 1.6M42 32.8c3.8 1 7.6 2.2 10.6 4.4" style="stroke:#fff;stroke-width:1.3"/><path d="M30.4 23.6l-2.4-5M32.8 22.6l-1-5.6M35.4 23l.6-5.4" style="stroke-width:1.5"/></g></symbol><symbol id="ic-b1" viewBox="0 0 64 64"><path d="M32 14v13" style="stroke-width:7"/><path d="M32 14v13" style="stroke:#fff;stroke-width:4.4"/><path d="M30.8 27v13.5" style="stroke-width:5"/><path d="M30.8 27v13.5" style="stroke:#fff;stroke-width:2.4"/><path d="M30.8 40.5v12" style="stroke-width:4.4"/><path d="M30.8 40.5v12" style="stroke:#fff;stroke-width:1.8000000000000003"/><path d="M33.4 27v13.5" style="stroke-width:5"/><path d="M33.4 27v13.5" style="stroke:#fff;stroke-width:2.4"/><path d="M33.4 40.5v12" style="stroke-width:4.4"/><path d="M33.4 40.5v12" style="stroke:#fff;stroke-width:1.8000000000000003"/><path d="M29.6 16.5v14" style="stroke-width:3.4"/><path d="M29.6 16.5v14" style="stroke:#fff;stroke-width:0.7999999999999998"/><ellipse fill="#fff" cx="32" cy="8" rx="3.6" ry="4.1"/><path fill="currentColor" stroke="none" d="M28.4 52.3h5.2l.6 2.4h-6.4zM32.6 52.3h3.6l.6 2.4h-4.8z"/></symbol><symbol id="ic-b2" viewBox="0 0 64 64"><path fill="#fff" d="M32 61.5c-8.4 0-14-7.4-14-18 0-7.4 2.6-13.8 5.4-20 2-4.6 4.6-7.6 8.6-7.6s6.6 3 8.6 7.6c2.8 6.2 5.4 12.6 5.4 20 0 10.6-5.6 18-14 18z"/><ellipse fill="#fff" cx="21.6" cy="12.6" rx="4" ry="4.6"/><ellipse fill="#fff" cx="30.4" cy="7.4" rx="3.2" ry="3.7"/><ellipse fill="#fff" cx="37.8" cy="7.6" rx="2.8" ry="3.3"/><ellipse fill="#fff" cx="44" cy="10.6" rx="2.5" ry="3"/><ellipse fill="#fff" cx="48.6" cy="15.6" rx="2.2" ry="2.7"/><path stroke-width=".9" opacity=".7" d="M23.6 44c2 3.6 5 5.6 8.4 5.6s6.4-2 8.4-5.6"/></symbol><symbol id="ic-b3" viewBox="0 0 64 64"><path fill="#fff" d="M13.6 14h13.2v11.4c1.4 6 6.2 10.2 13.2 13 7.4 2.8 13.8 4.8 16.8 8.2 1.6 1.8.8 4.8-2 4.8H18.2c-5 0-8.4-3.2-8.4-8.2 0-7.4 2-12.6 3.8-16.4z"/><path stroke-width="1.1" d="M14.6 31.2c3-2.2 6.2-3.2 9.8-3.2"/><path stroke-width="1.1" d="M41.6 44.8c3.2 0 6.4.8 9.4 2.2M47.6 50c1.2-1 3-1 4.2 0M42.6 50c1.2-1 3-1 4.2 0M37.8 49.6c1-.8 2.6-.8 3.6 0M33.4 49.2c.8-.6 2-.6 2.8 0"/><path fill="currentColor" stroke="none" d="M6 55.4h52c.6 0 .6 1.4 0 1.4H6c-.6 0-.6-1.4 0-1.4z"/></symbol><symbol id="ic-b4" viewBox="0 0 64 64"><path d="M43 13l-7 12.5" style="stroke-width:7"/><path d="M43 13l-7 12.5" style="stroke:#fff;stroke-width:4.4"/><path d="M41.5 17l-7.5 4.5" style="stroke-width:4"/><path d="M41.5 17l-7.5 4.5" style="stroke:#fff;stroke-width:1.4"/><path d="M34 21.5l1.6-7.4" style="stroke-width:3.6"/><path d="M34 21.5l1.6-7.4" style="stroke:#fff;stroke-width:1.0"/><path d="M44.5 17.5l5.5 6.5" style="stroke-width:4"/><path d="M44.5 17.5l5.5 6.5" style="stroke:#fff;stroke-width:1.4"/><path d="M50 24l4-5.5" style="stroke-width:3.6"/><path d="M50 24l4-5.5" style="stroke:#fff;stroke-width:1.0"/><path d="M36 25.5l-7.5 7" style="stroke-width:5"/><path d="M36 25.5l-7.5 7" style="stroke:#fff;stroke-width:2.4"/><path d="M28.5 32.5l-9.5-5" style="stroke-width:4.4"/><path d="M28.5 32.5l-9.5-5" style="stroke:#fff;stroke-width:1.8000000000000003"/><path fill="#fff" d="M19.5 25.5l-5 .3c-1 .1-1.3 1.7-.3 2.1l5.1 1.1z"/><path d="M36 25.5l6.5 9" style="stroke-width:5"/><path d="M36 25.5l6.5 9" style="stroke:#fff;stroke-width:2.4"/><path d="M42.5 34.5l1.5 14" style="stroke-width:4.4"/><path d="M42.5 34.5l1.5 14" style="stroke:#fff;stroke-width:1.8000000000000003"/><ellipse fill="#fff" cx="45.5" cy="7.5" rx="3.6" ry="4.1"/><path fill="#fff" d="M42 49l8-1c1.2-.1 1.7 1.5.6 2.1l-7 2.6c-1.6.6-3.2-1-2.4-2.6z"/><path stroke-width="1.1" d="M38 55c3.6-2 7.4-2 11 0"/><path fill="currentColor" stroke="none" d="M7 55.5h50c.6 0 .6 1.3 0 1.3H7c-.6 0-.6-1.3 0-1.3z"/></symbol><symbol id="ic-b5" viewBox="0 0 64 64"><path fill="currentColor" stroke="none" d="M37.2 61.5c-7 0-11.6-6-11.6-14.6 0-6.4 2-11.8 4.6-17.4 1.8-4.2 4-6.8 7-6.8s5.2 2.6 7 6.8c2.6 5.6 4.6 11 4.6 17.4 0 8.6-4.6 14.6-11.6 14.6z"/><circle fill="currentColor" stroke="none" cx="27.8" cy="16.2" r="3.4"/><circle fill="currentColor" stroke="none" cx="35.4" cy="11" r="2.7"/><circle fill="currentColor" stroke="none" cx="41.8" cy="11.6" r="2.3"/><circle fill="currentColor" stroke="none" cx="47" cy="15" r="2"/><circle fill="currentColor" stroke="none" cx="50.4" cy="19.8" r="1.8"/><path fill="currentColor" stroke="none" d="M9.6 41.6c4.2-8.4 11.8-8 16 0-6.4 3.2-11.4 3.2-16 0z"/><path fill="currentColor" stroke="none" d="M8 54.4c4.4-7 11-6.4 14 0-5.6 2.4-9.6 2.4-14 0z"/><path fill="currentColor" stroke="none" d="M56.4 39.6c-4.2-8.4-11.8-8-16 0 6.4 3.2 11.4 3.2 16 0z"/><path fill="currentColor" stroke="none" d="M58 52.4c-4.4-7-11-6.4-14 0 5.6 2.4 9.6 2.4 14 0z"/><path d="M12.4 41.2c4-1.2 8-1.4 12 0M10.6 53.6c4-1 7.4-1 10.8 0M53.6 39.2c-4-1.2-8-1.4-12 0M55.4 51.6c-4-1-7.4-1-10.8 0" style="stroke:#fff;stroke-width:1"/></symbol></svg>
-  <a class="skip" href="#why">Skip to content</a>
+  <a class="skip" href="#vff">Skip to content</a>
   <div class="progress" id="progress" aria-hidden="true"></div>
 
   <nav class="nav" id="nav">
     <a class="nav-brand" href="#top" aria-label="Barefootinc Thailand"><img class="lg-dark" src="images/logo-barefootinc.png" alt="barefootinc.th" width="520" height="118" /><img class="lg-light" src="images/logo-barefootinc-light.png" alt="" aria-hidden="true" width="520" height="118" /></a>
     <div class="nav-links">
-      <a href="#why" data-i18n="nav.why">Why barefoot?</a>
       <a href="#vff">Vibram FiveFingers</a>
       <a href="#vivo">Vivobarefoot</a>
+      <a href="#why" data-i18n="nav.why">Why barefoot?</a>
       <a href="#booth" data-i18n="nav.booth">At the booth</a>
       <a href="#faq">FAQ</a>
     </div>
     <div class="nav-right">
       <div class="lang" role="group" aria-label="Language">
-        <button type="button" data-lang="en" aria-pressed="true"><span>EN</span></button>
-        <button type="button" data-lang="th" aria-pressed="false"><span>ไทย</span></button>
+        <button type="button" data-lang="th" aria-pressed="true"><span>ไทย</span></button>
+        <button type="button" data-lang="en" aria-pressed="false"><span>EN</span></button>
       </div>
       <a class="pill" href="#access" data-magnet><span class="dot"></span><span data-i18n="nav.access">Getting there</span></a>
     </div>
@@ -626,7 +629,7 @@
         <span class="mask"><span data-reveal="line" style="--d:620" data-i18n="hero.l3"><span class="thin">G Floor</span></span></span>
       </h1>
       <div class="hero-tag">
-        <p data-reveal style="--d:860" data-i18n-html="hero.sub">Two barefootwear brands, one booth.<br />Try every model on your own feet.</p>
+        <p data-reveal style="--d:860" data-i18n-html="hero.sub"><b class="num">2</b> barefootwear brands in <b class="num">1</b> booth.<br />Try every model on your own feet.</p>
       </div>
     </div>
     </div>
@@ -635,67 +638,10 @@
       <div class="board-item"><span class="k" data-i18n="board.k1">Dates</span><span class="flap" data-flap="16 OCT – 01 NOV" aria-label="16 October to 1 November 2026"></span></div>
       <div class="board-item"><span class="k" data-i18n="board.k2">Time</span><span class="flap" data-flap="10:00 – 22:00" aria-label="10 am to 10 pm"></span></div>
       <div class="board-item"><span class="k" data-i18n="board.k3">Floor</span><span class="flap" data-flap="G FLOOR" aria-label="G Floor"></span></div>
-      <a class="scroll-cue" href="#why" data-i18n-html="hero.scroll"><span>Scroll</span><i></i></a>
+      <a class="scroll-cue" href="#vff" data-i18n-html="hero.scroll"><span>Scroll</span><i></i></a>
     </div>
   </header>
 
-
-  <section class="why" id="why">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <h2 data-reveal data-i18n="why.title">Why <span class="serif">barefoot?</span></h2>
-        </div>
-        <p data-reveal style="--d:120" data-i18n="why.note">Have you ever faced these issues?</p>
-      </div>
-      <div class="pains">
-        <div class="pain" data-tilt data-reveal><div class="pic"><svg viewBox="0 0 200 200" id="b1"><defs><radialGradient id="bg1" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#D7EEFA"/><stop offset="1" stop-color="#8FC6EA"/></radialGradient><radialGradient id="pain1" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F23D2E" stop-opacity=".95"/><stop offset=".55" stop-color="#F56A4F" stop-opacity=".55"/><stop offset="1" stop-color="#F56A4F" stop-opacity="0"/></radialGradient><clipPath id="c1"><circle cx="100" cy="100" r="98"/></clipPath></defs><circle cx="100" cy="100" r="98" fill="url(#bg1)"/><g fill="#fff" opacity=".8"><circle cx="34" cy="64" r="3"/><circle cx="166" cy="52" r="2.2"/><circle cx="158" cy="156" r="2.6"/><circle cx="40" cy="150" r="2"/></g><g clip-path="url(#c1)"><g stroke="#C9865B" stroke-width="3" stroke-linejoin="round" fill="#F6CBA6"><path d="M74 206c-16 0-26-14-24-34 2-20 10-36 10-54 0-10-8-18-8-30 0-14 10-26 24-28l56-4c14 0 24 10 24 24 0 12-6 22-6 34 0 20 8 40 6 60-2 20-12 32-28 32z"/><path transform="rotate(16 72 48)" d="M72 22c12 0 18 12 18 26s-6 26-18 26-18-12-18-26 6-26 18-26z"/><ellipse cx="110" cy="36" rx="9.5" ry="15"/><ellipse cx="129" cy="40" rx="8.5" ry="13"/><ellipse cx="145" cy="49" rx="7.5" ry="11"/><ellipse cx="158" cy="62" rx="6.5" ry="9"/></g><g fill="#FBE3CF" stroke="#D59A72" stroke-width="1.5"><ellipse cx="68" cy="34" rx="7" ry="8" transform="rotate(16 68 34)"/><ellipse cx="110" cy="27" rx="4.5" ry="5.5"/><ellipse cx="129" cy="32" rx="4" ry="5"/><ellipse cx="145" cy="42" rx="3.5" ry="4.2"/><ellipse cx="158" cy="56" rx="3" ry="3.5"/></g><circle cx="56" cy="92" r="24" fill="url(#pain1)"/></g><g stroke="#E33A2C" stroke-width="3" stroke-linecap="round"><path d="M24 76l8 6M20 92h10M24 108l8-6"/></g></svg></div><span class="pn">01</span><h3 data-i18n="why.i1">Bunions &amp; bent toes</h3><p data-i18n="why.p1">A big toe that leans inward, a bump at the joint, toes that overlap.</p></div>
-        <div class="pain" data-tilt data-reveal style="--d:100"><div class="pic"><svg viewBox="0 0 200 200" id="b2"><defs><radialGradient id="bg2" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#D7EEFA"/><stop offset="1" stop-color="#8FC6EA"/></radialGradient><clipPath id="c2"><circle cx="100" cy="100" r="98"/></clipPath><radialGradient id="pain2" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F23D2E" stop-opacity=".95"/><stop offset=".55" stop-color="#F56A4F" stop-opacity=".55"/><stop offset="1" stop-color="#F56A4F" stop-opacity="0"/></radialGradient></defs><circle cx="100" cy="100" r="98" fill="url(#bg2)"/><g clip-path="url(#c2)"><path d="M20 150h160" stroke="#6FA9D3" stroke-width="3" stroke-linecap="round"/><g stroke="#C9865B" stroke-width="3" stroke-linejoin="round" fill="#F6CBA6"><path d="M58 20h30l2 56c3 10 12 18 26 24 16 6 34 10 56 14 10 2 14 8 10 14-2 4-8 4-14 4H52c-10 0-16-6-18-16-3-18 2-36 10-50 6-10 10-22 14-46z"/></g><g fill="#FFFFFF" stroke="#9FB4C4" stroke-width="2" stroke-linejoin="round"><path d="M64 26h18l2 48c0 6-4 10-10 10s-10-4-10-10z"/><path d="M58 92c-10 4-18 14-18 26 0 10 6 16 14 16s12-6 12-14c0-10 2-20-8-28z"/><path d="M80 96c10 0 18 6 20 14 2 6-4 10-10 10s-14-4-16-10c-2-6 0-14 6-14z"/><path d="M100 112l40 4c6 1 8 6 6 10s-8 4-14 4l-32-2z"/><path d="M142 118l30 5c5 1 6 6 3 9s-8 2-13 1l-20-3z"/></g><circle cx="48" cy="130" r="26" fill="url(#pain2)"/></g><g stroke="#E33A2C" stroke-width="3" stroke-linecap="round"><path d="M22 116l8 5M18 130h10M22 144l8-5"/></g></svg></div><span class="pn">02</span><h3 data-i18n="why.i2">Heel pain &amp; flat feet</h3><p data-i18n="why.p2">Arches that feel flat and tired, heels that ache after a day of standing.</p></div>
-        <div class="pain" data-tilt data-reveal style="--d:200"><div class="pic"><svg viewBox="0 0 200 200" id="b3"><defs><radialGradient id="bg3" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#D7EEFA"/><stop offset="1" stop-color="#8FC6EA"/></radialGradient><radialGradient id="pain3" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F23D2E" stop-opacity=".95"/><stop offset=".55" stop-color="#F56A4F" stop-opacity=".55"/><stop offset="1" stop-color="#F56A4F" stop-opacity="0"/></radialGradient><clipPath id="c3"><circle cx="100" cy="100" r="98"/></clipPath></defs><circle cx="100" cy="100" r="98" fill="url(#bg3)"/><g clip-path="url(#c3)"><g stroke="#C9865B" stroke-width="3" stroke-linejoin="round" fill="#F6CBA6"><path d="M56 -4h54l26 84c6 12 6 24 2 34l-20 90H70l20-86c2-10 0-18-6-28z"/></g><g fill="#FFFFFF" stroke="#9FB4C4" stroke-width="2" stroke-linejoin="round"><path d="M74 -4h22l20 78c2 6-2 12-8 14-6 2-12-2-14-8z"/><path d="M110 126c4-6 12-6 14 0l-14 76H92l14-70c1-3 2-5 4-6z"/><ellipse cx="124" cy="104" rx="9" ry="12"/></g><circle cx="116" cy="104" r="32" fill="url(#pain3)"/></g><g fill="#F7B500" stroke="#E08A00" stroke-width="1.5" stroke-linejoin="round"><path d="M162 66l-10 18h8l-6 18 14-22h-8l8-14z"/><path d="M50 56l-8 16h7l-5 16 12-20h-7l7-12z"/><path d="M160 126l-8 14h6l-5 14 12-18h-7l6-10z"/></g><g stroke="#E33A2C" stroke-width="3" stroke-linecap="round"><path d="M62 96l8 4M60 108h9M62 120l8-4"/></g></svg></div><span class="pn">03</span><h3 data-i18n="why.i3">Knee pain &amp; weak ankles</h3><p data-i18n="why.p3">Heavy landings travel up the leg, and small balance corrections never happen.</p></div>
-        <div class="pain" data-tilt data-reveal style="--d:300"><div class="pic"><svg viewBox="0 0 200 200" id="b4"><defs><radialGradient id="bg4" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#D7EEFA"/><stop offset="1" stop-color="#8FC6EA"/></radialGradient><clipPath id="c4"><circle cx="100" cy="100" r="98"/></clipPath><radialGradient id="pain4" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F23D2E" stop-opacity=".95"/><stop offset=".55" stop-color="#F56A4F" stop-opacity=".55"/><stop offset="1" stop-color="#F56A4F" stop-opacity="0"/></radialGradient></defs><circle cx="100" cy="100" r="98" fill="url(#bg4)"/><g clip-path="url(#c4)"><g stroke="#C9865B" stroke-width="3" stroke-linejoin="round" fill="#F6CBA6"><path d="M84 0h32c0 12 0 22 6 26 16 6 34 10 44 26 8 12 10 26 8 40l-4 30c-2 14 2 28 2 42v46H28v-46c0-14 4-28 2-42l-4-30c-2-14 0-28 8-40 10-16 28-20 44-26 6-4 6-14 6-26z"/></g><g fill="#FFFFFF" stroke="#9FB4C4" stroke-width="2" stroke-linejoin="round"><rect x="92" y="34" width="16" height="12" rx="4"/><rect x="92" y="50" width="16" height="12" rx="4"/><rect x="92" y="66" width="16" height="12" rx="4"/><rect x="92" y="82" width="16" height="12" rx="4"/><rect x="92" y="98" width="16" height="12" rx="4"/><rect x="92" y="114" width="16" height="12" rx="4"/><rect x="92" y="130" width="16" height="12" rx="4"/><path d="M100 146c-16 0-30 8-34 20-2 6 2 12 8 12 8 0 14-8 26-8s18 8 26 8c6 0 10-6 8-12-4-12-18-20-34-20z"/></g><circle cx="100" cy="128" r="32" fill="url(#pain4)"/></g><g fill="#F7B500" stroke="#E08A00" stroke-width="1.5" stroke-linejoin="round"><path d="M64 108l-8 14h6l-5 14 12-18h-7l6-10z"/><path d="M142 108l-8 14h6l-5 14 12-18h-7l6-10z"/><path d="M70 150l-6 10h5l-4 10 10-14h-6l5-7z"/><path d="M134 150l-6 10h5l-4 10 10-14h-6l5-7z"/></g></svg></div><span class="pn">04</span><h3 data-i18n="why.i4">Back pain</h3><p data-i18n="why.p4">The hips and lower back spend the whole day quietly compensating.</p></div>
-      </div>
-
-      <div class="benefits" data-reveal>
-        <div class="ben-figure">
-          <picture><source type="image/webp" srcset="images/why/benefits-bg-5.webp" /><img src="images/why/benefits-bg-5.jpg" alt="Bare feet standing on grass" width="1210" height="820" loading="lazy" decoding="async" /></picture>
-          <div class="bt bt-head">
-            <span class="eyebrow" data-i18n="why.ben.eyebrow">Your solution is here</span>
-            <h3 data-i18n="why.ben.title">Barefoot <span class="hl">benefits</span></h3>
-            <p class="sub" data-i18n="why.ben.sub">A natural answer to modern aches, through barefoot movement.</p>
-          </div>
-          <div class="bt bt-top"><h4 data-i18n="why.ben.h1">Development of the soles and the feet overall</h4><p data-i18n-html="why.ben.d1">Build core <b>foot strength</b> to naturally align your <b>body posture</b>.</p></div>
-          <div class="bt bt-left"><h4 data-i18n="why.ben.h2">Relation to health problems</h4><p data-i18n-html="why.ben.d2">Boost <b>blood circulation</b> to ease tension from conditions such as flat feet, bunions and more.</p></div>
-          <div class="bt bt-right"><h4 data-i18n="why.ben.h3">Relation to injury</h4><p data-i18n-html="why.ben.d3">Activate <b>sensory feedback</b> for faster reflexes and better foot landing.<br />This promotes <b>injury prevention</b> by optimizing impact mechanics, allowing muscles to better absorb the landing force.</p></div>
-        </div>
-      </div>
-
-      <div class="vs" data-reveal>
-        <h3 data-i18n="why.vs.title">Normal shoes <span class="serif">vs</span> barefoot theory</h3>
-        <div class="vs-cols">
-          <div class="vs-col ordinary">
-            <div class="vs-head" data-i18n="why.vs.a">Normal shoes</div>
-            <ul>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o1"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.o1">Posture heel drop</span><span class="vd" data-i18n="why.o1d">Shifts gravity forward, causing back and shoulder tension.</span></span></li>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o2"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.o2">Toe freedom<br />constricted toes</span><span class="vd" data-i18n="why.o2d">Narrow toe box squeezes toes together.</span></span></li>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o3"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.o3">Sensory thick soles</span><span class="vd" data-i18n="why.o3d">Block ground feedback, slowing balance reflexes.</span></span></li>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o4"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.o4">Impact heel strike</span><span class="vd" data-i18n="why.o4d">Sends harsh impact directly into joints.</span></span></li>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o5"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.o5">Rehab like a “splint”</span><span class="vd" data-i18n="why.o5d">Restricts movement and weakens foot muscles.</span></span></li>
-            </ul>
-          </div>
-          <div class="vs-col barefoot">
-            <div class="vs-head" data-i18n="why.vs.b">Barefoot theory</div>
-            <ul>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b1"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.b1">Posture barefoot</span><span class="vd" data-i18n="why.b1d">Naturally aligns spine, hips and shoulders.</span></span></li>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b2"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.b2">Toe freedom<br />natural splay</span><span class="vd" data-i18n="why.b2d">Free to spread and move independently.</span></span></li>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b3"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.b3">Sensory direct contact</span><span class="vd" data-i18n="why.b3d">Awakens nerves for instant balance and stability.</span></span></li>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b4"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.b4">Natural cushion</span><span class="vd" data-i18n="why.b4d">Acts as a natural shock absorber for softer landings.</span></span></li>
-              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b5"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.b5">Awakens muscles</span><span class="vd" data-i18n="why.b5d">Strengthens deep muscles, fixing root causes.</span></span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="brand brand-vff" id="vff">
     <div class="wrap brand-grid">
@@ -758,13 +704,13 @@
       <div>
         <img class="brand-logo" src="images/logo-vivo-portrait-white.png" alt="Vivobarefoot" width="1000" height="668" data-reveal />
         <h2 data-reveal style="--d:80">Vivo<br />barefoot</h2>
-        <div class="sub" data-reveal style="--d:160" data-i18n="vivo.sub">Wide, thin and flexible – footwear that still looks like a sneaker.</div>
-        <p class="desc" data-reveal style="--d:220" data-i18n="vivo.desc">The same barefoot thinking in a familiar shape. A foot-shaped toe box lets your toes spread out, the sole is thin, flexible and puncture-resistant, and there is no thick foam or raised heel in the way.</p>
+        <div class="sub" data-reveal style="--d:160" data-i18n="vivo.sub">Wide. Thin. Flexible. Shoes shaped like feet.</div>
+        <p class="desc" data-reveal style="--d:220" data-i18n="vivo.desc">Vivobarefoot is a British footwear brand on a mission to reconnect people with nature, one step at a time. Every pair follows three rules: wide, so your toes can spread; thin, so you feel the ground; flexible, so your feet can move the way they were designed to. A certified B Corp, Vivobarefoot builds its shoes with natural and recycled materials, in styles that go from the city to the trail.</p>
         <div class="feats">
-          <div class="feat" data-reveal style="--d:280"><span class="i">01</span><span data-i18n="vivo.f1">Wide, foot-shaped toe box</span></div>
-          <div class="feat" data-reveal style="--d:340"><span class="i">02</span><span data-i18n="vivo.f2">Thin, flexible sole</span></div>
-          <div class="feat" data-reveal style="--d:400"><span class="i">03</span><span data-i18n="vivo.f3">Flat from heel to toe</span></div>
-          <div class="feat" data-reveal style="--d:460"><span class="i">04</span><span data-i18n="vivo.f4">Everyday wear and training</span></div>
+          <div class="feat" data-reveal style="--d:280"><span class="i">01</span><span data-i18n="vivo.f1">Wide, thin and flexible</span></div>
+          <div class="feat" data-reveal style="--d:340"><span class="i">02</span><span data-i18n="vivo.f2">Foot-shaped, zero drop</span></div>
+          <div class="feat" data-reveal style="--d:400"><span class="i">03</span><span data-i18n="vivo.f3">Natural and recycled materials</span></div>
+          <div class="feat" data-reveal style="--d:460"><span class="i">04</span><span data-i18n="vivo.f4">City, training and trail</span></div>
         </div>
         <div class="sale-stack" data-reveal style="--d:520">
           <span class="sale-tag" data-i18n="vivo.sale">All items 10–20% off</span>
@@ -794,6 +740,63 @@
         </div>
         <p class="more" data-reveal data-i18n="models.more">More models available at our booth</p>
       </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" id="why">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2 data-reveal data-i18n="why.title">Why <span class="serif">barefoot?</span></h2>
+        </div>
+        <p data-reveal style="--d:120" data-i18n="why.note">Have you ever faced these issues?</p>
+      </div>
+      <div class="pains">
+        <div class="pain" data-tilt data-reveal><div class="pic"><svg viewBox="0 0 200 200" id="b1"><defs><radialGradient id="bg1" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#D7EEFA"/><stop offset="1" stop-color="#8FC6EA"/></radialGradient><radialGradient id="pain1" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F23D2E" stop-opacity=".95"/><stop offset=".55" stop-color="#F56A4F" stop-opacity=".55"/><stop offset="1" stop-color="#F56A4F" stop-opacity="0"/></radialGradient><clipPath id="c1"><circle cx="100" cy="100" r="98"/></clipPath></defs><circle cx="100" cy="100" r="98" fill="url(#bg1)"/><g fill="#fff" opacity=".8"><circle cx="34" cy="64" r="3"/><circle cx="166" cy="52" r="2.2"/><circle cx="158" cy="156" r="2.6"/><circle cx="40" cy="150" r="2"/></g><g clip-path="url(#c1)"><g stroke="#C9865B" stroke-width="3" stroke-linejoin="round" fill="#F6CBA6"><path d="M74 206c-16 0-26-14-24-34 2-20 10-36 10-54 0-10-8-18-8-30 0-14 10-26 24-28l56-4c14 0 24 10 24 24 0 12-6 22-6 34 0 20 8 40 6 60-2 20-12 32-28 32z"/><path transform="rotate(16 72 48)" d="M72 22c12 0 18 12 18 26s-6 26-18 26-18-12-18-26 6-26 18-26z"/><ellipse cx="110" cy="36" rx="9.5" ry="15"/><ellipse cx="129" cy="40" rx="8.5" ry="13"/><ellipse cx="145" cy="49" rx="7.5" ry="11"/><ellipse cx="158" cy="62" rx="6.5" ry="9"/></g><g fill="#FBE3CF" stroke="#D59A72" stroke-width="1.5"><ellipse cx="68" cy="34" rx="7" ry="8" transform="rotate(16 68 34)"/><ellipse cx="110" cy="27" rx="4.5" ry="5.5"/><ellipse cx="129" cy="32" rx="4" ry="5"/><ellipse cx="145" cy="42" rx="3.5" ry="4.2"/><ellipse cx="158" cy="56" rx="3" ry="3.5"/></g><circle cx="56" cy="92" r="24" fill="url(#pain1)"/></g><g stroke="#E33A2C" stroke-width="3" stroke-linecap="round"><path d="M24 76l8 6M20 92h10M24 108l8-6"/></g></svg></div><span class="pn">01</span><h3 data-i18n="why.i1">Bunions &amp; bent toes</h3><p data-i18n="why.p1">A big toe that leans inward, a bump at the joint, toes that overlap.</p></div>
+        <div class="pain" data-tilt data-reveal style="--d:100"><div class="pic"><svg viewBox="0 0 200 200" id="b2"><defs><radialGradient id="bg2" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#D7EEFA"/><stop offset="1" stop-color="#8FC6EA"/></radialGradient><clipPath id="c2"><circle cx="100" cy="100" r="98"/></clipPath><radialGradient id="pain2" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F23D2E" stop-opacity=".95"/><stop offset=".55" stop-color="#F56A4F" stop-opacity=".55"/><stop offset="1" stop-color="#F56A4F" stop-opacity="0"/></radialGradient></defs><circle cx="100" cy="100" r="98" fill="url(#bg2)"/><g clip-path="url(#c2)"><path d="M20 150h160" stroke="#6FA9D3" stroke-width="3" stroke-linecap="round"/><g stroke="#C9865B" stroke-width="3" stroke-linejoin="round" fill="#F6CBA6"><path d="M58 20h30l2 56c3 10 12 18 26 24 16 6 34 10 56 14 10 2 14 8 10 14-2 4-8 4-14 4H52c-10 0-16-6-18-16-3-18 2-36 10-50 6-10 10-22 14-46z"/></g><g fill="#FFFFFF" stroke="#9FB4C4" stroke-width="2" stroke-linejoin="round"><path d="M64 26h18l2 48c0 6-4 10-10 10s-10-4-10-10z"/><path d="M58 92c-10 4-18 14-18 26 0 10 6 16 14 16s12-6 12-14c0-10 2-20-8-28z"/><path d="M80 96c10 0 18 6 20 14 2 6-4 10-10 10s-14-4-16-10c-2-6 0-14 6-14z"/><path d="M100 112l40 4c6 1 8 6 6 10s-8 4-14 4l-32-2z"/><path d="M142 118l30 5c5 1 6 6 3 9s-8 2-13 1l-20-3z"/></g><circle cx="48" cy="130" r="26" fill="url(#pain2)"/></g><g stroke="#E33A2C" stroke-width="3" stroke-linecap="round"><path d="M22 116l8 5M18 130h10M22 144l8-5"/></g></svg></div><span class="pn">02</span><h3 data-i18n="why.i2">Heel pain &amp; flat feet</h3><p data-i18n="why.p2">Arches that feel flat and tired, heels that ache after a day of standing.</p></div>
+        <div class="pain" data-tilt data-reveal style="--d:200"><div class="pic"><svg viewBox="0 0 200 200" id="b3"><defs><radialGradient id="bg3" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#D7EEFA"/><stop offset="1" stop-color="#8FC6EA"/></radialGradient><radialGradient id="pain3" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F23D2E" stop-opacity=".95"/><stop offset=".55" stop-color="#F56A4F" stop-opacity=".55"/><stop offset="1" stop-color="#F56A4F" stop-opacity="0"/></radialGradient><clipPath id="c3"><circle cx="100" cy="100" r="98"/></clipPath></defs><circle cx="100" cy="100" r="98" fill="url(#bg3)"/><g clip-path="url(#c3)"><g stroke="#C9865B" stroke-width="3" stroke-linejoin="round" fill="#F6CBA6"><path d="M56 -4h54l26 84c6 12 6 24 2 34l-20 90H70l20-86c2-10 0-18-6-28z"/></g><g fill="#FFFFFF" stroke="#9FB4C4" stroke-width="2" stroke-linejoin="round"><path d="M74 -4h22l20 78c2 6-2 12-8 14-6 2-12-2-14-8z"/><path d="M110 126c4-6 12-6 14 0l-14 76H92l14-70c1-3 2-5 4-6z"/><ellipse cx="124" cy="104" rx="9" ry="12"/></g><circle cx="116" cy="104" r="32" fill="url(#pain3)"/></g><g fill="#F7B500" stroke="#E08A00" stroke-width="1.5" stroke-linejoin="round"><path d="M162 66l-10 18h8l-6 18 14-22h-8l8-14z"/><path d="M50 56l-8 16h7l-5 16 12-20h-7l7-12z"/><path d="M160 126l-8 14h6l-5 14 12-18h-7l6-10z"/></g><g stroke="#E33A2C" stroke-width="3" stroke-linecap="round"><path d="M62 96l8 4M60 108h9M62 120l8-4"/></g></svg></div><span class="pn">03</span><h3 data-i18n="why.i3">Knee pain &amp; weak ankles</h3><p data-i18n="why.p3">Heavy landings travel up the leg, and small balance corrections never happen.</p></div>
+        <div class="pain" data-tilt data-reveal style="--d:300"><div class="pic"><svg viewBox="0 0 200 200" id="b4"><defs><radialGradient id="bg4" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#D7EEFA"/><stop offset="1" stop-color="#8FC6EA"/></radialGradient><clipPath id="c4"><circle cx="100" cy="100" r="98"/></clipPath><radialGradient id="pain4" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F23D2E" stop-opacity=".95"/><stop offset=".55" stop-color="#F56A4F" stop-opacity=".55"/><stop offset="1" stop-color="#F56A4F" stop-opacity="0"/></radialGradient></defs><circle cx="100" cy="100" r="98" fill="url(#bg4)"/><g clip-path="url(#c4)"><g stroke="#C9865B" stroke-width="3" stroke-linejoin="round" fill="#F6CBA6"><path d="M84 0h32c0 12 0 22 6 26 16 6 34 10 44 26 8 12 10 26 8 40l-4 30c-2 14 2 28 2 42v46H28v-46c0-14 4-28 2-42l-4-30c-2-14 0-28 8-40 10-16 28-20 44-26 6-4 6-14 6-26z"/></g><g fill="#FFFFFF" stroke="#9FB4C4" stroke-width="2" stroke-linejoin="round"><rect x="92" y="34" width="16" height="12" rx="4"/><rect x="92" y="50" width="16" height="12" rx="4"/><rect x="92" y="66" width="16" height="12" rx="4"/><rect x="92" y="82" width="16" height="12" rx="4"/><rect x="92" y="98" width="16" height="12" rx="4"/><rect x="92" y="114" width="16" height="12" rx="4"/><rect x="92" y="130" width="16" height="12" rx="4"/><path d="M100 146c-16 0-30 8-34 20-2 6 2 12 8 12 8 0 14-8 26-8s18 8 26 8c6 0 10-6 8-12-4-12-18-20-34-20z"/></g><circle cx="100" cy="128" r="32" fill="url(#pain4)"/></g><g fill="#F7B500" stroke="#E08A00" stroke-width="1.5" stroke-linejoin="round"><path d="M64 108l-8 14h6l-5 14 12-18h-7l6-10z"/><path d="M142 108l-8 14h6l-5 14 12-18h-7l6-10z"/><path d="M70 150l-6 10h5l-4 10 10-14h-6l5-7z"/><path d="M134 150l-6 10h5l-4 10 10-14h-6l5-7z"/></g></svg></div><span class="pn">04</span><h3 data-i18n="why.i4">Back pain</h3><p data-i18n="why.p4">The hips and lower back spend the whole day quietly compensating.</p></div>
+      </div>
+
+      <div class="benefits" data-reveal>
+        <div class="ben-figure">
+          <picture><source type="image/webp" srcset="images/why/benefits-bg-5.webp" /><img src="images/why/benefits-bg-5.jpg" alt="Bare feet standing on grass" width="1210" height="820" loading="lazy" decoding="async" /></picture>
+          <div class="bt bt-head">
+            <span class="eyebrow" data-i18n="why.ben.eyebrow">Your solution is here</span>
+            <h3 data-i18n="why.ben.title">Barefoot <span class="hl">benefits</span></h3>
+            <p class="sub" data-i18n="why.ben.sub">A natural answer to modern aches, through barefoot movement.</p>
+          </div>
+          <div class="bt bt-top"><h4 data-i18n="why.ben.h1">Development of the soles and the feet overall</h4><p data-i18n-html="why.ben.d1">Build core <b>foot strength</b> to naturally align your <b>body posture</b>.</p></div>
+          <div class="bt bt-left"><h4 data-i18n="why.ben.h2">Relation to health problems</h4><p data-i18n-html="why.ben.d2">Boost <b>blood circulation</b> to ease tension from conditions such as flat feet, bunions and more.</p></div>
+          <div class="bt bt-right"><h4 data-i18n="why.ben.h3">Relation to injury</h4><p data-i18n-html="why.ben.d3">Activate <b>sensory feedback</b> for faster reflexes and better foot landing.<br />This promotes <b>injury prevention</b> by optimizing impact mechanics, allowing muscles to better absorb the landing force.</p></div>
+        </div>
+      </div>
+
+      <div class="vs" data-reveal>
+        <h3 data-i18n="why.vs.title">Normal shoes <span class="serif">vs</span> barefoot theory</h3>
+        <div class="vs-cols">
+          <div class="vs-col ordinary">
+            <div class="vs-head" data-i18n="why.vs.a">Normal shoes</div>
+            <ul>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o1"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.o1">Posture heel drop</span><span class="vd" data-i18n="why.o1d">Shifts gravity forward, causing back and shoulder tension.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o2"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.o2">Toe freedom<br />constricted toes</span><span class="vd" data-i18n="why.o2d">Narrow toe box squeezes toes together.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o3"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.o3">Sensory thick soles</span><span class="vd" data-i18n="why.o3d">Block ground feedback, slowing balance reflexes.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o4"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.o4">Impact heel strike</span><span class="vd" data-i18n="why.o4d">Sends harsh impact directly into joints.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-o5"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.o5">Rehab like a “splint”</span><span class="vd" data-i18n="why.o5d">Restricts movement and weakens foot muscles.</span></span></li>
+            </ul>
+          </div>
+          <div class="vs-col barefoot">
+            <div class="vs-head" data-i18n="why.vs.b">Barefoot theory</div>
+            <ul>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b1"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.b1">Posture barefoot</span><span class="vd" data-i18n="why.b1d">Naturally aligns spine, hips and shoulders.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b2"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.b2">Toe freedom<br />natural splay</span><span class="vd" data-i18n="why.b2d">Free to spread and move independently.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b3"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.b3">Sensory direct contact</span><span class="vd" data-i18n="why.b3d">Awakens nerves for instant balance and stability.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b4"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.b4">Natural cushion</span><span class="vd" data-i18n="why.b4d">Acts as a natural shock absorber for softer landings.</span></span></li>
+              <li><span class="vi"><svg aria-hidden="true"><use href="#ic-b5"/></svg></span><span class="vt"><span class="vv" data-i18n-html="why.b5">Awakens muscles</span><span class="vd" data-i18n="why.b5d">Strengthens deep muscles, fixing root causes.</span></span></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -841,6 +844,7 @@
         <p data-reveal style="--d:160" data-i18n="faq.note">Anything else, ask the staff at the booth or message us on LINE.</p>
       </div>
       <div class="faq-list" data-reveal>
+        <details><summary><span data-i18n="faq.q1">How do I pick the right size?</span><span class="pm" aria-hidden="true"></span></summary><div class="fa"><p data-i18n="faq.a1">Barefoot sizing is different from your usual sneaker size, and the two brands fit differently. The best way is to come to the booth and try the shoes on. Our staff will measure your feet and recommend the model and size that suit you best.</p></div></details>
         <details><summary><span data-i18n="faq.q2">Do I need five-toe socks for FiveFingers?</span><span class="pm" aria-hidden="true"></span></summary><div class="fa"><p data-i18n="faq.a2">You can wear FiveFingers without socks. Many people prefer thin five-toe socks for comfort, sweat and longer days, and we sell them at the booth. Vivobarefoot works with any socks you already own.</p></div></details>
         <details><summary><span data-i18n="faq.q3">How do I wash them, and what about smell?</span><span class="pm" aria-hidden="true"></span></summary><div class="fa"><p data-i18n="faq.a3">Most models can be washed by hand or on a gentle cold cycle with mild detergent, then air-dried away from direct sun and heat. Letting them dry fully between wears is the main thing that keeps smell away. Ask the staff about leather models, which need a little more care.</p></div></details>
         <details><summary><span data-i18n="faq.q4">Can I run in them?</span><span class="pm" aria-hidden="true"></span></summary><div class="fa"><p data-i18n="faq.a4">Yes, both brands have running models, like the FiveFingers V-Run and the Vivobarefoot Primus Flow. The key is to walk in them first and add running gradually, with shorter and lighter steps than you are used to.</p></div></details>
@@ -874,8 +878,8 @@
         </div>
         <div>
           <div class="floorbox" data-reveal style="--d:200">
-            <button type="button" class="map-btn" data-lb="image" data-lb-src="images/floor-map-rama3-g-2.jpg" data-lb-alt="Terminal 21 Rama 3 G Floor plan with our booth marked">
-              <img src="images/floor-map-rama3-g-2.jpg" width="1672" height="941" loading="lazy" alt="Terminal 21 Rama 3 G Floor plan with our booth marked" />
+            <button type="button" class="map-btn" data-lb="image" data-lb-src="images/floor-map-rama3-g-3.jpg" data-lb-alt="Terminal 21 Rama 3 G Floor plan with our booth marked">
+              <img src="images/floor-map-rama3-g-3.jpg" width="1672" height="941" loading="lazy" alt="Terminal 21 Rama 3 G Floor plan with our booth marked" />
             </button>
             <span class="map-note"><span data-i18n="access.floornote">G Floor plan, booth marked. Tap to zoom</span><span data-i18n="access.floorgate">Gate 4 side, next to the escalator</span></span>
           </div>
@@ -977,6 +981,7 @@
 
 
         "faq.eyebrow": "Good to know", "faq.title": "Questions <span class=\"serif\">we hear a lot</span>", "faq.note": "Anything else, ask the staff at the booth or message us on LINE.",
+        "faq.q1": "How do I pick the right size?", "faq.a1": "Barefoot sizing is different from your usual sneaker size, and the two brands fit differently. The best way is to come to the booth and try the shoes on. Our staff will measure your feet and recommend the model and size that suit you best.",
         "faq.q2": "Do I need five-toe socks for FiveFingers?", "faq.a2": "You can wear FiveFingers without socks. Many people prefer thin five-toe socks for comfort, sweat and longer days, and we sell them at the booth. Vivobarefoot works with any socks you already own.",
         "faq.q3": "How do I wash them, and what about smell?", "faq.a3": "Most models can be washed by hand or on a gentle cold cycle with mild detergent, then air-dried away from direct sun and heat. Letting them dry fully between wears is the main thing that keeps smell away. Ask the staff about leather models, which need a little more care.",
         "faq.q4": "Can I run in them?", "faq.a4": "Yes, both brands have running models, like the FiveFingers V-Run and the Vivobarefoot Primus Flow. The key is to walk in them first and add running gradually, with shorter and lighter steps than you are used to.",
@@ -984,16 +989,16 @@
         "access.floornote": "G Floor plan, booth marked. Tap to zoom", "access.floorgate": "Gate 4 side, next to the escalator",
         "hero.edition": "Popup store · Bangkok",
         "hero.l2": "<span class=\"hl\">Rama 3</span>", "hero.l3": "<span class=\"thin\">G Floor</span>",
-        "hero.sub": "Two barefootwear brands, one booth.<br />Try every model on your own feet.",
+        "hero.sub": "<b class=\"num\">2</b> barefootwear brands in <b class=\"num\">1</b> booth.<br />Try every model on your own feet.",
         "hero.scroll": "<span>Scroll</span><i></i>",
         "board.k1": "Dates", "board.k2": "Time", "board.k3": "Floor",
         "vff.sub": "Move Freely. Feel Naturally. Perform Better.",
         "vff.desc": "Italian-designed minimalist footwear with five individual toe pockets for natural movement and freedom. Flexible soles deliver a barefoot-like feel, enhanced ground awareness and reliable grip. Designed for every lifestyle.",
         "vff.f1": "Gym and training", "vff.f2": "Trail and outdoors", "vff.f3": "Water and travel", "vff.f4": "Everyday wear",
         "vff.sale1": "Regular items 10% off", "vff.sale2": "Selected items 20–40% off", "vff.size": "Check your size",
-        "vivo.sub": "Wide, thin and flexible – footwear that still looks like a sneaker.",
-        "vivo.desc": "The same barefoot thinking in a familiar shape. A foot-shaped toe box lets your toes spread out, the sole is thin, flexible and puncture-resistant, and there is no thick foam or raised heel in the way.",
-        "vivo.f1": "Wide, foot-shaped toe box", "vivo.f2": "Thin, flexible sole", "vivo.f3": "Flat from heel to toe", "vivo.f4": "Everyday wear and training",
+        "vivo.sub": "Wide. Thin. Flexible. Shoes shaped like feet.",
+        "vivo.desc": "Vivobarefoot is a British footwear brand on a mission to reconnect people with nature, one step at a time. Every pair follows three rules: wide, so your toes can spread; thin, so you feel the ground; flexible, so your feet can move the way they were designed to. A certified B Corp, Vivobarefoot builds its shoes with natural and recycled materials, in styles that go from the city to the trail.",
+        "vivo.f1": "Wide, thin and flexible", "vivo.f2": "Foot-shaped, zero drop", "vivo.f3": "Natural and recycled materials", "vivo.f4": "City, training and trail",
         "vivo.sale": "All items 10–20% off", "vivo.size": "Check your size",
         "booth.eyebrow": "Three things to do", "booth.title": "At the <span class=\"serif\">booth</span>",
         "booth.note": "No appointment, no pressure. Come in your usual shoes and leave the rest to us.",
@@ -1057,6 +1062,7 @@
 
 
         "faq.eyebrow": "เรื่องน่ารู้", "faq.title": "คำถาม <span class=\"serif\">ที่ได้ยินบ่อย</span>", "faq.note": "มีคำถามอื่น ถามทีมงานที่บูธหรือทัก LINE หาเราได้เลย",
+        "faq.q1": "เลือกไซซ์อย่างไรให้พอดี", "faq.a1": "ไซซ์รองเท้าบาร์ฟุตต่างจากไซซ์สนีกเกอร์ที่คุณใส่ประจำ และสองแบรนด์ก็ฟิตต่างกัน วิธีที่ดีที่สุดคือมาลองสวมจริงที่บูธ ทีมงานจะวัดเท้าและแนะนำรุ่นและไซซ์ที่เหมาะกับคุณที่สุด",
         "faq.q2": "ต้องใส่ถุงเท้าห้านิ้วกับ FiveFingers ไหม", "faq.a2": "ใส่ FiveFingers โดยไม่ใส่ถุงเท้าก็ได้ หลายคนชอบถุงเท้าห้านิ้วบาง ๆ เพื่อความสบาย ซับเหงื่อ และใส่ได้นานขึ้น ซึ่งมีจำหน่ายที่บูธ ส่วน Vivobarefoot ใส่กับถุงเท้าทั่วไปที่คุณมีอยู่แล้วได้เลย",
         "faq.q3": "ซักอย่างไร และจัดการกลิ่นอย่างไร", "faq.a3": "รุ่นส่วนใหญ่ซักมือหรือซักเครื่องโหมดถนอมผ้าน้ำเย็นด้วยผงซักฟอกอ่อน ๆ ได้ แล้วผึ่งให้แห้งโดยเลี่ยงแดดจัดและความร้อน การปล่อยให้แห้งสนิทก่อนใส่ครั้งถัดไปคือวิธีหลักในการกันกลิ่น รุ่นหนังต้องดูแลเพิ่มเล็กน้อย สอบถามทีมงานได้",
         "faq.q4": "ใส่วิ่งได้ไหม", "faq.a4": "ได้ ทั้งสองแบรนด์มีรุ่นสำหรับวิ่ง เช่น FiveFingers V-Run และ Vivobarefoot Primus Flow หัวใจสำคัญคือเดินให้ชินก่อน แล้วค่อย ๆ เพิ่มการวิ่ง ด้วยก้าวที่สั้นและเบากว่าที่เคย",
@@ -1064,16 +1070,16 @@
         "access.floornote": "แผนผังชั้น G ทำเครื่องหมายตำแหน่งบูธไว้ แตะเพื่อซูม", "access.floorgate": "ฝั่ง Gate 4 ข้างบันไดเลื่อน",
         "hero.edition": "ป๊อปอัพสโตร์ · กรุงเทพฯ",
         "hero.l2": "<span class=\"hl\">พระราม 3</span>", "hero.l3": "<span class=\"thin\">ชั้น G</span>",
-        "hero.sub": "สองแบรนด์บาร์ฟุต บูธเดียว<br />ลองทุกรุ่นด้วยเท้าของคุณเอง",
+        "hero.sub": "<b class=\"num\">2</b> แบรนด์บาร์ฟุต ใน <b class=\"num\">1</b> บูธ<br />ลองทุกรุ่นด้วยเท้าของคุณเอง",
         "hero.scroll": "<span>เลื่อนลง</span><i></i>",
         "board.k1": "วันที่", "board.k2": "เวลา", "board.k3": "ชั้น",
         "vff.sub": "เคลื่อนไหวอย่างอิสระ รู้สึกอย่างเป็นธรรมชาติ ทำได้ดีกว่าเดิม",
         "vff.desc": "รองเท้ามินิมอลที่ออกแบบในอิตาลี มีช่องนิ้วเท้าแยกห้านิ้วเพื่อการเคลื่อนไหวที่เป็นธรรมชาติและอิสระ พื้นรองเท้ายืดหยุ่น ให้ความรู้สึกเหมือนเท้าเปล่า รับรู้พื้นได้ชัดขึ้น และยึดเกาะได้มั่นใจ ออกแบบมาเพื่อทุกไลฟ์สไตล์",
         "vff.f1": "ฟิตเนสและเทรนนิ่ง", "vff.f2": "เทรลและกิจกรรมกลางแจ้ง", "vff.f3": "ลุยน้ำและเดินทาง", "vff.f4": "ใส่ในชีวิตประจำวัน",
         "vff.sale1": "สินค้าปกติ ลด 10%", "vff.sale2": "สินค้าร่วมรายการ ลด 20–40%", "vff.size": "ดูไซซ์ของคุณ",
-        "vivo.sub": "กว้าง บาง ยืดหยุ่น ในรูปทรงที่ยังดูเป็นสนีกเกอร์",
-        "vivo.desc": "แนวคิดบาร์ฟุตแบบเดียวกัน แต่มาในรูปทรงที่คุ้นตา หน้าเท้ากว้างตามรูปเท้าจริงให้นิ้วเท้ากางได้เต็มที่ พื้นบาง ยืดหยุ่น และทนต่อของมีคม ไม่มีโฟมหนาหรือส้นยกสูงมาขวางการเคลื่อนไหว",
-        "vivo.f1": "หน้าเท้ากว้างตามรูปเท้า", "vivo.f2": "พื้นบางและยืดหยุ่น", "vivo.f3": "ส้นกับปลายเท้าอยู่ระดับเดียวกัน", "vivo.f4": "ใส่ประจำวันและออกกำลังกาย",
+        "vivo.sub": "กว้าง บาง ยืดหยุ่น รองเท้าที่มีรูปทรงเหมือนเท้า",
+        "vivo.desc": "Vivobarefoot คือแบรนด์รองเท้าจากอังกฤษ ที่ตั้งใจพาผู้คนกลับมาเชื่อมโยงกับธรรมชาติทีละก้าว รองเท้าทุกคู่ยึดหลัก 3 ข้อ กว้าง ให้นิ้วเท้ากางได้ บาง ให้รู้สึกถึงพื้น และยืดหยุ่น ให้เท้าเคลื่อนไหวได้ตามที่ธรรมชาติออกแบบมา เป็นบริษัทที่ได้รับการรับรอง B Corp และผลิตรองเท้าจากวัสดุธรรมชาติและวัสดุรีไซเคิล ในสไตล์ที่ใส่ได้ตั้งแต่ในเมืองจนถึงเส้นทางเดินป่า",
+        "vivo.f1": "กว้าง บาง ยืดหยุ่น", "vivo.f2": "รูปทรงตามเท้า ส้นเรียบ", "vivo.f3": "วัสดุธรรมชาติและรีไซเคิล", "vivo.f4": "ในเมือง เทรนนิ่ง และเทรล",
         "vivo.sale": "ทุกรายการ ลด 10–20%", "vivo.size": "ดูไซซ์ของคุณ",
         "booth.eyebrow": "สามสิ่งที่ทำได้", "booth.title": "ที่ <span class=\"serif\">บูธของเรา</span>",
         "booth.note": "ไม่ต้องนัด ไม่มีการกดดัน ใส่รองเท้าคู่เดิมมาได้เลย ที่เหลือให้เราจัดการ",
@@ -1094,7 +1100,7 @@
         "lb.hint": "แตะที่ภาพเพื่อซูม",
       }
     };
-    let LANG = "en";
+    let LANG = "th";
     const t = k => (I18N[LANG][k] !== undefined ? I18N[LANG][k] : I18N.en[k]);
     function setLang(lang) {
       LANG = lang;
@@ -1104,7 +1110,7 @@
       document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
     }
     document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
-    if ((navigator.language || "").toLowerCase().startsWith("th")) setLang("th");
+    setLang("th");
 
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;

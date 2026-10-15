@@ -21,10 +21,10 @@ Terminal 21 Asok 版（`barefootinc-t21-asok-event`）と同じ構成で、会�
 
 ## v3 で追加したもの（本番実装前）
 
-- 「Why barefoot?」（ヒーロー直後、明るい背景）: 4 つの悩み（インフォグラフィックを元に描き直したインライン SVG の丸いイラスト）→ 「Barefoot benefits」（元のインフォグラフィックを再現: 元画像の芝生から明るく均一に合成した芝生の上に、元画像の足だけを切り抜いて自然に合成した背景 `images/why/benefits-bg-5.jpg` に、見出しと 3 項目を HTML テキストで重ねる。スマホは写真の下にテキストを縦積み）→ 「Normal shoes vs Barefoot theory」（元画像どおりのグレー / 黄色の 2 列、破線区切り、元画像のアイコンを忠実に描き直したインライン SVG アイコン（`<body>` 直後のスプライト））。比較表の行には元画像のアイコンを忠実に描き直したインライン SVG アイコン（`<body>` 直後のスプライト）
+- 「Why barefoot?」（Vivobarefoot の紹介の後、明るい背景）: 4 つの悩み（インフォグラフィックを元に描き直したインライン SVG の丸いイラスト）→ 「Barefoot benefits」（元のインフォグラフィックを再現: 元画像の芝生から明るく均一に合成した芝生の上に、元画像の足だけを切り抜いて自然に合成した背景 `images/why/benefits-bg-5.jpg` に、見出しと 3 項目を HTML テキストで重ねる。スマホは写真の下にテキストを縦積み）→ 「Normal shoes vs Barefoot theory」（元画像どおりのグレー / 黄色の 2 列、破線区切り、元画像のアイコンを忠実に描き直したインライン SVG アイコン（`<body>` 直後のスプライト））。比較表の行には元画像のアイコンを忠実に描き直したインライン SVG アイコン（`<body>` 直後のスプライト）
 - ブランド紹介の下にモデルカード各 4 つ（VFF: V-Run / V-Soul / KSO EVO / Scramkey、Vivo: Primus Lite IV / Motus Strength II / Gobi III Sneaker Leather / Primus Flow）。通常価格とセール価格を表示（KSO EVO は *Selected color only）。写真は `images/models/`
 - 「At the booth」の下に「Start slowly」の注意書き（少しずつ時間と日数を増やす・痛みがあれば休む、を 1 段落に）、FAQ（アコーディオン、FAQPage の JSON-LD 付き。返品・交換不可、支払いは現金・タイ銀行 QR・クレジットカード）
-- アクセスにフロアマップ（`images/floor-map-rama3-g-2.jpg`、G Floor の図面。ブース位置は Gate 4 側・エスカレーター横。タップで拡大）
+- アクセスにフロアマップ（`images/floor-map-rama3-g-3.jpg`、G Floor の図面。ブース位置は Gate 4 側・エスカレーター横。タップで拡大）
 - `[TODO]` プレースホルダーは残っていません
 
 ## v2 の構成
@@ -40,13 +40,13 @@ Terminal 21 Asok 版（`barefootinc-t21-asok-event`）と同じ構成で、会�
 ## 文言の編集
 
 表示する文言はすべて `index.html` 末尾の `I18N` オブジェクト（`en` / `th`）にあります。
-HTML 側は同じキーの `data-i18n` 属性を持っています。タイ語環境のブラウザでは自動でタイ語になり、ナビの EN / ไทย で切り替えられます。
+HTML 側は同じキーの `data-i18n` 属性を持っています。デフォルトはタイ語で、ナビの ไทย / EN で英語に切り替えられます。
 
 会期・時間・会場を変えるときは `I18N` の `hero.*` / `strip.*` / `access.*` と、`<head>` の `<title>` / `description` / `og:*` を合わせて直してください。
 
 ## 地図
 
-Google Maps の埋め込み（API キー不要）と、G Floor のフロアマップ（`images/floor-map-rama3-g-2.jpg`、ライトボックスで拡大）を使っています。
+Google Maps の埋め込み（API キー不要）と、G Floor のフロアマップ（`images/floor-map-rama3-g-3.jpg`、ライトボックスで拡大）を使っています。
 図面を差し替えるときは、`vercel.json` で `/images/` を 1 日キャッシュしているため、必ず新しいファイル名にして `index.html` の参照も直してください。
 
 ## デプロイ
