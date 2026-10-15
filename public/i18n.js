@@ -52,7 +52,7 @@
       "tab.table": "在庫一覧",
       "tab.detail": "詳細",
       "tab.vivo": "Vivo 在庫", "vivo.title": "Vivo 在庫一覧", "vivo.onlyStock": "在庫ありのみ", "vivo.showAll": "未入力の拠点も表示",
-      "vivo.note": "Vivo の在庫は棚卸表から入力しています。入力済み: {done}。未入力: {pending}（棚卸表を送っていただければ追加します）。",
+      "vivo.note": "Vivo の在庫は棚卸表から入力しています。入力済み: {done}。未入力: {pending}。",
       "foot.adjust": "個別の在庫調整 {n} 件（{list}）を反映しています。",
       "foot.counts": "{s} は実地棚卸（{src}）の数で {n} 商品を更新しています（{b} 足 → {a} 足、展示品を含む）。",
       "recv.btn": "返品受領",

@@ -458,3 +458,8 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 .vivo-sheet td:first-child { min-width: 190px; }
 .vivo-sheet td:nth-child(2) { min-width: 120px; }
 .vivo-sheet thead tr.h1 th { top: calc(var(--title-h) + var(--row-h)); }
+
+/* 在庫一覧の VFF / Vivo 切り替え */
+.brand-switch { display: inline-flex; margin-right: 10px; border: 1px solid var(--line-strong, #ccc); border-radius: 999px; overflow: hidden; vertical-align: middle; }
+.brand-switch button { border: 0; background: transparent; color: var(--ink-2); font: inherit; font-size: 13px; font-weight: 600; padding: 3px 14px; cursor: pointer; }
+.brand-switch button.on { background: var(--accent); color: #fff; }

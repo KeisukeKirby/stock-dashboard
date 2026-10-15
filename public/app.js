@@ -59,7 +59,8 @@
   let view = ["#detail", "#vivo"].includes(location.hash) ? location.hash.slice(1) : "table";
   function showView(v, { scroll = false } = {}) {
     view = v;
-    document.querySelectorAll(".tab").forEach((tab) => tab.setAttribute("aria-selected", tab.dataset.view === v));
+    // Vivo は在庫一覧の中の切り替え (タブは「在庫一覧」のまま)
+    document.querySelectorAll(".tab").forEach((tab) => tab.setAttribute("aria-selected", tab.dataset.view === (v === "vivo" ? "table" : v)));
     $("view-table").hidden = v !== "table";
     $("view-detail").hidden = v !== "detail";
     $("view-vivo").hidden = v !== "vivo";
@@ -68,6 +69,7 @@
     if (scroll) $("view-table").scrollIntoView({ behavior: "smooth", block: "start" });
   }
   document.querySelectorAll(".tab").forEach((tab) => tab.addEventListener("click", () => showView(tab.dataset.view)));
+  document.querySelectorAll(".brand-switch button").forEach((b) => b.addEventListener("click", () => showView(b.dataset.view)));
 
   /* ---------- 表を画面幅に合わせる (スクロールなし) ---------- */
   function fitTable() {
