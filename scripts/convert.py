@@ -261,7 +261,7 @@ def apply_event_stock(items, store_names, path):
     return data, added
 
 
-def apply_counts(items, store_names, paths):
+def apply_counts(items, store_names, paths, seed_returns=None):
     """店舗の実地棚卸 (data/counts/*.json) で、その店舗の数量を上書きする。
     items: { 商品コード: { count, display } } → 数量 = count + display (展示品)。表にない商品は変えない。"""
     done = []
@@ -269,10 +269,13 @@ def apply_counts(items, store_names, paths):
     for path in paths:
         data = json.loads(Path(path).read_text(encoding="utf-8"))
         k = store_names.index(data["store"])
+        # addReturns: 返品輸送中 (取り込み済みの返品) は画面で店舗から引かれるので、その分を足して
+        # 表示上の在庫が棚卸の数になるようにする
+        add = (seed_returns or {}) if data.get("addReturns") else {}
         before = after = n = 0
         missing = []
         for code, v in data["items"].items():
-            q = int(v.get("count", 0)) + int(v.get("display", 0))
+            q = int(v.get("count", 0)) + int(v.get("display", 0)) + int(add.get(f"{code}@{data['store']}", 0))
             it = by_code.get(code)
             if not it:
                 if q:
@@ -399,7 +402,8 @@ def main(path, office_path=None, alloc_path=None, event_path=None, event_stock_p
         event_stock, event_stock_added = None, 0
         if event_stock_path:
             event_stock, event_stock_added = apply_event_stock(items, store_names, event_stock_path)
-        counts = apply_counts(items, store_names, sorted(str(x) for x in (ROOT / "data" / "counts").glob("*.json")))
+        seed_returns = json.loads(Path(returns_import_path).read_text(encoding="utf-8"))["returns"] if returns_import_path else {}
+        counts = apply_counts(items, store_names, sorted(str(x) for x in (ROOT / "data" / "counts").glob("*.json")), seed_returns)
         adjustments = apply_adjustments(items, store_names, ROOT / "data" / "adjustments.json")
         sales_rate = apply_sales_rate(items, store_names, sales_rate_path) if sales_rate_path else None
         qty = [sum(i["qty"][k] for i in items) for k in range(n)]
