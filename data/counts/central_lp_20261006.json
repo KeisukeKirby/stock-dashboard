@@ -1,0 +1,1937 @@
+{
+ "store": "Central LP",
+ "label": "10/6(Before Open)",
+ "source": "手書きの棚卸表・2026-10-06",
+ "addReturns": true,
+ "note": "数量 = 表に書かれた数。空欄・「—」・タイ語メモ（在庫なし）は 0。返品輸送中は棚卸時点で店にないため、表示上の在庫が棚卸の数になるよう調整。",
+ "items": {
+  "VFF0025(BK,U38)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0025(BK,U39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0025(BK,U40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0025(BK,U41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0025(BK,U42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0025(BK,U43)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0025(BK,U44)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0025(BK,U45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0025(BK,U46)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0025(BK,U47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0025(BK,U48)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0025(DL/BK,U40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0025(DL/BK,U41)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0025(DL/BK,U42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0025(DL/BK,U43)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0025(DL/BK,U44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0025(DL/BK,U45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0025(DL/BK,U46)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0025(DL/BK,U47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0026(BR/BK,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0026(BR/BK,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(BR/BK,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(BR/BK,M43)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(BR/BK,M44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(BR/BK,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(BR/BK,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0026(BR/BK,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0026(FU,W36)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(FU,W37)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(FU,W38)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(FU,W39)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(FU,W40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(FU,W41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(LI/GN,M40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(LI/GN,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(LI/GN,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(LI/GN,M43)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(LI/GN,M44)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0026(LI/GN,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(LI/GN,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0026(LI/GN,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0026(TT/BK,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0026(TT/BK,M41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0026(TT/BK,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(TT/BK,M43)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(TT/BK,M44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(TT/BK,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(TT/BK,M46)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(TT/BK,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0026(TT/BK,W36)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(TT/BK,W37)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(TT/BK,W38)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(TT/BK,W39)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(TT/BK,W40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0026(TT/BK,W41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0026(TT/BK,W42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0030(BK,M40)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0030(BK,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0030(BK,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0030(BK,M43)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0030(BK,M44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0030(BK,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0030(BK,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0030(BK,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0031(BK/LI,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0031(BK/LI,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(BK/LI,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(BK/LI,M43)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(BK/LI,M44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(BK/LI,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(BK/LI,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0031(BK/LI,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0031(IV/DL,M40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(IV/DL,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(IV/DL,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(IV/DL,M43)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(IV/DL,M44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(IV/DL,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(IV/DL,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0031(IV/DL,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0031(IV/DL,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0031(IV/DL,W37)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(IV/DL,W38)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(IV/DL,W39)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(IV/DL,W40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(IV/DL,W41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(IV/DL,W42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0031(TT/BK,M40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(TT/BK,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(TT/BK,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(TT/BK,M43)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(TT/BK,M44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(TT/BK,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(TT/BK,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0031(TT/BK,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0031(TT/BK,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0031(TT/BK,W37)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(TT/BK,W38)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(TT/BK,W39)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(TT/BK,W40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0031(TT/BK,W41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0031(TT/BK,W42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0032(BR/BK,M39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0032(BR/BK,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0032(BR/BK,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0032(BR/BK,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0032(BR/BK,M43)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0032(BR/BK,M44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0032(BR/BK,M45)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0032(BR/BK,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0032(BR/BK,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/BL,M39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/BL,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/BL,M41)": {
+   "count": 3,
+   "display": 0
+  },
+  "VFF0002(BK/BL,M42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/BL,M43)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0002(BK/BL,M44)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/BL,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(BK/BL,M46)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(BK/BL,M47)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(BK/BL,M48)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BR/IV/BK,M39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BR/IV/BK,M40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(BR/IV/BK,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(BR/IV/BK,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(BR/IV/BK,M43)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BR/IV/BK,M44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(BR/IV/BK,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(BR/IV/BK,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/LI/BK,M38)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/LI/BK,M39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/LI/BK,M40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(BK/LI/BK,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(BK/LI/BK,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(BK/LI/BK,M43)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0002(BK/LI/BK,M44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(BK/LI/BK,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(BK/LI/BK,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/LI/BK,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/YL,M39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/YL,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/YL,M41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/YL,M42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/YL,M43)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/YL,M44)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/YL,M45)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/YL,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/YL,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/YL,M48)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(F/IV/GN,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(F/IV/GN,M41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(F/IV/GN,M42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(F/IV/GN,M43)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(F/IV/GN,M44)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(F/IV/GN,M45)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(F/IV/GN,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(F/IV/GN,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(TT/BK,M39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(TT/BK,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(TT/BK,M41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(TT/BK,M42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(TT/BK,M43)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(TT/BK,M44)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(TT/BK,M45)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(TT/BK,M46)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(TT/BK,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(TT/BK,M48)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(TT/IV,M39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(TT/IV,M40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(TT/IV,M41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(TT/IV,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(TT/IV,M43)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0002(TT/IV,M44)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(TT/IV,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(TT/IV,M46)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(TT/IV,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/F,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(BK/F,W37)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(BK/F,W38)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(BK/F,W39)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(BK/F,W40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(BK/F,W41)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0002(DPK,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(DPK,W37)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(DPK,W38)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(DPK,W39)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(DPK,W40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(DPK,W41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0002(TT/IV,W36)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(TT/IV,W37)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0002(TT/IV,W38)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(TT/IV,W39)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0002(TT/IV,W40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0002(TT/IV,W41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0005(BK/BK,M39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0005(BK/BK,M40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0005(BK/BK,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0005(BK/BK,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0005(BK/BK,M43)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0005(BK/BK,M44)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0005(BK/BK,M45)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0005(BK/BK,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0005(BK/BK,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0005(BK/BK,M48)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0005(LIG/GY,M39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0005(LIG/GY,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0005(LIG/GY,M41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0005(LIG/GY,M42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0005(LIG/GY,M43)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0005(LIG/GY,M44)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0005(LIG/GY,M45)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0005(LIG/GY,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0005(LIG/GY,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0005(BK/BK,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0005(BK/BK,W37)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0005(BK/BK,W38)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0005(BK/BK,W39)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0005(BK/BK,W40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0005(BK/BK,W41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0005(BK/BK,W42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BB/BL,W35)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0008(BB/BL,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BB/BL,W37)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BB/BL,W38)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0008(BB/BL,W39)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0008(BB/BL,W40)": {
+   "count": 3,
+   "display": 0
+  },
+  "VFF0008(BB/BL,W41)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0008(BB/BL,W42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0008(BB/BL,W43)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BK,W35)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0008(BK,W36)": {
+   "count": 3,
+   "display": 0
+  },
+  "VFF0008(BK,W37)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0008(BK,W38)": {
+   "count": 3,
+   "display": 0
+  },
+  "VFF0008(BK,W39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BK,W40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0008(BK,W41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0008(BK,W42)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0008(BK,W43)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BK26,W35)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BK26,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BK26,W37)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BK26,W38)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BK26,W39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BK26,W40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BK26,W41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BK26,W42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BK26,W43)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BR,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BR,W37)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BR,W38)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BR,W39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BR,W40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(BR,W41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(F/GN,W35)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(F/GN,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(F/GN,W37)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(F/GN,W38)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(F/GN,W39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(F/GN,W40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(F/GN,W41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(FU,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(FU,W37)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(FU,W38)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(FU,W39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(FU,W40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(FU,W41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(FU,W42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(LI/GN,W36)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0008(LI/GN,W37)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0008(LI/GN,W38)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0008(LI/GN,W39)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0008(LI/GN,W40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0008(LI/GN,W41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0008(LI/GN,W42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(NU,W35)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(NU,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(NU,W37)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(NU,W38)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(NU,W39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(NU,W40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(NU,W41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(NU,W42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(PP,W36)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0008(PP,W37)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0008(PP,W38)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0008(PP,W39)": {
+   "count": 3,
+   "display": 0
+  },
+  "VFF0008(PP,W40)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0008(PP,W41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0008(SV,W35)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0008(SV,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(SV,W37)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(SV,W38)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(SV,W39)": {
+   "count": 7,
+   "display": 0
+  },
+  "VFF0008(SV,W40)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0008(SV,W41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0008(SV,W42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(BK,M39)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(BK,M40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(BK,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(BK,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(BK,M43)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0009(BK,M44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(BK,M45)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0009(BK,M46)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(BK,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(BK,M48)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(BK/BK,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(BK/BK,M41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(BK/BK,M42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(BK/BK,M43)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(BK/BK,M44)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(BK/BK,M45)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(BK/BK,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(BK/BK,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(DL/BK,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(DL/BK,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(DL/BK,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(DL/BK,M43)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(DL/BK,M44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(DL/BK,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(DL/BK,M46)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(DL/BK,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(F/GN,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(F/GN,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(F/GN,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(F/GN,M43)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(F/GN,M44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(F/GN,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(F/GN,M46)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(F/GN,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(BK,W35)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(BK,W36)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0009(BK,W37)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(BK,W38)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(BK,W39)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0009(BK,W40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(BK,W41)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0009(BK,W42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(DL/BK,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(DL/BK,W37)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(DL/BK,W38)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(DL/BK,W39)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(DL/BK,W40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(DL/BK,W41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0009(F/GN,W37)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(F/GN,W38)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(F/GN,W39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(F/GN,W40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0009(F/GN,W41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(BK/BK,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(BK/BK,M41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(BK/BK,M42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(BK/BK,M43)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(BK/BK,M44)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(BK/BK,M45)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(BK/BK,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(BK/BK,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(BK/BK,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(BK/BK,W37)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(BK/BK,W38)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(BK/BK,W39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(BK/BK,W40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(BK/BK,W41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(MIL/DGY,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(MIL/DGY,M41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(MIL/DGY,M42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(MIL/DGY,M43)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(MIL/DGY,M44)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(MIL/DGY,M45)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0017(MIL/DGY,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0021(IV/FU,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0021(IV/FU,W37)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0021(IV/FU,W38)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0021(IV/FU,W39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0021(IV/FU,W40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0021(IV/FU,W41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0021(IV/FU,W42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0021(TT/BK,M40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0021(TT/BK,M41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0021(TT/BK,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0021(TT/BK,M43)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0021(TT/BK,M44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0021(TT/BK,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0021(TT/BK,M46)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0021(TT/BK,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0022(BK,M38)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0022(BK,M39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0022(BK,M40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(BK,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(BK,M42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0022(BK,M43)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0022(BK,M44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(BK,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(BK,M46)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(BK,M47)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(BK,W36)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(BK,W37)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(BK,W38)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0022(BK,W39)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(BK,W40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(BK,W41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0022(IV/G,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0022(IV/G,M41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0022(IV/G,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(IV/G,M43)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(IV/G,M44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(IV/G,M45)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0022(IV/G,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0022(IV/G,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0022(IV/GN,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0022(IV/GN,W37)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0022(IV/GN,W38)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0022(IV/GN,W39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0022(IV/GN,W40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(IV/GN,W41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(IV/GN,W42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(MT/BK,M40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(MT/BK,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(MT/BK,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(MT/BK,M43)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0022(MT/BK,M44)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0022(MT/BK,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(MT/BK,M46)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0022(MT/BK,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(BK,M39)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0023(BK,M40)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0023(BK,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0023(BK,M42)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0023(BK,M43)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0023(BK,M44)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0023(BK,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0023(BK,M46)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0023(BK,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(BK,M48)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(BK,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(BK,W37)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(BK,W38)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(BK,W39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(BK,W40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(BK,W41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(DL,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(DL,M41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(DL,M42)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(DL,M43)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(DL,M44)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(DL,M45)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(DL,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(DL,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(DL,W36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(DL,W37)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(DL,W38)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(DL,W39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(DL,W40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(DL,W41)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(LGN/BK,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0023(LGN/BK,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0023(LGN/BK,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0023(LGN/BK,M43)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0023(LGN/BK,M44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0023(LGN/BK,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0023(LGN/BK,M46)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0023(LGN/BK,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0024(BK,M39)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0024(BK,M40)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0024(BK,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0024(BK,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0024(BK,M43)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0024(BK,M44)": {
+   "count": 2,
+   "display": 0
+  },
+  "VFF0024(BK,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0024(BK,M46)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0024(BK,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0024(BK,M48)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0024(DL,M40)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0024(DL,M41)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0024(DL,M42)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0024(DL,M43)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0024(DL,M44)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0024(DL,M45)": {
+   "count": 1,
+   "display": 0
+  },
+  "VFF0024(DL,M46)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0024(DL,M47)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0025(BK,U36)": {
+   "count": 0,
+   "display": 0
+  },
+  "VFF0025(BK,U37)": {
+   "count": 0,
+   "display": 0
+  }
+ }
+}
