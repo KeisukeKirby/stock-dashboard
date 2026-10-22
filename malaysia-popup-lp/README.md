@@ -22,20 +22,20 @@ malaysia-popup-lp/
 
 ## 使用している写真（Google Drive）
 
-添付画像に含まれるモデルのみ使用しています。
+添付のカテゴリー POP に含まれるモデルのみ、モデル着用（ライフスタイル）写真を使用しています。Facebook 公式ページはこの環境から取得できなかったため未使用です。
 
 | ファイル | 元データ（Drive） |
 | --- | --- |
-| `vrun-black-lime.jpg` | BAREFOOTINC THAILAND › V-RUN › V-Run_26M7004_Black Lime_Black › 26M7004_V-RUN_Black_Lime_Black_01_.jpg |
-| `vrun-total-black.jpg` / `vrun-pair-top.jpg` / `bg-vrun-detail.jpg` | V-RUN_26M7001_Total Black › V-RUN_Total Black 1.jpg、Marketing › V-Run › Total Black › V-RUN_26M7001_0929 / 0449.jpg |
-| `trailope-black.jpg` | TRAILOPE › TRAILLOPE_25M7501_Black › TRAILLOPE_Black_1.jpg |
-| `spidrwalk-total-black.jpg` | SPIDRWALK › SPIDRWALK_26M5001_Total Black › SPIDRWALK_Total Black 2.jpg |
-| `breezandal-black.jpg` | BREEZANDAL › BREEZANDAL_25M4301_Black › BREEZANDAL_25M4301_BLACK_01.jpg |
-| `breezandal-ivory-green.jpg` / `groundsplay-ls-total-black.jpg` / `hero-vrun.png` | VFF_PRODUCT_SHOPEE & LAZ › VFF_BreezandalL_Ivory_Green_W.jpg / VFF_GROUNDSPLAY LS_Total Black_M.jpg / VFF_V-RUN_Black_Lime_Black_.jpg（ロゴ・文字部分をトリミング） |
-| `groundsplay-ls-ivory-deep-lake.jpg` | 26W3202_Groundsplay_LS_Ivory-Deep Lake_01.jpg |
-| `vsoul-black.jpg` / `vsoul-brown.jpg` / `vsoul-baby-blue.jpg` | V-SOUL › V-SOUL_18W7201_Black / 26W7202_Brown / 26W7205_Baby Blue の `_01_` 画像 |
-| `logo-vff-white.png` / `logo-vff-color.png` | Latest VFF logo and Guideline › LOGO 4 colours › vff_logo_4col_horiz(_white).pdf |
+| `hero-runners.jpg` / `hero-runners-mobile.jpg` | VIBRAM › Marketing › VFF Global Q3 Assets › V-Run_September › 2nd part RUNNING › DSC06435.jpg |
+| `life-vrun.jpg` | 同 › DSC06851.jpg |
+| `life-trailope.jpg` / `bg-grass-feet.jpg` | VFF marketing items Apr 2026 › Carryover seasonal images + videos › 3. Running › 1. Trailope › 4P2A7599.jpg |
+| `life-spidrwalk.jpg` | VFF Global Q3 Assets › Spidrwalk_August › More assets › 4P2A4791.jpg |
+| `life-vsoul.jpg` | VFF Global Q3 Assets › V-Soul_July › 1 (1).jpg |
+| `life-groundsplay.jpg` / `about-model.jpg` | VFF Global Q3 Assets › Groundsplay LS_September › Ivory Deep Lake › 181025_VIBRAM_FIVEFINGHERS_00156.jpg / 00150.jpg |
+| `logo-vff-white.png` | Latest VFF logo and Guideline › LOGO 4 colours › vff_logo_4col_horiz_white.pdf |
 | `logo-barefoot-malaysia.png` | Barefootinc Malaysia › Design, Artwork › BFM logo › Logo › LOGO_BAREFOOT MALAYSIA.png |
+
+「Why Barefoot?」セクションの構成・文言は、支給された WHY BAREFOOT? インフォグラフィックをもとに HTML で再構成しています。
 
 ## 公開手順（Vercel）
 

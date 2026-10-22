@@ -64,14 +64,14 @@
     var ics = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
-      'PRODID:-//Barefoot Malaysia//Pop-Up//EN',
+      'PRODID:-//Barefoot Malaysia//Pop-Up Store//EN',
       'CALSCALE:GREGORIAN',
       'BEGIN:VEVENT',
       'UID:vff-popup-ativo-plaza-2026@barefoot-malaysia',
       'DTSTAMP:20261022T000000Z',
       'DTSTART;TZID=Asia/Kuala_Lumpur:20261113T120000',
       'DTEND;TZID=Asia/Kuala_Lumpur:20261115T200000',
-      'SUMMARY:Vibram FiveFingers Pop-Up Store (up to 30% off) - Barefoot Malaysia',
+      'SUMMARY:Barefoot Malaysia Pop-Up Store - Vibram FiveFingers (up to 30% off)',
       'LOCATION:Ativo Plaza\\, Damansara Avenue\\, Bandar Sri Damansara\\, Kuala Lumpur',
       'DESCRIPTION:Try on the full Vibram FiveFingers lineup and enjoy up to 30% off. 13-15 Nov 2026\\, 12 PM - 8 PM daily. Map: https://maps.app.goo.gl/J7KbaWQLKpgPjHMJ6',
       'URL:https://maps.app.goo.gl/J7KbaWQLKpgPjHMJ6',
@@ -82,7 +82,7 @@
   }
 
   // ---- Reveal on scroll ----
-  var targets = document.querySelectorAll('.fact, .product, .benefit, .step, .about-copy, .about-visual, .compare, .details-card, .map, .faq-item');
+  var targets = document.querySelectorAll('.checklist li, .life-card, .issues li, .benefit-item, .vs-col, .step, .about-copy, .about-visual, .details-card, .map, .faq-item');
   targets.forEach(function (el) { el.classList.add('reveal'); });
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
