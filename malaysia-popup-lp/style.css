@@ -494,7 +494,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .issues b { font-size: 17px; margin: 2px 0 6px; }
   .issues p { font-size: 12px; }
   /* Benefits band: photo as the full background, more room between the two title words */
-  .benefits-band { background: #0c0c0c url("img/bg-feet-grass-m2.jpg") center bottom/cover no-repeat; }
+  .benefits-band { background: #0c0c0c url("img/bg-feet-grass-m3.jpg") center bottom/cover no-repeat; }
   .benefits-band::before { background: linear-gradient(180deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .3) 40%, rgba(0, 0, 0, .42) 100%); }
   .benefits-inner h3 { line-height: 1.05; }
   .benefits-inner h3 em { display: inline-block; margin-top: 14px; }

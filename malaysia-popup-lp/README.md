@@ -37,7 +37,7 @@ malaysia-popup-lp/
 | `life-spidrwalk-s5.jpg` | VFF Global Q3 Assets › Spidrwalk_August › More assets › DSCF9475.jpg |
 | `life-vsoul-black.jpg` | 支給画像（V-Soul Black 着用写真） |
 | `life-groundsplay.jpg` | VFF Global Q3 Assets › Groundsplay LS_September › Ivory Deep Lake › 181025_VIBRAM_FIVEFINGHERS_00156.jpg |
-| `bg-feet-grass-m2.jpg` | スマホ版 Benefits 帯の背景。インフォグラフィックの芝生と右足を切り出し、左右反転して合成 |
+| `bg-feet-grass-m3.jpg` | スマホ版 Benefits 帯の背景。インフォグラフィックの芝生と右足を切り出し、左右反転して合成 |
 | `hero-m-f.jpg` | 支給画像（岩場の V-Trek 着用写真、スマホ版トップ左上） |
 | `hero-m-a.jpg` 〜 `hero-m-e.jpg` | `hero-a` 〜 `hero-e` と同じ元画像をスマホ用に縦長でトリミング |
 | `issue-1.png` 〜 `issue-4.png`、`vs-n1-c.png` 〜 `vs-n5-c.png`、`vs-b1-c.png` 〜 `vs-b5-c.png`、`bg-feet-grass-vignette.jpg` | 支給の WHY BAREFOOT? インフォグラフィックから切り出したアイコン・背景 |
