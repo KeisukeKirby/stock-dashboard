@@ -297,12 +297,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .benefits-band {
   position: relative; color: #fff; margin: clamp(40px, 6vw, 64px) auto;
   width: min(1180px, 100% - 40px); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
-  background: #0c0c0c url("img/bg-feet-grass-photo.jpg") center 42%/auto 132% no-repeat;
+  background: #0c0c0c url("img/bg-feet-grass-vignette.jpg") center center/cover no-repeat;
 }
 .benefits-band::before {
   content: ""; position: absolute; inset: 0;
   background:
-    linear-gradient(90deg, #0c0c0c 0%, #0c0c0c 9%, rgba(12, 12, 12, 0) 32%, rgba(12, 12, 12, 0) 68%, #0c0c0c 91%, #0c0c0c 100%),
     linear-gradient(180deg, rgba(0, 0, 0, .72) 0%, rgba(0, 0, 0, .3) 45%, rgba(0, 0, 0, .55) 100%);
 }
 .benefits-inner {
@@ -439,6 +438,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .h-e { grid-column: 2; grid-row: 3; aspect-ratio: 4 / 3; }
   .h-b, .h-c, .h-d, .h-e { transform: none; }
   .benefits-inner { grid-template-columns: 1fr; grid-template-rows: auto; min-height: 0; text-align: left; }
+  .benefits-band { background-size: auto 60%; background-position: center 20%; }
   .band-kicker, .benefits-inner h3, .band-sub { text-align: center; }
   .b-top, .b-left, .b-right { grid-column: 1; grid-row: auto; margin-top: 0; text-align: left; background: rgba(0, 0, 0, .55); padding: 16px; border-radius: 12px; }
   .issues { grid-template-columns: repeat(2, 1fr); }

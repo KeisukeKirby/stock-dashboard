@@ -37,7 +37,7 @@ malaysia-popup-lp/
 | `life-spidrwalk-s5.jpg` | VFF Global Q3 Assets › Spidrwalk_August › More assets › DSCF9475.jpg |
 | `life-vsoul-black.jpg` | 支給画像（V-Soul Black 着用写真） |
 | `life-groundsplay.jpg` | VFF Global Q3 Assets › Groundsplay LS_September › Ivory Deep Lake › 181025_VIBRAM_FIVEFINGHERS_00156.jpg |
-| `issue-1.png` 〜 `issue-4.png`、`vs-n1-c.png` 〜 `vs-n5-c.png`、`vs-b1-c.png` 〜 `vs-b5-c.png`、`bg-feet-grass-photo.jpg` | 支給の WHY BAREFOOT? インフォグラフィックから切り出したアイコン・背景 |
+| `issue-1.png` 〜 `issue-4.png`、`vs-n1-c.png` 〜 `vs-n5-c.png`、`vs-b1-c.png` 〜 `vs-b5-c.png`、`bg-feet-grass-vignette.jpg` | 支給の WHY BAREFOOT? インフォグラフィックから切り出したアイコン・背景 |
 | `logo-vff-white-v2.png` | Latest VFF logo and Guideline › LOGO 4 colours › vff_logo_4col_horiz_white.pdf |
 | `logo-barefootmy.png` | 支給の barefoot my ロゴ（PNG、透過） |
 
