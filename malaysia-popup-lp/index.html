@@ -43,13 +43,6 @@
 
 <!-- ===== Hero ===== -->
 <section class="hero">
-  <div class="mosaic" aria-hidden="true">
-    <div class="m-tile"><img src="img/hero-t3.jpg" alt="" width="720" height="1200"></div>
-    <div class="m-tile"><img src="img/hero-t1.jpg" alt="" width="720" height="1200" fetchpriority="high"></div>
-    <div class="m-tile"><img src="img/hero-t2.jpg" alt="" width="720" height="1200" fetchpriority="high"></div>
-    <div class="m-tile"><img src="img/hero-t4.jpg" alt="" width="720" height="1200"></div>
-    <div class="m-tile"><img src="img/hero-t5.jpg" alt="" width="720" height="1200"></div>
-  </div>
   <div class="hero-inner">
     <div class="hero-copy">
       <p class="eyebrow"><span class="dot"></span>Vibram FiveFingers Pop-Up Event @ Ativo Plaza</p>
@@ -72,6 +65,13 @@
           <div><b id="cdS">00</b><i>sec</i></div>
         </div>
       </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="h-tile h-a"><img src="img/hero-a.jpg" alt="" width="480" height="1140" fetchpriority="high"></div>
+      <div class="h-tile h-b"><img src="img/hero-b.jpg" alt="" width="600" height="800" fetchpriority="high"></div>
+      <div class="h-tile h-c"><img src="img/hero-c.jpg" alt="" width="600" height="800"></div>
+      <div class="h-tile h-d"><img src="img/hero-d.jpg" alt="" width="600" height="800"></div>
+      <div class="h-tile h-e"><img src="img/hero-e.jpg" alt="" width="600" height="800"></div>
     </div>
   </div>
 </section>
@@ -127,7 +127,6 @@
       </div>
       <div class="about-visual">
         <img src="img/about-model.jpg" alt="Runners wearing Vibram FiveFingers V-Run" loading="lazy" width="900" height="1125">
-        <div class="about-caption">V-Run</div>
       </div>
     </div>
   </div>
@@ -353,7 +352,7 @@
         </dl>
         <div class="details-actions">
           <a class="btn btn-dark" href="https://maps.app.goo.gl/J7KbaWQLKpgPjHMJ6" target="_blank" rel="noopener">Open in Google Maps</a>
-          <a class="btn btn-outline" href="#" id="icsBtn" download="barefoot-malaysia-popup-ativo-plaza.ics">Add to Calendar</a>
+          <button class="btn btn-outline btn-video" type="button" id="videoBtn"><span class="play-ico"></span>How to get to the booth</button>
         </div>
       </div>
       <div class="map">
@@ -380,6 +379,18 @@
 </section>
 
 </main>
+
+
+<!-- ===== Booth directions video ===== -->
+<dialog class="video-modal" id="videoModal" aria-label="How to get to the booth">
+  <div class="video-box">
+    <button class="video-close" type="button" id="videoClose" aria-label="Close video">&times;</button>
+    <video id="boothVideo" controls playsinline preload="metadata" poster="video/how-to-get-to-the-booth-poster.jpg" width="720" height="1280">
+      <source src="video/how-to-get-to-the-booth.mp4" type="video/mp4">
+    </video>
+    <p class="video-caption">A short walkthrough from the car park to our booth at B-3A-02, Block B.</p>
+  </div>
+</dialog>
 
 <footer class="footer">
   <div class="container footer-inner">

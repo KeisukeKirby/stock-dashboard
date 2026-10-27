@@ -9,14 +9,16 @@ Barefoot Malaysia が Ativo Plaza で開催する Vibram FiveFingers ポップ�
 malaysia-popup-lp/
   index.html   # ページ本体（Hero / Event Overview / About VFF / Lineup / Benefits / At the Booth / FAQ / Event Details / CTA / Footer）
   style.css    # スタイル（Vibram の黄 #ffd100 × 黒、見出しは Barlow Condensed）
-  main.js      # モバイルメニュー、開催までのカウントダウン、Add to Calendar (.ics)、スクロール時のフェードイン
+  main.js      # モバイルメニュー、開催までのカウントダウン、行き方動画モーダル、スクロール時のフェードイン
   img/         # 商品写真・ロゴ（Google Drive の素材を Web 用にリサイズ済み）
+  video/       # ブースへの行き方動画（支給の mp4 を 720p に再エンコード）とポスター画像
   vercel.json  # cleanUrls、画像のみ 1 週間キャッシュ
 ```
 
 ## 掲載内容の変更
 
-- **日時・会場・割引率**: `index.html` 内に直書きです。カウントダウンと .ics の日時は `main.js` 冒頭の `EVENT_START` / `EVENT_END` と `DTSTART` / `DTEND` も合わせて変更してください。
+- **日時・会場・割引率**: `index.html` 内に直書きです。カウントダウンの日時は `main.js` 冒頭の `EVENT_START` / `EVENT_END` も合わせて変更してください。
+- **ブースへの行き方動画**: Event Details の「How to get to the booth」ボタンで `video/how-to-get-to-the-booth.mp4` をモーダル再生します。差し替える場合は同名で上書きし、ポスターは `ffmpeg -ss 1 -i 動画 -frames:v 1 ポスター.jpg` で作り直してください。
 - **Google Maps**: 「Get Directions」系ボタンは `https://maps.app.goo.gl/J7KbaWQLKpgPjHMJ6`、地図の埋め込みは `index.html` の `<iframe>`（`maps?q=...&output=embed`）です。
 - **ラインナップ**: Lineup セクションの各 `.life-card`（用途名・説明・右下のモデル名）。
 
@@ -26,12 +28,12 @@ malaysia-popup-lp/
 
 | ファイル | 元データ |
 | --- | --- |
-| `hero-t1.jpg` 〜 `hero-t5.jpg` | 支給画像（Breezandal / V-Run / トレーニング / V-Soul / Trailope のモデル着用写真）を縦長にトリミング |
+| `hero-a.jpg` 〜 `hero-e.jpg` | 支給画像（V-Run / KSO / V-Soul / Trailope / Breezandal のモデル着用写真）をシューズ中心にトリミング |
 | `about-model.jpg` | VIBRAM › Marketing › VFF Global Q3 Assets › V-Run_September › 2nd part RUNNING › DSC06765.jpg |
-| `life-vrun.jpg` | 同上 › 2nd part RUNNING › DSC06031.jpg |
+| `life-vrun.jpg` | 同上 › 2nd part RUNNING › DSC06409.jpg |
 | `life-trailope.jpg` | VFF marketing items Apr 2026 › Carryover seasonal images + videos › 3. Running › 1. Trailope › 4P2A7599.jpg |
 | `life-spidrwalk.jpg` | VFF Global Q3 Assets › Spidrwalk_August › More assets › 4P2A4791.jpg |
-| `life-vsoul.jpg` | VFF Global Q3 Assets › V-Soul_July › 1 (1).jpg |
+| `life-vsoul.jpg` | 支給画像（V-Soul Black 着用写真） |
 | `life-groundsplay.jpg` | VFF Global Q3 Assets › Groundsplay LS_September › Ivory Deep Lake › 181025_VIBRAM_FIVEFINGHERS_00156.jpg |
 | `issue-1.png` 〜 `issue-4.png`、`vs-n1.png` 〜 `vs-n5.png`、`vs-b1.png` 〜 `vs-b5.png`、`bg-grass-feet.jpg` | 支給の WHY BAREFOOT? インフォグラフィックから切り出したアイコン・背景 |
 | `logo-vff-white.png` | Latest VFF logo and Guideline › LOGO 4 colours › vff_logo_4col_horiz_white.pdf |

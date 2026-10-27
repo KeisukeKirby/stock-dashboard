@@ -58,27 +58,30 @@
     setInterval(tick, 1000);
   }
 
-  // ---- Add to calendar (.ics) ----
-  var icsBtn = document.getElementById('icsBtn');
-  if (icsBtn) {
-    var ics = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'PRODID:-//Barefoot Malaysia//Pop-Up Store//EN',
-      'CALSCALE:GREGORIAN',
-      'BEGIN:VEVENT',
-      'UID:vff-popup-ativo-plaza-2026@barefoot-malaysia',
-      'DTSTAMP:20261022T000000Z',
-      'DTSTART;TZID=Asia/Kuala_Lumpur:20261113T120000',
-      'DTEND;TZID=Asia/Kuala_Lumpur:20261115T200000',
-      'SUMMARY:Barefoot Malaysia Pop-Up Store - Vibram FiveFingers (up to 30% off)',
-      'LOCATION:Ativo Plaza\\, Damansara Avenue\\, Bandar Sri Damansara\\, Kuala Lumpur',
-      'DESCRIPTION:Try on the full Vibram FiveFingers lineup and enjoy up to 30% off. 13-15 Nov 2026\\, 12 PM - 8 PM daily. Map: https://maps.app.goo.gl/J7KbaWQLKpgPjHMJ6',
-      'URL:https://maps.app.goo.gl/J7KbaWQLKpgPjHMJ6',
-      'END:VEVENT',
-      'END:VCALENDAR'
-    ].join('\r\n');
-    icsBtn.setAttribute('href', 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics));
+  // ---- Booth directions video (modal) ----
+  var videoBtn = document.getElementById('videoBtn');
+  var videoModal = document.getElementById('videoModal');
+  var boothVideo = document.getElementById('boothVideo');
+  var videoClose = document.getElementById('videoClose');
+  if (videoBtn && videoModal && boothVideo) {
+    var closeVideo = function () {
+      boothVideo.pause();
+      if (videoModal.open) videoModal.close();
+    };
+    videoBtn.addEventListener('click', function () {
+      if (typeof videoModal.showModal === 'function') {
+        videoModal.showModal();
+        var p = boothVideo.play();
+        if (p && p.catch) p.catch(function () {});
+      } else {
+        window.open('video/how-to-get-to-the-booth.mp4', '_blank');
+      }
+    });
+    if (videoClose) videoClose.addEventListener('click', closeVideo);
+    videoModal.addEventListener('click', function (ev) {
+      if (ev.target === videoModal) closeVideo();
+    });
+    videoModal.addEventListener('close', function () { boothVideo.pause(); });
   }
 
   // ---- Reveal on scroll ----

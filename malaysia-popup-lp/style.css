@@ -144,26 +144,41 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   display: flex;
   align-items: center;
 }
-.mosaic {
-  position: absolute; inset: -6% 0;
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 0;
-}
-.m-tile { position: relative; overflow: hidden; }
-.m-tile img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.04); }
-.m-tile:nth-child(odd) { transform: translateY(-5%); }
-.m-tile:nth-child(even) { transform: translateY(5%); }
-.m-tile:nth-child(3) { transform: translateY(2%); }
-.hero::after {
-  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+.hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(8, 8, 8, .9) 0%, rgba(8, 8, 8, .74) 30%, rgba(8, 8, 8, .22) 58%, rgba(8, 8, 8, .12) 100%),
-    linear-gradient(180deg, rgba(8, 8, 8, .3) 0%, rgba(8, 8, 8, 0) 35%, rgba(8, 8, 8, .55) 100%);
+    radial-gradient(60% 70% at 18% 30%, rgba(255, 209, 0, .14), transparent 70%),
+    radial-gradient(40% 50% at 100% 100%, rgba(255, 209, 0, .08), transparent 70%);
 }
 .hero-inner {
   position: relative; z-index: 2;
   width: min(1180px, 100% - 40px);
   margin: 0 auto;
-  padding: clamp(56px, 8vw, 110px) 0 clamp(48px, 6vw, 80px);
+  padding: clamp(48px, 6vw, 80px) 0 clamp(40px, 5vw, 64px);
+  display: grid; grid-template-columns: minmax(0, 540px) minmax(0, 1fr); gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+}
+.hero-art {
+  position: relative;
+  display: grid; grid-template-columns: 1.08fr 1fr 1fr; grid-template-rows: auto auto; gap: 12px;
+  align-self: start; margin-top: 34px;
+  margin-right: calc(-1 * (100vw - min(1180px, 100vw - 40px)) / 2);
+  padding-right: 20px;
+}
+.h-tile { position: relative; overflow: hidden; border-radius: 16px; background: #1b1b1b; box-shadow: 0 24px 50px rgba(0, 0, 0, .45); }
+.h-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.h-a img { object-position: 50% 58%; }
+.h-b, .h-c, .h-d, .h-e { aspect-ratio: 3 / 4; }
+.h-a { grid-column: 1; grid-row: 1 / 3; }
+.h-b { grid-column: 2; grid-row: 1; }
+.h-c { grid-column: 2; grid-row: 2; }
+.h-d { grid-column: 3; grid-row: 1; }
+.h-e { grid-column: 3; grid-row: 2; }
+.h-b, .h-c { transform: translateY(22px); }
+.h-d, .h-e { transform: translateY(-22px); }
+.h-a::after, .h-e::after {
+  content: ""; position: absolute; inset: 0; border: 3px solid var(--yellow); border-radius: 16px; opacity: .9;
+  pointer-events: none; mask: linear-gradient(135deg, #000 20%, transparent 55%); -webkit-mask: linear-gradient(135deg, #000 20%, transparent 55%);
 }
 .hero-copy { max-width: 620px; }
 .eyebrow {
@@ -297,7 +312,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .b-left { grid-column: 1; grid-row: 4; align-self: center; text-align: left; margin-top: 90px; }
 .b-right { grid-column: 3; grid-row: 4; align-self: center; text-align: right; margin-top: 90px; }
 
-.why-title-2 { margin-top: 8px; }
+.why-title-2 { margin-top: 8px; text-align: center; }
 .vs-word { font-family: var(--body); font-weight: 400; font-style: italic; text-transform: none; font-size: .55em; color: var(--muted); margin: 0 6px; }
 .vs { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
 .vs-col h3 { text-align: center; font-size: clamp(26px, 3.2vw, 36px); text-transform: uppercase; padding: 18px 16px; }
@@ -375,6 +390,21 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .lineup { grid-template-columns: repeat(3, 1fr); }
   .steps { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* ---------- Booth video ---------- */
+.btn-video { gap: 10px; }
+.play-ico { width: 0; height: 0; border-left: 11px solid currentColor; border-top: 7px solid transparent; border-bottom: 7px solid transparent; display: inline-block; }
+.video-modal { border: 0; padding: 0; background: transparent; max-width: none; max-height: none; width: 100%; height: 100%; }
+.video-modal::backdrop { background: rgba(0, 0, 0, .86); }
+.video-modal[open] { display: grid; place-items: center; }
+.video-box { position: relative; width: min(92vw, 420px); }
+.video-box video { width: 100%; height: auto; max-height: 82vh; display: block; border-radius: 16px; background: #000; box-shadow: 0 30px 80px rgba(0, 0, 0, .6); }
+.video-close {
+  position: absolute; top: -16px; right: -16px; width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--yellow); color: var(--black); font-size: 28px; line-height: 1; font-weight: 700; z-index: 2; box-shadow: 0 8px 20px rgba(0, 0, 0, .4);
+}
+.video-caption { color: rgba(255, 255, 255, .8); font-size: 14px; text-align: center; margin-top: 14px; }
+
 @media (max-width: 900px) {
   .nav {
     position: fixed; top: var(--header-h); left: 0; right: 0;
@@ -387,12 +417,18 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .nav a.btn { margin: 16px 0 0; border-bottom: 0; }
   .menu-btn { display: flex; }
   .hero { min-height: 0; }
-  .mosaic { grid-template-columns: repeat(3, 1fr); }
-  .m-tile:nth-child(1), .m-tile:nth-child(4) { display: none; }
-  .hero::after {
-    background:
-      linear-gradient(180deg, rgba(8, 8, 8, .55) 0%, rgba(8, 8, 8, .7) 40%, rgba(8, 8, 8, .9) 70%, rgba(8, 8, 8, .95) 100%);
+  .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+  .hero-art {
+    grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto; gap: 10px;
+    height: auto; min-height: 0; margin-right: 0; padding-right: 0;
   }
+  .h-a { grid-column: 1; grid-row: 1 / 3; }
+  .h-a img { position: absolute; inset: 0; object-position: 50% 55%; }
+  .h-b { grid-column: 2; grid-row: 1; aspect-ratio: 4 / 3; }
+  .h-c { grid-column: 2; grid-row: 2; aspect-ratio: 4 / 3; }
+  .h-d { grid-column: 1; grid-row: 3; aspect-ratio: 4 / 3; }
+  .h-e { grid-column: 2; grid-row: 3; aspect-ratio: 4 / 3; }
+  .h-b, .h-c, .h-d, .h-e { transform: none; }
   .benefits-inner { grid-template-columns: 1fr; grid-template-rows: auto; min-height: 0; text-align: left; }
   .band-kicker, .benefits-inner h3, .band-sub { text-align: center; }
   .b-top, .b-left, .b-right { grid-column: 1; grid-row: auto; margin-top: 0; text-align: left; background: rgba(0, 0, 0, .55); padding: 16px; border-radius: 12px; }
