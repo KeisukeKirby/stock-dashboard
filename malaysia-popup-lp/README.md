@@ -17,6 +17,8 @@ malaysia-popup-lp/
 
 ## 掲載内容の変更
 
+- **画像の差し替え**: `img/` は 1 日キャッシュされるため、同じファイル名で上書きすると古い画像が表示され続けることがあります。差し替え時はファイル名を変えて（例: `-v2` を付ける）`index.html` の参照も更新してください。
+
 - **日時・会場・割引率**: `index.html` 内に直書きです。カウントダウンの日時は `main.js` 冒頭の `EVENT_START` / `EVENT_END` も合わせて変更してください。
 - **ブースへの行き方動画**: Event Details の「How to get to the booth」ボタンで `video/how-to-get-to-the-booth.mp4` をモーダル再生します。差し替える場合は同名で上書きし、ポスターは `ffmpeg -ss 1 -i 動画 -frames:v 1 ポスター.jpg` で作り直してください。
 - **Google Maps**: 「Get Directions」系ボタンは `https://maps.app.goo.gl/J7KbaWQLKpgPjHMJ6`、地図の埋め込みは `index.html` の `<iframe>`（`maps?q=...&output=embed`）です。
@@ -29,11 +31,11 @@ malaysia-popup-lp/
 | ファイル | 元データ |
 | --- | --- |
 | `hero-a.jpg` 〜 `hero-e.jpg` | 支給画像（V-Run / KSO / V-Soul / Trailope / Breezandal のモデル着用写真）をシューズ中心にトリミング |
-| `about-model.jpg` | VIBRAM › Marketing › VFF Global Q3 Assets › V-Run_September › 2nd part RUNNING › DSC06765.jpg |
-| `life-vrun.jpg` | 同上 › 2nd part RUNNING › DSC06409.jpg |
+| `about-model-m.jpg` | VIBRAM › Marketing › VFF Global Q3 Assets › V-Run_September › 2nd part RUNNING › DSC06765.jpg |
+| `life-vrun-p.jpg` | 同上 › 2nd part RUNNING › DSC06409.jpg |
 | `life-trailope.jpg` | VFF marketing items Apr 2026 › Carryover seasonal images + videos › 3. Running › 1. Trailope › 4P2A7599.jpg |
-| `life-spidrwalk.jpg` | VFF Global Q3 Assets › Spidrwalk_August › More assets › 4P2A4791.jpg |
-| `life-vsoul.jpg` | 支給画像（V-Soul Black 着用写真） |
+| `life-spidrwalk-s5.jpg` | VFF Global Q3 Assets › Spidrwalk_August › More assets › DSCF9475.jpg |
+| `life-vsoul-black.jpg` | 支給画像（V-Soul Black 着用写真） |
 | `life-groundsplay.jpg` | VFF Global Q3 Assets › Groundsplay LS_September › Ivory Deep Lake › 181025_VIBRAM_FIVEFINGHERS_00156.jpg |
 | `issue-1.png` 〜 `issue-4.png`、`vs-n1.png` 〜 `vs-n5.png`、`vs-b1.png` 〜 `vs-b5.png`、`bg-grass-feet.jpg` | 支給の WHY BAREFOOT? インフォグラフィックから切り出したアイコン・背景 |
 | `logo-vff-white.png` | Latest VFF logo and Guideline › LOGO 4 colours › vff_logo_4col_horiz_white.pdf |
