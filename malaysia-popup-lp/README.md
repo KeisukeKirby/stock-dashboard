@@ -18,7 +18,7 @@ malaysia-popup-lp/
 
 - **日時・会場・割引率**: `index.html` 内に直書きです。カウントダウンと .ics の日時は `main.js` 冒頭の `EVENT_START` / `EVENT_END` と `DTSTART` / `DTEND` も合わせて変更してください。
 - **Google Maps**: 「Get Directions」系ボタンは `https://maps.app.goo.gl/J7KbaWQLKpgPjHMJ6`、地図の埋め込みは `index.html` の `<iframe>`（`maps?q=...&output=embed`）です。
-- **価格・カラー**: Lineup セクションの各 `.product` カード。価格は添付のカテゴリー POP（RM）をそのまま掲載しています。
+- **ラインナップ**: Lineup セクションの各 `.life-card`（用途名・説明・右下のモデル名）。
 
 ## 使用している写真（Google Drive）
 
@@ -26,17 +26,18 @@ malaysia-popup-lp/
 
 | ファイル | 元データ |
 | --- | --- |
-| `hero-t1.jpg` 〜 `hero-t5.jpg` | 支給画像（Breezandal / V-Run / トレーニング / V-Soul / Trailope のモデル着用写真） |
-| `life-vrun.jpg` | VIBRAM › Marketing › VFF Global Q3 Assets › V-Run_September › 2nd part RUNNING › DSC06031.jpg |
+| `hero-t1.jpg` 〜 `hero-t5.jpg` | 支給画像（Breezandal / V-Run / トレーニング / V-Soul / Trailope のモデル着用写真）を縦長にトリミング |
+| `about-model.jpg` | VIBRAM › Marketing › VFF Global Q3 Assets › V-Run_September › 2nd part RUNNING › DSC06765.jpg |
+| `life-vrun.jpg` | 同上 › 2nd part RUNNING › DSC06031.jpg |
 | `life-trailope.jpg` | VFF marketing items Apr 2026 › Carryover seasonal images + videos › 3. Running › 1. Trailope › 4P2A7599.jpg |
 | `life-spidrwalk.jpg` | VFF Global Q3 Assets › Spidrwalk_August › More assets › 4P2A4791.jpg |
 | `life-vsoul.jpg` | VFF Global Q3 Assets › V-Soul_July › 1 (1).jpg |
-| `life-groundsplay.jpg` / `about-model.jpg` | VFF Global Q3 Assets › Groundsplay LS_September › Ivory Deep Lake › 181025_VIBRAM_FIVEFINGHERS_00156.jpg / 00150.jpg |
-| `why-barefoot.jpg` | 支給の WHY BAREFOOT? インフォグラフィック |
+| `life-groundsplay.jpg` | VFF Global Q3 Assets › Groundsplay LS_September › Ivory Deep Lake › 181025_VIBRAM_FIVEFINGHERS_00156.jpg |
+| `issue-1.png` 〜 `issue-4.png`、`vs-n1.png` 〜 `vs-n5.png`、`vs-b1.png` 〜 `vs-b5.png`、`bg-grass-feet.jpg` | 支給の WHY BAREFOOT? インフォグラフィックから切り出したアイコン・背景 |
 | `logo-vff-white.png` | Latest VFF logo and Guideline › LOGO 4 colours › vff_logo_4col_horiz_white.pdf |
 | `logo-barefoot-malaysia.png` | Barefootinc Malaysia › Design, Artwork › BFM logo › Logo › LOGO_BAREFOOT MALAYSIA.png |
 
-「Why Barefoot?」セクションは支給のインフォグラフィック画像をそのまま掲載しています。
+「Why Barefoot?」セクションは terminal21 の LP と同じ構成（お悩み 4 カード → Benefits of Barefoot → Normal Shoes vs Barefoot Theory）を HTML で組んでおり、テキストは `index.html` 内で編集できます。
 
 ## 公開手順（Vercel）
 

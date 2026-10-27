@@ -82,7 +82,7 @@
   }
 
   // ---- Reveal on scroll ----
-  var targets = document.querySelectorAll('.checklist li, .life-card, .why-figure, .step, .about-copy, .about-visual, .details-card, .map, .faq-item');
+  var targets = document.querySelectorAll('.checklist li, .life-card, .issues li, .vs-col, .step, .about-copy, .about-visual, .details-card, .map, .faq-item');
   targets.forEach(function (el) { el.classList.add('reveal'); });
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
