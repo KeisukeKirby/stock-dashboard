@@ -297,9 +297,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .benefits-band {
   position: relative; color: #fff; margin: clamp(40px, 6vw, 64px) auto;
   width: min(1180px, 100% - 40px); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
-  background: var(--black) url("img/bg-grass-feet-wide.jpg") center center/cover no-repeat;
+  background: #0c0c0c url("img/bg-feet-grass-photo.jpg") center 42%/auto 132% no-repeat;
 }
-.benefits-band::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, .78) 0%, rgba(0, 0, 0, .35) 45%, rgba(0, 0, 0, .55) 100%); }
+.benefits-band::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, #0c0c0c 0%, #0c0c0c 9%, rgba(12, 12, 12, 0) 32%, rgba(12, 12, 12, 0) 68%, #0c0c0c 91%, #0c0c0c 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, .72) 0%, rgba(0, 0, 0, .3) 45%, rgba(0, 0, 0, .55) 100%);
+}
 .benefits-inner {
   position: relative; min-height: 560px;
   display: grid; grid-template-columns: 1fr 1.1fr 1fr; grid-template-rows: auto auto 1fr;
