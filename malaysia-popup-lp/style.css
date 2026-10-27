@@ -106,7 +106,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   justify-content: space-between;
   gap: 16px;
 }
-.brand img { height: 30px; width: auto; }
+.brand img { height: 38px; width: auto; }
 .nav { display: flex; align-items: center; gap: 26px; }
 .nav a {
   color: rgba(255, 255, 255, .85);
@@ -189,7 +189,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .eyebrow .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--yellow); box-shadow: 0 0 0 6px rgba(255, 209, 0, .18); }
 .hero h1 { font-size: clamp(42px, 5.8vw, 76px); text-shadow: 0 4px 30px rgba(0, 0, 0, .5); }
 .hero h1 .accent { color: var(--yellow); }
-.hero h1 .inkl { color: var(--yellow); white-space: nowrap; }
+.hero h1 .inkl { color: #fff; white-space: nowrap; }
+@supports (-webkit-text-stroke: 1px #000) {
+  .hero h1 .inkl { color: transparent; -webkit-text-stroke: 2.5px var(--yellow); letter-spacing: .02em; }
+}
 .hero-offer { margin-top: 22px; }
 .offer-big {
   font-family: var(--head); font-weight: 800; text-transform: uppercase;
@@ -292,16 +295,17 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .issues p { font-size: 14px; color: var(--ink-2); }
 
 .benefits-band {
-  position: relative; color: #fff; margin: clamp(40px, 6vw, 64px) 0;
-  background: var(--black) url("img/bg-grass-feet.jpg") center 40%/cover no-repeat;
+  position: relative; color: #fff; margin: clamp(40px, 6vw, 64px) auto;
+  width: min(1180px, 100% - 40px); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+  background: var(--black) url("img/bg-grass-feet-wide.jpg") center center/cover no-repeat;
 }
 .benefits-band::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, .78) 0%, rgba(0, 0, 0, .35) 45%, rgba(0, 0, 0, .55) 100%); }
 .benefits-inner {
   position: relative; min-height: 560px;
   display: grid; grid-template-columns: 1fr 1.1fr 1fr; grid-template-rows: auto auto 1fr;
-  gap: 16px 24px; padding: clamp(32px, 5vw, 56px) 0 clamp(36px, 5vw, 64px); text-align: center;
+  gap: 16px 24px; padding: clamp(32px, 5vw, 56px) clamp(20px, 4vw, 48px) clamp(36px, 5vw, 64px); text-align: center;
 }
-.band-kicker { grid-column: 1 / -1; font-family: var(--head); font-weight: 700; letter-spacing: .22em; text-transform: uppercase; font-size: 13px; color: var(--yellow); }
+.band-kicker { grid-column: 1 / -1; font-family: var(--body); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; font-size: 15px; color: var(--yellow); }
 .benefits-inner h3 { grid-column: 1 / -1; font-size: clamp(36px, 5.6vw, 64px); text-transform: uppercase; font-weight: 800; }
 .benefits-inner h3 em { font-style: normal; background: var(--yellow); color: var(--black); padding: 0 12px; border-radius: 6px; }
 .band-sub { grid-column: 1 / -1; font-size: 15px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255, 255, 255, .85); margin-top: -8px; }
@@ -442,7 +446,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .vs { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
-  .container, .container-narrow, .header-inner, .hero-inner { width: min(100% - 32px, 1180px); }
+  .container, .container-narrow, .header-inner, .hero-inner, .benefits-band { width: min(100% - 32px, 1180px); }
   .lineup { grid-template-columns: 1fr 1fr; gap: 12px; }
   .life-top { padding: 12px 12px 36px; }
   .life-top h3 { font-size: 19px; }
