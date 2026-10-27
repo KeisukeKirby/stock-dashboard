@@ -24,18 +24,19 @@ malaysia-popup-lp/
 
 添付のカテゴリー POP に含まれるモデルのみ、モデル着用（ライフスタイル）写真を使用しています。Facebook 公式ページはこの環境から取得できなかったため未使用です。
 
-| ファイル | 元データ（Drive） |
+| ファイル | 元データ |
 | --- | --- |
-| `hero-runners.jpg` / `hero-runners-mobile.jpg` | VIBRAM › Marketing › VFF Global Q3 Assets › V-Run_September › 2nd part RUNNING › DSC06435.jpg |
-| `life-vrun.jpg` | 同 › DSC06851.jpg |
-| `life-trailope.jpg` / `bg-grass-feet.jpg` | VFF marketing items Apr 2026 › Carryover seasonal images + videos › 3. Running › 1. Trailope › 4P2A7599.jpg |
+| `hero-t1.jpg` 〜 `hero-t5.jpg` | 支給画像（Breezandal / V-Run / トレーニング / V-Soul / Trailope のモデル着用写真） |
+| `life-vrun.jpg` | VIBRAM › Marketing › VFF Global Q3 Assets › V-Run_September › 2nd part RUNNING › DSC06031.jpg |
+| `life-trailope.jpg` | VFF marketing items Apr 2026 › Carryover seasonal images + videos › 3. Running › 1. Trailope › 4P2A7599.jpg |
 | `life-spidrwalk.jpg` | VFF Global Q3 Assets › Spidrwalk_August › More assets › 4P2A4791.jpg |
 | `life-vsoul.jpg` | VFF Global Q3 Assets › V-Soul_July › 1 (1).jpg |
 | `life-groundsplay.jpg` / `about-model.jpg` | VFF Global Q3 Assets › Groundsplay LS_September › Ivory Deep Lake › 181025_VIBRAM_FIVEFINGHERS_00156.jpg / 00150.jpg |
+| `why-barefoot.jpg` | 支給の WHY BAREFOOT? インフォグラフィック |
 | `logo-vff-white.png` | Latest VFF logo and Guideline › LOGO 4 colours › vff_logo_4col_horiz_white.pdf |
 | `logo-barefoot-malaysia.png` | Barefootinc Malaysia › Design, Artwork › BFM logo › Logo › LOGO_BAREFOOT MALAYSIA.png |
 
-「Why Barefoot?」セクションの構成・文言は、支給された WHY BAREFOOT? インフォグラフィックをもとに HTML で再構成しています。
+「Why Barefoot?」セクションは支給のインフォグラフィック画像をそのまま掲載しています。
 
 ## 公開手順（Vercel）
 
