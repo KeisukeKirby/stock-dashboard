@@ -167,6 +167,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .h-tile { position: relative; overflow: hidden; border-radius: 16px; background: #1b1b1b; box-shadow: 0 24px 50px rgba(0, 0, 0, .45); }
 .h-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.h-tile picture { display: contents; }
+.h-f, .lineup-note { display: none; }
 .h-a img { object-position: 50% 58%; }
 .h-b, .h-c, .h-d, .h-e { aspect-ratio: 3 / 4; }
 .h-a { grid-column: 1; grid-row: 1 / 3; }
@@ -462,26 +464,28 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     position: absolute; inset: 0; z-index: 0; margin: 0; padding: 0; height: auto; align-self: stretch;
     display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 0;
   }
-  .hero-art::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(8, 8, 8, .72) 0%, rgba(8, 8, 8, .62) 45%, rgba(8, 8, 8, .8) 100%); }
+  .hero-art::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(8, 8, 8, .6) 0%, rgba(8, 8, 8, .5) 45%, rgba(8, 8, 8, .74) 100%); }
   .h-tile { border-radius: 0; box-shadow: none; }
   .h-tile::after { display: none; }
-  .h-a { grid-column: 1; grid-row: 1 / 3; }
+  .h-f { display: block; grid-column: 1; grid-row: 1; }
+  .h-a { grid-column: 1; grid-row: 2; }
   .h-b { grid-column: 2; grid-row: 1; }
   .h-c { grid-column: 2; grid-row: 2; }
   .h-d { grid-column: 3; grid-row: 1; }
   .h-e { grid-column: 3; grid-row: 2; }
-  .h-b, .h-c, .h-d, .h-e { aspect-ratio: auto; transform: none; }
-  .h-a img { position: static; object-position: 50% 62%; }
-  .h-b img { object-position: 55% 50%; }
-  .h-c img { object-position: 60% 70%; }
-  .h-d img { object-position: 60% 50%; }
-  .h-e img { object-position: 50% 55%; }
+  .h-a, .h-b, .h-c, .h-d, .h-e { aspect-ratio: auto; transform: none; }
+  .h-tile img { position: static; object-position: 50% 50%; }
   .hero h1 { text-shadow: 0 2px 18px rgba(0, 0, 0, .8); }
   .lineup { grid-template-columns: 1fr 1fr; gap: 12px; }
   .life-top { padding: 12px 12px 36px; }
   .life-top h3 { font-size: 19px; }
   .life-top p { font-size: 12px; }
   .model { font-size: 11px; padding: 5px 8px; right: 8px; bottom: 8px; }
+  .lineup-note { display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: 14px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; }
+  .lineup-note .more-models { font-size: 20px; line-height: 1.05; margin: 0; padding: 0; text-align: left; }
+  .lineup-note .more-models::before { display: none; }
+  .lineup-note .note { font-size: 11px; margin: 0; }
+  .lineup + .more-models, .lineup + .more-models + .note { display: none; }
   /* Why Barefoot: 2 x 2 issue cards */
   .issues { grid-template-columns: 1fr 1fr; gap: 10px; }
   .issues li { padding: 14px 12px; border-radius: 12px; }
@@ -490,8 +494,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .issues b { font-size: 17px; margin: 2px 0 6px; }
   .issues p { font-size: 12px; }
   /* Benefits band: photo as the full background, more room between the two title words */
-  .benefits-band { background: #0c0c0c url("img/bg-feet-grass-mobile.jpg") center 30%/cover no-repeat; }
-  .benefits-band::before { background: linear-gradient(180deg, rgba(0, 0, 0, .55) 0%, rgba(0, 0, 0, .35) 40%, rgba(0, 0, 0, .5) 100%); }
+  .benefits-band { background: #0c0c0c url("img/bg-feet-grass-m2.jpg") center bottom/cover no-repeat; }
+  .benefits-band::before { background: linear-gradient(180deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .3) 40%, rgba(0, 0, 0, .42) 100%); }
   .benefits-inner h3 { line-height: 1.05; }
   .benefits-inner h3 em { display: inline-block; margin-top: 14px; }
   /* Comparison: one-line title, side-by-side headings only */
