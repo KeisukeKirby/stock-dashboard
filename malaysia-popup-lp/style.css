@@ -299,14 +299,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .benefits-band {
   position: relative; color: #fff; margin: clamp(40px, 6vw, 64px) auto;
   width: min(1180px, 100% - 40px); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
-  background: #0c0c0c url("img/bg-feet-grass-d3.jpg") center bottom/cover no-repeat;
+  background: #0c0c0c url("img/bg-feet-grass-d4.jpg") center bottom/cover no-repeat;
 }
 .benefits-band::before {
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .3) 40%, rgba(0, 0, 0, .42) 100%);
 }
 .benefits-inner {
-  position: relative; min-height: 700px;
+  position: relative; min-height: 590px;
   display: grid; grid-template-columns: 1fr 1.1fr 1fr; grid-template-rows: auto auto auto 1fr;
   gap: 16px 24px; padding: clamp(32px, 5vw, 56px) clamp(20px, 4vw, 48px) clamp(36px, 5vw, 64px); text-align: center;
 }
