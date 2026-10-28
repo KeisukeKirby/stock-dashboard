@@ -299,7 +299,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .benefits-band {
   position: relative; color: #fff; margin: clamp(40px, 6vw, 64px) auto;
   width: min(1180px, 100% - 40px); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
-  background: #0c0c0c url("img/bg-feet-grass-d.jpg") center bottom/cover no-repeat;
+  background: #0c0c0c url("img/bg-feet-grass-d2.jpg") center bottom/cover no-repeat;
 }
 .benefits-band::before {
   content: ""; position: absolute; inset: 0;
@@ -493,7 +493,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .issues b { font-size: 17px; margin: 2px 0 6px; }
   .issues p { font-size: 12px; }
   /* Benefits band: photo as the full background, more room between the two title words */
-  .benefits-band { background: #0c0c0c url("img/bg-feet-grass-m4.jpg") center bottom/cover no-repeat; }
+  .benefits-band { background: #0c0c0c url("img/bg-feet-grass-m5.jpg") center bottom/cover no-repeat; }
   .benefits-band::before { background: linear-gradient(180deg, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .3) 40%, rgba(0, 0, 0, .42) 100%); }
   .benefits-inner h3 { line-height: 1.05; }
   .benefits-inner h3 em { display: inline-block; margin-top: 14px; }
