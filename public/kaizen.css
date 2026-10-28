@@ -198,6 +198,48 @@ dl.kv dt { font-weight: 700; color: var(--navy); background: #f3f6fa; }
 
 .doc-end { margin-top: 12mm; padding-top: 3mm; border-top: 1px solid var(--rule); color: var(--ink-3); font-size: 8.5pt; text-align: center; }
 
+
+/* ===== ツールバー追加分・編集画面 ===== */
+.toolbar-sub { max-width: 1000px; margin: 0 auto; padding: 0 16px 8px; display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--ink-3); }
+.toolbar-status.is-shared::before { content: "●"; color: var(--tip); margin-right: 4px; }
+.toolbar-status.is-local::before { content: "●"; color: var(--warn); margin-right: 4px; }
+.btn-ghost {
+  font: inherit; font-size: 13px; color: var(--navy); background: #fff;
+  border: 1px solid var(--navy-line); border-radius: 6px; padding: 6px 12px; cursor: pointer;
+}
+.btn-ghost:hover { background: var(--navy-soft); }
+.btn-save { font: inherit; font-size: 13px; font-weight: 700; color: #fff; background: var(--tip); border: 0; border-radius: 6px; padding: 7px 14px; cursor: pointer; }
+.btn-save:hover { background: #276a3f; }
+.file-btn { display: inline-block; }
+
+.edit { display: none; }
+.is-editing .edit { display: block; }
+.is-editing .toolbar { position: static; }
+.is-editing .toolbar-sub { display: none; }
+.is-editing #doc, .is-editing .view-only { display: none; }
+.edit-bar { position: sticky; top: 0; z-index: 9; background: #fff; border-bottom: 1px solid var(--rule); padding: 8px 16px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; }
+.edit-bar-left, .edit-bar-right { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.save-msg { font-size: 12.5px; color: var(--ink-2); }
+.help { background: #fbfbf7; border-bottom: 1px solid var(--rule); padding: 12px 16px 6px; font-size: 13px; color: var(--ink-2); }
+.help-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1200px; margin: 0 auto; }
+.help h3 { margin: 0 0 6px; font-size: 13px; color: var(--navy); }
+.help pre { margin: 0 0 8px; padding: 10px 12px; background: #fff; border: 1px solid var(--rule); border-radius: 6px; font: 12px/1.6 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; overflow: auto; white-space: pre; }
+.help code { background: #fff; border: 1px solid var(--rule); border-radius: 3px; padding: 0 4px; font-size: 12px; }
+.help p { margin: 0 0 8px; line-height: 1.7; }
+.help-foot { max-width: 1200px; margin: 6px auto 0; }
+.edit-panes { display: grid; grid-template-columns: minmax(360px, 44%) 1fr; height: calc(100vh - 52px); min-height: 480px; }
+.editor {
+  width: 100%; height: 100%; margin: 0; padding: 14px 16px; border: 0; border-right: 1px solid var(--rule); resize: none; outline: none;
+  background: #fff; color: var(--ink);
+  font: 13.5px/1.7 ui-monospace, "SFMono-Regular", Menlo, Consolas, "Zen Kaku Gothic New", monospace;
+  tab-size: 2;
+}
+.editor:focus { box-shadow: inset 3px 0 0 var(--navy); }
+.preview-wrap { overflow: auto; background: var(--desk); padding: 16px; }
+.preview-wrap .doc { margin: 0 auto; width: 210mm; max-width: 100%; }
+.preview-wrap .doc .cover { min-height: 180mm; }
+.toolbar-nav .is-editing-label { display: none; }
+
 /* ===== 印刷（A4 縦） ===== */
 @page {
   size: A4 portrait;
@@ -222,7 +264,8 @@ dl.kv dt { font-weight: 700; color: var(--navy); background: #f3f6fa; }
 
 @media print {
   html, body { background: #fff; }
-  .toolbar { display: none !important; }
+  .toolbar, .edit-bar, .help, .editor, .edit .preview-wrap { display: none !important; }
+  .is-editing #doc { display: block; }
   .doc { width: auto; max-width: none; margin: 0; padding: 0; box-shadow: none; }
   .cover { min-height: 0; height: 240mm; }
   a { color: inherit; text-decoration: none; }
@@ -237,4 +280,7 @@ dl.kv dt { font-weight: 700; color: var(--navy); background: #f3f6fa; }
   .flow-step { min-width: 100%; margin-right: 0; }
   .flow-step::after { content: none; }
   .toolbar-hint { display: none; }
+  .help-cols { grid-template-columns: 1fr; }
+  .edit-panes { grid-template-columns: 1fr; height: auto; }
+  .editor { height: 60vh; border-right: 0; border-bottom: 1px solid var(--rule); }
 }
