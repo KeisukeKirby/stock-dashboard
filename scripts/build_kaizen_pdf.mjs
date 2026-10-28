@@ -1,13 +1,13 @@
 #!/usr/bin/env node
-/* 業務改善マニュアル (public/kaizen.html) を A4 縦の PDF にする。
+/* 業務改善マニュアル (kaizen/index.html) を A4 縦の PDF にする。
  *
- *   node scripts/build_kaizen_pdf.mjs                                  # ローカルの public/ から -> public/kaizen.pdf
+ *   node scripts/build_kaizen_pdf.mjs                                  # ローカルの kaizen/ から -> out/kaizen.pdf
  *   node scripts/build_kaizen_pdf.mjs out/manual.pdf                   # 出力先を指定
  *   node scripts/build_kaizen_pdf.mjs out/manual.pdf https://xxx.vercel.app/kaizen   # 公開中の（共有保存された）内容から
  *
  * Playwright の Chromium でページを開き、画面の「印刷 / PDF に保存」と同じ
  * レイアウト（kaizen.css の @page 設定）で PDF にします。
- * public/ を一時的な HTTP サーバーで配信するので、ローカルの kaizen.json を読めます。
+ * kaizen/ を一時的な HTTP サーバーで配信するので、ローカルの kaizen.md を読めます。
  */
 import http from 'node:http';
 import fs from 'node:fs';
@@ -18,11 +18,11 @@ import { createRequire } from 'node:module';
 // playwright はグローバル (NODE_PATH) に入っていることがあるので require で解決する
 const { chromium } = createRequire(import.meta.url)('playwright');
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'public');
-const out = path.resolve(process.argv[2] || path.join(root, 'kaizen.pdf'));
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'kaizen');
+const out = path.resolve(process.argv[2] || path.join(root, '..', 'out', 'kaizen.pdf'));
 const liveUrl = process.argv[3] || '';
 
-const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8' };
+const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.md': 'text/markdown; charset=utf-8' };
 const server = http.createServer((req, res) => {
   const url = decodeURIComponent(req.url.split('?')[0]);
   const file = path.normalize(path.join(root, url === '/' ? 'index.html' : url));
@@ -36,7 +36,7 @@ const base = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch();
 try {
   const page = await browser.newPage();
-  await page.goto(liveUrl || `${base}/kaizen.html`, { waitUntil: 'networkidle' });
+  await page.goto(liveUrl || `${base}/index.html`, { waitUntil: 'networkidle' });
   await page.waitForSelector('#doc[data-ready="1"]', { timeout: 30000 });
   await page.evaluate(() => document.fonts.ready);
   await page.emulateMedia({ media: 'print' });

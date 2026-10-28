@@ -155,22 +155,6 @@ python scripts/convert.py ... data/sales_rate.json data/returns_import.json     
 ダッシュボードを最初に開いたときに「輸送中」として 1 度だけ共有データに登録します（同じ id では再登録しない。既に入力があるマスは上書きしない）。
 現在の取り込み: VFF_Stock_with_returns_20260929_1620.xlsx の 78 件・102 足（K Village 33 / Central CL 18 / Siam Discovery 7 / Central LP 44）。
 
-## 業務改善マニュアル（/kaizen）
-
-各スタッフ・セクションの既存の業務プロセスを最適化・効率化して生産性を上げるための改善マニュアルです。**ページ上で内容を書き足して全員に共有**でき、**A4 縦でそのまま PDF 化**できます（在庫ダッシュボード右上の「改善マニュアル →」から。URL を渡せば誰でも閲覧できます）。
-
-- **編集**: 右上「編集」→ 左にテキスト、右にプレビュー。「保存して共有」（Ctrl+S）で同じ URL を開いている全員に反映されます。書き方は編集画面の「書き方」に一覧があります（`# 章` / `## 節 [状態]` / 段落 / 箇条書き / 表 / `:::info` `:::tip` `:::warn` の囲み / `:::check` チェックリスト / `:::flow` 工程 / `:::proposal` 現状・課題・改善案・効果の 4 枠 / `:::kv` 項目表 / `:::form` 手書き欄 / `====` 改ページ / `:::history` 改訂履歴）。章・節の番号と目次は自動です
-- **PDF 化**: 右上「PDF にする」→ ブラウザの印刷で「PDF に保存」（用紙 A4・背景のグラフィックをオン）。編集中に押すと、いま書いている内容で PDF になります
-- **保存先**: `api/kaizen.js`（Vercel Function）が返品入力と同じ Upstash Redis に保存します（`kaizen:doc`。直近 30 回分の保存履歴 `kaizen:history` を「保存履歴」から戻せます）。Redis 未設定のとき（ローカルなど）はブラウザの localStorage に保存され、他の人には見えません
-- **編集の制限**: 環境変数 `KAIZEN_EDIT_KEY` を設定すると、保存時に編集キーの入力が必要になります（閲覧は誰でも可）。未設定なら URL を知っている人は誰でも保存できます
-- **初期本文**: 共有保存がまだ空のときは `public/kaizen.md` を表示します（提案版 v0.1 の本文）。編集画面の「.md を保存」で控えを取り、「.md を開く」で戻せます。本文の解析は `public/kaizen-md.js`
-- **配布用 PDF をコマンドで作る**（Playwright の Chromium を使用）:
-
-  ```bash
-  node scripts/build_kaizen_pdf.mjs out/kaizen.pdf https://<公開 URL>/kaizen   # 共有保存された最新の内容から
-  node scripts/build_kaizen_pdf.mjs out/kaizen.pdf                             # リポジトリの kaizen.md から
-  ```
-
 ## Vivo 販売ダッシュボード (vivo.html)
 
 `/vivo` で開く、BFT と EDV の受注明細から作った Vivo の販売実績ダッシュボードです（在庫ダッシュボード右上の「Vivo Sales →」からも開けます）。
@@ -204,6 +188,10 @@ python scripts/build_vivo_standalone.py vivo-sales.html          # claude.ai の
 `vivo/` は Vivo 専用の Vercel プロジェクト（Root Directory を `vivo` に設定）で、在庫ダッシュボードとは別の URL で配信します。
 
 ---
+
+## kaizen/（別プロジェクト）
+
+業務改善マニュアル。ページ上で内容を書き足して全員に共有でき、A4 縦でそのまま PDF 化できます。在庫ダッシュボードとは独立しており、Vercel では Root Directory を `kaizen` にした別プロジェクトとしてデプロイします（共有保存は Upstash Redis、編集キーは `KAIZEN_EDIT_KEY`）。詳細は [`kaizen/README.md`](kaizen/README.md)。
 
 ## thai-learning/（別プロジェクト）
 

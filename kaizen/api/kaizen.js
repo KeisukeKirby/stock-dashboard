@@ -1,4 +1,4 @@
-// 業務改善マニュアル (/kaizen) の本文の共有保存 API  —  Vercel Function
+// 業務改善マニュアルの本文の共有保存 API  —  Vercel Function（kaizen/ を Root Directory にした Vercel プロジェクト）
 //
 //   GET  /api/kaizen            → { shared: true, text, updatedAt }        本文（Markdown 風テキスト）
 //   GET  /api/kaizen?history=1  → { shared: true, history: [{ at, size, head }] }  保存履歴（新しい順、最大 30 件）
@@ -7,7 +7,7 @@
 //        base = 編集を始めたときの updatedAt。サーバー側がそれより新しければ 409（他の人が先に保存した）
 //        環境変数 KAIZEN_EDIT_KEY を設定すると、保存には X-Edit-Key ヘッダー（同じ値）が必要になる
 //
-// 保存先: Upstash Redis（在庫ダッシュボードの返品入力と同じ接続。api/returns.js を参照）
+// 保存先: Upstash Redis（Vercel の Storage / Marketplace から作成してこのプロジェクトに接続）
 //   kaizen:doc / kaizen:updatedAt / kaizen:history（LIST。各要素は JSON { at, text }）
 
 const envBySuffix = (...suffixes) => {
