@@ -475,6 +475,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .h-a, .h-b, .h-c, .h-d, .h-e { aspect-ratio: auto; transform: none; }
   .h-tile img { position: static; object-position: 50% 50%; }
   .hero h1 { text-shadow: 0 2px 18px rgba(0, 0, 0, .8); }
+  .overview h2 .ln { display: block; white-space: nowrap; }
+  .overview h2 br { display: none; }
   .lineup { grid-template-columns: 1fr 1fr; gap: 12px; }
   .life-top { padding: 12px 12px 36px; }
   .life-top h3 { font-size: 19px; }
