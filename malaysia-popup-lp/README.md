@@ -9,6 +9,7 @@ Barefoot Malaysia が Ativo Plaza で開催する Vibram FiveFingers ポップ�
 malaysia-popup-lp/
   index.html   # ページ本体（Hero / Event Overview / About VFF / Lineup / Benefits / At the Booth / FAQ / Event Details / CTA / Footer）
   style.css    # スタイル（Vibram の黄 #ffd100 × 黒、見出しは Barlow Condensed）
+  i18n.js      # 英語 / 中国語（簡体字）切り替え。中国語の文言はこのファイルの ZH 辞書に集約
   main.js      # モバイルメニュー、開催までのカウントダウン、行き方動画モーダル、スクロール時のフェードイン
   img/         # 商品写真・ロゴ（Google Drive の素材を Web 用にリサイズ済み）
   video/       # ブースへの行き方動画（支給の mp4 を 720p に再エンコード）とポスター画像
@@ -16,6 +17,8 @@ malaysia-popup-lp/
 ```
 
 ## 掲載内容の変更
+
+- **言語切り替え**: ヘッダー右の「中文 / EN」ボタンで切り替えます。英語は `index.html` に直書き、中国語は `i18n.js` の `ZH` に `data-i18n` キーごとに記載しています。英語の文言を変えたら対応するキーの中国語も更新してください。`?lang=zh` を付けた URL で中国語を初期表示できます。
 
 - **画像の差し替え**: `img/` は 1 日キャッシュされるため、同じファイル名で上書きすると古い画像が表示され続けることがあります。差し替え時はファイル名を変えて（例: `-v2` を付ける）`index.html` の参照も更新してください。
 

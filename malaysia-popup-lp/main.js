@@ -32,18 +32,24 @@
     var elS = document.getElementById('cdS');
     var label = document.getElementById('cdLabel');
     var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    var L = {
+      en: { open: 'Doors open in', live: 'Happening now at Ativo Plaza · until 8 PM', done: 'Thank you for visiting us at Ativo Plaza' },
+      zh: { open: '距开幕还有', live: '正在 Ativo Plaza 进行中 · 至晚上8点', done: '感谢光临 Ativo Plaza' }
+    };
     var tick = function () {
+      var t = L[(window.BFM_LANG && window.BFM_LANG()) === 'zh' ? 'zh' : 'en'];
       var now = Date.now();
       if (now >= EVENT_END.getTime()) {
         cd.classList.add('is-live');
-        label.textContent = 'Thank you for visiting us at Ativo Plaza';
+        label.textContent = t.done;
         return;
       }
       if (now >= EVENT_START.getTime()) {
         cd.classList.add('is-live');
-        label.textContent = 'Happening now at Ativo Plaza · until 8 PM';
+        label.textContent = t.live;
         return;
       }
+      label.textContent = t.open;
       var diff = Math.floor((EVENT_START.getTime() - now) / 1000);
       var d = Math.floor(diff / 86400);
       var h = Math.floor((diff % 86400) / 3600);
@@ -56,6 +62,7 @@
     };
     tick();
     setInterval(tick, 1000);
+    document.addEventListener('langchange', tick);
   }
 
   // ---- Booth directions video (modal) ----

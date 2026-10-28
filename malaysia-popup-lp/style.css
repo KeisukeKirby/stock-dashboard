@@ -107,6 +107,20 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   gap: 16px;
 }
 .brand img { height: 38px; width: auto; }
+.lang-btn {
+  margin-left: 14px; padding: 7px 12px; border-radius: 999px; cursor: pointer;
+  border: 1.5px solid rgba(255, 255, 255, .45); background: transparent; color: #fff;
+  font-family: var(--body); font-weight: 600; font-size: 13px; letter-spacing: .04em; line-height: 1;
+}
+.lang-btn:hover { border-color: var(--yellow); color: var(--yellow); }
+html[data-lang="zh"] body { font-family: var(--body), "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif; }
+html[data-lang="zh"] h1, html[data-lang="zh"] h2, html[data-lang="zh"] h3, html[data-lang="zh"] .kicker, html[data-lang="zh"] .offer-big,
+html[data-lang="zh"] .hero-meta strong, html[data-lang="zh"] .checklist li, html[data-lang="zh"] .benefit b, html[data-lang="zh"] .issues b,
+html[data-lang="zh"] .vs-col b, html[data-lang="zh"] .step h3, html[data-lang="zh"] .faq-item summary, html[data-lang="zh"] .more-models,
+html[data-lang="zh"] .btn, html[data-lang="zh"] .band-kicker, html[data-lang="zh"] .cd-label, html[data-lang="zh"] .model, html[data-lang="zh"] .eyebrow {
+  font-family: var(--head), "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif; letter-spacing: .02em;
+}
+html[data-lang="zh"] .hero h1 .inkl { -webkit-text-stroke-width: 2px; }
 .nav { display: flex; align-items: center; gap: 26px; }
 .nav a {
   color: rgba(255, 255, 255, .85);
@@ -425,6 +439,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .nav a { padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, .08); font-size: 17px; }
   .nav a.btn { margin: 16px 0 0; border-bottom: 0; }
   .menu-btn { display: flex; }
+  .lang-btn { margin-left: auto; margin-right: 12px; padding: 6px 10px; font-size: 12px; }
   .hero { min-height: 0; }
   .hero-inner { grid-template-columns: 1fr; gap: 36px; }
   .hero-art {
