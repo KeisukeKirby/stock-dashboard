@@ -155,6 +155,21 @@ python scripts/convert.py ... data/sales_rate.json data/returns_import.json     
 ダッシュボードを最初に開いたときに「輸送中」として 1 度だけ共有データに登録します（同じ id では再登録しない。既に入力があるマスは上書きしない）。
 現在の取り込み: VFF_Stock_with_returns_20260929_1620.xlsx の 78 件・102 足（K Village 33 / Central CL 18 / Siam Discovery 7 / Central LP 44）。
 
+## 業務改善マニュアル（/kaizen）
+
+各スタッフ・セクションの既存の業務プロセスを最適化・効率化して生産性を上げるための改善マニュアル（提案書）です。**A4 縦でそのまま PDF 化できる**レイアウトで、内容は順次追加していきます（在庫ダッシュボード右上の「改善マニュアル →」から）。
+
+- 本文は `public/kaizen.json` に書きます。`chapters`（章）→ `sections`（節 = 改善項目）→ `blocks`（本文ブロック）の順。章番号・節番号・目次は自動で振られます
+- ブロックの種類: `p`（段落。`**太字**` 可）、`h`（小見出し）、`ul` / `ol`（箇条書き。`{text, sub:[...]}` で 2 段）、`table`（`head` / `rows` / `widths` / `caption`）、`note`（`kind`: `info` / `tip` / `warn`）、`check`（チェックリスト）、`flow`（工程の矢印）、`proposal`（現状 / 課題 / 改善案 / 効果の測り方の 4 枠）、`kv`（担当・頻度などの項目表）、`form`（手書き用の空欄。`lines` 1〜4）、`pagebreak`
+- 節の `status`（提案 / 試行中 / 運用中 / ドラフト）は見出しと目次にバッジで出ます。`appendix: true` の章は「付録 A / B / C」になります
+- 内容を足したら `history` に 1 行追加し、`version` と `date` を更新してください
+- **PDF 化**: ページ右上の「印刷 / PDF に保存」（ブラウザの印刷で A4・背景のグラフィックをオン）。配布用の PDF をリポジトリに置く場合は次のコマンドで `public/kaizen.pdf` を作り直します（Playwright の Chromium を使用。ページの「PDF をダウンロード」はこのファイルです）
+
+  ```bash
+  node scripts/build_kaizen_pdf.mjs            # -> public/kaizen.pdf
+  node scripts/build_kaizen_pdf.mjs out/x.pdf  # 出力先を指定
+  ```
+
 ## Vivo 販売ダッシュボード (vivo.html)
 
 `/vivo` で開く、BFT と EDV の受注明細から作った Vivo の販売実績ダッシュボードです（在庫ダッシュボード右上の「Vivo Sales →」からも開けます）。
