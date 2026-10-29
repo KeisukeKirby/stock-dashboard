@@ -123,7 +123,7 @@
     'cta.kicker': '11月13日（五）– 15日（日）<span class="msep"> · </span><br class="mbr">中午12点 – 晚上8点',
     'cta.title': 'Ativo Plaza 见。',
     'cta.maps': '在 Google 地图中打开',
-    'footer.text': 'Barefoot Malaysia Sdn. Bhd.<br>Vibram FiveFingers 马来西亚'
+    'footer.text': 'Barefoot Malaysia Sdn. Bhd.'
   };
 
   var ATTR = {
