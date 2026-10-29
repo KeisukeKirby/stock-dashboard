@@ -101,15 +101,7 @@
         '<p class="cover-kicker">PROCESS IMPROVEMENT MANUAL</p>' +
         '<h1 class="cover-title">' + esc(d.title || '業務改善マニュアル') + '</h1>' +
         (d.subtitle ? '<p class="cover-sub">' + esc(d.subtitle) + '</p>' : '') +
-        '<dl class="cover-meta">' +
-          '<div><dt>版</dt><dd>' + esc(d.version || '—') + '</dd></div>' +
-          '<div><dt>発行日</dt><dd>' + esc(d.date || '—') + '</dd></div>' +
-        '</dl>' +
-        '<div class="cover-sign">' +
-          '<div>作成' + (d.author ? '<br><strong>' + esc(d.author) + '</strong>' : '') + '</div>' +
-          '<div>確認</div>' +
-          '<div>承認' + (d.approver ? '<br><strong>' + esc(d.approver) + '</strong>' : '') + '</div>' +
-        '</div>' +
+        '<div class="cover-rule"></div>' +
       '</div>' +
       '<p class="cover-foot">社内資料・取り扱い注意</p>' +
     '</section>';
@@ -175,7 +167,7 @@
       case 'proposal':
         return '<div class="proposal">' +
           cell('従来のプロセス', b.current, '') + cell('問題点', b.issue, '') +
-          cell('今後のプロセス', b.plan, 'is-plan') + cell('確認のしかた・指標', b.effect, 'is-effect') + '</div>';
+          cell('今後のプロセス', b.plan, 'is-plan') + cell('確認のしかた', b.effect, 'is-effect') + '</div>';
       case 'kv':
         return '<dl class="kv">' + (b.items || []).map(function (kv) {
           return '<dt>' + inline(kv[0]) + '</dt><dd>' + inline(kv[1]) + '</dd>';
@@ -191,7 +183,7 @@
   }
 
   function cell(label, text, cls) {
-    return '<div class="proposal-cell ' + cls + '"><span class="lbl">' + label + '</span><p>' + inline(text || '〔記入〕') + '</p></div>';
+    return '<div class="proposal-row ' + cls + '"><div class="lbl">' + label + '</div><p>' + inline(text || '〔記入〕') + '</p></div>';
   }
   function listItems(items) {
     return (items || []).map(function (it) {
