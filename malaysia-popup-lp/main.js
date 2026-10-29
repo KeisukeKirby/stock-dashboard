@@ -3,8 +3,8 @@
   'use strict';
 
   // ---- Event times (Malaysia, UTC+8) ----
-  var EVENT_START = new Date('2026-11-13T12:00:00+08:00');
-  var EVENT_END = new Date('2026-11-15T20:00:00+08:00');
+  var EVENT_START = new Date('2026-11-13T10:00:00+08:00');
+  var EVENT_END = new Date('2026-11-15T17:00:00+08:00');
 
   // ---- Mobile menu ----
   var menuBtn = document.getElementById('menuBtn');
@@ -33,8 +33,8 @@
     var label = document.getElementById('cdLabel');
     var pad = function (n) { return (n < 10 ? '0' : '') + n; };
     var L = {
-      en: { open: 'Doors open in', live: 'Happening now at Ativo Plaza · until 8 PM', done: 'Thank you for visiting us at Ativo Plaza' },
-      zh: { open: '距开幕还有', live: '正在 Ativo Plaza 进行中 · 至晚上8点', done: '感谢光临 Ativo Plaza' }
+      en: { open: 'Doors open in', live: 'Happening now at Ativo Plaza · until {h}', done: 'Thank you for visiting us at Ativo Plaza', h6: '6 PM', h5: '5 PM' },
+      zh: { open: '距开幕还有', live: '正在 Ativo Plaza 进行中 · 至{h}', done: '感谢光临 Ativo Plaza', h6: '下午6点', h5: '下午5点' }
     };
     var tick = function () {
       var t = L[(window.BFM_LANG && window.BFM_LANG()) === 'zh' ? 'zh' : 'en'];
@@ -46,7 +46,8 @@
       }
       if (now >= EVENT_START.getTime()) {
         cd.classList.add('is-live');
-        label.textContent = t.live;
+        var myDay = new Date(now + 8 * 3600 * 1000).getUTCDay();
+        label.textContent = t.live.replace('{h}', myDay === 0 ? t.h5 : t.h6);
         return;
       }
       label.textContent = t.open;

@@ -3,7 +3,7 @@
 > **2026-10-29 以降の公開元は https://github.com/BFT-Share/ativo-plaza-popup-lp です。** 代表の Vercel（SHIMA's projects）がそのリポジトリから自動デプロイしています。このフォルダはコピーなので、修正は BFT-Share 側のリポジトリに push してください。
 
 
-Barefoot Malaysia が Ativo Plaza で開催する Vibram FiveFingers ポップアップイベント（2026/11/13–15、12PM–8PM、最大 30% OFF）の英語ランディングページです。
+Barefoot Malaysia が Ativo Plaza で開催する Vibram FiveFingers ポップアップイベント（2026/11/13–15、金・土 10AM–6PM / 日 10AM–5PM、最大 30% OFF）の英語ランディングページです。
 ビルド不要の静的サイト（HTML / CSS / JS のみ）で、`vivo/` や `memo/` と同じく Vercel の別プロジェクト（Root Directory: `malaysia-popup-lp`）で配信する想定です。
 
 ## 構成
