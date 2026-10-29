@@ -189,6 +189,10 @@ python scripts/build_vivo_standalone.py vivo-sales.html          # claude.ai の
 
 ---
 
+## kaizen/（別プロジェクト）
+
+業務改善マニュアル。ページ上で内容を書き足して全員に共有でき、A4 縦でそのまま PDF 化できます。在庫ダッシュボードとは独立しており、Vercel では Root Directory を `kaizen` にした別プロジェクトとしてデプロイします（共有保存は Upstash Redis、編集キーは `KAIZEN_EDIT_KEY`）。詳細は [`kaizen/README.md`](kaizen/README.md)。
+
 ## thai-learning/（別プロジェクト）
 
 タイ語学習ダッシュボード（個人用 PWA）。在庫ダッシュボードとは独立しており、Vercel では Root Directory を `thai-learning` にした別プロジェクトとしてデプロイする。詳細は [`thai-learning/README.md`](thai-learning/README.md) と [`thai-learning/docs/DESIGN.md`](thai-learning/docs/DESIGN.md)。
