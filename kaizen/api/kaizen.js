@@ -1,5 +1,6 @@
 // 業務改善マニュアルの本文の共有保存 API  —  Vercel Function（kaizen/ を Root Directory にした Vercel プロジェクト）
 //
+//   ?lang=ja|en|th で言語ごとに別の本文を保存する（省略時 ja。ja は従来どおりのキー）
 //   GET  /api/kaizen            → { shared: true, text, updatedAt }        本文（Markdown 風テキスト）
 //   GET  /api/kaizen?history=1  → { shared: true, history: [{ at, size, head }] }  保存履歴（新しい順、最大 30 件）
 //   GET  /api/kaizen?rev=<at>   → { shared: true, text, updatedAt: at }    履歴の 1 件を取り出す
@@ -22,7 +23,11 @@ const URL_ = envBySuffix("KV_REST_API_URL", "UPSTASH_REDIS_REST_URL", "REST_API_
 const TOKEN = envBySuffix("KV_REST_API_TOKEN", "UPSTASH_REDIS_REST_TOKEN", "REST_API_TOKEN");
 const EDIT_KEY = process.env.KAIZEN_EDIT_KEY || "";
 
-const DOC = "kaizen:doc", AT = "kaizen:updatedAt", HIST = "kaizen:history";
+const LANGS = ["ja", "en", "th"];
+const keysFor = (lang) => {
+  const sfx = lang === "ja" ? "" : `:${lang}`;
+  return { DOC: `kaizen:doc${sfx}`, AT: `kaizen:updatedAt${sfx}`, HIST: `kaizen:history${sfx}` };
+};
 const MAX_TEXT = 1024 * 1024; // 1 MB
 const MAX_HISTORY = 30;
 
@@ -62,6 +67,13 @@ module.exports = async (req, res) => {
   }
   const q = req.query || Object.fromEntries(new URL(req.url, "http://x").searchParams);
   try {
+    let lang = String(q.lang || "ja");
+    if (req.method === "PUT" || req.method === "POST") {
+      var body = await readBody(req);
+      if (body && body.lang) lang = String(body.lang);
+    }
+    if (!LANGS.includes(lang)) return res.status(400).json({ error: "bad lang" });
+    const { DOC, AT, HIST } = keysFor(lang);
     if (req.method === "GET") {
       if (q.history) {
         const [list] = await redis([["LRANGE", HIST, 0, MAX_HISTORY - 1]]);
@@ -87,7 +99,6 @@ module.exports = async (req, res) => {
         const given = String(req.headers["x-edit-key"] || "");
         if (!safeEqual(given, EDIT_KEY)) return res.status(401).json({ error: "edit key required" });
       }
-      const body = await readBody(req);
       const text = typeof body.text === "string" ? body.text : null;
       if (text === null) return res.status(400).json({ error: "text required" });
       if (text.length > MAX_TEXT) return res.status(413).json({ error: "text too long" });

@@ -3,7 +3,8 @@
  *
  *   node scripts/build_kaizen_pdf.mjs                                  # ローカルの kaizen/ から -> out/kaizen.pdf
  *   node scripts/build_kaizen_pdf.mjs out/manual.pdf                   # 出力先を指定
- *   node scripts/build_kaizen_pdf.mjs out/manual.pdf https://xxx.vercel.app/kaizen   # 公開中の（共有保存された）内容から
+ *   node scripts/build_kaizen_pdf.mjs out/manual.pdf https://kaizen-manual.vercel.app/   # 公開中の（共有保存された）内容から
+ *   node scripts/build_kaizen_pdf.mjs out/manual_th.pdf th                        # 言語を指定（ja / en / th）
  *
  * Playwright の Chromium でページを開き、画面の「印刷 / PDF に保存」と同じ
  * レイアウト（kaizen.css の @page 設定）で PDF にします。
@@ -20,7 +21,9 @@ const { chromium } = createRequire(import.meta.url)('playwright');
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'kaizen');
 const out = path.resolve(process.argv[2] || path.join(root, '..', 'out', 'kaizen.pdf'));
-const liveUrl = process.argv[3] || '';
+const arg3 = process.argv[3] || '';
+const docLang = /^(ja|en|th)$/.test(arg3) ? arg3 : '';
+const liveUrl = docLang ? '' : arg3;
 
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.md': 'text/markdown; charset=utf-8' };
 const server = http.createServer((req, res) => {
@@ -36,7 +39,7 @@ const base = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch();
 try {
   const page = await browser.newPage();
-  await page.goto(liveUrl || `${base}/index.html`, { waitUntil: 'networkidle' });
+  await page.goto(liveUrl || `${base}/index.html${docLang ? '?lang=' + docLang : ''}`, { waitUntil: 'networkidle' });
   await page.waitForSelector('#doc[data-ready="1"]', { timeout: 30000 });
   await page.evaluate(() => document.fonts.ready);
   await page.emulateMedia({ media: 'print' });
