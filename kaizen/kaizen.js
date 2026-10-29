@@ -174,8 +174,8 @@
         }).join('') + '</div>';
       case 'proposal':
         return '<div class="proposal">' +
-          cell('現状', b.current, '') + cell('課題', b.issue, '') +
-          cell('改善案', b.plan, 'is-plan') + cell('効果の測り方', b.effect, 'is-effect') + '</div>';
+          cell('従来のプロセス', b.current, '') + cell('問題点', b.issue, '') +
+          cell('今後のプロセス', b.plan, 'is-plan') + cell('確認のしかた・指標', b.effect, 'is-effect') + '</div>';
       case 'kv':
         return '<dl class="kv">' + (b.items || []).map(function (kv) {
           return '<dt>' + inline(kv[0]) + '</dt><dd>' + inline(kv[1]) + '</dd>';
@@ -204,9 +204,10 @@
     var h = '<table class="b-table">';
     if (b.caption) h += '<caption>' + inline(b.caption) + '</caption>';
     if (b.widths) h += '<colgroup>' + b.widths.map(function (w) { return '<col style="width:' + esc(w) + '">'; }).join('') + '</colgroup>';
-    if (b.head) h += '<thead><tr>' + b.head.map(function (c) { return '<th>' + inline(c) + '</th>'; }).join('') + '</tr></thead>';
+    var nw = function (c) { return String(c == null ? '' : c).trim().length <= 6 ? ' class="nw"' : ''; }; // 短いセルは折り返さない
+    if (b.head) h += '<thead><tr>' + b.head.map(function (c) { return '<th' + nw(c) + '>' + inline(c) + '</th>'; }).join('') + '</tr></thead>';
     h += '<tbody>' + (b.rows || []).map(function (r) {
-      return '<tr>' + r.map(function (c) { return '<td>' + inline(c) + '</td>'; }).join('') + '</tr>';
+      return '<tr>' + r.map(function (c) { return '<td' + nw(c) + '>' + inline(c) + '</td>'; }).join('') + '</tr>';
     }).join('') + '</tbody></table>';
     return h;
   }
