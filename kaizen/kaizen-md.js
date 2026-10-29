@@ -16,7 +16,7 @@
  *   :::info タイトル / :::tip / :::warn   囲み（補足・コツ・注意）
  *   :::check タイトル  + - 項目          チェックリスト
  *   :::flow            + - 工程名: 説明   工程の流れ（矢印）
- *   :::proposal        現状: / 課題: / 改善案: / 効果:   改善項目の 4 枠
+ *   :::proposal        従来: / 問題: / 今後: / 確認:   改善項目の 4 枠（現状/課題/改善案/効果 でも可）
  *   :::kv              ラベル: 値         担当・頻度などの項目表
  *   :::form            ラベル: 行数       手書き用の空欄
  *   ====               改ページ
@@ -202,10 +202,10 @@
         var p = { type: 'proposal', current: '', issue: '', plan: '', effect: '' };
         kvLines(body).forEach(function (kv) {
           var k = kv[0];
-          if (/現状/.test(k)) p.current = kv[1];
-          else if (/課題/.test(k)) p.issue = kv[1];
-          else if (/改善/.test(k)) p.plan = kv[1];
-          else if (/効果/.test(k)) p.effect = kv[1];
+          if (/従来|現状/.test(k)) p.current = kv[1];
+          else if (/問題|課題/.test(k)) p.issue = kv[1];
+          else if (/今後|改善/.test(k)) p.plan = kv[1];
+          else if (/確認|効果|指標/.test(k)) p.effect = kv[1];
         });
         return p;
       }
@@ -247,10 +247,10 @@
     '## 開店・閉店のチェックリスト [提案]',
     '',
     ':::proposal',
-    '現状: 今のやり方',
-    '課題: 何に時間がかかるか',
-    '改善案: どう変えるか',
-    '効果: 何の数字で測るか',
+    '従来: これまでのやり方',
+    '問題: 何が起きていたか',
+    '今後: これからのやり方',
+    '確認: 何を見れば守られていると分かるか',
     ':::',
     '',
     ':::check 閉店チェックリスト',
