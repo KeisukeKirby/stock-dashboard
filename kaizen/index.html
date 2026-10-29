@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>業務改善マニュアル</title>
+  <meta name="description" content="各スタッフ・セクションの業務プロセスを最適化・効率化して生産性を上げるための改善マニュアル。ページ上で内容を編集・共有し、A4 縦でそのまま PDF 化できます。">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#1f4e78">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231f4e78'/><rect x='8' y='7' width='16' height='20' rx='1.5' fill='white'/><rect x='11' y='12' width='10' height='1.8' fill='%231f4e78'/><rect x='11' y='16' width='10' height='1.8' fill='%231f4e78'/><rect x='11' y='20' width='6' height='1.8' fill='%23bf8f00'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Shippori+Mincho+B1:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="kaizen.css?v=20261028b">
+</head>
+<body>
+
+<header class="toolbar" aria-label="操作">
+  <div class="toolbar-inner">
+    <a class="toolbar-brand" href="#top">
+      <span class="toolbar-mark" aria-hidden="true"></span>
+      <span id="tbTitle">業務改善マニュアル</span>
+      <span class="toolbar-ver" id="tbVersion"></span>
+    </a>
+    <nav class="toolbar-nav">
+      <a href="#toc" class="view-only">目次</a>
+      <button type="button" id="editBtn" class="btn-ghost">編集</button>
+      <button type="button" id="printBtn" class="btn-print">PDF にする</button>
+    </nav>
+  </div>
+  <p class="toolbar-sub"><span id="tbStatus" class="toolbar-status"></span><span class="toolbar-hint">PDF：印刷画面で「送信先：PDF に保存」「用紙：A4」「背景のグラフィック：オン」を選びます。</span></p>
+</header>
+
+<!-- ===== 編集画面（「編集」で表示） ===== -->
+<section class="edit" id="edit" aria-label="編集">
+  <div class="edit-bar">
+    <div class="edit-bar-left">
+      <button type="button" id="saveBtn" class="btn-save">保存して共有</button>
+      <button type="button" id="cancelBtn" class="btn-ghost">閲覧に戻る</button>
+      <span id="saveMsg" class="save-msg"></span>
+    </div>
+    <div class="edit-bar-right">
+      <button type="button" id="helpBtn" class="btn-ghost">書き方</button>
+      <button type="button" id="historyBtn" class="btn-ghost">保存履歴</button>
+      <button type="button" id="downloadBtn" class="btn-ghost">.md を保存</button>
+      <label class="btn-ghost file-btn">.md を開く<input type="file" id="uploadInput" accept=".md,.txt,text/plain,text/markdown" hidden></label>
+      <button type="button" id="printBtn2" class="btn-ghost">PDF にする</button>
+    </div>
+  </div>
+
+  <div class="help" id="help" hidden>
+    <div class="help-cols">
+      <div>
+        <h3>文書の構成</h3>
+<pre>---
+title: 業務改善マニュアル
+subtitle: 副題
+company: 会社名
+version: 0.2
+date: 2026-11-01
+author: 作成者
+approver: 承認者
+---
+
+:::history
+0.2 | 2026-11-01 | 第5章を追加
+:::
+
+# 章タイトル
+> 章の説明（リード文）
+
+## 節タイトル [提案]
+本文。**太字** が使えます。
+
+### 小見出し</pre>
+        <p>章は「第 N 章」、節は「N.M」と自動で番号がつき、目次も自動で作られます。<br>節の [ ] は状態（提案 / 試行中 / 運用中 / ドラフト）。<br><code># [付録] タイトル</code> と書くと付録（A・B・C）になります。<br><code>====</code> だけの行で改ページ。</p>
+      </div>
+      <div>
+        <h3>本文の部品</h3>
+<pre>- 箇条書き
+  - 2 段目（2 文字下げ）
+1. 番号つき
+
+| 見出し | 見出し |
+|---|---|
+| 内容 | 内容 |
+
+:::info タイトル
+補足の囲み（tip＝コツ、warn＝注意）
+:::
+
+:::check 閉店チェックリスト
+- レジ締め
+- 日報を送る
+:::
+
+:::flow
+- 見える化: 今のやり方を書き出す
+- 標準化: 手順書にする
+:::
+
+:::proposal
+現状: 今のやり方
+課題: 何に時間がかかるか
+改善案: どう変えるか
+効果: 何の数字で測るか
+:::
+
+:::kv
+担当・頻度: 店長、毎日
+代行者: 遅番リーダー
+:::
+
+:::form
+業務名: 1
+気づいたこと: 3
+:::   ← 手書き用の空欄（数字は行数）</pre>
+      </div>
+    </div>
+    <p class="help-foot">保存は Ctrl+S（Mac は ⌘S）でもできます。保存すると同じ URL を開いている全員に反映されます。保存前の内容はこのブラウザに下書きとして残ります。</p>
+  </div>
+
+  <div class="edit-panes">
+    <textarea id="editor" class="editor" spellcheck="false" aria-label="本文"></textarea>
+    <div class="preview-wrap"><div class="doc preview" id="preview"></div></div>
+  </div>
+</section>
+
+<main class="doc" id="doc" aria-busy="true">
+  <p class="loading">読み込み中…</p>
+</main>
+
+<script src="kaizen-md.js?v=20261028b"></script>
+<script src="kaizen.js?v=20261028b"></script>
+</body>
+</html>
