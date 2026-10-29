@@ -1,9 +1,9 @@
 ---
 title: 業務改善マニュアル
 subtitle: これまでの問題点と、これからの業務プロセス
-company: Barefoot Inc.
+company: BAREFOOTINC(THAILAND) CO., LTD
 version: 0.3（ドラフト）
-date: 2026-10-29
+date: 2026-10-30
 author: 
 approver: 
 ---
