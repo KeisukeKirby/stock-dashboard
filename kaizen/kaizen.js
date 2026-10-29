@@ -196,7 +196,7 @@
     var h = '<table class="b-table">';
     if (b.caption) h += '<caption>' + inline(b.caption) + '</caption>';
     if (b.widths) h += '<colgroup>' + b.widths.map(function (w) { return '<col style="width:' + esc(w) + '">'; }).join('') + '</colgroup>';
-    var nw = function (c) { return String(c == null ? '' : c).trim().length <= 6 ? ' class="nw"' : ''; }; // 短いセルは折り返さない
+    var nw = function (c) { return String(c == null ? '' : c).trim().length <= 8 ? ' class="nw"' : ''; }; // 短いセルは折り返さない
     if (b.head) h += '<thead><tr>' + b.head.map(function (c) { return '<th' + nw(c) + '>' + inline(c) + '</th>'; }).join('') + '</tr></thead>';
     h += '<tbody>' + (b.rows || []).map(function (r) {
       return '<tr>' + r.map(function (c) { return '<td' + nw(c) + '>' + inline(c) + '</td>'; }).join('') + '</tr>';
