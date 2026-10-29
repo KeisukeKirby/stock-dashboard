@@ -66,7 +66,7 @@
       var ch = /^#\s+(.*)$/.exec(line);
       if (ch) {
         var t = ch[1].trim(), appendix = false;
-        var ap = /^\[(付録|appendix)\]\s*(.*)$/i.exec(t);
+        var ap = /^\[(付録|appendix|ภาคผนวก)\]\s*(.*)$/i.exec(t);
         if (ap) { appendix = true; t = ap[2].trim(); }
         n++;
         chapter = { id: 'ch' + n, title: t, lead: '', appendix: appendix, sections: [] };
@@ -202,10 +202,10 @@
         var p = { type: 'proposal', current: '', issue: '', plan: '', effect: '' };
         kvLines(body).forEach(function (kv) {
           var k = kv[0];
-          if (/従来|現状/.test(k)) p.current = kv[1];
-          else if (/問題|課題/.test(k)) p.issue = kv[1];
-          else if (/今後|改善/.test(k)) p.plan = kv[1];
-          else if (/確認|効果|指標/.test(k)) p.effect = kv[1];
+          if (/従来|現状|^before|^current|เดิม/i.test(k)) p.current = kv[1];
+          else if (/問題|課題|^problem|^issue|ปัญหา/i.test(k)) p.issue = kv[1];
+          else if (/今後|改善|^new|^after|ใหม่/i.test(k)) p.plan = kv[1];
+          else if (/確認|効果|指標|^check|ตรวจ/i.test(k)) p.effect = kv[1];
         });
         return p;
       }

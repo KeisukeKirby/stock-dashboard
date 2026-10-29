@@ -243,19 +243,50 @@ dl.kv dt { font-weight: 700; color: var(--navy); background: #f3f6fa; }
 .preview-wrap .doc .cover { min-height: 180mm; }
 .toolbar-nav .is-editing-label { display: none; }
 
+
+/* ===== 言語ごとのフォント ===== */
+:root:lang(en) {
+  --f-body: "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-head: "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-title: "Noto Serif", Georgia, serif;
+}
+:root:lang(th) {
+  --f-body: "Noto Sans Thai", "Noto Sans", "Leelawadee UI", Tahoma, sans-serif;
+  --f-head: "Noto Sans Thai", "Noto Sans", "Leelawadee UI", Tahoma, sans-serif;
+  --f-title: "Noto Serif Thai", "Noto Sans Thai", serif;
+  --lh: 1.85;
+}
+/* タイ語は字間を空けると声調記号の位置がずれるため 0 に */
+html:lang(th) .cover-title, html:lang(th) .cover-top, html:lang(th) .chapter-head h2,
+html:lang(th) .chapter-num, html:lang(th) .cover-meta dt { letter-spacing: 0; }
+html:lang(th) table.b-table { line-height: 1.65; }
+html:lang(en) .cover-title { letter-spacing: 0; }
+html:lang(en) table.b-table .nw, html:lang(th) table.b-table .nw { white-space: normal; }
+
+/* ===== 言語切り替え ===== */
+.lang-switch { display: inline-flex; border: 1px solid var(--navy-line); border-radius: 999px; overflow: hidden; background: #fff; }
+.lang-switch button {
+  font: inherit; font-size: 12.5px; line-height: 1; padding: 7px 12px; border: 0; background: transparent; color: var(--navy); cursor: pointer;
+  font-family: "Zen Kaku Gothic New", "Noto Sans", "Noto Sans Thai", system-ui, sans-serif;
+}
+.lang-switch button + button { border-left: 1px solid var(--navy-line); }
+.lang-switch button:hover { background: var(--navy-soft); }
+.lang-switch button.on { background: var(--navy); color: #fff; font-weight: 700; }
+.help-body[hidden] { display: none; }
+
 /* ===== 印刷（A4 縦） ===== */
 @page {
   size: A4 portrait;
   margin: 18mm 16mm 20mm 16mm;
   @bottom-center {
     content: counter(page);
-    font-family: "Zen Kaku Gothic New", "IPAPGothic", sans-serif;
+    font-family: "Zen Kaku Gothic New", "Noto Sans", "Noto Sans Thai", "IPAPGothic", sans-serif;
     font-size: 9pt;
     color: #7c838c;
   }
   @bottom-left {
     content: "業務改善マニュアル";
-    font-family: "Zen Kaku Gothic New", "IPAPGothic", sans-serif;
+    font-family: "Zen Kaku Gothic New", "Noto Sans", "Noto Sans Thai", "IPAPGothic", sans-serif;
     font-size: 8pt;
     color: #7c838c;
   }
@@ -284,6 +315,8 @@ dl.kv dt { font-weight: 700; color: var(--navy); background: #f3f6fa; }
   .flow-step { min-width: 100%; margin-right: 0; }
   .flow-step::after { content: none; }
   .toolbar-hint { display: none; }
+  .toolbar-nav { gap: 10px; }
+  .lang-switch button { padding: 7px 10px; }
   .help-cols { grid-template-columns: 1fr; }
   .edit-panes { grid-template-columns: 1fr; height: auto; }
   .editor { height: 60vh; border-right: 0; border-bottom: 1px solid var(--rule); }

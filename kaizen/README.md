@@ -7,6 +7,8 @@
 
 ## 使い方
 
+- **言語**: 右上の「日本語 / English / ไทย」で切り替え。選んだ言語はブラウザに記憶され、`?lang=en` のように URL でも指定できます（共有するときは `https://kaizen-manual.vercel.app/?lang=th` など）。初回はブラウザの言語設定で自動選択。**本文は言語ごとに別**で、編集・保存・保存履歴もいま表示中の言語だけに効きます（日本語を直しても英語・タイ語は自動では変わりません）
+
 - **閲覧**: URL を開くだけ。他の人が保存した内容は、画面に戻ったときに自動で取り込まれます
 - **編集**: 右上「編集」→ 左にテキスト、右にプレビュー。「保存して共有」（Ctrl+S）で同じ URL を開いている全員に反映。書き方は編集画面の「書き方」に一覧
 - **PDF 化**: 右上「PDF にする」→ ブラウザの印刷で「PDF に保存」（用紙 A4・背景のグラフィックをオン）。編集中に押すと、いま書いている内容で PDF になります
@@ -25,8 +27,10 @@ index.html      ページ（閲覧・編集・PDF）
 kaizen.css      画面と A4 印刷のスタイル
 kaizen-md.js    本文テキスト（Markdown 風）の解析
 kaizen.js       読み込み・描画・編集・保存
-kaizen.md       共有保存が空のときに表示する初期本文（提案版 v0.1）
-api/kaizen.js   共有保存 API（Upstash Redis）
+kaizen.md       共有保存が空のときに表示する初期本文（日本語）
+kaizen.en.md    同（英語）
+kaizen.th.md    同（タイ語）
+api/kaizen.js   共有保存 API（Upstash Redis。?lang=ja|en|th で言語ごとに別のキー）
 vercel.json
 ```
 
@@ -35,4 +39,5 @@ vercel.json
 ```bash
 node ../scripts/build_kaizen_pdf.mjs ../out/kaizen.pdf https://<公開 URL>/   # 公開中の内容から
 node ../scripts/build_kaizen_pdf.mjs ../out/kaizen.pdf                        # この kaizen.md から
+node ../scripts/build_kaizen_pdf.mjs ../out/kaizen_th.pdf th                  # タイ語（en で英語）
 ```
