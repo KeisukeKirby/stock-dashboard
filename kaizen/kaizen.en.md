@@ -30,7 +30,6 @@ Check: The daily check sheet is filled in every day. No unresolved differences a
 
 1. Pull the previous day's POS sales by store and by payment method (cash / card / QR / bank transfer), and match the amounts and number of transactions.
 2. If there is a difference, check with the store or person in charge the same day and identify the reason (keying error, duplicate charge, refund, payment not yet received).
-3. Anything not resolved the same day goes in the "Pending" column, with the reason and a deadline.
 
 ## Check every day whether any refund cases have occurred
 
@@ -39,14 +38,6 @@ Before: Refunds (cancellations, returns, payment errors) were not checked as the
 Problem: Refunds do not match the sales reconciliation and cause differences. Late refunds keep customers waiting.
 New process: Check every day whether any refunds have occurred and enter them in the sheet. If one has occurred, process it the same day or first thing the next morning. (See the checklist.)
 Check: Record the date each refund occurred and the date it was processed in the sheet.
-:::
-
-## Re-numbering Shopee and Lazada invoice numbers
-
-:::proposal
-Before: Invoice numbers could not be corrected in bulk, so each one had to be corrected individually.
-Problem: The work took a lot of time.
-New process: Use AI to match them (an AI demo is being prepared).
 :::
 
 ## Checking Siam Discovery and Central SKU codes
@@ -108,7 +99,7 @@ Check: Tick the sheet once each order has been shipped. (See the checklist.)
 :::proposal
 Before: Both when preparing at the office and when setting up the booth, time was spent searching for equipment and fixtures and checking whether everything was there.
 Problem: Preparation and setup were inefficient. If something was missing, the booth could not always be set up as planned.
-New process: The office shelves are organised (every item has a fixed place and a label). For each event, prepare using the "Equipment & Fixtures Checklist", and check again before loading and during setup so that nothing is missed. (See the equipment & fixtures list.)
+New process: For each event, prepare using the "Equipment & Fixtures Checklist", and check again before loading and during setup so that nothing is missed. (See the equipment & fixtures list.)
 Check: Tick ✅ on the event equipment list for each item checked.
 :::
 
