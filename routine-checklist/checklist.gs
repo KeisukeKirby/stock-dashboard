@@ -64,8 +64,8 @@ const CHECKLISTS = [
         ],
       },
       {
-        name: '在庫報告の照合', freq: FREQ.MONTH_END, rows: [
-          'PCの在庫報告を確認した',
+        name: 'PC在庫報告の照合', freq: FREQ.MONTH_END, rows: [
+          '店舗販売員（PC）からの在庫報告を確認した',
           'オフィス管理の在庫表と照合した',
           ['status', '差異の有無（なし／あり）'],
           ['detail', '差異の内容（商品ごとの詳細は「在庫差異記録」シートに記入）'],
@@ -136,7 +136,7 @@ const LOGS = [
     note: '毎月最終営業日の在庫照合で差異があった商品を1行ずつ記入してください（「対応完了」にチェックがない行はオレンジ）',
     columns: [
       ['照合日', 'date', 100], ['商品コード', 'text', 150], ['モデル', 'text', 150], ['カラー', 'text', 110], ['サイズ', 'text', 70],
-      ['PC在庫数', 'number', 90], ['在庫表の数', 'number', 100], ['差異', 'diff', 80],
+      ['PC報告の在庫数', 'number', 110], ['オフィス在庫表の数', 'number', 120], ['差異', 'diff', 80],
       ['原因', 'text', 200], ['対応・修正内容', 'text', 200], ['確認者', 'text', 110], ['対応完了', 'check', 90],
     ],
     pending: { col: 12, when: 'unchecked' },
@@ -199,7 +199,7 @@ const TEXT = {
   '売上照合': ['Sales Reconciliation', 'ตรวจสอบยอดขาย'],
   '返金案件の確認': ['Refund Check', 'ตรวจสอบรายการคืนเงิน'],
   '月次レポートの提出': ['Monthly Report Submission', 'ส่งรายงานประจำเดือน'],
-  '在庫報告の照合': ['Stock Report Check', 'ตรวจสอบรายงานสต็อก'],
+  'PC在庫報告の照合': ['PC Stock Report Check', 'ตรวจสอบรายงานสต็อกจาก PC'],
   '店舗送付分の在庫更新確認': ['Stock Update Check for Items Sent to Stores', 'ตรวจสอบการอัปเดตสต็อกของสินค้าที่ส่งไปสาขา'],
   '発送完了': ['Shipping Completed', 'ส่งสินค้าเสร็จ'],
   '店舗在庫・補充の確認': ['Store Stock & Restock Check', 'ตรวจสอบสต็อกสาขาและการเติมสินค้า'],
@@ -225,7 +225,9 @@ const TEXT = {
     'Checked for refunds (if a refund was requested or paid, entered the date in the "Refund Log" sheet)',
     'ตรวจสอบว่ามีรายการคืนเงินหรือไม่ (ถ้ามีรายการใหม่หรือคืนเงินแล้ว ให้ลงวันที่ในชีต "บันทึกการคืนเงิน")'],
   '月次レポートを提出した': ['Submitted the monthly report', 'ส่งรายงานประจำเดือนแล้ว'],
-  'PCの在庫報告を確認した': ['Checked the stock report on the PC', 'ตรวจสอบรายงานสต็อกในคอมพิวเตอร์แล้ว'],
+  '店舗販売員（PC）からの在庫報告を確認した': [
+    'Checked the stock report from the store sales staff (PCs)',
+    'ตรวจสอบรายงานสต็อกจากพนักงานขายหน้าร้าน (PC) แล้ว'],
   'オフィス管理の在庫表と照合した': [
     "Compared it with the office's stock sheet",
     'เทียบกับตารางสต็อกที่ออฟฟิศดูแลแล้ว'],
@@ -294,8 +296,8 @@ const TEXT = {
   'モデル': ['Model', 'รุ่น'],
   'カラー': ['Color', 'สี'],
   'サイズ': ['Size', 'ไซซ์'],
-  'PC在庫数': ['PC Stock Qty', 'จำนวนในคอมพิวเตอร์'],
-  '在庫表の数': ['Stock Sheet Qty', 'จำนวนในตารางสต็อก'],
+  'PC報告の在庫数': ['Qty in PC Report', 'จำนวนตามรายงาน PC'],
+  'オフィス在庫表の数': ['Qty in Office Stock Sheet', 'จำนวนตามตารางสต็อกออฟฟิศ'],
   '差異': ['Difference', 'ส่วนต่าง'],
   '原因': ['Cause', 'สาเหตุ'],
   '対応・修正内容': ['Action / Correction', 'การแก้ไข'],
