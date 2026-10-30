@@ -15,7 +15,7 @@ approver:
 :::
 
 # Accounting
-> The basic rule is to check sales, payments and refunds every day and leave nothing pending. When the daily checks are complete, the monthly report is simply a matter of adding up the numbers.
+> The basic rule is to check sales, payments and refunds every day and leave nothing pending.
 
 ## Check POS data and payment records every day and reconcile sales
 
@@ -127,7 +127,7 @@ Check: Enter the booking in the vehicle schedule and report it in the group chat
 Before: The work process was different every time, so preparation took a long time. Items were not returned to the shelves promptly after events, which also caused stock discrepancies.
 Problem: When stock did not match after an event, the cause could not be traced, and returning items to the shelves and preparing for the next event took time.
 New process: Follow the procedure in the handbook to work more efficiently. (See the separate procedure handbook.)
-Check: The Delivery Note (quantity out, quantity received) and the Return Note (restock, actual count, difference) are fully signed. If the reconciliation shows a difference, a difference sheet is prepared and approved.
+Check: The Delivery Note (quantity out, quantity received) matches the items returned plus the items sold. If the reconciliation shows a difference, it is reported and approved.
 :::
 
 # QC & Inspection
@@ -165,8 +165,8 @@ The packing standard is based on an actual measurement (347 pairs in 31 boxes, p
 ## Initial QC procedure
 
 :::proposal
-Before: [To be confirmed] What was inspected, and how defects were judged, differed from person to person.
-Problem: [To be confirmed] Defects were found in stores or by customers.
+Before: What was inspected, and how defects were judged, differed from person to person.
+Problem: The time needed for inspection could not be estimated, so staffing and work efficiency were poor.
 New process: Fix the inspection items and inspect every pair, aiming for 1 min 40 sec per pair. Sort the results into good / repair (gluing) / repair (stitching) / B-grade, and move them on to the sorting step below.
 Check: The number of defective items returned from stores or customers after inspection (per month).
 :::
@@ -196,39 +196,16 @@ Check: The number of days from sorting until items go on sale or out for repair.
 | Missing parts | A part is missing, but the item can still be used | Sold at up to 50% off |
 | Not sellable | Major damage or a safety issue | Dispose of. Record the item code, quantity and reason |
 
-:::kv
-Who / how often: QC staff, at every QC. B-grade items in the warehouse are counted once a month.
-:::
-
 # HR
 > Make it clear at a glance who is working where, and when, at each store and event — so no shift is left uncovered and nothing has to change at the last minute.
 
 ## PC management: a schedule of the PCs assigned to each store and event
 
 :::proposal
-Before: [To be confirmed] The PC schedule for each store and event was not kept in one place; it was tracked through individual messages and the group chat.
-Problem: [To be confirmed] Checking who was working where took time, and shifts were left uncovered, double-booked or changed at the last minute.
-New process: Keep a "PC schedule" for each store and event (date × location). [To be confirmed] Finalise and share the next period's schedule on a set day each week (or each month). Any change is made in the schedule first, then communicated.
-Check: The next period's schedule is shared by the deadline. There are no blank (unassigned) cells. The number of last-minute changes (the day before or later).
-:::
-
-### Steps
-
-1. [To be confirmed] On a set day each week (or each month), list the store opening days and event dates for the next period.
-2. Enter the PC assigned to each store and event for each date (for events, include load-in, sales and pack-up days).
-3. Check day-off requests, double bookings and long runs of consecutive working days, and finalise the schedule with no blank cells.
-4. Share the finalised schedule in the group chat and post it at each store.
-5. If anything changes, update the schedule first, then tell the people involved (no changes by word of mouth or chat alone).
-
-| Date | Day | K Village | Central CL | Siam Discovery | Paradise Park | Central LP | Event (venue) |
-|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |
-
-:::kv
-Who / when: [To be confirmed] Who makes the schedule (HR / store manager) and the day it is finalised and shared.
-Shared with: [To be confirmed] Group chat, posted at each store, event staff.
+Before: The PC schedule for each store and event was not kept in one place; it was tracked through individual messages and the group chat.
+Problem: Checking who was working where took time, and shifts were left uncovered, double-booked or changed at the last minute.
+New process: Keep a "PC schedule" for each store and event (date × location).
+Check: There are no blank (unassigned) cells in the schedule.
 :::
 
 # Company-wide
@@ -237,8 +214,8 @@ Shared with: [To be confirmed] Group chat, posted at each store, event staff.
 ## Rotating duty for trash and cleaning
 
 :::proposal
-Before: [To be confirmed] Nobody was assigned to take out the trash or clean; whoever noticed did it.
-Problem: [To be confirmed] The work fell on the same people, trash piled up, and some areas were never cleaned.
+Before: Nobody was assigned to take out the trash or clean; whoever noticed did it.
+Problem: The work fell on the same people, trash piled up, and some areas were never cleaned.
 New process: Make a weekly rotation. The person on duty covers their areas (trash, floors, work tables, toilet, kitchenette) using a checklist. Post the rotation and the checklist where everyone can see them.
 Check: The check boxes on the rotation are filled in every week.
 :::
@@ -248,11 +225,11 @@ Check: The check boxes on the rotation are filled in every week.
 |  |  | ☐ | ☐ | ☐ | ☐ |  |
 
 1. At the start of each month, make the rotation for the whole month and post it.
-2. The person on duty does the checklist items on [To be confirmed] (day and time), and ticks each one when finished.
+2. The person on duty does the checklist items on the set day and time, and ticks each one when finished.
 3. If the person on duty is off, the next person on the rotation covers.
 
 :::kv
-Who / how often: Everyone (weekly rotation). [To be confirmed] Frequency (daily / twice a week) and areas (office / warehouse / stores).
+Who / how often: Everyone (weekly rotation).
 :::
 
 # [Appendix] Event procedure handbook: preparation, stock out and stock in
