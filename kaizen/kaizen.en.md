@@ -32,16 +32,12 @@ Check: The daily check sheet is filled in every day. No unresolved differences a
 2. If there is a difference, check with the store or person in charge the same day and identify the reason (keying error, duplicate charge, refund, payment not yet received).
 3. Anything not resolved the same day goes in the "Pending" column, with the reason and a deadline.
 
-| Date | Store | POS sales | Payments total | Difference | Refund | Action / notes | Checked by |
-|---|---|---|---|---|---|---|---|
-|  |  |  |  |  | Yes / No |  |  |
-
 ## Check every day whether any refund cases have occurred
 
 :::proposal
 Before: Refunds (cancellations, returns, payment errors) were not checked as they happened.
 Problem: Refunds do not match the sales reconciliation and cause differences. Late refunds keep customers waiting.
-New process: Check every day whether any refunds have occurred and enter them in the sheet. If one has occurred, process it the same day or first thing the next morning.
+New process: Check every day whether any refunds have occurred and enter them in the sheet. If one has occurred, process it the same day or first thing the next morning. (See the checklist.)
 Check: Record the date each refund occurred and the date it was processed in the sheet.
 :::
 
@@ -72,7 +68,7 @@ Submit it within the first 5 business days of each month.
 :::proposal
 Before: Store sales staff (PCs) checked stock whenever needed and asked the office to send items.
 Problem: Stores spent time checking and requesting stock instead of selling, which meant lost sales. The office also had to respond case by case, which was inefficient.
-New process: The office manages each store's stock and sales, and prepares the items each store needs every Monday. Items are shipped after the Delivery Note has been checked, and the store checks the delivery against the Delivery Note on receipt. At month-end, the PC's stock report is matched against the system stock so that both the office and the stores always know the accurate stock in real time.
+New process: The office manages each store's stock and sales, and prepares the items each store needs every Monday. Items are shipped after the Delivery Note has gone through the approval process, and the store checks the delivery against the Delivery Note on receipt. At month-end, the PC's stock report is matched against the system stock so that both the office and the stores always know the accurate stock in real time. (See the checklist.)
 Check: Restocks for all stores are shipped every Monday. The number of differences found in the month-end check (recorded by store and by month).
 :::
 
@@ -103,8 +99,8 @@ Check: Restocks for all stores are shipped every Monday. The number of differenc
 :::proposal
 Before: Orders were packed and shipped first thing in the morning. Orders received later that day were not shipped until the next day.
 Problem: Orders that could have shipped the same day went out the next day.
-New process: The same-day shipping cut-off is 2:00 PM. Every order received by the cut-off must ship the same day. The cut-off is strictly kept, with no exceptions.
-Check: Tick the sheet once each order has been shipped.
+New process: The same-day shipping cut-off is 2:00 PM. Every order received by the cut-off must ship the same day.
+Check: Tick the sheet once each order has been shipped. (See the checklist.)
 :::
 
 ## Prepare event equipment and fixtures with a checklist, so no time is lost searching
@@ -112,7 +108,7 @@ Check: Tick the sheet once each order has been shipped.
 :::proposal
 Before: Both when preparing at the office and when setting up the booth, time was spent searching for equipment and fixtures and checking whether everything was there.
 Problem: Preparation and setup were inefficient. If something was missing, the booth could not always be set up as planned.
-New process: The office shelves are organised (every item has a fixed place and a label). For each event, prepare using the "Equipment & Fixtures Checklist", and check again before loading and during setup so that nothing is missed.
+New process: The office shelves are organised (every item has a fixed place and a label). For each event, prepare using the "Equipment & Fixtures Checklist", and check again before loading and during setup so that nothing is missed. (See the equipment & fixtures list.)
 Check: Tick ✅ on the event equipment list for each item checked.
 :::
 
@@ -122,17 +118,146 @@ Check: Tick ✅ on the event equipment list for each item checked.
 Before: Vehicles were arranged at the last minute before loading in and out.
 Problem: Time was wasted waiting for a vehicle, and loading, load-in and load-out started late.
 New process: Book the vehicle no later than the day before.
-Check: Enter the booking in the vehicle schedule and report it in the group chat. In the group, just post the planned time and that the vehicle is confirmed.
+Check: Enter the booking in the vehicle schedule and report it in the group chat. In the group, just post the planned time and that the vehicle is confirmed. (See the equipment & fixtures list.)
 :::
 
 ## Event procedure: preparation → stock out → during the event → close → stock in (back to shelves)
 
 :::proposal
-Before: [To be confirmed] Preparation, stock-out and stock-in were done differently by each person, and the quantities taken out, received and left over were not recorded consistently.
-Problem: [To be confirmed] When stock did not match after an event, the cause could not be traced, and returning items to the shelves and preparing for the next event took time.
-New process: Everyone follows the 15 steps below, with the same procedure and the same people in charge. All stock is recorded in the POS / stock management system Zort, and the person who counts the items is never the person who enters them in Zort. Only Accounting moves stock in Zort and issues sales reports. This covers sales products only (fixtures and equipment are excluded).
+Before: The work process was different every time, so preparation took a long time. Items were not returned to the shelves promptly after events, which also caused stock discrepancies.
+Problem: When stock did not match after an event, the cause could not be traced, and returning items to the shelves and preparing for the next event took time.
+New process: Follow the procedure in the handbook to work more efficiently. (See the separate procedure handbook.)
 Check: The Delivery Note (quantity out, quantity received) and the Return Note (restock, actual count, difference) are fully signed. If the reconciliation shows a difference, a difference sheet is prepared and approved.
 :::
+
+# QC & Inspection
+
+## Plan preparation using standard work times (lead times)
+
+:::proposal
+Before: QC, repairs and packing depended on particular staff members, so nobody could predict how long the work would take.
+Problem: Preparation for events and shipments did not finish on schedule. Extra help had to be found at the last minute, wasting both time and labor costs.
+New process: Use measured work times as the standard for estimating lead times. Before starting preparation, calculate the time and number of people needed (pairs × standard time). Record the actual times and review the standards.
+Check: The gap between the planned time and the actual time.
+:::
+
+| Task | Description | Standard time |
+|---|---|---|
+| Initial shoe QC | Quality inspection | 1 min 40 sec per pair |
+| Shoe repair (gluing) | Glue repair | 1 min per pair |
+| Shoe repair (stitching) | Sent to an outside repair craftsman | Outsourced |
+| Packing for events | Picking and boxing | approx. 32.5 sec per pair, approx. 6 min 4 sec per box, approx. 111 pairs per hour |
+
+The packing standard is based on an actual measurement (347 pairs in 31 boxes, packed in 3 hours 7 minutes 52 seconds).
+
+### How to calculate the time needed (example: a 300-pair event)
+
+| Task | Calculation | 1 person | 2 people |
+|---|---|---|---|
+| Initial QC | 300 pairs × 100 sec | approx. 8 h 20 min | approx. 4 h 10 min |
+| Packing | 300 pairs ÷ 111 pairs/hour | approx. 2 h 40 min | approx. 1 h 20 min |
+
+1. Confirm the number of pairs to prepare.
+2. Use the standards above to calculate the time for each task, then decide the number of people and the schedule.
+3. Record the start and finish time of the work.
+4. If the actual time differs a lot from the standard, note the reason (type of product, working conditions) and review the standard.
+
+## Initial QC procedure
+
+:::proposal
+Before: [To be confirmed] What was inspected, and how defects were judged, differed from person to person.
+Problem: [To be confirmed] Defects were found in stores or by customers.
+New process: Fix the inspection items and inspect every pair, aiming for 1 min 40 sec per pair. Sort the results into good / repair (gluing) / repair (stitching) / B-grade, and move them on to the sorting step below.
+Check: The number of defective items returned from stores or customers after inspection (per month).
+:::
+
+## Sort B-grade items and turn them into cash quickly
+
+:::proposal
+Before: There were no rules for B-grade (damaged) items, so they stayed in the warehouse — including items that could have been repaired.
+Problem: Sellable items sat in the warehouse and were slow to turn into cash. Repairable and non-repairable items were mixed together, so decisions took time.
+New process: Sort items by the QC result. Items with minor damage that cannot be repaired go on clearance, normally at 15% off. Items with missing parts are sold at up to 50% off. Repairable items are split into gluing (in-house) and stitching (outsourced), repaired, inspected again, and sold as good items. Turning stock into cash quickly is the priority.
+Check: The number of days from sorting until items go on sale or out for repair. The number of B-grade pairs left in the warehouse (counted once a month).
+:::
+
+:::flow
+- QC: A defect or damage is found
+- Sorting: Decide whether the item can be repaired, has minor damage that cannot be repaired, or cannot be sold
+- Repairable: Gluing is done in-house (1 min per pair); stitching goes to an outside craftsman → QC again → good item
+- Minor damage, not repairable: Clearance sale, normally 15% off
+- Missing parts: Sold at up to 50% off
+- Not sellable: Record the reason and dispose of the item
+:::
+
+| Grade | Criteria | Action |
+|---|---|---|
+| Repairable | Lifting glue, slightly loose stitching, etc. — becomes a good item once repaired | Gluing in-house, stitching outsourced. Good item after QC again |
+| Minor damage (not repairable) | Small scratches or marks that do not affect use | Clearance at 15% off (discounts over 15% need a manager's approval) |
+| Missing parts | A part is missing, but the item can still be used | Sold at up to 50% off |
+| Not sellable | Major damage or a safety issue | Dispose of. Record the item code, quantity and reason |
+
+:::kv
+Who / how often: QC staff, at every QC. B-grade items in the warehouse are counted once a month.
+:::
+
+# HR
+> Make it clear at a glance who is working where, and when, at each store and event — so no shift is left uncovered and nothing has to change at the last minute.
+
+## PC management: a schedule of the PCs assigned to each store and event
+
+:::proposal
+Before: [To be confirmed] The PC schedule for each store and event was not kept in one place; it was tracked through individual messages and the group chat.
+Problem: [To be confirmed] Checking who was working where took time, and shifts were left uncovered, double-booked or changed at the last minute.
+New process: Keep a "PC schedule" for each store and event (date × location). [To be confirmed] Finalise and share the next period's schedule on a set day each week (or each month). Any change is made in the schedule first, then communicated.
+Check: The next period's schedule is shared by the deadline. There are no blank (unassigned) cells. The number of last-minute changes (the day before or later).
+:::
+
+### Steps
+
+1. [To be confirmed] On a set day each week (or each month), list the store opening days and event dates for the next period.
+2. Enter the PC assigned to each store and event for each date (for events, include load-in, sales and pack-up days).
+3. Check day-off requests, double bookings and long runs of consecutive working days, and finalise the schedule with no blank cells.
+4. Share the finalised schedule in the group chat and post it at each store.
+5. If anything changes, update the schedule first, then tell the people involved (no changes by word of mouth or chat alone).
+
+| Date | Day | K Village | Central CL | Siam Discovery | Paradise Park | Central LP | Event (venue) |
+|---|---|---|---|---|---|---|---|
+|  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |
+
+:::kv
+Who / when: [To be confirmed] Who makes the schedule (HR / store manager) and the day it is finalised and shared.
+Shared with: [To be confirmed] Group chat, posted at each store, event staff.
+:::
+
+# Company-wide
+> Rules everyone follows, whatever their section.
+
+## Rotating duty for trash and cleaning
+
+:::proposal
+Before: [To be confirmed] Nobody was assigned to take out the trash or clean; whoever noticed did it.
+Problem: [To be confirmed] The work fell on the same people, trash piled up, and some areas were never cleaned.
+New process: Make a weekly rotation. The person on duty covers their areas (trash, floors, work tables, toilet, kitchenette) using a checklist. Post the rotation and the checklist where everyone can see them.
+Check: The check boxes on the rotation are filled in every week.
+:::
+
+| Week | On duty | Trash | Office floor & desks | Warehouse aisles | Toilet & kitchenette | Checked by |
+|---|---|---|---|---|---|---|
+|  |  | ☐ | ☐ | ☐ | ☐ |  |
+
+1. At the start of each month, make the rotation for the whole month and post it.
+2. The person on duty does the checklist items on [To be confirmed] (day and time), and ticks each one when finished.
+3. If the person on duty is off, the next person on the rotation covers.
+
+:::kv
+Who / how often: Everyone (weekly rotation). [To be confirmed] Frequency (daily / twice a week) and areas (office / warehouse / stores).
+:::
+
+# [Appendix] Event procedure handbook: preparation, stock out and stock in
+
+## Event procedure: preparation → stock out → during the event → close → stock in (back to shelves)
 
 ### Roles
 
@@ -261,128 +386,3 @@ Return Note "B. Product details" — columns and who fills them in:
 6. Who requests a refill and how it is recorded (Step 2)
 7. How soiled or defective items are handled (Step 3)
 8. Location of the holding area for Case ②, and the exception rule for moving best-sellers back to the main warehouse
-
-# QC & Inspection
-
-## Plan preparation using standard work times (lead times)
-
-:::proposal
-Before: QC, repairs and packing depended on particular staff members, so nobody could predict how long the work would take.
-Problem: Preparation for events and shipments did not finish on schedule. Extra help had to be found at the last minute, wasting both time and labor costs.
-New process: Use measured work times as the standard for estimating lead times. Before starting preparation, calculate the time and number of people needed (pairs × standard time). Record the actual times and review the standards.
-Check: The gap between the planned time and the actual time.
-:::
-
-| Task | Description | Standard time |
-|---|---|---|
-| Initial shoe QC | Quality inspection | 1 min 40 sec per pair |
-| Shoe repair (gluing) | Glue repair | 1 min per pair |
-| Shoe repair (stitching) | Sent to an outside repair craftsman | Outsourced |
-| Packing for events | Picking and boxing | approx. 32.5 sec per pair, approx. 6 min 4 sec per box, approx. 111 pairs per hour |
-
-The packing standard is based on an actual measurement (347 pairs in 31 boxes, packed in 3 hours 7 minutes 52 seconds).
-
-### How to calculate the time needed (example: a 300-pair event)
-
-| Task | Calculation | 1 person | 2 people |
-|---|---|---|---|
-| Initial QC | 300 pairs × 100 sec | approx. 8 h 20 min | approx. 4 h 10 min |
-| Packing | 300 pairs ÷ 111 pairs/hour | approx. 2 h 40 min | approx. 1 h 20 min |
-
-1. Confirm the number of pairs to prepare.
-2. Use the standards above to calculate the time for each task, then decide the number of people and the schedule.
-3. Record the start and finish time of the work.
-4. If the actual time differs a lot from the standard, note the reason (type of product, working conditions) and review the standard.
-
-## Initial QC procedure
-
-:::proposal
-Before: [To be confirmed] What was inspected, and how defects were judged, differed from person to person.
-Problem: [To be confirmed] Defects were found in stores or by customers.
-New process: Fix the inspection items and inspect every pair, aiming for 1 min 40 sec per pair. Sort the results into good / repair (gluing) / repair (stitching) / B-grade, and move them on to the sorting step below.
-Check: The number of defective items returned from stores or customers after inspection (per month).
-:::
-
-## Sort B-grade items and turn them into cash quickly
-
-:::proposal
-Before: There were no rules for B-grade (damaged) items, so they stayed in the warehouse — including items that could have been repaired.
-Problem: Sellable items sat in the warehouse and were slow to turn into cash. Repairable and non-repairable items were mixed together, so decisions took time.
-New process: Sort items by the QC result. Items with minor damage that cannot be repaired go on clearance, normally at 15% off. Items with missing parts are sold at up to 50% off. Repairable items are split into gluing (in-house) and stitching (outsourced), repaired, inspected again, and sold as good items. Turning stock into cash quickly is the priority.
-Check: The number of days from sorting until items go on sale or out for repair. The number of B-grade pairs left in the warehouse (counted once a month).
-:::
-
-:::flow
-- QC: A defect or damage is found
-- Sorting: Decide whether the item can be repaired, has minor damage that cannot be repaired, or cannot be sold
-- Repairable: Gluing is done in-house (1 min per pair); stitching goes to an outside craftsman → QC again → good item
-- Minor damage, not repairable: Clearance sale, normally 15% off
-- Missing parts: Sold at up to 50% off
-- Not sellable: Record the reason and dispose of the item
-:::
-
-| Grade | Criteria | Action |
-|---|---|---|
-| Repairable | Lifting glue, slightly loose stitching, etc. — becomes a good item once repaired | Gluing in-house, stitching outsourced. Good item after QC again |
-| Minor damage (not repairable) | Small scratches or marks that do not affect use | Clearance at 15% off (discounts over 15% need a manager's approval) |
-| Missing parts | A part is missing, but the item can still be used | Sold at up to 50% off |
-| Not sellable | Major damage or a safety issue | Dispose of. Record the item code, quantity and reason |
-
-:::kv
-Who / how often: QC staff, at every QC. B-grade items in the warehouse are counted once a month.
-:::
-
-# HR
-> Make it clear at a glance who is working where, and when, at each store and event — so no shift is left uncovered and nothing has to change at the last minute.
-
-## PC management: a schedule of the PCs assigned to each store and event
-
-:::proposal
-Before: [To be confirmed] The PC schedule for each store and event was not kept in one place; it was tracked through individual messages and the group chat.
-Problem: [To be confirmed] Checking who was working where took time, and shifts were left uncovered, double-booked or changed at the last minute.
-New process: Keep a "PC schedule" for each store and event (date × location). [To be confirmed] Finalise and share the next period's schedule on a set day each week (or each month). Any change is made in the schedule first, then communicated.
-Check: The next period's schedule is shared by the deadline. There are no blank (unassigned) cells. The number of last-minute changes (the day before or later).
-:::
-
-### Steps
-
-1. [To be confirmed] On a set day each week (or each month), list the store opening days and event dates for the next period.
-2. Enter the PC assigned to each store and event for each date (for events, include load-in, sales and pack-up days).
-3. Check day-off requests, double bookings and long runs of consecutive working days, and finalise the schedule with no blank cells.
-4. Share the finalised schedule in the group chat and post it at each store.
-5. If anything changes, update the schedule first, then tell the people involved (no changes by word of mouth or chat alone).
-
-| Date | Day | K Village | Central CL | Siam Discovery | Paradise Park | Central LP | Event (venue) |
-|---|---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |
-
-:::kv
-Who / when: [To be confirmed] Who makes the schedule (HR / store manager) and the day it is finalised and shared.
-Shared with: [To be confirmed] Group chat, posted at each store, event staff.
-:::
-
-# Company-wide
-> Rules everyone follows, whatever their section.
-
-## Rotating duty for trash and cleaning
-
-:::proposal
-Before: [To be confirmed] Nobody was assigned to take out the trash or clean; whoever noticed did it.
-Problem: [To be confirmed] The work fell on the same people, trash piled up, and some areas were never cleaned.
-New process: Make a weekly rotation. The person on duty covers their areas (trash, floors, work tables, toilet, kitchenette) using a checklist. Post the rotation and the checklist where everyone can see them.
-Check: The check boxes on the rotation are filled in every week.
-:::
-
-| Week | On duty | Trash | Office floor & desks | Warehouse aisles | Toilet & kitchenette | Checked by |
-|---|---|---|---|---|---|---|
-|  |  | ☐ | ☐ | ☐ | ☐ |  |
-
-1. At the start of each month, make the rotation for the whole month and post it.
-2. The person on duty does the checklist items on [To be confirmed] (day and time), and ticks each one when finished.
-3. If the person on duty is off, the next person on the rotation covers.
-
-:::kv
-Who / how often: Everyone (weekly rotation). [To be confirmed] Frequency (daily / twice a week) and areas (office / warehouse / stores).
-:::
