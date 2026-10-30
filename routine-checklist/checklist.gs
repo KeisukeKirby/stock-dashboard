@@ -44,11 +44,7 @@ const CHECKLISTS = [
     blocks: [
       {
         name: '売上照合', freq: FREQ.DAILY, rows: [
-          '前営業日分の売上データを販売管理システムから出力した',
-          '売上データと請求書・納品書の件数・金額が一致している',
-          '売上データと入金額（現金・振込・カード・EC決済）が一致している',
-          '返品・値引き・キャンセルが正しく反映されている',
-          '会計ソフトの売上計上額と販売管理システムの売上が一致している',
+          '売上照合をした',
           ...ANOMALY, PERSON,
         ],
       },
@@ -66,8 +62,7 @@ const CHECKLISTS = [
       },
       {
         name: 'PC在庫報告の照合', freq: FREQ.MONTH_END, rows: [
-          '店舗販売員（PC）からの在庫報告を確認した',
-          'オフィス管理の在庫表と照合した',
+          '店舗販売員（PC）の在庫報告とオフィスの在庫表を照合した',
           ['status', '差異の有無（なし／あり）'],
           ['detail', '差異の内容（商品ごとの詳細は「在庫差異記録」シートに記入）'],
           PERSON,
@@ -207,31 +202,14 @@ const TEXT = {
   'オンライン発送分の店舗在庫調整': ['Store Stock Adjustment for Online Orders', 'ปรับสต็อกสาขาสำหรับออเดอร์ออนไลน์'],
   'ゴミ出し・掃除': ['Trash & Cleaning', 'ทิ้งขยะและทำความสะอาด'],
   // チェック項目
-  '前営業日分の売上データを販売管理システムから出力した': [
-    "Exported the previous business day's sales data from the sales system",
-    'ดึงข้อมูลยอดขายของวันทำการก่อนหน้าจากระบบขายแล้ว'],
-  '売上データと請求書・納品書の件数・金額が一致している': [
-    'Sales data matches the invoices and delivery notes (number of items and amount)',
-    'ข้อมูลยอดขายตรงกับใบแจ้งหนี้และใบส่งของ (จำนวนรายการและยอดเงิน)'],
-  '売上データと入金額（現金・振込・カード・EC決済）が一致している': [
-    'Sales data matches the payments received (cash, bank transfer, card, online payment)',
-    'ข้อมูลยอดขายตรงกับยอดเงินที่ได้รับ (เงินสด เงินโอน บัตร ชำระเงินออนไลน์)'],
-  '返品・値引き・キャンセルが正しく反映されている': [
-    'Returns, discounts and cancellations are recorded correctly',
-    'บันทึกการคืนสินค้า ส่วนลด และการยกเลิกถูกต้องแล้ว'],
-  '会計ソフトの売上計上額と販売管理システムの売上が一致している': [
-    'Sales in the accounting software match the sales system',
-    'ยอดขายในโปรแกรมบัญชีตรงกับระบบขาย'],
+  '売上照合をした': ['Completed the sales reconciliation', 'ตรวจสอบยอดขายเรียบร้อยแล้ว'],
   '返金案件の有無を確認した（発生・処理があれば「返金記録」シートに日付を記入）': [
     'Checked for refunds (if a refund was requested or paid, entered the date in the "Refund Log" sheet)',
     'ตรวจสอบว่ามีรายการคืนเงินหรือไม่ (ถ้ามีรายการใหม่หรือคืนเงินแล้ว ให้ลงวันที่ในชีต "บันทึกการคืนเงิน")'],
   '月次レポートを提出した': ['Submitted the monthly report', 'ส่งรายงานประจำเดือนแล้ว'],
-  '店舗販売員（PC）からの在庫報告を確認した': [
-    'Checked the stock report from the store sales staff (PCs)',
-    'ตรวจสอบรายงานสต็อกจากพนักงานขายหน้าร้าน (PC) แล้ว'],
-  'オフィス管理の在庫表と照合した': [
-    "Compared it with the office's stock sheet",
-    'เทียบกับตารางสต็อกที่ออฟฟิศดูแลแล้ว'],
+  '店舗販売員（PC）の在庫報告とオフィスの在庫表を照合した': [
+    "Compared the stock report from the store sales staff (PCs) with the office's stock sheet",
+    'เทียบรายงานสต็อกจากพนักงานขายหน้าร้าน (PC) กับตารางสต็อกของออฟฟิศเรียบร้อยแล้ว'],
   '差異の有無（なし／あり）': ['Any discrepancy? (No / Yes)', 'มียอดไม่ตรงกันหรือไม่ (ไม่มี / มี)'],
   '差異の内容（商品ごとの詳細は「在庫差異記録」シートに記入）': [
     'Discrepancy details (enter details for each item in the "Stock Discrepancy Log" sheet)',
