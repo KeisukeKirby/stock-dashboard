@@ -6,6 +6,7 @@
  * - 記録シート（返金記録／在庫差異記録／店舗補充／オンライン発送）：1件1行の表
  * - 言語切り替え（日本語／English／ไทย）：各シート左上のプルダウン、またはメニューから
  *   訳語は「翻訳」シートで直せる
+ * - 変更通知：誰かがチェック・入力をすると「変更履歴」シートに記録し、セットアップした人にメールで知らせる
  *
  * 使い方は README.md を参照。
  */
@@ -367,6 +368,13 @@ const MSG = {
     'กรุณาเปิดชีตเช็กลิสต์ (เช่น บัญชี หรือ คลังสินค้าสำนักงาน) แล้วลองอีกครั้ง'],
   langChanging: ['表示言語を切り替えています…', 'Switching language…', 'กำลังเปลี่ยนภาษา…'],
   langChanged: ['日本語に切り替えました', 'Switched to English', 'เปลี่ยนเป็นภาษาไทยแล้ว'],
+  menuNotifyOn: ['変更をメールで通知する', 'Email me when something changes', 'แจ้งเตือนทางอีเมลเมื่อมีการแก้ไข'],
+  menuNotifyOff: ['変更通知を止める', 'Stop change emails', 'หยุดการแจ้งเตือนทางอีเมล'],
+  notifySet: [
+    '誰かがチェック・入力をすると {email} にメールで通知します（続けて変更があった場合は1分ごとにまとめて1通）。\n内容は「変更履歴」シートにも記録されます。',
+    'When anyone ticks or edits something, an email will be sent to {email} (changes made in quick succession are grouped into one email per minute).\nEvery change is also recorded in the "変更履歴" (Change History) sheet.',
+    'เมื่อมีคนติ๊กหรือแก้ไขข้อมูล ระบบจะส่งอีเมลแจ้งไปที่ {email} (ถ้าแก้ไขต่อเนื่อง จะรวมเป็น 1 ฉบับต่อนาที)\nทุกการแก้ไขจะถูกบันทึกในชีต "変更履歴" (ประวัติการแก้ไข) ด้วย'],
+  notifyOff: ['変更通知を止めました（「変更履歴」への記録も止まります）。', 'Change emails have been turned off (changes are no longer recorded either).', 'หยุดการแจ้งเตือนแล้ว (จะไม่บันทึกประวัติการแก้ไขด้วย)'],
   autoTranslated: [
     '英語・タイ語は自動翻訳です。「翻訳」シートで確認・修正できます。',
     'The other languages were machine-translated. You can check and fix them in the "翻訳" (Translation) sheet.',
@@ -422,6 +430,9 @@ function onOpen() {
     .addSeparator()
     .addItem(msg('menuAddMonth'), 'addNextMonth')
     .addItem(msg('menuAutoMonth'), 'installMonthlyTrigger')
+    .addSeparator()
+    .addItem(msg('menuNotifyOn'), 'installNotifications')
+    .addItem(msg('menuNotifyOff'), 'stopNotifications')
     .addSeparator()
     .addSubMenu(ui.createMenu(LANG_MENU_NAME)
       .addItem('日本語', 'switchToJapanese')
@@ -493,6 +504,7 @@ function setupChecklist() {
     for (let prev = c.name, next; (next = LOGS.find(l => l.after === prev)); prev = next.name) order.push(next.name);
   });
   order.push(TRANSLATION_SHEET);
+  if (ss.getSheetByName(HISTORY_SHEET)) order.push(HISTORY_SHEET);
   order.forEach((name, i) => {
     ss.setActiveSheet(ss.getSheetByName(name));
     ss.moveActiveSheet(i + 1);
@@ -504,7 +516,8 @@ function setupChecklist() {
   });
   ss.setActiveSheet(ss.getSheetByName(CHECKLISTS[0].name));
   if (lang !== 'ja') applyLanguage(lang);
-  ui.alert(msg('setupDone'));
+  enableNotifications();
+  ui.alert(msg('setupDone') + '\n\n' + msg('notifySet').replace('{email}', getNotifyEmail()));
 }
 
 function goToToday() {
@@ -1192,6 +1205,176 @@ function translateCells(rng, fn) {
   }
   const sheet = rng.getSheet();
   changedRows.forEach(i => sheet.getRange(rng.getRow() + i, rng.getColumn(), 1, out[i].length).setValues([out[i]]));
+}
+
+// ===== 変更通知 =====
+const HISTORY_SHEET = '変更履歴';
+const NOTIFY_INTERVAL_MS = 60 * 1000; // この間隔より短い変更はまとめて1通にする
+
+function installNotifications() {
+  enableNotifications();
+  SpreadsheetApp.getUi().alert(msg('notifySet').replace('{email}', getNotifyEmail()));
+}
+
+function stopNotifications() {
+  deleteTriggers(['onEditNotify', 'flushNotifications']);
+  PropertiesService.getDocumentProperties().deleteProperty('notifyEmail');
+  SpreadsheetApp.getUi().alert(msg('notifyOff'));
+}
+
+// 編集トリガーを入れ、実行した人（セットアップした人）を通知先にする
+function enableNotifications() {
+  deleteTriggers(['onEditNotify', 'flushNotifications']);
+  const ss = SpreadsheetApp.getActive();
+  ScriptApp.newTrigger('onEditNotify').forSpreadsheet(ss).onEdit().create();
+  const props = PropertiesService.getDocumentProperties();
+  props.setProperty('notifyEmail', Session.getEffectiveUser().getEmail());
+  const history = historySheet();
+  if (!props.getProperty('notifyLastRow')) props.setProperty('notifyLastRow', String(history.getLastRow()));
+}
+
+function getNotifyEmail() {
+  return PropertiesService.getDocumentProperties().getProperty('notifyEmail') || '';
+}
+
+function deleteTriggers(handlers) {
+  ScriptApp.getProjectTriggers()
+    .filter(t => handlers.includes(t.getHandlerFunction()))
+    .forEach(t => ScriptApp.deleteTrigger(t));
+}
+
+function historySheet() {
+  const ss = SpreadsheetApp.getActive();
+  let sheet = ss.getSheetByName(HISTORY_SHEET);
+  if (sheet) return sheet;
+  sheet = ss.insertSheet(HISTORY_SHEET, ss.getNumSheets());
+  sheet.setTabColor('#999999');
+  sheet.getRange(1, 1, 1, 7).setValues([[
+    '日時 / Time / เวลา', '編集者 / Edited by / ผู้แก้ไข', 'シート / Sheet / ชีต', '項目 / Item / รายการ',
+    '日付・行 / Date・Row / วันที่・แถว', '変更前 / Before / ก่อน', '変更後 / After / หลัง',
+  ]]).setFontWeight('bold').setBackground('#efefef').setWrap(true);
+  [150, 200, 130, 380, 130, 160, 160].forEach((w, i) => sheet.setColumnWidth(i + 1, w));
+  sheet.setFrozenRows(1);
+  sheet.protect().setWarningOnly(true); // 通知の位置がずれるので、並べ替え・削除はしない
+  return sheet;
+}
+
+// インストール型の編集トリガー（enableNotifications で設定）
+function onEditNotify(e) {
+  const range = e.range;
+  const sheet = range.getSheet();
+  if (sheet.getName() === HISTORY_SHEET) return;
+  const kind = kindOf(sheet);
+  if (kind && range.getRow() === ROW.lang && range.getNumRows() === 1) return; // 言語の切り替え
+  const user = (e.user && e.user.getEmail()) || '（不明 / unknown）';
+  const [item, where, before, after] = describeEdit(e, sheet, kind);
+  const history = historySheet();
+  history.getRange(history.getLastRow() + 1, 1, 1, 7)
+    .setValues([[new Date(), user, sheet.getName(), item, where, before, after]]);
+  history.getRange(history.getLastRow(), 1).setNumberFormat('yyyy/mm/dd hh:mm:ss');
+  queueNotification();
+}
+
+// 変更内容を [項目, 日付・行, 変更前, 変更後] にする
+function describeEdit(e, sheet, kind) {
+  const range = e.range;
+  const row = range.getRow();
+  const col = range.getColumn();
+  if (range.getNumRows() > 1 || range.getNumColumns() > 1) {
+    const values = range.getDisplayValues().flat().filter(v => v !== '');
+    return [`${range.getA1Notation()}（複数セル / multiple cells）`, '', '',
+      values.slice(0, 5).join(', ') + (values.length > 5 ? ` …（${values.length}）` : '')];
+  }
+  // 日付は e.value / e.oldValue がシリアル値になるので、表示形式に合わせて直す
+  const isDate = /y/i.test(range.getNumberFormat());
+  const before = formatEditValue(isDate && /^\d+(\.\d+)?$/.test(String(e.oldValue)) ? serialToDate(Number(e.oldValue)) : e.oldValue);
+  const after = formatEditValue(isDate ? range.getDisplayValue() : (e.value !== undefined ? e.value : range.getDisplayValue()));
+  if (kind === 'checklist' && row >= ROW.firstData) {
+    const label = sheet.getRange(row, COL.label).getDisplayValue() || sheet.getRange(row, COL.no).getDisplayValue();
+    if (col < COL.firstDate) return [label, '', before, after];
+    // その区分の見出しも付ける
+    let header = '';
+    for (let r = row; r >= ROW.firstData && !header; r--) {
+      if (String(sheet.getRange(r, COL.type).getValue()).startsWith(KIND.HEADER)) header = sheet.getRange(r, COL.no).getDisplayValue();
+    }
+    const date = sheet.getRange(ROW.date, col).getDisplayValue();
+    const dow = sheet.getRange(ROW.dow, col).getDisplayValue();
+    return [header ? `${header}\n${label}` : label, `${date}（${dow}）`, before, after];
+  }
+  if (kind === 'log' && row >= LOG_ROW.firstData) {
+    const header = sheet.getRange(LOG_ROW.header, col).getDisplayValue();
+    const first = sheet.getRange(row, 1).getDisplayValue();
+    return [header, `${row - LOG_ROW.firstData + 1}${first && col !== 1 ? `（${first}）` : ''}`, before, after];
+  }
+  return [range.getA1Notation(), '', before, after];
+}
+
+function serialToDate(serial) {
+  const d = new Date(Date.UTC(1899, 11, 30) + Math.round(serial * 86400000));
+  return Utilities.formatDate(d, 'UTC', 'yyyy/MM/dd');
+}
+
+function formatEditValue(v) {
+  if (v === undefined || v === null || v === '') return '（空欄）';
+  if (v === 'TRUE' || v === true) return '☑';
+  if (v === 'FALSE' || v === false) return '☐';
+  return String(v);
+}
+
+// 前回の通知から1分以上たっていればすぐ送る。たっていなければ1分後にまとめて送る
+function queueNotification() {
+  const lock = LockService.getDocumentLock();
+  if (!lock.tryLock(10000)) return;
+  try {
+    const props = PropertiesService.getDocumentProperties();
+    const last = Number(props.getProperty('notifyLastSent') || 0);
+    if (Date.now() - last >= NOTIFY_INTERVAL_MS) {
+      sendPendingNotifications();
+    } else if (!props.getProperty('notifyScheduled')) {
+      ScriptApp.newTrigger('flushNotifications').timeBased().after(NOTIFY_INTERVAL_MS).create();
+      props.setProperty('notifyScheduled', '1');
+    }
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+// 1回だけの時間主導トリガーから呼ばれる
+function flushNotifications() {
+  deleteTriggers(['flushNotifications']);
+  const lock = LockService.getDocumentLock();
+  if (!lock.tryLock(30000)) return;
+  try {
+    PropertiesService.getDocumentProperties().deleteProperty('notifyScheduled');
+    sendPendingNotifications();
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function sendPendingNotifications() {
+  const props = PropertiesService.getDocumentProperties();
+  const email = props.getProperty('notifyEmail');
+  const history = SpreadsheetApp.getActive().getSheetByName(HISTORY_SHEET);
+  if (!email || !history) return;
+  const last = history.getLastRow();
+  const from = Math.max(2, Number(props.getProperty('notifyLastRow') || 1) + 1);
+  if (last < from) return;
+  const rows = history.getRange(from, 1, last - from + 1, 7).getDisplayValues();
+  props.setProperty('notifyLastRow', String(last));
+  props.setProperty('notifyLastSent', String(Date.now()));
+
+  const ss = SpreadsheetApp.getActive();
+  const esc = v => String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\n/g, '<br>');
+  const sheets = [...new Set(rows.map(r => r[2]))];
+  const subject = `【${ss.getName()}】${rows.length}件の変更（${sheets.join('・')}）`;
+  const body = rows.map(r => `${r[0]} ${r[1]}\n[${r[2]}] ${r[3].replace(/\n/g, ' / ')} ${r[4]}\n${r[5]} → ${r[6]}`).join('\n\n')
+    + `\n\n${ss.getUrl()}`;
+  const htmlBody = `<table style="border-collapse:collapse;font-size:13px">`
+    + `<tr style="background:#efefef">${['日時', '編集者', 'シート', '項目', '日付・行', '変更前', '変更後'].map(h => `<th style="border:1px solid #ccc;padding:4px">${h}</th>`).join('')}</tr>`
+    + rows.map(r => `<tr>${r.map(v => `<td style="border:1px solid #ccc;padding:4px;vertical-align:top">${esc(v)}</td>`).join('')}</tr>`).join('')
+    + `</table><p><a href="${ss.getUrl()}">${esc(ss.getName())} を開く</a></p>`;
+  MailApp.sendEmail({ to: email, subject, body, htmlBody });
 }
 
 // ===== ユーティリティ =====
