@@ -45,7 +45,7 @@ Check: Record the date each refund occurred and the date it was processed in the
 :::proposal
 Before: Siam Discovery's and Central's SKU codes do not match our own, so every line had to be checked one by one.
 Problem: The work took a lot of time.
-New process: Use AI to match them (an AI demo is being prepared).
+New process: Use AI to match them (details are being confirmed).
 :::
 
 ## Prepare the monthly report
