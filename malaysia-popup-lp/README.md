@@ -36,16 +36,16 @@ malaysia-popup-lp/
 
 | ファイル | 元データ |
 | --- | --- |
-| `hero-a.jpg` 〜 `hero-e.jpg` | 支給画像（V-Run / KSO / V-Soul / Trailope / Breezandal のモデル着用写真）をシューズ中心にトリミング |
+| `hero-a.jpg` 〜 `hero-e.jpg` | 支給画像（V-Run / KSO / V-Soul / Scramkey / Breezandal のモデル着用写真）をシューズ中心にトリミング |
 | `about-model-b3.jpg` | VIBRAM › Marketing › VFF Global Q3 Assets › V-Run_September › 2nd part RUNNING › DSC06435.jpg |
 | `life-vrun-p.jpg` | 同上 › 2nd part RUNNING › DSC06409.jpg |
 | `life-trailope-deeplake.jpg` | 支給画像（Trailope Deep Lake 着用写真） |
-| `life-scramkey-rock.jpg` | 支給画像（岩場の Scramkey 着用写真。スマホ版トップ左上の `hero-m-f.jpg` と同じ写真） |
+| `life-scramkey-sky.jpg` | 支給画像（空を背景に岩を登る Scramkey 着用写真。PC 版トップの `hero-d.jpg` と同じ写真） |
 | `life-spidrwalk-s5.jpg` | VFF Global Q3 Assets › Spidrwalk_August › More assets › DSCF9475.jpg |
 | `life-vsoul-black.jpg` | 支給画像（V-Soul Black 着用写真） |
 | `life-groundsplay.jpg` | VFF Global Q3 Assets › Groundsplay LS_September › Ivory Deep Lake › 181025_VIBRAM_FIVEFINGHERS_00156.jpg |
 | `bg-feet-grass-d5.jpg` / `bg-feet-grass-m8.jpg` | Benefits 帯の背景（PC / スマホ）。インフォグラフィックの芝生と右足を切り出し、左右反転して合成 |
-| `hero-m-f.jpg` | 支給画像（岩場の Scramkey 着用写真、スマホ版トップ左上） |
+| `hero-m-f.jpg` | 支給画像（岩場の着用写真、スマホ版トップ左上） |
 | `hero-m-a.jpg` 〜 `hero-m-e.jpg` | `hero-a` 〜 `hero-e` と同じ元画像をスマホ用に縦長でトリミング |
 | `issue-1.png` 〜 `issue-4.png`、`vs-n1-c.png` 〜 `vs-n5-c.png`、`vs-b1-c.png` 〜 `vs-b5-c.png` | 支給の WHY BAREFOOT? インフォグラフィックから切り出したアイコン・背景 |
 | `logo-vff-white-v3.png` | Latest VFF logo and Guideline › LOGO 4 colours › vff_logo_4col_horiz_white.pdf |
