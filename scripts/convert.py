@@ -261,6 +261,9 @@ def apply_event_stock(items, store_names, path):
     return data, added
 
 
+COUNTED = {}  # (店舗, コード) -> 最新の棚卸日
+
+
 def apply_counts(items, store_names, paths, seed_returns=None):
     """店舗の実地棚卸 (data/counts/*.json) で、その店舗の数量を上書きする。
     items: { 商品コード: { count, display } } → 数量 = count + display (展示品)。表にない商品は変えない。"""
@@ -277,6 +280,8 @@ def apply_counts(items, store_names, paths, seed_returns=None):
         # name があれば (コードのない行も) モデル・カラー・サイズでも照合する
         by_name = {(i["model"], norm_color(i["color"]), i["size"]): i for i in items}
         for code, v in data["items"].items():
+            if data.get("date"):
+                COUNTED[(data["store"], code)] = data["date"]
             q = int(v.get("count", 0)) + int(v.get("display", 0)) + int(add.get(f"{code}@{data['store']}", 0))
             it = by_code.get(code)
             name = v.get("name")
@@ -322,8 +327,9 @@ def apply_counts(items, store_names, paths, seed_returns=None):
     return done
 
 
-def apply_adjustments(items, store_names, path):
-    """個別の在庫調整 (data/adjustments.json): [{date, store, code, qty(増減), note}]。棚卸の後に適用する。"""
+def apply_adjustments(items, store_names, path, counted=None):
+    """個別の在庫調整 (data/adjustments.json): [{date, store, code, qty(増減), note}]。棚卸の後に適用する。
+    counted: {(店舗, コード): 棚卸日}。その商品の棚卸日より前の調整は棚卸の数に含まれているので使わない。"""
     if not Path(path).exists():
         return []
     rows = json.loads(Path(path).read_text(encoding="utf-8"))
@@ -333,6 +339,10 @@ def apply_adjustments(items, store_names, path):
         if not it:
             raise SystemExit(f"在庫調整の商品がダッシュボードにありません: {r['code']}")
         k = store_names.index(r["store"])
+        cdate = (counted or {}).get((r["store"], r["code"]))
+        if cdate and r["date"] < cdate:
+            print(f"adjust: skip {r['store']} {r['code']} {r['date']} (counted {cdate})")
+            continue
         if it["qty"][k] + r["qty"] < 0:
             raise SystemExit(f"在庫調整で在庫がマイナスになります: {r['store']} {r['code']}")
         it["qty"][k] += r["qty"]
@@ -430,7 +440,7 @@ def main(path, office_path=None, alloc_path=None, event_path=None, event_stock_p
             event_stock, event_stock_added = apply_event_stock(items, store_names, event_stock_path)
         seed_returns = json.loads(Path(returns_import_path).read_text(encoding="utf-8"))["returns"] if returns_import_path else {}
         counts = apply_counts(items, store_names, sorted(str(x) for x in (ROOT / "data" / "counts").glob("*.json")), seed_returns)
-        adjustments = apply_adjustments(items, store_names, ROOT / "data" / "adjustments.json")
+        adjustments = apply_adjustments(items, store_names, ROOT / "data" / "adjustments.json", COUNTED)
         sales_rate = apply_sales_rate(items, store_names, sales_rate_path) if sales_rate_path else None
         qty = [sum(i["qty"][k] for i in items) for k in range(n)]
         ret = [sum(i["ret"][k] or 0 for i in items) for k in range(n)]
