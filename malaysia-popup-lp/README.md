@@ -48,6 +48,7 @@ malaysia-popup-lp/
 | `hero-m-a.jpg` 〜 `hero-m-e.jpg` | `hero-a` 〜 `hero-e` と同じ元画像をスマホ用に縦長でトリミング |
 | `issue-1.png` 〜 `issue-4.png`、`vs-n1-c.png` 〜 `vs-n5-c.png`、`vs-b1-c.png` 〜 `vs-b5-c.png` | 支給の WHY BAREFOOT? インフォグラフィックから切り出したアイコン・背景 |
 | `logo-vff-white-v3.png` | Latest VFF logo and Guideline › LOGO 4 colours › vff_logo_4col_horiz_white.pdf |
+| `og-image.jpg` | SNS / メッセンジャーでリンクを貼ったときのプレビュー画像（1200×630）。`index.html` の `og:image` は公開ドメインの絶対 URL で指定 |
 | `logo-barefootmy.png` | 支給の barefoot my ロゴ（PNG、透過） |
 
 「Why Barefoot?」セクションは terminal21 の LP と同じ構成（お悩み 4 カード → Benefits of Barefoot → Normal Shoes vs Barefoot Theory）を HTML で組んでおり、テキストは `index.html` 内で編集できます。
