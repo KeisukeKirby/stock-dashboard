@@ -30,5 +30,5 @@
  {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0022(BK,W36)", "qty": -1, "note": "販売 Breezandal(W36, Black)（10/10 の売上票） x1（Paradise Park から）"},
  {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0008(F/GN,W41)", "qty": -1, "note": "販売 V-Soul(W41, Fig/A. Green)（10/10 の売上票） x1（Paradise Park から）"},
  {"date": "2026-10-08", "store": "Paradise Park", "code": "VFF0031(TT/BK,M42)", "qty": -1, "note": "販売 Groundsplay LS(M42, Total Black)（10/8 の売上票） x1（Paradise Park から）"},
- {"date": "2026-10-31", "store": "Paradise Park", "code": "VFF0008(BK26,W37)", "qty": -1, "note": "棚卸の後 V-Soul(W37, Black) x1 を減らす（BK と BK26 を入れ替えた後、W37 の在庫がある BK26 から）"}
+ {"date": "2026-10-31", "store": "Paradise Park", "code": "VFF0008(BK,W37)", "qty": -1, "note": "棚卸の後 V-Soul(W37, Black) x1 を減らす"}
 ]

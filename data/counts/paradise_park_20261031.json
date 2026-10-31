@@ -2,7 +2,7 @@
  "store": "Paradise Park",
  "date": "2026-10-31",
  "source": "手書きの棚卸表（2 回目・鉛筆の列）",
- "note": "数量 = 鉛筆の列の数 + 商品名横の展示品。空欄は 0。V-Soul Black は手書きメモ（26/18）に従い BK と BK26 を入れ替え。この表に載っていない行は 9/30 の棚卸のまま。",
+ "note": "数量 = 鉛筆の列の数をそのまま使用（展示品の加算・BK/BK26 の入れ替えはしない）。空欄は 0。この表に載っていない行は 9/30 の棚卸のまま。",
  "items": {
   "VFF0002(BK/BL,M41)": {
    "count": 1,
@@ -14,7 +14,7 @@
   },
   "VFF0002(BK/BL,M43)": {
    "count": 0,
-   "display": 1
+   "display": 0
   },
   "VFF0002(BK/BL,M44)": {
    "count": 0,
@@ -58,7 +58,7 @@
   },
   "VFF0002(BK/LI/BK,M43)": {
    "count": 2,
-   "display": 1
+   "display": 0
   },
   "VFF0002(BK/LI/BK,M44)": {
    "count": 2,
@@ -94,7 +94,7 @@
   },
   "VFF0002(BR/IV/BK,M43)": {
    "count": 0,
-   "display": 1
+   "display": 0
   },
   "VFF0002(BR/IV/BK,M44)": {
    "count": 2,
@@ -122,7 +122,7 @@
   },
   "VFF0002(F/IV/GN,M43)": {
    "count": 0,
-   "display": 1
+   "display": 0
   },
   "VFF0002(F/IV/GN,M44)": {
    "count": 2,
@@ -154,7 +154,7 @@
   },
   "VFF0002(TT/BK,M42)": {
    "count": 1,
-   "display": 1
+   "display": 0
   },
   "VFF0002(TT/BK,M43)": {
    "count": 2,
@@ -202,7 +202,7 @@
   },
   "VFF0002(TT/IV,M44)": {
    "count": 2,
-   "display": 1
+   "display": 0
   },
   "VFF0002(TT/IV,M45)": {
    "count": 2,
@@ -226,7 +226,7 @@
   },
   "VFF0002(BK/F,W38)": {
    "count": 2,
-   "display": 1
+   "display": 0
   },
   "VFF0002(BK/F,W39)": {
    "count": 0,
@@ -254,7 +254,7 @@
   },
   "VFF0002(DPK,W38)": {
    "count": 4,
-   "display": 1
+   "display": 0
   },
   "VFF0002(DPK,W39)": {
    "count": 3,
@@ -278,7 +278,7 @@
   },
   "VFF0002(TT/IV,W38)": {
    "count": 1,
-   "display": 1
+   "display": 0
   },
   "VFF0002(TT/IV,W39)": {
    "count": 1,
@@ -310,7 +310,7 @@
   },
   "VFF0005(BK/BK,M43)": {
    "count": 3,
-   "display": 1
+   "display": 0
   },
   "VFF0005(BK/BK,M44)": {
    "count": 3,
@@ -338,7 +338,7 @@
   },
   "VFF0005(BK/BK,W37)": {
    "count": 1,
-   "display": 1
+   "display": 0
   },
   "VFF0005(BK/BK,W38)": {
    "count": 1,
@@ -378,7 +378,7 @@
   },
   "VFF0008(BB/BL,W39)": {
    "count": 4,
-   "display": 1
+   "display": 0
   },
   "VFF0008(BB/BL,W40)": {
    "count": 4,
@@ -397,19 +397,19 @@
    "display": 0
   },
   "VFF0008(BK26,W35)": {
-   "count": 2,
+   "count": 1,
    "display": 0
   },
   "VFF0008(BK26,W36)": {
-   "count": 3,
+   "count": 0,
    "display": 0
   },
   "VFF0008(BK26,W37)": {
-   "count": 2,
+   "count": 0,
    "display": 0
   },
   "VFF0008(BK26,W38)": {
-   "count": 0,
+   "count": 2,
    "display": 0
   },
   "VFF0008(BK26,W39)": {
@@ -417,7 +417,7 @@
    "display": 0
   },
   "VFF0008(BK26,W40)": {
-   "count": 2,
+   "count": 0,
    "display": 0
   },
   "VFF0008(BK26,W41)": {
@@ -425,7 +425,7 @@
    "display": 0
   },
   "VFF0008(BK26,W42)": {
-   "count": 1,
+   "count": 0,
    "display": 0
   },
   "VFF0008(BK26,W43)": {
@@ -433,27 +433,27 @@
    "display": 0
   },
   "VFF0008(BK,W35)": {
-   "count": 1,
+   "count": 2,
    "display": 0
   },
   "VFF0008(BK,W36)": {
-   "count": 0,
+   "count": 3,
    "display": 0
   },
   "VFF0008(BK,W37)": {
-   "count": 0,
+   "count": 2,
    "display": 0
   },
   "VFF0008(BK,W38)": {
-   "count": 2,
-   "display": 1
+   "count": 0,
+   "display": 0
   },
   "VFF0008(BK,W39)": {
    "count": 0,
    "display": 0
   },
   "VFF0008(BK,W40)": {
-   "count": 0,
+   "count": 2,
    "display": 0
   },
   "VFF0008(BK,W41)": {
@@ -461,7 +461,7 @@
    "display": 0
   },
   "VFF0008(BK,W42)": {
-   "count": 0,
+   "count": 1,
    "display": 0
   },
   "VFF0008(BK,W43)": {
@@ -482,7 +482,7 @@
   },
   "VFF0008(BR,W39)": {
    "count": 2,
-   "display": 1
+   "display": 0
   },
   "VFF0008(BR,W40)": {
    "count": 0,
@@ -502,7 +502,7 @@
   },
   "VFF0008(F/GN,W37)": {
    "count": 0,
-   "display": 1
+   "display": 0
   },
   "VFF0008(F/GN,W38)": {
    "count": 0,
@@ -534,7 +534,7 @@
   },
   "VFF0008(FU,W38)": {
    "count": 1,
-   "display": 1
+   "display": 0
   },
   "VFF0008(FU,W39)": {
    "count": 3,
@@ -566,7 +566,7 @@
   },
   "VFF0008(LI/GN,W38)": {
    "count": 1,
-   "display": 1
+   "display": 0
   },
   "VFF0008(LI/GN,W39)": {
    "count": 4,
@@ -602,7 +602,7 @@
   },
   "VFF0008(NU,W39)": {
    "count": 2,
-   "display": 1
+   "display": 0
   },
   "VFF0008(NU,W40)": {
    "count": 1,
@@ -626,7 +626,7 @@
   },
   "VFF0008(PP,W38)": {
    "count": 3,
-   "display": 1
+   "display": 0
   },
   "VFF0008(PP,W39)": {
    "count": 0,
@@ -654,7 +654,7 @@
   },
   "VFF0008(SV,W38)": {
    "count": 0,
-   "display": 1
+   "display": 0
   },
   "VFF0008(SV,W39)": {
    "count": 5,
@@ -690,7 +690,7 @@
   },
   "VFF0009(BK,M43)": {
    "count": 2,
-   "display": 1
+   "display": 0
   },
   "VFF0009(BK,M44)": {
    "count": 2,
@@ -726,7 +726,7 @@
   },
   "VFF0009(BK,W38)": {
    "count": 2,
-   "display": 1
+   "display": 0
   },
   "VFF0009(BK,W39)": {
    "count": 1,
@@ -758,7 +758,7 @@
   },
   "VFF0009(DL/BK,M43)": {
    "count": 2,
-   "display": 1
+   "display": 0
   },
   "VFF0009(DL/BK,M44)": {
    "count": 4,
@@ -790,7 +790,7 @@
   },
   "VFF0009(DL/BK,W39)": {
    "count": 1,
-   "display": 1
+   "display": 0
   },
   "VFF0009(DL/BK,W40)": {
    "count": 2,
@@ -814,7 +814,7 @@
   },
   "VFF0009(F/GN,M43)": {
    "count": 2,
-   "display": 1
+   "display": 0
   },
   "VFF0009(F/GN,M44)": {
    "count": 2,
@@ -870,7 +870,7 @@
   },
   "VFF0017(BK/BK,M44)": {
    "count": 0,
-   "display": 1
+   "display": 0
   },
   "VFF0017(BK/BK,M45)": {
    "count": 0,
@@ -890,7 +890,7 @@
   },
   "VFF0017(MIL/DGY,M43)": {
    "count": 0,
-   "display": 1
+   "display": 0
   },
   "VFF0017(MIL/DGY,M44)": {
    "count": 1,
@@ -914,7 +914,7 @@
   },
   "VFF0021(IV/FU,W38)": {
    "count": 0,
-   "display": 1
+   "display": 0
   },
   "VFF0021(IV/FU,W39)": {
    "count": 0,
@@ -942,7 +942,7 @@
   },
   "VFF0021(TT/BK,M42)": {
    "count": 0,
-   "display": 1
+   "display": 0
   },
   "VFF0021(TT/BK,M43)": {
    "count": 0,
