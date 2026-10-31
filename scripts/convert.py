@@ -272,23 +272,49 @@ def apply_counts(items, store_names, paths, seed_returns=None):
         # addReturns: 返品輸送中 (取り込み済みの返品) は画面で店舗から引かれるので、その分を足して
         # 表示上の在庫が棚卸の数になるようにする
         add = (seed_returns or {}) if data.get("addReturns") else {}
-        before = after = n = 0
-        missing = []
+        before = after = n = added = 0
+        missing, seen = [], set()
+        # name があれば (コードのない行も) モデル・カラー・サイズでも照合する
+        by_name = {(i["model"], norm_color(i["color"]), i["size"]): i for i in items}
         for code, v in data["items"].items():
             q = int(v.get("count", 0)) + int(v.get("display", 0)) + int(add.get(f"{code}@{data['store']}", 0))
             it = by_code.get(code)
+            name = v.get("name")
+            if not it and name:
+                m = re.match(r"^(.*)\((\w+),\s*(.+)\)$", name.strip())
+                if m:
+                    it = by_name.get((m.group(1).strip(), norm_color(m.group(3).strip()), m.group(2)))
+                    if not it and q and data.get("addMissing"):
+                        # 表にだけある商品: 同じモデル・カラーの近いサイズの位置に行を追加する
+                        model, size, color = m.group(1).strip(), m.group(2), m.group(3).strip()
+                        it = {"code": code, "model": model, "color": color, "size": size,
+                              "qty": [0] * len(store_names), "ret": [None] * len(store_names)}
+                        same = [x for x, y in enumerate(items) if y["model"] == model and norm_color(y["color"]) == norm_color(color)]
+                        later = [x for x in same if items[x]["size"][0] == size[0] and items[x]["size"] > size]
+                        pos = later[0] if later else (same[-1] + 1 if same else len(items))
+                        items.insert(pos, it)
+                        by_code[code] = it
+                        added += 1
             if not it:
                 if q:
                     missing.append(code)
                 continue
+            seen.add(id(it))
             before += it["qty"][k]
             after += q
             it["qty"][k] = q
             n += 1
+        # zeroUnlisted: 表にない商品はその拠点の在庫を 0 にする (表が全商品の一覧のとき)
+        if data.get("zeroUnlisted"):
+            for it in items:
+                if id(it) not in seen and it["qty"][k]:
+                    before += it["qty"][k]
+                    it["qty"][k] = 0
+                    n += 1
         if missing:
             raise SystemExit(f"棚卸表の商品がダッシュボードにありません: {missing}")
         done.append({"store": data["store"], "label": data.get("label"),
-                     "source": data.get("source", Path(path).name), "items": n,
+                     "source": data.get("source", Path(path).name), "items": n, "added": added,
                      "before": before, "after": after})
         print(f"count: {data['store']} {n} items, {before} -> {after} pairs ({Path(path).name})")
     for i in items:
