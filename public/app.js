@@ -505,7 +505,7 @@
     return `<div class="af-head">${esc(t("f.loc"))}</div>
       <div class="af-list">
         <label class="af-all"><input type="checkbox" data-all> ${esc(t("af.selectAll"))}</label>
-        ${groups.map((g, i) => `<label data-v="${esc(g.toLowerCase())}"${i === data.stores.length ? ' class="af-sep"' : ""}><input type="checkbox" value="${i}" ${locHidden.has(i) ? "" : "checked"}> <span>${esc(g)}</span></label>`).join("")}
+        ${groups.map((g, i) => (hiddenAlways(i) ? "" : `<label data-v="${esc(g.toLowerCase())}"${i === data.stores.length + 1 ? ' class="af-sep"' : ""}><input type="checkbox" value="${i}" ${locHidden.has(i) ? "" : "checked"}> <span>${esc(g)}</span></label>`)).join("")}
       </div>
       <p class="af-note">${esc(t("f.locNote"))}</p>
       <div class="af-foot">
@@ -765,7 +765,9 @@
   const fmtRate = (v) => (v == null ? "" : v === 0 ? "-" : v.toFixed(1)); // 小数第 2 位を四捨五入
   const fmtMos = (v) => (v == null ? "" : v <= 0 ? (v === 0 ? "-" : `(${Math.abs(v).toFixed(1)})`) : v.toFixed(1));
   // 列グループごとの列の並び: [月平均販売] Quantity [在庫月数] [Return]
-  const colKinds = (g) => locHidden.has(g) ? [] : [...(hasRate(g) ? ["rate"] : []), "qty", ...(hasRate(g) ? ["mos"] : []), ...(hasRet(g) ? ["ret"] : [])];
+  // Store Total の列は出さない
+  const hiddenAlways = (g) => hasOffice() && g === data.stores.length;
+  const colKinds = (g) => locHidden.has(g) || hiddenAlways(g) ? [] : [...(hasRate(g) ? ["rate"] : []), "qty", ...(hasRate(g) ? ["mos"] : []), ...(hasRet(g) ? ["ret"] : [])];
   const numCols = () => VIEW_TEXT.length + sum(groups.map((_, i) => colKinds(i).length));
 
   // 1 行分の Quantity / Return を groups の並びで返す
@@ -1450,7 +1452,7 @@ if (RETURNS_ON) {
     const cur = sel.value;
     [...sel.options].slice(1).forEach((o) => o.remove());
     const d = data;
-    const totals = d.officeIndex != null ? [["store", "Store Total"], ["total", "Company Total"]] : [["total", "Total"]];
+    const totals = d.officeIndex != null ? [["total", "Company Total"]] : [["total", "Total"]];
     const opts = [...d.stores.map((s, i) => [String(i), s]), ...totals];
     fillSelect(sel, opts.map((o) => o[0]), opts.map((o) => t("f.sortBy", { name: o[1] })));
     sel.value = cur;
@@ -1483,7 +1485,8 @@ if (RETURNS_ON) {
     };
     const locs = [];
     // VFF の在庫がない倉庫は VFF の表に出さない (Vivo の表には出る)
-    const VFF_SKIP = ["Thaniya"];
+    // Siam Discovery と Central CL は店舗の棚卸 (data/counts) の数を使う
+    const VFF_SKIP = ["Thaniya", "Siam Discovery", "Central CL (Department)"];
     for (const loc of z.locations) {
       if (VFF_SKIP.includes(loc.name)) continue;
       let k = d.stores.indexOf(loc.name);
