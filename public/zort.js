@@ -9,6 +9,7 @@
   // どれにも当てはまらない倉庫は、Zort の倉庫名のまま「other」の列として追加する。
   const MAP = [
     [/คลังสินค้าหลัก|^main|headoffice|^office$/, "Office", "office"],
+    [/^online$/, "Office", "office"], // Online 倉庫の在庫は Office に合算する
     [/^kvillage/, "K Village", "store"],
     [/chidlom|^centralcl/, "Central CL (Department)", "store"],
     [/siam/, "Siam Discovery", "store"],

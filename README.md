@@ -220,4 +220,4 @@ Vercel の Environment Variables（Production）に設定:
 EDV のアカウントからは K Village と Central LP の倉庫だけを使い、この 2 拠点は EDV の数を優先します（`public/zort.js` の `ACCOUNT_ONLY`）。
 表示を速くするため、前回の Zort の数（ブラウザに保存）ですぐ表示し、最新が届いたら表示し直します。api/zort は Vercel の CDN にも置き、2 回目以降はすぐ返します。
 
-倉庫名と拠点の対応は `public/zort.js` の `MAP`（คลังสินค้าหลัก → Office、Kvillage → K Village、Central CL・Siam Discovery・Paradise Park・Central LP・Thaniya・Pathwild → 店舗、Event 1 → イベント列）。どれにも当てはまらない倉庫（Online・Outlet・รอ など）は、その名前の列を追加します（Store Total には含めず、Company Total に含める）。
+倉庫名と拠点の対応は `public/zort.js` の `MAP`（คลังสินค้าหลัก → Office、Kvillage → K Village、Central CL・Siam Discovery・Paradise Park・Central LP・Thaniya・Pathwild → 店舗、Online → Office に合算、Event 1 → イベント列）。どれにも当てはまらない倉庫（Outlet など）は、その名前の列を追加します（Store Total には含めず、Company Total に含める）。
