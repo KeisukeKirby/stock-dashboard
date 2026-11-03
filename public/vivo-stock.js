@@ -35,6 +35,30 @@
 
   ["vq", "vStock"].forEach((id) => $(id).addEventListener(id === "vq" ? "input" : "change", render));
   window.I18N.onChange(render);
-  fetch(`vivo_stock.json?t=${Date.now()}`, { cache: "no-store" }).then((r) => r.json()).then((d) => { data = d; render(); })
+  // Zort の在庫があれば、対応する拠点の数を Zort の数に置き換える
+  function applyZort(d, z) {
+    if (!z) return;
+    const codes = new Set(d.items.map((it) => it.code));
+    for (const [loc, m] of Object.entries(z.byLocation)) {
+      const k = d.stores.indexOf(loc);
+      if (k < 0) continue;
+      d.items.forEach((it) => (it.qty[k] = m[it.code] || 0));
+      for (const [sku, q] of Object.entries(m)) {
+        if (!q || !sku.startsWith("VV") || codes.has(sku)) continue;
+        const mm = /^(.*)\((\w+),\s*(.+)\)\s*$/.exec(z.names[sku] || "");
+        if (!mm) continue;
+        const it = { code: sku, model: mm[1].trim(), color: mm[3].trim(), size: mm[2], qty: d.stores.map(() => null) };
+        it.qty[k] = q;
+        d.items.push(it);
+        codes.add(sku);
+      }
+      d.counted[k] = true;
+    }
+    const t = new Date(z.fetchedAt);
+    d.counts = [{ store: "Zort", date: `${t.getMonth() + 1}/${t.getDate()} ${String(t.getHours()).padStart(2, "0")}:${String(t.getMinutes()).padStart(2, "0")}` }];
+  }
+  fetch(`vivo_stock.json?t=${Date.now()}`, { cache: "no-store" }).then((r) => r.json())
+    .then((d) => (window.ZORT || Promise.resolve(null)).then((z) => { applyZort(d, z); return d; }))
+    .then((d) => { data = d; render(); })
     .catch(() => { $("vNote").textContent = t("loadFail"); });
 })();

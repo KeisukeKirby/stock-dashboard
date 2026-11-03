@@ -202,3 +202,19 @@ python scripts/build_vivo_standalone.py vivo-sales.html          # claude.ai の
 店舗の棚卸表から入力した Vivo の在庫を、在庫一覧と同じ書式で表示します。棚卸は `data/vivo_counts/*.json`（店舗ごと）に置き、
 `python scripts/vivo_stock.py` で `public/vivo_stock.json` を作ります。棚卸のない拠点は「未入力」（チェックで列を表示）。
 現在: K Village（2026-10-05、108 行・99 足）。
+
+## Zort 連携（在庫数を Zort から読み込む）
+
+`api/zort.js`（Vercel Function）が Zort Open API から倉庫ごとの在庫（VFF / Vivo の SKU だけ）を読み、`public/zort.js` が倉庫名を拠点に割り当てます。
+割り当てた拠点は、画面を開くたびに Zort の数に置き換わります（棚卸・個別調整の数より優先。Return の入力で数は動かさない）。Zort にだけある商品は行を追加します。
+Zort が未設定・エラーのときは、これまでどおり stock.json の数を表示します。
+
+Vercel の Environment Variables（Production）に設定:
+
+| 変数 | 例 |
+|---|---|
+| `ZORT_ACCOUNTS` | `BFT,EDV`（Zort のアカウントが複数あるとき、カンマ区切り） |
+| `ZORT_BFT_STORENAME` / `ZORT_BFT_APIKEY` / `ZORT_BFT_APISECRET` | Zort の 設定 → API で発行した値 |
+| `ZORT_EDV_STORENAME` / `ZORT_EDV_APIKEY` / `ZORT_EDV_APISECRET` | 同上（EDV のアカウント） |
+
+倉庫名と拠点の対応は `public/zort.js` の `MAP`（例: คลังสินค้าหลัก → Office、Kvillage → K Village、Coollabo Cen LP 3F → Central LP）。どこにも当てはまらない倉庫は画面下の注記に一覧で出ます。

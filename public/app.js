@@ -272,12 +272,14 @@
   document.addEventListener("visibilitychange", () => { if (!document.hidden) pullRemote(); });
   function recompute(it) {
     // r = 輸送中 (店舗から引く・Office には足さない)、rc = 受領済み (店舗から引いて Office に足す)
-    const r = it.qty.map((_, i) => (hasRet(i) ? returns[rkey(it, i)] || 0 : 0));
-    const rc = it.qty.map((_, i) => (hasRet(i) ? received[rkey(it, i)] || 0 : 0));
+    // Zort の数を使う拠点は Zort が実在庫なので、返品の入力で数を動かさない (Return 欄は記録として残す)
+    const live = (i) => !!(data.zort && data.zort.locs.includes(data.stores[i]));
+    const r = it.qty.map((_, i) => (hasRet(i) && !live(i) ? returns[rkey(it, i)] || 0 : 0));
+    const rc = it.qty.map((_, i) => (hasRet(i) && !live(i) ? received[rkey(it, i)] || 0 : 0));
     it._ret = it.ret.map((x, i) => (hasRet(i) ? returns[rkey(it, i)] ?? x : null));
     it._rc = rc;
     it._adj = it.qty.map((q, i) => q - r[i] - rc[i]);
-    if (data.officeIndex != null) it._adj[data.officeIndex] += sum(rc);
+    if (data.officeIndex != null && !live(data.officeIndex)) it._adj[data.officeIndex] += sum(rc);
     it._transit = sum(r);
     it._tq = sum(it._adj) + it._transit; // Company Total (店舗 + オフィス + イベント + 返品輸送中)
     // Store Total は店舗のみ (Office と Event Asok は含めない)
@@ -702,7 +704,15 @@
   }
 
   // 列グループの上 (As of の行) に出すラベル。例: 棚卸した店舗の上に「9/30(Before)」
-  const groupLabels = () => Object.fromEntries((data.counts || []).filter((c) => c.label).map((c) => [data.stores.indexOf(c.store), c.label]));
+  const groupLabels = () => {
+    const out = Object.fromEntries((data.counts || []).filter((c) => c.label).map((c) => [data.stores.indexOf(c.store), c.label]));
+    if (data.zort) {
+      const t = new Date(data.zort.fetchedAt);
+      const lab = `Zort ${t.getMonth() + 1}/${t.getDate()} ${String(t.getHours()).padStart(2, "0")}:${String(t.getMinutes()).padStart(2, "0")}`;
+      data.zort.locs.forEach((l) => (out[data.stores.indexOf(l)] = lab));
+    }
+    return out;
+  };
   // As of の行: ラベルのある列グループの上だけ別のマスにし、残りは As of の文言のマスにまとめる
   function asofRowHtml(d) {
     const labels = groupLabels();
@@ -1413,6 +1423,7 @@
       + (d.eventSource ? " " + t("foot.event", { n: fmt(d.eventMoved) }) : "")
       + (d.eventStock ? " " + t("foot.eventStock", { c: d.eventStock.cutoff, s: fmt(d.eventStock.start), o: fmt(d.eventStock.sold), r: fmt(d.eventStock.remain) }) : "")
       + (d.salesRate ? " " + t("foot.rate", { p: Object.entries(d.salesRate.months).map(([s, v]) => `${s === "Office" ? "Office (Online)" : s} ${v[2]}`).join(" / ") }) : "")
+      + (d.zort ? " " + t("foot.zort", { l: d.zort.locs.join(", "), u: d.zort.unmapped.map((w) => `${w.store}「${w.name}」${w.total}`).join(" / ") || "-" }) : "")
       + ((d.adjustments || []).length ? " " + t("foot.adjust", { n: fmt(d.adjustments.length), list: d.adjustments.map((r) => `${r.date} ${r.store} ${r.code} ${r.qty > 0 ? "+" : ""}${r.qty}`).join(" / ") }) : "")
       + (d.counts || []).map((c) => " " + t("foot.counts", { s: c.store, src: c.source, n: fmt(c.items), b: fmt(c.before), a: fmt(c.after) })).join("")
       + (d.returnsSeed ? " " + t("foot.returnsSeed", { s: d.returnsSeed.source, n: fmt(Object.keys(d.returnsSeed.returns).length), q: fmt(sum(Object.values(d.returnsSeed.returns))) }) : "")
@@ -1442,6 +1453,29 @@
     updateReturnInfo();
   });
 
+  /* ---------- Zort ---------- */
+  function applyZort(d, z) {
+    const locs = Object.keys(z.byLocation).filter((l) => d.stores.includes(l));
+    const codes = new Set(d.items.map((it) => it.code).filter(Boolean));
+    for (const loc of locs) {
+      const k = d.stores.indexOf(loc), m = z.byLocation[loc];
+      d.items.forEach((it) => { if (it.code) it.qty[k] = m[it.code] || 0; });
+      // Zort にだけある商品は行を追加する (同じモデル・カラーの行の後ろ)
+      for (const [sku, q] of Object.entries(m)) {
+        if (!q || codes.has(sku)) continue;
+        const mm = /^(.*)\((\w+),\s*(.+)\)\s*$/.exec(z.names[sku] || "");
+        if (!mm) continue;
+        const it = { code: sku, model: mm[1].trim(), color: mm[3].trim(), size: mm[2], qty: d.stores.map(() => 0), ret: d.stores.map(() => null), rate: null, rateEvent: null };
+        it.qty[k] = q;
+        let pos = -1;
+        d.items.forEach((x, i) => { if (x.model === it.model && (x.color === it.color || pos < 0)) pos = i; });
+        d.items.splice(pos < 0 ? d.items.length : pos + 1, 0, it);
+        codes.add(sku);
+      }
+    }
+    d.zort = { fetchedAt: z.fetchedAt, locs, unmapped: z.unmapped };
+  }
+
   /* ---------- load ---------- */
   // 毎回かならず最新の在庫データを読む (ブラウザや配信側に古いデータが残っていても使わない)
   fetch(`stock.json?t=${Date.now()}`, { cache: "no-store" })
@@ -1453,6 +1487,8 @@
       HL = new Set(((d.returnsSeed && d.returnsSeed.highlights) || []).map((h) => `${h.code}@${h.store}@${h.kind}`));
       return initReturns().then(() => d);
     })
+    // Zort の在庫があれば、対応する拠点の数を Zort の数に置き換える
+    .then((d) => (window.ZORT || Promise.resolve(null)).then((z) => { if (z) applyZort(d, z); return d; }))
     .then((d) => {
       d.items.forEach((it, n) => {
         it._id = n;
