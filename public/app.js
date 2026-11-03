@@ -696,15 +696,17 @@
         const w = k === "qty" && g >= data.stores.length ? VIEW_W.totQty : k === "qty" && colKinds(g).length === 1 ? 8.5 : VIEW_W[k]; // Qty だけの列は見出しが収まる幅
         return `<col style="width:${px(w)}px">`;
       }).join("")).join("");
+    // 店舗 (▼) と数量 (▼) の絞り込みボタンは一番右の列グループだけに出す
+    const lastG = groups.map((_, i) => i).filter((i) => colKinds(i).length).pop();
     $("thead").innerHTML = `
       <tr class="title"><th colspan="${ncol}">${esc(d.title)}</th></tr>
       <tr class="asof">${asofRowHtml(d)}</tr>
       <tr class="h1">
         ${["Model", "Color", "Size"].map((h, k) => `<th rowspan="2">${h}${afBtn(`t${VIEW_TEXT[k]}`, h)}</th>`).join("")}
-        ${groups.map((g, i) => (colKinds(i).length ? `<th class="grp" colspan="${colKinds(i).length}" title="${esc(g)}">${esc(shortGroup(g))}${afBtn("loc", t("f.loc"))}</th>` : "")).join("")}
+        ${groups.map((g, i) => (colKinds(i).length ? `<th class="grp${i === lastG ? "" : " no-af"}" colspan="${colKinds(i).length}" title="${esc(g)}">${esc(shortGroup(g))}${i === lastG ? afBtn("loc", t("f.loc")) : ""}</th>` : "")).join("")}
       </tr>
       <tr class="h2">${groups.map((g, i) => colKinds(i).map((k) =>
-        k === "qty" ? `<th title="Quantity">Qty${afBtn(`n${i}`, `${g} Quantity`)}</th>`
+        k === "qty" ? (i === lastG ? `<th title="Quantity">Qty${afBtn(`n${i}`, `${g} Quantity`)}</th>` : `<th class="no-af" title="Quantity">Qty</th>`)
         : k === "ret" ? `<th class="ret-h">Return</th>`
         : `<th class="${k}-h" title="${esc(t(`col.${k}.title`))}">${esc(t(`col.${k}`))}</th>`).join("")).join("")}</tr>`;
     updateFilterUi();

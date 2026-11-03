@@ -471,3 +471,6 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 
 /* Zort で在庫がマイナスのマス */
 .sheet td.neg { color: #c00000; font-weight: 700; background: #fde8e8; }
+
+/* ▼ のない見出しは右の余白を詰める */
+.sheet thead tr.h1 th.grp.no-af, .sheet thead tr.h2 th.no-af { padding-right: 3px; }
