@@ -5,6 +5,14 @@
       "main": false
     }
   },
+  "regions": [
+    "sin1"
+  ],
+  "functions": {
+    "api/zort.js": {
+      "maxDuration": 60
+    }
+  },
   "buildCommand": "",
   "outputDirectory": "public",
   "cleanUrls": true,

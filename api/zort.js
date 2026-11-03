@@ -19,7 +19,7 @@ const PAGE = 500;
 // 読まない倉庫 (在庫の数ではない仮の倉庫)。รอ = 入荷待ちなどの仮置きで、大きなマイナスになっている
 const SKIP = /^(รอ|ของเสีย|สินค้าตัวอย่าง)$/;
 // アカウントごとに読む倉庫 (ここにないアカウントは全倉庫)。EDV は K Village と Central LP だけ使う
-const ONLY = { EDV: /kvillage|coollabo|centrallp/i };
+const ONLY = { EDV: /^kvillage|coollabo/i };
 const norm = (s) => String(s || "").toLowerCase().replace(/[\s._\-/()]/g, "");
 
 function accounts() {
