@@ -463,3 +463,8 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 .brand-switch { display: inline-flex; margin-right: 10px; border: 1px solid var(--line-strong, #ccc); border-radius: 999px; overflow: hidden; vertical-align: middle; }
 .brand-switch button { border: 0; background: transparent; color: var(--ink-2); font: inherit; font-size: 13px; font-weight: 600; padding: 3px 14px; cursor: pointer; }
 .brand-switch button.on { background: var(--accent); color: #fff; }
+
+/* Return (返品) 欄を使わないとき */
+.no-returns #retInfo, .no-returns #syncState, .no-returns #saveState, .no-returns #saveReturns,
+.no-returns #revertReturns, .no-returns #clearReturns, .no-returns #receiveReturns,
+.no-returns .guide-list li[data-i18n-html="retHint"] { display: none !important; }

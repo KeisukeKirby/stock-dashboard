@@ -112,7 +112,9 @@
   // Office 列には Return がない。店舗の Return はその店舗から引いて Office に足す (店舗 → オフィスへ戻る)
   // groups (列グループ): [...拠点, Store Total, Company Total]  ※Office がなければ [...店舗, Total]
   const hasOffice = () => data.officeIndex != null;
-  const hasRet = (i) => i !== data.officeIndex && !(data.nonStore || []).includes(i) && !(hasOffice() && i === data.stores.length + 1);
+  // Return (返品) 欄は一旦使わない。戻すときは true にする (入力済みのデータは共有ストレージに残っている)
+  const RETURNS_ON = false;
+  const hasRet = (i) => RETURNS_ON && i !== data.officeIndex && !(data.nonStore || []).includes(i) && !(hasOffice() && i === data.stores.length + 1);
   const rkey = (it, i) => `${it.code || `${it.model}|${it.color}|${it.size}`}@${data.stores[i]}`;
   // 入力はまず画面上だけに反映し (未保存)、「保存」ボタンで確定する
   let shared = false;      // 共有サーバーが使えるか
@@ -686,7 +688,7 @@
     $("cols").innerHTML =
       VIEW_TEXT.map((k) => `<col style="width:${px(VIEW_W[k])}px">`).join("") +
       groups.map((_, g) => colKinds(g).map((k) => {
-        const w = k === "qty" && g >= data.stores.length ? VIEW_W.totQty : k === "qty" && (g === data.eventIndex || (data.nonStore || []).includes(g)) ? 8.5 : VIEW_W[k]; // イベント・Online などは見出しが収まる幅
+        const w = k === "qty" && g >= data.stores.length ? VIEW_W.totQty : k === "qty" && colKinds(g).length === 1 ? 8.5 : VIEW_W[k]; // Qty だけの列は見出しが収まる幅
         return `<col style="width:${px(w)}px">`;
       }).join("")).join("");
     $("thead").innerHTML = `
@@ -721,7 +723,7 @@
     let span = VIEW_TEXT.length, first = true;
     const flush = () => {
       if (!span) return;
-      cells.push(`<th colspan="${span}">${first ? esc(d.zort ? t("zort.asof", { t: zortLabel() }) : d.asOf) : ""}</th>`);
+      cells.push(`<th colspan="${span}">${first && !d.zort ? esc(d.asOf) : ""}</th>`);
       first = false;
       span = 0;
     };
@@ -1347,7 +1349,8 @@
       }
 
       // 2 枚目: 入力された返品の一覧
-      const rs = wb.addWorksheet("Returns");
+if (RETURNS_ON) {
+            const rs = wb.addWorksheet("Returns");
       rs.columns = [
         { header: "Code", width: COL_W.code }, { header: "Model", width: COL_W.model },
         { header: "Color", width: COL_W.color }, { header: "Size", width: COL_W.size },
@@ -1366,6 +1369,7 @@
       }));
       if (rs.rowCount === 1) rs.addRow([t("xlsx.noReturns")]);
       rs.views = [{ state: "frozen", ySplit: 1 }];
+      }
 
       const buf = await wb.xlsx.writeBuffer();
       const a = document.createElement("a");
@@ -1418,7 +1422,8 @@
   /* ---------- 言語 ---------- */
   function applyStaticTexts() {
     const d = data;
-    $("asof").textContent = d.asOfDate ? t("asof", { d: d.asOfDate }) : d.asOf;
+    // Zort につながっているときは、タイトルの下に Zort の読み込み時刻を出す
+    $("asof").textContent = d.zort ? t("zort.asof", { t: zortLabel() }) : d.asOfDate ? t("asof", { d: d.asOfDate }) : d.asOf;
     const src = d.officeSource ? t("foot.src", { s: d.source, o: d.officeSource }) : d.source;
     $("foot").textContent = t("foot", { src }) + (d.allocSource ? " " + t("foot.alloc", { n: fmt(d.allocMoved) }) : "")
       + (d.eventSource ? " " + t("foot.event", { n: fmt(d.eventMoved) }) : "")
@@ -1506,6 +1511,8 @@
     }
     d.zort = { fetchedAt: z.fetchedAt, locs, unmapped: [] };
   }
+
+  if (!RETURNS_ON) document.body.classList.add("no-returns");
 
   /* ---------- load ---------- */
   // 毎回かならず最新の在庫データを読む (ブラウザや配信側に古いデータが残っていても使わない)
