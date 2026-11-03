@@ -11,7 +11,7 @@
 //   ZORT_<名前>_STORENAME    Zort の storename
 //   ZORT_<名前>_APIKEY       Zort の apikey
 //   ZORT_<名前>_APISECRET    Zort の apisecret
-// 5 分間は CDN にキャッシュする (Zort への呼び出し回数を抑える)。
+// CDN に結果を置き、2 回目以降はすぐ返す (裏で Zort から読み直す)。
 
 const BASE = process.env.ZORT_BASE_URL || "https://open-api.zortout.com/v4";
 const SKU_RE = /^(VFF|VV)\d/;
@@ -62,8 +62,18 @@ async function warehouseStock(acc, wh, names) {
   return stock;
 }
 
+// 同じサーバーが続けて呼ばれたときは 60 秒以内なら前回の結果を返す
+let memo = null;
+
 module.exports = async (req, res) => {
   res.setHeader("Cache-Control", "no-store");
+  // CDN: 1 分は同じ結果を返し、それ以降も前回の結果をすぐ返しつつ裏で Zort から読み直す
+  const CDN = "max-age=60, stale-while-revalidate=86400";
+  if (memo && Date.now() - memo.at < 60000) {
+    res.setHeader("Vercel-CDN-Cache-Control", CDN);
+    res.status(200).json(memo.body);
+    return;
+  }
   const accs = accounts();
   if (!accs.length) {
     res.status(503).json({ configured: false, error: "Zort is not configured" });
@@ -75,14 +85,23 @@ module.exports = async (req, res) => {
       accs.map(async (acc) => {
         const j = await call(acc, "Warehouse/GetWarehouses");
         const whs = (j.list || []).map((w) => ({ code: String(w.code || w.id), name: String(w.name || w.code || "") }));
-        const warehouses = [];
-        for (const wh of whs) warehouses.push({ ...wh, stock: await warehouseStock(acc, wh, names) });
+        // 倉庫は 4 つずつ並行して読む (1 つずつより大幅に速い。Zort への同時接続は控えめに)
+        const warehouses = new Array(whs.length);
+        let next = 0;
+        const worker = async () => {
+          while (next < whs.length) {
+            const i = next++;
+            warehouses[i] = { ...whs[i], stock: await warehouseStock(acc, whs[i], names) };
+          }
+        };
+        await Promise.all(Array.from({ length: Math.min(4, whs.length) }, worker));
         return { store: acc.name, warehouses };
       })
     );
-    // ブラウザには毎回最新を返し、Vercel の CDN だけ 5 分キャッシュする
-    res.setHeader("Vercel-CDN-Cache-Control", "max-age=300, stale-while-revalidate=600");
-    res.status(200).json({ configured: true, fetchedAt: new Date().toISOString(), stores, names });
+    const body = { configured: true, fetchedAt: new Date().toISOString(), stores, names };
+    memo = { at: Date.now(), body };
+    res.setHeader("Vercel-CDN-Cache-Control", CDN);
+    res.status(200).json(body);
   } catch (e) {
     console.error(e);
     res.status(502).json({ configured: true, error: String(e.message || e).slice(0, 200) });

@@ -65,8 +65,19 @@
     // Zort に来ていない拠点 (棚卸だけの数) は使わない
     d.stores.forEach((loc, k) => { if (!(loc in z.byLocation)) d.items.forEach((it) => (it.qty[k] = null)); });
   }
+  let base = null, shownAt = null;
+  const show = (z) => {
+    const d = JSON.parse(JSON.stringify(base));
+    applyZort(d, z);
+    shownAt = z ? z.fetchedAt : null;
+    data = d;
+    render();
+  };
   fetch(`vivo_stock.json?t=${Date.now()}`, { cache: "no-store" }).then((r) => r.json())
-    .then((d) => (window.ZORT || Promise.resolve(null)).then((z) => { applyZort(d, z); return d; }))
-    .then((d) => { data = d; render(); })
+    .then((d) => { base = d; return window.ZORT_CACHED || window.ZORT || null; })
+    .then((z) => {
+      show(z);
+      if (window.ZORT) window.ZORT.then((fresh) => { if (fresh && fresh.fetchedAt !== shownAt) show(fresh); });
+    })
     .catch(() => { $("vNote").textContent = t("loadFail"); });
 })();

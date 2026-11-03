@@ -72,13 +72,18 @@
   document.querySelectorAll(".brand-switch button").forEach((b) => b.addEventListener("click", () => showView(b.dataset.view)));
 
   /* ---------- 表を画面幅に合わせる (スクロールなし) ---------- */
+  // 表の幅は列幅 (colgroup) の合計で決まるので、表を測り直さずに計算する (大きな表の再計算を避けて速くする)
+  // 表示幅は ResizeObserver で覚えておき、描画のたびに測らない (測ると大きな表の再計算が起きて遅い)
+  let lastFit = null, availW = 0;
+  new ResizeObserver(() => { availW = $("sheet").clientWidth; fitTable(); }).observe($("sheet"));
   function fitTable() {
-    const sheet = $("sheet"), table = $("stockTable");
-    if (!sheet.offsetWidth) return;
-    table.style.setProperty("--fit", 1);
-    const w = table.offsetWidth;
-    const avail = sheet.clientWidth;
-    table.style.setProperty("--fit", w > avail ? Math.floor(((avail - 2) / w) * 10000) / 10000 : 1);
+    const table = $("stockTable");
+    const avail = availW;
+    if (!avail) return;
+    let w = 0;
+    for (const c of $("cols").children) w += (parseFloat(c.style.width) || 0) + 1; // +1 = セルの罫線
+    const fit = w > avail ? Math.floor(((avail - 2) / w) * 10000) / 10000 : 1;
+    if (fit !== lastFit) { table.style.setProperty("--fit", fit); lastFit = fit; }
   }
   window.addEventListener("resize", fitTable);
 
@@ -1520,40 +1525,47 @@ if (RETURNS_ON) {
 
   /* ---------- load ---------- */
   // 毎回かならず最新の在庫データを読む (ブラウザや配信側に古いデータが残っていても使わない)
+  // Zort: 前回の Zort の数 (このブラウザに保存) ですぐ表示し、最新の Zort の数が届いたら表示し直す
+  let base = null;       // stock.json そのもの (Zort を当てる前)
+  let shownZort = null;  // 表示中の Zort の読み込み時刻
+  function show(z) {
+    const d = JSON.parse(JSON.stringify(base));
+    data = d;
+    if (z) applyZort(d, z);
+    shownZort = z ? z.fetchedAt : null;
+    groups = d.officeIndex != null ? [...d.stores, "Store Total", "Company Total"] : [...d.stores, "Total"];
+    d.items.forEach((it, n) => {
+      it._id = n;
+      it._search = `${it.code} ${it.model} ${it.color} ${it.size}`.toLowerCase();
+      recompute(it);
+    });
+    d._grand = sum(d.items.map((it) => it._tq));
+    updateReturnInfo();
+    applyStaticTexts();
+    $("source").textContent = d.title;
+    $("dlOffice").hidden = !d.officeSource;
+    fillSortOptions();
+    $("rateToggle").hidden = !d.salesRate;
+    renderFrame(d);
+    render();
+  }
   fetch(`stock.json?t=${Date.now()}`, { cache: "no-store" })
     .then((r) => r.json())
     .then((d) => {
+      base = d;
       data = d;
-      groups = d.officeIndex != null ? [...d.stores, "Store Total", "Company Total"] : [...d.stores, "Total"];
       RKEY = `returns:${d.asOfDate || d.source}`;
       HL = new Set(((d.returnsSeed && d.returnsSeed.highlights) || []).map((h) => `${h.code}@${h.store}@${h.kind}`));
-      return initReturns().then(() => d);
+      return initReturns();
     })
-    // Zort の在庫があれば、対応する拠点の数を Zort の数に置き換える
-    .then((d) => (window.ZORT || Promise.resolve(null)).then((z) => {
-      if (z) {
-        applyZort(d, z);
-        groups = d.officeIndex != null ? [...d.stores, "Store Total", "Company Total"] : [...d.stores, "Total"];
-      }
-      return d;
-    }))
-    .then((d) => {
-      d.items.forEach((it, n) => {
-        it._id = n;
-        it._search = `${it.code} ${it.model} ${it.color} ${it.size}`.toLowerCase();
-        recompute(it);
-      });
-      d._grand = sum(d.items.map((it) => it._tq));
-      updateReturnInfo();
-      applyStaticTexts();
-      $("source").textContent = d.title;
-
-      $("dlOffice").hidden = !d.officeSource;
-      fillSortOptions();
-      $("rateToggle").hidden = !d.salesRate;
-      renderFrame(d);
-      render();
+    .then(() => (window.ZORT_CACHED ? window.ZORT_CACHED : window.ZORT || null))
+    .then((z) => {
+      show(z);
       showView(view);
+      // 前回の数で表示したときは、最新が届いたら表示し直す
+      if (window.ZORT) {
+        window.ZORT.then((fresh) => { if (fresh && fresh.fetchedAt !== shownZort) show(fresh); });
+      }
     })
     .catch((err) => {
       $("asof").textContent = t("loadFail");
