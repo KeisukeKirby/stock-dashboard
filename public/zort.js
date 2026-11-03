@@ -38,6 +38,7 @@
     for (const st of j.stores) {
       const acc = String(st.store).toUpperCase();
       for (const wh of st.warehouses) {
+        if (/^(รอ|ของเสีย|สินค้าตัวอย่าง)$/.test(String(wh.name).trim())) continue; // 仮の倉庫は使わない
         const c = classify(wh.name);
         if (ACCOUNT_ONLY[acc] && !ACCOUNT_ONLY[acc].includes(c.name)) continue;
         if (owner[c.name] && owner[c.name] !== acc) continue;

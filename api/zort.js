@@ -16,6 +16,11 @@
 const BASE = process.env.ZORT_BASE_URL || "https://open-api.zortout.com/v4";
 const SKU_RE = /^(VFF|VV)\d/;
 const PAGE = 500;
+// 読まない倉庫 (在庫の数ではない仮の倉庫)。รอ = 入荷待ちなどの仮置きで、大きなマイナスになっている
+const SKIP = /^(รอ|ของเสีย|สินค้าตัวอย่าง)$/;
+// アカウントごとに読む倉庫 (ここにないアカウントは全倉庫)。EDV は K Village と Central LP だけ使う
+const ONLY = { EDV: /kvillage|coollabo|centrallp/i };
+const norm = (s) => String(s || "").toLowerCase().replace(/[\s._\-/()]/g, "");
 
 function accounts() {
   return String(process.env.ZORT_ACCOUNTS || "")
@@ -79,13 +84,17 @@ module.exports = async (req, res) => {
     res.status(503).json({ configured: false, error: "Zort is not configured" });
     return;
   }
+  const t0 = Date.now();
   try {
     const names = {}; // SKU -> 商品名 (ダッシュボードにない商品の行を作るため)
     const stores = await Promise.all(
       accs.map(async (acc) => {
         const j = await call(acc, "Warehouse/GetWarehouses");
-        const whs = (j.list || []).map((w) => ({ code: String(w.code || w.id), name: String(w.name || w.code || "") }));
-        // 倉庫は 4 つずつ並行して読む (1 つずつより大幅に速い。Zort への同時接続は控えめに)
+        const only = ONLY[acc.name.toUpperCase()];
+        const whs = (j.list || [])
+          .map((w) => ({ code: String(w.code || w.id), name: String(w.name || w.code || "") }))
+          .filter((w) => !SKIP.test(w.name.trim()) && (!only || only.test(norm(w.name))));
+        // 倉庫は 6 つずつ並行して読む (1 つずつより大幅に速い。Zort への同時接続は控えめに)
         const warehouses = new Array(whs.length);
         let next = 0;
         const worker = async () => {
@@ -94,12 +103,13 @@ module.exports = async (req, res) => {
             warehouses[i] = { ...whs[i], stock: await warehouseStock(acc, whs[i], names) };
           }
         };
-        await Promise.all(Array.from({ length: Math.min(4, whs.length) }, worker));
+        await Promise.all(Array.from({ length: Math.min(6, whs.length) }, worker));
         return { store: acc.name, warehouses };
       })
     );
     const body = { configured: true, fetchedAt: new Date().toISOString(), stores, names };
     memo = { at: Date.now(), body };
+    console.log(`zort: ${stores.map((x) => `${x.store} ${x.warehouses.length} warehouses`).join(", ")} in ${Date.now() - t0} ms`);
     res.setHeader("Vercel-CDN-Cache-Control", CDN);
     res.status(200).json(body);
   } catch (e) {
