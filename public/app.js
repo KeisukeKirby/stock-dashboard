@@ -1475,7 +1475,10 @@ if (RETURNS_ON) {
       return pos;
     };
     const locs = [];
+    // VFF の在庫がない倉庫は VFF の表に出さない (Vivo の表には出る)
+    const VFF_SKIP = ["Thaniya"];
     for (const loc of z.locations) {
+      if (VFF_SKIP.includes(loc.name)) continue;
       let k = d.stores.indexOf(loc.name);
       if (k < 0 && loc.kind === "event" && d.eventIndex != null && !locs.includes(d.stores[d.eventIndex])) {
         d.stores[d.eventIndex] = loc.name; // Event Asok の列を Zort のイベント倉庫 (Event 1) の列にする
@@ -1494,6 +1497,7 @@ if (RETURNS_ON) {
     const codes = new Set(d.items.map((it) => it.code).filter(Boolean));
     for (const loc of z.locations) {
       const k = d.stores.indexOf(loc.name);
+      if (k < 0) continue;
       for (const [sku, q] of Object.entries(loc.stock)) {
         if (!q || !sku.startsWith("VFF")) continue;
         let it = codes.has(sku) ? d.items.find((x) => x.code === sku) : null;

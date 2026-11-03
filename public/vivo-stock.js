@@ -19,7 +19,7 @@
     const pending = data.stores.filter((_, i) => !data.counted[i]);
     $("vThead").innerHTML = `
       <tr class="title"><th colspan="${ncol}">${esc(data.title)}</th></tr>
-      <tr class="asof"><th colspan="${ncol}">${esc(data.counts.map((c) => `${c.store}: ${c.date}`).join(" / "))}</th></tr>
+      <tr class="asof"><th colspan="${ncol}">${esc(data.zortAt ? t("zort.asof", { t: `Zort ${data.zortAt}` }) : data.counts.map((c) => `${c.store}: ${c.date}`).join(" / "))}</th></tr>
       <tr class="h1"><th>Model</th><th>Color</th><th>Size</th>
         ${shown.map((i) => `<th title="${esc(data.stores[i])}">${esc(short(data.stores[i]))}</th>`).join("")}<th>Total</th></tr>`;
     const body = rows.map((it) => `<tr><td>${esc(it.model.replace(/^Vivo\s+/, ""))}</td><td>${esc(it.color)}</td><td class="c">${esc(it.size)}</td>
@@ -30,7 +30,7 @@
     body.push(`<tr class="total"><td>Total</td><td></td><td></td>${shown.map((i) => `<td class="c">${nf(sum(i))}</td>`).join("")}<td class="c">${nf(rows.reduce((a, it) => a + total(it), 0))}</td></tr>`);
     $("vTbody").innerHTML = body.join("");
     $("vCount").textContent = rows.length === data.items.length ? t("count.all", { n: data.items.length }) : t("count.of", { n: data.items.length, m: rows.length });
-    $("vNote").textContent = t("vivo.note", { done: data.counts.map((c) => `${c.store}（${c.date}）`).join("、"), pending: pending.join(", ") });
+    $("vNote").textContent = data.zortAt ? t("vivo.noteZort") : t("vivo.note", { done: data.counts.map((c) => `${c.store}（${c.date}）`).join("、"), pending: pending.join(", ") });
   }
 
   ["vq", "vStock"].forEach((id) => $(id).addEventListener(id === "vq" ? "input" : "change", render));
@@ -60,7 +60,9 @@
       d.counted[k] = true;
     }
     const t = new Date(z.fetchedAt);
-    d.counts = [{ store: "Zort", date: `${t.getMonth() + 1}/${t.getDate()} ${String(t.getHours()).padStart(2, "0")}:${String(t.getMinutes()).padStart(2, "0")}` }];
+    d.zortAt = `${t.getFullYear()}/${t.getMonth() + 1}/${t.getDate()} ${String(t.getHours()).padStart(2, "0")}:${String(t.getMinutes()).padStart(2, "0")}`;
+    // Zort に来ていない拠点 (棚卸だけの数) は使わない
+    d.stores.forEach((loc, k) => { if (!(loc in z.byLocation)) d.items.forEach((it) => (it.qty[k] = null)); });
   }
   fetch(`vivo_stock.json?t=${Date.now()}`, { cache: "no-store" }).then((r) => r.json())
     .then((d) => (window.ZORT || Promise.resolve(null)).then((z) => { applyZort(d, z); return d; }))
