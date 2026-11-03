@@ -40,8 +40,13 @@
     if (!z) return;
     const codes = new Set(d.items.map((it) => it.code));
     for (const [loc, m] of Object.entries(z.byLocation)) {
-      const k = d.stores.indexOf(loc);
-      if (k < 0) continue;
+      let k = d.stores.indexOf(loc);
+      if (k < 0) {
+        d.stores.push(loc);
+        d.items.forEach((it) => it.qty.push(null));
+        d.counted.push(true);
+        k = d.stores.length - 1;
+      }
       d.items.forEach((it) => (it.qty[k] = m[it.code] || 0));
       for (const [sku, q] of Object.entries(m)) {
         if (!q || !sku.startsWith("VV") || codes.has(sku)) continue;

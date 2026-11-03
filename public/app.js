@@ -112,7 +112,7 @@
   // Office 列には Return がない。店舗の Return はその店舗から引いて Office に足す (店舗 → オフィスへ戻る)
   // groups (列グループ): [...拠点, Store Total, Company Total]  ※Office がなければ [...店舗, Total]
   const hasOffice = () => data.officeIndex != null;
-  const hasRet = (i) => i !== data.officeIndex && !(hasOffice() && i === data.stores.length + 1);
+  const hasRet = (i) => i !== data.officeIndex && !(data.nonStore || []).includes(i) && !(hasOffice() && i === data.stores.length + 1);
   const rkey = (it, i) => `${it.code || `${it.model}|${it.color}|${it.size}`}@${data.stores[i]}`;
   // 入力はまず画面上だけに反映し (未保存)、「保存」ボタンで確定する
   let shared = false;      // 共有サーバーが使えるか
@@ -283,7 +283,7 @@
     it._transit = sum(r);
     it._tq = sum(it._adj) + it._transit; // Company Total (店舗 + オフィス + イベント + 返品輸送中)
     // Store Total は店舗のみ (Office と Event Asok は含めない)
-    const isStore = (i) => i !== data.officeIndex && i !== data.eventIndex;
+    const isStore = (i) => i !== data.officeIndex && i !== data.eventIndex && !(data.nonStore || []).includes(i);
     it._st = sum(it._adj.filter((_, i) => isStore(i)));
     it._tr = sum(it._ret.filter((_, i) => isStore(i)));
   }
@@ -614,7 +614,7 @@
     const total = rows.reduce((a, it) => a + it._tq, 0);
     $("kpiTotal").textContent = fmt(total);
     $("kpiTotalNote").textContent = all
-      ? (data.eventIndex != null ? t("kpi.noteOfficeEvent", { n: data.stores.length - 2 })
+      ? (data.eventIndex != null ? t("kpi.noteOfficeEvent", { n: data.stores.length - 2 - (data.nonStore || []).length })
         : data.officeSource ? t("kpi.noteOffice", { n: data.stores.length - 1 }) : t("kpi.noteStores", { n: data.stores.length }))
       : t("kpi.noteOf", { n: fmt(data._grand) });
     $("kpiSku").textContent = fmt(rows.length);
@@ -686,7 +686,7 @@
     $("cols").innerHTML =
       VIEW_TEXT.map((k) => `<col style="width:${px(VIEW_W[k])}px">`).join("") +
       groups.map((_, g) => colKinds(g).map((k) => {
-        const w = k === "qty" && g >= data.stores.length ? VIEW_W.totQty : k === "qty" && g === data.eventIndex ? 8.5 : VIEW_W[k]; // Event Asok は見出しが収まる幅
+        const w = k === "qty" && g >= data.stores.length ? VIEW_W.totQty : k === "qty" && (g === data.eventIndex || (data.nonStore || []).includes(g)) ? 8.5 : VIEW_W[k]; // イベント・Online などは見出しが収まる幅
         return `<col style="width:${px(w)}px">`;
       }).join("")).join("");
     $("thead").innerHTML = `
@@ -704,13 +704,14 @@
   }
 
   // 列グループの上 (As of の行) に出すラベル。例: 棚卸した店舗の上に「9/30(Before)」
+  const zortLabel = () => {
+    const t = new Date(data.zort.fetchedAt);
+    return `Zort ${t.getFullYear()}/${t.getMonth() + 1}/${t.getDate()} ${String(t.getHours()).padStart(2, "0")}:${String(t.getMinutes()).padStart(2, "0")}`;
+  };
   const groupLabels = () => {
     const out = Object.fromEntries((data.counts || []).filter((c) => c.label).map((c) => [data.stores.indexOf(c.store), c.label]));
-    if (data.zort) {
-      const t = new Date(data.zort.fetchedAt);
-      const lab = `Zort ${t.getMonth() + 1}/${t.getDate()} ${String(t.getHours()).padStart(2, "0")}:${String(t.getMinutes()).padStart(2, "0")}`;
-      data.zort.locs.forEach((l) => (out[data.stores.indexOf(l)] = lab));
-    }
+    // Zort の数を使う拠点には棚卸の日付を出さない (表の上に Zort の読み込み時刻をまとめて出す)
+    if (data.zort) data.zort.locs.forEach((l) => delete out[data.stores.indexOf(l)]);
     return out;
   };
   // As of の行: ラベルのある列グループの上だけ別のマスにし、残りは As of の文言のマスにまとめる
@@ -720,7 +721,7 @@
     let span = VIEW_TEXT.length, first = true;
     const flush = () => {
       if (!span) return;
-      cells.push(`<th colspan="${span}">${first ? esc(d.asOf) : ""}</th>`);
+      cells.push(`<th colspan="${span}">${first ? esc(d.zort ? t("zort.asof", { t: zortLabel() }) : d.asOf) : ""}</th>`);
       first = false;
       span = 0;
     };
@@ -1423,7 +1424,7 @@
       + (d.eventSource ? " " + t("foot.event", { n: fmt(d.eventMoved) }) : "")
       + (d.eventStock ? " " + t("foot.eventStock", { c: d.eventStock.cutoff, s: fmt(d.eventStock.start), o: fmt(d.eventStock.sold), r: fmt(d.eventStock.remain) }) : "")
       + (d.salesRate ? " " + t("foot.rate", { p: Object.entries(d.salesRate.months).map(([s, v]) => `${s === "Office" ? "Office (Online)" : s} ${v[2]}`).join(" / ") }) : "")
-      + (d.zort ? " " + t("foot.zort", { l: d.zort.locs.join(", "), u: d.zort.unmapped.map((w) => `${w.store}「${w.name}」${w.total}`).join(" / ") || "-" }) : "")
+      + (d.zort ? " " + t("foot.zort", { l: d.zort.locs.join(", ") }) : "")
       + ((d.adjustments || []).length ? " " + t("foot.adjust", { n: fmt(d.adjustments.length), list: d.adjustments.map((r) => `${r.date} ${r.store} ${r.code} ${r.qty > 0 ? "+" : ""}${r.qty}`).join(" / ") }) : "")
       + (d.counts || []).map((c) => " " + t("foot.counts", { s: c.store, src: c.source, n: fmt(c.items), b: fmt(c.before), a: fmt(c.after) })).join("")
       + (d.returnsSeed ? " " + t("foot.returnsSeed", { s: d.returnsSeed.source, n: fmt(Object.keys(d.returnsSeed.returns).length), q: fmt(sum(Object.values(d.returnsSeed.returns))) }) : "")
@@ -1455,25 +1456,55 @@
 
   /* ---------- Zort ---------- */
   function applyZort(d, z) {
-    const locs = Object.keys(z.byLocation).filter((l) => d.stores.includes(l));
-    const codes = new Set(d.items.map((it) => it.code).filter(Boolean));
-    for (const loc of locs) {
-      const k = d.stores.indexOf(loc), m = z.byLocation[loc];
+    // 列を 1 つ差し込む (数量・Return・月販の配列もずらす)
+    const insertCol = (pos, name) => {
+      d.stores.splice(pos, 0, name);
+      d.items.forEach((it) => {
+        it.qty.splice(pos, 0, 0);
+        it.ret.splice(pos, 0, null);
+        if (Array.isArray(it.rate)) it.rate.splice(pos, 0, null);
+      });
+      if (d.officeIndex != null && d.officeIndex >= pos) d.officeIndex++;
+      if (d.eventIndex != null && d.eventIndex >= pos) d.eventIndex++;
+      d.nonStore = (d.nonStore || []).map((i) => (i >= pos ? i + 1 : i));
+      return pos;
+    };
+    const locs = [];
+    for (const loc of z.locations) {
+      let k = d.stores.indexOf(loc.name);
+      if (k < 0 && loc.kind === "event" && d.eventIndex != null && !locs.includes(d.stores[d.eventIndex])) {
+        d.stores[d.eventIndex] = loc.name; // Event Asok の列を Zort のイベント倉庫 (Event 1) の列にする
+        k = d.eventIndex;
+      }
+      if (k < 0) {
+        // 店舗はイベント列の前、その他 (Online・Outlet など) は最後に追加
+        k = insertCol(loc.kind === "store" && d.eventIndex != null ? d.eventIndex : d.stores.length, loc.name);
+        if (loc.kind !== "store") d.nonStore = [...(d.nonStore || []), k];
+      }
+      locs.push(loc.name);
+      const m = loc.stock;
       d.items.forEach((it) => { if (it.code) it.qty[k] = m[it.code] || 0; });
-      // Zort にだけある商品は行を追加する (同じモデル・カラーの行の後ろ)
-      for (const [sku, q] of Object.entries(m)) {
-        if (!q || codes.has(sku)) continue;
-        const mm = /^(.*)\((\w+),\s*(.+)\)\s*$/.exec(z.names[sku] || "");
-        if (!mm) continue;
-        const it = { code: sku, model: mm[1].trim(), color: mm[3].trim(), size: mm[2], qty: d.stores.map(() => 0), ret: d.stores.map(() => null), rate: null, rateEvent: null };
+    }
+    // Zort にだけある商品は行を追加する (同じモデル・カラーの行の後ろ)
+    const codes = new Set(d.items.map((it) => it.code).filter(Boolean));
+    for (const loc of z.locations) {
+      const k = d.stores.indexOf(loc.name);
+      for (const [sku, q] of Object.entries(loc.stock)) {
+        if (!q || !sku.startsWith("VFF")) continue;
+        let it = codes.has(sku) ? d.items.find((x) => x.code === sku) : null;
+        if (!it) {
+          const mm = /^(.*)\((\w+),\s*(.+)\)\s*$/.exec(z.names[sku] || "");
+          if (!mm) continue;
+          it = { code: sku, model: mm[1].trim(), color: mm[3].trim(), size: mm[2], qty: d.stores.map(() => 0), ret: d.stores.map(() => null), rate: null, rateEvent: null };
+          let pos = -1;
+          d.items.forEach((x, i) => { if (x.model === it.model && (x.color === it.color || pos < 0)) pos = i; });
+          d.items.splice(pos < 0 ? d.items.length : pos + 1, 0, it);
+          codes.add(sku);
+        }
         it.qty[k] = q;
-        let pos = -1;
-        d.items.forEach((x, i) => { if (x.model === it.model && (x.color === it.color || pos < 0)) pos = i; });
-        d.items.splice(pos < 0 ? d.items.length : pos + 1, 0, it);
-        codes.add(sku);
       }
     }
-    d.zort = { fetchedAt: z.fetchedAt, locs, unmapped: z.unmapped };
+    d.zort = { fetchedAt: z.fetchedAt, locs, unmapped: [] };
   }
 
   /* ---------- load ---------- */
@@ -1488,7 +1519,13 @@
       return initReturns().then(() => d);
     })
     // Zort の在庫があれば、対応する拠点の数を Zort の数に置き換える
-    .then((d) => (window.ZORT || Promise.resolve(null)).then((z) => { if (z) applyZort(d, z); return d; }))
+    .then((d) => (window.ZORT || Promise.resolve(null)).then((z) => {
+      if (z) {
+        applyZort(d, z);
+        groups = d.officeIndex != null ? [...d.stores, "Store Total", "Company Total"] : [...d.stores, "Total"];
+      }
+      return d;
+    }))
     .then((d) => {
       d.items.forEach((it, n) => {
         it._id = n;

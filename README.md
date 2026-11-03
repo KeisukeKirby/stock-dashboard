@@ -217,4 +217,4 @@ Vercel の Environment Variables（Production）に設定:
 | `ZORT_BFT_STORENAME` / `ZORT_BFT_APIKEY` / `ZORT_BFT_APISECRET` | Zort の 設定 → API で発行した値 |
 | `ZORT_EDV_STORENAME` / `ZORT_EDV_APIKEY` / `ZORT_EDV_APISECRET` | 同上（EDV のアカウント） |
 
-倉庫名と拠点の対応は `public/zort.js` の `MAP`（例: คลังสินค้าหลัก → Office、Kvillage → K Village、Coollabo Cen LP 3F → Central LP）。どこにも当てはまらない倉庫は画面下の注記に一覧で出ます。
+倉庫名と拠点の対応は `public/zort.js` の `MAP`（คลังสินค้าหลัก → Office、Kvillage → K Village、Central CL・Siam Discovery・Paradise Park・Central LP・Thaniya・Pathwild → 店舗、Event 1 → イベント列）。どれにも当てはまらない倉庫（Online・Outlet・รอ など）は、その名前の列を追加します（Store Total には含めず、Company Total に含める）。
