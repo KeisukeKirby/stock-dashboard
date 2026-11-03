@@ -11,8 +11,8 @@
     if (!data) return;
     const q = ($("vq").value || "").trim().toLowerCase();
     const onlyStock = $("vStock").checked;
-    // 在庫がある拠点だけを列にする
-    const shown = data.stores.map((_, i) => i).filter((i) => data.items.some((it) => it.qty[i] > 0));
+    // 在庫がある拠点 (マイナスを含む) だけを列にする
+    const shown = data.stores.map((_, i) => i).filter((i) => data.items.some((it) => it.qty[i]));
     const total = (it) => it.qty.reduce((a, v) => a + (v || 0), 0);
     const rows = data.items.filter((it) => (!q || `${it.code} ${it.model} ${it.color} ${it.size}`.toLowerCase().includes(q)) && (!onlyStock || total(it) > 0));
     const ncol = 3 + shown.length + 1;
@@ -23,14 +23,15 @@
       <tr class="h1"><th>Model</th><th>Color</th><th>Size</th>
         ${shown.map((i) => `<th title="${esc(data.stores[i])}">${esc(short(data.stores[i]))}</th>`).join("")}<th>Total</th></tr>`;
     const body = rows.map((it) => `<tr><td>${esc(it.model.replace(/^Vivo\s+/, ""))}</td><td>${esc(it.color)}</td><td class="c">${esc(it.size)}</td>
-      ${shown.map((i) => `<td class="c">${nf(it.qty[i] ?? 0)}</td>`).join("")}
+      ${shown.map((i) => `<td class="c${it.qty[i] < 0 ? " neg" : ""}"${it.qty[i] < 0 ? ` title="${esc(t("vivo.negTitle"))}"` : ""}>${nf(it.qty[i] ?? 0)}</td>`).join("")}
       <td class="c b">${nf(total(it))}</td></tr>`);
     if (!rows.length) body.push(`<tr><td class="empty" colspan="${ncol}">${esc(t("empty"))}</td></tr>`);
     const sum = (i) => rows.reduce((a, it) => a + (it.qty[i] || 0), 0);
     body.push(`<tr class="total"><td>Total</td><td></td><td></td>${shown.map((i) => `<td class="c">${nf(sum(i))}</td>`).join("")}<td class="c">${nf(rows.reduce((a, it) => a + total(it), 0))}</td></tr>`);
     $("vTbody").innerHTML = body.join("");
     $("vCount").textContent = rows.length === data.items.length ? t("count.all", { n: data.items.length }) : t("count.of", { n: data.items.length, m: rows.length });
-    $("vNote").textContent = data.zortAt ? t("vivo.noteZort") : t("vivo.note", { done: data.counts.map((c) => `${c.store}（${c.date}）`).join("、"), pending: pending.join(", ") });
+    const negs = data.items.filter((it) => it.qty.some((v) => v < 0));
+    $("vNote").textContent = data.zortAt ? t("vivo.noteZort") + (negs.length ? " " + t("vivo.neg", { n: negs.length, q: -negs.reduce((a, it) => a + it.qty.reduce((b, v) => b + (v < 0 ? v : 0), 0), 0) }) : "") : t("vivo.note", { done: data.counts.map((c) => `${c.store}（${c.date}）`).join("、"), pending: pending.join(", ") });
   }
 
   ["vq", "vStock"].forEach((id) => $(id).addEventListener(id === "vq" ? "input" : "change", render));

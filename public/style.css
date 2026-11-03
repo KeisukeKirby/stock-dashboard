@@ -468,3 +468,6 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 .no-returns #retInfo, .no-returns #syncState, .no-returns #saveState, .no-returns #saveReturns,
 .no-returns #revertReturns, .no-returns #clearReturns, .no-returns #receiveReturns,
 .no-returns .guide-list li[data-i18n-html="retHint"] { display: none !important; }
+
+/* Zort で在庫がマイナスのマス */
+.sheet td.neg { color: #c00000; font-weight: 700; background: #fde8e8; }
