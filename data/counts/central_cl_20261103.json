@@ -1,6 +1,6 @@
 {
  "store": "Central CL (Department)",
- "label": "11/3",
+ "label": "",
  "date": "2026-11-03",
  "source": "Stock_Central_CL.xlsx（Stock VFF シート）",
  "note": "サイズに M/W の区別がないため、M と W がある商品は 40 以下を W、41 以上を M とした（2 ブロックある商品は 1 つ目 M、2 つ目 W）。",
