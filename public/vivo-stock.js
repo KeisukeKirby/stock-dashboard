@@ -60,8 +60,7 @@
       }
       d.counted[k] = true;
     }
-    const t = new Date(z.fetchedAt);
-    d.zortAt = `${t.getFullYear()}/${t.getMonth() + 1}/${t.getDate()} ${String(t.getHours()).padStart(2, "0")}:${String(t.getMinutes()).padStart(2, "0")}`;
+    d.zortAt = window.ZORT_TIME(z.fetchedAt);
     // Zort に来ていない拠点 (棚卸だけの数) は使わない
     d.stores.forEach((loc, k) => { if (!(loc in z.byLocation)) d.items.forEach((it) => (it.qty[k] = null)); });
   }

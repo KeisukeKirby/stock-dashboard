@@ -11,7 +11,8 @@
 //   ZORT_<名前>_STORENAME    Zort の storename
 //   ZORT_<名前>_APIKEY       Zort の apikey
 //   ZORT_<名前>_APISECRET    Zort の apisecret
-// CDN に結果を置き、2 回目以降はすぐ返す (裏で Zort から読み直す)。
+// 結果は Upstash Redis に共有スナップショットとして 1 つだけ置き、全員に同じ数 (同じ読み込み時刻) を返す。10 分ごとに読み直す。
+//   GET /api/zort?since=<fetchedAt>  → 変わっていなければ { same: true } だけを返す (1 分ごとの確認用)
 
 const BASE = process.env.ZORT_BASE_URL || "https://open-api.zortout.com/v4";
 const SKU_RE = /^(VFF|VV)\d/;
@@ -67,8 +68,64 @@ async function warehouseStock(acc, wh, names) {
   return stock;
 }
 
-// 同じサーバーが続けて呼ばれたときは 60 秒以内なら前回の結果を返す
-let memo = null;
+// ---- 全員が同じ数を見るための共有スナップショット (Upstash Redis。returns.js / orders.js と同じ保存先) ----
+// Zort から読んだ結果を Redis に 1 つだけ置き、どの PC・スマホにも同じもの (同じ読み込み時刻) を返す。
+// 10 分より古くなったら、最初に来た 1 台のリクエストが Zort から読み直す (ロックで同時に 2 回読まない)。
+// Zort が失敗したときは前回のスナップショットを返す (stale: true)。古い Excel の数に戻らないようにする。
+const envBySuffix = (...suffixes) => {
+  for (const suf of suffixes) {
+    if (process.env[suf]) return process.env[suf];
+    const key = Object.keys(process.env).find((k) => k.endsWith(`_${suf}`) && process.env[k]);
+    if (key) return process.env[key];
+  }
+  return undefined;
+};
+const KV_URL = envBySuffix("KV_REST_API_URL", "UPSTASH_REDIS_REST_URL", "REST_API_URL");
+const KV_TOKEN = envBySuffix("KV_REST_API_TOKEN", "UPSTASH_REDIS_REST_TOKEN", "REST_API_TOKEN");
+async function kv(commands) {
+  const r = await fetch(`${KV_URL.replace(/\/$/, "")}/pipeline`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${KV_TOKEN}`, "Content-Type": "application/json" },
+    body: JSON.stringify(commands),
+  });
+  if (!r.ok) throw new Error(`redis ${r.status}`);
+  const out = await r.json();
+  const err = out.find((x) => x && x.error);
+  if (err) throw new Error(err.error);
+  return out.map((x) => x.result);
+}
+const SNAP = "zort:snapshot", SNAP_AT = "zort:fetchedAt", LOCK = "zort:lock";
+const MAX_AGE = 10 * 60 * 1000; // 10 分ごとに Zort から読み直す
+
+async function readZort(accs) {
+  const t0 = Date.now();
+  const names = {}; // SKU -> 商品名 (ダッシュボードにない商品の行を作るため)
+  const stores = await Promise.all(
+    accs.map(async (acc) => {
+      const j = await call(acc, "Warehouse/GetWarehouses");
+      const only = ONLY[acc.name.toUpperCase()];
+      const whs = (j.list || [])
+        .map((w) => ({ code: String(w.code || w.id), name: String(w.name || w.code || "") }))
+        .filter((w) => !SKIP.test(w.name.trim()) && (!only || only.test(norm(w.name))));
+      // 倉庫は 6 つずつ並行して読む (1 つずつより大幅に速い。Zort への同時接続は控えめに)
+      const warehouses = new Array(whs.length);
+      let next = 0;
+      const worker = async () => {
+        while (next < whs.length) {
+          const i = next++;
+          warehouses[i] = { ...whs[i], stock: await warehouseStock(acc, whs[i], names) };
+        }
+      };
+      await Promise.all(Array.from({ length: Math.min(6, whs.length) }, worker));
+      return { store: acc.name, warehouses };
+    })
+  );
+  console.log(`zort: ${stores.map((x) => `${x.store} ${x.warehouses.length} warehouses`).join(", ")} in ${Date.now() - t0} ms`);
+  return { configured: true, fetchedAt: new Date().toISOString(), stores, names };
+}
+
+// このサーバーが最後に読んだスナップショット (Redis から大きな本体を毎回読まないため)
+let memo = null; // { fetchedAt, body }
 
 // 確認用: /api/zort?summary=1 → 全アカウントの全倉庫 (読み飛ばしている倉庫も含む) の VFF / Vivo の合計足数・SKU 数だけを返す
 async function summary(res, accs) {
@@ -99,48 +156,72 @@ module.exports = async (req, res) => {
     if (!accs.length) return res.status(503).json({ configured: false });
     try { return await summary(res, accs); } catch (e) { return res.status(502).json({ error: String(e.message || e).slice(0, 200) }); }
   }
-  // CDN: 1 分は同じ結果を返し、それ以降も前回の結果をすぐ返しつつ裏で Zort から読み直す
-  const CDN = "max-age=60, stale-while-revalidate=86400";
-  if (memo && Date.now() - memo.at < 60000) {
-    res.setHeader("Vercel-CDN-Cache-Control", CDN);
-    res.status(200).json(memo.body);
-    return;
-  }
   const accs = accounts();
   if (!accs.length) {
     res.status(503).json({ configured: false, error: "Zort is not configured" });
     return;
   }
-  const t0 = Date.now();
+  const since = new URL(req.url || "/", "http://x").searchParams.get("since");
+  const send = (body, extra = {}) => {
+    if (since && body.fetchedAt === since && !extra.stale) return res.status(200).json({ same: true, fetchedAt: body.fetchedAt });
+    return res.status(200).json({ ...body, ...extra });
+  };
+
+  // 共有の保存先がないとき (ローカル確認など) は、このサーバーで 60 秒だけ覚えて返す
+  if (!KV_URL || !KV_TOKEN) {
+    try {
+      if (!memo || Date.now() - Date.parse(memo.fetchedAt) > 60000) { const b = await readZort(accs); memo = { fetchedAt: b.fetchedAt, body: b }; }
+      return send(memo.body);
+    } catch (e) {
+      console.error(e);
+      if (memo) return send(memo.body, { stale: true, error: String(e.message || e).slice(0, 200) });
+      return res.status(502).json({ configured: true, error: String(e.message || e).slice(0, 200) });
+    }
+  }
+
   try {
-    const names = {}; // SKU -> 商品名 (ダッシュボードにない商品の行を作るため)
-    const stores = await Promise.all(
-      accs.map(async (acc) => {
-        const j = await call(acc, "Warehouse/GetWarehouses");
-        const only = ONLY[acc.name.toUpperCase()];
-        const whs = (j.list || [])
-          .map((w) => ({ code: String(w.code || w.id), name: String(w.name || w.code || "") }))
-          .filter((w) => !SKIP.test(w.name.trim()) && (!only || only.test(norm(w.name))));
-        // 倉庫は 6 つずつ並行して読む (1 つずつより大幅に速い。Zort への同時接続は控えめに)
-        const warehouses = new Array(whs.length);
-        let next = 0;
-        const worker = async () => {
-          while (next < whs.length) {
-            const i = next++;
-            warehouses[i] = { ...whs[i], stock: await warehouseStock(acc, whs[i], names) };
-          }
-        };
-        await Promise.all(Array.from({ length: Math.min(6, whs.length) }, worker));
-        return { store: acc.name, warehouses };
-      })
-    );
-    const body = { configured: true, fetchedAt: new Date().toISOString(), stores, names };
-    memo = { at: Date.now(), body };
-    console.log(`zort: ${stores.map((x) => `${x.store} ${x.warehouses.length} warehouses`).join(", ")} in ${Date.now() - t0} ms`);
-    res.setHeader("Vercel-CDN-Cache-Control", CDN);
-    res.status(200).json(body);
+    const loadSnap = async (at) => {
+      if (memo && memo.fetchedAt === at) return memo.body;
+      const [raw] = await kv([["GET", SNAP]]);
+      const body = raw ? JSON.parse(raw) : null;
+      if (body) memo = { fetchedAt: body.fetchedAt, body };
+      return body;
+    };
+    const [at] = await kv([["GET", SNAP_AT]]);
+    const fresh = at && Date.now() - Date.parse(at) < MAX_AGE;
+    if (fresh) {
+      if (since === at) return res.status(200).json({ same: true, fetchedAt: at });
+      const body = await loadSnap(at);
+      if (body) return send(body);
+    }
+    // 古い (または未作成): 1 台だけが Zort から読み直す
+    const [got] = await kv([["SET", LOCK, "1", "NX", "EX", 55]]);
+    if (got === "OK") {
+      try {
+        const body = await readZort(accs);
+        await kv([["SET", SNAP, JSON.stringify(body)], ["SET", SNAP_AT, body.fetchedAt], ["DEL", LOCK]]);
+        memo = { fetchedAt: body.fetchedAt, body };
+        return send(body);
+      } catch (e) {
+        console.error(e);
+        await kv([["DEL", LOCK]]).catch(() => {});
+        const old = at ? await loadSnap(at) : null;
+        if (old) return send(old, { stale: true, error: String(e.message || e).slice(0, 200) });
+        return res.status(502).json({ configured: true, error: String(e.message || e).slice(0, 200) });
+      }
+    }
+    // 別の 1 台が読み直し中: 前回のスナップショットを返す (なければ読み終わるまで少し待つ)
+    if (at) return send(await loadSnap(at));
+    for (let n = 0; n < 40; n++) {
+      await new Promise((r) => setTimeout(r, 500));
+      const [a2] = await kv([["GET", SNAP_AT]]);
+      if (a2) return send(await loadSnap(a2));
+    }
+    return res.status(503).json({ configured: true, error: "Zort is being loaded, try again" });
   } catch (e) {
+    // Redis が使えないときは Zort から直接読む
     console.error(e);
-    res.status(502).json({ configured: true, error: String(e.message || e).slice(0, 200) });
+    try { const b = await readZort(accs); memo = { fetchedAt: b.fetchedAt, body: b }; return send(b); }
+    catch (e2) { return res.status(502).json({ configured: true, error: String(e2.message || e2).slice(0, 200) }); }
   }
 };

@@ -30,8 +30,7 @@
     });
     const items = [...byCode.values()].sort((a, b) =>
       a.model.localeCompare(b.model, "en", { sensitivity: "base" }) || a.color.localeCompare(b.color, "en") || sizeIdx(a.size) - sizeIdx(b.size));
-    const at = new Date(z.fetchedAt);
-    const zortAt = `${at.getFullYear()}/${at.getMonth() + 1}/${at.getDate()} ${String(at.getHours()).padStart(2, "0")}:${String(at.getMinutes()).padStart(2, "0")}`;
+    const zortAt = window.ZORT_TIME(z.fetchedAt);
     return { stores, items, zortAt };
   }
 

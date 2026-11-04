@@ -716,8 +716,7 @@
 
   // 列グループの上 (As of の行) に出すラベル。例: 棚卸した店舗の上に「9/30(Before)」
   const zortLabel = () => {
-    const t = new Date(data.zort.fetchedAt);
-    return `Zort ${t.getFullYear()}/${t.getMonth() + 1}/${t.getDate()} ${String(t.getHours()).padStart(2, "0")}:${String(t.getMinutes()).padStart(2, "0")}`;
+    return `Zort ${window.ZORT_TIME(data.zort.fetchedAt)}`;
   };
   const groupLabels = () => {
     const out = Object.fromEntries((data.counts || []).filter((c) => c.label).map((c) => [data.stores.indexOf(c.store), c.label]));
@@ -1818,6 +1817,29 @@ if (RETURNS_ON) {
 
   if (!RETURNS_ON) document.body.classList.add("no-returns");
 
+  /* ---------- Zort の読み込み状態の注意書き (全員が同じ数を見ているかが分かるように) ---------- */
+  function updateZortWarn() {
+    const el = $("zortWarn");
+    const st = window.ZORT_STATUS || { ok: true };
+    const at = shownZort ? window.ZORT_TIME(shownZort) : null;
+    const old = shownZort && Date.now() - Date.parse(shownZort) > 30 * 60000; // 30 分以上更新されていない
+    let msg = "", reload = false;
+    if (window.ZORT_NEW_VERSION) { msg = t("zort.newVer"); reload = true; }
+    else if (data && !shownZort && st.ok === false) { msg = t("zort.offlineExcel"); reload = true; }
+    else if (st.ok === false && at) { msg = t("zort.offline", { t: at }); reload = true; }
+    else if ((st.stale || old) && at) msg = t("zort.stale", { t: at });
+    el.hidden = !msg;
+    el.innerHTML = msg ? `${esc(msg)}${reload ? ` <button type="button" class="ghost small" id="zortReload">${esc(t("zort.reload"))}</button>` : ""}` : "";
+  }
+  window.addEventListener("zort-status", updateZortWarn);
+  setInterval(updateZortWarn, 60000);
+  document.addEventListener("click", (e) => { if (e.target.id === "zortReload") location.reload(); });
+  // 新しい版が出たときに自動で読み込み直してよいか (入力中・未保存なら待つ)
+  window.APP_CAN_RELOAD = () => {
+    const a = document.activeElement;
+    return !(a && a.matches && a.matches("input:not([type=search]), textarea")) && !(data && (isDirty() || ordDirty())) && !($("ordDlg").open || $("recvDlg").open);
+  };
+
   /* ---------- load ---------- */
   // 毎回かならず最新の在庫データを読む (ブラウザや配信側に古いデータが残っていても使わない)
   // Zort: 前回の Zort の数 (このブラウザに保存) ですぐ表示し、最新の Zort の数が届いたら表示し直す
@@ -1841,6 +1863,7 @@ if (RETURNS_ON) {
     d._grand = sum(d.items.map((it) => it._tq));
     updateReturnInfo();
     updateOrderInfo();
+    updateZortWarn();
     applyStaticTexts();
     $("source").textContent = d.title;
     $("dlOffice").hidden = !d.officeSource;

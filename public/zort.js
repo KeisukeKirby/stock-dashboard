@@ -60,28 +60,66 @@
   try { cached = build(JSON.parse(localStorage.getItem(KEY) || "null")); } catch (_) {}
   window.ZORT_CACHED = cached;
 
-  // 10 分ごとの区切りを URL に付ける: 同じ 10 分の間は CDN の結果を共有し、区切りが変わると Zort から読み直す
-  const load = () =>
-    fetch(`api/zort?b=${Math.floor(Date.now() / 600000)}`)
+  // 時刻はどの端末でもタイ時間で出す (端末の時間帯設定で表示が変わらないように)
+  window.ZORT_TIME = (iso) => {
+    const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Bangkok", year: "numeric", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit", hourCycle: "h23" })
+      .formatToParts(new Date(iso)).map((x) => [x.type, x.value]));
+    return `${p.year}/${p.month}/${p.day} ${p.hour}:${p.minute}`;
+  };
+
+  // 読み込みの状態 (画面の注意書き用): { ok, stale, fallback, at }
+  //   ok=false: Zort (共有スナップショット) に接続できなかった。at = 表示中の数の時刻
+  const status = { ok: true, stale: false, at: cached ? cached.fetchedAt : null };
+  window.ZORT_STATUS = status;
+  const notify = () => window.dispatchEvent(new CustomEvent("zort-status", { detail: status }));
+
+  // サーバーに 1 つだけある共有スナップショットを読む。全員が同じ数・同じ時刻になる
+  let current = cached;
+  const load = (since) =>
+    fetch(`api/zort${since ? `?since=${encodeURIComponent(since)}` : ""}`, { cache: "no-store" })
       .then((r) => (r.ok ? r.json() : null))
       .then((j) => {
+        if (j && j.same) { Object.assign(status, { ok: true, stale: false, at: j.fetchedAt }); notify(); return null; }
         const z = build(j);
-        if (z) { try { localStorage.setItem(KEY, JSON.stringify(j)); } catch (_) {} }
+        if (z) {
+          try { localStorage.setItem(KEY, JSON.stringify(j)); } catch (_) {}
+          current = z;
+          Object.assign(status, { ok: true, stale: !!j.stale, at: z.fetchedAt });
+        } else Object.assign(status, { ok: false, at: current ? current.fetchedAt : null });
+        notify();
         return z;
       })
-      .catch(() => null);
-  window.ZORT = load();
+      .catch(() => { Object.assign(status, { ok: false, at: current ? current.fetchedAt : null }); notify(); return null; });
+  window.ZORT = load().then((z) => z || null);
 
-  // 10 分ごとに自動で読み直し、新しい数が届いたら "zort-update" イベントで知らせる (画面を開いたままでも最新になる)
-  setInterval(() => {
-    if (document.hidden) return; // 見ていないタブでは読まない (戻ったときに読む)
-    load().then((z) => { if (z) window.dispatchEvent(new CustomEvent("zort-update", { detail: z })); });
-  }, 600000);
-  let hiddenAt = 0;
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) { hiddenAt = Date.now(); return; }
-    if (hiddenAt && Date.now() - hiddenAt > 600000) {
-      load().then((z) => { if (z) window.dispatchEvent(new CustomEvent("zort-update", { detail: z })); });
-    }
-  });
+  // 1 分ごとに「共有スナップショットが新しくなったか」だけを確かめ (軽い)、新しくなったら読み込んで "zort-update" で知らせる。
+  // スナップショットは 10 分ごとに Zort から読み直される。開いている全員の画面が 1 分以内に同じ数にそろう。
+  const poll = () =>
+    load(current && status.ok ? current.fetchedAt : null).then((z) => {
+      if (z) window.dispatchEvent(new CustomEvent("zort-update", { detail: z }));
+    });
+  setInterval(() => { if (!document.hidden) poll(); }, 60000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) { poll(); checkVersion(); } });
+  window.addEventListener("online", poll);
+
+  // 開きっぱなしのタブ (スマホなど) が古い版の画面のままにならないように、新しい版が出ていたら読み込み直す。
+  // 入力中・未保存のときは読み込み直さず、画面に「新しい版があります」と出す。
+  const myVer = (() => { const m = /[?&]v=(\d+)/.exec((document.currentScript && document.currentScript.src) || ""); return m ? m[1] : null; })();
+  let lastCheck = 0;
+  window.ZORT_NEW_VERSION = false;
+  function checkVersion() {
+    if (!myVer || Date.now() - lastCheck < 120000) return;
+    lastCheck = Date.now();
+    fetch(`./?vcheck=${Date.now()}`, { cache: "no-store" })
+      .then((r) => (r.ok ? r.text() : ""))
+      .then((html) => {
+        const m = /zort\.js\?v=(\d+)/.exec(html);
+        if (!m || m[1] === myVer) return;
+        if (!window.APP_CAN_RELOAD || window.APP_CAN_RELOAD()) { location.reload(); return; }
+        window.ZORT_NEW_VERSION = true;
+        notify();
+      })
+      .catch(() => {});
+  }
+  setInterval(() => { if (!document.hidden) checkVersion(); }, 600000);
 })();
