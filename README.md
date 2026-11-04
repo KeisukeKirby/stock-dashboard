@@ -155,6 +155,15 @@ python scripts/convert.py ... data/sales_rate.json data/returns_import.json     
 ダッシュボードを最初に開いたときに「輸送中」として 1 度だけ共有データに登録します（同じ id では再登録しない。既に入力があるマスは上書きしない）。
 現在の取り込み: VFF_Stock_with_returns_20260929_1620.xlsx の 78 件・102 足（K Village 33 / Central CL 18 / Siam Discovery 7 / Central LP 44）。
 
+## Order（発注数）の入力
+
+在庫一覧の一番右（Company Total の右）にある **Order** 列には誰でも数字を入力できます。
+
+- 入力しただけでは自分の画面だけ（「Order 未保存」）。**Order 保存**（Ctrl+S）で共有サーバーに保存され、同じ URL を開いている全員の画面に 15 秒以内に反映されます。保存は変更したマスだけを送るので、別の人が別のマスを同時に入力しても消えません。
+- **Order 確定** で保存済みの Order を確定履歴に残し、全員の Order 欄を空にします。**確定履歴** から過去の確定内容（最大 50 件）を見たり CSV でダウンロードできます。
+- 保存先は返品と同じ Upstash Redis（`api/orders.js`、キー `orders:draft` / `orders:confirmed`）。未設定のときはこのブラウザにのみ保存します。
+- Excel・CSV の出力にも Order 列が入ります。
+
 ## Vivo 販売ダッシュボード (vivo.html)
 
 `/vivo` で開く、BFT と EDV の受注明細から作った Vivo の販売実績ダッシュボードです（在庫ダッシュボード右上の「Vivo Sales →」からも開けます）。

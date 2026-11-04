@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261104033950">
+  <link rel="stylesheet" href="style.css?v=20261104034829">
 </head>
 <body>
   <div class="page">
@@ -103,6 +103,14 @@
           <button id="saveReturns" class="primary small" type="button" disabled data-i18n-title="save.title" data-i18n="save"></button>
           <button id="revertReturns" class="ghost small" type="button" hidden data-i18n="revert"></button>
           <button id="clearReturns" class="ghost small" type="button" hidden data-i18n="clear"></button>
+          <span class="ord-actions" role="group" aria-label="Order">
+            <span id="ordInfo" class="ord-info"></span>
+            <span id="ordState" class="sync-state ord-state" aria-live="polite"></span>
+            <button id="saveOrders" class="primary small" type="button" disabled data-i18n="ord.save" data-i18n-title="ord.saveTitle"></button>
+            <button id="confirmOrders" class="ord-confirm small" type="button" disabled data-i18n="ord.confirmBtn" data-i18n-title="ord.confirmTitle"></button>
+            <button id="revertOrders" class="ghost small" type="button" hidden data-i18n="revert"></button>
+            <button id="ordHistBtn" class="ghost small" type="button" hidden data-i18n="ord.history"></button>
+          </span>
           <button id="dlXlsxOut" class="ghost small" type="button" data-i18n-title="xlsx.title" data-i18n="xlsx"></button>
           <button id="dlCsv" class="ghost small" type="button" data-i18n="csv"></button>
         </div>
@@ -190,6 +198,16 @@
       </div>
     </form>
   </dialog>
+  <dialog id="ordDlg" class="recv-dlg" aria-labelledby="ordTitle">
+    <form method="dialog" class="recv-inner">
+      <div class="recv-head">
+        <h2 id="ordTitle" data-i18n="ord.historyTitle"></h2>
+        <button type="submit" class="recv-x" aria-label="×">×</button>
+      </div>
+      <p class="recv-note" data-i18n="ord.historyNote"></p>
+      <div id="ordBody" class="recv-body"></div>
+    </form>
+  </dialog>
   <div id="tip" class="tip" role="tooltip" hidden></div>
   <div id="afPop" class="af-pop" role="dialog" hidden></div>
   <div id="selBar" class="sel-bar" role="status" aria-live="polite" hidden>
@@ -202,9 +220,9 @@
     <span class="sel-copy" data-i18n="sel.copyHint"></span>
     <button type="button" id="selClose" aria-label="×">×</button>
   </div>
-  <script src="zort.js?v=20261104033950"></script>
-  <script src="i18n.js?v=20261104033950"></script>
-  <script src="vivo-stock.js?v=20261104033950"></script>
-  <script src="app.js?v=20261104033950"></script>
+  <script src="zort.js?v=20261104034829"></script>
+  <script src="i18n.js?v=20261104034829"></script>
+  <script src="vivo-stock.js?v=20261104034829"></script>
+  <script src="app.js?v=20261104034829"></script>
 </body>
 </html>

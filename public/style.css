@@ -474,3 +474,32 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 
 /* ▼ のない見出しは右の余白を詰める */
 .sheet thead tr.h1 th.grp.no-af, .sheet thead tr.h2 th.no-af { padding-right: 3px; }
+
+/* Order (発注数) — Company Total の右の入力欄 */
+.ord-actions { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; padding: 2px 8px 2px 4px; border-right: 1px solid var(--line); margin-right: 2px; }
+.ord-info { font-size: 12px; background: #e2efda; color: #375623; border-radius: 999px; padding: 3px 10px; }
+.ord-info:empty { display: none; }
+.ord-state.dirty { color: #b45309; font-weight: 600; }
+.ord-state.dirty::before { background: #f59e0b; }
+.ord-confirm { background: #375623; color: #fff; border: 1px solid #375623; border-radius: 999px; cursor: pointer; padding: 4px 16px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.ord-confirm:hover:not(:disabled) { background: #2b4419; }
+.ord-confirm:disabled { opacity: .45; cursor: default; }
+.sheet thead tr.h1 th.ord-h { background: #548235; }
+.sheet td.ord { background: #f3f9ee; padding: 0; }
+.sheet tr.total td.ord-t { background: #e2efda; color: #375623; }
+.sheet .ord-in {
+  display: block; width: 100%; height: calc(var(--row-h) - 1px); margin: 0; padding: 0 1px;
+  border: 0; background: transparent; color: #375623; font: inherit; font-weight: 700; text-align: center; cursor: cell;
+}
+.sheet .ord-in:hover { background: #d9ead3; }
+.sheet .ord-in:focus { outline: 2px solid #217346; outline-offset: -2px; background: #ffffff; cursor: text; }
+.sheet .ord-in.invalid { outline: 2px solid #d03b3b; outline-offset: -2px; }
+.sheet tbody td.ord.sel { background-color: #d9ead3 !important; }
+.ord-h-item { border: 1px solid var(--line); border-radius: 10px; margin: 10px 0; }
+.ord-h-item summary { display: flex; align-items: center; gap: 12px; padding: 8px 12px; cursor: pointer; }
+.ord-h-item summary span { font-size: 13px; color: var(--ink-2); margin-right: auto; }
+.ord-list { border-collapse: collapse; width: 100%; font-size: 13px; }
+.ord-list th, .ord-list td { padding: 4px 10px; border-top: 1px solid var(--line); text-align: left; }
+.ord-list td.c { text-align: center; }
+.ord-list td.b { font-weight: 700; }
+@media print { .ord-actions { display: none; } }

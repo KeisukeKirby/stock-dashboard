@@ -15,7 +15,7 @@
   // Excel の列幅 (文字数) → px : width * 7 + 5
   const COL_W = { code: 23.63, model: 15.27, color: 16.63, size: 10.91, qty: 12.36, ret: 11.18, rate: 8.5, mos: 8.5 }; // Excel 出力用
   // 画面の表は見やすさ優先で Code 列を隠し、各列を狭くする
-  const VIEW_W = { model: 12.5, color: 14.5, size: 4.6, qty: 6, totQty: 6.6, ret: 5.6, rate: 5, mos: 5 };
+  const VIEW_W = { model: 12.5, color: 14.5, size: 4.6, qty: 6, totQty: 6.6, ord: 6.6, ret: 5.6, rate: 5, mos: 5 };
   const VIEW_TEXT = ["model", "color", "size"];
   const shortModel = (m) => String(m || "").replace(/^VFF\s+/, "");
   const shortGroup = (g) => String(g).replace(" (Department)", " (Dept.)");
@@ -695,7 +695,7 @@
       groups.map((_, g) => colKinds(g).map((k) => {
         const w = k === "qty" && g >= data.stores.length ? VIEW_W.totQty : k === "qty" && colKinds(g).length === 1 ? 8.5 : VIEW_W[k]; // Qty だけの列は見出しが収まる幅
         return `<col style="width:${px(w)}px">`;
-      }).join("")).join("");
+      }).join("")).join("") + `<col style="width:${px(VIEW_W.ord)}px">`;
     // 店舗 (▼) と数量 (▼) の絞り込みボタンは一番右の列グループだけに出す
     const lastG = groups.map((_, i) => i).filter((i) => colKinds(i).length).pop();
     $("thead").innerHTML = `
@@ -704,6 +704,7 @@
       <tr class="h1">
         ${["Model", "Color", "Size"].map((h, k) => `<th rowspan="2">${h}${afBtn(`t${VIEW_TEXT[k]}`, h)}</th>`).join("")}
         ${groups.map((g, i) => (colKinds(i).length ? `<th class="grp${i === lastG ? "" : " no-af"}" colspan="${colKinds(i).length}" title="${esc(g)}">${esc(shortGroup(g))}${i === lastG ? afBtn("loc", t("f.loc")) : ""}</th>` : "")).join("")}
+        <th class="ord-h" rowspan="2" title="${esc(t("ord.title"))}">Order</th>
       </tr>
       <tr class="h2">${groups.map((g, i) => colKinds(i).map((k) =>
         k === "qty" ? (i === lastG ? `<th title="Quantity">Qty${afBtn(`n${i}`, `${g} Quantity`)}</th>` : `<th class="no-af" title="Quantity">Qty</th>`)
@@ -742,6 +743,7 @@
       first = false;
       cells.push(`<th class="grp-label" colspan="${n}">${esc(labels[g])}</th>`);
     });
+    span += 1; // Order 列
     flush();
     return cells.join("");
   }
@@ -768,7 +770,7 @@
   // Store Total の列は出さない
   const hiddenAlways = (g) => hasOffice() && g === data.stores.length;
   const colKinds = (g) => locHidden.has(g) || hiddenAlways(g) ? [] : [...(hasRate(g) ? ["rate"] : []), "qty", ...(hasRate(g) ? ["mos"] : []), ...(hasRet(g) ? ["ret"] : [])];
-  const numCols = () => VIEW_TEXT.length + sum(groups.map((_, i) => colKinds(i).length));
+  const numCols = () => VIEW_TEXT.length + sum(groups.map((_, i) => colKinds(i).length)) + 1; // +1 = Order
 
   // 1 行分の Quantity / Return を groups の並びで返す
   const rowQty = (it) => (hasOffice() ? [...it._adj, it._st, it._tq] : [...it._adj, it._tq]);
@@ -778,7 +780,7 @@
     const qty = groups.map((_, g) => sum(items.map((it) => rowQty(it)[g])));
     const ret = groups.map((_, g) => sum(items.map((it) => rowRet(it)[g])));
     const rate = groups.map((_, g) => (hasRate(g) ? sum(items.map((it) => rowRate(it, g))) : null));
-    return { qty, ret, rate };
+    return { qty, ret, rate, order: ordTotal(items) };
   }
 
   const totalRowHtml = (tot) => `<td>Total</td><td></td><td></td>
@@ -786,7 +788,8 @@
         k === "qty" ? `<td class="c">${nf(tot.qty[i])}</td>`
         : k === "ret" ? `<td class="c">${nf(tot.ret[i])}</td>`
         : k === "rate" ? `<td class="c rate">${fmtRate(tot.rate[i])}</td>`
-        : `<td class="c mos">${fmtMos(mos(tot.qty[i], tot.rate[i]))}</td>`).join("")).join("")}`;
+        : `<td class="c mos">${fmtMos(mos(tot.qty[i], tot.rate[i]))}</td>`).join("")).join("")}
+      <td class="c ord-t" id="ordTot">${nf(tot.order)}</td>`;
 
   // Return で在庫が変わったときに在庫月数を更新
   function updateMos(tr, it) {
@@ -812,7 +815,7 @@
             if (tot) return `<td class="c b tr">${nf(it._tr)}</td>`;
             return `<td class="c ret${isHl(it, g, "ret") ? " hl" : ""}"><input class="ret-in" type="text" inputmode="numeric" autocomplete="off" data-s="${g}" value="${it._ret[g] ?? ""}" aria-label="${esc(data.stores[g])} Return"${it._rc[g] ? ` title="${esc(t("recv.cellTitle", { q: it._rc[g] }))}"` : ""}></td>`;
           }).join("");
-        }).join("")}
+        }).join("")}${ordCellHtml(it)}
       </tr>`);
     if (!items.length) rows.push(`<tr><td class="empty" colspan="${numCols()}">${esc(t("empty"))}</td></tr>`);
 
@@ -933,7 +936,7 @@
     const p = cellAt(e.target);
     if (!p) return;
     e.preventDefault(); // 文字の選択をしない
-    if (document.activeElement && document.activeElement.classList.contains("ret-in")) document.activeElement.blur();
+    if (document.activeElement && document.activeElement.matches(".ret-in, .ord-in")) document.activeElement.blur();
     if (e.shiftKey && sel) { sel.r1 = p.r; sel.c1 = p.c; }
     else sel = { r0: p.r, c0: p.c, r1: p.r, c1: p.c };
     dragging = true;
@@ -1031,6 +1034,287 @@
     returns = { ...saved };
     applyReturns();
   });
+  /* ---------- Order (発注数): 誰でも入力でき、保存すると同じ URL を開いている全員の画面に反映 ---------- */
+  // 共有モード: /api/orders (Upstash Redis)。保存は変更したマスだけを送るので、別の人の入力は消えない。
+  // 15 秒ごと (と画面に戻ったとき) に最新を読み込み、自分の未保存の入力は残したまま反映する。
+  // 「確定」: 保存済みの Order を確定履歴に残し、入力欄を空にする。
+  // 共有サーバーが使えないとき (ローカル確認など) はこのブラウザに保存する。
+  const OAPI = "api/orders";
+  const okey = (it) => it.code || `${it.model}|${it.color}|${it.size}`;
+  let orders = {}, ordSaved = {}, ordHistory = [];
+  let ordShared = false, ordUpdatedAt = null, ordLastSync = null, ordLastSaved = null;
+  let ordErr = false, ordBusy = false, ordFlash = false, ordFlashTimer = null;
+  const ordDirty = () => !same(orders, ordSaved);
+  const ordDiff = () => {
+    const set = {}, del = [];
+    for (const [k, v] of Object.entries(orders)) if (ordSaved[k] !== v) set[k] = v;
+    for (const k of Object.keys(ordSaved)) if (!(k in orders)) del.push(k);
+    return { set, del };
+  };
+  const ordClean = (m) => Object.fromEntries(Object.entries(m || {}).filter(([, v]) => Number(v) > 0).map(([k, v]) => [k, Number(v)]));
+  const OLOCAL = "orders:local";
+  const ordLoadLocal = () => {
+    try {
+      const j = JSON.parse(localStorage.getItem(OLOCAL) || "{}");
+      ordSaved = ordClean(j.draft);
+      ordHistory = Array.isArray(j.confirmed) ? j.confirmed : [];
+      ordUpdatedAt = j.updatedAt || null;
+    } catch (_) {}
+    orders = { ...ordSaved };
+  };
+  const ordSaveLocal = () => localStorage.setItem(OLOCAL, JSON.stringify({ draft: ordSaved, confirmed: ordHistory, updatedAt: ordUpdatedAt }));
+
+  // サーバーの最新を取り込む。自分が変更してまだ保存していないマスは自分の値のまま残す
+  function ordMerge(j) {
+    const remote = ordClean(j.draft);
+    const mine = ordDiff();
+    const next = { ...remote };
+    for (const [k, v] of Object.entries(mine.set)) next[k] = v;
+    for (const k of mine.del) delete next[k];
+    const changed = !same(next, orders) || (j.confirmed || []).length !== ordHistory.length;
+    orders = next;
+    ordSaved = remote;
+    ordHistory = j.confirmed || [];
+    ordUpdatedAt = j.updatedAt || null;
+    ordLastSync = new Date();
+    ordErr = false;
+    return changed;
+  }
+  async function initOrders() {
+    try {
+      const r = await fetch(OAPI, { cache: "no-store" });
+      const j = r.ok ? await r.json() : null;
+      if (j && j.shared) { ordShared = true; ordMerge(j); return; }
+    } catch (_) {}
+    ordLoadLocal();
+  }
+  async function ordPost(body) {
+    const r = await fetch(OAPI, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r.json();
+  }
+  async function saveOrders() {
+    if (!ordShared) {
+      try {
+        ordSaved = { ...orders };
+        ordUpdatedAt = new Date().toISOString();
+        ordSaveLocal();
+        ordLastSaved = new Date();
+        return true;
+      } catch (_) { alert(t("ord.saveFail")); return false; }
+    }
+    try {
+      const j = await ordPost(ordDiff());
+      ordSaved = ordClean(j.draft);
+      orders = { ...ordSaved };
+      ordHistory = j.confirmed || [];
+      ordUpdatedAt = j.updatedAt;
+      ordLastSaved = ordLastSync = new Date();
+      ordErr = false;
+      return true;
+    } catch (e) {
+      console.error(e);
+      ordErr = true;
+      alert(t("ord.saveFail"));
+      return false;
+    }
+  }
+  async function pullOrders() {
+    if (!ordShared || ordBusy || document.hidden || !data) return;
+    try {
+      const r = await fetch(OAPI, { cache: "no-store" });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const j = await r.json();
+      const fresh = j.updatedAt !== ordUpdatedAt;
+      if (ordMerge(j) && fresh) {
+        applyOrders();
+        ordFlash = true;
+        clearTimeout(ordFlashTimer);
+        ordFlashTimer = setTimeout(() => { ordFlash = false; updateOrderInfo(); }, 4000);
+      }
+      updateOrderInfo();
+    } catch (_) { ordErr = true; updateOrderInfo(); }
+  }
+  setInterval(pullOrders, 15000);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) pullOrders(); });
+
+  const ordTotal = (items) => sum(items.map((it) => orders[okey(it)] || 0));
+  const ordCellHtml = (it) =>
+    `<td class="c ord"><input class="ord-in" type="text" inputmode="numeric" autocomplete="off" value="${orders[okey(it)] || ""}" aria-label="${esc(`${it.model} ${it.color} ${it.size}`)} Order"></td>`;
+  // 表を作り直さずに Order の数だけ書き換える (入力中のマスには触れない)
+  function applyOrders() {
+    const active = document.activeElement;
+    $("tbody").querySelectorAll("tr[data-id]").forEach((tr) => {
+      const inp = tr.querySelector(".ord-in");
+      if (!inp || inp === active) return;
+      const v = String(orders[okey(data.items[+tr.dataset.id])] || "");
+      inp.value = v;
+      inp.defaultValue = v;
+    });
+    const tc = $("ordTot");
+    if (tc) tc.textContent = nf(ordTotal(shown));
+    refreshSel();
+    updateOrderInfo();
+    if ($("ordDlg").open) renderOrdHistory();
+  }
+  function updateOrderInfo() {
+    const dirty = ordDirty();
+    const n = Object.keys(orders).length;
+    const hm = (d) => d.toLocaleTimeString(window.I18N.locale, { hour: "2-digit", minute: "2-digit" });
+    $("ordInfo").textContent = n ? t("ord.info", { n: fmt(n), q: fmt(sum(Object.values(orders))) }) : "";
+    $("saveOrders").disabled = !dirty || ordBusy;
+    $("confirmOrders").disabled = ordBusy || !n;
+    $("revertOrders").hidden = !dirty;
+    $("ordHistBtn").hidden = !ordHistory.length;
+    const st = $("ordState");
+    st.classList.toggle("dirty", dirty);
+    st.classList.toggle("shared", ordShared && !ordErr && !dirty);
+    st.classList.toggle("error", ordShared && ordErr);
+    st.classList.toggle("flash", ordFlash);
+    st.textContent = ordBusy ? t("ret.saving")
+      : dirty ? t("ord.unsaved")
+      : !ordShared ? t("sync.local")
+      : ordErr ? t("sync.offline")
+      : ordFlash ? t("sync.pulled")
+      : t("sync.shared", { t: hm(ordLastSaved && (!ordLastSync || ordLastSaved > ordLastSync) ? ordLastSaved : ordLastSync || new Date()) });
+  }
+
+  // Order のマスの入力 → 合計を更新 (保存ボタンで確定)
+  function commitOrder(input) {
+    const it = data.items[+input.closest("tr").dataset.id];
+    const k = okey(it);
+    const raw = input.value.trim().replace(/[０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0));
+    if (raw === "" || raw === "0") delete orders[k];
+    else if (/^\d+$/.test(raw) && +raw <= 100000) orders[k] = parseInt(raw, 10);
+    else {
+      input.classList.add("invalid");
+      setTimeout(() => input.classList.remove("invalid"), 800);
+    }
+    input.value = orders[k] || "";
+    input.defaultValue = input.value;
+    const tc = $("ordTot");
+    if (tc) tc.textContent = nf(ordTotal(shown));
+    updateOrderInfo();
+  }
+  $("tbody").addEventListener("change", (e) => { if (e.target.classList.contains("ord-in")) { commitOrder(e.target); refreshSel(); } });
+  $("tbody").addEventListener("focusin", (e) => { if (e.target.classList.contains("ord-in")) e.target.select(); });
+  $("tbody").addEventListener("focusout", (e) => {
+    const inp = e.target;
+    if (!inp.classList.contains("ord-in") || inp.value !== inp.defaultValue) return;
+    const v = String(orders[okey(data.items[+inp.closest("tr").dataset.id])] || "");
+    inp.value = v;
+    inp.defaultValue = v;
+  });
+  // Enter / ↑↓ で上下のマスへ
+  $("tbody").addEventListener("keydown", (e) => {
+    const input = e.target;
+    if (!input.classList.contains("ord-in")) return;
+    let dir = 0;
+    if (e.key === "Enter" || e.key === "ArrowDown") dir = e.shiftKey && e.key === "Enter" ? -1 : 1;
+    else if (e.key === "ArrowUp") dir = -1;
+    else if (e.key === "Escape") { input.value = input.defaultValue; input.blur(); return; }
+    if (!dir) return;
+    e.preventDefault();
+    let tr = input.closest("tr");
+    do { tr = dir > 0 ? tr.nextElementSibling : tr.previousElementSibling; } while (tr && !tr.dataset.id);
+    const next = tr && tr.querySelector(".ord-in");
+    if (next) next.focus(); else input.blur();
+  });
+  const blurOrder = () => {
+    const a = document.activeElement;
+    if (a && a.classList.contains("ord-in")) a.blur(); // 入力中の値を確定させる
+  };
+
+  $("saveOrders").addEventListener("click", async () => {
+    if (ordBusy) return;
+    blurOrder();
+    if (!ordDirty()) return updateOrderInfo();
+    ordBusy = true;
+    updateOrderInfo();
+    try { await saveOrders(); } finally { ordBusy = false; applyOrders(); }
+  });
+  $("revertOrders").addEventListener("click", () => {
+    if (!confirm(t("ord.confirmRevert"))) return;
+    orders = { ...ordSaved };
+    applyOrders();
+  });
+  $("confirmOrders").addEventListener("click", async () => {
+    if (ordBusy) return;
+    blurOrder();
+    const n = Object.keys(orders).length;
+    if (!n || !confirm(t("ord.confirm", { n: fmt(n), q: fmt(sum(Object.values(orders))) }))) return;
+    ordBusy = true;
+    updateOrderInfo();
+    try {
+      if (ordDirty() && !(await saveOrders())) return;
+      if (ordShared) {
+        const j = await ordPost({ confirm: true });
+        ordMerge(j);
+        orders = ordClean(j.draft);
+      } else {
+        const items = { ...ordSaved };
+        ordHistory = [{ at: new Date().toISOString(), items, total: sum(Object.values(items)) }, ...ordHistory].slice(0, 50);
+        ordSaved = {};
+        orders = {};
+        ordUpdatedAt = new Date().toISOString();
+        ordSaveLocal();
+      }
+      ordLastSaved = new Date();
+      ordOpenAt = 0;
+      ordBusy = false;
+      applyOrders();
+      openOrdHistory();
+    } catch (e) {
+      console.error(e);
+      ordErr = true;
+      alert(t("ord.confirmFail"));
+    } finally { ordBusy = false; applyOrders(); }
+  });
+
+  /* 確定履歴 */
+  const odlg = $("ordDlg");
+  let ordOpenAt = 0; // 開いている履歴 (番号)
+  const fmtAt = (s) => new Date(s).toLocaleString(window.I18N.locale, { year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" });
+  function ordRows(items) {
+    const byKey = new Map(data.items.map((it) => [okey(it), it]));
+    return Object.entries(items).map(([k, q]) => {
+      const it = byKey.get(k);
+      return { k, q, it, code: it ? it.code : k.includes("|") ? "" : k, model: it ? it.model : k, color: it ? it.color : "", size: it ? it.size : "" };
+    }).sort((a, b) => (a.it ? a.it._id : 1e9) - (b.it ? b.it._id : 1e9));
+  }
+  function renderOrdHistory() {
+    if (!ordHistory.length) { $("ordBody").innerHTML = `<p class="recv-empty">${esc(t("ord.noHistory"))}</p>`; return; }
+    $("ordBody").innerHTML = ordHistory.map((h, n) => {
+      const rows = ordRows(h.items || {});
+      return `<details class="ord-h-item"${n === ordOpenAt ? " open" : ""} data-n="${n}">
+        <summary><b>${esc(fmtAt(h.at))}</b><span>${esc(t("ord.histSum", { n: fmt(rows.length), q: fmt(h.total || 0) }))}</span>
+          <button type="button" class="ghost small" data-csv="${n}">CSV</button></summary>
+        <table class="ord-list"><thead><tr><th>Model</th><th>Color</th><th>Size</th><th>Order</th></tr></thead><tbody>
+          ${rows.map((r) => `<tr><td title="${esc(r.code)}">${esc(shortModel(r.model))}</td><td>${esc(r.color)}</td><td class="c">${esc(r.size)}</td><td class="c b">${fmt(r.q)}</td></tr>`).join("")}
+        </tbody></table></details>`;
+    }).join("");
+  }
+  function openOrdHistory() {
+    renderOrdHistory();
+    if (!odlg.open) odlg.showModal();
+  }
+  $("ordHistBtn").addEventListener("click", () => { ordOpenAt = 0; openOrdHistory(); });
+  odlg.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-csv]");
+    if (!b) return;
+    e.preventDefault();
+    const h = ordHistory[+b.dataset.csv];
+    const q = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+    const lines = [["Code", "Model", "Color", "Size", "Order"], ...ordRows(h.items || {}).map((r) => [r.code, r.model, r.color, r.size, r.q]), ["Total", "", "", "", h.total || 0]];
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob(["﻿" + lines.map((r) => r.map(q).join(",")).join("\r\n")], { type: "text/csv" }));
+    const d = new Date(h.at);
+    a.download = `order_${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, "0")}${String(d.getDate()).padStart(2, "0")}_${String(d.getHours()).padStart(2, "0")}${String(d.getMinutes()).padStart(2, "0")}.csv`;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+  odlg.addEventListener("toggle", (e) => { if (e.target.matches && e.target.matches("details[open]")) ordOpenAt = +e.target.dataset.n; }, true);
+
   /* ---------- 返品の受領 (オフィスに届いたら「受領完了」で Office 在庫へ) ---------- */
   const dlg = $("recvDlg");
   const itemByKey = () => {
@@ -1183,12 +1467,12 @@
   document.addEventListener("keydown", (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
       e.preventDefault();
-      $("saveReturns").click();
+      $(RETURNS_ON && isDirty() ? "saveReturns" : "saveOrders").click();
     }
   });
   // 未保存のままページを閉じようとしたら確認
   window.addEventListener("beforeunload", (e) => {
-    if (data && isDirty()) { e.preventDefault(); e.returnValue = ""; }
+    if (data && (isDirty() || ordDirty())) { e.preventDefault(); e.returnValue = ""; }
   });
 
   function render() {
@@ -1209,13 +1493,13 @@
     const rows = filtered();
     const q = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
     const LBL = { qty: "Quantity", ret: "Return", rate: "Monthly avg sales", mos: "Months of stock" };
-    const head = ["Code", "Model", "Color", "Size", ...groups.flatMap((g, i) => colKinds(i).map((k) => `${g} ${LBL[k]}`))];
+    const head = ["Code", "Model", "Color", "Size", ...groups.flatMap((g, i) => colKinds(i).map((k) => `${g} ${LBL[k]}`)), "Order"];
     const body = rows.map((it) => {
       const q = rowQty(it), rt = rowRet(it);
       return [it.code, it.model, it.color, it.size, ...groups.flatMap((_, g) => colKinds(g).map((k) => {
         const r = rowRate(it, g), m = mos(q[g], r);
         return k === "qty" ? q[g] : k === "ret" ? rt[g] ?? "" : k === "rate" ? (r == null ? "" : +r.toFixed(1)) : (m == null ? "" : +m.toFixed(1));
-      }))];
+      })), orders[okey(it)] || ""];
     });
     const csv = "﻿" + [head, ...body].map((r) => r.map(q).join(",")).join("\r\n");
     const a = document.createElement("a");
@@ -1261,8 +1545,9 @@
       ws.columns = [
         { width: COL_W.code }, { width: COL_W.model }, { width: COL_W.color }, { width: COL_W.size },
         ...layout.map((c) => ({ width: c.kind === "qty" ? (!hasRet(c.g) && c.g >= data.stores.length ? 15.5 : COL_W.qty) : COL_W[c.kind] })),
+        { width: 10 }, // Order
       ];
-      const lastCol = 4 + layout.length;
+      const lastCol = 5 + layout.length;
 
       ws.getCell(1, 1).value = data.title;
       ws.getCell(1, 1).font = { name: "Calibri", size: 14, bold: true };
@@ -1294,6 +1579,8 @@
         kinds.forEach((k, j) => (ws.getCell(4, c + j).value = XLBL[k]));
         c += kinds.length;
       });
+      ws.mergeCells(3, lastCol, 4, lastCol);
+      ws.getCell(3, lastCol).value = "Order";
       for (let r = 3; r <= 4; r++) {
         ws.getRow(r).height = 20;
         for (let k = 1; k <= lastCol; k++) {
@@ -1316,7 +1603,7 @@
             const rr = rowRate(it, col.g), m = mos(q[col.g], rr);
             return col.kind === "qty" ? q[col.g] : col.kind === "ret" ? rt[col.g] || null
               : col.kind === "rate" ? (rr == null ? null : +rr.toFixed(3)) : (m == null ? null : +m.toFixed(1));
-          })];
+          }), orders[okey(it)] || null];
         const row = ws.getRow(r);
         row.values = vals;
         vals.forEach((_, k) => {
@@ -1344,7 +1631,7 @@
         const m = mos(tot.qty[col.g], tot.rate[col.g]);
         return col.kind === "qty" ? tot.qty[col.g] : col.kind === "ret" ? tot.ret[col.g]
           : col.kind === "rate" ? +(tot.rate[col.g] || 0).toFixed(3) : (m == null ? null : +m.toFixed(1));
-      })];
+      }), tot.order];
       for (let k = 1; k <= lastCol; k++) {
         const cell = tr.getCell(k);
         const col = layout[k - 5];
@@ -1466,6 +1753,8 @@ if (RETURNS_ON) {
     renderFrame(data);
     render();
     updateReturnInfo();
+    updateOrderInfo();
+    if ($("ordDlg").open) renderOrdHistory();
   });
 
   /* ---------- Zort ---------- */
@@ -1546,6 +1835,7 @@ if (RETURNS_ON) {
     });
     d._grand = sum(d.items.map((it) => it._tq));
     updateReturnInfo();
+    updateOrderInfo();
     applyStaticTexts();
     $("source").textContent = d.title;
     $("dlOffice").hidden = !d.officeSource;
@@ -1561,18 +1851,29 @@ if (RETURNS_ON) {
       data = d;
       RKEY = `returns:${d.asOfDate || d.source}`;
       HL = new Set(((d.returnsSeed && d.returnsSeed.highlights) || []).map((h) => `${h.code}@${h.store}@${h.kind}`));
-      return initReturns();
+      return Promise.all([initReturns(), initOrders()]);
     })
     .then(() => (window.ZORT_CACHED ? window.ZORT_CACHED : window.ZORT || null))
     .then((z) => {
       show(z);
       showView(view);
       // 前回の数で表示したときは、最新が届いたら表示し直す
-      if (window.ZORT) {
-        window.ZORT.then((fresh) => { if (fresh && fresh.fetchedAt !== shownZort) show(fresh); });
-      }
       // 10 分ごとの自動更新
-      window.addEventListener("zort-update", (e) => { if (e.detail.fetchedAt !== shownZort) show(e.detail); });
+      // Order を入力中のときは、入力が終わってから表示し直す (打ちかけの数字を消さない)
+      let pendingZ = null;
+      const reshow = (z) => {
+        if (z.fetchedAt === shownZort) return;
+        const a = document.activeElement;
+        if (a && a.matches && a.matches(".ord-in, .ret-in")) {
+          if (!pendingZ) a.addEventListener("blur", () => setTimeout(() => { const p = pendingZ; pendingZ = null; if (p) reshow(p); }, 0), { once: true });
+          pendingZ = z;
+          return;
+        }
+        show(z);
+      };
+      if (window.ZORT) window.ZORT.then((fresh) => { if (fresh) reshow(fresh); });
+      // 10 分ごとの自動更新
+      window.addEventListener("zort-update", (e) => reshow(e.detail));
     })
     .catch((err) => {
       $("asof").textContent = t("loadFail");
