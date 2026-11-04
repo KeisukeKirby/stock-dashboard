@@ -212,6 +212,10 @@ python scripts/build_vivo_standalone.py vivo-sales.html          # claude.ai の
 `python scripts/vivo_stock.py` で `public/vivo_stock.json` を作ります。棚卸のない拠点は「未入力」（チェックで列を表示）。
 現在: K Village（2026-10-05、108 行・99 足）。
 
+## Socks 在庫（在庫一覧の「Socks」）
+
+靴下（Zort の商品名に Socks を含む VFF の SKU）は VFF の在庫一覧から外し、在庫一覧の **VFF / Vivo / Socks** 切り替えの「Socks」シートに出します（`public/socks-stock.js`、Zort から読み込み・在庫がある拠点だけ表示）。VFF の在庫一覧はモデル名のアルファベット順に並べています（同じモデル内はカラー・サイズの元の順）。
+
 ## Zort 連携（在庫数を Zort から読み込む）
 
 `api/zort.js`（Vercel Function）が Zort Open API から倉庫ごとの在庫（VFF / Vivo の SKU だけ）を読み、`public/zort.js` が倉庫名を拠点に割り当てます。

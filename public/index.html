@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261104034829">
+  <link rel="stylesheet" href="style.css?v=20261104035115">
 </head>
 <body>
   <div class="page">
@@ -94,7 +94,7 @@
 
     <section id="view-table" class="view card table-card" role="tabpanel" aria-labelledby="tab-table">
       <div class="card-head">
-        <h2><span class="brand-switch" role="group"><button type="button" class="on" data-view="table">VFF</button><button type="button" data-view="vivo">Vivo</button></span><span data-i18n="list.title"></span> <span class="count" id="rowCount"></span></h2>
+        <h2><span class="brand-switch" role="group"><button type="button" class="on" data-view="table">VFF</button><button type="button" data-view="vivo">Vivo</button><button type="button" data-view="socks">Socks</button></span><span data-i18n="list.title"></span> <span class="count" id="rowCount"></span></h2>
         <div class="head-actions">
           <span id="retInfo" class="ret-info"></span>
           <span id="syncState" class="sync-state"></span>
@@ -168,7 +168,7 @@
 
     <section id="view-vivo" class="view card table-card" role="tabpanel" aria-labelledby="tab-table" hidden>
       <div class="card-head">
-        <h2><span class="brand-switch" role="group"><button type="button" data-view="table">VFF</button><button type="button" class="on" data-view="vivo">Vivo</button></span><span data-i18n="vivo.title"></span> <span class="count" id="vCount"></span></h2>
+        <h2><span class="brand-switch" role="group"><button type="button" data-view="table">VFF</button><button type="button" class="on" data-view="vivo">Vivo</button><button type="button" data-view="socks">Socks</button></span><span data-i18n="vivo.title"></span> <span class="count" id="vCount"></span></h2>
       </div>
       <div class="filters" role="search">
         <label class="field grow"><span data-i18n="f.search"></span><input id="vq" type="search" data-i18n-ph="f.searchPh" autocomplete="off"></label>
@@ -177,6 +177,19 @@
       <p class="af-hint" id="vNote"></p>
       <div class="sheet vivo-sheet">
         <table id="vivoTable"><thead id="vThead"></thead><tbody id="vTbody"></tbody></table>
+      </div>
+    </section>
+    <section id="view-socks" class="view card table-card" role="tabpanel" aria-labelledby="tab-table" hidden>
+      <div class="card-head">
+        <h2><span class="brand-switch" role="group"><button type="button" data-view="table">VFF</button><button type="button" data-view="vivo">Vivo</button><button type="button" class="on" data-view="socks">Socks</button></span><span data-i18n="socks.title"></span> <span class="count" id="sCount"></span></h2>
+      </div>
+      <div class="filters" role="search">
+        <label class="field grow"><span data-i18n="f.search"></span><input id="sq" type="search" data-i18n-ph="f.searchPh" autocomplete="off"></label>
+        <label class="check-toggle"><input type="checkbox" id="sStock"> <span data-i18n="vivo.onlyStock"></span></label>
+      </div>
+      <p class="af-hint" id="sNote"></p>
+      <div class="sheet vivo-sheet">
+        <table id="socksTable"><thead id="sThead"></thead><tbody id="sTbody"></tbody></table>
       </div>
     </section>
 
@@ -220,9 +233,10 @@
     <span class="sel-copy" data-i18n="sel.copyHint"></span>
     <button type="button" id="selClose" aria-label="×">×</button>
   </div>
-  <script src="zort.js?v=20261104034829"></script>
-  <script src="i18n.js?v=20261104034829"></script>
-  <script src="vivo-stock.js?v=20261104034829"></script>
-  <script src="app.js?v=20261104034829"></script>
+  <script src="zort.js?v=20261104035115"></script>
+  <script src="i18n.js?v=20261104035115"></script>
+  <script src="vivo-stock.js?v=20261104035115"></script>
+  <script src="socks-stock.js?v=20261104035115"></script>
+  <script src="app.js?v=20261104035115"></script>
 </body>
 </html>

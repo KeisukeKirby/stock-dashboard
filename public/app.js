@@ -56,14 +56,15 @@
   applyTheme();
 
   /* ---------- tabs ---------- */
-  let view = ["#detail", "#vivo"].includes(location.hash) ? location.hash.slice(1) : "table";
+  let view = ["#detail", "#vivo", "#socks"].includes(location.hash) ? location.hash.slice(1) : "table";
   function showView(v, { scroll = false } = {}) {
     view = v;
     // Vivo は在庫一覧の中の切り替え (タブは「在庫一覧」のまま)
-    document.querySelectorAll(".tab").forEach((tab) => tab.setAttribute("aria-selected", tab.dataset.view === (v === "vivo" ? "table" : v)));
+    document.querySelectorAll(".tab").forEach((tab) => tab.setAttribute("aria-selected", tab.dataset.view === (v === "vivo" || v === "socks" ? "table" : v)));
     $("view-table").hidden = v !== "table";
     $("view-detail").hidden = v !== "detail";
     $("view-vivo").hidden = v !== "vivo";
+    $("view-socks").hidden = v !== "socks";
     history.replaceState(null, "", v === "table" ? location.pathname + location.search : `#${v}`);
     if (v === "table") fitTable();
     if (scroll) $("view-table").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1798,7 +1799,7 @@ if (RETURNS_ON) {
       const k = d.stores.indexOf(loc.name);
       if (k < 0) continue;
       for (const [sku, q] of Object.entries(loc.stock)) {
-        if (!q || !sku.startsWith("VFF")) continue;
+        if (!q || !sku.startsWith("VFF") || window.IS_SOCKS(z.names[sku])) continue; // 靴下は Socks シートに出す
         let it = codes.has(sku) ? d.items.find((x) => x.code === sku) : null;
         if (!it) {
           const mm = /^(.*)\((\w+),\s*(.+)\)\s*$/.exec(z.names[sku] || "");
@@ -1826,6 +1827,10 @@ if (RETURNS_ON) {
     const d = JSON.parse(JSON.stringify(base));
     data = d;
     if (z) applyZort(d, z);
+    // 靴下は Socks シートに出すので除き、モデル名のアルファベット順に並べる (同じモデルの中は元の並び: カラー・サイズ順)
+    d.items = d.items.filter((it) => !window.IS_SOCKS(it.model));
+    const mkey = (it) => shortModel(it.model).toLowerCase();
+    d.items = d.items.map((it, i) => [it, i]).sort((a, b) => mkey(a[0]).localeCompare(mkey(b[0]), "en") || a[1] - b[1]).map(([it]) => it);
     shownZort = z ? z.fetchedAt : null;
     groups = d.officeIndex != null ? [...d.stores, "Store Total", "Company Total"] : [...d.stores, "Total"];
     d.items.forEach((it, n) => {
