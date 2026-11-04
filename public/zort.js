@@ -60,12 +60,28 @@
   try { cached = build(JSON.parse(localStorage.getItem(KEY) || "null")); } catch (_) {}
   window.ZORT_CACHED = cached;
 
-  window.ZORT = fetch("api/zort")
-    .then((r) => (r.ok ? r.json() : null))
-    .then((j) => {
-      const z = build(j);
-      if (z) { try { localStorage.setItem(KEY, JSON.stringify(j)); } catch (_) {} }
-      return z;
-    })
-    .catch(() => null);
+  // 10 分ごとの区切りを URL に付ける: 同じ 10 分の間は CDN の結果を共有し、区切りが変わると Zort から読み直す
+  const load = () =>
+    fetch(`api/zort?b=${Math.floor(Date.now() / 600000)}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        const z = build(j);
+        if (z) { try { localStorage.setItem(KEY, JSON.stringify(j)); } catch (_) {} }
+        return z;
+      })
+      .catch(() => null);
+  window.ZORT = load();
+
+  // 10 分ごとに自動で読み直し、新しい数が届いたら "zort-update" イベントで知らせる (画面を開いたままでも最新になる)
+  setInterval(() => {
+    if (document.hidden) return; // 見ていないタブでは読まない (戻ったときに読む)
+    load().then((z) => { if (z) window.dispatchEvent(new CustomEvent("zort-update", { detail: z })); });
+  }, 600000);
+  let hiddenAt = 0;
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) { hiddenAt = Date.now(); return; }
+    if (hiddenAt && Date.now() - hiddenAt > 600000) {
+      load().then((z) => { if (z) window.dispatchEvent(new CustomEvent("zort-update", { detail: z })); });
+    }
+  });
 })();

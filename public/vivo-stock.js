@@ -78,6 +78,7 @@
     .then((z) => {
       show(z);
       if (window.ZORT) window.ZORT.then((fresh) => { if (fresh && fresh.fetchedAt !== shownAt) show(fresh); });
+      window.addEventListener("zort-update", (e) => { if (e.detail.fetchedAt !== shownAt) show(e.detail); });
     })
     .catch(() => { $("vNote").textContent = t("loadFail"); });
 })();

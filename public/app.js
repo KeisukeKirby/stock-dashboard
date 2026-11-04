@@ -1571,6 +1571,8 @@ if (RETURNS_ON) {
       if (window.ZORT) {
         window.ZORT.then((fresh) => { if (fresh && fresh.fetchedAt !== shownZort) show(fresh); });
       }
+      // 10 分ごとの自動更新
+      window.addEventListener("zort-update", (e) => { if (e.detail.fetchedAt !== shownZort) show(e.detail); });
     })
     .catch((err) => {
       $("asof").textContent = t("loadFail");
