@@ -70,8 +70,35 @@ async function warehouseStock(acc, wh, names) {
 // 同じサーバーが続けて呼ばれたときは 60 秒以内なら前回の結果を返す
 let memo = null;
 
+// 確認用: /api/zort?summary=1 → 全アカウントの全倉庫 (読み飛ばしている倉庫も含む) の VFF / Vivo の合計足数・SKU 数だけを返す
+async function summary(res, accs) {
+  const out = [];
+  for (const acc of accs) {
+    const j = await call(acc, "Warehouse/GetWarehouses");
+    const only = ONLY[acc.name.toUpperCase()];
+    const whs = (j.list || []).map((w) => ({ code: String(w.code || w.id), name: String(w.name || w.code || "") }));
+    const rows = await Promise.all(whs.map(async (w) => {
+      const st = await warehouseStock(acc, w, {});
+      const tot = (re) => Object.entries(st).filter(([k]) => re.test(k)).reduce((a, [, q]) => a + q, 0);
+      return {
+        account: acc.name, code: w.code, name: w.name,
+        used: !SKIP.test(w.name.trim()) && (!only || only.test(norm(w.name))),
+        vff: tot(/^VFF/), vivo: tot(/^VV/), skus: Object.keys(st).length,
+        negative: Object.values(st).filter((q) => q < 0).length,
+      };
+    }));
+    out.push(...rows);
+  }
+  res.status(200).json({ fetchedAt: new Date().toISOString(), warehouses: out });
+}
+
 module.exports = async (req, res) => {
   res.setHeader("Cache-Control", "no-store");
+  if (/[?&]summary=1/.test(req.url || "")) {
+    const accs = accounts();
+    if (!accs.length) return res.status(503).json({ configured: false });
+    try { return await summary(res, accs); } catch (e) { return res.status(502).json({ error: String(e.message || e).slice(0, 200) }); }
+  }
   // CDN: 1 分は同じ結果を返し、それ以降も前回の結果をすぐ返しつつ裏で Zort から読み直す
   const CDN = "max-age=60, stale-while-revalidate=86400";
   if (memo && Date.now() - memo.at < 60000) {
