@@ -3,10 +3,13 @@ import phrasesJson from '@/content/phrases.json'
 import tonesJson from '@/content/tones.json'
 import roleplaysJson from '@/content/roleplays.json'
 import curriculumJson from '@/content/curriculum.json'
+import customJson from '@/content/custom.json'
 import type { Curriculum, Phrase, Roleplay, Scene, ToneContent } from './types'
 
 export const scenes: Scene[] = [...(scenesJson as Scene[])].sort((a, b) => a.order - b.order)
-export const phrases: Phrase[] = phrasesJson as unknown as Phrase[]
+/** オリジナル（チャットで追加したフレーズ）。追加順を保つため custom.json を先頭にする */
+export const customPhrases: Phrase[] = customJson as unknown as Phrase[]
+export const phrases: Phrase[] = [...customPhrases, ...(phrasesJson as unknown as Phrase[])]
 export const tones: ToneContent = tonesJson as unknown as ToneContent
 export const roleplays: Roleplay[] = roleplaysJson as unknown as Roleplay[]
 export const curriculum: Curriculum = curriculumJson as Curriculum

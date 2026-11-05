@@ -60,10 +60,42 @@ export function PhraseCard({
 
       {showVariants && phrase.variants && phrase.variants.length > 0 && (
         <div className="mt-3 grid gap-2 border-t border-slate-800 pt-3 sm:grid-cols-2">
-          <VariantBox label={phrase.register === 'casual' ? 'カジュアル' : phrase.register === 'polite' ? '丁寧' : '基本'} thai={phrase.thai} roman={phrase.roman} />
+          <VariantBox label="基本" thai={phrase.thai} roman={phrase.roman} />
           {phrase.variants.map((v) => (
             <VariantBox key={v.thai} label={v.register === 'polite' ? '丁寧' : 'カジュアル'} thai={v.thai} roman={v.roman} ja={v.ja} kana={settings.showKana ? v.kana : undefined} />
           ))}
+        </div>
+      )}
+
+      {showNote && phrase.words && phrase.words.length > 0 && (
+        <div className="mt-3 border-t border-slate-800 pt-3">
+          <p className="mb-1.5 text-[11px] uppercase tracking-wide text-slate-400">単語</p>
+          <div className="grid gap-1">
+            {phrase.words.map((w, i) => (
+              <div key={i} className="flex items-center gap-2 rounded-lg bg-slate-800/40 px-2.5 py-1.5">
+                <AudioButton item={{ text: w.thai }} size="sm" className="h-7 w-7 bg-slate-700 text-sm text-slate-100 hover:bg-slate-600" />
+                <span lang="th" className="font-thai text-lg leading-tight">
+                  {w.thai}
+                </span>
+                <span className="font-mono text-xs text-amber-200/80">{w.roman}</span>
+                <span className="ml-auto text-right text-sm text-slate-200">
+                  {w.ja}
+                  {w.note && <span className="block text-[11px] text-slate-400">{w.note}</span>}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {showNote && phrase.grammar && phrase.grammar.length > 0 && (
+        <div className="mt-3 rounded-xl border border-sky-900/60 bg-sky-950/30 p-3">
+          <p className="mb-1 text-[11px] uppercase tracking-wide text-sky-300">文法ポイント</p>
+          <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-slate-200">
+            {phrase.grammar.map((g, i) => (
+              <li key={i}>{g}</li>
+            ))}
+          </ul>
         </div>
       )}
 

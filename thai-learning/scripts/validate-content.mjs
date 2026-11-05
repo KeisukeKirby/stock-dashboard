@@ -6,7 +6,7 @@ import { dirname, join } from 'node:path'
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'content')
 const load = (f) => JSON.parse(readFileSync(join(root, f), 'utf8'))
 const scenes = load('scenes.json')
-const phrases = load('phrases.json')
+const phrases = [...load('custom.json'), ...load('phrases.json')]
 const tones = load('tones.json')
 const roleplays = load('roleplays.json')
 const curriculum = load('curriculum.json')
@@ -31,6 +31,7 @@ for (const p of phrases) {
     if (!['polite', 'casual'].includes(v.register)) errors.push(`${p.id}: bad variant register`)
   }
   if (!p.kana) warn.push(`${p.id}: no kana`)
+  for (const w of p.words ?? []) if (!w.thai || !w.roman || !w.ja) errors.push(`${p.id}: word entry missing thai/roman/ja`)
 }
 for (const p of phrases) for (const r of p.replies ?? []) if (!ids.has(r)) errors.push(`${p.id}: reply ref ${r} not found`)
 

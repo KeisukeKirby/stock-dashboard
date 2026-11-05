@@ -33,6 +33,19 @@ export interface Phrase {
   replies?: string[]
   audio?: string
   needs_review?: boolean
+  /** 単語ごとの意味（オリジナル用） */
+  words?: PhraseWord[]
+  /** 文法ポイント（オリジナル用） */
+  grammar?: string[]
+  /** チャットで追加した日（オリジナル用） */
+  addedAt?: string
+}
+
+export interface PhraseWord {
+  thai: string
+  roman: string
+  ja: string
+  note?: string
 }
 
 export interface ToneExample {

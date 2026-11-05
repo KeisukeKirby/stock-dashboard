@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
-const phrases = JSON.parse(readFileSync(join(root, 'src/content/phrases.json'), 'utf8'))
+const phrases = [...JSON.parse(readFileSync(join(root, 'src/content/custom.json'), 'utf8')), ...JSON.parse(readFileSync(join(root, 'src/content/phrases.json'), 'utf8'))]
 const scenes = JSON.parse(readFileSync(join(root, 'src/content/scenes.json'), 'utf8'))
 const sceneTitle = Object.fromEntries(scenes.map((s) => [s.id, s.title]))
 const esc = (v) => {

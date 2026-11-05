@@ -1,5 +1,5 @@
 import type { Card, Phrase, Settings } from './types'
-import { hasTag, phraseById, phrases, phrasesByScene, roleplays, shuffle } from './content'
+import { customPhrases, hasTag, phraseById, phrases, phrasesByScene, roleplays, shuffle } from './content'
 import { newPhrasesForToday, resolveDay } from './curriculum'
 import { sortForReview } from './srs'
 import { dateKey, endOfToday } from './date'
@@ -80,25 +80,29 @@ export function buildDailySession(cards: Card[], settings: Settings, today: stri
   const due = sortForReview(cards.filter((c) => c.due <= endOfToday())).slice(0, settings.reviewLimit)
   if (due.length > 0) steps.push({ kind: 'review', cards: due })
 
+  // オリジナル（チャットで追加）の未学習分を最優先で入れ、残り枠をカリキュラム分で埋める
+  const customNew = customPhrases.filter((p) => !introduced.has(p.id)).map((p) => p.id)
   const fresh = newPhrasesForToday(introduced, settings, today)
-  if (fresh.ids.length > 0) steps.push({ kind: 'new', phraseIds: fresh.ids, carriedOver: fresh.carriedOver })
+  const limit = Math.max(fresh.ids.length, Math.min(customNew.length, settings.weekendNewLimit))
+  const newIds = [...customNew, ...fresh.ids.filter((id) => !customNew.includes(id))].slice(0, limit)
+  if (newIds.length > 0) steps.push({ kind: 'new', phraseIds: newIds, carriedOver: fresh.carriedOver })
 
   // シャドーイング：今日の新フレーズから 5、足りなければ最近導入したもの
   const recent = [...cards]
     .filter((c) => c.type === 'speak')
     .sort((a, b) => b.introducedAt - a.introducedAt)
     .map((c) => c.phraseId)
-  const shadowIds = [...fresh.ids, ...recent.filter((id) => !fresh.ids.includes(id))].slice(0, 5)
+  const shadowIds = [...newIds, ...recent.filter((id) => !newIds.includes(id))].slice(0, 5)
   if (shadowIds.length > 0) steps.push({ kind: 'shadow', phraseIds: shadowIds })
 
-  const quizPool = new Set([...introduced, ...fresh.ids])
+  const quizPool = new Set([...introduced, ...newIds])
   if (quizPool.size >= 4) steps.push({ kind: 'quiz', questions: buildQuiz(quizPool, 8) })
 
   const rp = day.roleplay ?? shuffle(roleplays.filter((r) => r.scene !== 'pronunciation'))[0]?.id
   if (rp) steps.push({ kind: 'roleplay', roleplayId: rp })
 
   const estMinutes = Math.round(
-    due.length * 0.25 + fresh.ids.length * 0.6 + shadowIds.length * 0.6 + (quizPool.size >= 4 ? 3 : 0) + (rp ? 4 : 0),
+    due.length * 0.25 + newIds.length * 0.6 + shadowIds.length * 0.6 + (quizPool.size >= 4 ? 3 : 0) + (rp ? 4 : 0),
   )
   return { date: today, dayNumber: day.day, steps, estMinutes }
 }
