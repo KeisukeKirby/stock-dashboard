@@ -19,6 +19,30 @@ export default function Settings() {
   const [msg, setMsg] = useState<string | null>(null)
   const [importMode, setImportMode] = useState<'merge' | 'replace'>('merge')
   const [installEvt, setInstallEvt] = useState<(Event & { prompt: () => Promise<void> }) | null>(null)
+  const [updating, setUpdating] = useState(false)
+  const [updateMsg, setUpdateMsg] = useState<string | null>(null)
+
+  /** キャッシュと Service Worker を捨てて読み直す（古い版が残ってしまったとき用。進捗は消えない） */
+  async function forceUpdate() {
+    setUpdating(true)
+    setUpdateMsg(null)
+    try {
+      if ('serviceWorker' in navigator) {
+        const regs = await navigator.serviceWorker.getRegistrations()
+        await Promise.all(regs.map((r) => r.unregister()))
+      }
+      if ('caches' in window) {
+        const keys = await caches.keys()
+        await Promise.all(keys.map((k) => caches.delete(k)))
+      }
+      const url = new URL(window.location.href)
+      url.searchParams.set('v', String(Date.now()))
+      window.location.replace(url.toString())
+    } catch (e) {
+      setUpdateMsg(`更新に失敗: ${(e as Error).message}`)
+      setUpdating(false)
+    }
+  }
   const needsReview = phrases.filter((p) => p.needs_review).length
 
   useEffect(() => {
@@ -202,6 +226,19 @@ export default function Settings() {
 
       <Card className="mt-4">
         <h2 className="font-bold">アプリ</h2>
+        <p className="mt-1 text-xs text-slate-400">
+          ビルド: {new Date(__BUILD_TIME__).toLocaleString('ja-JP', { timeZone: 'Asia/Bangkok' })}（バンコク時間）
+        </p>
+        <Button
+          variant="secondary"
+          size="sm"
+          className="mt-2"
+          disabled={updating}
+          onClick={() => void forceUpdate()}
+        >
+          {updating ? '更新中…' : '🔄 最新版に更新'}
+        </Button>
+        {updateMsg && <p className="mt-1 text-xs text-amber-200">{updateMsg}</p>}
         {installEvt ? (
           <Button className="mt-2" onClick={() => void installEvt.prompt()}>
             📲 ホーム画面に追加
