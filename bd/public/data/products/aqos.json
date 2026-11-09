@@ -1,2 +1,32 @@
-{"brand": "AQOS", "updatedAt": "2026-11-09", "asOf": "", "source": "資料なし（情報リクエスト A-1）",
- "items": [{"id": "aqos-unknown", "name": "未入力", "category": "アパレル", "priceThb": null, "priceRange": "1,500〜2,000 THB（pptx S4）", "colours": [], "sizes": [], "intro": "日本のメーカーの生地「アクアホール」を使った自社アパレル。トライアル販売の段階（pptx S10）。商品名・価格・画像の資料が見つかっていません。", "image": null, "missing": true}]}
+{
+ "brand": "AQOS",
+ "updatedAt": "2026-11-09",
+ "asOf": "EDV POS 2026-08〜10 の販売実績から",
+ "source": "edv-sales-dashboard data/dashboard_data.json（brand AQOZ、商品コード AQ）。資料・価格表・画像はなし（情報リクエスト A-1）",
+ "items": [
+  {
+   "id": "aqos-running-tops-men",
+   "name": "Running Tops for Men",
+   "category": "アパレル（ランニングトップス）",
+   "priceThb": null,
+   "priceRange": "販売実績の平均単価 約 1,510 THB（税抜、13 枚）。定価は未入力",
+   "colours": [],
+   "sizes": [],
+   "intro": "EDV の POS に「AQOZ Running Tops for Men」として記録。2026-08 イベントで 7 枚、2026-10 Thaniya で 6 枚。",
+   "image": null,
+   "source": "edv-sales-dashboard model（2026-08, 2026-10）"
+  },
+  {
+   "id": "aqos-running-tops-women",
+   "name": "Running Tops for Women",
+   "category": "アパレル（ランニングトップス）",
+   "priceThb": null,
+   "priceRange": "販売実績の平均単価 約 1,480 THB（税抜、5 枚）。定価は未入力",
+   "colours": [],
+   "sizes": [],
+   "intro": "EDV の POS に「AQOZ Running Tops for Women」として記録。2026-08 イベントで 5 枚。",
+   "image": null,
+   "source": "edv-sales-dashboard model（2026-08）"
+  }
+ ]
+}

@@ -1,13 +1,123 @@
 {
-  "updatedAt": "2026-11-09",
-  "note": "ブランド × プラットフォームの一覧表は Drive・既存資料に存在しない（情報リクエスト B-6）。ここにあるのは資料から判明した分だけ。フォロワー数・運用担当・投稿方針はすべて未入力。",
-  "platforms": ["Instagram", "Facebook", "TikTok", "LINE OA", "Shopee", "Lazada", "Website"],
-  "items": [
-    {"brand": "Barefootinc (Thailand)", "platform": "Instagram / Facebook", "handle": "@Barefootinc.th", "url": "https://www.instagram.com/barefootinc.th/", "owner": "", "followers": null, "followersAsOf": "", "policy": "", "status": "会社プレゼン末尾に記載。IG か FB か、両方かは未確認", "src": "Barefootinc Thailand_Presetation.pdf p21"},
-    {"brand": "VFF / Coolcore / OLENO", "platform": "Shopee", "handle": "", "url": "", "owner": "", "followers": null, "followersAsOf": "", "policy": "", "status": "Shopee 店舗あり（Sale 2026 のシート Shopee Barefoot / Shopee Vibram / Shopee Coolcore）。店舗 URL は未入力", "src": "Sale 2026 (Google Sheet)"},
-    {"brand": "VFF / Coolcore / Coollabo", "platform": "Lazada", "handle": "", "url": "", "owner": "", "followers": null, "followersAsOf": "", "policy": "", "status": "Lazada 店舗あり（Lazada Vibram / Lazada Coolcore / Lazada Coollabo）。店舗 URL は未入力", "src": "Sale 2026 (Google Sheet)"},
-    {"brand": "VFF", "platform": "Facebook / LINE（直販）", "handle": "", "url": "", "owner": "", "followers": null, "followersAsOf": "", "policy": "", "status": "Sale 2026 の Vibram 直販シートに Channel = FB 等の注文あり", "src": "Sale 2026 (Google Sheet)"},
-    {"brand": "BFT", "platform": "Website（自社 EC）", "handle": "", "url": "", "owner": "", "followers": null, "followersAsOf": "", "policy": "", "status": "約 1 か月後に公開予定（2026-10 時点）。URL 未入力", "src": "pptx S11"},
-    {"brand": "Vivobarefoot（公式 SNS）", "platform": "Instagram ほか", "handle": "", "url": "", "owner": "", "followers": null, "followersAsOf": "", "policy": "", "status": "Exclusive Retail Partner 化が決まれば弊社が公式 SNS を担う構想（未確定）", "src": "pptx S8"}
-  ]
+ "updatedAt": "2026-11-09",
+ "note": "ブランド × プラットフォームの一覧表は Drive・既存資料に存在しない（情報リクエスト B-6）。URL は T21 Asok イベント LP のフッター（GitHub barefootinc-t21-asok-event）と会社プレゼンから。フォロワー数・運用担当・投稿方針はすべて未入力。Shopee / Lazada / OLENO IG は店舗名・アカウント名だけ判明し URL は未確認。",
+ "platforms": [
+  "Instagram",
+  "Facebook",
+  "TikTok",
+  "LINE OA",
+  "Shopee",
+  "Lazada",
+  "Website"
+ ],
+ "items": [
+  {
+   "brand": "Barefootinc (Thailand)",
+   "platform": "Instagram",
+   "handle": "@barefootinc.th",
+   "url": "https://www.instagram.com/barefootinc.th/",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "会社プレゼン p21 と T21 LP フッターで一致",
+   "src": "barefootinc-t21-asok-event/index.html / Barefootinc Thailand_Presetation.pdf p21"
+  },
+  {
+   "brand": "Barefootinc (Thailand)",
+   "platform": "Facebook",
+   "handle": "Barefootinc Thailand",
+   "url": "https://www.facebook.com/barefootincthailand",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "T21 LP フッター。Drive「Layout renewal proposal」末尾にも FB: Barefootinc Thailand",
+   "src": "barefootinc-t21-asok-event/index.html"
+  },
+  {
+   "brand": "Barefootinc (Thailand)",
+   "platform": "TikTok",
+   "handle": "@barefootincth",
+   "url": "https://www.tiktok.com/@barefootincth",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "T21 LP フッター",
+   "src": "barefootinc-t21-asok-event/index.html"
+  },
+  {
+   "brand": "Barefootinc (Thailand)",
+   "platform": "LINE OA",
+   "handle": "",
+   "url": "https://lin.ee/NtER69r",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "T21 LP フッターの友だち追加リンク。LINE ID は未確認（vivobarefoot-lp の「@barefootinc」はプレースホルダーの可能性）",
+   "src": "barefootinc-t21-asok-event/index.html"
+  },
+  {
+   "brand": "VFF",
+   "platform": "Shopee",
+   "handle": "VIBRAM FiveFingers Thailand",
+   "url": "",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "店舗名のみ判明。URL 未確認。別店舗「Barefootinc.th」も存在（Sale 2026 の Shopee Barefoot シート）",
+   "src": "Sale 2026 (Google Sheet) / Drive 検索"
+  },
+  {
+   "brand": "VFF",
+   "platform": "Lazada",
+   "handle": "VIBRAM FiveFingers Thailand",
+   "url": "",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "店舗名のみ判明。URL 未確認。Coolcore / Coollabo の Lazada 店舗もシートあり",
+   "src": "Sale 2026 (Google Sheet) / Drive 検索"
+  },
+  {
+   "brand": "OLENO",
+   "platform": "Instagram",
+   "handle": "OLENO Thailand",
+   "url": "",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "アカウント名のみ判明。URL 未確認",
+   "src": "Drive 検索"
+  },
+  {
+   "brand": "BFT",
+   "platform": "Website",
+   "handle": "barefootinc.co.th",
+   "url": "https://barefootinc.co.th/",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "WordPress サイト。公開状態は未確認。自社 EC は約 1 か月後に公開予定（2026-10 時点）",
+   "src": "Drive 検索 / pptx S11"
+  },
+  {
+   "brand": "Vivobarefoot（公式 SNS）",
+   "platform": "Instagram ほか",
+   "handle": "",
+   "url": "",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "Exclusive Retail Partner 化が決まれば弊社が公式 SNS を担う構想（未確定）",
+   "src": "pptx S8"
+  }
+ ]
 }

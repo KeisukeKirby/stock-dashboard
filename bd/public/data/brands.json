@@ -1,90 +1,332 @@
 {
-  "updatedAt": "2026-11-09",
-  "items": [
-    {"id": "vff", "name": "Vibram FiveFingers", "short": "VFF", "nameJa": "ビブラム ファイブフィンガーズ", "company": "BFT", "origin": "イタリア",
-     "tagline": "伊・5本指シューズ 5,000〜7,000 THB", "priceRange": "5,000〜7,000 THB", "dealType": "タイの独占販売権（販売目標の義務なし）", "sinceTH": "2023年7月 販売開始",
-     "concept": "イタリアの老舗ソールメーカー Vibram の5本指シューズ。3テレイン（EVEN / UNEVEN / RUGGED）× ソール技術（Ecostep EVO, XS Dura, Vi-Lite, Megagrip, Gumlite Litebase, 3D Cocoon）で構成。",
-     "target": "フィットネス・ウォーキング・ランニング・アウトドア。5本指は説明の知識と意欲が要る商品。",
-     "whyTH": "タイは東南アジアで最も成功している市場。3年で年間 8,800 足（2026 見込み）まで成長。",
-     "principal": {"company": "Vibram S.p.A.（イタリア本社）", "role": "グローバル／SEA マーケティングチームの正式承認が物理空間のロゴ使用に必要", "contactNote": "連絡窓口の氏名・役職は未入力（GM に確認）"},
-     "kpis": [{"label": "年間販売足数", "values": {"2023": 1300, "2024": 3800, "2025": 6800, "2026見込": 8800}, "src": "pptx S5"},
-              {"label": "月間の目安", "text": "K Village 約 200 足、Shopee 約 200 足", "src": "pptx S5"}],
-     "status": "売れているが、チャネルとメーカー依存に偏りがある。",
-     "constraints": ["店舗でのロゴ・アートワーク使用は全面禁止", "VFF 単独での販売（モノブランド店・単独売り場）は禁止", "その他の制限も多く、大規模なマーケティングができない", "方針が頻繁に変わる"],
-     "issues": ["卸がない（自社小売が 95% 以上）。デパート以外の委託は廃止し、買取のみに切り替える予定", "オンラインの 9 割以上がマーケットプレイス。手数料が大幅上昇、クーポンでブランド価値も下がる。自社 EC は約 1 か月後に完成予定", "1社への依存。メーカーの方針変更がそのまま経営リスクになる"],
-     "colors": ["#FECE15", "#000319"], "logoNote": "ロゴ画像は Drive「Latest VFF logo and Guideline」から。店舗・販促での使用は承認が必要なため、ここでは表示しない",
-     "links": [{"label": "VFF フォルダ（Catalog 2026/2027・Marketing Guidelines・Web Asset）", "url": "https://drive.google.com/drive/folders/1tjPvf9Pz-Iw3-ikKmlMZI3zbafYgGiPO"},
-               {"label": "Catalog 2026（FW26 / SS26 PDF）", "url": "https://drive.google.com/drive/folders/1sQoHDrggrDH5gLeqfTlpongNbROpk4V3"},
-               {"label": "Catalog 2027（FW27 / SS27 PDF）", "url": "https://drive.google.com/drive/folders/1f1iHrsOZOV26g7n6asgbrlbF1QC6b3na"},
-               {"label": "製品画像・サイズチャート（BAREFOOTINC THAILAND / VIBRAM FIVEFINGERS）", "url": "https://drive.google.com/drive/folders/19syBjjRVeCGV68FRC1968mEmk2-FZzKW"},
-               {"label": "Vibram ブランド取り扱い会議 要旨（2026-07）", "url": "https://docs.google.com/document/d/12HtnJLsJbsgbDYtEQ3KNFvug-6OYRH1h8ajP_YTvA34/edit"},
-               {"label": "公式サイト", "url": "https://www.vibram.com/"}],
-     "src": "pptx S4-S6 / VFF CATALOGUE_FW27.pdf / Vibram 会議要旨 Doc"},
-    {"id": "vivo", "name": "Vivobarefoot", "short": "Vivo", "nameJa": "ビボベアフット", "company": "BFT", "origin": "イギリス",
-     "tagline": "英・ベアフット 5,000〜8,000 THB", "priceRange": "5,000〜8,000 THB", "dealType": "ディストリビューター Crimson Brand（香港本社 + タイ子会社）経由の小売。Exclusive Retail Partner 化を協議中（未確定・社外秘）", "sinceTH": "2026年（VFF 単独販売禁止を機に自社店舗で販売開始）。Crimson はタイで約 2 年前から",
-     "concept": "イギリスの靴職人の家系（Clark 兄弟、2012 年創業）が始めた、今最も人気のあるベアフットシューズ。Wide / Thin / Flexible の哲学。",
-     "target": "ベアフット入門〜日常使い。平均単価は VFF より高め。",
-     "whyTH": "香港 年約 25,000 足、タイ従来 年約 1,000 足に対し、Crimson はタイの潜在力を年 2 万足と見ている。9月は月約 200 足で先方の想定以上。",
-     "principal": {"company": "Crimson Brand（ディストリビューター、香港本社＋タイ子会社）", "role": "輸入・弊社への販売。担当者は Drive 共有の Barefootinc フォルダ所有者", "contactNote": "担当者名・役職は未入力（Drive 共有者の所属は crimsonbrands.com）"},
-     "kpis": [{"label": "月間販売足数（2026-09）", "text": "約 200 足（pptx）。販売実績ダッシュボードでは BFT 92 足 + EDV の Vivo 行。差は集計範囲の違い（要確認）", "src": "pptx S7 / sales_monthly.json"},
-              {"label": "参考", "text": "香港 年約 25,000 足 ／ タイ従来 年約 1,000 足 ／ 潜在 年 2 万足（Crimson の見方）", "src": "pptx S7"}],
-     "status": "取り扱い開始まもなく。小売店から包括的なパートナーへ（未確定）。",
-     "constraints": ["Crimson との協議内容は社外秘。VFF 側には店頭での併売を超える話を伝えていない"],
-     "issues": ["実績を積み上げ、Crimson との信頼関係を深める", "旗艦店（サイアム周辺のデパートを想定）の候補地の動きを把握しておく。良い場所が見つかれば急に進む可能性あり", "VFF 一本の依存から、ベアフットシューズ全体の事業へ広げる"],
-     "goal": "弊社: Exclusive Retail Partner として、タイ初の旗艦店・卸・公式 SNS・公式 Web を担う。Crimson: タイへの輸入と弊社への販売に絞る。条件・時期は未定、今後の実績を見て双方で協議。",
-     "colors": ["#1d1d1b", "#f2efe9"],
-     "links": [{"label": "Product Training Vivobarefoot.pdf（タイ語・21 モデル・THB 価格あり）", "url": "https://drive.google.com/file/d/1mr73Tlirkfg66Zb3B-3EABkELPcTXyhH/view"},
-               {"label": "Vivo Brand Guidelines（Think / Learn / Do / Community、ページ分割 PDF）", "url": "https://drive.google.com/drive/folders/1vMEsC7VF2ByQpKbK1M0--1Q302GWPsYY"},
-               {"label": "製品画像・ロゴ（Crimson 共有 Barefootinc フォルダ）", "url": "https://drive.google.com/drive/folders/1atDue7diY2ExGd9f9Pslcmuse2Tv72kV"},
-               {"label": "Barefootinc_Vivo_TH（Crimson の SKU・在庫・発注シート）", "url": "https://docs.google.com/spreadsheets/d/1BWKsUcNk3UtIfDcLbNOIzQp8q9cBks4N0Lj1gA8PFDQ/edit"},
-               {"label": "T21 Asok Vivo ラインアップ（定価・カラー・サイズ別在庫）", "url": "https://t21-vivo-lineup.vercel.app"},
-               {"label": "Vivo 販売ダッシュボード", "url": "https://vivo-sales-dashboard.vercel.app"},
-               {"label": "公式サイト", "url": "https://www.vivobarefoot.com/"}],
-     "src": "pptx S4, S7-S8 / Product Training Vivobarefoot.pdf"},
-    {"id": "oleno", "name": "OLENO", "short": "OLENO", "nameJa": "オレノ", "company": "BFT", "origin": "日本（奈良県広陵町）",
-     "tagline": "日・スポーツソックス 700〜1,200 THB", "priceRange": "700〜1,200 THB", "dealType": "タイの総代理店", "sinceTH": "未入力（2025 年は 2026 年の約 7 割の実績）",
-     "concept": "靴下の町・奈良県広陵町で創業 70 年以上のメーカー（昭和メリヤス）のスポーツソックス。特にトレイルランニング向け。Ultimate / ASO / SHR / TNG / はだし靴下 5 フィンガー / Comod(y) / アームスリーブ・カーフサポーターなど。",
-     "target": "トレイルランナー、山好き。コアな客と店員が商品の良さに気づいて勧める店で売れる。",
-     "whyTH": "高価格でも 2026 年は約 2,000 足の見込み。販売の大半は自社店舗とオンライン。",
-     "principal": {"company": "昭和メリヤス株式会社（Showa Meriyasu Co., Ltd.、日本）", "role": "メーカー。Drive「Oleno Thailand 提供画像」の共有者がメーカー側担当", "contactNote": "タイ向けの契約書・LOA は未発見（Drive にあるのはマレーシア向け証明書のみ）"},
-     "kpis": [{"label": "年間販売足数", "text": "2026 見込 約 2,000 足。2025 はその約 7 割", "src": "pptx S9"},
-              {"label": "Pathwild", "text": "月約 2 万 THB の買取注文。唯一うまくいっている卸先", "src": "pptx S9"}],
-     "status": "高価格でも伸びている。卸先の開拓と、委託から買取への切り替えが課題。",
-     "wholesale": [{"name": "Pathwild（アウトドア専門店）", "type": "買取", "status": "月約 2 万 THB の注文。唯一うまくいっている"},
-                   {"name": "Bananarun・Run2Paradise (Phuket)・Chiangmai・Highlandner ほか", "type": "委託中心", "status": "月数足。他ブランドと並んでフックに掛かっているだけ"}],
-     "insight": "Pathwild は店構えも立地も特別ではないが、オーナーも店員も山好きで客の信頼が厚い。コアな客と店員が商品の良さに気づき、勧めている。",
-     "issues": ["Pathwild のような専門店を新しく開拓する", "競合が並ぶランニングショップでの売り方（専用什器を検討中）", "委託から買取への切り替え"],
-     "colors": ["#111111", "#d32f2f"],
-     "links": [{"label": "OLENO 商品カタログ（17 商品・THB 価格・PDF シート）", "url": "https://oleno-catalog.vercel.app/"},
-               {"label": "Oleno Thailand 提供画像（シリーズ別画像・PV）", "url": "https://drive.google.com/drive/folders/1llLA12tp5QQrHDO5RGlyD3UrBtOHrKrR"},
-               {"label": "製品画像・比較図・ロゴ（BAREFOOTINC THAILAND / OLENO）", "url": "https://drive.google.com/drive/folders/1cQmTld7lE8jsGc-CfV5vsidkOjyD0_f_"},
-               {"label": "LOA of OLENO（マレーシア向け Official Distributor 証明、2026-07-30）", "url": "https://drive.google.com/file/d/17QBdyW3pbVvXJ8HNCUzGgPtr8ZrMBEVq/view"},
-               {"label": "メーカー公式サイト", "url": "https://oleno.jp/"}],
-     "src": "pptx S4, S9 / Drive 調査"},
-    {"id": "coolcore", "name": "Coolcore", "short": "Coolcore", "nameJa": "クールコア", "company": "EDV", "origin": "アメリカ（生地）",
-     "tagline": "米・冷感生地の自社製品 500〜800 THB", "priceRange": "500〜800 THB", "dealType": "自社製品（米国の冷感生地を使用、生地・縫製とも中国、完成品を輸入）", "sinceTH": "未入力（4〜5 年横ばいで推移）",
-     "concept": "米国 Coolcore 社の冷感生地を使った EDV の自社製品。アームスリーブ、ネックゲイター（Multi-Chill）、クールタオルの 3 種。",
-     "target": "ランナー、屋外スポーツ、企業向けまとめ売り（未着手）。",
-     "whyTH": "年間 約 1 万個で 4〜5 年横ばい。",
-     "principal": {"company": "Coolcore LLC（米国、生地）／ 中国の縫製工場", "role": "生地供給・製造", "contactNote": "工場・生地の取引窓口は未入力"},
-     "kpis": [{"label": "年間販売個数", "text": "約 1 万個、4〜5 年横ばい", "src": "pptx S10"},
-              {"label": "好調な委託先", "text": "Bananarun のみ（月約 50 個）。他は月数個", "src": "pptx S10"}],
-     "status": "VFF への集中以降、自社事業が停滞。",
-     "issues": ["新商品・バリエーションが少ない", "自社販売のみ。米国・日本で主流の OEM/ODM（他社ブランドへの供給）ができていない", "委託先（主にランニングショップ、VFF と重なる）の多くで売れず、フォローも不十分", "企業向けのまとめ売り（100 個単位など）が未着手"],
-     "colors": ["#00a7e1", "#0b2545"],
-     "links": [{"label": "イベント持出リスト（Coolcore 商品・売価）2026-05 Outdoor fest", "url": "https://drive.google.com/file/d/129y1an8tfJ8Zvg2nRXMamBHBdBKClppK/view"},
-               {"label": "Coolcore 社サイト（生地）", "url": "https://www.coolcore.com/"}],
-     "src": "pptx S4, S10"},
-    {"id": "aqos", "name": "AQOS", "short": "AQOS", "nameJa": "アクオス", "company": "EDV", "origin": "日本（生地）",
-     "tagline": "日本の生地の自社アパレル 1,500〜2,000 THB", "priceRange": "1,500〜2,000 THB", "dealType": "自社ブランド（トライアル販売の段階）", "sinceTH": "2026年（始めたばかり）",
-     "concept": "日本のメーカーの生地「アクアホール」を使った EDV の自社アパレルブランド。",
-     "target": "未入力", "whyTH": "トライアル販売の段階。",
-     "principal": {"company": "未入力（アクアホール生地のメーカー）", "role": "生地供給", "contactNote": "資料なし"},
-     "kpis": [{"label": "販売実績", "text": "EDV の POS では「AQOZ」(商品コード AQ) として記録。月次売上セクションを参照", "src": "edv-sales-dashboard etl.py"}],
-     "status": "始めたばかりで、トライアル販売の段階。",
-     "issues": ["Drive・既存資料にブランド概要・商品一覧・価格表・画像が一切ない（情報リクエスト A）"],
-     "colors": ["#2b6cb0", "#e2e8f0"],
-     "links": [],
-     "src": "pptx S4, S10"}
-  ]
+ "updatedAt": "2026-11-09",
+ "items": [
+  {
+   "id": "vff",
+   "name": "Vibram FiveFingers",
+   "short": "VFF",
+   "nameJa": "ビブラム ファイブフィンガーズ",
+   "company": "BFT",
+   "origin": "イタリア",
+   "tagline": "伊・5本指シューズ 5,000〜7,000 THB",
+   "priceRange": "5,000〜7,000 THB",
+   "dealType": "タイの独占販売権（販売目標の義務なし）",
+   "sinceTH": "2023年7月 販売開始",
+   "concept": "イタリアの老舗ソールメーカー Vibram の5本指シューズ。3テレイン（EVEN / UNEVEN / RUGGED）× ソール技術（Ecostep EVO, XS Dura, Vi-Lite, Megagrip, Gumlite Litebase, 3D Cocoon）で構成。",
+   "target": "フィットネス・ウォーキング・ランニング・アウトドア。5本指は説明の知識と意欲が要る商品。",
+   "whyTH": "タイは東南アジアで最も成功している市場。3年で年間 8,800 足（2026 見込み）まで成長。",
+   "principal": {
+    "company": "Vibram S.p.A.（イタリア本社）",
+    "role": "グローバル／SEA マーケティングチームの正式承認が物理空間のロゴ使用に必要",
+    "contactNote": "連絡窓口の氏名・役職は未入力（GM に確認）"
+   },
+   "kpis": [
+    {
+     "label": "年間販売足数",
+     "values": {
+      "2023": 1300,
+      "2024": 3800,
+      "2025": 6800,
+      "2026見込": 8800
+     },
+     "src": "pptx S5"
+    },
+    {
+     "label": "月間の目安",
+     "text": "K Village 約 200 足、Shopee 約 200 足",
+     "src": "pptx S5"
+    }
+   ],
+   "status": "売れているが、チャネルとメーカー依存に偏りがある。",
+   "constraints": [
+    "店舗でのロゴ・アートワーク使用は全面禁止",
+    "VFF 単独での販売（モノブランド店・単独売り場）は禁止",
+    "その他の制限も多く、大規模なマーケティングができない",
+    "方針が頻繁に変わる"
+   ],
+   "issues": [
+    "卸がない（自社小売が 95% 以上）。デパート以外の委託は廃止し、買取のみに切り替える予定",
+    "オンラインの 9 割以上がマーケットプレイス。手数料が大幅上昇、クーポンでブランド価値も下がる。自社 EC は約 1 か月後に完成予定",
+    "1社への依存。メーカーの方針変更がそのまま経営リスクになる"
+   ],
+   "colors": [
+    "#FECE15",
+    "#000319"
+   ],
+   "logoNote": "ロゴ画像は Drive「Latest VFF logo and Guideline」から。店舗・販促での使用は承認が必要なため、ここでは表示しない",
+   "links": [
+    {
+     "label": "VFF フォルダ（Catalog 2026/2027・Marketing Guidelines・Web Asset）",
+     "url": "https://drive.google.com/drive/folders/1tjPvf9Pz-Iw3-ikKmlMZI3zbafYgGiPO"
+    },
+    {
+     "label": "Catalog 2026（FW26 / SS26 PDF）",
+     "url": "https://drive.google.com/drive/folders/1sQoHDrggrDH5gLeqfTlpongNbROpk4V3"
+    },
+    {
+     "label": "Catalog 2027（FW27 / SS27 PDF）",
+     "url": "https://drive.google.com/drive/folders/1f1iHrsOZOV26g7n6asgbrlbF1QC6b3na"
+    },
+    {
+     "label": "製品画像・サイズチャート（BAREFOOTINC THAILAND / VIBRAM FIVEFINGERS）",
+     "url": "https://drive.google.com/drive/folders/19syBjjRVeCGV68FRC1968mEmk2-FZzKW"
+    },
+    {
+     "label": "Vibram ブランド取り扱い会議 要旨（2026-07）",
+     "url": "https://docs.google.com/document/d/12HtnJLsJbsgbDYtEQ3KNFvug-6OYRH1h8ajP_YTvA34/edit"
+    },
+    {
+     "label": "公式サイト",
+     "url": "https://www.vibram.com/"
+    }
+   ],
+   "src": "pptx S4-S6 / VFF CATALOGUE_FW27.pdf / Vibram 会議要旨 Doc"
+  },
+  {
+   "id": "vivo",
+   "name": "Vivobarefoot",
+   "short": "Vivo",
+   "nameJa": "ビボベアフット",
+   "company": "BFT",
+   "origin": "イギリス",
+   "tagline": "英・ベアフット 5,000〜8,000 THB",
+   "priceRange": "5,000〜8,000 THB",
+   "dealType": "ディストリビューター Crimson Brand（香港本社 + タイ子会社）経由の小売。Exclusive Retail Partner 化を協議中（未確定・社外秘）",
+   "sinceTH": "2026年（VFF 単独販売禁止を機に自社店舗で販売開始）。Crimson はタイで約 2 年前から",
+   "concept": "イギリスの靴職人の家系（Clark 兄弟、2012 年創業）が始めた、今最も人気のあるベアフットシューズ。Wide / Thin / Flexible の哲学。",
+   "target": "ベアフット入門〜日常使い。平均単価は VFF より高め。",
+   "whyTH": "香港 年約 25,000 足、タイ従来 年約 1,000 足に対し、Crimson はタイの潜在力を年 2 万足と見ている。9月は月約 200 足で先方の想定以上。",
+   "principal": {
+    "company": "Crimson Brand（ディストリビューター、香港本社＋タイ子会社）",
+    "role": "輸入・弊社への販売。担当者は Drive 共有の Barefootinc フォルダ所有者",
+    "contactNote": "担当者名・役職は未入力（Drive 共有者の所属は crimsonbrands.com）"
+   },
+   "kpis": [
+    {
+     "label": "月間販売足数（2026-09）",
+     "text": "約 200 足（pptx）。販売実績ダッシュボードでは BFT 92 足 + EDV の Vivo 行。差は集計範囲の違い（要確認）",
+     "src": "pptx S7 / sales_monthly.json"
+    },
+    {
+     "label": "参考",
+     "text": "香港 年約 25,000 足 ／ タイ従来 年約 1,000 足 ／ 潜在 年 2 万足（Crimson の見方）",
+     "src": "pptx S7"
+    }
+   ],
+   "status": "取り扱い開始まもなく。小売店から包括的なパートナーへ（未確定）。",
+   "constraints": [
+    "Crimson との協議内容は社外秘。VFF 側には店頭での併売を超える話を伝えていない"
+   ],
+   "issues": [
+    "実績を積み上げ、Crimson との信頼関係を深める",
+    "旗艦店（サイアム周辺のデパートを想定）の候補地の動きを把握しておく。良い場所が見つかれば急に進む可能性あり",
+    "VFF 一本の依存から、ベアフットシューズ全体の事業へ広げる"
+   ],
+   "goal": "弊社: Exclusive Retail Partner として、タイ初の旗艦店・卸・公式 SNS・公式 Web を担う。Crimson: タイへの輸入と弊社への販売に絞る。条件・時期は未定、今後の実績を見て双方で協議。",
+   "colors": [
+    "#1d1d1b",
+    "#f2efe9"
+   ],
+   "links": [
+    {
+     "label": "Product Training Vivobarefoot.pdf（タイ語・21 モデル・THB 価格あり）",
+     "url": "https://drive.google.com/file/d/1mr73Tlirkfg66Zb3B-3EABkELPcTXyhH/view"
+    },
+    {
+     "label": "Vivo Brand Guidelines（Think / Learn / Do / Community、ページ分割 PDF）",
+     "url": "https://drive.google.com/drive/folders/1vMEsC7VF2ByQpKbK1M0--1Q302GWPsYY"
+    },
+    {
+     "label": "製品画像・ロゴ（Crimson 共有 Barefootinc フォルダ）",
+     "url": "https://drive.google.com/drive/folders/1atDue7diY2ExGd9f9Pslcmuse2Tv72kV"
+    },
+    {
+     "label": "Barefootinc_Vivo_TH（Crimson の SKU・在庫・発注シート）",
+     "url": "https://docs.google.com/spreadsheets/d/1BWKsUcNk3UtIfDcLbNOIzQp8q9cBks4N0Lj1gA8PFDQ/edit"
+    },
+    {
+     "label": "T21 Asok Vivo ラインアップ（定価・カラー・サイズ別在庫）",
+     "url": "https://t21-vivo-lineup.vercel.app"
+    },
+    {
+     "label": "Vivo 販売ダッシュボード",
+     "url": "https://vivo-sales-dashboard.vercel.app"
+    },
+    {
+     "label": "公式サイト",
+     "url": "https://www.vivobarefoot.com/"
+    }
+   ],
+   "src": "pptx S4, S7-S8 / Product Training Vivobarefoot.pdf"
+  },
+  {
+   "id": "oleno",
+   "name": "OLENO",
+   "short": "OLENO",
+   "nameJa": "オレノ",
+   "company": "BFT",
+   "origin": "日本（奈良県広陵町）",
+   "tagline": "日・スポーツソックス 700〜1,200 THB",
+   "priceRange": "700〜1,200 THB",
+   "dealType": "タイの総代理店",
+   "sinceTH": "未入力（2025 年は 2026 年の約 7 割の実績）",
+   "concept": "靴下の町・奈良県広陵町で創業 70 年以上のメーカー（昭和メリヤス）のスポーツソックス。特にトレイルランニング向け。Ultimate / ASO / SHR / TNG / はだし靴下 5 フィンガー / Comod(y) / アームスリーブ・カーフサポーターなど。",
+   "target": "トレイルランナー、山好き。コアな客と店員が商品の良さに気づいて勧める店で売れる。",
+   "whyTH": "高価格でも 2026 年は約 2,000 足の見込み。販売の大半は自社店舗とオンライン。",
+   "principal": {
+    "company": "昭和メリヤス株式会社（Showa Meriyasu Co., Ltd.、日本）",
+    "role": "メーカー。Drive「Oleno Thailand 提供画像」の共有者がメーカー側担当",
+    "contactNote": "タイ向けの契約書・LOA は未発見（Drive にあるのはマレーシア向け証明書のみ）"
+   },
+   "kpis": [
+    {
+     "label": "年間販売足数",
+     "text": "2026 見込 約 2,000 足。2025 はその約 7 割",
+     "src": "pptx S9"
+    },
+    {
+     "label": "Pathwild",
+     "text": "月約 2 万 THB の買取注文。唯一うまくいっている卸先",
+     "src": "pptx S9"
+    }
+   ],
+   "status": "高価格でも伸びている。卸先の開拓と、委託から買取への切り替えが課題。",
+   "wholesale": [
+    {
+     "name": "Pathwild（アウトドア専門店）",
+     "type": "買取",
+     "status": "月約 2 万 THB の注文。唯一うまくいっている"
+    },
+    {
+     "name": "Bananarun・Run2Paradise (Phuket)・Chiangmai・Highlandner ほか",
+     "type": "委託中心",
+     "status": "月数足。他ブランドと並んでフックに掛かっているだけ"
+    }
+   ],
+   "insight": "Pathwild は店構えも立地も特別ではないが、オーナーも店員も山好きで客の信頼が厚い。コアな客と店員が商品の良さに気づき、勧めている。",
+   "issues": [
+    "Pathwild のような専門店を新しく開拓する",
+    "競合が並ぶランニングショップでの売り方（専用什器を検討中）",
+    "委託から買取への切り替え"
+   ],
+   "colors": [
+    "#111111",
+    "#d32f2f"
+   ],
+   "links": [
+    {
+     "label": "OLENO 商品カタログ（17 商品・THB 価格・PDF シート）",
+     "url": "https://oleno-catalog.vercel.app/"
+    },
+    {
+     "label": "Oleno Thailand 提供画像（シリーズ別画像・PV）",
+     "url": "https://drive.google.com/drive/folders/1llLA12tp5QQrHDO5RGlyD3UrBtOHrKrR"
+    },
+    {
+     "label": "製品画像・比較図・ロゴ（BAREFOOTINC THAILAND / OLENO）",
+     "url": "https://drive.google.com/drive/folders/1cQmTld7lE8jsGc-CfV5vsidkOjyD0_f_"
+    },
+    {
+     "label": "LOA of OLENO（マレーシア向け Official Distributor 証明、2026-07-30）",
+     "url": "https://drive.google.com/file/d/17QBdyW3pbVvXJ8HNCUzGgPtr8ZrMBEVq/view"
+    },
+    {
+     "label": "メーカー公式サイト",
+     "url": "https://oleno.jp/"
+    }
+   ],
+   "src": "pptx S4, S9 / Drive 調査"
+  },
+  {
+   "id": "coolcore",
+   "name": "Coolcore",
+   "short": "Coolcore",
+   "nameJa": "クールコア",
+   "company": "EDV",
+   "origin": "アメリカ（生地）",
+   "tagline": "米・冷感生地の自社製品 500〜800 THB",
+   "priceRange": "500〜800 THB",
+   "dealType": "自社製品（米国の冷感生地を使用、生地・縫製とも中国、完成品を輸入）",
+   "sinceTH": "未入力（4〜5 年横ばいで推移）",
+   "concept": "米国 Coolcore 社の冷感生地を使った EDV の自社製品。アームスリーブ、ネックゲイター（Multi-Chill）、クールタオルの 3 種。",
+   "target": "ランナー、屋外スポーツ、企業向けまとめ売り（未着手）。",
+   "whyTH": "年間 約 1 万個で 4〜5 年横ばい。",
+   "principal": {
+    "company": "Coolcore LLC（米国、生地）／ 中国の縫製工場",
+    "role": "生地供給・製造",
+    "contactNote": "工場・生地の取引窓口は未入力"
+   },
+   "kpis": [
+    {
+     "label": "年間販売個数",
+     "text": "約 1 万個、4〜5 年横ばい",
+     "src": "pptx S10"
+    },
+    {
+     "label": "好調な委託先",
+     "text": "Bananarun のみ（月約 50 個）。他は月数個",
+     "src": "pptx S10"
+    }
+   ],
+   "status": "VFF への集中以降、自社事業が停滞。",
+   "issues": [
+    "新商品・バリエーションが少ない",
+    "自社販売のみ。米国・日本で主流の OEM/ODM（他社ブランドへの供給）ができていない",
+    "委託先（主にランニングショップ、VFF と重なる）の多くで売れず、フォローも不十分",
+    "企業向けのまとめ売り（100 個単位など）が未着手"
+   ],
+   "colors": [
+    "#00a7e1",
+    "#0b2545"
+   ],
+   "links": [
+    {
+     "label": "イベント持出リスト（Coolcore 商品・売価）2026-05 Outdoor fest",
+     "url": "https://drive.google.com/file/d/129y1an8tfJ8Zvg2nRXMamBHBdBKClppK/view"
+    },
+    {
+     "label": "Coolcore 社サイト（生地）",
+     "url": "https://www.coolcore.com/"
+    }
+   ],
+   "src": "pptx S4, S10"
+  },
+  {
+   "id": "aqos",
+   "name": "AQOS",
+   "short": "AQOS",
+   "nameJa": "アクオス",
+   "company": "EDV",
+   "origin": "日本（生地）",
+   "tagline": "日本の生地の自社アパレル 1,500〜2,000 THB",
+   "priceRange": "1,500〜2,000 THB",
+   "dealType": "自社ブランド（トライアル販売の段階）",
+   "sinceTH": "2026年（始めたばかり）",
+   "concept": "日本のメーカーの生地「アクアホール」を使った EDV の自社アパレルブランド。",
+   "target": "未入力",
+   "whyTH": "トライアル販売の段階。",
+   "principal": {
+    "company": "未入力（アクアホール生地のメーカー）",
+    "role": "生地供給",
+    "contactNote": "資料なし"
+   },
+   "kpis": [
+    {
+     "label": "販売実績（EDV POS）",
+     "text": "2026-08〜10 に 18 枚・約 28,000 THB（税抜）。Running Tops for Men 13 枚、Women 5 枚。チャネルはイベント（8 月 12 枚）と Thaniya（10 月 6 枚）。POS 上の表記は「AQOZ」(商品コード AQ)",
+     "src": "edv-sales-dashboard dashboard_data.json"
+    }
+   ],
+   "status": "始めたばかりで、トライアル販売の段階。",
+   "issues": [
+    "Drive・既存資料にブランド概要・商品一覧・価格表・画像が一切ない（情報リクエスト A-1）。判明している商品は Running Tops の男女 2 型のみ"
+   ],
+   "colors": [
+    "#2b6cb0",
+    "#e2e8f0"
+   ],
+   "links": [],
+   "src": "pptx S4, S10"
+  }
+ ]
 }

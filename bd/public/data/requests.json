@@ -6,10 +6,10 @@
    "id": "A-1",
    "section": "ブランド AQOS",
    "need": "AQOS のブランド概要（コンセプト・ターゲット・生地メーカー名・開始時期）、商品一覧（品名・価格・サイズ・色）、商品画像",
-   "searched": "Drive 全文検索「AQOS」「アクアホール」0 件。EDV POS に AQOZ（コード AQ）の売上行のみ",
+   "searched": "Drive 全文検索「AQOS」「AQOZ」「アクアホール」0 件。EDV POS に AQOZ Running Tops for Men / Women の販売 18 枚（2026-08〜10）のみ",
    "question": "AQOS の商品資料（価格表 or 商品写真）はどこにありますか？ なければ品名と価格を 5 行でもらえますか？",
    "priority": "A",
-   "interim": "ブランド概要は pptx の 2 行のみ、商品カードは「未入力」1 枚"
+   "interim": "商品カード 2 枚（男女 Running Tops、平均単価のみ）"
   },
   {
    "id": "A-2",
@@ -42,10 +42,10 @@
    "id": "B-1",
    "section": "店舗一覧",
    "need": "各店の住所・営業時間・開店日・店舗担当（販売員）・取扱ブランド。Central Ladprao / Central Chidlom の階数（pptx と会社プレゼンで違う）",
-   "searched": "店舗一覧の単独ファイルなし。pptx S11・会社プレゼン p11-12・Zort 倉庫名から再構成",
+   "searched": "店舗一覧の単独ファイルなし。会社プレゼン p11 に階数（Ladprao 2 階・Chidlom 3 階 ＝ pptx と不一致）、K Village は営業時間案内 Doc と Google マップのリンクあり。他店の住所・営業時間・担当は未発見",
    "question": "店舗マスタ（住所・営業時間・担当者）を 1 枚もらえますか？ 階数はどちらが正しいですか？",
    "priority": "B",
-   "interim": "分かる列だけ埋め、他は「未入力」"
+   "interim": "K Village は階・営業時間・地図まで表示。他店は分かる列だけ"
   },
   {
    "id": "B-2",
@@ -86,11 +86,11 @@
   {
    "id": "B-6",
    "section": "SNS アカウント一覧",
-   "need": "ブランド × プラットフォーム（IG / FB / TikTok / LINE OA / Shopee / Lazada / Web）の URL、運用担当、フォロワー数、投稿方針",
-   "searched": "一覧表なし。判明したハンドルは @Barefootinc.th のみ。Shopee / Lazada の店舗名はシート名から推定",
+   "need": "Shopee / Lazada / OLENO IG / LINE ID の URL、各アカウントの運用担当・フォロワー数・投稿方針",
+   "searched": "一覧表なし。T21 イベント LP のフッターから IG / FB / TikTok / LINE の URL を取得。Shopee・Lazada は店舗名（VIBRAM FiveFingers Thailand）だけ判明し URL 未確認。OLENO Thailand の IG もアカウント名のみ",
    "question": "マーケ担当に一覧（URL と担当）を出してもらえますか？",
    "priority": "B",
-   "interim": "判明分のみ、他は「未入力」"
+   "interim": "判明した 4 URL を表示、他は「未入力」"
   },
   {
    "id": "B-7",
