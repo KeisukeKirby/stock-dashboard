@@ -16,29 +16,30 @@
 <div class="page">
   <header class="top">
     <div>
-      <p class="eyebrow">Barefootinc (Thailand) / Endeavorz · 社外秘</p>
-      <h1>BD オンボーディング・ダッシュボード</h1>
-      <p class="sub"><span id="updatedAt">読み込み中…</span><span class="dot">·</span><span id="missingCount"></span></p>
+      <p class="eyebrow">Barefootinc (Thailand) / Endeavorz · <span id="confidentiality">社外秘</span></p>
+      <h1 id="pageTitle">BD オンボーディング・ダッシュボード</h1>
     </div>
     <div class="top-actions">
+      <div class="seg" role="group" aria-label="Language / 言語 / ภาษา">
+        <button type="button" data-language="ja" lang="ja" aria-pressed="true" class="on">日本語</button>
+        <button type="button" data-language="en" lang="en" aria-pressed="false">English</button>
+        <button type="button" data-language="th" lang="th" aria-pressed="false">ไทย</button>
+      </div>
       <button id="themeToggle" class="ghost" type="button" aria-label="表示モード切替"><span aria-hidden="true">◐</span> <span id="themeLabel">自動</span></button>
     </div>
   </header>
 
-  <nav class="tabs" role="tablist" aria-label="セクション">
-    <a class="tab" href="#home" data-view="home">ホーム</a>
+  <nav id="sections" class="tabs" aria-label="セクション">
+    <a class="tab" href="#sales" data-view="sales">売上</a>
     <a class="tab" href="#brands" data-view="brands">ブランド</a>
     <a class="tab" href="#guidelines" data-view="guidelines">ガイドライン</a>
-    <a class="tab" href="#sales" data-view="sales">月次売上</a>
     <a class="tab" href="#stores" data-view="stores">店舗一覧</a>
     <a class="tab" href="#consignment" data-view="consignment">委託販売</a>
     <a class="tab" href="#terms" data-view="terms">取引条件</a>
     <a class="tab" href="#sns" data-view="sns">SNS</a>
-    <a class="tab" href="#requests" data-view="requests">未入力 <span class="badge" id="reqBadge"></span></a>
   </nav>
 
   <main>
-    <section id="view-home" class="view" hidden></section>
     <section id="view-brands" class="view" hidden></section>
     <section id="view-guidelines" class="view" hidden></section>
     <section id="view-sales" class="view" hidden></section>
@@ -46,14 +47,9 @@
     <section id="view-consignment" class="view" hidden></section>
     <section id="view-terms" class="view" hidden></section>
     <section id="view-sns" class="view" hidden></section>
-    <section id="view-requests" class="view" hidden></section>
   </main>
 
-  <footer class="foot">
-    <p>数字・条件はすべて社内限り。各値の「出典」は数字の横の <span class="src" title="出典の例: pptx S11">src</span> にマウスを乗せると表示されます。データの更新手順は <a href="https://github.com/KeisukeKirby/stock-dashboard/tree/main/bd" target="_blank" rel="noopener">bd/README.md</a>。</p>
-  </footer>
 </div>
-<div id="toast" class="toast" role="status" hidden></div>
-<script src="app.js?v=1"></script>
+<script src="app.js?v=2"></script>
 </body>
 </html>

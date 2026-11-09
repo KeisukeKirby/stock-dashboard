@@ -20,8 +20,8 @@
    "followers": null,
    "followersAsOf": "",
    "policy": "",
-   "status": "会社プレゼン p21 と T21 LP フッターで一致",
-   "src": "barefootinc-t21-asok-event/index.html / Barefootinc Thailand_Presetation.pdf p21"
+   "status": "URL 確認済み",
+   "src": "ユーザー提供リンク（2026-11-09）"
   },
   {
    "brand": "Barefootinc (Thailand)",
@@ -32,20 +32,20 @@
    "followers": null,
    "followersAsOf": "",
    "policy": "",
-   "status": "T21 LP フッター。Drive「Layout renewal proposal」末尾にも FB: Barefootinc Thailand",
-   "src": "barefootinc-t21-asok-event/index.html"
+   "status": "URL 確認済み",
+   "src": "ユーザー提供リンク（2026-11-09）"
   },
   {
    "brand": "Barefootinc (Thailand)",
    "platform": "TikTok",
    "handle": "@barefootincth",
-   "url": "https://www.tiktok.com/@barefootincth",
+   "url": "https://www.tiktok.com/@barefootincth?lang=en",
    "owner": "",
    "followers": null,
    "followersAsOf": "",
    "policy": "",
-   "status": "T21 LP フッター",
-   "src": "barefootinc-t21-asok-event/index.html"
+   "status": "URL 確認済み",
+   "src": "ユーザー提供リンク（2026-11-09）"
   },
   {
    "brand": "Barefootinc (Thailand)",
@@ -86,14 +86,14 @@
   {
    "brand": "OLENO",
    "platform": "Instagram",
-   "handle": "OLENO Thailand",
-   "url": "",
+   "handle": "@olenothailand",
+   "url": "https://www.instagram.com/olenothailand/",
    "owner": "",
    "followers": null,
    "followersAsOf": "",
    "policy": "",
-   "status": "アカウント名のみ判明。URL 未確認",
-   "src": "Drive 検索"
+   "status": "URL 確認済み",
+   "src": "ユーザー提供リンク（2026-11-09）"
   },
   {
    "brand": "BFT",
@@ -118,6 +118,42 @@
    "policy": "",
    "status": "Exclusive Retail Partner 化が決まれば弊社が公式 SNS を担う構想（未確定）",
    "src": "pptx S8"
+  },
+  {
+   "brand": "Coolcore",
+   "platform": "Instagram",
+   "handle": "@coolcoreth",
+   "url": "https://www.instagram.com/coolcoreth/",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "URL 確認済み",
+   "src": "ユーザー提供リンク（2026-11-09）"
+  },
+  {
+   "brand": "OLENO",
+   "platform": "Facebook",
+   "handle": "OLENO Thailand",
+   "url": "https://www.facebook.com/profile.php?id=61584056561538",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "URL 確認済み",
+   "src": "ユーザー提供リンク（2026-11-09）"
+  },
+  {
+   "brand": "Coolcore",
+   "platform": "Facebook",
+   "handle": "Coolcore Thailand",
+   "url": "https://www.facebook.com/coolcorethailand",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "URL 確認済み",
+   "src": "ユーザー提供リンク（2026-11-09）"
   }
  ]
 }

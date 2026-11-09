@@ -80,7 +80,10 @@
      "url": "https://www.vibram.com/"
     }
    ],
-   "src": "pptx S4-S6 / VFF CATALOGUE_FW27.pdf / Vibram 会議要旨 Doc"
+   "src": "pptx S4-S6 / VFF CATALOGUE_FW27.pdf / Vibram 会議要旨 Doc",
+   "catalogUrl": "https://vibram-lineup.vercel.app/",
+   "catalogLabel": "VFF 商品ラインアップを開く",
+   "catalogNote": "レギュラー・イベント取扱モデル、カラー、画像、イベント在庫表に基づく通常価格を確認できます。"
   },
   {
    "id": "vivo",
@@ -293,12 +296,15 @@
      "url": "https://www.coolcore.com/"
     }
    ],
-   "src": "pptx S4, S10"
+   "src": "pptx S4, S10",
+   "catalogUrl": "https://shopee.co.th/coolcorethailand",
+   "catalogLabel": "Coolcore Thailand の Shopee 公式店を開く",
+   "catalogNote": "Shopee 掲載価格の例：冷感アームスリーブ ฿760、Multi-Chill ฿600、Sports Chill Towel ฿550。掲載価格は変動します。"
   },
   {
    "id": "aqos",
-   "name": "AQOS",
-   "short": "AQOS",
+   "name": "AQOZ",
+   "short": "AQOZ",
    "nameJa": "アクオス",
    "company": "EDV",
    "origin": "日本（生地）",
@@ -306,13 +312,13 @@
    "priceRange": "1,500〜2,000 THB",
    "dealType": "自社ブランド（トライアル販売の段階）",
    "sinceTH": "2026年（始めたばかり）",
-   "concept": "日本のメーカーの生地「アクアホール」を使った EDV の自社アパレルブランド。",
-   "target": "未入力",
+   "concept": "AQUAHOLE（アクアホール）を使った EDV の自社アパレル。肌に触れる凸部を撥水加工し、凹部で汗を吸収する生地加工技術を採用。",
+   "target": "トレーニング向けの機能性アパレル。正式なターゲットは要確認。",
    "whyTH": "トライアル販売の段階。",
    "principal": {
-    "company": "未入力（アクアホール生地のメーカー）",
-    "role": "生地供給",
-    "contactNote": "資料なし"
+    "company": "東洋染工株式会社（AQUAHOLE 技術）",
+    "role": "日本の生地加工技術の開発元",
+    "contactNote": "実際の生地供給元・取引形態は要確認"
    },
    "kpis": [
     {
@@ -323,14 +329,22 @@
    ],
    "status": "始めたばかりで、トライアル販売の段階。",
    "issues": [
-    "Drive・既存資料にブランド概要・商品一覧・価格表・画像が一切ない（情報リクエスト A-1）。判明している商品は Running Tops の男女 2 型のみ"
+    "正式な商品一覧・定価・サイズ・色・生地供給元は要確認。"
    ],
    "colors": [
     "#2b6cb0",
     "#e2e8f0"
    ],
-   "links": [],
-   "src": "pptx S4, S10"
+   "links": [
+    {
+     "label": "AQUAHOLE 技術紹介（東洋染工）",
+     "url": "https://www.toyo-senko.co.jp/technology/aquahole/"
+    }
+   ],
+   "src": "pptx S4, S10 / AQOZ カタログ画像 / 東洋染工 AQUAHOLE 技術紹介",
+   "catalogImage": "https://baan-lae-suan-lp.vercel.app/assets/catalog-aqoz-CgfxoNKU.jpg",
+   "catalogLabel": "AQOZ の AQUAHOLE 紹介画像を開く",
+   "catalogNote": "AQUAHOLE の仕組みと白いTシャツの使用例。"
   }
  ]
 }

@@ -1,0 +1,728 @@
+{
+  "ja": {
+    "terms": [
+      {
+        "counterparty": "Siam Discovery",
+        "brand": "VFF / OLENO",
+        "condition": "百貨店手数料は売上の32%（観測値）"
+      },
+      {
+        "counterparty": "Central Chidlom / Ladprao / EastVille / Central World",
+        "brand": "VFF / OLENO",
+        "condition": "百貨店手数料は売上の30%（2026年の観測値）"
+      },
+      {
+        "counterparty": "Crimson Brand",
+        "brand": "Vivobarefoot",
+        "condition": "仕入卸価格（USD）は推奨小売価格の50%（観測値）"
+      },
+      {
+        "counterparty": "Pathwild",
+        "brand": "OLENO",
+        "condition": "買取卸"
+      },
+      {
+        "counterparty": "Bananarun / Run2Paradise / Highlandner / Caveman / Curve ほか",
+        "brand": "OLENO / VFF / Coolcore",
+        "condition": "委託中心。百貨店以外は買取卸に切り替える方針"
+      },
+      {
+        "counterparty": "Vibram S.p.A.",
+        "brand": "VFF",
+        "condition": "タイの独占販売権。販売目標の義務なし"
+      },
+      {
+        "counterparty": "昭和メリヤス",
+        "brand": "OLENO",
+        "condition": "タイの総代理店"
+      },
+      {
+        "counterparty": "EDV 店舗・イベントスタッフ",
+        "brand": "全ブランド",
+        "condition": "販売コミッションは2025年の店舗記録で1%、Event BFIの記録で0.5%"
+      },
+      {
+        "counterparty": "Shopee / Lazada",
+        "brand": "VFF / Coolcore / OLENO",
+        "condition": "マーケットプレイス手数料あり。料率は未確認"
+      },
+      {
+        "counterparty": "BFT ⇄ EDV",
+        "brand": "VFF ほか",
+        "condition": "BFTからEDVへの卸売、EDVからBFTへのサービス請求。卸掛率は未確認"
+      }
+    ]
+  },
+  "en": {
+    "terms": [
+      {
+        "counterparty": "Siam Discovery",
+        "brand": "VFF / OLENO",
+        "condition": "Department store commission: 32% of sales (observed)."
+      },
+      {
+        "counterparty": "Central Chidlom / Ladprao / EastVille / Central World",
+        "brand": "VFF / OLENO",
+        "condition": "Department store commission: 30% of sales (observed in 2026)."
+      },
+      {
+        "counterparty": "Crimson Brand",
+        "brand": "Vivobarefoot",
+        "condition": "Wholesale purchase price (USD): 50% of recommended retail price (observed)."
+      },
+      {
+        "counterparty": "Pathwild",
+        "brand": "OLENO",
+        "condition": "Outright wholesale purchase."
+      },
+      {
+        "counterparty": "Bananarun / Run2Paradise / Highlandner / Caveman / Curve and others",
+        "brand": "OLENO / VFF / Coolcore",
+        "condition": "Mainly consignment; planned transition to outright wholesale outside department stores."
+      },
+      {
+        "counterparty": "Vibram S.p.A.",
+        "brand": "VFF",
+        "condition": "Exclusive distribution in Thailand. No mandatory sales targets."
+      },
+      {
+        "counterparty": "Showa Meriyasu",
+        "brand": "OLENO",
+        "condition": "Distributor for Thailand."
+      },
+      {
+        "counterparty": "EDV store and event staff",
+        "brand": "All brands",
+        "condition": "Sales commission: 1% in 2025 store records; 0.5% in the Event BFI record."
+      },
+      {
+        "counterparty": "Shopee / Lazada",
+        "brand": "VFF / Coolcore / OLENO",
+        "condition": "Marketplace fees apply; rate unconfirmed."
+      },
+      {
+        "counterparty": "BFT ↔ EDV",
+        "brand": "VFF and others",
+        "condition": "BFT supplies wholesale goods to EDV. EDV bills BFT for services. Wholesale rate unconfirmed."
+      }
+    ],
+    "guidelines": {
+      "VFF": [
+        "Marketing Guidelines (English original)",
+        "Marketing Guidelines (Japanese summary)",
+        "Marketing Guidelines (Thai)",
+        "Corporate Logo Guidelines (2021)",
+        "Vibram brand meeting notes (July 2026, English and Japanese)"
+      ],
+      "Vivo": [
+        "Vivobarefoot Brand Guidelines",
+        "Vivobarefoot logo library (Crimson)",
+        "Vivobarefoot Product Training (Thai)",
+        "Logo · Group 23.svg",
+        "Logo · Layer 1-1.png",
+        "Logo · Layer 1-2.png",
+        "Logo asset · Layer 1.png",
+        "Logo asset · Layer 1-3.png",
+        "Logo asset · Group 32.png",
+        "Logo asset · Group 5.png",
+        "Logo asset · Clip path group.png",
+        "VivoBiome graphic · The Future Is.png"
+      ]
+    },
+    "stores": {
+      "kvillage": {
+        "name": "K Village",
+        "location": "Building B, 1F, Room 09, Sukhumvit 26",
+        "hours": "Mon–Thu 11:00–20:00; Fri–Sun and holidays 10:00–21:00",
+        "opened": "September 2023"
+      },
+      "central-lp": {
+        "name": "Central Ladprao 3F (Coollabo)",
+        "location": "3F, across from the Central department store sign, between sports and jewelry",
+        "hours": "Daily 10:00–21:30",
+        "opened": "May 2026 (popup)"
+      },
+      "thaniya": {
+        "name": "Thaniya Plaza 2F",
+        "location": "Thaniya Plaza, 2F, Silom",
+        "hours": "",
+        "opened": ""
+      },
+      "paradise": {
+        "name": "Barefoot Park (Paradise Park)",
+        "location": "Sidewalk Zone, behind Paradise Park, Srinakarin",
+        "hours": "Daily 10:00–19:00 (Google Maps); 10:00–20:00 (official guide)",
+        "opened": "April 2026 (internal records); May 2026 (store guide)"
+      },
+      "siam-dis": {
+        "name": "Siam Discovery 1F",
+        "location": "1F, across from the Liverpool FC Store",
+        "hours": "Daily 10:00–22:00",
+        "opened": "February 2024"
+      },
+      "central-cl": {
+        "name": "Central Chidlom",
+        "location": "Central Chidlom (floor to confirm: 1F or 3F)",
+        "hours": "Daily 10:00–22:00",
+        "opened": "November 2025"
+      }
+    },
+    "brands": {
+      "vff": {
+        "nameJa": "",
+        "tagline": "Italian five-toe footwear · THB 5,000–7,000",
+        "origin": "Italy",
+        "concept": "Five-toe shoes from Vibram, the Italian sole maker. The lineup spans even, uneven and rugged terrain and uses Vibram sole technologies including Ecostep EVO, XS Dura, Vi-Lite, Megagrip, Gumlite Litebase and 3D Cocoon.",
+        "target": "Fitness, walking, running and outdoor activities. Staff need to explain the fit and use of five-toe footwear.",
+        "whyTH": "Thailand is the brand’s strongest market in Southeast Asia, with about 8,800 pairs projected in 2026.",
+        "priceRange": "THB 5,000–7,000",
+        "sinceTH": "July 2023",
+        "dealType": "Exclusive distribution in Thailand; no mandatory sales targets.",
+        "status": "Strong sales, concentrated sales channels and dependence on one manufacturer.",
+        "principal": {
+          "company": "Vibram S.p.A. (Italy)",
+          "role": "The global or Southeast Asia marketing team must formally approve use of logos in physical retail spaces.",
+          "contactNote": "Confirm the contact name and role with the GM."
+        },
+        "catalogLabel": "Open the FiveFingers lineup",
+        "catalogNote": "Regular and event models, colors, images and regular prices from the event stock list.",
+        "issues": [
+          "Over 95% of sales are direct retail. The plan is to replace consignment outside department stores with outright wholesale.",
+          "Marketplaces account for over 90% of online sales. Higher fees and discount coupons put pressure on margins and brand value. A direct online store was in development as of October 2026.",
+          "Changes in one manufacturer’s policies can materially affect the business."
+        ],
+        "constraints": [
+          "No logos or artwork in stores.",
+          "No VFF-only stores or dedicated standalone VFF sales areas.",
+          "Other restrictions limit large-scale marketing.",
+          "Policies change frequently."
+        ],
+        "linkLabels": [
+          "VFF folder: catalogs, marketing guidelines and web assets",
+          "2026 catalog (FW26 / SS26)",
+          "2027 catalog (FW27 / SS27)",
+          "Product images and size charts",
+          "Vibram brand meeting notes (July 2026)",
+          "Official Vibram website"
+        ],
+        "kpiLabels": [
+          "Annual pairs sold",
+          "Monthly benchmark"
+        ],
+        "kpiTexts": [
+          null,
+          "About 200 pairs each at K Village and Shopee."
+        ]
+      },
+      "vivo": {
+        "nameJa": "",
+        "tagline": "British barefoot footwear · THB 5,000–8,000",
+        "origin": "United Kingdom",
+        "concept": "Founded in 2012 by Galahad and Asher Clark, seventh-generation shoemakers from Glastonbury. The brand’s wide, thin and flexible footwear is built around Fit, Feel and Flex. B Corp certified.",
+        "target": "New barefoot-shoe customers and everyday wear. Average selling price is higher than VFF.",
+        "whyTH": "Annual sales are around 25,000 pairs in Hong Kong and historically about 1,000 in Thailand. Crimson sees potential for 20,000 pairs a year in Thailand.",
+        "priceRange": "THB 5,000–8,000",
+        "sinceTH": "2026 in our stores. Crimson started selling in Thailand about two years earlier.",
+        "dealType": "Retail through Crimson Brand. An exclusive retail partnership is under discussion and remains confidential.",
+        "status": "Retail sales have just started. A wider partnership is under discussion.",
+        "principal": {
+          "company": "Crimson Brand (Hong Kong headquarters and Thai subsidiary)",
+          "role": "Imports and supplies the products. The contact owns the shared Barefootinc Drive folder.",
+          "contactNote": "Contact name and role are pending."
+        },
+        "issues": [
+          "Build a sales track record and strengthen the relationship with Crimson.",
+          "Watch for a suitable flagship-store site, especially near Siam.",
+          "Diversify the barefoot business beyond VFF."
+        ],
+        "constraints": [
+          "Discussions with Crimson are confidential. VFF has only been told about selling the two brands in the same stores."
+        ],
+        "goal": "The proposed partnership would put us in charge of a Thai flagship, wholesale, official social accounts and the local website. Crimson would focus on importing and supplying the products. Timing and terms are pending.",
+        "history": "Galahad and Asher Clark founded Vivobarefoot in 2012. Their family has made shoes in Glastonbury since 1825. The design uses a wide toe box, thin sole and flexible construction to support natural movement. The brand also uses recycled and natural materials, including algae-based rubber.",
+        "fitFeelFlex": "Fit: a foot-shaped toe box lets toes spread. Feel: a thin sole improves ground feedback. Flex: flexible construction allows the foot to move and bear weight naturally.",
+        "sizeGuide": "Stand on paper on a flat floor with your heel against a wall. Mark the longest toe and measure from the wall edge to the mark. Measure both feet and use the longer measurement with the size chart. Measure in the evening if possible. Choose a snug, recommended or roomier fit according to preference.",
+        "linkLabels": [
+          "Product Training PDF (Thai; 21 models and THB prices)",
+          "Brand Guidelines (Think / Learn / Do / Community)",
+          "Product images and logos (Crimson)",
+          "Crimson SKU, inventory and order sheet",
+          "T21 Asok Vivobarefoot lineup",
+          "Vivobarefoot sales dashboard",
+          "Official Vivobarefoot website"
+        ],
+        "kpiLabels": [
+          "Monthly pairs sold (September 2026)",
+          "Market reference"
+        ],
+        "kpiTexts": [
+          "About 200 pairs in the onboarding deck. The BFT dashboard shows 92 pairs plus EDV’s Vivobarefoot sales; the reporting scopes differ.",
+          "Hong Kong: about 25,000 pairs a year. Thailand: historically around 1,000, with potential for 20,000 according to Crimson."
+        ]
+      },
+      "oleno": {
+        "nameJa": "",
+        "tagline": "Japanese performance socks · THB 700–1,200",
+        "origin": "Koryo, Nara, Japan",
+        "concept": "Performance socks from Showa Meriyasu, a Japanese manufacturer with over 70 years of history. The range focuses on trail running and includes toe socks, arm sleeves and calf supports.",
+        "target": "Trail runners, outdoor enthusiasts and specialty-store customers.",
+        "whyTH": "About 2,000 pairs are projected in 2026. Most sales are through our stores and online.",
+        "priceRange": "THB 700–1,200",
+        "sinceTH": "Start date pending. Sales in 2025 were around 70% of the 2026 figure.",
+        "dealType": "Distributor for Thailand.",
+        "status": "Sales are growing at premium prices. The focus is on wholesale accounts and moving away from consignment.",
+        "principal": {
+          "company": "Showa Meriyasu Co., Ltd. (Japan)",
+          "role": "Manufacturer. The contact shares the OLENO Thailand image folder.",
+          "contactNote": "Thailand’s distribution letter is pending. The Malaysia letter is available."
+        },
+        "catalogLabel": "Open the OLENO product catalog",
+        "catalogNote": "Product descriptions, images, prices, colors, sizes and product sheets.",
+        "issues": [
+          "Find more specialty stores like Pathwild.",
+          "Improve visibility in running stores that carry competing brands.",
+          "Move from consignment to outright wholesale."
+        ],
+        "insight": "Pathwild’s owner and staff are outdoor enthusiasts. Customers trust their product advice and recommendations.",
+        "linkLabels": [
+          "OLENO catalog (17 products and product sheets)",
+          "OLENO Thailand images and videos",
+          "Product images, comparisons and logos",
+          "Malaysia distribution letter (July 2026)",
+          "Manufacturer website"
+        ],
+        "kpiLabels": [
+          "Annual pairs sold",
+          "Pathwild"
+        ],
+        "kpiTexts": [
+          "About 2,000 pairs projected in 2026. The 2025 figure was about 70% of that.",
+          "About THB 20,000 per month in outright wholesale orders."
+        ],
+        "wholesale": [
+          {
+            "name": "Pathwild (outdoor specialty store)",
+            "type": "Outright purchase",
+            "status": "About THB 20,000 in monthly orders."
+          },
+          {
+            "name": "Bananarun / Run2Paradise (Phuket) / Chiang Mai / Highlandner and others",
+            "type": "Mainly consignment",
+            "status": "A few pairs per month; products hang alongside other brands."
+          }
+        ]
+      },
+      "coolcore": {
+        "nameJa": "",
+        "tagline": "Cooling sports accessories",
+        "origin": "United States (fabric technology)",
+        "concept": "EDV products made with Coolcore cooling fabric. The range includes arm sleeves, Multi-Chill neck gaiters and cooling towels.",
+        "target": "Runners and outdoor sports. Corporate bulk sales are still being explored.",
+        "whyTH": "Around 10,000 units per year, broadly unchanged over four to five years.",
+        "priceRange": "THB 500–800 (overview)",
+        "sinceTH": "Start date pending",
+        "dealType": "In-house products using US cooling technology, with fabric and sewing in China.",
+        "status": "The in-house brand has slowed since the business focused on VFF.",
+        "principal": {
+          "company": "Coolcore LLC (US) and sewing factory in China",
+          "role": "Fabric technology and production.",
+          "contactNote": "Confirm the fabric and factory contacts and terms."
+        },
+        "catalogLabel": "Open the official Coolcore Thailand shop on Shopee",
+        "catalogNote": "Example Shopee listing prices: arm sleeves THB 760, Multi-Chill THB 600, Sports Chill Towel THB 550. Platform pricing can change.",
+        "issues": [
+          "Few new products and variations.",
+          "Sales are through our own channels; OEM and ODM services are not established.",
+          "Many consignment partners have low sales and limited follow-up.",
+          "Corporate bulk sales are still being explored."
+        ],
+        "linkLabels": [
+          "Coolcore event stock list (May 2026)",
+          "Coolcore fabric technology website"
+        ],
+        "kpiLabels": [
+          "Annual units sold",
+          "Consignment benchmark"
+        ],
+        "kpiTexts": [
+          "About 10,000 units a year, broadly unchanged over four to five years.",
+          "Bananarun sells about 50 units a month; most others sell a few."
+        ]
+      },
+      "aqos": {
+        "nameJa": "",
+        "tagline": "Performance apparel made with AQUAHOLE fabric",
+        "origin": "Japan (fabric technology)",
+        "concept": "EDV’s performance apparel uses AQUAHOLE, a fabric treatment that combines water repellency on the skin-contact surface with sweat absorption in recessed areas.",
+        "target": "Performance apparel for training. Formal target segment is pending.",
+        "whyTH": "The brand is in trial sales.",
+        "priceRange": "THB 1,500–2,000 (overview)",
+        "sinceTH": "2026 (trial sales)",
+        "dealType": "In-house brand",
+        "status": "Trial sales are underway.",
+        "principal": {
+          "company": "Toyo Senko Co., Ltd. (AQUAHOLE technology)",
+          "role": "Japanese fabric treatment developer.",
+          "contactNote": "Confirm the fabric supplier and commercial arrangement."
+        },
+        "catalogLabel": "View the AQOZ AQUAHOLE catalog image",
+        "catalogNote": "The catalog explains the material and shows an example white tee.",
+        "issues": [
+          "Confirm the official product list, prices, sizes, colors and fabric supplier."
+        ],
+        "linkLabels": [
+          "AQUAHOLE technology · Toyo Senko"
+        ],
+        "kpiLabels": [
+          "Sales (EDV POS)"
+        ],
+        "kpiTexts": [
+          "18 items in August–October 2026, about THB 28,000 before VAT: 13 men’s and 5 women’s running tops."
+        ]
+      }
+    },
+    "consignmentNotes": [
+      "Units only. The source has no sales amounts; use selling price × units sold if a conversion is required.",
+      "Delivered: QO/IVT delivery notes. Returned: CNT return notes. Balance: delivered minus returned and sold.",
+      "Months are shown as YYYY-MM. “2025” is the annual total in the Central Chidlom sheet.",
+      "Consignee types are inferred from the file and onboarding deck. The plan is to replace consignment outside department stores with outright wholesale.",
+      "Department-store settlements are in the relevant Sales Record_Coollabo Shop sheets and are excluded from these figures."
+    ]
+  },
+  "th": {
+    "terms": [
+      {
+        "counterparty": "Siam Discovery",
+        "brand": "VFF / OLENO",
+        "condition": "ค่าคอมมิชชันห้าง 32% ของยอดขาย (ตามข้อมูลที่พบ)"
+      },
+      {
+        "counterparty": "Central Chidlom / Ladprao / EastVille / Central World",
+        "brand": "VFF / OLENO",
+        "condition": "ค่าคอมมิชชันห้าง 30% ของยอดขาย (ตามข้อมูลปี 2026)"
+      },
+      {
+        "counterparty": "Crimson Brand",
+        "brand": "Vivobarefoot",
+        "condition": "ราคาซื้อส่ง (USD) เท่ากับ 50% ของราคาขายปลีกแนะนำ (ตามข้อมูลที่พบ)"
+      },
+      {
+        "counterparty": "Pathwild",
+        "brand": "OLENO",
+        "condition": "ขายส่งแบบซื้อขาด"
+      },
+      {
+        "counterparty": "Bananarun / Run2Paradise / Highlandner / Caveman / Curve และรายอื่น ๆ",
+        "brand": "OLENO / VFF / Coolcore",
+        "condition": "ส่วนใหญ่เป็นการฝากขาย มีแผนเปลี่ยนเป็นขายส่งแบบซื้อขาดสำหรับร้านนอกห้าง"
+      },
+      {
+        "counterparty": "Vibram S.p.A.",
+        "brand": "VFF",
+        "condition": "สิทธิ์จัดจำหน่ายแต่เพียงผู้เดียวในไทย ไม่มีข้อผูกมัดเรื่องเป้ายอดขาย"
+      },
+      {
+        "counterparty": "Showa Meriyasu",
+        "brand": "OLENO",
+        "condition": "ตัวแทนจัดจำหน่ายในประเทศไทย"
+      },
+      {
+        "counterparty": "พนักงานร้านและอีเวนต์ EDV",
+        "brand": "ทุกแบรนด์",
+        "condition": "ค่าคอมมิชชันการขาย 1% ตามข้อมูลร้านปี 2025 และ 0.5% ตามข้อมูล Event BFI"
+      },
+      {
+        "counterparty": "Shopee / Lazada",
+        "brand": "VFF / Coolcore / OLENO",
+        "condition": "มีค่าธรรมเนียมแพลตฟอร์ม ยังไม่ได้ยืนยันอัตรา"
+      },
+      {
+        "counterparty": "BFT ↔ EDV",
+        "brand": "VFF และแบรนด์อื่น ๆ",
+        "condition": "BFT ขายส่งสินค้าให้ EDV และ EDV เรียกเก็บค่าบริการจาก BFT ยังไม่ได้ยืนยันอัตราขายส่ง"
+      }
+    ],
+    "guidelines": {
+      "VFF": [
+        "คู่มือการตลาด (ต้นฉบับภาษาอังกฤษ)",
+        "คู่มือการตลาด (สรุปภาษาญี่ปุ่น)",
+        "คู่มือการตลาด (ภาษาไทย)",
+        "คู่มือการใช้โลโก้องค์กร (2021)",
+        "สรุปการประชุมแบรนด์ Vibram (กรกฎาคม 2026 ภาษาอังกฤษและญี่ปุ่น)"
+      ],
+      "Vivo": [
+        "คู่มือแบรนด์ Vivobarefoot",
+        "ชุดโลโก้ Vivobarefoot (Crimson)",
+        "คู่มืออบรมสินค้า Vivobarefoot (ภาษาไทย)",
+        "โลโก้ · Group 23.svg",
+        "โลโก้ · Layer 1-1.png",
+        "โลโก้ · Layer 1-2.png",
+        "ไฟล์โลโก้ · Layer 1.png",
+        "ไฟล์โลโก้ · Layer 1-3.png",
+        "ไฟล์โลโก้ · Group 32.png",
+        "ไฟล์โลโก้ · Group 5.png",
+        "ไฟล์โลโก้ · Clip path group.png",
+        "ภาพประกอบ VivoBiome · The Future Is.png"
+      ]
+    },
+    "stores": {
+      "kvillage": {
+        "name": "K Village",
+        "location": "อาคาร B ชั้น 1 ห้อง 09 สุขุมวิท 26",
+        "hours": "จ.–พฤ. 11:00–20:00 น. / ศ.–อา. และวันหยุด 10:00–21:00 น.",
+        "opened": "กันยายน 2023"
+      },
+      "central-lp": {
+        "name": "Coollabo เซ็นทรัล ลาดพร้าว ชั้น 3",
+        "location": "ชั้น 3 ตรงข้ามป้ายทางเข้า Central ระหว่างโซนกีฬาและร้านเพชร",
+        "hours": "ทุกวัน 10:00–21:30 น.",
+        "opened": "พฤษภาคม 2026 (ป๊อปอัป)"
+      },
+      "thaniya": {
+        "name": "ธนิยะ พลาซา ชั้น 2",
+        "location": "ธนิยะ พลาซา ชั้น 2 สีลม",
+        "hours": "",
+        "opened": ""
+      },
+      "paradise": {
+        "name": "Barefoot Park (พาราไดซ์ พาร์ค)",
+        "location": "Sidewalk Zone ด้านหลังพาราไดซ์ พาร์ค ศรีนครินทร์",
+        "hours": "ทุกวัน 10:00–19:00 น. (Google Maps) / 10:00–20:00 น. (คู่มือร้านอย่างเป็นทางการ)",
+        "opened": "เมษายน 2026 (เอกสารภายใน) / พฤษภาคม 2026 (คู่มือร้าน)"
+      },
+      "siam-dis": {
+        "name": "สยามดิสคัฟเวอรี่ ชั้น 1",
+        "location": "ชั้น 1 ตรงข้าม Liverpool FC Store",
+        "hours": "ทุกวัน 10:00–22:00 น.",
+        "opened": "กุมภาพันธ์ 2024"
+      },
+      "central-cl": {
+        "name": "เซ็นทรัล ชิดลม",
+        "location": "เซ็นทรัล ชิดลม (รอยืนยันชั้น 1 หรือ 3)",
+        "hours": "ทุกวัน 10:00–22:00 น.",
+        "opened": "พฤศจิกายน 2025"
+      }
+    },
+    "brands": {
+      "vff": {
+        "nameJa": "",
+        "tagline": "รองเท้าห้านิ้วจากอิตาลี · 5,000–7,000 บาท",
+        "origin": "อิตาลี",
+        "concept": "รองเท้าห้านิ้วจาก Vibram ผู้ผลิตพื้นรองเท้าจากอิตาลี มีรุ่นสำหรับพื้นเรียบ พื้นไม่เรียบ และเส้นทางขรุขระ พร้อมเทคโนโลยีพื้นรองเท้า Ecostep EVO, XS Dura, Vi-Lite, Megagrip, Gumlite Litebase และ 3D Cocoon",
+        "target": "ฟิตเนส เดิน วิ่ง และกิจกรรมกลางแจ้ง พนักงานควรอธิบายวิธีเลือกและสวมรองเท้าห้านิ้วได้",
+        "whyTH": "ไทยเป็นตลาดที่ทำยอดขายได้ดีที่สุดในเอเชียตะวันออกเฉียงใต้ คาดว่าจะขายได้ประมาณ 8,800 คู่ในปี 2026",
+        "priceRange": "5,000–7,000 บาท",
+        "sinceTH": "กรกฎาคม 2023",
+        "dealType": "สิทธิ์จัดจำหน่ายแต่เพียงผู้เดียวในไทย ไม่มีข้อผูกมัดเรื่องเป้ายอดขาย",
+        "status": "ยอดขายดี แต่กระจุกตัวในบางช่องทางและพึ่งพาผู้ผลิตรายเดียว",
+        "principal": {
+          "company": "Vibram S.p.A. (อิตาลี)",
+          "role": "การใช้โลโก้ในพื้นที่ร้านต้องได้รับอนุมัติอย่างเป็นทางการจากทีมการตลาดระดับโลกหรือเอเชียตะวันออกเฉียงใต้",
+          "contactNote": "ยืนยันชื่อและตำแหน่งผู้ติดต่อกับ GM"
+        },
+        "catalogLabel": "เปิดรายการสินค้า FiveFingers",
+        "catalogNote": "ดูรุ่นประจำและรุ่นอีเวนต์ สี รูปสินค้า และราคาปกติจากรายการสต็อกอีเวนต์",
+        "issues": [
+          "ยอดขายกว่า 95% มาจากการขายปลีกของเรา มีแผนเปลี่ยนจากฝากขายเป็นขายส่งแบบซื้อขาดสำหรับร้านนอกห้าง",
+          "มาร์เก็ตเพลสคิดเป็นกว่า 90% ของยอดขายออนไลน์ ค่าธรรมเนียมที่สูงขึ้นและคูปองกระทบกำไรและมูลค่าแบรนด์ ร้านออนไลน์ของเรายังอยู่ระหว่างจัดทำ ณ ตุลาคม 2026",
+          "การเปลี่ยนนโยบายของผู้ผลิตรายเดียวส่งผลต่อธุรกิจโดยตรง"
+        ],
+        "constraints": [
+          "ห้ามใช้โลโก้และอาร์ตเวิร์กในร้าน",
+          "ห้ามเปิดร้านหรือพื้นที่ขายแยกสำหรับ VFF เพียงแบรนด์เดียว",
+          "ข้อจำกัดอื่น ๆ ทำให้ทำการตลาดขนาดใหญ่ได้จำกัด",
+          "นโยบายเปลี่ยนบ่อย"
+        ],
+        "linkLabels": [
+          "โฟลเดอร์ VFF: แคตตาล็อก คู่มือการตลาด และไฟล์เว็บ",
+          "แคตตาล็อก 2026 (FW26 / SS26)",
+          "แคตตาล็อก 2027 (FW27 / SS27)",
+          "รูปสินค้าและตารางขนาด",
+          "สรุปการประชุมแบรนด์ Vibram (กรกฎาคม 2026)",
+          "เว็บไซต์ทางการ Vibram"
+        ],
+        "kpiLabels": [
+          "ยอดขายต่อปี (คู่)",
+          "ยอดขายโดยประมาณต่อเดือน"
+        ],
+        "kpiTexts": [
+          null,
+          "K Village และ Shopee ช่องทางละประมาณ 200 คู่"
+        ]
+      },
+      "vivo": {
+        "nameJa": "",
+        "tagline": "รองเท้าแบร์ฟุตจากสหราชอาณาจักร · 5,000–8,000 บาท",
+        "origin": "สหราชอาณาจักร",
+        "concept": "Galahad และ Asher Clark ช่างทำรองเท้ารุ่นที่เจ็ดจากกลาสตันเบอรี ก่อตั้งแบรนด์ในปี 2012 ออกแบบรองเท้าให้กว้าง บาง และยืดหยุ่นตามแนวคิด Fit, Feel และ Flex ได้รับการรับรอง B Corp",
+        "target": "ผู้เริ่มใส่รองเท้าแบร์ฟุตและผู้ที่ใช้ในชีวิตประจำวัน ราคาเฉลี่ยสูงกว่า VFF",
+        "whyTH": "ฮ่องกงขายได้ประมาณ 25,000 คู่ต่อปี เดิมไทยขายได้ประมาณ 1,000 คู่ต่อปี Crimson ประเมินว่าไทยมีศักยภาพถึง 20,000 คู่ต่อปี",
+        "priceRange": "5,000–8,000 บาท",
+        "sinceTH": "เริ่มขายในร้านของเราในปี 2026 โดย Crimson เริ่มขายในไทยก่อนหน้าประมาณสองปี",
+        "dealType": "ขายปลีกผ่าน Crimson Brand อยู่ระหว่างหารือเรื่องการเป็นพันธมิตรค้าปลีกแต่เพียงผู้เดียว ซึ่งเป็นข้อมูลภายใน",
+        "status": "เพิ่งเริ่มจำหน่าย อยู่ระหว่างหารือความร่วมมือในวงกว้างขึ้น",
+        "principal": {
+          "company": "Crimson Brand (สำนักงานใหญ่ฮ่องกงและบริษัทในไทย)",
+          "role": "นำเข้าและจำหน่ายสินค้าให้เรา ผู้ติดต่อเป็นเจ้าของโฟลเดอร์ Barefootinc ที่แชร์ใน Drive",
+          "contactNote": "รอยืนยันชื่อและตำแหน่งผู้ติดต่อ"
+        },
+        "issues": [
+          "สร้างยอดขายและพัฒนาความสัมพันธ์กับ Crimson",
+          "ติดตามทำเลที่เหมาะกับร้านแฟลกชิป โดยเฉพาะย่านสยาม",
+          "ขยายธุรกิจรองเท้าแบร์ฟุตเพื่อลดการพึ่งพา VFF"
+        ],
+        "constraints": [
+          "การเจรจากับ Crimson เป็นความลับ VFF รับทราบเพียงว่ามีการขายสองแบรนด์ร่วมกันในร้าน"
+        ],
+        "goal": "ตามแผนความร่วมมือ เราจะดูแลร้านแฟลกชิปในไทย การขายส่ง บัญชีโซเชียลทางการ และเว็บไซต์ไทย ส่วน Crimson จะดูแลการนำเข้าและจัดหาสินค้า ยังไม่กำหนดเงื่อนไขและเวลา",
+        "history": "Galahad และ Asher Clark ก่อตั้ง Vivobarefoot ในปี 2012 ครอบครัวทำรองเท้าในกลาสตันเบอรีมาตั้งแต่ปี 1825 หัวรองเท้ากว้าง พื้นบาง และโครงสร้างยืดหยุ่นเพื่อให้เท้าเคลื่อนไหวตามธรรมชาติ แบรนด์ใช้วัสดุรีไซเคิลและวัสดุธรรมชาติ เช่น ยางจากสาหร่าย",
+        "fitFeelFlex": "Fit: หัวรองเท้าทรงเท้าช่วยให้นิ้วเท้ากางได้ Feel: พื้นบางช่วยรับรู้ผิวสัมผัส Flex: โครงสร้างยืดหยุ่นให้เท้าเคลื่อนไหวและรับน้ำหนักตามธรรมชาติ",
+        "sizeGuide": "ยืนบนกระดาษที่วางบนพื้นเรียบ ให้ส้นเท้าชิดผนัง ทำเครื่องหมายตรงปลายนิ้วที่ยาวที่สุดแล้ววัดจากขอบผนัง วัดทั้งสองข้างและใช้ค่าที่มากกว่าเทียบตารางขนาด หากทำได้ควรวัดช่วงเย็น เลือกความกระชับตามความชอบ",
+        "linkLabels": [
+          "คู่มืออบรมสินค้า PDF (ภาษาไทย 21 รุ่นพร้อมราคา)",
+          "คู่มือแบรนด์ (Think / Learn / Do / Community)",
+          "รูปสินค้าและโลโก้ (Crimson)",
+          "ชีต SKU สต็อกและใบสั่งซื้อของ Crimson",
+          "รายการสินค้า Vivobarefoot งาน T21 Asok",
+          "แดชบอร์ดยอดขาย Vivobarefoot",
+          "เว็บไซต์ทางการ Vivobarefoot"
+        ],
+        "kpiLabels": [
+          "ยอดขายรายเดือน (กันยายน 2026)",
+          "ข้อมูลอ้างอิงตลาด"
+        ],
+        "kpiTexts": [
+          "ประมาณ 200 คู่ตามเอกสารปฐมนิเทศ แดชบอร์ด BFT แสดง 92 คู่ ยังต้องรวมยอด Vivobarefoot ของ EDV ขอบเขตข้อมูลต่างกัน",
+          "ฮ่องกงประมาณ 25,000 คู่ต่อปี ไทยเดิมประมาณ 1,000 คู่ต่อปี Crimson ประเมินศักยภาพที่ 20,000 คู่ต่อปี"
+        ]
+      },
+      "oleno": {
+        "nameJa": "",
+        "tagline": "ถุงเท้ากีฬาจากญี่ปุ่น · 700–1,200 บาท",
+        "origin": "โครโย จังหวัดนารา ประเทศญี่ปุ่น",
+        "concept": "ถุงเท้ากีฬาจาก Showa Meriyasu ผู้ผลิตญี่ปุ่นที่มีประวัติกว่า 70 ปี เน้นวิ่งเทรล มีถุงเท้าแยกนิ้ว ปลอกแขน และปลอกรัดน่อง",
+        "target": "นักวิ่งเทรล ผู้ชื่นชอบกิจกรรมกลางแจ้ง และลูกค้าร้านเฉพาะทาง",
+        "whyTH": "คาดว่าจะขายได้ประมาณ 2,000 คู่ในปี 2026 ส่วนใหญ่ผ่านร้านของเราและช่องทางออนไลน์",
+        "priceRange": "700–1,200 บาท",
+        "sinceTH": "รอยืนยันปีที่เริ่มจำหน่าย ยอดปี 2025 ประมาณ 70% ของปี 2026",
+        "dealType": "ตัวแทนจัดจำหน่ายในประเทศไทย",
+        "status": "ยอดขายเติบโตแม้ราคาสูง เป้าหมายคือเพิ่มร้านค้าส่งและเปลี่ยนจากฝากขายเป็นซื้อขาด",
+        "principal": {
+          "company": "Showa Meriyasu Co., Ltd. (ญี่ปุ่น)",
+          "role": "ผู้ผลิต ผู้ติดต่อเป็นผู้แชร์โฟลเดอร์รูป OLENO Thailand",
+          "contactNote": "รอหนังสือแต่งตั้งสำหรับไทย มีหนังสือสำหรับมาเลเซียแล้ว"
+        },
+        "catalogLabel": "เปิดแคตตาล็อกสินค้า OLENO",
+        "catalogNote": "ดูคำอธิบาย รูปสินค้า ราคา สี ขนาด และเอกสารสินค้า",
+        "issues": [
+          "หาร้านเฉพาะทางเพิ่มแบบ Pathwild",
+          "เพิ่มการมองเห็นในร้านวิ่งที่ขายแบรนด์คู่แข่งด้วย",
+          "เปลี่ยนจากฝากขายเป็นขายส่งแบบซื้อขาด"
+        ],
+        "insight": "เจ้าของและพนักงาน Pathwild ชอบกิจกรรมกลางแจ้ง ลูกค้าเชื่อถือคำแนะนำเรื่องสินค้า",
+        "linkLabels": [
+          "แคตตาล็อก OLENO (17 รายการ พร้อมเอกสารสินค้า)",
+          "รูปและวิดีโอ OLENO Thailand",
+          "รูปสินค้า ตารางเปรียบเทียบ และโลโก้",
+          "หนังสือแต่งตั้งตัวแทนในมาเลเซีย (กรกฎาคม 2026)",
+          "เว็บไซต์ผู้ผลิต"
+        ],
+        "kpiLabels": [
+          "ยอดขายต่อปี (คู่)",
+          "Pathwild"
+        ],
+        "kpiTexts": [
+          "คาดว่าปี 2026 ประมาณ 2,000 คู่ ปี 2025 ประมาณ 70% ของตัวเลขนี้",
+          "ยอดซื้อขาดประมาณ 20,000 บาทต่อเดือน"
+        ],
+        "wholesale": [
+          {
+            "name": "Pathwild (ร้านเฉพาะทางด้านกิจกรรมกลางแจ้ง)",
+            "type": "ซื้อขาด",
+            "status": "ยอดสั่งซื้อประมาณ 20,000 บาทต่อเดือน"
+          },
+          {
+            "name": "Bananarun / Run2Paradise (ภูเก็ต) / เชียงใหม่ / Highlandner และรายอื่น ๆ",
+            "type": "ฝากขายเป็นหลัก",
+            "status": "เดือนละไม่กี่คู่ สินค้าแขวนรวมกับแบรนด์อื่น"
+          }
+        ]
+      },
+      "coolcore": {
+        "nameJa": "",
+        "tagline": "อุปกรณ์กีฬาจากผ้าให้ความเย็น",
+        "origin": "สหรัฐอเมริกา (เทคโนโลยีผ้า)",
+        "concept": "สินค้าของ EDV ที่ใช้ผ้าให้ความเย็น Coolcore ได้แก่ ปลอกแขน ผ้าบัฟ Multi-Chill และผ้าขนหนูเย็น",
+        "target": "นักวิ่งและผู้เล่นกีฬากลางแจ้ง ยังไม่ได้เริ่มขายแบบล็อตใหญ่ให้ลูกค้าองค์กร",
+        "whyTH": "ประมาณ 10,000 ชิ้นต่อปี ทรงตัวในช่วงสี่ถึงห้าปี",
+        "priceRange": "500–800 บาท (ช่วงราคาโดยประมาณ)",
+        "sinceTH": "รอยืนยันปีที่เริ่มจำหน่าย",
+        "dealType": "สินค้าแบรนด์ของเรา ใช้เทคโนโลยีผ้าจากสหรัฐฯ ผลิตผ้าและตัดเย็บในจีน",
+        "status": "แบรนด์ของเราเติบโตช้าลงหลังจากธุรกิจหันไปเน้น VFF",
+        "principal": {
+          "company": "Coolcore LLC (สหรัฐฯ) และโรงงานตัดเย็บในจีน",
+          "role": "เทคโนโลยีผ้าและการผลิต",
+          "contactNote": "รอยืนยันผู้ติดต่อและเงื่อนไขของผู้ผลิตผ้าและโรงงาน"
+        },
+        "catalogLabel": "เปิดร้านทางการ Coolcore Thailand บน Shopee",
+        "catalogNote": "ตัวอย่างราคาที่แสดงบน Shopee: ปลอกแขน 760 บาท, Multi-Chill 600 บาท, Sports Chill Towel 550 บาท ราคาอาจเปลี่ยนได้",
+        "issues": [
+          "สินค้าใหม่และรุ่นย่อยยังมีน้อย",
+          "ขายผ่านช่องทางของเรา ยังไม่ได้รับผลิตแบบ OEM หรือ ODM",
+          "ร้านฝากขายหลายแห่งมียอดต่ำและยังติดตามได้ไม่ทั่วถึง",
+          "ยังไม่ได้เริ่มขายแบบล็อตใหญ่ให้ลูกค้าองค์กร"
+        ],
+        "linkLabels": [
+          "รายการสต็อกอีเวนต์ Coolcore (พฤษภาคม 2026)",
+          "เว็บไซต์เทคโนโลยีผ้า Coolcore"
+        ],
+        "kpiLabels": [
+          "ยอดขายต่อปี (ชิ้น)",
+          "ยอดขายฝากขายโดยประมาณ"
+        ],
+        "kpiTexts": [
+          "ประมาณ 10,000 ชิ้นต่อปี ทรงตัวในช่วงสี่ถึงห้าปี",
+          "Bananarun ขายได้ประมาณ 50 ชิ้นต่อเดือน ร้านอื่นส่วนใหญ่ขายได้ไม่กี่ชิ้น"
+        ]
+      },
+      "aqos": {
+        "nameJa": "",
+        "tagline": "เสื้อผ้ากีฬาใช้ผ้า AQUAHOLE",
+        "origin": "ญี่ปุ่น (เทคโนโลยีผ้า)",
+        "concept": "เสื้อผ้ากีฬาของ EDV ที่ใช้ผ้า AQUAHOLE ผิวด้านที่สัมผัสผิวหนังสะท้อนน้ำ ส่วนร่องผ้าดูดซับเหงื่อ",
+        "target": "เสื้อผ้าสำหรับออกกำลังกาย รอยืนยันกลุ่มเป้าหมายอย่างเป็นทางการ",
+        "whyTH": "อยู่ระหว่างทดลองขาย",
+        "priceRange": "1,500–2,000 บาท (ช่วงราคาโดยประมาณ)",
+        "sinceTH": "2026 (ทดลองขาย)",
+        "dealType": "แบรนด์ของเรา",
+        "status": "เริ่มทดลองขายแล้ว",
+        "principal": {
+          "company": "Toyo Senko Co., Ltd. (เทคโนโลยี AQUAHOLE)",
+          "role": "ผู้พัฒนาเทคโนโลยีตกแต่งผ้าจากญี่ปุ่น",
+          "contactNote": "รอยืนยันผู้จัดหาผ้าและรูปแบบการซื้อขาย"
+        },
+        "catalogLabel": "เปิดภาพแคตตาล็อก AQOZ AQUAHOLE",
+        "catalogNote": "ภาพอธิบายเทคโนโลยีผ้าและแสดงตัวอย่างเสื้อยืดสีขาว",
+        "issues": [
+          "รอยืนยันรายการสินค้า ราคา ขนาด สี และผู้จัดหาผ้า"
+        ],
+        "linkLabels": [
+          "เทคโนโลยี AQUAHOLE · Toyo Senko"
+        ],
+        "kpiLabels": [
+          "ยอดขาย (EDV POS)"
+        ],
+        "kpiTexts": [
+          "สิงหาคม–ตุลาคม 2026 ขาย 18 ชิ้น ประมาณ 28,000 บาทก่อน VAT เสื้อวิ่งผู้ชาย 13 ชิ้น ผู้หญิง 5 ชิ้น"
+        ]
+      }
+    },
+    "consignmentNotes": [
+      "แสดงเฉพาะจำนวนคู่หรือชิ้น ต้นฉบับไม่มีมูลค่ายอดขาย หากต้องการคำนวณให้ใช้ราคาขาย × จำนวนที่ขาย",
+      "ส่งมอบ: ใบส่งสินค้า QO/IVT คืน: ใบรับคืน CNT คงเหลือ: ส่งมอบลบจำนวนคืนและจำนวนขาย",
+      "เดือนแสดงแบบ YYYY-MM ส่วน “2025” คือยอดรวมทั้งปีในชีต Central Chidlom",
+      "ประเภทผู้รับฝากขายอ้างอิงจากชื่อไฟล์และเอกสารปฐมนิเทศ มีแผนเปลี่ยนร้านนอกห้างจากฝากขายเป็นขายส่งแบบซื้อขาด",
+      "ยอดชำระของห้างอยู่ในชีตที่เกี่ยวข้องของ Sales Record_Coollabo Shop และไม่ได้รวมในตัวเลขนี้"
+    ]
+  }
+}

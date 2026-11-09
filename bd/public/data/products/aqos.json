@@ -1,8 +1,8 @@
 {
- "brand": "AQOS",
+ "brand": "AQOZ",
  "updatedAt": "2026-11-09",
  "asOf": "EDV POS 2026-08〜10 の販売実績から",
- "source": "edv-sales-dashboard data/dashboard_data.json（brand AQOZ、商品コード AQ）。資料・価格表・画像はなし（情報リクエスト A-1）",
+ "source": "edv-sales-dashboard（POS 表記 AQOZ、商品コード AQ）。公式の定価・サイズ・色は要確認。",
  "items": [
   {
    "id": "aqos-running-tops-men",

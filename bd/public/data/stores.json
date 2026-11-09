@@ -6,7 +6,9 @@
   "stock-dashboard README (Zort 倉庫名)",
   "sales-1st-half-26 / edv-sales-dashboard の店舗・チャネル区分",
   "VFF Stock 31-05-26.xlsx の販路列",
-  "T21 Asok イベント LP（GitHub barefootinc-t21-asok-event）/ Drive K Village 営業時間案内 Doc（2026-09）/ Sales Record Sheet3 Google マップ名リネーム案"
+  "T21 Asok イベント LP（GitHub barefootinc-t21-asok-event）/ Drive K Village 営業時間案内 Doc（2026-09）/ Sales Record Sheet3 Google マップ名リネーム案",
+  "Offline Shops and Sales Ratio（開店月）",
+  "Google マップ（所在地・営業時間）"
  ],
  "columns": [
   "name",
@@ -46,17 +48,17 @@
     "BFJ"
    ],
    "size": "25 m²",
-   "location": "K Village (Sukhumvit 26), G階 K-Square Zone, Room B109",
-   "address": "Sukhumvit 26, Khlong Toei, Bangkok 10110",
+   "location": "K Village、Building B 1F Room 09",
+   "address": "Building B, Room 09, Sukhumvit 26, Khlong Tan, Khlong Toei, Bangkok 10110",
    "mapQuery": "K Village Sukhumvit 26 Bangkok",
-   "hours": "月〜木 11:00〜20:00 ／ 金〜日 10:00〜21:00（2026-09 のタイ語案内 Doc。LP の「毎日 10:00〜20:00」とは異なるため要確認）",
+   "hours": "月〜木 11:00〜20:00 ／ 金〜日・祝日 10:00〜21:00",
    "staff": "店舗スタッフ 1名（販売員の氏名は未入力）",
-   "opened": "",
+   "opened": "2023年9月",
    "monthly": "約 100 万 THB・VFF 約 200 足",
    "status": "VFF の最大店舗",
    "zort": "Kvillage (EDV)",
-   "src": "pptx S11 / 会社プレゼン p11",
-   "map": "https://maps.app.goo.gl/QDGiLmfQCXt3Z2nM6",
+   "src": "pptx S11 / 店舗案内 / Google マップ / Barefootinc 公式店舗案内",
+   "map": "https://maps.app.goo.gl/pMoezQd6LMqPpJss5",
    "phone": "+66 2 661 2993（vivobarefoot-lp 記載、要確認）",
    "googleName": "Barefootinc Flagship Store (Official distributor of Vibram FiveFingers)"
   },
@@ -72,16 +74,17 @@
     "Coolcore"
    ],
    "size": "7〜8 m²",
-   "location": "Central Ladprao（pptx: 3F ／ 会社プレゼン p11: ชั้น 2・BTS 出口 5。どちらが正しいか要確認）",
-   "address": "",
+   "location": "3F、Central 百貨店入口の看板向かい（スポーツ用品と宝飾品の間）",
+   "address": "1693 Phahonyothin Road, Chatuchak, Bangkok 10900",
    "mapQuery": "Central Ladprao Bangkok",
-   "hours": "",
+   "hours": "毎日 10:00〜21:30",
    "staff": "店舗スタッフ 1名",
-   "opened": "",
+   "opened": "2026年5月（ポップアップの開始月）",
    "monthly": "約 40 万 THB",
    "status": "約 8 割が VFF。販売員の力量次第",
    "zort": "Coollabo Cen LP 3F (EDV)",
-   "src": "pptx S11"
+   "src": "pptx S11 / Google マップ（3F） / 店舗案内（ポップアップ開始月）",
+   "map": "https://maps.app.goo.gl/WGSpFUVMjzHQmjv57"
   },
   {
    "id": "thaniya",
@@ -116,17 +119,18 @@
     "OLENO"
    ],
    "size": "50 m²",
-   "location": "Paradise Park (Srinakarin)。店舗ブランド名は「Barefoot Park」",
-   "address": "",
+   "location": "Paradise Park 裏手の Sidewalk Zone（Srinakarin）",
+   "address": "Sidewalk Zone, Soi Muban Seri Villa, Nong Bon, Prawet, Bangkok 10250",
    "mapQuery": "Paradise Park Srinakarin Bangkok",
-   "hours": "",
+   "hours": "毎日 10:00〜19:00（Google マップ）／ 10:00〜20:00（公式店舗案内）",
    "staff": "店舗スタッフ 1名",
-   "opened": "2026年4月（README・Pop up_EastVille&Shop paradise.Apr2026・サイネージ指示書 2026-03-31 で一致）",
+   "opened": "2026年4月（社内資料）／ 5月（店舗案内）",
    "monthly": "約 50 足 → 10月 約 20 足",
    "status": "急減。マーケ拠点化は未着手",
    "zort": "Paradise Park (BFT)",
-   "src": "pptx S11 / README（4月開店）",
-   "googleName": "Barefoot Park (Paradise Park Branch)"
+   "src": "pptx S11 / README / 店舗案内 / Google マップ / Barefootinc 公式店舗案内",
+   "googleName": "Barefoot Park (Paradise Park Branch)",
+   "map": "https://maps.app.goo.gl/Qk3BCFSf71CTgVsv6"
   },
   {
    "id": "siam-dis",
@@ -139,20 +143,21 @@
    ],
    "size": "",
    "location": "Siam Discovery 1F（Liverpool FC ストアの向かい）",
-   "address": "",
+   "address": "194 Phaya Thai Road, Pathum Wan, Bangkok 10330",
    "mapQuery": "Siam Discovery Bangkok",
-   "hours": "",
+   "hours": "毎日 10:00〜22:00",
    "staff": "販売員 1名常駐",
-   "opened": "",
+   "opened": "2024年2月",
    "monthly": "50〜60 足",
    "status": "デパート委託",
    "zort": "Siam Discovery",
-   "src": "pptx S11",
-   "googleName": "Barefootinc Siam Discovery (Official distributor …)"
+   "src": "pptx S11 / 店舗案内 / Google マップ",
+   "googleName": "Barefootinc Siam Discovery (Official distributor …)",
+   "map": "https://maps.app.goo.gl/zbc2yHStg9e9kLfT7"
   },
   {
    "id": "central-cl",
-   "name": "Central Chidlom 1F",
+   "name": "Central Chidlom",
    "company": "BFT",
    "type": "dept",
    "brands": [
@@ -160,16 +165,17 @@
     "OLENO"
    ],
    "size": "",
-   "location": "Central Chidlom（pptx: 1F ／ 会社プレゼン p11: ชั้น 3・Central Department 看板の向かい。要確認）",
-   "address": "",
+   "location": "Central Chidlom（階数は1F／3Fで資料差あり）",
+   "address": "1027 Phloen Chit Road, Lumphini, Pathum Wan, Bangkok 10330",
    "mapQuery": "Central Chidlom Bangkok",
-   "hours": "",
+   "hours": "毎日 10:00〜22:00",
    "staff": "販売員 1名常駐",
-   "opened": "",
+   "opened": "2025年11月",
    "monthly": "50〜60 足",
    "status": "デパート委託",
    "zort": "Central CL",
-   "src": "pptx S11"
+   "src": "pptx S11 / 会社プレゼン p11 / 店舗案内 / Google マップ / Central 公式店舗案内",
+   "map": "https://maps.app.goo.gl/mMzfDovCCQjzD6h19"
   },
   {
    "id": "central-others",
@@ -427,8 +433,8 @@
   }
  ],
  "missing": [
-  "住所・営業時間・開店日・店舗担当の氏名（K Village 以外）",
-  "Central Ladprao / Central Chidlom の階数（pptx と会社プレゼンで表記が違う）",
+  "店舗担当者と Thaniya の住所・営業時間・開店日",
+  "Central Chidlom の階数と Barefoot Park の開店月・営業時間（資料間で相違）",
   "自社 EC の URL と公開日",
   "小規模委託先が現在も継続中か",
   "MEGA Bangna の閉店時期",
@@ -438,5 +444,6 @@
   "name": "Barefootinc (Thailand) Co., Ltd. 本社",
   "address": "87/35 Modern Town Bldg, Soi Sukhumvit 63, Bangkok",
   "src": "Drive 契約書類（登記住所）"
- }
+ },
+ "referenceUrl": "https://scratch-seven-vert.vercel.app/"
 }
