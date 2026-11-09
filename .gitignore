@@ -7,3 +7,6 @@ __pycache__/
 data/event_orders/
 # 販売明細 (顧客情報を含むため Git に入れない)
 data/sales_raw/
+
+# BD ダッシュボードの元ファイル（Drive からダウンロードした xlsx など）
+data/bd_raw/

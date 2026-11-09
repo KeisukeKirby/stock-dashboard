@@ -1,0 +1,1079 @@
+{
+ "brand": "Vivo",
+ "updatedAt": "2026-11-09",
+ "asOf": "2026-09 (T21 Asok イベント時点の定価)",
+ "source": "KeisukeKirby/t21-vivo-lineup (data.json) / Product Training Vivobarefoot.pdf (Drive) で要照合",
+ "items": [
+  {
+   "id": "geo-court-iv",
+   "name": "GEO COURT IV",
+   "nameJa": "ジオ コート IV",
+   "category": "エブリデイ",
+   "priceThb": 6120,
+   "priceThbMax": 6120,
+   "colours": [
+    "Bright White"
+   ],
+   "sizes": [
+    "37",
+    "41",
+    "43"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209062",
+    "M": "309062"
+   },
+   "tagline": "自由な毎日のための、ソフトでプレミアムなレザースニーカー",
+   "intro": "スタイルも、心地よさも、すべてこの一足に。ジオコート IV は、あなたの毎日の自然な動きをサポートする、やわらかなクロムフリーレザーで仕立てたベアフットスニーカーです。",
+   "features": [
+    {
+     "t": "",
+     "d": "ジオアウトソール"
+    },
+    {
+     "t": "コルク＆リサイクルPU（ポリウレタン）インソール",
+     "d": "リサイクルPUから作られたインソールの表面を、天然の抗菌コルク層で覆っています。"
+    },
+    {
+     "t": "クロムフリーレザー",
+     "d": "クロム（重金属）を使わずになめしたレザー"
+    }
+   ],
+   "weight": "MENS EU42 片足 307g",
+   "image": "img/vivo/209062-01_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/geo-court-iv-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "gobi-ii-sneaker-premium-leather",
+   "name": "GOBI II SNEAKER PREMIUM LEATHER",
+   "nameJa": "ゴビ II スニーカー プレミアムレザー",
+   "category": "エブリデイ",
+   "priceThb": 5990,
+   "priceThbMax": 5990,
+   "colours": [
+    "Limestone"
+   ],
+   "sizes": [
+    "36",
+    "37",
+    "41",
+    "45"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209660",
+    "M": "309660"
+   },
+   "tagline": "完全に生分解可能なベアフットウェアの実現へ、さらなる一歩",
+   "intro": "Vivobarefoot史上最も自然に近いスタイルを実現し、天然素材98％で構成された一足。NFW（Natural Fiber Welding）とのパートナーシップによる100％自然素材のアウトソールを使用しています。クラシックなスニーカーのデザインに、革新的な素材、裸足感覚のフィット感と履き心地を備えたゴビスニーカープレミアムは、自然本来の動きとは何かをあらためて問いかけています。＊SAND/FIGカラーには、2色のシューレースが付属しています（ホワイトとフィグ）。",
+   "features": [
+    {
+     "t": "NFW PLIANT™ ゴビ アウトソール",
+     "d": "100％自然素材でできたアウトソール"
+    },
+    {
+     "t": "ゴビ プレミアムコルクインソール",
+     "d": "エブリデイ・コルクインソールを、ゴビプレミアム専用にデザインしました。天然の抗菌性を持つ天然コルクを98％使用しています。"
+    },
+    {
+     "t": "レザー製フットベッド",
+     "d": "靴下を脱いで、天然皮革ならではの感触を楽しみましょう。"
+    }
+   ],
+   "weight": "MENS EU42 片足396g",
+   "image": "img/vivo/209660-02_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/gobi-ii-sneaker-premium-leather-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "gobi-iii-sneaker-leather",
+   "name": "GOBI III SNEAKER LEATHER",
+   "nameJa": "ゴビ III スニーカー レザー",
+   "category": "エブリデイ",
+   "priceThb": 5990,
+   "priceThbMax": 5990,
+   "colours": [
+    "Limestone",
+    "Obsidian",
+    "Triple Obsidian"
+   ],
+   "sizes": [
+    "37",
+    "38",
+    "39",
+    "40",
+    "42",
+    "43",
+    "44",
+    "45"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209123",
+    "M": "309123"
+   },
+   "tagline": "クラシックなスニーカーデザインに、ベアフットならではのフィット感と感覚を",
+   "intro": "ゴビ III スニーカーレザーは、時代を超えて愛されるスニーカースタイルと、ベアフットならではの自由な履き心地を融合した一足です。クロムフリーのプレミアムレザーをはじめとする天然素材を使用し、軽量でしなやか。足本来の形に沿った設計で、一歩一歩をもっと直感的に、心地よく感じられます。",
+   "features": [
+    {
+     "t": "ゴビ アウトソール",
+     "d": "足元から感覚をひらき、今いる場所とのつながりを感じよう。"
+    },
+    {
+     "t": "コルク & リサイクルPUインソール",
+     "d": "リサイクルポリウレタン（PU）を使用し、その上に天然の抗菌性を持つコルクを重ねた素材でできています。"
+    }
+   ],
+   "weight": "WOMENS EU38 片足273.8g",
+   "image": "img/vivo/209123-01_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/gobi-iii-sneaker-leather-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "ra-iv",
+   "name": "RA IV",
+   "nameJa": "ラー IV",
+   "category": "エブリデイ",
+   "priceThb": 5440,
+   "priceThbMax": 5440,
+   "colours": [
+    "Obsidian"
+   ],
+   "sizes": [
+    "41",
+    "42",
+    "43"
+   ],
+   "genders": [
+    "Men"
+   ],
+   "modelCodes": {
+    "M": "305102"
+   },
+   "tagline": "伝統ではなく、自然に従う",
+   "intro": "常識にとらわれず、自然な感覚に従う。ラー IV は、クラシックなオックスフォードシューズを、ベアフットの思想で再構築した一足。洗練された見た目と、妥協のない自然な履き心地・動きを両立しています。ワイルドハイドレザー、オーガニックコットン製シューレース、コルクインソールを採用し、足元にはゴビアウトソールを搭載。一歩一歩の感覚をしっかりと感じながら、どんなシーンでもしなやかで自由な足を支えます。",
+   "features": [
+    {
+     "t": "ゴビ・アウトソール",
+     "d": "糊付けではなく、サイドステッチ仕上げ。"
+    },
+    {
+     "t": "コルク＆リサイクルPU（ポリウレタン）インソール",
+     "d": "リサイクルPUから作られたインソールの表面を、天然の抗菌コルク層で覆っています。"
+    },
+    {
+     "t": "タフなラバーコンパウンド",
+     "d": "強力なゴム製混合素材を使用することで、優れたグリップ力と高い耐摩耗性を実現しています。"
+    }
+   ],
+   "weight": "MENS EU42 片足 303g",
+   "image": "img/vivo/305102-01_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/ra-mens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "sensus-ii",
+   "name": "SENSUS II",
+   "nameJa": "センサス II グラウンディング",
+   "category": "エブリデイ",
+   "priceThb": 6120,
+   "priceThbMax": 6120,
+   "colours": [
+    "Tan"
+   ],
+   "sizes": [
+    "36",
+    "37",
+    "38",
+    "39",
+    "40",
+    "41",
+    "42",
+    "43",
+    "44"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209553",
+    "M": "309553"
+   },
+   "tagline": "地球とつながる。祖先の知恵が息づくアーシング・シューズ",
+   "intro": "先祖代々の知恵からインスピレーションを得た、現代のフットウェア。人類最古の足跡にヒントを得た、このプレミアム・ワイルドハイドレザー製のモカシンは、まるで足にぴったりと馴染む手袋のような履き心地です。センサス II グラウンディングは、導電性テクノロジーを搭載することで初代モデルを進化させました。これにより、大地の上で、あなたの身体と地球のエネルギーをつなぐ「アーシング（グラウンディング）」の実践を可能にします。",
+   "features": [
+    {
+     "t": "センサス・アウトソール",
+     "d": "古代の人々の足跡からインスピレーションを受け、未来の足跡のためにデザインされました。"
+    },
+    {
+     "t": "インソールなし",
+     "d": "インソールがないため、より地面に近く、まるで裸足のような履き心地。"
+    },
+    {
+     "t": "レザー製フットベッド",
+     "d": "革ならではの履き心地を楽しめるよう、靴下なしで履くのがおすすめです。"
+    }
+   ],
+   "weight": "WOMENS EU38 片足 158.7g",
+   "image": "img/vivo/209553-01_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/sensus-ii-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "sensus-yin-slide",
+   "name": "SENSUS YIN SLIDE",
+   "nameJa": "センサス イン スライド",
+   "category": "エブリデイ",
+   "priceThb": 4930,
+   "priceThbMax": 4930,
+   "colours": [
+    "Obsidian"
+   ],
+   "sizes": [
+    "39"
+   ],
+   "genders": [
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209564"
+   },
+   "tagline": "春夏へと心地よくスライドイン",
+   "intro": "センサス YIN スライド は、その姉妹モデルであるセンサス YIN サンダル からスタイルのインスピレーションを受け継いでいます。同じくミニマルなデザインで、ふんわりとした服と合わせたり、ビーチやプールへ気軽に持っていくのにもぴったりな、あなたの旅の相棒となることでしょう。クロムフリー（重金属なめし不使用）レザーを使用し、最小限のステッチラインと調整可能なフィット感で、究極の快適さを実現。センサス YIN スライド と一緒に、この夏たくさんの楽しい瞬間を味わいましょう。",
+   "features": [
+    {
+     "t": "センサス YIN アウトソール",
+     "d": "人間本来の感覚を取り戻そう。"
+    },
+    {
+     "t": "インソールなし",
+     "d": "インソールがないため、より地面に近く、裸足に近い履き心地。"
+    },
+    {
+     "t": "レザー製フットベッド",
+     "d": "靴下を脱いで、天然皮革ならではの感触を楽しみましょう。"
+    }
+   ],
+   "weight": "WOMENS EU38 片足180g",
+   "image": "img/vivo/209564-01_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/sensus-yin-slide-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "primus-trail-fg-3.5",
+   "name": "PRIMUS TRAIL FG 3.5",
+   "nameJa": "プライマス トレイル FG 3.5",
+   "category": "トレイル",
+   "priceThb": 6350,
+   "priceThbMax": 6350,
+   "colours": [
+    "Insignia Blue",
+    "Mineral",
+    "Obsidian",
+    "Silver Birch"
+   ],
+   "sizes": [
+    "36",
+    "37",
+    "38",
+    "39",
+    "40",
+    "41",
+    "42",
+    "43",
+    "44",
+    "45"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209600",
+    "M": "309600"
+   },
+   "tagline": "タフな全地形対応型トレイルシューズ - リサイクル可能な循環型シューズへの前進",
+   "intro": "野性を呼び起こすために、トレイルで自然とのつながりを取り戻そう。プライマストレイル FG 3.5は、軽量で耐久性と柔軟性に優れたトレイルランニングシューズ。リサイクル可能な循環型シューズへの前進です。",
+   "features": [
+    {
+     "t": "ファームグラウンド（FG）",
+     "d": "アウトソール どんな地面の上でもしっかりと立つことができます。"
+    },
+    {
+     "t": "オーソライトインソール",
+     "d": "アクティブオーソライト・パフォーマンスインソールは、98％リサイクルPUフォームでできており、廃棄物やバージンプラスチックの使用を減らすことができます。"
+    },
+    {
+     "t": "通気性メッシュ",
+     "d": "通気性に優れ、軽量で快適。"
+    }
+   ],
+   "weight": "WOMENS EU38 片足 213g",
+   "image": "img/vivo/209600-01_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/primus-trail-fg-3-5-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "primus-trail-flow",
+   "name": "PRIMUS TRAIL FLOW",
+   "nameJa": "プライマス トレイル フロー",
+   "category": "トレイル",
+   "priceThb": 6460,
+   "priceThbMax": 6460,
+   "colours": [
+    "Cherry Tomato"
+   ],
+   "sizes": [
+    "36",
+    "37",
+    "38",
+    "39"
+   ],
+   "genders": [
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209317"
+   },
+   "tagline": "軽量かつハイパフォーマンスなベアフットトレイルシューズ",
+   "intro": "新しいプライマストレイルフローは、自然の中で自在に駆け抜けるためのオフロードシューズ。流れるようなシルエットで、優れたグリップと地面の感覚を両立。あらゆる地形で、足元を感じながら軽やかに動けます。耐久性と通気性に優れた100%リサイクルポリエステル製メッシュアッパーが、アクティブな足を涼しく快適に保ち、解けにくいデザインのシューレースはあなたの足をしっかりと固定します。",
+   "features": [
+    {
+     "t": "トレイルフローATソール",
+     "d": "あらゆる地形を駆け抜ける、軽量性とグリップ力。"
+    },
+    {
+     "t": "インソールなし",
+     "d": "インソールがないため、より地面に近く、裸足に近い履き心地。"
+    },
+    {
+     "t": "通気性メッシュ",
+     "d": "通気性に優れ、軽量で快適。"
+    },
+    {
+     "t": "ヴィーガン*",
+     "d": "主要素材は動物由来ではない合成素材。"
+    }
+   ],
+   "weight": "MENS EU42 片足 219g",
+   "image": "img/vivo/209317-05_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/primus-trail-flow-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "primus-trail-iii-all-weather-fg",
+   "name": "PRIMUS TRAIL III ALL WEATHER FG",
+   "nameJa": "プライマス トレイル III オール ウェザー FG",
+   "category": "トレイル",
+   "priceThb": 6360,
+   "priceThbMax": 6360,
+   "colours": [
+    "Obsidian"
+   ],
+   "sizes": [
+    "36",
+    "37",
+    "38",
+    "39",
+    "41",
+    "45"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209305",
+    "M": "309305"
+   },
+   "tagline": "足を第一に考えた全天候型トレイルランニングシューズ",
+   "intro": "プライマストレイル III オールウェザー FGは、人気のトレイルランニングシューズ、プライマストレイル FGを耐水仕様に進化させたモデルです。軽量性、耐久性、柔軟性を備え、硬くしっかりとした路面のトレイルを軽快に楽しめる設計。リサイクル素材を使用したヴィーガン*仕様の高機能素材を採用し、雨の多い、肌寒い環境でのトレイルランニングやハイキングにも対応します。",
+   "features": [
+    {
+     "t": "ファームグラウンド（FG）アウトソール",
+     "d": "どんな地面の上でもしっかりと立つことができます。"
+    },
+    {
+     "t": "オーソライトインソール",
+     "d": "アクティブオーソライト・パフォーマンスインソールは、98％リサイクルPUフォームでできており、廃棄物やバージンプラスチックの使用を減らすことができます。"
+    },
+    {
+     "t": "タフなラバーコンパウンド",
+     "d": "強力なゴム製混合素材を使用することで、優れたグリップ力と高い耐摩耗性を実現しています。"
+    },
+    {
+     "t": "ヴィーガン*",
+     "d": "主要素材は動物由来ではない合成素材。"
+    },
+    {
+     "t": "",
+     "d": "撥水性のある素材を使用していますが、防水仕様ではありません。水分が長く触れ続ける環境下での連続使用や、経年劣化により徐々に生地表面の撥水性能が落ちていくことがあります。 靴の状態や使用状況に応じて汚れを落としたり、撥水スプレー等でのケアをご検討ください。"
+    }
+   ],
+   "weight": "WOMENS EU38 片足 220g",
+   "image": "img/vivo/209305-01_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/primus-trail-iii-all-weather-fg-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "primus-trail-knit-fg",
+   "name": "PRIMUS TRAIL KNIT FG",
+   "nameJa": "プライマストレイル ニット FG",
+   "category": "トレイル",
+   "priceThb": 6290,
+   "priceThbMax": 6290,
+   "colours": [
+    "Clay",
+    "Obsidian"
+   ],
+   "sizes": [
+    "36",
+    "39"
+   ],
+   "genders": [
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209099"
+   },
+   "tagline": "柔軟ながら岩場でもタフに履きこなす　足を第一に考えたトレイルシューズ",
+   "intro": "ベアフットでもっと自然の中に繰り出そう！ファームグラウンド（FG）ソールは、まさに荒れた岩場に最適。足を保護しながら地面との一体感も得られます。ニット製のアッパーはより柔軟な動きを可能にし、優れた通気性は完全なる探検の歩みを止めません。 足も体も脳も野生に解放し、自然と再びつながりましょう。",
+   "features": [
+    {
+     "t": "",
+     "d": "足型（靴型ではありません）のデザインで足を自然に動かせます。"
+    },
+    {
+     "t": "",
+     "d": "WIDE（幅広）でもっと自然な安定感"
+    },
+    {
+     "t": "",
+     "d": "THIN（極薄）でもっと感じられる"
+    },
+    {
+     "t": "",
+     "d": "FLEXIBLE（柔軟）でもっと自然な動作"
+    },
+    {
+     "t": "",
+     "d": "ランニング、ウォーキング、ハイキングに最適。感覚フィードバックをフルに活かせる、グリップ力に優れたオフロードフットウェア。"
+    },
+    {
+     "t": "",
+     "d": "シームレスな靴下のようなフィット感を採用したリサイクルニットアッパーは、砂や小石の侵入を防ぎながら、足の自然な動きを最大限に引き出します。"
+    },
+    {
+     "t": "",
+     "d": "スピード・レーシング・システムにより、素早く靴ひもを締めたり、調整したりできるので、素早くトレイルに繰り出すことができます。"
+    }
+   ],
+   "weight": "",
+   "image": "img/vivo/209099-25_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/primus-trail-knit-fg-clearance"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "motus-flex",
+   "name": "MOTUS FLEX",
+   "nameJa": "モータス フレックス",
+   "category": "トレーニング",
+   "priceThb": 6800,
+   "priceThbMax": 6800,
+   "colours": [
+    "Obsidian",
+    "Obsidian/ Spacedye",
+    "Space Dye",
+    "Wood Rose"
+   ],
+   "sizes": [
+    "35",
+    "36",
+    "37",
+    "38",
+    "39"
+   ],
+   "genders": [
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209491"
+   },
+   "tagline": "トレーニングにさらなる自由を",
+   "intro": "モータス フレックスは、最も裸足に近いパフォーマンス用シューズ。プライマル・ムーブメント、自重トレーニング、ヨガ、その他のモビリティ・エクササイズに最高の裸足感覚と柔軟性をもたらします。",
+   "features": [
+    {
+     "t": "モータスフレックス アウトソール",
+     "d": "足裏からの感覚フィードバックを最大化します。"
+    },
+    {
+     "t": "オーソライトインソール",
+     "d": "アクティブオーソライト・パフォーマンスインソールは、98％リサイクルPUフォームでできており、廃棄物やバージンプラスチックの使用を減らすことができます。"
+    },
+    {
+     "t": "通気性メッシュ",
+     "d": "通気性に優れ、軽量で快適。"
+    },
+    {
+     "t": "",
+     "d": "ヴィーガン"
+    }
+   ],
+   "weight": "",
+   "image": "img/vivo/209491-01_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/motus-flex-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "motus-flex-natural",
+   "name": "MOTUS FLEX NATURAL",
+   "nameJa": "モータスフレックス ナチュラル",
+   "category": "トレーニング",
+   "priceThb": 6800,
+   "priceThbMax": 6800,
+   "colours": [
+    "Sand"
+   ],
+   "sizes": [
+    "36",
+    "37",
+    "38",
+    "39",
+    "40"
+   ],
+   "genders": [
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209646"
+   },
+   "tagline": "自然素材をまとい、しなやかに動く",
+   "intro": "モータスフレックス ナチュラルは、モータスフレックスの魅力である自由さと柔軟性はそのままに、より自然な素材を採用しました。プライマルムーブメントやカリステニクス、自重トレーニングに適した、しなやかで無駄のないデザインを維持しながら、天然由来の糸と、天然ゴムを50％配合したアウトソールを採用しています。パフォーマンスに妥協することなく、より自然へと近づく一足です。",
+   "features": [
+    {
+     "t": "モータスフレックス アウトソール",
+     "d": "最大限の可動性と、足裏の感覚フィードバックを高めるための二分割フレックス構造。"
+    },
+    {
+     "t": "オーソライトインソール",
+     "d": "アクティブオーソライト・パフォーマンスインソールは、98％リサイクルPUフォームでできており、廃棄物やバージンプラスチックの使用を減らすことができます。"
+    }
+   ],
+   "weight": "MENS EU42 片足 270g",
+   "image": "img/vivo/209646-06_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/motus-flex-natural-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "motus-strength",
+   "name": "MOTUS STRENGTH",
+   "nameJa": "モータス ストレングス",
+   "category": "トレーニング",
+   "priceThb": 7140,
+   "priceThbMax": 7140,
+   "colours": [
+    "Bright White/Grey",
+    "Dusty Rose",
+    "Obsidian/Grey"
+   ],
+   "sizes": [
+    "35",
+    "36",
+    "37",
+    "38",
+    "39",
+    "40",
+    "43",
+    "44"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209490",
+    "M": "309490"
+   },
+   "tagline": "人間らしいトレーニングを：強さを引き出し生涯現役を目指す",
+   "intro": "リフティング、クライミング、ジャンピング、ランニング、ローリング。モータス ストレングスは、強さと柔軟性を併せ持つトレーニングシューズです。あなたの動きにしっかりと追随し、本来の強さをとことん引き出してくれるでしょう。",
+   "features": [
+    {
+     "t": "",
+     "d": "よりパワフルなトレーニングのためにトラクションを強化した、モータス ストレングス アウトソール。"
+    },
+    {
+     "t": "",
+     "d": "アクティブ・オーソライト・パフォーマンス・インソールは、98％リサイクルPUフォーム製、廃棄物やバージンプラスチックの使用を削減。"
+    },
+    {
+     "t": "",
+     "d": "通気性に優れ、軽量で快適なメッシュを採用。"
+    }
+   ],
+   "weight": "",
+   "image": "img/vivo/209490-11_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/motus-strength-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "motus-strength-ii",
+   "name": "MOTUS STRENGTH II",
+   "nameJa": "モータスストレングス II",
+   "category": "トレーニング",
+   "priceThb": 7480,
+   "priceThbMax": 7480,
+   "colours": [
+    "Arctic Wolf",
+    "Eclipse",
+    "Skyway",
+    "Storm Cloud"
+   ],
+   "sizes": [
+    "36",
+    "37",
+    "38",
+    "39",
+    "40",
+    "41",
+    "42",
+    "43",
+    "44",
+    "46"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209548",
+    "M": "309648"
+   },
+   "tagline": "強さとサポートを両立するベアフットシューズ",
+   "intro": "モータスストレングス IIは、高強度トレーニングに対応するベアフットトレーニングシューズの進化版。耐久性と通気性に優れたメッシュに補強オーバーレイを組み合わせたサポート力のあるアッパーが、ベアフットの感覚を損なうことなく足を保護します。ソールには高さのあるラグを備え、優れたグリップと安定性を発揮。さらに、ニット構造のシュータンをアップデートし、より幅広いフィットに対応します。",
+   "features": [
+    {
+     "t": "モータスストレングス アウトソール",
+     "d": "パワフルなトレーニングを支え、鍛え上げるために設計されたトラクション。"
+    },
+    {
+     "t": "オーソライトインソール",
+     "d": "アクティブオーソライト・パフォーマンスインソールは、98％リサイクルPUフォームでできており、廃棄物やバージンプラスチックの使用を減らすことができます。"
+    },
+    {
+     "t": "通気性メッシュ",
+     "d": "通気性に優れ、軽量で快適。"
+    },
+    {
+     "t": "ヴィーガン*",
+     "d": "主要素材は動物由来ではない合成素材。"
+    }
+   ],
+   "weight": "MENS EU42 片足 318g",
+   "image": "img/vivo/209548-05_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/motus-strength-ii-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "primus-lite-3.5",
+   "name": "PRIMUS LITE 3.5",
+   "nameJa": "プライマス ライト 3.5",
+   "category": "トレーニング",
+   "priceThb": 5100,
+   "priceThbMax": 5100,
+   "colours": [
+    "Dusty Rose",
+    "Midnight",
+    "Mineral",
+    "Obsidian"
+   ],
+   "sizes": [
+    "35",
+    "36",
+    "37",
+    "38"
+   ],
+   "genders": [
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209574"
+   },
+   "tagline": "ベアフットトレーニング用万能シューズ - リサイクル可能な循環型シューズへの前進",
+   "intro": "プライマスライト3.5は、Vivobarefootの代名詞ともいえるトレーニング用万能シューズ。新しいアッパーを採用したことで、より循環型の靴に近づきました。ランニングをはじめ幅広いトレーニングシーンで、自然な動きと自然な強さを引き出すためにデザインされています。経験豊富なベアフット・クロストレーナーにも、ベアフット・パフォーマンスを初めて体験する人にもおすすめです。",
+   "features": [
+    {
+     "t": "プライマスアウトソール",
+     "d": "足と大地を可能な限り近づけます。"
+    },
+    {
+     "t": "",
+     "d": "オーソライトインソール アクティブオーソライト・パフォーマンスインソールは、98％リサイクルPUフォームでできており、廃棄物やバージンプラスチックの使用を減らすことができます。"
+    },
+    {
+     "t": "通気性メッシュ",
+     "d": "通気性に優れ、軽量で快適。"
+    }
+   ],
+   "weight": "WOMENS EU38 片足 169g",
+   "image": "img/vivo/209574-01_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/primus-lite-3-5-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "primus-lite-iv",
+   "name": "PRIMUS LITE IV",
+   "nameJa": "プライマス ライト IV",
+   "category": "トレーニング",
+   "priceThb": 5100,
+   "priceThbMax": 5100,
+   "colours": [
+    "Mineral",
+    "Obsidian",
+    "Storm Cloud"
+   ],
+   "sizes": [
+    "36",
+    "37",
+    "38",
+    "39",
+    "40",
+    "41",
+    "42",
+    "43"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209253",
+    "M": "309253"
+   },
+   "tagline": "進化したベアフットトレーニングのオールラウンダー",
+   "intro": "Vivobarefootのベストセラーモデルが、素材の使用効率を高め、製造時の廃棄物を削減するために再設計されました。プライマスライト IV は、リサイクル素材を使用したヴィーガン*仕様で、これまでと変わらない信頼のベアフット感覚を提供。ランニングでもトレーニングでも、自然な動きをサポートします。幅広で、薄く、しなやか。あらゆるワークアウトのパフォーマンスを引き出しながら、環境負荷もより軽く。",
+   "features": [
+    {
+     "t": "プライマスアウトソール",
+     "d": "足と大地を可能な限り近づけます。"
+    },
+    {
+     "t": "オーソライトインソール",
+     "d": "アクティブオーソライト・パフォーマンスインソールは、98％リサイクルPUフォームでできており、廃棄物やバージンプラスチックの使用を減らすことができます。"
+    },
+    {
+     "t": "通気性メッシュ",
+     "d": "通気性に優れ、軽量で快適。"
+    },
+    {
+     "t": "ヴィーガン*",
+     "d": "主要素材は動物由来ではない合成素材。"
+    }
+   ],
+   "weight": "WOMENS EU38 片足 171g",
+   "image": "img/vivo/209253-01_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/primus-lite-iv-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "primus-lite-iv-all-weather",
+   "name": "PRIMUS LITE IV ALL WEATHER",
+   "nameJa": "プライマス ライト IV オール ウェザー",
+   "category": "トレーニング",
+   "priceThb": 6120,
+   "priceThbMax": 6120,
+   "colours": [
+    "Obsidian"
+   ],
+   "sizes": [
+    "35",
+    "36"
+   ],
+   "genders": [
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209572"
+   },
+   "tagline": "一年中動き続けたい人に。オールウェザー軽量アクティブシューズ",
+   "intro": "履くたびにより強くなれる。ランニング、ウォーキング、ワークアウトに最適なプライマスライト オールウェザーは、足の自然な動きを最大限可能にし、あらゆる天候に対応したミニマリストシューズです。地球への負荷は最小に、トレーニングの効果は最大にしたい人におすすめです。",
+   "features": [
+    {
+     "t": "リサイクルポリエステルの耐水アッパーメッシュを採用。",
+     "d": "ベアフット感覚を損なうことなく、1年中トレーニングが可能です。"
+    },
+    {
+     "t": "踏み抜きに強い",
+     "d": "特許取得済みの耐穿刺層「Pro5」を使用した、軽量で柔軟な0.8mmのレイヤーをソールに施しています。足元を保護することで地面からの突き返しによる痛みを防ぎつつ、足裏の感覚を逃がしません。"
+    },
+    {
+     "t": "",
+     "d": "撥水性のある素材を使用していますが、防水仕様ではありません。水分が長く触れ続ける環境下での連続使用や、経年劣化により徐々に生地表面の撥水性能が落ちていくことがあります。 靴の状態や使用状況に応じて汚れを落としたり、撥水スプレー等でのケアをご検討ください。"
+    }
+   ],
+   "weight": "232g",
+   "image": "img/vivo/209572-01_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/primus-lite-iv-all-weather-clearance"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "primus-lite-knit",
+   "name": "PRIMUS LITE KNIT",
+   "nameJa": "プライマス ライト ニット",
+   "category": "トレーニング",
+   "priceThb": 5780,
+   "priceThbMax": 5780,
+   "colours": [
+    "Bright White",
+    "Midnight",
+    "Obsidian"
+   ],
+   "sizes": [
+    "35",
+    "38",
+    "39",
+    "40",
+    "41",
+    "42",
+    "45",
+    "46"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209304",
+    "M": "309304"
+   },
+   "tagline": "筋力トレーニング、アニマルフロー、軽いランニングに最適なベアフット感覚のスニーカー",
+   "intro": "プライマスライトニットは、リサイクルプラスチックを使用した柔軟なニットアッパーにより、Vivobarefootで長く愛されているプライマスライトにさらなる動きやすさと機敏さをプラスしています。2mm厚のプライマスアウトソールと、98％リサイクルPUフォームで作られたアクティブオーソライト・パフォーマンスインソールを採用。アクティブなライフスタイルやワークアウトに最適です。",
+   "features": [
+    {
+     "t": "プライマスアウトソール",
+     "d": "大地にできる限り近づこう"
+    },
+    {
+     "t": "オーソライトインソール",
+     "d": "アクティブオーソライト・パフォーマンスインソールは、98％リサイクルPUフォームでできており、廃棄物やバージンプラスチックの使用を減らすことができます。"
+    },
+    {
+     "t": "通気性メッシュ",
+     "d": "通気性に優れ、軽量で快適。"
+    }
+   ],
+   "weight": "MENS EU42 片足 246g",
+   "image": "img/vivo/209304-01_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/primus-lite-knit-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "primus-lite-knit-natural",
+   "name": "PRIMUS LITE KNIT NATURAL",
+   "nameJa": "プライマス ライト ニット ナチュラル",
+   "category": "トレーニング",
+   "priceThb": 5780,
+   "priceThbMax": 5780,
+   "colours": [
+    "Eclipse"
+   ],
+   "sizes": [
+    "37",
+    "38",
+    "39",
+    "42",
+    "43"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209576",
+    "M": "309576"
+   },
+   "tagline": "あなたの可能性を最大限に引き出すベアフットスニーカー",
+   "intro": "プライマスライトニット ナチュラルのニットソックに足を滑り込ませると、テンセル™ 92%、ホットメルト 7%、ロイカ 1%でできたアッパーが生み出す抜群のフィット感をすぐに実感することでしょう。定番人気のベアフットパフォーマンスシューズの特徴をそのままに、さらに柔軟にアップデートし、より自然な仕上がりに。どんなトレーニングでも、自由自在に動ける一足です。",
+   "features": [
+    {
+     "t": "プライマスアウトソール",
+     "d": "足と大地を可能な限り近づけます。"
+    },
+    {
+     "t": "コルク & リサイクルPUインソール",
+     "d": "リサイクルポリウレタン（PU）を使用し、その上に天然の抗菌性を持つコルクを重ねた素材でできています。"
+    }
+   ],
+   "weight": "WOMENS EU38 片足 188g",
+   "image": "img/vivo/209576-03_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/primus-lite-knit-natural-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "primus-flow",
+   "name": "PRIMUS FLOW",
+   "nameJa": "プライマス フロー",
+   "category": "ランニング",
+   "priceThb": 6630,
+   "priceThbMax": 6630,
+   "colours": [
+    "Coconut",
+    "Dark Shadow",
+    "White/Neon Orange"
+   ],
+   "sizes": [
+    "36",
+    "37",
+    "38",
+    "39",
+    "40",
+    "41",
+    "42",
+    "43",
+    "44",
+    "45"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209578",
+    "M": "309578"
+   },
+   "tagline": "一歩一歩、地球とのつながりを感じながら走ろう",
+   "intro": "プライマスシリーズの最新モデル、プライマスフローが登場。スピードと敏捷性を追求し、人間の持つ可能性を最大限に引き出すよう設計されたランニングシューズで、これまでにないベアフット感覚を味わいましょう。わずか150gの軽量設計と6mm厚のソール（ミッドソール 4mm＋アウトソール 2mm）が、あらゆる動きへの意識を研ぎ澄ませる、まさに“感じる”ための靴です。",
+   "features": [
+    {
+     "t": "通気性メッシュ",
+     "d": "通気性に優れ、軽量で快適。"
+    },
+    {
+     "t": "インソールなし",
+     "d": "インソールがないため、より地面に近く、裸足に近い履き心地。"
+    },
+    {
+     "t": "プライマスフロー・アウトソール",
+     "d": "人間本来の感覚を取り戻そう。"
+    },
+    {
+     "t": "ヴィーガン*",
+     "d": "主要素材は動物由来ではない合成素材。"
+    }
+   ],
+   "weight": "MENS EU42 片足 159g",
+   "image": "img/vivo/209578-01_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/primus-flow-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  },
+  {
+   "id": "primus-flow-knit",
+   "name": "PRIMUS FLOW KNIT",
+   "nameJa": "プライマス フロー ニット",
+   "category": "ランニング",
+   "priceThb": 5780,
+   "priceThbMax": 5780,
+   "colours": [
+    "Chocolate Truffle"
+   ],
+   "sizes": [
+    "36",
+    "37",
+    "38",
+    "39",
+    "40",
+    "41",
+    "42",
+    "43",
+    "44",
+    "45"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "modelCodes": {
+    "W": "209631",
+    "M": "309631"
+   },
+   "tagline": "動きの中に、マインドフルネスを",
+   "intro": "プライマスフロー ニットは、ベアフットならではの自然な動きと、足に寄り添う快適さを両立した一足です。シームレスな360°ニットアッパーが、軽量で通気性に優れたソックスのようなフィット感を生み出し、足の動きにしなやかに追従。構造を最小限に抑えたかかと部分の設計が、足本来の自然な動きをサポートします。さらに、テクスチャー加工を施したシューレースと、足の動きを考慮したレースループ構造により、動きを妨げることなく安定したフィット感を実現しています。",
+   "features": [
+    {
+     "t": "通気性メッシュ",
+     "d": "通気性に優れ、軽量で快適。"
+    },
+    {
+     "t": "インソールなし",
+     "d": "インソールがないため、より地面に近く、裸足に近い履き心地。"
+    },
+    {
+     "t": "プライマスフロー・アウトソール",
+     "d": "身体とのつながりを取り戻し、ゆっくりと走ろう。"
+    },
+    {
+     "t": "ヴィーガン*",
+     "d": "主要素材は動物由来ではない合成素材。"
+    }
+   ],
+   "weight": "WOMENS EU38 片足 127.7g",
+   "image": "img/vivo/209631-11_side.jpg",
+   "links": {
+    "jp": "https://vivobarefoot.co.jp/products/primus-flow-knit-womens"
+   },
+   "source": "t21-vivo-lineup data.json（T21 Asok イベント 2026-09 の定価・在庫、説明文は vivobarefoot.co.jp）"
+  }
+ ]
+}

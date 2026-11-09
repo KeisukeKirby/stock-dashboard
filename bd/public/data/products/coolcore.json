@@ -1,0 +1,233 @@
+{
+ "brand": "Coolcore",
+ "updatedAt": "2026-11-09",
+ "asOf": "2026-05 Outdoor fest 持出リストの通常価格（Normal price）",
+ "source": "Drive: Event.Outdoor fest(Coolcore).21-24 May 26.xlsx ほかイベント持出リスト。pptx S10 の 3 種（アームスリーブ／ネックゲイター／クールタオル）に分類",
+ "items": [
+  {
+   "id": "golf-cap",
+   "name": "Golf Cap",
+   "model": "Golf Cap",
+   "code": "CC0005",
+   "category": "その他",
+   "priceThb": 780,
+   "priceThbMax": 780,
+   "colours": [
+    "Red"
+   ],
+   "sizes": [],
+   "skuCount": 1,
+   "image": null,
+   "intro": "",
+   "source": "Event.Outdoor fest(Coolcore).21-24 May 26.xlsx（通常価格列）/ イベント持出リスト"
+  },
+  {
+   "id": "headband-run-2",
+   "name": "Headband Run 2",
+   "model": "Headband Run 2",
+   "code": "CC0009",
+   "category": "その他",
+   "priceThb": 420,
+   "priceThbMax": 420,
+   "colours": [
+    "Heathered Plum"
+   ],
+   "sizes": [],
+   "skuCount": 1,
+   "image": null,
+   "intro": "",
+   "source": "Event.Outdoor fest(Coolcore).21-24 May 26.xlsx（通常価格列）/ イベント持出リスト"
+  },
+  {
+   "id": "headband-studio",
+   "name": "Headband Studio",
+   "model": "Headband Studio",
+   "code": "CC0010",
+   "category": "その他",
+   "priceThb": 480,
+   "priceThbMax": 480,
+   "colours": [
+    "Black",
+    "Brush Ocean",
+    "Geo Camo Blue",
+    "Pixel Ocean Blue",
+    "Pixel Ocean Green"
+   ],
+   "sizes": [],
+   "skuCount": 5,
+   "image": null,
+   "intro": "",
+   "source": "Event.Outdoor fest(Coolcore).21-24 May 26.xlsx（通常価格列）/ イベント持出リスト"
+  },
+  {
+   "id": "running-cap",
+   "name": "Running Cap",
+   "model": "Running Cap",
+   "code": "CC0007",
+   "category": "その他",
+   "priceThb": 980,
+   "priceThbMax": 980,
+   "colours": [
+    "Floral Print"
+   ],
+   "sizes": [],
+   "skuCount": 1,
+   "image": null,
+   "intro": "",
+   "source": "Event.Outdoor fest(Coolcore).21-24 May 26.xlsx（通常価格列）/ イベント持出リスト"
+  },
+  {
+   "id": "t-shirt",
+   "name": "T-Shirt",
+   "model": "T-Shirt",
+   "code": "CC0015",
+   "category": "その他",
+   "priceThb": 980,
+   "priceThbMax": 980,
+   "colours": [
+    "Pink M",
+    "Pink S",
+    "Pink XS"
+   ],
+   "sizes": [],
+   "skuCount": 3,
+   "image": null,
+   "intro": "",
+   "source": "Event.Outdoor fest(Coolcore).21-24 May 26.xlsx（通常価格列）/ イベント持出リスト"
+  },
+  {
+   "id": "cp-arm-sleeves",
+   "name": "Arm Sleeves",
+   "model": "CP Arm Sleeves",
+   "code": "CP0001",
+   "category": "アームスリーブ",
+   "priceThb": 760,
+   "priceThbMax": 900,
+   "colours": [
+    "Black",
+    "Camo Blue",
+    "Camo Gray",
+    "Camo Navy",
+    "Camouflage",
+    "Gray",
+    "White"
+   ],
+   "sizes": [
+    "L",
+    "M",
+    "S",
+    "XL",
+    "XS"
+   ],
+   "skuCount": 33,
+   "image": null,
+   "intro": "",
+   "source": "Event.Outdoor fest(Coolcore).21-24 May 26.xlsx（通常価格列）/ イベント持出リスト"
+  },
+  {
+   "id": "forearm-shiver",
+   "name": "Forearm Shiver",
+   "model": "Forearm Shiver",
+   "code": "CC0003",
+   "category": "アームスリーブ",
+   "priceThb": 600,
+   "priceThbMax": 600,
+   "colours": [
+    "Black",
+    "Gray",
+    "Yellow"
+   ],
+   "sizes": [],
+   "skuCount": 3,
+   "image": null,
+   "intro": "",
+   "source": "Event.Outdoor fest(Coolcore).21-24 May 26.xlsx（通常価格列）/ イベント持出リスト"
+  },
+  {
+   "id": "cp-outdoor-chill-towel",
+   "name": "Outdoor Chill Towel",
+   "model": "CP Outdoor Chill Towel",
+   "code": "CP0003",
+   "category": "クールタオル",
+   "priceThb": 495,
+   "priceThbMax": 495,
+   "colours": [
+    "Dark Gray",
+    "Diva Blue",
+    "Heritage Blue",
+    "Sky Blue"
+   ],
+   "sizes": [],
+   "skuCount": 4,
+   "image": null,
+   "intro": "",
+   "source": "Event.Outdoor fest(Coolcore).21-24 May 26.xlsx（通常価格列）/ イベント持出リスト"
+  },
+  {
+   "id": "cp-sports-chill-towel",
+   "name": "Sports Chill Towel",
+   "model": "CP Sports Chill Towel",
+   "code": "CP0004",
+   "category": "クールタオル",
+   "priceThb": 619,
+   "priceThbMax": 619,
+   "colours": [
+    "Black",
+    "Dark Gray",
+    "Diva Blue",
+    "Fuscia",
+    "Navy",
+    "Turquoise",
+    "Yellow"
+   ],
+   "sizes": [],
+   "skuCount": 7,
+   "image": null,
+   "intro": "",
+   "source": "Event.Outdoor fest(Coolcore).21-24 May 26.xlsx（通常価格列）/ イベント持出リスト"
+  },
+  {
+   "id": "cp-multi-chill",
+   "name": "Multi-Chill",
+   "model": "CP Multi-Chill",
+   "code": "CP0002",
+   "category": "ネックゲイター",
+   "priceThb": 675,
+   "priceThbMax": 675,
+   "colours": [
+    "Black",
+    "Camo Gray",
+    "Camo Navy",
+    "Camouflage",
+    "Gray",
+    "White"
+   ],
+   "sizes": [],
+   "skuCount": 6,
+   "image": null,
+   "intro": "",
+   "source": "Event.Outdoor fest(Coolcore).21-24 May 26.xlsx（通常価格列）/ イベント持出リスト"
+  },
+  {
+   "id": "cp-multi-chill-open-ear",
+   "name": "Multi-Chill Open Ear",
+   "model": "CP Multi-Chill Open Ear",
+   "code": "CP0005",
+   "category": "ネックゲイター",
+   "priceThb": 675,
+   "priceThbMax": 675,
+   "colours": [
+    "Black",
+    "White"
+   ],
+   "sizes": [
+    "L",
+    "M"
+   ],
+   "skuCount": 4,
+   "image": null,
+   "intro": "",
+   "source": "Event.Outdoor fest(Coolcore).21-24 May 26.xlsx（通常価格列）/ イベント持出リスト"
+  }
+ ]
+}

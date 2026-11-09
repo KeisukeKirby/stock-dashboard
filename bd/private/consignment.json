@@ -1,0 +1,972 @@
+{
+ "updatedAt": "2026-11-09",
+ "fileModified": "2026-11-04T11:18:37.878Z",
+ "source": "Stock VFF Consignment.xlsx (acc.bftcoltd@)",
+ "period": "2023-08 〜 2026-10",
+ "months": [
+  "2023-08",
+  "2023-09",
+  "2023-10",
+  "2023-11",
+  "2023-12",
+  "2024-01",
+  "2024-02",
+  "2024-03",
+  "2024-04",
+  "2024-05",
+  "2024-06",
+  "2024-07",
+  "2024-08",
+  "2024-09",
+  "2024-10",
+  "2024-11",
+  "2024-12",
+  "2025-01",
+  "2025-02",
+  "2025-03",
+  "2025-04",
+  "2025-05",
+  "2025-06",
+  "2025-07",
+  "2025-08",
+  "2025-09",
+  "2025-10",
+  "2025-11",
+  "2025-12",
+  "2026-01",
+  "2026-02",
+  "2026-03",
+  "2026-04",
+  "2026-05",
+  "2026-06",
+  "2026-07",
+  "2026-08",
+  "2026-09",
+  "2026-10"
+ ],
+ "notes": [
+  "数量（足数・個数）のみ。金額は元ファイルにない（換算するなら商品の売価 × 販売数）。",
+  "納品 = 納品伝票（QO-/IVT-）の合計、返品 = 返品伝票（CNT-）、残 = 納品 − 返品 − 販売。",
+  "月キーは売上月 YYYY-MM。\"2025\" は Central Chidlom シートの2025年合計列。",
+  "委託先の「形態」はファイル名と pptx から推定。pptx S6・S13: デパート以外の委託は廃止し買取へ切り替える方針。",
+  "百貨店（Central 各店・Siam Discovery）の精算額は Sales Record_Coollabo Shop の百貨店シートにある（この表には含めていない）。"
+ ],
+ "codePrefixesSeen": {
+  "VFF": 1238,
+  "OLN": 137,
+  "BFJ": 42,
+  "MTB": 80,
+  "CP": 15
+ },
+ "byBrandTotal": {
+  "VFF": {
+   "delivered": 2723.0,
+   "sold": 1428.0,
+   "balance": 1020.0
+  },
+  "OLENO": {
+   "delivered": 593.0,
+   "sold": 332.0,
+   "balance": 232.0
+  },
+  "BFJ": {
+   "delivered": 312.0,
+   "sold": 95.0,
+   "balance": 175.0
+  },
+  "Tabi (Marugo)": {
+   "delivered": 127.0,
+   "sold": 24.0,
+   "balance": 94.0
+  },
+  "Coolcore": {
+   "delivered": 177.0,
+   "sold": 74.0,
+   "balance": 103.0
+  }
+ },
+ "consignees": [
+  {
+   "name": "Central Chidlom",
+   "sheet": "Central Chidlom (Department)",
+   "type": "デパート委託",
+   "brands": [
+    "BFJ",
+    "Coolcore",
+    "Tabi (Marugo)",
+    "OLENO",
+    "VFF"
+   ],
+   "skuCount": 463,
+   "delivered": 1691.0,
+   "returned": 84.0,
+   "netDelivered": 1607.0,
+   "sold": 1118.0,
+   "balance": 489.0,
+   "monthly": {
+    "2026-01": 79.0,
+    "2026-02": 68.0,
+    "2026-03": 78.0,
+    "2026-04": 81.0,
+    "2026-05": 115.0,
+    "2026-06": 98.0,
+    "2026-07": 33.0,
+    "2026-08": 112.0,
+    "2026-09": 69.0,
+    "2026-10": 50.0
+   },
+   "yearOnly": {
+    "2025": 335.0
+   },
+   "byBrand": {
+    "VFF": {
+     "skuCount": 351,
+     "delivered": 1159.0,
+     "returned": 67.0,
+     "sold": 837.0,
+     "balance": 255.0
+    },
+    "Tabi (Marugo)": {
+     "skuCount": 55,
+     "delivered": 81.0,
+     "returned": 9.0,
+     "sold": 24.0,
+     "balance": 48.0
+    },
+    "BFJ": {
+     "skuCount": 14,
+     "delivered": 118.0,
+     "returned": 3.0,
+     "sold": 79.0,
+     "balance": 36.0
+    },
+    "OLENO": {
+     "skuCount": 28,
+     "delivered": 156.0,
+     "returned": 5.0,
+     "sold": 104.0,
+     "balance": 47.0
+    },
+    "Coolcore": {
+     "skuCount": 15,
+     "delivered": 177.0,
+     "returned": 0,
+     "sold": 74.0,
+     "balance": 103.0
+    }
+   },
+   "firstMonth": "2026-01",
+   "lastMonth": "2026-10",
+   "deliveryDates": [
+    "CN 21/7/26",
+    "CNT-202509",
+    "CNT-202510",
+    "CNT-202512",
+    "CNT-202609",
+    "IVT-202509",
+    "IVT-202510",
+    "IVT-202511",
+    "IVT-202512",
+    "IVT-202602",
+    "IVT-202603",
+    "IVT-202604",
+    "IVT-202605",
+    "IVT-202606",
+    "IVT-202607",
+    "IVT-202608",
+    "IVT-202609",
+    "IVT-202610"
+   ],
+   "notes": [
+    "コード欄空白のSKU行あり: VFF V-Soul(W39, Nude)"
+   ],
+   "parseWarning": "シートのTotal列合計 1606 ≠ 納品セル合計 1607（Total式が無い行 1 行）; シートの販売Total列合計 1105 ≠ 月別セル合計 1118。JSONの値はセル実数の再集計。"
+  },
+  {
+   "name": "Highlandner",
+   "sheet": "Highlandner",
+   "type": "アウトドア店委託",
+   "brands": [
+    "OLENO",
+    "VFF"
+   ],
+   "skuCount": 125,
+   "delivered": 280.0,
+   "returned": 1.0,
+   "netDelivered": 279.0,
+   "sold": 223.0,
+   "balance": 56.0,
+   "monthly": {
+    "2025-01": 2.0,
+    "2025-02": 6.0,
+    "2025-03": 6.0,
+    "2025-04": 7.0,
+    "2025-05": 7.0,
+    "2025-06": 10.0,
+    "2025-07": 17.0,
+    "2025-08": 21.0,
+    "2025-09": 29.0,
+    "2025-10": 21.0,
+    "2025-11": 12.0,
+    "2025-12": 12.0,
+    "2026-01": 16.0,
+    "2026-02": 14.0,
+    "2026-03": 6.0,
+    "2026-04": 5.0,
+    "2026-05": 14.0,
+    "2026-06": 2.0,
+    "2026-07": 7.0,
+    "2026-08": 5.0,
+    "2026-09": 4.0
+   },
+   "yearOnly": null,
+   "byBrand": {
+    "VFF": {
+     "skuCount": 109,
+     "delivered": 188.0,
+     "returned": 1.0,
+     "sold": 167.0,
+     "balance": 20.0
+    },
+    "OLENO": {
+     "skuCount": 16,
+     "delivered": 92.0,
+     "returned": 0,
+     "sold": 56.0,
+     "balance": 36.0
+    }
+   },
+   "firstMonth": "2025-01",
+   "lastMonth": "2026-09",
+   "deliveryDates": [
+    "QO-2025010",
+    "QO-2025030",
+    "QO-2025050",
+    "QO-2025060",
+    "QO-2025080",
+    "QO-2025090",
+    "QO-2025100",
+    "QO-2025110",
+    "QO-2025120",
+    "QO-2026030",
+    "QO-2026060",
+    "อินฟู"
+   ],
+   "notes": [],
+   "parseWarning": null
+  },
+  {
+   "name": "Pathwild",
+   "sheet": "Pathwild",
+   "type": "店舗（買取へ移行中）",
+   "brands": [
+    "OLENO",
+    "VFF"
+   ],
+   "skuCount": 79,
+   "delivered": 184.0,
+   "returned": 39.0,
+   "netDelivered": 145.0,
+   "sold": 134.0,
+   "balance": 11.0,
+   "monthly": {
+    "2023-10": 8.0,
+    "2023-11": 1.0,
+    "2023-12": 4.0,
+    "2024-01": 4.0,
+    "2024-02": 1.0,
+    "2024-03": 2.0,
+    "2024-05": 1.0,
+    "2024-06": 2.0,
+    "2024-08": 2.0,
+    "2024-09": 5.0,
+    "2024-10": 2.0,
+    "2024-11": 7.0,
+    "2024-12": 13.0,
+    "2025-01": 2.0,
+    "2025-02": 1.0,
+    "2025-03": 6.0,
+    "2025-04": 4.0,
+    "2025-05": 12.0,
+    "2025-06": 4.0,
+    "2025-07": 11.0,
+    "2025-08": 20.0,
+    "2025-09": 2.0,
+    "2025-11": 1.0,
+    "2025-12": 1.0,
+    "2026-01": 2.0,
+    "2026-02": 4.0,
+    "2026-03": 4.0,
+    "2026-04": 3.0,
+    "2026-05": 1.0,
+    "2026-06": 1.0,
+    "2026-08": 2.0,
+    "2026-10": 1.0
+   },
+   "yearOnly": null,
+   "byBrand": {
+    "VFF": {
+     "skuCount": 61,
+     "delivered": 102.0,
+     "returned": 15.0,
+     "sold": 76.0,
+     "balance": 11.0
+    },
+    "OLENO": {
+     "skuCount": 18,
+     "delivered": 82.0,
+     "returned": 24.0,
+     "sold": 58.0,
+     "balance": 0.0
+    }
+   },
+   "firstMonth": "2023-10",
+   "lastMonth": "2026-10",
+   "deliveryDates": [
+    "CNQ-202506",
+    "CNQ-202509",
+    "DN-2024040",
+    "QO-2023090",
+    "QO-2024040",
+    "QO-2024100",
+    "QO-2025010",
+    "QO-2025050",
+    "QO-2025060",
+    "QO-2025120",
+    "QO-2026020",
+    "ซื้อขาด"
+   ],
+   "notes": [
+    "コード欄空白のSKU行あり: VFF Trailope(M42, Deep Lake); VFF Trailope(M43, Deep Lake); VFF Trailope(M44, Deep Lake) (品名から既存コードを補完)",
+    "No bill (一部納品に伝票なし)"
+   ],
+   "parseWarning": null
+  },
+  {
+   "name": "Run2Paradise",
+   "sheet": "Run2Paradise",
+   "type": "ランニングショップ委託",
+   "brands": [
+    "OLENO",
+    "VFF"
+   ],
+   "skuCount": 105,
+   "delivered": 211.0,
+   "returned": 61.0,
+   "netDelivered": 150.0,
+   "sold": 118.0,
+   "balance": 32.0,
+   "monthly": {
+    "2025-02": 12.0,
+    "2025-03": 26.0,
+    "2025-04": 14.0,
+    "2025-05": 12.0,
+    "2025-06": 5.0,
+    "2025-07": 4.0,
+    "2025-08": 5.0,
+    "2025-09": 3.0,
+    "2025-11": 3.0,
+    "2025-12": 5.0,
+    "2026-01": 4.0,
+    "2026-02": 6.0,
+    "2026-03": 1.0,
+    "2026-04": 3.0,
+    "2026-05": 5.0,
+    "2026-06": 3.0,
+    "2026-07": 2.0,
+    "2026-08": 4.0,
+    "2026-10": 1.0
+   },
+   "yearOnly": null,
+   "byBrand": {
+    "VFF": {
+     "skuCount": 96,
+     "delivered": 165.0,
+     "returned": 61.0,
+     "sold": 75.0,
+     "balance": 29.0
+    },
+    "OLENO": {
+     "skuCount": 9,
+     "delivered": 46.0,
+     "returned": 0,
+     "sold": 43.0,
+     "balance": 3.0
+    }
+   },
+   "firstMonth": "2025-02",
+   "lastMonth": "2026-10",
+   "deliveryDates": [
+    "04/05 จัดส",
+    "CNQ-202507",
+    "CNQ-202511",
+    "QO-2025030",
+    "QO-2025050",
+    "QO-2025120",
+    "QO-2026050"
+   ],
+   "notes": [
+    "No bill (一部納品に伝票なし)"
+   ],
+   "parseWarning": null
+  },
+  {
+   "name": "Caveman",
+   "sheet": "Caveman",
+   "type": "店舗委託",
+   "brands": [
+    "OLENO",
+    "VFF"
+   ],
+   "skuCount": 63,
+   "delivered": 153.0,
+   "returned": 20.0,
+   "netDelivered": 133.0,
+   "sold": 101.0,
+   "balance": 32.0,
+   "monthly": {
+    "2023-10": 5.0,
+    "2023-11": 2.0,
+    "2023-12": 5.0,
+    "2024-01": 3.0,
+    "2024-02": 2.0,
+    "2024-03": 1.0,
+    "2024-05": 3.0,
+    "2024-06": 2.0,
+    "2024-08": 3.0,
+    "2024-09": 1.0,
+    "2024-10": 5.0,
+    "2024-11": 4.0,
+    "2025-01": 3.0,
+    "2025-02": 1.0,
+    "2025-03": 4.0,
+    "2025-05": 4.0,
+    "2025-06": 7.0,
+    "2025-07": 6.0,
+    "2025-08": 12.0,
+    "2025-09": 5.0,
+    "2025-10": 6.0,
+    "2025-11": 4.0,
+    "2025-12": 4.0,
+    "2026-01": 2.0,
+    "2026-03": 2.0,
+    "2026-06": 4.0,
+    "2026-09": 1.0
+   },
+   "yearOnly": null,
+   "byBrand": {
+    "VFF": {
+     "skuCount": 58,
+     "delivered": 131.0,
+     "returned": 20.0,
+     "sold": 83.0,
+     "balance": 28.0
+    },
+    "OLENO": {
+     "skuCount": 5,
+     "delivered": 22.0,
+     "returned": 0,
+     "sold": 18.0,
+     "balance": 4.0
+    }
+   },
+   "firstMonth": "2023-10",
+   "lastMonth": "2026-09",
+   "deliveryDates": [
+    "CN 7/8/24",
+    "CNT-202506",
+    "QO-2023090",
+    "QO-2023110",
+    "QO-2024010",
+    "QO-2024030",
+    "QO-2024040",
+    "QO-2024060",
+    "QO-2024090",
+    "QO-2025030",
+    "QO-2025060",
+    "QO-2025080",
+    "QO-2025090",
+    "QO-2026010"
+   ],
+   "notes": [
+    "17/05 V-Train (BK/BK,M44) x1 (コード無し備考行、集計外)",
+    "No bill (一部納品に伝票なし)"
+   ],
+   "parseWarning": null
+  },
+  {
+   "name": "Central World",
+   "sheet": "Central World (Department)",
+   "type": "デパート委託",
+   "brands": [
+    "BFJ",
+    "Tabi (Marugo)",
+    "VFF"
+   ],
+   "skuCount": 222,
+   "delivered": 525.0,
+   "returned": 0,
+   "netDelivered": 525.0,
+   "sold": 87.0,
+   "balance": 438.0,
+   "monthly": {
+    "2026-05": 38.0,
+    "2026-06": 37.0,
+    "2026-07": 12.0
+   },
+   "yearOnly": null,
+   "byBrand": {
+    "VFF": {
+     "skuCount": 202,
+     "delivered": 426.0,
+     "returned": 0,
+     "sold": 76.0,
+     "balance": 350.0
+    },
+    "Tabi (Marugo)": {
+     "skuCount": 12,
+     "delivered": 27.0,
+     "returned": 0,
+     "sold": 0,
+     "balance": 27.0
+    },
+    "BFJ": {
+     "skuCount": 8,
+     "delivered": 72.0,
+     "returned": 0,
+     "sold": 11.0,
+     "balance": 61.0
+    }
+   },
+   "firstMonth": "2026-05",
+   "lastMonth": "2026-07",
+   "deliveryDates": [
+    "IVT-202604",
+    "IVT-202605",
+    "IVT-202606",
+    "IVT-202607"
+   ],
+   "notes": [],
+   "parseWarning": null
+  },
+  {
+   "name": "Bananarun (2)",
+   "sheet": "Bananarun (2)",
+   "type": "ランニングショップ委託",
+   "brands": [
+    "BFJ",
+    "OLENO"
+   ],
+   "skuCount": 46,
+   "delivered": 166.0,
+   "returned": 39.0,
+   "netDelivered": 127.0,
+   "sold": 42.0,
+   "balance": 85.0,
+   "monthly": {
+    "2024-11": 3.0,
+    "2024-12": 3.0,
+    "2025-01": 3.0,
+    "2025-02": 2.0,
+    "2025-03": 2.0,
+    "2025-04": 1.0,
+    "2025-05": 3.0,
+    "2025-06": 2.0,
+    "2025-07": 1.0,
+    "2025-09": 3.0,
+    "2025-10": 2.0,
+    "2025-12": 2.0,
+    "2026-01": 1.0,
+    "2026-02": 2.0,
+    "2026-03": 2.0,
+    "2026-04": 1.0,
+    "2026-05": 2.0,
+    "2026-07": 1.0,
+    "2026-08": 5.0,
+    "2026-09": 1.0
+   },
+   "yearOnly": null,
+   "byBrand": {
+    "BFJ": {
+     "skuCount": 6,
+     "delivered": 40.0,
+     "returned": 39.0,
+     "sold": 1.0,
+     "balance": 0.0
+    },
+    "OLENO": {
+     "skuCount": 40,
+     "delivered": 126.0,
+     "returned": 0,
+     "sold": 41.0,
+     "balance": 85.0
+    }
+   },
+   "firstMonth": "2024-11",
+   "lastMonth": "2026-09",
+   "deliveryDates": [
+    "18/3 (labe",
+    "QO-2024100",
+    "QO-2026070"
+   ],
+   "notes": [
+    "No bill (一部納品に伝票なし)"
+   ],
+   "parseWarning": null
+  },
+  {
+   "name": "Curve",
+   "sheet": "Curve",
+   "type": "店舗委託",
+   "brands": [
+    "VFF"
+   ],
+   "skuCount": 35,
+   "delivered": 82.0,
+   "returned": 29.0,
+   "netDelivered": 53.0,
+   "sold": 38.0,
+   "balance": 15.0,
+   "monthly": {
+    "2024-04": 9.0,
+    "2024-05": 5.0,
+    "2024-06": 1.0,
+    "2024-07": 1.0,
+    "2024-08": 1.0,
+    "2024-10": 1.0,
+    "2024-11": 1.0,
+    "2025-01": 1.0,
+    "2025-03": 1.0,
+    "2025-04": 2.0,
+    "2025-05": 1.0,
+    "2025-06": 1.0,
+    "2025-07": 4.0,
+    "2025-08": 4.0,
+    "2025-09": 3.0,
+    "2026-01": 2.0
+   },
+   "yearOnly": null,
+   "byBrand": {
+    "VFF": {
+     "skuCount": 35,
+     "delivered": 82.0,
+     "returned": 29.0,
+     "sold": 38.0,
+     "balance": 15.0
+    }
+   },
+   "firstMonth": "2024-04",
+   "lastMonth": "2026-01",
+   "deliveryDates": [
+    "CNQ-202411",
+    "CNQ-202505",
+    "QO-2024040",
+    "QO-2024050",
+    "QO-2024110",
+    "QO-2025050",
+    "QO-2025120"
+   ],
+   "notes": [
+    "นำกลับหมดแล้ว 17/9/26",
+    "No bill (一部納品に伝票なし)"
+   ],
+   "parseWarning": null
+  },
+  {
+   "name": "Central Lat Phrao",
+   "sheet": "Central Lat Phrao (Department)",
+   "type": "デパート委託",
+   "brands": [
+    "BFJ",
+    "Tabi (Marugo)",
+    "VFF"
+   ],
+   "skuCount": 224,
+   "delivered": 322.0,
+   "returned": 0,
+   "netDelivered": 322.0,
+   "sold": 29.0,
+   "balance": 293.0,
+   "monthly": {
+    "2026-04": 3.0,
+    "2026-05": 14.0,
+    "2026-06": 10.0,
+    "2026-07": 2.0
+   },
+   "yearOnly": null,
+   "byBrand": {
+    "VFF": {
+     "skuCount": 201,
+     "delivered": 237.0,
+     "returned": 0,
+     "sold": 28.0,
+     "balance": 209.0
+    },
+    "Tabi (Marugo)": {
+     "skuCount": 13,
+     "delivered": 19.0,
+     "returned": 0,
+     "sold": 0,
+     "balance": 19.0
+    },
+    "BFJ": {
+     "skuCount": 10,
+     "delivered": 66.0,
+     "returned": 0,
+     "sold": 1.0,
+     "balance": 65.0
+    }
+   },
+   "firstMonth": "2026-04",
+   "lastMonth": "2026-07",
+   "deliveryDates": [
+    "IVT-202604",
+    "IVT-202606"
+   ],
+   "notes": [],
+   "parseWarning": "シートのTotal列合計 309 ≠ 納品セル合計 322（Total式が無い行 7 行）。JSONの値はセル実数の再集計。"
+  },
+  {
+   "name": "East West",
+   "sheet": "East West",
+   "type": "店舗委託",
+   "brands": [
+    "BFJ",
+    "OLENO",
+    "VFF"
+   ],
+   "skuCount": 43,
+   "delivered": 90.0,
+   "returned": 0,
+   "netDelivered": 90.0,
+   "sold": 18.0,
+   "balance": 72.0,
+   "monthly": {
+    "2026-08": 14.0,
+    "2026-09": 4.0
+   },
+   "yearOnly": null,
+   "byBrand": {
+    "VFF": {
+     "skuCount": 37,
+     "delivered": 66.0,
+     "returned": 0,
+     "sold": 12.0,
+     "balance": 54.0
+    },
+    "OLENO": {
+     "skuCount": 2,
+     "delivered": 8.0,
+     "returned": 0,
+     "sold": 3.0,
+     "balance": 5.0
+    },
+    "BFJ": {
+     "skuCount": 4,
+     "delivered": 16.0,
+     "returned": 0,
+     "sold": 3.0,
+     "balance": 13.0
+    }
+   },
+   "firstMonth": "2026-08",
+   "lastMonth": "2026-09",
+   "deliveryDates": [
+    "QO-2026030"
+   ],
+   "notes": [],
+   "parseWarning": null
+  },
+  {
+   "name": "K.Pok (2)",
+   "sheet": "K.Pok (2)",
+   "type": "個人・小規模委託",
+   "brands": [
+    "VFF"
+   ],
+   "skuCount": 31,
+   "delivered": 93.0,
+   "returned": 62.0,
+   "netDelivered": 31.0,
+   "sold": 17.0,
+   "balance": 14.0,
+   "monthly": {
+    "2023-08": 1.0,
+    "2023-09": 1.0,
+    "2023-10": 2.0,
+    "2024-01": 12.0,
+    "2024-02": 1.0
+   },
+   "yearOnly": null,
+   "byBrand": {
+    "VFF": {
+     "skuCount": 31,
+     "delivered": 93.0,
+     "returned": 62.0,
+     "sold": 17.0,
+     "balance": 14.0
+    }
+   },
+   "firstMonth": "2023-08",
+   "lastMonth": "2024-02",
+   "deliveryDates": [
+    "2023-08-09",
+    "2023-10-03",
+    "2024-03-11"
+   ],
+   "notes": [],
+   "parseWarning": null
+  },
+  {
+   "name": "K.Pok",
+   "sheet": "K.Pok",
+   "type": "個人・小規模委託",
+   "brands": [
+    "VFF"
+   ],
+   "skuCount": 15,
+   "delivered": 27.0,
+   "returned": 2.0,
+   "netDelivered": 25.0,
+   "sold": 11.0,
+   "balance": 14.0,
+   "monthly": {
+    "2023-08": 1.0,
+    "2023-09": 1.0,
+    "2023-10": 2.0,
+    "2024-01": 4.0,
+    "2024-02": 1.0,
+    "2024-03": 1.0,
+    "2024-05": 1.0
+   },
+   "yearOnly": null,
+   "byBrand": {
+    "VFF": {
+     "skuCount": 15,
+     "delivered": 27.0,
+     "returned": 2.0,
+     "sold": 11.0,
+     "balance": 14.0
+    }
+   },
+   "firstMonth": "2023-08",
+   "lastMonth": "2024-05",
+   "deliveryDates": [
+    "2023-08-09",
+    "2023-10-03",
+    "2024-03-11"
+   ],
+   "notes": [],
+   "parseWarning": null
+  },
+  {
+   "name": "Run2Paradise (Chiang Mai)",
+   "sheet": "Run2Paradise (Chiang Mai)",
+   "type": "ランニングショップ委託",
+   "brands": [
+    "OLENO"
+   ],
+   "skuCount": 19,
+   "delivered": 61.0,
+   "returned": 0,
+   "netDelivered": 61.0,
+   "sold": 9.0,
+   "balance": 52.0,
+   "monthly": {
+    "2026-02": 4.0,
+    "2026-08": 5.0
+   },
+   "yearOnly": null,
+   "byBrand": {
+    "OLENO": {
+     "skuCount": 19,
+     "delivered": 61.0,
+     "returned": 0,
+     "sold": 9.0,
+     "balance": 52.0
+    }
+   },
+   "firstMonth": "2026-02",
+   "lastMonth": "2026-08",
+   "deliveryDates": [
+    "QO-2026010"
+   ],
+   "notes": [],
+   "parseWarning": null
+  },
+  {
+   "name": "Bonita Cafe",
+   "sheet": "Bonita Cafe",
+   "type": "カフェ委託",
+   "brands": [
+    "VFF"
+   ],
+   "skuCount": 23,
+   "delivered": 26.0,
+   "returned": 18.0,
+   "netDelivered": 8.0,
+   "sold": 8.0,
+   "balance": 0.0,
+   "monthly": {
+    "2023-10": 1.0,
+    "2023-12": 2.0,
+    "2024-07": 1.0,
+    "2024-08": 2.0,
+    "2025-07": 2.0
+   },
+   "yearOnly": null,
+   "byBrand": {
+    "VFF": {
+     "skuCount": 23,
+     "delivered": 26.0,
+     "returned": 18.0,
+     "sold": 8.0,
+     "balance": 0.0
+    }
+   },
+   "firstMonth": "2023-10",
+   "lastMonth": "2025-07",
+   "deliveryDates": [
+    "21/7/25",
+    "QO-2023080",
+    "QO-2024060",
+    "QO-2024080",
+    "QO-2024090"
+   ],
+   "notes": [],
+   "parseWarning": null
+  },
+  {
+   "name": "BananaRun",
+   "sheet": "BananaRun",
+   "type": "ランニングショップ委託",
+   "brands": [
+    "VFF"
+   ],
+   "skuCount": 19,
+   "delivered": 21.0,
+   "returned": 0,
+   "netDelivered": 21.0,
+   "sold": 0,
+   "balance": 21.0,
+   "monthly": {},
+   "yearOnly": null,
+   "byBrand": {
+    "VFF": {
+     "skuCount": 19,
+     "delivered": 21.0,
+     "returned": 0,
+     "sold": 0,
+     "balance": 21.0
+    }
+   },
+   "firstMonth": "",
+   "lastMonth": "",
+   "deliveryDates": [
+    "2024-03-27"
+   ],
+   "notes": [],
+   "parseWarning": null
+  }
+ ]
+}

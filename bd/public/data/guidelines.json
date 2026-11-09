@@ -1,0 +1,50 @@
+{
+  "updatedAt": "2026-11-09",
+  "brands": [
+    {"brand": "VFF", "title": "Vibram FiveFingers ブランド／マーケティングガイドライン",
+     "docs": [
+       {"label": "Marketing Guidelines_Vibram FiveFingers.pdf（EN 原本・17p）", "url": "https://drive.google.com/file/d/1G9JVTwtHrFsFzlpvBCakpi1dzJYdKrRR/view", "note": "p3 Purpose / p4 Logo / p5 Font / p6 Color / p7 Consistency / p8 Social-Digital / p9 Fundamentals / p10-15 Showroom / p16 Retail / p17 FY27 Roadmap"},
+       {"label": "同 JP 版（NotebookLM 生成の要約スライド）", "url": "https://drive.google.com/file/d/1IVOyva6tum1y3fdMglV2i755XbEONdS7/view", "note": "要約なので最終判断は EN 原本で"},
+       {"label": "同 TH 版", "url": "https://drive.google.com/file/d/1BgZWgYeW2JYuJ4Cu-m70kia6BORW1EGR/view", "note": "店舗スタッフ向け"},
+       {"label": "Logo Guidelines_Vibram FiveFingers.pdf（Corporate Brand Guidelines 2021・約 12p）", "url": "https://drive.google.com/file/d/1TJ2gFJONQ7YpOXnIsmaEERs2M5NI-43k/view", "note": "ロゴ比率・セーフエリア・Do/Don't"},
+       {"label": "Vibram ブランド取り扱い会議 要旨（2026-07、EN + 日本語訳）", "url": "https://docs.google.com/document/d/12HtnJLsJbsgbDYtEQ3KNFvug-6OYRH1h8ajP_YTvA34/edit", "note": "モノブランド店禁止の経緯"}
+     ],
+     "palette": [{"hex": "#FECE15", "name": "Vibram Yellow (Pantone 123C)"}, {"hex": "#000319", "name": "Vibram Black（リッチブラック）"}, {"hex": "#241F0C", "name": ""}, {"hex": "#444023", "name": ""}, {"hex": "#3E3200", "name": ""}, {"hex": "#432F2E", "name": ""}, {"hex": "#E6E1D2", "name": ""}, {"hex": "#D0D0D0", "name": ""}, {"hex": "#FFFFFF", "name": ""}],
+     "paletteSrc": "Marketing Guidelines EN p6",
+     "fonts": [{"name": "Brandon Grotesque", "use": "印刷・デジタル全般（イタリック可）。フォントファイルは Drive VFF/FONT brandon_grotesque.zip"}, {"name": "Urbanist", "use": "Vibram Web サイト専用（Google Fonts。ニュースレターにも推奨）"}],
+     "fontsSrc": "Marketing Guidelines EN p5",
+     "rules": [
+       {"page": "p3", "title": "Purpose", "text": "製品を売っているのではなく、あらゆるタッチポイントで Vibram FiveFingers の世界観を体現する責任を負う。グローバルで一貫したブランドアイデンティティの維持が絶対条件。"},
+       {"page": "p4", "title": "ロゴ", "text": "新ロゴを全タッチポイントに導入。Vibram と FiveFingers を絶対に切り離さない（常にセット）。無地背景では高コントラストを維持。イエロー系背景、要素過多（ビジー）な背景、シルエットやコントラストを曖昧にする表現は不可。"},
+       {"page": "Logo GL", "title": "ロゴの構造", "text": "八角形（Octagon）は常に必須。ロゴを他要素と重ねない。非準拠ロゴ禁止。Vibram スクリプト単体は商品への直接印刷のみ可（同一商品に八角形ロゴ併用が条件）。セーフエリア＝スクリプト高さの 1/2（モジュール X）。"},
+       {"page": "p5", "title": "フォント", "text": "公式フォントは Brandon Grotesque。Urbanist は Web 専用。"},
+       {"page": "p6", "title": "カラー", "text": "右のパレットのみ使用。黒はリッチブラック（#000319）。Vibram Yellow は #FECE15 / Pantone 123C。"},
+       {"page": "p7", "title": "一貫性", "text": "承認済みロゴ・タイポ・カラー・レイアウトのみ使用。承認済みトーン＆ビジュアル言語を保持。過度なグラフィック・エフェクト・販促装飾を避ける。"},
+       {"page": "p8", "title": "SNS・デジタル", "text": "グローバル承認済み画像・動画のみ使用。アセット改変・未承認グラフィック追加・ブランド方向性の独自解釈は禁止。ローカライズ版は必ず事前承認。ブランドカレンダー／ローンチ戦略に従う。"},
+       {"page": "p9", "title": "基礎教育コンテンツ", "text": "PICK YOUR STYLE / TRANSITION TIPS / HOW TO PUT THEM ON / CARE INSTRUCTIONS を全消費者接点で展開。"},
+       {"page": "p10-15", "title": "ショールーム・VMD", "text": "新シーズン・重点商品を優先。意図的でクリーン、ストーリー性のある陳列。旧製品・過剰サイネージ・詰め込み禁止（Less is More）。新用語（terrain, second skin）を採用。ブランド承認なしのアドホック販促物の印刷は厳禁。"},
+       {"page": "p16", "title": "リテール（常設・仮設・ポップアップ）", "text": "物理空間での VFF ロゴ使用はすべてグローバルチームの正式承認が必須。ポップアップは「戦略計画」の一部として提出。"},
+       {"page": "p17", "title": "FY27 ロードマップ", "text": "2026/5/27 セールスミーティング → 9/1 FY27 マーケティングプラン提出 → 9/15 グローバル FB → 10/1 最終サインオフ（Critical Gate）。Act as one brand. Plan with intention. Align with global direction. Deliver one clear message."}
+     ],
+     "localRules": [
+       {"title": "モノブランド店の禁止（2026-07 会議）", "text": "Vibram 本部はディストリビューターによる VFF 専門店の運営を世界的に禁止。タイの 2 店は VFF ロゴ撤去に合意（夏繁忙期後に改装）。既存店をマルチブランドのベアフット専門店に転換することは容認（It's your shop）。", "src": "Vibram 会議要旨"},
+       {"title": "百貨店の委託コーナー", "text": "交渉余地あり。適切な百貨店であること、グローバル承認アセット・ロゴガイドライン準拠の展示が条件。", "src": "Vibram 会議要旨"},
+       {"title": "ローカライズ", "text": "画像への文字入れ、現地語カタログなどのローカライズは原則不可。本部は「正規販売店」証明書／ステッカーを準備中。", "src": "Vibram 会議要旨"},
+       {"title": "社内ルール", "text": "店舗でロゴ・アートワークを使わない。VFF 単独の売り場をつくらない。VFF を扱う新しい施策は必ず GM に確認する。", "src": "pptx S14"}
+     ]},
+    {"brand": "Vivo", "title": "Vivobarefoot Brand Guidelines",
+     "docs": [
+       {"label": "Vivo Brand Guidelines フォルダ（ページ分割 PDF 約 120 枚 + ロゴ png）", "url": "https://drive.google.com/drive/folders/1vMEsC7VF2ByQpKbK1M0--1Q302GWPsYY", "note": "章: 1. Think (29) / 2. Learn (7) / 3. Do (46) / 4. Community (2)。zip 304MB と最新版 VIVO_BRAND_GUIDELINES_11_MAY_2026.pdf (430MB) も同じ場所"},
+       {"label": "Vivobarefoot ロゴ一式（Crimson 共有 / LOGO）", "url": "https://drive.google.com/drive/folders/1iXHg3Q0p1WKIIkwBhlNtXxaIsdeEK118", "note": "ai 3・png 5・jpg 1"},
+       {"label": "Product Training Vivobarefoot.pdf（タイ語）", "url": "https://drive.google.com/file/d/1mr73Tlirkfg66Zb3B-3EABkELPcTXyhH/view", "note": "History / Philosophy (Wide・Thin・Flexible) / Fit・Feel・Flex / モデル別 / Size Chart"}
+     ],
+     "palette": [], "paletteSrc": "", "fonts": [], "fontsSrc": "",
+     "rules": [
+       {"page": "—", "title": "要点は未抽出", "text": "ガイドライン本体が 430MB の PDF（またはページ分割 120 枚）のため、この環境では要点（ロゴ使用ルール・カラーコード・フォント・写真トーン・SNS 表記）を抽出できていません。情報リクエスト B-5 を参照。原本は左のリンクから。"},
+       {"page": "Training", "title": "ブランドの哲学", "text": "Wide（幅広）・Thin（薄い）・Flexible（柔らかい）。2012 年、Clark 兄弟が創業。Fit / Feel / Flex で説明する。"}
+     ],
+     "localRules": [
+       {"title": "協議内容は社外秘", "text": "Crimson との Exclusive Retail Partner 化の協議（旗艦店・卸・公式 SNS・公式 Web）は未確定で社外秘。特に VFF 側には店頭での併売を超える話を伝えていない。", "src": "pptx S8, S14"}
+     ]}
+  ]
+}

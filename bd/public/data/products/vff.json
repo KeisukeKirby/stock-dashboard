@@ -1,0 +1,912 @@
+{
+ "brand": "VFF",
+ "updatedAt": "2026-11-09",
+ "asOf": "2026 年のイベント持出リストの売価（ราคาขาย）。定価として扱ってよいかは情報リクエスト参照",
+ "source": "Drive: BAREFOOTINC THAILAND/Store・Event/List goods for event_2026/*.xlsx（SKU・売価）→ モデル単位に集約。 カテゴリは VFF CATALOGUE_FW27.pdf の分類（載っていないモデルは空欄）。画像は Drive の VFF_PRODUCTS フォルダ参照。",
+ "items": [
+  {
+   "id": "vff-graspifier",
+   "name": "Graspifier",
+   "nameJa": "",
+   "model": "VFF Graspifier",
+   "code": "VFF0021",
+   "category": "Fitness",
+   "priceThb": 4900.0,
+   "priceThbMax": 4900.0,
+   "colours": [
+    "Black",
+    "Ivory/Fuchsia",
+    "Total Black"
+   ],
+   "sizes": [
+    "M40",
+    "M41",
+    "M42",
+    "M43",
+    "M44",
+    "M45",
+    "M46",
+    "M47",
+    "W36",
+    "W37",
+    "W38",
+    "W39",
+    "W40",
+    "W41",
+    "W42"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "skuCount": 23,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx; Event.PILATES FEST.6-7.Jun.2026.xlsx"
+  },
+  {
+   "id": "vff-groundsplay",
+   "name": "Groundsplay",
+   "nameJa": "",
+   "model": "VFF Groundsplay",
+   "code": "VFF0030",
+   "category": "Fitness",
+   "priceThb": 6200.0,
+   "priceThbMax": 6200.0,
+   "colours": [
+    "Black"
+   ],
+   "sizes": [
+    "M40",
+    "M41",
+    "M42",
+    "M43",
+    "M44",
+    "M45",
+    "M46",
+    "M47"
+   ],
+   "genders": [
+    "Men"
+   ],
+   "skuCount": 8,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "vff-kmd-evo",
+   "name": "KMD Evo",
+   "nameJa": "",
+   "model": "VFF KMD Evo",
+   "code": "VFF0018",
+   "category": "Fitness",
+   "priceThb": 7200.0,
+   "priceThbMax": 7200.0,
+   "colours": [
+    "Black",
+    "Yellow/Blue/Red"
+   ],
+   "sizes": [
+    "M40",
+    "M41",
+    "M42",
+    "M43",
+    "M44",
+    "M45",
+    "M46",
+    "M47"
+   ],
+   "genders": [
+    "Men"
+   ],
+   "skuCount": 16,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx; Pop up_CTW.1 May - 30 Jul (3 months).xlsx"
+  },
+  {
+   "id": "vff-kso-evo",
+   "name": "KSO EVO",
+   "nameJa": "",
+   "model": "VFF KSO EVO",
+   "code": "VFF0009",
+   "category": "Fitness",
+   "priceThb": 5200.0,
+   "priceThbMax": 5200.0,
+   "colours": [
+    "Black",
+    "Black/Rose",
+    "Black/Yellow",
+    "Deep Lake/Black",
+    "Fig/A Green",
+    "Ivory/Black",
+    "Yellow/White"
+   ],
+   "sizes": [
+    "M39",
+    "M40",
+    "M41",
+    "M42",
+    "M43",
+    "M44",
+    "M45",
+    "M46",
+    "M47",
+    "M48",
+    "W35",
+    "W36",
+    "W37",
+    "W38",
+    "W39",
+    "W40",
+    "W41",
+    "W42"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "skuCount": 76,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx; Event.PILATES FEST.6-7.Jun.2026.xlsx; Pop up_CTW.1 May - 30 Jul (3 months).xlsx"
+  },
+  {
+   "id": "vff-v-alpha",
+   "name": "V-Alpha",
+   "nameJa": "",
+   "model": "VFF V-Alpha",
+   "code": "VFF0023",
+   "category": "Fitness",
+   "priceThb": 5800.0,
+   "priceThbMax": 5800.0,
+   "colours": [
+    "Black",
+    "Deep Lake",
+    "Lime Green/Black"
+   ],
+   "sizes": [
+    "M39",
+    "M40",
+    "M41",
+    "M42",
+    "M43",
+    "M44",
+    "M45",
+    "M46",
+    "M47",
+    "M48",
+    "W36",
+    "W37",
+    "W38",
+    "W39",
+    "W40",
+    "W41"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "skuCount": 38,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx; Pop up_CTW.1 May - 30 Jul (3 months).xlsx"
+  },
+  {
+   "id": "vff-v-soul",
+   "name": "V-Soul",
+   "nameJa": "",
+   "model": "VFF V-Soul",
+   "code": "VFF0008",
+   "category": "Fitness",
+   "priceThb": 4800.0,
+   "priceThbMax": 4800.0,
+   "colours": [
+    "Baby Blue",
+    "Black",
+    "Brown",
+    "Fig/A. Green",
+    "Fuchsia",
+    "Ivory/Dusty Pink",
+    "Lime Green",
+    "Purple",
+    "Silver"
+   ],
+   "sizes": [
+    "W35",
+    "W36",
+    "W37",
+    "W38",
+    "W39",
+    "W40",
+    "W41",
+    "W42",
+    "W43"
+   ],
+   "genders": [
+    "Women"
+   ],
+   "skuCount": 72,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx; Pop up_CTW.1 May - 30 Jul (3 months).xlsx"
+  },
+  {
+   "id": "vff-v-train-2-0",
+   "name": "V-Train 2.0",
+   "nameJa": "",
+   "model": "VFF V-Train 2.0",
+   "code": "VFF0005",
+   "category": "Fitness",
+   "priceThb": 6200.0,
+   "priceThbMax": 6200.0,
+   "colours": [
+    "Black/Black",
+    "Black/Pink",
+    "Gray Camo",
+    "Lime Green/Gray"
+   ],
+   "sizes": [
+    "M39",
+    "M40",
+    "M41",
+    "M42",
+    "M43",
+    "M44",
+    "M45",
+    "M46",
+    "M47",
+    "M48",
+    "W36",
+    "W37",
+    "W38",
+    "W42"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "skuCount": 33,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx; Pop up_CTW.1 May - 30 Jul (3 months).xlsx"
+  },
+  {
+   "id": "vibram-furoshiki",
+   "name": "Vibram Furoshiki",
+   "nameJa": "",
+   "model": "Vibram Furoshiki",
+   "code": "VFF0015",
+   "category": "Furoshiki（ラップシューズ）",
+   "priceThb": 4980.0,
+   "priceThbMax": 4980.0,
+   "colours": [
+    "Riot"
+   ],
+   "sizes": [
+    "W37"
+   ],
+   "genders": [
+    "Women"
+   ],
+   "skuCount": 1,
+   "image": null,
+   "intro": "",
+   "source": "Pop up_CTW.1 May - 30 Jul (3 months).xlsx"
+  },
+  {
+   "id": "vibram-furoshiki-eco-f",
+   "name": "Vibram Furoshiki Eco F",
+   "nameJa": "",
+   "model": "Vibram Furoshiki Eco F",
+   "code": "VFF0015",
+   "category": "Furoshiki（ラップシューズ）",
+   "priceThb": 4980.0,
+   "priceThbMax": 4980.0,
+   "colours": [
+    "Black",
+    "Denim",
+    "Ice",
+    "Mustard"
+   ],
+   "sizes": [
+    "M41",
+    "M42",
+    "M43",
+    "M44",
+    "M45",
+    "M46",
+    "M47",
+    "W36",
+    "W38",
+    "W39",
+    "W40",
+    "W41"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "skuCount": 23,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx; Event.Pop Up Sneaker @T21 Pattaya.21-4 May.2026.xlsx; Pop up_CTW.1 May - 30 Jul (3 months).xlsx"
+  },
+  {
+   "id": "vibram-furoshiki-yuwa",
+   "name": "Vibram Furoshiki Yuwa",
+   "nameJa": "",
+   "model": "Vibram Furoshiki Yuwa",
+   "code": "VFF0015",
+   "category": "Furoshiki（ラップシューズ）",
+   "priceThb": 5200.0,
+   "priceThbMax": 5200.0,
+   "colours": [
+    "Cranberry",
+    "SilverBirch"
+   ],
+   "sizes": [
+    "36",
+    "38",
+    "39",
+    "40",
+    "41",
+    "42",
+    "43",
+    "44",
+    "45",
+    "46"
+   ],
+   "genders": [],
+   "skuCount": 15,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx; Event.Pop Up Sneaker @T21 Pattaya.21-4 May.2026.xlsx; Pop up_CTW.1 May - 30 Jul (3 months).xlsx"
+  },
+  {
+   "id": "vff-breezandal",
+   "name": "Breezandal",
+   "nameJa": "",
+   "model": "VFF Breezandal",
+   "code": "VFF0022",
+   "category": "Outdoor",
+   "priceThb": 5980.0,
+   "priceThbMax": 5980.0,
+   "colours": [
+    "Black",
+    "Ivory/Green",
+    "Mustard/Black"
+   ],
+   "sizes": [
+    "38",
+    "M38",
+    "M39",
+    "M40",
+    "M41",
+    "M42",
+    "M43",
+    "M44",
+    "M45",
+    "M46",
+    "M47",
+    "W36",
+    "W37",
+    "W38",
+    "W39",
+    "W40",
+    "W41",
+    "W42"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "skuCount": 41,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "vff-scramkey",
+   "name": "Scramkey",
+   "nameJa": "",
+   "model": "VFF Scramkey",
+   "code": "VFF0025",
+   "category": "Outdoor",
+   "priceThb": 6400.0,
+   "priceThbMax": 6400.0,
+   "colours": [
+    "Black",
+    "Deep Lake/Black"
+   ],
+   "sizes": [
+    "U36",
+    "U37",
+    "U38",
+    "U39",
+    "U40",
+    "U41",
+    "U42",
+    "U43",
+    "U44",
+    "U45",
+    "U46",
+    "U47",
+    "U48"
+   ],
+   "genders": [
+    "Unisex"
+   ],
+   "skuCount": 22,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "vff-spidrwalk",
+   "name": "Spidrwalk",
+   "nameJa": "",
+   "model": "VFF Spidrwalk",
+   "code": "VFF0026",
+   "category": "Outdoor",
+   "priceThb": 5980.0,
+   "priceThbMax": 5980.0,
+   "colours": [
+    "Fuchsia",
+    "Lime Green",
+    "Total Black"
+   ],
+   "sizes": [
+    "M39",
+    "M40",
+    "M41",
+    "M42",
+    "M43",
+    "M44",
+    "M45",
+    "M46",
+    "M47",
+    "M48",
+    "W36",
+    "W37",
+    "W38",
+    "W39",
+    "W40",
+    "W41",
+    "W42"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "skuCount": 31,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "vff-trailope",
+   "name": "Trailope",
+   "nameJa": "",
+   "model": "VFF Trailope",
+   "code": "VFF0024",
+   "category": "Running",
+   "priceThb": 6200.0,
+   "priceThbMax": 6200.0,
+   "colours": [
+    "Black",
+    "Deep Lake"
+   ],
+   "sizes": [
+    "M39",
+    "M40",
+    "M41",
+    "M42",
+    "M43",
+    "M44",
+    "M45",
+    "M46",
+    "M47",
+    "M48"
+   ],
+   "genders": [
+    "Men"
+   ],
+   "skuCount": 18,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx; Pop up_CTW.1 May - 30 Jul (3 months).xlsx"
+  },
+  {
+   "id": "vff-v-run",
+   "name": "V-Run",
+   "nameJa": "",
+   "model": "VFF V-Run",
+   "code": "VFF0002",
+   "category": "Running",
+   "priceThb": 5980.0,
+   "priceThbMax": 5980.0,
+   "colours": [
+    "Black Lime/Black",
+    "Black/Blue",
+    "Black/Fig",
+    "Black/Yellow",
+    "Black/Yellow/Purple",
+    "Blue/Blue",
+    "Brown Ivory/Black",
+    "Deep Lake/Ivory",
+    "Fig/Ivory/A.Green",
+    "Golden/Yellow/Black",
+    "Ivory/Yellow",
+    "Lime/Blue",
+    "Total Black",
+    "Total Ivory"
+   ],
+   "sizes": [
+    "M38",
+    "M39",
+    "M40",
+    "M41",
+    "M42",
+    "M43",
+    "M44",
+    "M45",
+    "M46",
+    "M47",
+    "M48",
+    "W36",
+    "W37",
+    "W38",
+    "W39",
+    "W40",
+    "W41",
+    "W42"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "skuCount": 103,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jan-Feb.2026.xlsx; Event.Jul.2026.xlsx; Event.Mar.2026.xlsx; Event.Pop Up Sneaker @T21 Pattaya.21-4 May.2026.xlsx; Pop up_CTW.1 May - 30 Jul (3 months).xlsx"
+  },
+  {
+   "id": "vff-v-trek",
+   "name": "V-Trek",
+   "nameJa": "",
+   "model": "VFF V-Trek",
+   "code": "VFF0017",
+   "category": "Running",
+   "priceThb": 5980.0,
+   "priceThbMax": 5980.0,
+   "colours": [
+    "Black/Black",
+    "Military/Dark Gray"
+   ],
+   "sizes": [
+    "M40",
+    "M41",
+    "M42",
+    "M43",
+    "M44",
+    "M45",
+    "M46",
+    "M47",
+    "W36",
+    "W37",
+    "W38",
+    "W39",
+    "W40",
+    "W41"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "skuCount": 21,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx; Pop up_CTW.1 May - 30 Jul (3 months).xlsx"
+  },
+  {
+   "id": "vff-socks-crew-summer",
+   "name": "Socks Crew Summer",
+   "nameJa": "",
+   "model": "VFF Socks Crew Summer",
+   "code": "VFF0028",
+   "category": "Socks",
+   "priceThb": 650.0,
+   "priceThbMax": 650.0,
+   "colours": [
+    "Black"
+   ],
+   "sizes": [
+    "L",
+    "M",
+    "S",
+    "XL"
+   ],
+   "genders": [
+    "Men"
+   ],
+   "skuCount": 4,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "vff-socks-high-crew-summer",
+   "name": "Socks High Crew Summer",
+   "nameJa": "",
+   "model": "VFF Socks High Crew Summer",
+   "code": "VFF0029",
+   "category": "Socks",
+   "priceThb": 700.0,
+   "priceThbMax": 700.0,
+   "colours": [
+    "Black"
+   ],
+   "sizes": [
+    "L",
+    "M",
+    "S",
+    "XL"
+   ],
+   "genders": [
+    "Men"
+   ],
+   "skuCount": 4,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "vff-socks-mini-crew-summer",
+   "name": "Socks Mini Crew Summer",
+   "nameJa": "",
+   "model": "VFF Socks Mini Crew Summer",
+   "code": "VFF0027",
+   "category": "Socks",
+   "priceThb": 600.0,
+   "priceThbMax": 600.0,
+   "colours": [
+    "Black",
+    "Fig",
+    "Ivory",
+    "Lime"
+   ],
+   "sizes": [
+    "L",
+    "M",
+    "S",
+    "XL"
+   ],
+   "genders": [
+    "Men"
+   ],
+   "skuCount": 16,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "vff-cvt-hemp",
+   "name": "CVT-Hemp",
+   "nameJa": "",
+   "model": "VFF CVT-Hemp",
+   "code": "VFF0013",
+   "category": "Walking",
+   "priceThb": 5400.0,
+   "priceThbMax": 5400.0,
+   "colours": [
+    "Black",
+    "Khaki"
+   ],
+   "sizes": [
+    "M40",
+    "M41",
+    "M42",
+    "M43",
+    "M44",
+    "M45",
+    "M46",
+    "M47",
+    "W36",
+    "W37",
+    "W38",
+    "W39",
+    "W40",
+    "W41",
+    "W42"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "skuCount": 17,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx; Pop up_CTW.1 May - 30 Jul (3 months).xlsx"
+  },
+  {
+   "id": "vff-el-x-knit",
+   "name": "EL-X Knit",
+   "nameJa": "",
+   "model": "VFF EL-X Knit",
+   "code": "VFF0010",
+   "category": "Walking",
+   "priceThb": 4900.0,
+   "priceThbMax": 4900.0,
+   "colours": [
+    "Black",
+    "Gray"
+   ],
+   "sizes": [
+    "M45",
+    "M46",
+    "M47"
+   ],
+   "genders": [
+    "Men"
+   ],
+   "skuCount": 5,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx; Pop up_CTW.1 May - 30 Jul (3 months).xlsx"
+  },
+  {
+   "id": "vff-cvt-leather",
+   "name": "CVT-Leather",
+   "nameJa": "",
+   "model": "VFF CVT-Leather",
+   "code": "VFF0019",
+   "category": "",
+   "priceThb": 5800.0,
+   "priceThbMax": 5800.0,
+   "colours": [
+    "Brown"
+   ],
+   "sizes": [
+    "M47"
+   ],
+   "genders": [
+    "Men"
+   ],
+   "skuCount": 1,
+   "image": null,
+   "intro": "",
+   "source": "Pop up_CTW.1 May - 30 Jul (3 months).xlsx"
+  },
+  {
+   "id": "vff-kso",
+   "name": "KSO",
+   "nameJa": "",
+   "model": "VFF KSO",
+   "code": "VFF0009",
+   "category": "",
+   "priceThb": 5400.0,
+   "priceThbMax": 5400.0,
+   "colours": [
+    "Black/Black"
+   ],
+   "sizes": [
+    "M40",
+    "M41",
+    "M42",
+    "M43",
+    "M44",
+    "M45",
+    "M46",
+    "M47"
+   ],
+   "genders": [
+    "Men"
+   ],
+   "skuCount": 8,
+   "image": null,
+   "intro": "",
+   "source": "Pop up_CTW.1 May - 30 Jul (3 months).xlsx"
+  },
+  {
+   "id": "vff-kso-eco",
+   "name": "KSO ECO",
+   "nameJa": "",
+   "model": "VFF KSO ECO",
+   "code": "VFF0012",
+   "category": "",
+   "priceThb": 5200.0,
+   "priceThbMax": 5200.0,
+   "colours": [
+    "Beige",
+    "Gray"
+   ],
+   "sizes": [
+    "M40",
+    "M41",
+    "M45",
+    "M46",
+    "M47",
+    "W36",
+    "W37"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "skuCount": 9,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx; Event.Mar.2026.xlsx; Pop up_CTW.1 May - 30 Jul (3 months).xlsx"
+  },
+  {
+   "id": "vff-v-aqua",
+   "name": "V-Aqua",
+   "nameJa": "",
+   "model": "VFF V-Aqua",
+   "code": "VFF0001",
+   "category": "",
+   "priceThb": 4900.0,
+   "priceThbMax": 4900.0,
+   "colours": [
+    "Black",
+    "Grey",
+    "Light Grey Blue"
+   ],
+   "sizes": [
+    "M45",
+    "M46",
+    "M47",
+    "M48",
+    "W36",
+    "W37",
+    "W39",
+    "W41",
+    "W42"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "skuCount": 11,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jan-Feb.2026.xlsx; Event.Jul.2026.xlsx; Event.Mar.2026.xlsx; Event.Pop Up Sneaker @T21 Pattaya.21-4 May.2026.xlsx"
+  },
+  {
+   "id": "vff-v-trail-2-0",
+   "name": "V-Trail 2.0",
+   "nameJa": "",
+   "model": "VFF V-Trail 2.0",
+   "code": "VFF0004",
+   "category": "",
+   "priceThb": 5800.0,
+   "priceThbMax": 5800.0,
+   "colours": [
+    "Black/Yellow",
+    "Pompeian Red/Black"
+   ],
+   "sizes": [
+    "M39",
+    "M40",
+    "M41",
+    "M43",
+    "M46",
+    "M47",
+    "M48",
+    "W37",
+    "W38",
+    "W39"
+   ],
+   "genders": [
+    "Men",
+    "Women"
+   ],
+   "skuCount": 12,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jan-Feb.2026.xlsx; Event.Mar.2026.xlsx; Pop up_CTW.1 May - 30 Jul (3 months).xlsx"
+  }
+ ]
+}

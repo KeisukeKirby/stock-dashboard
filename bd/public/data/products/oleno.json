@@ -1,0 +1,478 @@
+{
+ "brand": "OLENO",
+ "updatedAt": "2026-11-09",
+ "asOf": "2026 年のイベント持出リストの売価（ราคาขาย）。定価として扱ってよいかは情報リクエスト参照",
+ "source": "Drive: BAREFOOTINC THAILAND/Store・Event/List goods for event_2026/*.xlsx（SKU・売価）→ モデル単位に集約。 17 商品の説明・PDF・画像は OLENO カタログ (oleno-catalog.vercel.app) 参照（この環境から取得不可、情報リクエスト A-5）。シリーズ名は Drive「Oleno Thailand 提供画像」のフォルダ名と対応。",
+ "items": [
+  {
+   "id": "oleno-arm-sleeve-ul",
+   "name": "Arm Sleeve UL",
+   "nameJa": "",
+   "model": "Oleno Arm Sleeve UL",
+   "code": "OLN0013",
+   "category": "アームスリーブ",
+   "priceThb": 700.0,
+   "priceThbMax": 700.0,
+   "colours": [
+    "Black Navy/Cherry",
+    "Black/Charcoal",
+    "Black/Khaki",
+    "Charcoal/Light Gray",
+    "Emerald/Smoke Blue",
+    "Jungle Green/Melon"
+   ],
+   "sizes": [
+    "M",
+    "S"
+   ],
+   "genders": [
+    "Men"
+   ],
+   "skuCount": 12,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-arm-sleeve-ul-with-thumb-hole",
+   "name": "Arm Sleeve UL With Thumb Hole",
+   "nameJa": "",
+   "model": "Oleno Arm Sleeve UL With Thumb Hole",
+   "code": "OLN0014",
+   "category": "アームスリーブ",
+   "priceThb": 800.0,
+   "priceThbMax": 800.0,
+   "colours": [
+    "Black/Charcoal",
+    "Black/Emerald",
+    "Brown/Red",
+    "Charcoal/Gold"
+   ],
+   "sizes": [
+    "L",
+    "M",
+    "S"
+   ],
+   "genders": [
+    "Men"
+   ],
+   "skuCount": 9,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-calf-protection",
+   "name": "Calf Protection",
+   "nameJa": "",
+   "model": "Oleno Calf Protection",
+   "code": "OLN0010",
+   "category": "カーフサポーター",
+   "priceThb": 900.0,
+   "priceThbMax": 900.0,
+   "colours": [
+    "Black"
+   ],
+   "sizes": [
+    "L",
+    "M",
+    "S",
+    "XL"
+   ],
+   "genders": [
+    "Men"
+   ],
+   "skuCount": 4,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-calf-supporten-bicolor",
+   "name": "Calf Supporten Bicolor",
+   "nameJa": "",
+   "model": "Oleno Calf Supporten Bicolor",
+   "code": "OLN0012",
+   "category": "カーフサポーター",
+   "priceThb": 800.0,
+   "priceThbMax": 800.0,
+   "colours": [
+    "Black/Charcoal",
+    "Navy/Red"
+   ],
+   "sizes": [
+    "L",
+    "M"
+   ],
+   "genders": [
+    "Men"
+   ],
+   "skuCount": 4,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-calf-supporten-pixel-map",
+   "name": "Calf Supporten Pixel Map",
+   "nameJa": "",
+   "model": "Oleno Calf Supporten Pixel Map",
+   "code": "OLN0015",
+   "category": "カーフサポーター",
+   "priceThb": 800.0,
+   "priceThbMax": 800.0,
+   "colours": [
+    "Black"
+   ],
+   "sizes": [
+    "L",
+    "M"
+   ],
+   "genders": [
+    "Men"
+   ],
+   "skuCount": 2,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-calf-supporten-plain",
+   "name": "Calf Supporten Plain",
+   "nameJa": "",
+   "model": "Oleno Calf Supporten Plain",
+   "code": "OLN0011",
+   "category": "カーフサポーター",
+   "priceThb": 800.0,
+   "priceThbMax": 800.0,
+   "colours": [
+    "Black",
+    "Navy"
+   ],
+   "sizes": [
+    "L",
+    "M"
+   ],
+   "genders": [
+    "Men"
+   ],
+   "skuCount": 4,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-comod",
+   "name": "Comod",
+   "nameJa": "",
+   "model": "Oleno Comod",
+   "code": "OLN0019",
+   "category": "ソックス（Comod(y)）",
+   "priceThb": 660.0,
+   "priceThbMax": 660.0,
+   "colours": [
+    "Y) Life(22-24, Black",
+    "Y) Life(22-24, Green",
+    "Y) Life(22-24, Orange",
+    "Y) Life(22-24, Saxophone",
+    "Y) Life(24-26, Black",
+    "Y) Life(24-26, Green",
+    "Y) Life(24-26, Orange",
+    "Y) Life(24-26, Saxophone",
+    "Y) Life(26-28, Black",
+    "Y) Life(26-28, Green",
+    "Y) Life(26-28, Orange",
+    "Y) Life(26-28, Saxophone"
+   ],
+   "sizes": [],
+   "genders": [],
+   "skuCount": 12,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-performance-wool-crew-heavyweight",
+   "name": "Performance Wool Crew Heavyweight",
+   "nameJa": "",
+   "model": "Oleno Performance Wool Crew Heavyweight",
+   "code": "OLN0018",
+   "category": "ソックス（Performance Wool）",
+   "priceThb": 1400.0,
+   "priceThbMax": 1400.0,
+   "colours": [
+    "Gray"
+   ],
+   "sizes": [
+    "22-24",
+    "24-26",
+    "26-28"
+   ],
+   "genders": [],
+   "skuCount": 3,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-performance-wool-crew-middle-thickness",
+   "name": "Performance Wool Crew Middle Thickness",
+   "nameJa": "",
+   "model": "Oleno Performance Wool Crew Middle Thickness",
+   "code": "OLN0017",
+   "category": "ソックス（Performance Wool）",
+   "priceThb": 940.0,
+   "priceThbMax": 940.0,
+   "colours": [
+    "Gray"
+   ],
+   "sizes": [
+    "22-24",
+    "24-26",
+    "26-28"
+   ],
+   "genders": [],
+   "skuCount": 3,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-s-70",
+   "name": "S-70",
+   "nameJa": "",
+   "model": "Oleno S-70",
+   "code": "OLN0016",
+   "category": "ソックス（S-70）",
+   "priceThb": 940.0,
+   "priceThbMax": 940.0,
+   "colours": [
+    "Black Turquoise",
+    "Black/Gold"
+   ],
+   "sizes": [
+    "23-25",
+    "25-27",
+    "27-29"
+   ],
+   "genders": [],
+   "skuCount": 6,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-ultimate",
+   "name": "Ultimate",
+   "nameJa": "",
+   "model": "Oleno Ultimate",
+   "code": "OLN0001",
+   "category": "ソックス（Ultimate）",
+   "priceThb": 880.0,
+   "priceThbMax": 880.0,
+   "colours": [
+    "Black"
+   ],
+   "sizes": [
+    "23-25",
+    "25-27",
+    "27-29"
+   ],
+   "genders": [],
+   "skuCount": 3,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-ultimate-aso",
+   "name": "Ultimate ASO",
+   "nameJa": "",
+   "model": "Oleno Ultimate ASO",
+   "code": "OLN0002",
+   "category": "ソックス（Ultimate）",
+   "priceThb": 940.0,
+   "priceThbMax": 940.0,
+   "colours": [
+    "Black"
+   ],
+   "sizes": [
+    "23-25",
+    "25-27",
+    "27-29"
+   ],
+   "genders": [],
+   "skuCount": 3,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-ultimate-aso-long",
+   "name": "Ultimate ASO Long",
+   "nameJa": "",
+   "model": "Oleno Ultimate ASO Long",
+   "code": "OLN0006",
+   "category": "ソックス（Ultimate）",
+   "priceThb": 1280.0,
+   "priceThbMax": 1280.0,
+   "colours": [
+    "Black"
+   ],
+   "sizes": [
+    "23-25",
+    "25-27",
+    "27-29"
+   ],
+   "genders": [],
+   "skuCount": 3,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-ultimate-shr",
+   "name": "Ultimate SHR",
+   "nameJa": "",
+   "model": "Oleno Ultimate SHR",
+   "code": "OLN0003",
+   "category": "ソックス（Ultimate）",
+   "priceThb": 940.0,
+   "priceThbMax": 940.0,
+   "colours": [
+    "Blue Mix",
+    "Khaki Mix",
+    "Red Purple"
+   ],
+   "sizes": [
+    "23-25",
+    "25-27",
+    "27-29"
+   ],
+   "genders": [],
+   "skuCount": 9,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-ultimate-shr-round",
+   "name": "Ultimate SHR Round",
+   "nameJa": "",
+   "model": "Oleno Ultimate SHR Round",
+   "code": "OLN0004",
+   "category": "ソックス（Ultimate）",
+   "priceThb": 880.0,
+   "priceThbMax": 880.0,
+   "colours": [
+    "Black Mix"
+   ],
+   "sizes": [
+    "23-25",
+    "25-27",
+    "27-29"
+   ],
+   "genders": [],
+   "skuCount": 3,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-ultimate-tng",
+   "name": "Ultimate TNG",
+   "nameJa": "",
+   "model": "Oleno Ultimate TNG",
+   "code": "OLN0005",
+   "category": "ソックス（Ultimate）",
+   "priceThb": 1100.0,
+   "priceThbMax": 1100.0,
+   "colours": [
+    "Black/Blue",
+    "Black/Gray",
+    "Black/Red"
+   ],
+   "sizes": [
+    "23-25",
+    "25-27",
+    "27-29"
+   ],
+   "genders": [],
+   "skuCount": 9,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-hadashi-socks-openfinger",
+   "name": "Hadashi Socks Openfinger",
+   "nameJa": "",
+   "model": "Oleno Hadashi Socks Openfinger",
+   "code": "OLN0009",
+   "category": "ソックス（はだし靴下）",
+   "priceThb": 1280.0,
+   "priceThbMax": 1280.0,
+   "colours": [
+    "Denim"
+   ],
+   "sizes": [
+    "23-25",
+    "25-27",
+    "27-29"
+   ],
+   "genders": [],
+   "skuCount": 3,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-hadashi-socks-road",
+   "name": "Hadashi Socks Road",
+   "nameJa": "",
+   "model": "Oleno Hadashi Socks Road",
+   "code": "OLN0007",
+   "category": "ソックス（はだし靴下）",
+   "priceThb": 1280.0,
+   "priceThbMax": 1280.0,
+   "colours": [
+    "Denim",
+    "Wine Mix"
+   ],
+   "sizes": [
+    "23-25",
+    "25-27",
+    "27-29"
+   ],
+   "genders": [],
+   "skuCount": 5,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  },
+  {
+   "id": "oleno-premium-outdoor-socks",
+   "name": "Premium Outdoor Socks",
+   "nameJa": "",
+   "model": "Oleno Premium Outdoor Socks",
+   "code": "OLN0020",
+   "category": "ソックス（プレミアムアウトドア）",
+   "priceThb": 940.0,
+   "priceThbMax": 940.0,
+   "colours": [
+    "Charcoal"
+   ],
+   "sizes": [
+    "22-24",
+    "24-26",
+    "26-28"
+   ],
+   "genders": [],
+   "skuCount": 3,
+   "image": null,
+   "intro": "",
+   "source": "Event.Jul.2026.xlsx"
+  }
+ ],
+ "catalog": "https://oleno-catalog.vercel.app/"
+}

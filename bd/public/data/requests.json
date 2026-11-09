@@ -1,0 +1,123 @@
+{
+ "updatedAt": "2026-11-09",
+ "note": "上のソース（pptx・Drive 共有アイテム・OLENO カタログ・既存ダッシュボード）で埋まらなかった項目。回答が来たら該当 JSON を更新し、この一覧から消す。優先度 A = ないと画面が成立しない / B = あると良い。",
+ "items": [
+  {
+   "id": "A-1",
+   "section": "ブランド AQOS",
+   "need": "AQOS のブランド概要（コンセプト・ターゲット・生地メーカー名・開始時期）、商品一覧（品名・価格・サイズ・色）、商品画像",
+   "searched": "Drive 全文検索「AQOS」「アクアホール」0 件。EDV POS に AQOZ（コード AQ）の売上行のみ",
+   "question": "AQOS の商品資料（価格表 or 商品写真）はどこにありますか？ なければ品名と価格を 5 行でもらえますか？",
+   "priority": "A",
+   "interim": "ブランド概要は pptx の 2 行のみ、商品カードは「未入力」1 枚"
+  },
+  {
+   "id": "A-2",
+   "section": "ブランド Coolcore",
+   "need": "Coolcore の商品一覧（正式名・価格・色）と商品画像、生地メーカー・工場との取引形態",
+   "searched": "専用フォルダ・価格表なし。イベント持出 xlsx（Event.Outdoor fest(Coolcore)）の売価列と EDV POS の品名のみ",
+   "question": "イベント持出リストの売価＝現在の正規小売価格でよいですか？ 商品画像は Drive のどこにありますか？",
+   "priority": "A",
+   "interim": "イベント xlsx から品名・売価・カテゴリを取り込み、画像なし"
+  },
+  {
+   "id": "A-3",
+   "section": "取引条件一覧",
+   "need": "取引先 × ブランドの卸掛率・委託手数料 %・デパート手数料 %・支払サイト・最低発注・返品条件・契約期限",
+   "searched": "タイ側の条件表・契約書は Drive に見当たらない。実データとして Sales Record 2026 の百貨店精算ブロックに Siam Discovery GP32%・Central 各店 GP30%、スタッフコミッション 1%（2025）・イベント 0.5%、Crimson 発注シートに WSP = RRP × 0.5、MY 向け Vibram 契約・Cost Simulation が読める程度",
+   "question": "取引条件の一覧表は GM の手元にありますか？ この画面に載せてよい範囲（合言葉付き）を決めてください",
+   "priority": "A",
+   "interim": "実データから読み取れた率だけを「観測値」として合言葉付きで表示"
+  },
+  {
+   "id": "A-4",
+   "section": "機密・公開範囲",
+   "need": "取引条件・委託実績を誰まで見せるか。(a) Vercel Deployment Protection / (b) 合言葉を Vercel Function で検証 / (c) noindex + URL 非公開のみ",
+   "searched": "—",
+   "question": "(a)(b)(c) のどれにしますか？ 現状は (b) で実装（環境変数 BD_SECRET_KEY）",
+   "priority": "A",
+   "interim": "(b)。鍵が未設定のときは「鍵未設定」と表示して中身を出さない"
+  },
+  {
+   "id": "A-5",
+   "section": "OLENO 商品情報",
+   "need": "OLENO カタログ（oleno-catalog.vercel.app）の元データ（JSON かリポジトリ）。17 商品の名称・カテゴリ・説明・価格・色・サイズ・PDF・画像",
+   "searched": "この環境からカタログの URL に到達できず。GitHub KeisukeKirby と Vercel チーム barefootinc-th にもソースなし",
+   "question": "カタログのリポジトリ（or data JSON）を共有してもらえますか？ 別アカウントの Vercel ですか？",
+   "priority": "A",
+   "interim": "イベント xlsx の OLENO 品目（品名・売価）をモデル単位にまとめて表示し、詳細はカタログへのリンク"
+  },
+  {
+   "id": "B-1",
+   "section": "店舗一覧",
+   "need": "各店の住所・営業時間・開店日・店舗担当（販売員）・取扱ブランド。Central Ladprao / Central Chidlom の階数（pptx と会社プレゼンで違う）",
+   "searched": "店舗一覧の単独ファイルなし。pptx S11・会社プレゼン p11-12・Zort 倉庫名から再構成",
+   "question": "店舗マスタ（住所・営業時間・担当者）を 1 枚もらえますか？ 階数はどちらが正しいですか？",
+   "priority": "B",
+   "interim": "分かる列だけ埋め、他は「未入力」"
+  },
+  {
+   "id": "B-2",
+   "section": "月次売上",
+   "need": "2025 年以前の BFT ブランド別月次、連結（2社間取引を除いた）売上、VAT 込/抜の統一",
+   "searched": "BFT ダッシュボードは 2026 1〜10 月のブランド別、2025 1〜7 月は全体のみ。EDV は 2026 のみ（税抜）。Sales Record_Coollabo Shop 2025/2026（税込・店舗別）は別途取り込み",
+   "question": "月次売上の「正」は販売ダッシュボード（POS 明細）と経理の Sales Record のどちらにしますか？ 2025 のブランド別が必要なら元データ（受注明細）の場所を教えてください",
+   "priority": "B",
+   "interim": "販売ダッシュボードの JSON を再利用し、注記で違いを明記"
+  },
+  {
+   "id": "B-3",
+   "section": "委託販売実績",
+   "need": "委託販売「実績」の定義（売上金額か足数か、手数料控除前後か）、対象期間、金額換算に使う売価",
+   "searched": "Stock VFF Consignment.xlsx は数量のみ（2023/8〜2026/10）。百貨店の精算額は Sales Record の百貨店シート",
+   "question": "足数ベースでよいですか？ 金額を出すならイベント持出リストの売価で換算してよいですか？",
+   "priority": "B",
+   "interim": "足数（納品・販売・返品・残）を委託先別に表示"
+  },
+  {
+   "id": "B-4",
+   "section": "ブランド概要",
+   "need": "各ブランドの本国連絡窓口（会社・役職・メール）、OLENO のタイ向け契約（LOA）と取引開始年、Coolcore の開始年",
+   "searched": "LOA はマレーシア向けのみ。Crimson の担当者は Drive 共有者から推定可",
+   "question": "窓口の会社名・役職（個人の携帯は不要）を教えてください",
+   "priority": "B",
+   "interim": "「未入力」"
+  },
+  {
+   "id": "B-5",
+   "section": "ブランドガイドライン Vivo",
+   "need": "Vivo Brand Guidelines の要点（ロゴ使用ルール・禁止例・カラーコード・フォント・写真トーン・SNS 表記）",
+   "searched": "原本は 430MB PDF またはページ分割 120 枚で、この環境では開けず",
+   "question": "要約版（10MB 以下の PDF か Google スライド）はありますか？ なければ Think/Learn/Do のどの章を優先して読めばよいですか？",
+   "priority": "B",
+   "interim": "章構成と原本リンクのみ"
+  },
+  {
+   "id": "B-6",
+   "section": "SNS アカウント一覧",
+   "need": "ブランド × プラットフォーム（IG / FB / TikTok / LINE OA / Shopee / Lazada / Web）の URL、運用担当、フォロワー数、投稿方針",
+   "searched": "一覧表なし。判明したハンドルは @Barefootinc.th のみ。Shopee / Lazada の店舗名はシート名から推定",
+   "question": "マーケ担当に一覧（URL と担当）を出してもらえますか？",
+   "priority": "B",
+   "interim": "判明分のみ、他は「未入力」"
+  },
+  {
+   "id": "B-7",
+   "section": "ブランド VFF 商品",
+   "need": "VFF の THB 公式プライスリスト（モデル × 性別 × 定価）とカテゴリ（Fitness / Walking / Running / Outdoor）の正式分類、各モデルの商品画像",
+   "searched": "カタログは品番・カラーのみ（価格なし）。売価はイベント持出リストから。画像は Drive の VFF_PRODUCTS フォルダ（手動）",
+   "question": "イベント持出リストの売価＝定価でよいですか？ 画像をこのダッシュボードに置いてよいですか（Vibram の承認範囲）？",
+   "priority": "B",
+   "interim": "イベント xlsx の売価を定価として表示、画像なし"
+  },
+  {
+   "id": "B-8",
+   "section": "ホーム",
+   "need": "BD のミッション・KPI（初年度に何を達成すべきか）",
+   "searched": "pptx には課題と注意事項はあるが、BD の目標数値はない",
+   "question": "BD の最初の 3 か月・1 年の目標（例: 買取卸先 N 店、Coolcore 法人 N 社）を 3 行でもらえますか？",
+   "priority": "B",
+   "interim": "pptx の 4 課題を「取り組むテーマ」として表示"
+  }
+ ]
+}
