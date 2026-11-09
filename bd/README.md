@@ -96,7 +96,7 @@ git add bd scripts/bd && git commit -m "BD ダッシュボード更新" && git p
 | Drive `Product Training Vivobarefoot.pdf`、`Vivo Brand Guidelines` フォルダ、`Barefootinc` フォルダ | ブランド Vivo | ガイドライン本体は 430MB で要点未抽出 |
 | Drive `Barefootinc Thailand_Presetation.pdf`（Marketing/1.Company Profile） | 店舗・卸先・SNS ハンドル | 2026-05 時点 |
 | Drive `Oleno Thailand 提供画像`、`LOA of OLENO` | ブランド OLENO | LOA はマレーシア向け |
-| OLENO カタログ https://oleno-catalog.vercel.app/ | — | この環境から到達できず（情報リクエスト A-5） |
+| OLENO 商品カタログ https://oleno-catalog.vercel.app/ | ブランド OLENO | 商品詳細はカタログへのリンクで参照（データは取り込まない） |
 
 読まなかったもの: `VFF/Password info`、`Marketing/5.Account & Password`、受注明細の顧客列。
 

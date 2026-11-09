@@ -2,7 +2,7 @@
  "brand": "OLENO",
  "updatedAt": "2026-11-09",
  "asOf": "2026 年のイベント持出リストの売価（ราคาขาย）。定価として扱ってよいかは情報リクエスト参照",
- "source": "Drive: BAREFOOTINC THAILAND/Store・Event/List goods for event_2026/*.xlsx（SKU・売価）→ モデル単位に集約。 17 商品の説明・PDF・画像は OLENO カタログ (oleno-catalog.vercel.app) 参照（この環境から取得不可、情報リクエスト A-5）。シリーズ名は Drive「Oleno Thailand 提供画像」のフォルダ名と対応。",
+ "source": "Drive: BAREFOOTINC THAILAND/Store・Event/List goods for event_2026/*.xlsx（SKU・売価）→ モデル単位に集約。 商品の説明・画像・商品シート PDF は OLENO 商品カタログ（https://oleno-catalog.vercel.app/）で見る。シリーズ名は Drive「Oleno Thailand 提供画像」のフォルダ名と対応。",
  "items": [
   {
    "id": "oleno-arm-sleeve-ul",

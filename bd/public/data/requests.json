@@ -30,15 +30,6 @@
    "interim": "実データから読み取れた率を「観測値」として全件表示（GM 判断 2026-11-09: 取引条件はすべて載せてよい）"
   },
   {
-   "id": "A-5",
-   "section": "OLENO 商品情報",
-   "need": "OLENO カタログ（oleno-catalog.vercel.app）の元データ（JSON かリポジトリ）。17 商品の名称・カテゴリ・説明・価格・色・サイズ・PDF・画像",
-   "searched": "この環境からカタログの URL に到達できず。GitHub KeisukeKirby と Vercel チーム barefootinc-th にもソースなし",
-   "question": "カタログのリポジトリ（or data JSON）を共有してもらえますか？ 別アカウントの Vercel ですか？",
-   "priority": "A",
-   "interim": "イベント xlsx の OLENO 品目（品名・売価）をモデル単位にまとめて表示し、詳細はカタログへのリンク"
-  },
-  {
    "id": "B-1",
    "section": "店舗一覧",
    "need": "各店の住所・営業時間・開店日・店舗担当（販売員）・取扱ブランド。Central Ladprao / Central Chidlom の階数（pptx と会社プレゼンで違う）",
@@ -77,11 +68,11 @@
   {
    "id": "B-5",
    "section": "ブランドガイドライン Vivo",
-   "need": "Vivo Brand Guidelines の要点（ロゴ使用ルール・禁止例・カラーコード・フォント・写真トーン・SNS 表記）",
-   "searched": "原本は 430MB PDF またはページ分割 120 枚で、この環境では開けず",
-   "question": "要約版（10MB 以下の PDF か Google スライド）はありますか？ なければ Think/Learn/Do のどの章を優先して読めばよいですか？",
+   "need": "Vivo ブランドカラーの HEX / Pantone 値（スウォッチページ Do p95–104 が Drive のページ分割フォルダに無い）と欠落ページ",
+   "searched": "ページ分割ファイル 103 件から要点 15 項目・書体 6 種・カラーの名称と役割は抽出済み。HEX 値と欠落ページ（Think p6・8-9 ほか、Do p95-104 ほか）は未取得。430MB の完全版 PDF はこの環境で開けない",
+   "question": "Vivo のカラーコード（HEX）を Crimson に確認してもらえますか？ 完全版 PDF の Do p95–104 だけ切り出してもらえれば足ります",
    "priority": "B",
-   "interim": "章構成と原本リンクのみ"
+   "interim": "カラー名と役割のみ表示、HEX は未入力"
   },
   {
    "id": "B-6",

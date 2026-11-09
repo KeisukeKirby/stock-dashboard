@@ -1,54 +1,202 @@
 {
-  "updatedAt": "2026-11-09",
-  "source": "BD オンボーディング資料 (pptx, 2026-10) S2-S4, S12-S14 / Barefootinc Thailand_Presetation.pdf (Drive, 2026-05頃)",
-  "title": "Barefootinc (Thailand) / Endeavorz",
-  "subtitle": "BD オンボーディング・ダッシュボード",
-  "intro": "取り扱いブランドの現状と課題を短期間で把握するための社内ダッシュボードです。数字・条件はすべて社内限り。",
-  "onboarding": {"belongsTo": "Barefootinc (Thailand)", "manager": "GM（CEO も直接関わります）", "probation": "3か月", "src": "pptx S2"},
-  "companies": [
-    {"id": "BFT", "name": "Barefootinc (Thailand) Co., Ltd.", "short": "BFT", "founded": "2023年", "capital": "パートナー企業が 50% 出資", "revenue": "約 4,000 万 THB（概算・2社間売買を含む）",
-     "brands": ["VFF（独占）", "Vivobarefoot", "OLENO（総代理店）"], "role": "輸入・ブランド運営・一部小売", "src": "pptx S3"},
-    {"id": "EDV", "name": "Endeavorz Co., Ltd.", "short": "EDV", "founded": "2017年", "capital": "100% 家族経営", "revenue": "約 3,000 万 THB（概算）",
-     "brands": ["Coolcore", "AQOS（自社ブランド）"], "role": "小売（店舗運営）", "src": "pptx S3"}
-  ],
-  "groupRevenue": "2社合計で年商 約 7,000 万 THB（2社間の売買を含む）",
-  "hq": "本社スタッフ: GM、日本人マネージャー、Admin、Coordinator、倉庫管理、総務、経理 2名。店舗は各店 1名。",
-  "issues": [
-    {"title": "自社小売への偏り（卸の不在）", "brands": ["VFF", "OLENO", "Coolcore"], "body": "委託は売れず、フォローも届かない。卸は買取へ切り替える方針。", "src": "pptx S13"},
-    {"title": "マーケットプレイス依存", "brands": ["VFF", "OLENO"], "body": "手数料の上昇とクーポンで、利益とブランド価値が下がる。自社 EC への移行が必要。", "src": "pptx S13"},
-    {"title": "VFF 一社への依存", "brands": ["グループ全体"], "body": "メーカーの方針は頻繁に変わる。Vivobarefoot の拡大が最大の分散策。", "src": "pptx S13"},
-    {"title": "Endeavorz の自社事業の停滞", "brands": ["Coolcore", "AQOS"], "body": "VFF に資源を集中させた結果、商品開発も販路開拓も止まっている。", "src": "pptx S13"}
-  ],
-  "rules": [
-    {"title": "VFF のブランド規定を守る", "body": "店舗でロゴ・アートワークを使わない。VFF 単独の売り場をつくらない。VFF を扱う新しい施策は必ず GM に確認する。", "src": "pptx S14"},
-    {"title": "Vivobarefoot との協議は社外秘", "body": "特に VFF 側には、店頭での併売を超えるパートナーシップの話を伝えていない。", "src": "pptx S14"},
-    {"title": "取引条件は非開示", "body": "卸や委託の条件、手数料率などは資料に載せていない。商談で必要になったら GM に確認する。", "src": "pptx S14"},
-    {"title": "数字は社内限り", "body": "売上などの数字を社外に出さない。", "src": "pptx S14"}
-  ],
-  "market": [
-    {"title": "2026年9月ごろから タイ全体の景気悪化・観光客の減少", "body": "知り合いの飲食店なども 9月ごろから大きく落ちている。店舗の落ち込みは景気と観光客減が主因で、ブランドの販売力は落ちていない。", "src": "pptx S12"},
-    {"title": "2026年9月 Terminal 21 Asok イベント（20日間） 約 130 万 THB", "body": "過去最高の売り上げ。良い立地なら今も売れる。", "src": "pptx S12"}
-  ],
-  "checklist": [
-    {"text": "BD オンボーディング資料（pptx）を全ページ読む", "link": null},
-    {"text": "4つの「取り扱い上の注意」を暗記する（このページ下部）", "link": "#home"},
-    {"text": "VFF マーケティング／ロゴガイドラインを読む（JP 要約 → EN 原本）", "link": "#guidelines"},
-    {"text": "Vibram ブランド取り扱い会議の要旨を読む（モノブランド店禁止の経緯）", "link": "https://docs.google.com/document/d/12HtnJLsJbsgbDYtEQ3KNFvug-6OYRH1h8ajP_YTvA34/edit"},
-    {"text": "店舗一覧を見て、K Village・Central Ladprao・Thaniya・Paradise Park・Siam Discovery・Central Chidlom を実際に回る", "link": "#stores"},
-    {"text": "販売実績ダッシュボード（BFT）と EDV 販売実績ダッシュボードの「このデータについて」を読む", "link": "#sales"},
-    {"text": "OLENO の卸先 Pathwild・Bananarun を訪問し、売れている理由／売れない理由を自分の言葉で説明できるようにする", "link": "#brand-oleno"},
-    {"text": "Vivobarefoot Product Training（タイ語）で 21 モデルの価格帯とターゲットを把握する", "link": "#brand-vivo"},
-    {"text": "取引条件一覧（合言葉あり）を GM から受け取る", "link": "#terms"},
-    {"text": "未入力の項目（情報リクエスト）を GM・経理・マーケと一緒に埋める", "link": "#requests"}
-  ],
-  "tools": [
-    {"name": "Barefootinc Backroom（ダッシュボード・ツール一覧）", "url": "https://barefootinc-backroom.vercel.app", "note": "社内ツールのハブ。ここから各ダッシュボードへ"},
-    {"name": "販売実績ダッシュボード（BFT 2026）", "url": "https://sales-1st-half-26-dashboard.vercel.app/", "note": "店舗・ブランド・モデル別の売上（1〜10月）"},
-    {"name": "EDV 販売実績ダッシュボード", "url": "https://edv-sales-dashboard.vercel.app", "note": "K Village / Thaniya / Central LP ほか EDV 12 チャネル"},
-    {"name": "在庫ダッシュボード（VFF / Vivo / Socks）", "url": "https://stock-dashboard-kadq.vercel.app/", "note": "Zort 連携の店舗・オフィス在庫、返品・発注入力"},
-    {"name": "Vivo 販売ダッシュボード", "url": "https://vivo-sales-dashboard.vercel.app", "note": "BFT / EDV の Vivo 販売実績"},
-    {"name": "VFF 在庫 × 販売（欠品予測）", "url": "https://vff-stock-dashboard.vercel.app", "note": "SKU 別の在庫月数・発注アラート"},
-    {"name": "業務改善マニュアル", "url": "https://kaizen-manual.vercel.app", "note": "店舗・倉庫・経理の業務手順"},
-    {"name": "T21 Asok Vivo ラインアップ", "url": "https://t21-vivo-lineup.vercel.app", "note": "Vivo 21 モデルの定価・カラー・サイズ別在庫（2026-09）"}
-  ]
+ "updatedAt": "2026-11-09",
+ "source": "BD オンボーディング資料 (pptx, 2026-10) S2-S4, S12-S14 / Barefootinc Thailand_Presetation.pdf (Drive, 2026-05頃)",
+ "title": "Barefootinc (Thailand) / Endeavorz",
+ "subtitle": "BD オンボーディング・ダッシュボード",
+ "intro": "取り扱いブランドの現状と課題を短期間で把握するための社内ダッシュボードです。数字・条件はすべて社内限り。",
+ "onboarding": {
+  "belongsTo": "Barefootinc (Thailand)",
+  "manager": "GM（CEO も直接関わります）",
+  "probation": "3か月",
+  "src": "pptx S2"
+ },
+ "companies": [
+  {
+   "id": "BFT",
+   "name": "Barefootinc (Thailand) Co., Ltd.",
+   "short": "BFT",
+   "founded": "2023年",
+   "capital": "パートナー企業が 50% 出資",
+   "revenue": "約 4,000 万 THB（概算・2社間売買を含む）",
+   "brands": [
+    "VFF（独占）",
+    "Vivobarefoot",
+    "OLENO（総代理店）"
+   ],
+   "role": "輸入・ブランド運営・一部小売",
+   "src": "pptx S3"
+  },
+  {
+   "id": "EDV",
+   "name": "Endeavorz Co., Ltd.",
+   "short": "EDV",
+   "founded": "2017年",
+   "capital": "100% 家族経営",
+   "revenue": "約 3,000 万 THB（概算）",
+   "brands": [
+    "Coolcore",
+    "AQOS（自社ブランド）"
+   ],
+   "role": "小売（店舗運営）",
+   "src": "pptx S3"
+  }
+ ],
+ "groupRevenue": "2社合計で年商 約 7,000 万 THB（2社間の売買を含む）",
+ "hq": "本社スタッフ: GM、日本人マネージャー、Admin、Coordinator、倉庫管理、総務、経理 2名。店舗は各店 1名。",
+ "issues": [
+  {
+   "title": "自社小売への偏り（卸の不在）",
+   "brands": [
+    "VFF",
+    "OLENO",
+    "Coolcore"
+   ],
+   "body": "委託は売れず、フォローも届かない。卸は買取へ切り替える方針。",
+   "src": "pptx S13"
+  },
+  {
+   "title": "マーケットプレイス依存",
+   "brands": [
+    "VFF",
+    "OLENO"
+   ],
+   "body": "手数料の上昇とクーポンで、利益とブランド価値が下がる。自社 EC への移行が必要。",
+   "src": "pptx S13"
+  },
+  {
+   "title": "VFF 一社への依存",
+   "brands": [
+    "グループ全体"
+   ],
+   "body": "メーカーの方針は頻繁に変わる。Vivobarefoot の拡大が最大の分散策。",
+   "src": "pptx S13"
+  },
+  {
+   "title": "Endeavorz の自社事業の停滞",
+   "brands": [
+    "Coolcore",
+    "AQOS"
+   ],
+   "body": "VFF に資源を集中させた結果、商品開発も販路開拓も止まっている。",
+   "src": "pptx S13"
+  }
+ ],
+ "rules": [
+  {
+   "title": "VFF のブランド規定を守る",
+   "body": "店舗でロゴ・アートワークを使わない。VFF 単独の売り場をつくらない。VFF を扱う新しい施策は必ず GM に確認する。",
+   "src": "pptx S14"
+  },
+  {
+   "title": "Vivobarefoot との協議は社外秘",
+   "body": "特に VFF 側には、店頭での併売を超えるパートナーシップの話を伝えていない。",
+   "src": "pptx S14"
+  },
+  {
+   "title": "取引条件は非開示",
+   "body": "卸や委託の条件、手数料率などは資料に載せていない。商談で必要になったら GM に確認する。",
+   "src": "pptx S14"
+  },
+  {
+   "title": "数字は社内限り",
+   "body": "売上などの数字を社外に出さない。",
+   "src": "pptx S14"
+  }
+ ],
+ "market": [
+  {
+   "title": "2026年9月ごろから タイ全体の景気悪化・観光客の減少",
+   "body": "知り合いの飲食店なども 9月ごろから大きく落ちている。店舗の落ち込みは景気と観光客減が主因で、ブランドの販売力は落ちていない。",
+   "src": "pptx S12"
+  },
+  {
+   "title": "2026年9月 Terminal 21 Asok イベント（20日間） 約 130 万 THB",
+   "body": "過去最高の売り上げ。良い立地なら今も売れる。",
+   "src": "pptx S12"
+  }
+ ],
+ "checklist": [
+  {
+   "text": "BD オンボーディング資料（pptx）を全ページ読む",
+   "link": null
+  },
+  {
+   "text": "4つの「取り扱い上の注意」を暗記する（このページ下部）",
+   "link": "#home"
+  },
+  {
+   "text": "VFF マーケティング／ロゴガイドラインを読む（JP 要約 → EN 原本）",
+   "link": "#guidelines"
+  },
+  {
+   "text": "Vibram ブランド取り扱い会議の要旨を読む（モノブランド店禁止の経緯）",
+   "link": "https://docs.google.com/document/d/12HtnJLsJbsgbDYtEQ3KNFvug-6OYRH1h8ajP_YTvA34/edit"
+  },
+  {
+   "text": "店舗一覧を見て、K Village・Central Ladprao・Thaniya・Paradise Park・Siam Discovery・Central Chidlom を実際に回る",
+   "link": "#stores"
+  },
+  {
+   "text": "販売実績ダッシュボード（BFT）と EDV 販売実績ダッシュボードの「このデータについて」を読む",
+   "link": "#sales"
+  },
+  {
+   "text": "OLENO の卸先 Pathwild・Bananarun を訪問し、売れている理由／売れない理由を自分の言葉で説明できるようにする",
+   "link": "#brand-oleno"
+  },
+  {
+   "text": "Vivobarefoot Product Training（タイ語）で 21 モデルの価格帯とターゲットを把握する",
+   "link": "#brand-vivo"
+  },
+  {
+   "text": "取引条件一覧（合言葉あり）を GM から受け取る",
+   "link": "#terms"
+  },
+  {
+   "text": "未入力の項目（情報リクエスト）を GM・経理・マーケと一緒に埋める",
+   "link": "#requests"
+  }
+ ],
+ "tools": [
+  {
+   "name": "販売実績ダッシュボード（BFT 2026）",
+   "url": "https://sales-1st-half-26-dashboard.vercel.app/",
+   "note": "店舗・ブランド・モデル別の売上（1〜10月）"
+  },
+  {
+   "name": "EDV 販売実績ダッシュボード",
+   "url": "https://edv-sales-dashboard.vercel.app",
+   "note": "K Village / Thaniya / Central LP ほか EDV 12 チャネル"
+  },
+  {
+   "name": "在庫ダッシュボード（VFF / Vivo / Socks）",
+   "url": "https://stock-dashboard-kadq.vercel.app/",
+   "note": "Zort 連携の店舗・オフィス在庫、返品・発注入力"
+  },
+  {
+   "name": "Vivo 販売ダッシュボード",
+   "url": "https://vivo-sales-dashboard.vercel.app",
+   "note": "BFT / EDV の Vivo 販売実績"
+  },
+  {
+   "name": "OLENO 商品カタログ",
+   "url": "https://oleno-catalog.vercel.app/",
+   "note": "OLENO 17 商品の説明・価格 THB・色・サイズ・商品シート PDF"
+  },
+  {
+   "name": "VFF 在庫 × 販売（欠品予測）",
+   "url": "https://vff-stock-dashboard.vercel.app",
+   "note": "SKU 別の在庫月数・発注アラート"
+  },
+  {
+   "name": "業務改善マニュアル",
+   "url": "https://kaizen-manual.vercel.app",
+   "note": "店舗・倉庫・経理の業務手順"
+  },
+  {
+   "name": "T21 Asok Vivo ラインアップ",
+   "url": "https://t21-vivo-lineup.vercel.app",
+   "note": "Vivo 21 モデルの定価・カラー・サイズ別在庫（2026-09）"
+  }
+ ]
 }

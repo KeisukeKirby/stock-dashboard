@@ -183,10 +183,13 @@
     if (b.issues) lists.push(h("div", { class: "card" }, h("h3", {}, "課題"), h("ul", { class: "clean small" }, b.issues.map((x) => h("li", {}, x)))));
     if (b.wholesale) lists.push(h("div", { class: "card" }, h("h3", {}, "卸先"), table([{ key: "name", label: "卸先", wrap: true }, { key: "type", label: "形態" }, { key: "status", label: "状況", wrap: true }], b.wholesale, { search: false, csv: false })));
     el.append(h("div", { class: "grid c2", style: "margin-top:14px" }, lists));
+    if (b.history || b.fitFeelFlex || b.sizeGuide) el.append(h("div", { class: "grid c3", style: "margin-top:14px" }, b.history ? h("div", { class: "card" }, h("h3", {}, "歴史"), h("p", { class: "small", style: "margin:0" }, b.history), src("Product Training Vivobarefoot.pdf")) : null, b.fitFeelFlex ? h("div", { class: "card" }, h("h3", {}, "Fit / Feel / Flex"), h("p", { class: "small", style: "margin:0" }, b.fitFeelFlex)) : null, b.sizeGuide ? h("div", { class: "card" }, h("h3", {}, "サイズの測り方"), h("p", { class: "small", style: "margin:0" }, b.sizeGuide)) : null));
     if (b.links && b.links.length) el.append(h("div", { class: "card", style: "margin-top:14px" }, h("h3", {}, "資料・リンク"), h("ul", { class: "clean small" }, b.links.map((l) => h("li", {}, h("a", { href: l.url, target: "_blank", rel: "noopener" }, l.label))))));
     // products
     const P = D.products[b.id];
     el.append(h("div", { class: "section-title" }, h("h2", {}, "取り扱い商品"), P ? h("span", { class: "note" }, P.asOf ? `基準: ${P.asOf}` : "", " ", src(P.source)) : null));
+    const catUrl = b.catalogUrl || (P && P.catalog);
+    if (catUrl) el.append(h("a", { class: "infobox", href: catUrl, target: "_blank", rel: "noopener", style: "display:block;margin-bottom:12px;color:inherit" }, h("strong", {}, `${b.name} 商品カタログを開く →`), h("div", { class: "small" }, "商品の説明・画像・価格・色・サイズ・商品シートはカタログで確認できます。下の一覧はイベント持出リストの売価をモデル単位にまとめたものです。")));
     if (!P || !P.items || !P.items.length) { el.append(h("div", { class: "card" }, missing("商品情報なし"), " ", h("span", { class: "small" }, "情報リクエストを参照"))); return; }
     const cats = [...new Set(P.items.map((p) => p.category).filter(Boolean))].sort();
     const grid = h("div", { class: "products" });
@@ -195,7 +198,7 @@
     const count = h("span", { class: "count" });
     function draw() {
       const f = q.value.toLowerCase(), c = sel.value;
-      const rows = P.items.filter((p) => (!c || p.category === c) && (!f || JSON.stringify([p.name, p.nameJa, p.colours, p.intro, p.code]).toLowerCase().includes(f)));
+      const rows = P.items.filter((p) => (!c || p.category === c) && (!f || JSON.stringify([p.name, p.nameJa, p.colours, p.intro, p.code, p.target, p.brief]).toLowerCase().includes(f)));
       count.textContent = `${rows.length} / ${P.items.length} 件`;
       grid.replaceChildren(...rows.map((p) => h("div", { class: "product" },
         h("div", { class: "ph" }, p.image ? h("img", { src: p.image, alt: p.name, loading: "lazy" }) : h("span", {}, p.missing ? "資料なし" : "画像なし（Drive 参照）")),
@@ -203,7 +206,7 @@
           h("div", { class: "pp num" }, p.priceThb != null ? `฿${fmt(p.priceThb)}${p.priceThbMax && p.priceThbMax !== p.priceThb ? `–${fmt(p.priceThbMax)}` : ""}` : (p.priceRange ? h("span", { class: "small" }, p.priceRange) : missing("価格未入力"))),
           p.tagline ? h("div", { class: "small", style: "color:var(--ink-2)" }, p.tagline) : null,
           p.intro ? h("div", { class: "pd" }, p.intro) : null,
-          (p.colours && p.colours.length) || (p.sizes && p.sizes.length) || (p.features && p.features.length) ? h("details", {}, h("summary", {}, "色・サイズ・特徴"), p.colours && p.colours.length ? h("div", {}, h("b", {}, "色: "), p.colours.join(", ")) : null, p.sizes && p.sizes.length ? h("div", {}, h("b", {}, "サイズ: "), p.sizes.join(", ")) : null, p.features && p.features.length ? h("ul", { class: "clean" }, p.features.map((f) => h("li", {}, f))) : null, p.weight ? h("div", {}, h("b", {}, "重量: "), p.weight) : null) : null,
+          (p.colours && p.colours.length) || (p.sizes && p.sizes.length) || (p.features && p.features.length) || p.brief ? h("details", {}, h("summary", {}, "色・サイズ・特徴・素材"), p.colours && p.colours.length ? h("div", {}, h("b", {}, "色: "), p.colours.join(", ")) : null, p.sizes && p.sizes.length ? h("div", {}, h("b", {}, "サイズ: "), p.sizes.join(", ")) : null, p.features && p.features.length ? h("ul", { class: "clean" }, p.features.map((f) => h("li", {}, f))) : null, p.weight ? h("div", {}, h("b", {}, "重量: "), p.weight) : null, p.target ? h("div", {}, h("b", {}, "用途・ターゲット: "), p.target) : null, p.brief ? h("div", {}, h("b", {}, "トレーニング資料: "), p.brief) : null, p.materials ? h("div", {}, h("b", {}, "素材: "), p.materials) : null, p.care ? h("div", {}, h("b", {}, "ケア: "), p.care) : null, p.priceNote ? h("div", { class: "muted" }, p.priceNote) : null) : null,
           p.links && p.links.jp ? h("a", { class: "small", href: p.links.jp, target: "_blank", rel: "noopener" }, "公式ページ（日本）→") : null,
           p.pdf ? h("a", { class: "small", href: p.pdf, target: "_blank", rel: "noopener" }, "商品シート PDF →") : null))));
     }
@@ -217,9 +220,11 @@
       el.append(h("div", { class: "section-title" }, h("h2", {}, h("span", { class: "logo-chip" + (g.brand === "VFF" ? " light" : ""), style: `--bc:${BRAND_COLOR[g.brand]};height:30px;min-width:44px;font-size:12px;margin-right:8px` }, g.brand), g.title)));
       el.append(h("div", { class: "grid c2" },
         h("div", { class: "card" }, h("h3", {}, "原本"), h("ul", { class: "clean small" }, g.docs.map((d) => h("li", {}, h("a", { href: d.url, target: "_blank", rel: "noopener" }, d.label), d.note ? h("div", { class: "muted" }, d.note) : null)))),
-        h("div", { class: "card" }, h("h3", {}, "カラー・フォント"), g.palette.length ? h("div", { class: "swatches" }, g.palette.map((p) => h("div", { class: "swatch" }, h("i", { style: `background:${p.hex}` }), h("div", {}, p.hex), p.name ? h("div", { class: "muted" }, p.name) : null))) : missing("カラーコード未抽出"), g.paletteSrc ? src(g.paletteSrc) : null,
+        h("div", { class: "card" }, h("h3", {}, "カラー・フォント"), g.palette.length ? h("div", { class: "swatches" }, g.palette.map((p) => h("div", { class: "swatch" }, h("i", { style: p.hex ? `background:${p.hex}` : "background:repeating-linear-gradient(45deg,var(--surface-2),var(--surface-2) 6px,var(--line) 6px,var(--line) 12px)" }), h("div", {}, p.hex || missing("HEX 未入力")), p.name ? h("div", { class: "muted" }, p.name) : null, p.role ? h("div", { class: "muted", title: p.role }, p.role.length > 40 ? p.role.slice(0, 40) + "…" : p.role) : null))) : missing("カラーコード未抽出"), g.paletteSrc ? src(g.paletteSrc) : null,
           h("div", { style: "margin-top:10px" }, g.fonts.length ? g.fonts.map((f) => h("div", { class: "small" }, h("strong", {}, f.name), " — ", f.use)) : missing("フォント未抽出"), g.fontsSrc ? src(g.fontsSrc) : null))));
       el.append(h("div", { class: "card", style: "margin-top:14px" }, h("h3", {}, "要点（ページ番号は原本 EN 版）"), table([{ key: "page", label: "頁" }, { key: "title", label: "項目" }, { key: "text", label: "内容", wrap: true }], g.rules, { search: false, csv: false })));
+      if (g.chapters && g.chapters.length) el.append(h("div", { class: "card", style: "margin-top:14px" }, h("h3", {}, "章構成"), table([{ key: "name", label: "章" }, { key: "pages", label: "頁数", num: true }, { key: "summary", label: "要約", wrap: true }], g.chapters, { search: false, csv: false })));
+      if (g.notes && g.notes.length) el.append(h("details", { class: "card", style: "margin-top:14px" }, h("summary", {}, "抽出メモ（読めなかったページなど）"), h("ul", { class: "clean small" }, g.notes.map((n) => h("li", {}, n)))));
       if (g.localRules && g.localRules.length) el.append(h("div", { class: "grid c2", style: "margin-top:14px" }, g.localRules.map((r) => h("div", { class: "warnbox" }, h("strong", {}, r.title), h("div", { class: "small", style: "margin-top:4px" }, r.text, src(r.src))))));
     }
   };

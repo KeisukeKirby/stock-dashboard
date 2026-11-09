@@ -93,7 +93,7 @@
    "priceRange": "5,000〜8,000 THB",
    "dealType": "ディストリビューター Crimson Brand（香港本社 + タイ子会社）経由の小売。Exclusive Retail Partner 化を協議中（未確定・社外秘）",
    "sinceTH": "2026年（VFF 単独販売禁止を機に自社店舗で販売開始）。Crimson はタイで約 2 年前から",
-   "concept": "イギリスの靴職人の家系（Clark 兄弟、2012 年創業）が始めた、今最も人気のあるベアフットシューズ。Wide / Thin / Flexible の哲学。",
+   "concept": "Reconnect people to the natural world。英国グラストンベリーで 1825 年から続く靴職人一族 7 代目の Galahad & Asher Clark が 2012 年に創業。Wide / Thin / Flexible の哲学と Fit / Feel / Flex の 3 つの USP。B Corp 認証（2021 年 106.4 点）。",
    "target": "ベアフット入門〜日常使い。平均単価は VFF より高め。",
    "whyTH": "香港 年約 25,000 足、タイ従来 年約 1,000 足に対し、Crimson はタイの潜在力を年 2 万足と見ている。9月は月約 200 足で先方の想定以上。",
    "principal": {
@@ -157,7 +157,10 @@
      "url": "https://www.vivobarefoot.com/"
     }
    ],
-   "src": "pptx S4, S7-S8 / Product Training Vivobarefoot.pdf"
+   "src": "pptx S4, S7-S8 / Product Training Vivobarefoot.pdf",
+   "history": "2012 年、英国グラストンベリー出身で 1825 年から続く靴職人一族の Galahad と Asher Clark が創業。幼少期に Bantham のビーチを裸足で歩いた体験が着想。『人間の足はすでに完成された工学作品』という信念のもと、厚いソールで足を支えたり矯正したりする考え方を否定（足の筋肉を弱らせるため）。デザインの特徴は、裸足のように地面を感じる薄いソール、指が自然に広がる幅広のトゥボックス、あらゆる角度の動きに追従する高い柔軟性。サステナビリティも重視し、リサイクル素材や藻類由来ゴムなどの天然素材を採用して環境負荷を抑える。",
+   "fitFeelFlex": "Fit（幅広で自然な形）：Foot-shaped の設計で足指が自由に広がり、バランスと安定した土台をつくる。Feel（感覚・知覚）：極薄ソールにより足裏の神経終末が脳へ情報を送り、俊敏で効率的な動きを促す。Flex（柔軟性）：高い柔軟性で足の筋肉と腱が自ら働き、動き、体重を支えることで長期的に足を強くする（研究では Vivo の着用 6 か月で足の強さが 57% 向上と記載）。",
+   "sizeGuide": "測り方（HOW TO MEASURE）：1) 足より大きい紙を壁際の硬く平らな床に置く（巾木がある場合は紙を下に差し込む）。2) かかとを壁につけて紙の上に立ち、紙がずれないようにする。3) もっとも長い足指の先端に、鉛筆を垂直に立てて印をつける（指の下に潜り込ませない）。4) 紙の端から印までを定規またはメジャーで測る。5) 左右差があるためもう片方も測り、大きい方の値を使う。6) サイズ表と照らし合わせて選ぶ。注意：座らず立って測ること、足は朝より夕方に大きくなるため夕方の計測を推奨。フィット感：SNUG（かかとや前足部の余裕が少なめ）／RECOMMENDED（足長に合わせた推奨サイズ）／SPACIOUS（ゆったり。幅広の足や余裕が欲しい人はワンサイズ上を検討）。Vivobarefoot は足長に合うサイズを推奨するが、好みに応じて上下に調整してよい。サイズ表自体（cm 対応表）は抽出テキストに含まれず、画像のみと思われる。"
   },
   {
    "id": "oleno",
@@ -215,7 +218,7 @@
    ],
    "links": [
     {
-     "label": "OLENO 商品カタログ（17 商品・THB 価格・PDF シート）",
+     "label": "OLENO 商品カタログ（17 商品・説明・THB 価格・色・サイズ・商品シート PDF）",
      "url": "https://oleno-catalog.vercel.app/"
     },
     {
@@ -235,7 +238,8 @@
      "url": "https://oleno.jp/"
     }
    ],
-   "src": "pptx S4, S9 / Drive 調査"
+   "src": "pptx S4, S9 / Drive 調査",
+   "catalogUrl": "https://oleno-catalog.vercel.app/"
   },
   {
    "id": "coolcore",

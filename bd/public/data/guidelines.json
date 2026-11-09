@@ -1,50 +1,423 @@
 {
-  "updatedAt": "2026-11-09",
-  "brands": [
-    {"brand": "VFF", "title": "Vibram FiveFingers ブランド／マーケティングガイドライン",
-     "docs": [
-       {"label": "Marketing Guidelines_Vibram FiveFingers.pdf（EN 原本・17p）", "url": "https://drive.google.com/file/d/1G9JVTwtHrFsFzlpvBCakpi1dzJYdKrRR/view", "note": "p3 Purpose / p4 Logo / p5 Font / p6 Color / p7 Consistency / p8 Social-Digital / p9 Fundamentals / p10-15 Showroom / p16 Retail / p17 FY27 Roadmap"},
-       {"label": "同 JP 版（NotebookLM 生成の要約スライド）", "url": "https://drive.google.com/file/d/1IVOyva6tum1y3fdMglV2i755XbEONdS7/view", "note": "要約なので最終判断は EN 原本で"},
-       {"label": "同 TH 版", "url": "https://drive.google.com/file/d/1BgZWgYeW2JYuJ4Cu-m70kia6BORW1EGR/view", "note": "店舗スタッフ向け"},
-       {"label": "Logo Guidelines_Vibram FiveFingers.pdf（Corporate Brand Guidelines 2021・約 12p）", "url": "https://drive.google.com/file/d/1TJ2gFJONQ7YpOXnIsmaEERs2M5NI-43k/view", "note": "ロゴ比率・セーフエリア・Do/Don't"},
-       {"label": "Vibram ブランド取り扱い会議 要旨（2026-07、EN + 日本語訳）", "url": "https://docs.google.com/document/d/12HtnJLsJbsgbDYtEQ3KNFvug-6OYRH1h8ajP_YTvA34/edit", "note": "モノブランド店禁止の経緯"}
-     ],
-     "palette": [{"hex": "#FECE15", "name": "Vibram Yellow (Pantone 123C)"}, {"hex": "#000319", "name": "Vibram Black（リッチブラック）"}, {"hex": "#241F0C", "name": ""}, {"hex": "#444023", "name": ""}, {"hex": "#3E3200", "name": ""}, {"hex": "#432F2E", "name": ""}, {"hex": "#E6E1D2", "name": ""}, {"hex": "#D0D0D0", "name": ""}, {"hex": "#FFFFFF", "name": ""}],
-     "paletteSrc": "Marketing Guidelines EN p6",
-     "fonts": [{"name": "Brandon Grotesque", "use": "印刷・デジタル全般（イタリック可）。フォントファイルは Drive VFF/FONT brandon_grotesque.zip"}, {"name": "Urbanist", "use": "Vibram Web サイト専用（Google Fonts。ニュースレターにも推奨）"}],
-     "fontsSrc": "Marketing Guidelines EN p5",
-     "rules": [
-       {"page": "p3", "title": "Purpose", "text": "製品を売っているのではなく、あらゆるタッチポイントで Vibram FiveFingers の世界観を体現する責任を負う。グローバルで一貫したブランドアイデンティティの維持が絶対条件。"},
-       {"page": "p4", "title": "ロゴ", "text": "新ロゴを全タッチポイントに導入。Vibram と FiveFingers を絶対に切り離さない（常にセット）。無地背景では高コントラストを維持。イエロー系背景、要素過多（ビジー）な背景、シルエットやコントラストを曖昧にする表現は不可。"},
-       {"page": "Logo GL", "title": "ロゴの構造", "text": "八角形（Octagon）は常に必須。ロゴを他要素と重ねない。非準拠ロゴ禁止。Vibram スクリプト単体は商品への直接印刷のみ可（同一商品に八角形ロゴ併用が条件）。セーフエリア＝スクリプト高さの 1/2（モジュール X）。"},
-       {"page": "p5", "title": "フォント", "text": "公式フォントは Brandon Grotesque。Urbanist は Web 専用。"},
-       {"page": "p6", "title": "カラー", "text": "右のパレットのみ使用。黒はリッチブラック（#000319）。Vibram Yellow は #FECE15 / Pantone 123C。"},
-       {"page": "p7", "title": "一貫性", "text": "承認済みロゴ・タイポ・カラー・レイアウトのみ使用。承認済みトーン＆ビジュアル言語を保持。過度なグラフィック・エフェクト・販促装飾を避ける。"},
-       {"page": "p8", "title": "SNS・デジタル", "text": "グローバル承認済み画像・動画のみ使用。アセット改変・未承認グラフィック追加・ブランド方向性の独自解釈は禁止。ローカライズ版は必ず事前承認。ブランドカレンダー／ローンチ戦略に従う。"},
-       {"page": "p9", "title": "基礎教育コンテンツ", "text": "PICK YOUR STYLE / TRANSITION TIPS / HOW TO PUT THEM ON / CARE INSTRUCTIONS を全消費者接点で展開。"},
-       {"page": "p10-15", "title": "ショールーム・VMD", "text": "新シーズン・重点商品を優先。意図的でクリーン、ストーリー性のある陳列。旧製品・過剰サイネージ・詰め込み禁止（Less is More）。新用語（terrain, second skin）を採用。ブランド承認なしのアドホック販促物の印刷は厳禁。"},
-       {"page": "p16", "title": "リテール（常設・仮設・ポップアップ）", "text": "物理空間での VFF ロゴ使用はすべてグローバルチームの正式承認が必須。ポップアップは「戦略計画」の一部として提出。"},
-       {"page": "p17", "title": "FY27 ロードマップ", "text": "2026/5/27 セールスミーティング → 9/1 FY27 マーケティングプラン提出 → 9/15 グローバル FB → 10/1 最終サインオフ（Critical Gate）。Act as one brand. Plan with intention. Align with global direction. Deliver one clear message."}
-     ],
-     "localRules": [
-       {"title": "モノブランド店の禁止（2026-07 会議）", "text": "Vibram 本部はディストリビューターによる VFF 専門店の運営を世界的に禁止。タイの 2 店は VFF ロゴ撤去に合意（夏繁忙期後に改装）。既存店をマルチブランドのベアフット専門店に転換することは容認（It's your shop）。", "src": "Vibram 会議要旨"},
-       {"title": "百貨店の委託コーナー", "text": "交渉余地あり。適切な百貨店であること、グローバル承認アセット・ロゴガイドライン準拠の展示が条件。", "src": "Vibram 会議要旨"},
-       {"title": "ローカライズ", "text": "画像への文字入れ、現地語カタログなどのローカライズは原則不可。本部は「正規販売店」証明書／ステッカーを準備中。", "src": "Vibram 会議要旨"},
-       {"title": "社内ルール", "text": "店舗でロゴ・アートワークを使わない。VFF 単独の売り場をつくらない。VFF を扱う新しい施策は必ず GM に確認する。", "src": "pptx S14"}
-     ]},
-    {"brand": "Vivo", "title": "Vivobarefoot Brand Guidelines",
-     "docs": [
-       {"label": "Vivo Brand Guidelines フォルダ（ページ分割 PDF 約 120 枚 + ロゴ png）", "url": "https://drive.google.com/drive/folders/1vMEsC7VF2ByQpKbK1M0--1Q302GWPsYY", "note": "章: 1. Think (29) / 2. Learn (7) / 3. Do (46) / 4. Community (2)。zip 304MB と最新版 VIVO_BRAND_GUIDELINES_11_MAY_2026.pdf (430MB) も同じ場所"},
-       {"label": "Vivobarefoot ロゴ一式（Crimson 共有 / LOGO）", "url": "https://drive.google.com/drive/folders/1iXHg3Q0p1WKIIkwBhlNtXxaIsdeEK118", "note": "ai 3・png 5・jpg 1"},
-       {"label": "Product Training Vivobarefoot.pdf（タイ語）", "url": "https://drive.google.com/file/d/1mr73Tlirkfg66Zb3B-3EABkELPcTXyhH/view", "note": "History / Philosophy (Wide・Thin・Flexible) / Fit・Feel・Flex / モデル別 / Size Chart"}
-     ],
-     "palette": [], "paletteSrc": "", "fonts": [], "fontsSrc": "",
-     "rules": [
-       {"page": "—", "title": "要点は未抽出", "text": "ガイドライン本体が 430MB の PDF（またはページ分割 120 枚）のため、この環境では要点（ロゴ使用ルール・カラーコード・フォント・写真トーン・SNS 表記）を抽出できていません。情報リクエスト B-5 を参照。原本は左のリンクから。"},
-       {"page": "Training", "title": "ブランドの哲学", "text": "Wide（幅広）・Thin（薄い）・Flexible（柔らかい）。2012 年、Clark 兄弟が創業。Fit / Feel / Flex で説明する。"}
-     ],
-     "localRules": [
-       {"title": "協議内容は社外秘", "text": "Crimson との Exclusive Retail Partner 化の協議（旗艦店・卸・公式 SNS・公式 Web）は未確定で社外秘。特に VFF 側には店頭での併売を超える話を伝えていない。", "src": "pptx S8, S14"}
-     ]}
-  ]
+ "updatedAt": "2026-11-09",
+ "brands": [
+  {
+   "brand": "VFF",
+   "title": "Vibram FiveFingers ブランド／マーケティングガイドライン",
+   "docs": [
+    {
+     "label": "Marketing Guidelines_Vibram FiveFingers.pdf（EN 原本・17p）",
+     "url": "https://drive.google.com/file/d/1G9JVTwtHrFsFzlpvBCakpi1dzJYdKrRR/view",
+     "note": "p3 Purpose / p4 Logo / p5 Font / p6 Color / p7 Consistency / p8 Social-Digital / p9 Fundamentals / p10-15 Showroom / p16 Retail / p17 FY27 Roadmap"
+    },
+    {
+     "label": "同 JP 版（NotebookLM 生成の要約スライド）",
+     "url": "https://drive.google.com/file/d/1IVOyva6tum1y3fdMglV2i755XbEONdS7/view",
+     "note": "要約なので最終判断は EN 原本で"
+    },
+    {
+     "label": "同 TH 版",
+     "url": "https://drive.google.com/file/d/1BgZWgYeW2JYuJ4Cu-m70kia6BORW1EGR/view",
+     "note": "店舗スタッフ向け"
+    },
+    {
+     "label": "Logo Guidelines_Vibram FiveFingers.pdf（Corporate Brand Guidelines 2021・約 12p）",
+     "url": "https://drive.google.com/file/d/1TJ2gFJONQ7YpOXnIsmaEERs2M5NI-43k/view",
+     "note": "ロゴ比率・セーフエリア・Do/Don't"
+    },
+    {
+     "label": "Vibram ブランド取り扱い会議 要旨（2026-07、EN + 日本語訳）",
+     "url": "https://docs.google.com/document/d/12HtnJLsJbsgbDYtEQ3KNFvug-6OYRH1h8ajP_YTvA34/edit",
+     "note": "モノブランド店禁止の経緯"
+    }
+   ],
+   "palette": [
+    {
+     "hex": "#FECE15",
+     "name": "Vibram Yellow (Pantone 123C)"
+    },
+    {
+     "hex": "#000319",
+     "name": "Vibram Black（リッチブラック）"
+    },
+    {
+     "hex": "#241F0C",
+     "name": ""
+    },
+    {
+     "hex": "#444023",
+     "name": ""
+    },
+    {
+     "hex": "#3E3200",
+     "name": ""
+    },
+    {
+     "hex": "#432F2E",
+     "name": ""
+    },
+    {
+     "hex": "#E6E1D2",
+     "name": ""
+    },
+    {
+     "hex": "#D0D0D0",
+     "name": ""
+    },
+    {
+     "hex": "#FFFFFF",
+     "name": ""
+    }
+   ],
+   "paletteSrc": "Marketing Guidelines EN p6",
+   "fonts": [
+    {
+     "name": "Brandon Grotesque",
+     "use": "印刷・デジタル全般（イタリック可）。フォントファイルは Drive VFF/FONT brandon_grotesque.zip"
+    },
+    {
+     "name": "Urbanist",
+     "use": "Vibram Web サイト専用（Google Fonts。ニュースレターにも推奨）"
+    }
+   ],
+   "fontsSrc": "Marketing Guidelines EN p5",
+   "rules": [
+    {
+     "page": "p3",
+     "title": "Purpose",
+     "text": "製品を売っているのではなく、あらゆるタッチポイントで Vibram FiveFingers の世界観を体現する責任を負う。グローバルで一貫したブランドアイデンティティの維持が絶対条件。"
+    },
+    {
+     "page": "p4",
+     "title": "ロゴ",
+     "text": "新ロゴを全タッチポイントに導入。Vibram と FiveFingers を絶対に切り離さない（常にセット）。無地背景では高コントラストを維持。イエロー系背景、要素過多（ビジー）な背景、シルエットやコントラストを曖昧にする表現は不可。"
+    },
+    {
+     "page": "Logo GL",
+     "title": "ロゴの構造",
+     "text": "八角形（Octagon）は常に必須。ロゴを他要素と重ねない。非準拠ロゴ禁止。Vibram スクリプト単体は商品への直接印刷のみ可（同一商品に八角形ロゴ併用が条件）。セーフエリア＝スクリプト高さの 1/2（モジュール X）。"
+    },
+    {
+     "page": "p5",
+     "title": "フォント",
+     "text": "公式フォントは Brandon Grotesque。Urbanist は Web 専用。"
+    },
+    {
+     "page": "p6",
+     "title": "カラー",
+     "text": "右のパレットのみ使用。黒はリッチブラック（#000319）。Vibram Yellow は #FECE15 / Pantone 123C。"
+    },
+    {
+     "page": "p7",
+     "title": "一貫性",
+     "text": "承認済みロゴ・タイポ・カラー・レイアウトのみ使用。承認済みトーン＆ビジュアル言語を保持。過度なグラフィック・エフェクト・販促装飾を避ける。"
+    },
+    {
+     "page": "p8",
+     "title": "SNS・デジタル",
+     "text": "グローバル承認済み画像・動画のみ使用。アセット改変・未承認グラフィック追加・ブランド方向性の独自解釈は禁止。ローカライズ版は必ず事前承認。ブランドカレンダー／ローンチ戦略に従う。"
+    },
+    {
+     "page": "p9",
+     "title": "基礎教育コンテンツ",
+     "text": "PICK YOUR STYLE / TRANSITION TIPS / HOW TO PUT THEM ON / CARE INSTRUCTIONS を全消費者接点で展開。"
+    },
+    {
+     "page": "p10-15",
+     "title": "ショールーム・VMD",
+     "text": "新シーズン・重点商品を優先。意図的でクリーン、ストーリー性のある陳列。旧製品・過剰サイネージ・詰め込み禁止（Less is More）。新用語（terrain, second skin）を採用。ブランド承認なしのアドホック販促物の印刷は厳禁。"
+    },
+    {
+     "page": "p16",
+     "title": "リテール（常設・仮設・ポップアップ）",
+     "text": "物理空間での VFF ロゴ使用はすべてグローバルチームの正式承認が必須。ポップアップは「戦略計画」の一部として提出。"
+    },
+    {
+     "page": "p17",
+     "title": "FY27 ロードマップ",
+     "text": "2026/5/27 セールスミーティング → 9/1 FY27 マーケティングプラン提出 → 9/15 グローバル FB → 10/1 最終サインオフ（Critical Gate）。Act as one brand. Plan with intention. Align with global direction. Deliver one clear message."
+    }
+   ],
+   "localRules": [
+    {
+     "title": "モノブランド店の禁止（2026-07 会議）",
+     "text": "Vibram 本部はディストリビューターによる VFF 専門店の運営を世界的に禁止。タイの 2 店は VFF ロゴ撤去に合意（夏繁忙期後に改装）。既存店をマルチブランドのベアフット専門店に転換することは容認（It's your shop）。",
+     "src": "Vibram 会議要旨"
+    },
+    {
+     "title": "百貨店の委託コーナー",
+     "text": "交渉余地あり。適切な百貨店であること、グローバル承認アセット・ロゴガイドライン準拠の展示が条件。",
+     "src": "Vibram 会議要旨"
+    },
+    {
+     "title": "ローカライズ",
+     "text": "画像への文字入れ、現地語カタログなどのローカライズは原則不可。本部は「正規販売店」証明書／ステッカーを準備中。",
+     "src": "Vibram 会議要旨"
+    },
+    {
+     "title": "社内ルール",
+     "text": "店舗でロゴ・アートワークを使わない。VFF 単独の売り場をつくらない。VFF を扱う新しい施策は必ず GM に確認する。",
+     "src": "pptx S14"
+    }
+   ]
+  },
+  {
+   "brand": "Vivo",
+   "title": "Vivobarefoot Brand Guidelines",
+   "docs": [
+    {
+     "label": "Vivo Brand Guidelines フォルダ（ページ分割 PDF 約 120 枚 + ロゴ png）",
+     "url": "https://drive.google.com/drive/folders/1vMEsC7VF2ByQpKbK1M0--1Q302GWPsYY",
+     "note": "章: 1. Think (29) / 2. Learn (7) / 3. Do (46) / 4. Community (2)。zip 304MB と最新版 VIVO_BRAND_GUIDELINES_11_MAY_2026.pdf (430MB) も同じ場所"
+    },
+    {
+     "label": "Vivobarefoot ロゴ一式（Crimson 共有 / LOGO）",
+     "url": "https://drive.google.com/drive/folders/1iXHg3Q0p1WKIIkwBhlNtXxaIsdeEK118",
+     "note": "ai 3・png 5・jpg 1"
+    },
+    {
+     "label": "Product Training Vivobarefoot.pdf（タイ語）",
+     "url": "https://drive.google.com/file/d/1mr73Tlirkfg66Zb3B-3EABkELPcTXyhH/view",
+     "note": "History / Philosophy (Wide・Thin・Flexible) / Fit・Feel・Flex / モデル別 / Size Chart"
+    },
+    {
+     "label": "ロゴ: Group 23.svg",
+     "url": "https://drive.google.com/file/d/11i87bq6Dd15Iu5rpqY2iygsmRXPbEyTs/view",
+     "note": "Vivobarefoot 横長ロゴ（六角 V ＋ワードマーク、279×50、fill #100C08）— SVG ソースから確認"
+    },
+    {
+     "label": "ロゴ: Layer_1-1.png",
+     "url": "https://drive.google.com/file/d/1-XKJGAGnPJ5Y_FGWVMSW2N83RRuwqMLy/view",
+     "note": "ReVivo 縦組みロゴ（六角形クラスター＋ REVIVO、93×115）— 画像で確認"
+    },
+    {
+     "label": "ロゴ: Layer_1-2.png",
+     "url": "https://drive.google.com/file/d/1yJYseZzLkMOkH8kuUyXxqOc5vEU2jE10/view",
+     "note": "ReVivo 横長ロゴ（118×37）— 画像で確認"
+    },
+    {
+     "label": "ロゴ: Layer_1.png",
+     "url": "https://drive.google.com/file/d/1vvdNO64ECDEK-KoJ_YS-A7SbiL20apci/view",
+     "note": "267×165 PNG。ロゴ素材と推定（未確認）"
+    },
+    {
+     "label": "ロゴ: Layer_1-3.png",
+     "url": "https://drive.google.com/file/d/1FlcC6PDn3-oYDdPIxKoA6KUmluCX8Vrq/view",
+     "note": "483×299 PNG。ロゴ素材と推定（未確認）"
+    },
+    {
+     "label": "ロゴ: Group 32.png",
+     "url": "https://drive.google.com/file/d/1gX5D1JxdZYO38IO75j-nZrbONPz3UZEp/view",
+     "note": "217×134 PNG。ロゴ素材と推定（未確認）"
+    },
+    {
+     "label": "ロゴ: Group 5.png",
+     "url": "https://drive.google.com/file/d/1Fh3wjXCjUZplFo0UkswHBYGHPM7l3HMR/view",
+     "note": "241×150 PNG。ロゴ素材と推定（未確認）"
+    },
+    {
+     "label": "ロゴ: Clip path group.png",
+     "url": "https://drive.google.com/file/d/1kaXrqV5pB3rTOowGXZaw_qGZduIG5pjA/view",
+     "note": "613×715 PNG。アイコン／ロゴ素材と推定（未確認）"
+    },
+    {
+     "label": "ロゴ: THE FUTURE IS.png",
+     "url": "https://drive.google.com/file/d/1yUs0ABDmUGfUXdmd_hVjHfJaYYnyorOL/view",
+     "note": "VivoBiome 関連グラフィック（『The future is at our feet』）と推定（未確認）"
+    }
+   ],
+   "palette": [
+    {
+     "hex": "",
+     "name": "White（基調色）",
+     "role": "ほとんどのコミュニケーションの背景。写真と組み合わせて主に白とチャコールを使う"
+    },
+    {
+     "hex": "",
+     "name": "Charcoal tones（基調色）",
+     "role": "白とともに principle colour を構成するモノクロ系"
+    },
+    {
+     "hex": "",
+     "name": "Red — Core brand (Vivobarefoot)",
+     "role": "ブランド・セグメント色。『Fire for humanity's wonder』"
+    },
+    {
+     "hex": "",
+     "name": "Blue — ReVivo",
+     "role": "ブランド・セグメント色。『Water's power to cleanse and revive』"
+    },
+    {
+     "hex": "",
+     "name": "Green — VivoHealth",
+     "role": "ブランド・セグメント色。『The natural world's flourishing colour of health』"
+    },
+    {
+     "hex": "",
+     "name": "Monochrome — VivoBiome",
+     "role": "Biome はコアのモノクロ基調パレットに準拠し、色で定義しない"
+    },
+    {
+     "hex": "#100C08",
+     "name": "Logo fill（参考値）",
+     "role": "フォルダ内 Group 23.svg（Vivobarefoot ロゴ）の fill 値。ガイドライン本文に記載されたパレット値ではない"
+    }
+   ],
+   "paletteSrc": "3. Do _ Page 93.pdf（COLOUR PALETTE）、3. Do _ Page 94.pdf（REGENERATIVE COLOUR YIN + YANG）、1. Think _ Page 38.pdf（COLOUR: YIN / YANG）。HEX / Pantone 値は抽出テキストに存在せず（スウォッチページ p95〜p104 はフォルダに未収録）。#100C08 のみ Group 23.svg から読み取り。。HEX 値はスウォッチページ（Do p95–104）が Drive に無いため未入力",
+   "fonts": [
+    {
+     "name": "Knockout HTF51-Middleweight",
+     "use": "BAU の太字ウェイト。見出し・ステートメント・キャンペーン見出し（ブロックキャップ、+80 トラッキング）。H2 40px など"
+    },
+    {
+     "name": "Knockout HTF31-Middleweight / HTF31-JuniorMiddleweight",
+     "use": "サポートコピー・本文（10pt / Web 14px）。JuniorMiddleweight は LP 本文や PDP 説明文など長文に。センテンスケース"
+    },
+    {
+     "name": "Knockout HTF50-Welterweight / HTF30-JuniorWelterweight",
+     "use": "コンデンス系ウェイト。スペースが限られるデジタルチャネル限定（HTF50：見出し・引用、HTF30：8pt 三次情報）"
+    },
+    {
+     "name": "Knockout HTF67-FullBantamweight",
+     "use": "インパクト用コンデンス見出し。短い文字数のステートメント／Tier 1 キャンペーン（印刷・デジタル・動画）のみ。ブロックキャップ"
+    },
+    {
+     "name": "Cormorant Garamond（Light / Medium / SemiBold / Bold / Italic）",
+     "use": "エディトリアル用セリフ。アンバサダーなど『人の声』や意見を伝える引用、ブログ／ジャーナル／記事、印刷のエディトリアルコピー。Google Fonts で入手可"
+    },
+    {
+     "name": "Brush Up Regular",
+     "use": "手描き風フォント。Kids 専用キャンペーン／コミュニケーション（印刷・デジタル・動画）のみ"
+    }
+   ],
+   "fontsSrc": "3. Do _ Page 77–87.pdf（TYPOGRAPHY: CORE BRAND FONT / EDITORIAL SUPPORT FONT / KIDS FONT / LAYOUT / CALLOUT / CAMPAIGN / FONT USAGE）、3. Do _ Page 90–91.pdf（DIGITAL COMPONENTS / WEBSITE CONTAINERS）",
+   "rules": [
+    {
+     "page": "Do p68–69",
+     "title": "コアロゴの構成・色・優先順位",
+     "text": "コアロゴは線で描いた六角形の V シンボルとブランド名を組み合わせた複合マーク。ロゴは黒または白抜きで使用し、必要に応じて写真の上に置いてよい。塗りつぶし（solid）版は製品（ソールのトレッド）専用で、製品のカラーに合わせて着色できる。ワードマークは必ず 100% 透過（背景ボックスなし）で使う。 使用優先順位：1. Primary logo を最優先、2. Secondary（囲み付き）は成果物に応じて、3. V アイコンは単独使用可、4. Solid V アイコンは製品カラーのアクセントや線が判読できない場合のみ。"
+    },
+    {
+     "page": "Do p70",
+     "title": "ブランド名の表記ルール",
+     "text": "タイトルはブロックキャップで VIVOBAREFOOT. VIVOHEALTH. VIVOBIOME. REVIVO.。本文では Vivobarefoot（b は小文字）、VivoHealth / VivoBiome / ReVivo（H・B・R は大文字）。サブブランドにはそれぞれ専用ロゴがあり、横長版は二次的な選択肢。Biome ロゴはデジタルではアニメーション版を優先。"
+    },
+    {
+     "page": "Do p71",
+     "title": "余白（アイソレーション）と最小サイズ",
+     "text": "ロゴの周囲には大文字 V の高さ 4 個分の保護エリア（exclusion zone）を確保する。最小サイズの目安：Primary 20mm / 50px、Secondary 30mm / 90px、アイコン類 10mm / 30〜40px、最小 5mm / 15px。"
+    },
+    {
+     "page": "Do p73–75",
+     "title": "B-Corp・コラボのロックアップと配置",
+     "text": "B-Corp マークとのロックアップは黒か白のみ、100% 透過で明確に見える位置に置く。コラボ時はパートナーロゴを Primary ロゴの上（横並びなら左）に置き、両ロゴとも黒白のみで揃える。配置の基本は右下だが、フォーマットとメッセージの階層に応じて中央・左右・上下いずれでもよい。背景が騒がしい場合は Secondary（囲み）版、スペースが狭い場合は V シンボル単体を選ぶ。"
+    },
+    {
+     "page": "Do p77 / p86",
+     "title": "コア書体 Knockout",
+     "text": "Knockout が全コミュニケーションのコア書体。HTF51 を見出し、HTF31 を本文、HTF50 / HTF30 のコンデンス版はデジタル限定、HTF67 はインパクト用に限定。印刷・デジタル・SNS・動画で共通。サイズ階層の例：見出し 120 / 90 / 64 / 40 / 32pt、小見出し 24 / 18 / 14pt、本文 10pt、三次情報 8pt。"
+    },
+    {
+     "page": "Do p78 / p82",
+     "title": "エディトリアル書体と引用スタイル",
+     "text": "『人の声』（アンバサダーの意見など）を伝えるときはセリフ体 Cormorant Garamond を使う。ブランドの力強い意見を短く叫ぶ場合は Knockout HTF67 のブロックキャップ（数語のみ）。個人の長めの引用は HTF31 のセンテンスケースで、名前・肩書きを HTF31-JuniorMiddleweight で添える。"
+    },
+    {
+     "page": "Do p83–84",
+     "title": "ブロックキャップ（全大文字）の使いどころ",
+     "text": "ブロックキャップは BAU 見出し、キャンペーン見出し、製品名、略語（BAU など）、短いインパクトのあるステートメント、ブランド名に限って使う。長文や本文には絶対に使わない——読みにくく、『SHOUTY』になるため。 塗り＋線（stroke）を混ぜたアウトライン表現はキャンペーン見出しと製品名のみ、書体は Knockout HTF51 に限定し線は centre 設定。"
+    },
+    {
+     "page": "Do p93–94",
+     "title": "カラーの原則：白＋チャコール、RGB セグメント、Yin / Yang",
+     "text": "基調は白とチャコール系で、写真と組み合わせる。色は控えめに使い、主にブランドのセグメント識別に用いる：Red = コアブランド、Blue = ReVivo、Green = VivoHealth、Biome はモノクロ。製品カラーは自然に根ざし、YIN（grounded・calm・connected）と YANG（uplifting・energised）の 2 系統。鮮やかな『supernatural』アクセントは機能の強調や着用者を元気づけるために使う。"
+    },
+    {
+     "page": "Do p105",
+     "title": "写真の撮影・仕上げ",
+     "text": "キャンペーン写真の主用途は縦位置と正方形なので、撮影時に横・縦両方を想定し、足元の下も含めトリミング用の余白（ブリード）を十分に取る。写真は uplifting で sensorial に。彩度を上げすぎない、明るめに、純黒・純白はむしろ抑える。1 回の撮影で男女各 3〜5 点のヒーロー写真（計 6〜10 点）と、製品・モデルなしの環境写真 3〜5 点を確保する。"
+    },
+    {
+     "page": "Do p115–117",
+     "title": "トーン・オブ・ボイス 5 本柱",
+     "text": "THE POETRY OF SCIENCE（事実と数字に命を吹き込む）、INTELLIGENT BUT ACCESSIBLE（難しくしないが退屈にもしない：短い文・明快な言葉、スラングは不可）、MAKE NATURE VISCERAL（自然の語彙や比喩を借りて体験を再現する）、PACK A LOVING PUNCH（能動態・you / us・行動を促す CTA、説教臭くなく）、HUMOUR AND HUMILITY（失敗を正直に認め、ユーモアは意味を足すためだけに）。"
+    },
+    {
+     "page": "Do p118–121",
+     "title": "カテゴリ別の話し方",
+     "text": "Performance：技術的・正確、力強く motivating（『Peloton 的』な peppy は避ける）。Lifestyle：aspirational だが relatable、ユーモアと細部へのこだわり。Outdoor：製品は kit / gear と呼び、技術仕様・用途・耐久性・R&D パートナーを明記。Kids：親向けに positive で playful、説教しない。ReVivo：return / repair / renew / rewear / recycle を楽観的に、未対応モデルがあることも透明に。Regeneration：主張は裏付けのあるものだけ、他ブランドを貶めない。"
+    },
+    {
+     "page": "Do p123–124",
+     "title": "ブランド用語（Vivo words）",
+     "text": "Footwear（shoes ではない）、Apparel（clothes ではない）、Kit / Gear（merchandise ではない）、Indigenous（native ではない）、Planetary health（environmental health ではない）、Natural health（wellness ではない）、Regenerative（sustainable ではない）、Value chain（supply chain ではない）。Supernatural = 100% 自然由来・100% 生分解、Circular = 100% リサイクル・100% 化学的リサイクル可能。"
+    },
+    {
+     "page": "Do p125",
+     "title": "ライティング規則（SNS 含む）",
+     "text": "英国英語（米国向けは米国英語に調整）。本文はセンテンスケース、タイトルはタイトルケース、製品名（例 Magna Trail）は本文中タイトルケース。URL・メールは全て小文字。能動態、短い文、オックスフォードコンマ、短縮形 OK、セミコロンと & は避ける（& は SNS の字数制限時のみ可）。絵文字は SNS（Instagram キャプション等）のみ、自然系の絵文字をテキスト区切りとして。感嘆符は控えめに、重ねない、エラー表示には使わない。"
+    },
+    {
+     "page": "Do p127–129",
+     "title": "デジタル施策のベストプラクティス",
+     "text": "『ルールではなくガイドライン』。モバイルファースト（Web 閲覧の 65%、メールの 80% がモバイル）、K.I.S.S.（余白を活かしたミニマル設計）、一貫したパディングと CTA スタイル。メールは縦長画像と大きく太いタイポで。有料 SNS 広告はヒーロー製品を 6 か月ごとに撮影し 6 週ごとに更新、Fit / Feel / Flex のコマ割りで USP を伝え、PDP へ誘導。『photography = shoe is KING!』"
+    },
+    {
+     "page": "Community p144",
+     "title": "コミュニティへのメッセージ",
+     "text": "読者は family / team / tribe / community / 21st century cobblers / wild foot liberation front の一員。『Tread lightly but leave a long lasting footprint』。入社したばかり、あるいは裸足の旅を始めたばかりなら、必ず walk before you run——足から始まる再接続の旅は深いが慎重に進めること。"
+    },
+    {
+     "page": "Training",
+     "title": "ブランドの哲学",
+     "text": "Wide（幅広）：実際の足の形に合わせ、足指が自然に広がる（Splay）ことで安定性を得る。Thin（薄い）：足を地面にできるだけ近づけ、正確な感覚情報を受け取る。Flexible（柔軟）：筋肉・腱・動きを自然のままに自由にする。"
+    }
+   ],
+   "localRules": [
+    {
+     "title": "協議内容は社外秘",
+     "text": "Crimson との Exclusive Retail Partner 化の協議（旗艦店・卸・公式 SNS・公式 Web）は未確定で社外秘。特に VFF 側には店頭での併売を超える話を伝えていない。",
+     "src": "pptx S8, S14"
+    }
+   ],
+   "chapters": [
+    {
+     "name": "1. Think",
+     "pages": 29,
+     "pageRange": "p1–p38（欠番あり）",
+     "summary": "ブランドのビジョン（Reconnect people to the natural world）、How（Inspiring natural health journeys）、What（Regenerative footwear and experiences）。起源：Glastonbury の靴職人一族 7 代目 Galahad & Asher Clark（1825 年〜）。『We are nature. Nature is us.』『Just because it's normal doesn't mean it's natural』。3 つの柱 Rewild（WELCOME BACK THE WILD）/ Reclaim（RECLAIM THE RAW）/ Regenerate（GET DOWN AND DIRTY）。B Corp（2020 年 98.8 → 2021 年 106.4、目標 2026 年 140）、Unfinished Business（年次レポート）。製品 USP は Fit / Feel / Flex。カテゴリ：OUTDOOR / ACTIVE(PERFORMANCE) / LIFESTYLE / KIDS、ヒーロー franchise（ESC, TRACKER, MOTUS, MAGNA, PRIMUS, ASANA, SENSUS, GOBI, GEO, VIVOBIOME）。"
+    },
+    {
+     "name": "2. Learn",
+     "pages": 7,
+     "pageRange": "p48–p60",
+     "summary": "自然健康（Natural Health）の 9 本柱（Nature / Community / Hot-Cold / Move / Purpose / Breath / Nourish / Mind / Sleep）、足の構造（26 骨・33 関節・3 つのアーチ・3 つのロッカー、脳の運動情報の 70% は足から）、Normal vs Natural（厚底・狭いトゥボックス・硬い靴 vs Wide / Thin / Flexible）、Barefoot design = Fit, Feel, Flex、走りのスキル（姿勢・リズム約 180 歩/分・リラックス）、VivoHealth（オンライン自然健康プラットフォーム）。FAQ ページ（p60）はダミーテキストのまま。"
+    },
+    {
+     "name": "3. Do",
+     "pages": 46,
+     "pageRange": "p61–p129",
+     "summary": "ビジュアル・アイデンティティとトーン・オブ・ボイス。ブランドマーク（コアロゴ / サブブランド VivoHealth・VivoBiome・ReVivo / B-Corp・コラボのロックアップ / 余白・最小サイズ）、タイポグラフィ（Knockout 各ウェイト、Cormorant Garamond、Brush Up、ブロックキャップの使い方、キャンペーン用アウトライン書体、デジタル・コンポーネント）、カラー（白＋チャコール基調、RGB によるセグメント色、Yin / Yang）、写真撮影要件、USP アイコン、イラスト／インフォグラフィック、トーン・オブ・ボイス 5 本柱・カテゴリ別の話し方・用語集・ライティング規則、ランディングページ／メール／有料広告のベストプラクティス。"
+    },
+    {
+     "name": "4. Community",
+     "pages": 2,
+     "pageRange": "p142–p144",
+     "summary": "Yin（静・内省・受容）と Yang（動・外向・行動）のバランスを通じたウェルビーイング。新しく加わった仲間へのメッセージ：『小さな靴会社だが big (toe) foot-shaped ideas を持つ。軽やかに歩み、長く残る足跡を。裸足への移行は walk before you run で慎重に』。"
+    }
+   ],
+   "notes": [
+    "THINK.pdf / LEARN.pdf / DO.pdf / COMMUNITY.pdf は章扉のみ（各 4〜6KB、テキストは章名だけ）。実内容はページ分割ファイルから読んだ。",
+    "フォルダは parentId 検索で 103 ファイル（PDF 70・JPG 20・PNG 11・SVG 1・ZIP 1）。サブフォルダは検出されず、ページファイルは直下にフラットに置かれている。原本の全ページは揃っておらず（例：Think p6, p8–9, p26–27, p33–35, p37, p39–43、Learn p44–47, p49–50, p52–53, p55, p59、Do p63–64, p67, p72, p76, p88–89, p92, p95–104, p106–108, p114, p126、Community p130–141, p143）、欠落ページの内容は不明。",
+    "カラーパレットの HEX / Pantone 値は抽出テキストに含まれていない（スウォッチページ p95–104 が欠落）。palette の hex は null とし、#100C08 のみロゴ SVG の fill 値として参考掲載。推定で HEX は作成していない。",
+    "書体名・ウェイト・サイズは Do p77–87 の本文から転記。Knockout（Hoefler&Co.）は有償フォント、Cormorant Garamond は Google Fonts。",
+    "ロゴ PNG のうち Layer_1-1 / Layer_1-2 は ReVivo ロゴであることを画像で確認。Group 23.svg は Vivobarefoot ロゴであることを SVG ソースで確認。他の PNG は中身未確認（推定）。",
+    "Vivo Brand Guidelines.zip（約 304MB）は MCP のサイズ上限により取得不可。",
+    "Do p110（ILLUSTRATIONS AND INFOGRAPHICS 扉）と Learn p60（FAQ）はダミーテキスト（Lorem ipsum 相当）のため内容なし。",
+    "Think p36 では『6 か月の着用で足の強さが 60% 向上』、Product Training では『57%』と数値が異なる。",
+    "日本語訳は抽出した英文本文からの意訳。ブランド固有語（Fit / Feel / Flex、Wide / Thin / Flexible、Yin / Yang、BAU など）は英語のまま。",
+    "個人名（アンバサダー・スタッフ名等）は意図的に省いた。"
+   ]
+  }
+ ]
 }
