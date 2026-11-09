@@ -1,7 +1,11 @@
 # BD オンボーディング・ダッシュボード（`bd/`）
 
 新しく入社した Business Development 担当者が「ブランド・数字・取引先・ルール」を一箇所で確認するための社内ダッシュボード。
-静的 HTML + JSON（ビルド不要）。Vercel チーム `barefootinc-th` に **Root Directory を `bd` にした別プロジェクト**として配信する。
+静的 HTML + JSON（ビルド不要）。Vercel チーム `barefootinc-th` のプロジェクト **`bd-dashboard`**（Root Directory = `bd`）として配信中。
+
+- 本番 URL: https://bd-dashboard-mu.vercel.app （別名 https://bd-dashboard-barefootinc-th.vercel.app ）
+- 現在の本番はブランチ `claude/laughing-pascal-1qck8z` の最新コミット。main に取り込んだあとは main が本番になる（Vercel の Production Branch 設定を確認）
+- チーム既定で Vercel Authentication（ssoProtection）が有効。Vercel チームにログインしていない人が開けない場合は、Settings → Deployment Protection で Vercel Authentication を無効にするか Password Protection に切り替える
 
 - 画面: ホーム／ブランド × 5（VFF・Vivobarefoot・OLENO・Coolcore・AQOS）／ガイドライン（VFF・Vivo）／月次売上／店舗一覧／委託販売／取引条件／SNS／未入力一覧
 - 数字・文には出典バッジ `src` が付く（マウスを乗せると出典）。出典のない数字は載せていない。埋まらなかった項目は「未入力」と表示し、「未入力一覧」（情報リクエスト）に集約。
@@ -35,7 +39,7 @@ scripts/bd/
 
 ## Vercel の設定（初回）
 
-1. Vercel → Add New Project → リポジトリ `KeisukeKirby/stock-dashboard` を選び、**Root Directory = `bd`**、Framework = Other。Build Command は空、Output Directory は `public`（vercel.json に書いてあるので自動）。
+1. 作成済み（2026-11-09、プロジェクト `bd-dashboard`、Root Directory = `bd`、Framework = Other、Output Directory = `public`）。作り直す場合は Add New Project → `KeisukeKirby/stock-dashboard` → Root Directory `bd`。
 2. 環境変数は不要。
 3. Settings → Git → Production Branch は `main`（このリポジトリの他プロジェクトと同じ運用）。
 4. アクセス制限が必要なら Settings → Deployment Protection（Password Protection / Vercel Authentication）を有効にする。
