@@ -1,5 +1,5 @@
 /* BD オンボーディング・ダッシュボード  —  静的 HTML + JSON。ビルド不要。
-   データは data/*.json。社外秘のもの（取引条件・委託実績）は /api/bd-secret から合言葉つきで取得。 */
+   データは data/*.json（取引条件・委託実績も含む。社内限り、全ページ noindex）。 */
 (() => {
   "use strict";
   const $ = (id) => document.getElementById(id);
@@ -39,7 +39,7 @@
   const D = {};
   async function loadJSON(path) { const r = await fetch(path, { cache: "no-store" }); if (!r.ok) throw new Error(`${path}: ${r.status}`); return r.json(); }
   async function loadAll() {
-    const files = { company: "data/company.json", brands: "data/brands.json", stores: "data/stores.json", guidelines: "data/guidelines.json", sns: "data/sns.json", requests: "data/requests.json", sales: "data/sales_monthly.json", salesRecord: "data/sales_record_sum.json" };
+    const files = { company: "data/company.json", brands: "data/brands.json", stores: "data/stores.json", guidelines: "data/guidelines.json", sns: "data/sns.json", requests: "data/requests.json", sales: "data/sales_monthly.json", salesRecord: "data/sales_record_sum.json", terms: "data/terms.json", consignment: "data/consignment.json" };
     await Promise.all(Object.entries(files).map(async ([k, p]) => { try { D[k] = await loadJSON(p); } catch (e) { console.error(e); D[k] = null; } }));
     D.products = {};
     await Promise.all(Object.keys(BRAND_ID).map(async (id) => { try { D.products[id] = await loadJSON(`data/products/${id}.json`); } catch { D.products[id] = null; } }));
@@ -289,26 +289,11 @@
     el.append(h("div", { class: "card", style: "margin-top:14px" }, h("h3", {}, "未入力"), h("ul", { class: "clean small" }, ST.missing.map((m) => h("li", {}, missing(), " ", m)))));
   };
 
-  // ---------- SECRET (terms / consignment) ----------
-  const secret = { key: null };
-  try { secret.key = sessionStorage.getItem("bd.key"); } catch {}
-  async function fetchSecret(doc) {
-    const r = await fetch(`/api/bd-secret?doc=${doc}`, { headers: secret.key ? { Authorization: `Bearer ${secret.key}` } : {}, cache: "no-store" });
-    if (r.status === 401) throw Object.assign(new Error("合言葉が違います"), { code: 401 });
-    if (r.status === 503) throw Object.assign(new Error("サーバー側で合言葉（BD_SECRET_KEY）が未設定です。Vercel の Environment Variables に設定してください。"), { code: 503 });
-    if (!r.ok) throw new Error(`取得に失敗しました (${r.status})`);
-    return r.json();
-  }
+  // ---------- terms / consignment（社内限り。取引条件は GM の判断で全件掲載） ----------
   function gate(el, doc, title, render) {
-    el.replaceChildren();
-    const box = h("div", { class: "card locked" }, h("div", { class: "big" }, "🔒"), h("h2", {}, title), h("p", { class: "note" }, "社外秘のため合言葉が必要です（GM から受け取ってください）。入力した合言葉はこのタブを閉じるまで記憶します。"));
-    const input = h("input", { type: "password", placeholder: "合言葉", autocomplete: "off" }), err = h("p", { class: "error" });
-    const go = async () => { if (input.value) secret.key = input.value.trim(); try { sessionStorage.setItem("bd.key", secret.key || ""); } catch {} err.textContent = "読み込み中…"; try { const data = await fetchSecret(doc); el.replaceChildren(); render(el, data); } catch (e) { err.textContent = e.message; if (e.code === 401) { secret.key = null; } } };
-    box.append(h("div", { class: "toolbar", style: "justify-content:center" }, input, h("button", { class: "ghost", type: "button", onclick: go }, "開く")), err);
-    input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(); });
-    el.append(box);
-    if (location.protocol === "file:" || !/vercel\.app$|localhost|127\.0\.0\.1/.test(location.hostname) && !location.hostname) err.textContent = "";
-    if (secret.key) go();
+    const data = D[doc];
+    if (!data) { el.append(h("div", { class: "card" }, h("p", { class: "error" }, `data/${doc}.json を読み込めませんでした`))); return; }
+    render(el, data);
   }
   views.terms = (el) => gate(el, "terms", "取引条件一覧", (el, T) => {
     el.append(h("div", { class: "section-title" }, h("h2", {}, "取引条件一覧"), h("span", { class: "note" }, `更新 ${T.updatedAt}`)));

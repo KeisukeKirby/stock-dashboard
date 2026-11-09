@@ -3,13 +3,32 @@
   "buildCommand": "",
   "outputDirectory": "public",
   "cleanUrls": true,
-  "functions": { "api/bd-secret.js": { "maxDuration": 10 } },
   "headers": [
-    { "source": "/(.*)", "headers": [
-      { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
-      { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
-      { "key": "Referrer-Policy", "value": "no-referrer" }
-    ] },
-    { "source": "/img/(.*)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=86400" } ] }
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        }
+      ]
+    },
+    {
+      "source": "/img/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    }
   ]
 }

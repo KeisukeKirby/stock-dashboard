@@ -27,16 +27,7 @@
    "searched": "タイ側の条件表・契約書は Drive に見当たらない。実データとして Sales Record 2026 の百貨店精算ブロックに Siam Discovery GP32%・Central 各店 GP30%、スタッフコミッション 1%（2025）・イベント 0.5%、Crimson 発注シートに WSP = RRP × 0.5、MY 向け Vibram 契約・Cost Simulation が読める程度",
    "question": "取引条件の一覧表は GM の手元にありますか？ この画面に載せてよい範囲（合言葉付き）を決めてください",
    "priority": "A",
-   "interim": "実データから読み取れた率だけを「観測値」として合言葉付きで表示"
-  },
-  {
-   "id": "A-4",
-   "section": "機密・公開範囲",
-   "need": "取引条件・委託実績を誰まで見せるか。(a) Vercel Deployment Protection / (b) 合言葉を Vercel Function で検証 / (c) noindex + URL 非公開のみ",
-   "searched": "—",
-   "question": "(a)(b)(c) のどれにしますか？ 現状は (b) で実装（環境変数 BD_SECRET_KEY）",
-   "priority": "A",
-   "interim": "(b)。鍵が未設定のときは「鍵未設定」と表示して中身を出さない"
+   "interim": "実データから読み取れた率を「観測値」として全件表示（GM 判断 2026-11-09: 取引条件はすべて載せてよい）"
   },
   {
    "id": "A-5",

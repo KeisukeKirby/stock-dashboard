@@ -3,9 +3,9 @@
 新しく入社した Business Development 担当者が「ブランド・数字・取引先・ルール」を一箇所で確認するための社内ダッシュボード。
 静的 HTML + JSON（ビルド不要）。Vercel チーム `barefootinc-th` に **Root Directory を `bd` にした別プロジェクト**として配信する。
 
-- 画面: ホーム／ブランド × 5（VFF・Vivobarefoot・OLENO・Coolcore・AQOS）／ガイドライン（VFF・Vivo）／月次売上／店舗一覧／委託販売（🔒）／取引条件（🔒）／SNS／未入力一覧
+- 画面: ホーム／ブランド × 5（VFF・Vivobarefoot・OLENO・Coolcore・AQOS）／ガイドライン（VFF・Vivo）／月次売上／店舗一覧／委託販売／取引条件／SNS／未入力一覧
 - 数字・文には出典バッジ `src` が付く（マウスを乗せると出典）。出典のない数字は載せていない。埋まらなかった項目は「未入力」と表示し、「未入力一覧」（情報リクエスト）に集約。
-- 社外秘。全ページ `noindex`。取引条件と委託販売実績は合言葉つき（下記）。
+- 社外秘。全ページ `noindex`。取引条件・委託販売実績も含めて全員が見られる（GM 判断 2026-11-09）。アクセス制限が必要になったら Vercel の Deployment Protection（Password / Vercel Authentication）を使う。
 
 ## 構成
 
@@ -23,12 +23,10 @@ bd/
       sales_record_sum.json# 経理ベース 店舗×月（Sales Record_Coollabo Shop の SUM シート）
       sns.json             # SNS アカウント（判明分のみ）
       requests.json        # 情報リクエスト（未入力一覧）
+      terms.json           # 取引条件（観測値・全件掲載）
+      consignment.json     # 委託販売実績（足数）
       products/{vff,vivo,oleno,coolcore,aqos}.json
     img/vivo/*.jpg         # Vivo 21 モデルの画像（t21-vivo-lineup から 1 モデル 1 枚）
-  api/bd-secret.js         # 合言葉を検証して private/ の JSON を返す Vercel Function
-  private/
-    terms.json             # 取引条件（観測値）  ← public/ には置かない
-    consignment.json       # 委託販売実績（足数）
 scripts/bd/
   build_sales.py           # 2 つの販売ダッシュボードの JSON → sales_monthly.json
   build_vivo.py            # t21-vivo-lineup/data.json → products/vivo.json
@@ -38,16 +36,9 @@ scripts/bd/
 ## Vercel の設定（初回）
 
 1. Vercel → Add New Project → リポジトリ `KeisukeKirby/stock-dashboard` を選び、**Root Directory = `bd`**、Framework = Other。Build Command は空、Output Directory は `public`（vercel.json に書いてあるので自動）。
-2. Settings → Environment Variables（Production / Preview）:
-
-   | 変数 | 内容 |
-   |---|---|
-   | `BD_SECRET_KEY` | 取引条件・委託販売を開くための合言葉（GM が決めて BD に口頭で渡す）。未設定のときは 🔒 の 2 画面は中身を返さない |
-
+2. 環境変数は不要。
 3. Settings → Git → Production Branch は `main`（このリポジトリの他プロジェクトと同じ運用）。
-4. 可能なら Settings → Deployment Protection（Vercel Authentication / Password Protection）を有効にする。これが使えるなら合言葉方式より強い（情報リクエスト A-4）。
-
-公開範囲の選択肢: (a) Deployment Protection（推奨）／(b) 合言葉（現状の実装）／(c) noindex + URL 非公開のみ。(a) にした場合も (b) はそのまま残してよい。
+4. アクセス制限が必要なら Settings → Deployment Protection（Password Protection / Vercel Authentication）を有効にする。
 
 ## データの更新手順
 
@@ -68,10 +59,10 @@ Drive `Sales Record_Coollabo Shop 2026.xlsx` / `2025.xlsx`（acc.edvcoltd@）の
 - VFF / OLENO / Coolcore: Drive `BAREFOOTINC THAILAND/Store・Event/List goods for event_2026/*.xlsx` から SKU・売価を抽出した `price_list_from_events.json` と `coolcore_products.json` を用意し `python scripts/bd/build_products.py <抽出フォルダ>`
 - AQOS: 資料がないため `aqos.json` は手書きのプレースホルダー
 
-### 委託販売（`private/consignment.json`）
+### 委託販売（`public/data/consignment.json`）
 Drive `Stock VFF Consignment.xlsx`（acc.bftcoltd@）。委託先ごとに 1 シート（Code / 納品伝票列 / 月別 Sale / Balance）。数量のみで金額はない。
 
-### 取引条件（`private/terms.json`）
+### 取引条件（`public/data/terms.json`）
 正式な条件表は存在しない。Sales Record の百貨店シートの GP 率、Crimson 発注シートの WSP/RRP 比、pptx の記載を「観測値」として手書き。GM から正式な条件が来たら `items` を書き換える。
 
 ### 情報リクエスト（`public/data/requests.json`）
@@ -108,6 +99,5 @@ git add bd scripts/bd && git commit -m "BD ダッシュボード更新" && git p
 ## ローカルで確認
 
 ```bash
-cd bd/public && python3 -m http.server 8000     # http://localhost:8000 （🔒 の 2 画面は API がないため開けない）
+cd bd/public && python3 -m http.server 8000     # http://localhost:8000
 ```
-🔒 画面まで確認するときは Vercel の Preview デプロイで `BD_SECRET_KEY` を設定して確認する。
