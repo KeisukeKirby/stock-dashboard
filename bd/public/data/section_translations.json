@@ -170,7 +170,7 @@
     "brands": {
       "vff": {
         "nameJa": "",
-        "tagline": "Italian five-toe footwear · THB 5,000–7,000",
+        "tagline": "Italian five-toe footwear",
         "origin": "Italy",
         "concept": "Five-toe shoes from Vibram, the Italian sole maker. The lineup spans even, uneven and rugged terrain and uses Vibram sole technologies including Ecostep EVO, XS Dura, Vi-Lite, Megagrip, Gumlite Litebase and 3D Cocoon.",
         "target": "Fitness, walking, running and outdoor activities. Staff need to explain the fit and use of five-toe footwear.",
@@ -185,7 +185,6 @@
           "contactNote": "Confirm the contact name and role with the GM."
         },
         "catalogLabel": "Open the FiveFingers lineup",
-        "catalogNote": "Regular and event models, colors, images and regular prices from the event stock list.",
         "issues": [
           "Over 95% of sales are direct retail. The plan is to replace consignment outside department stores with outright wholesale.",
           "Marketplaces account for over 90% of online sales. Higher fees and discount coupons put pressure on margins and brand value. A direct online store was in development as of October 2026.",
@@ -216,7 +215,7 @@
       },
       "vivo": {
         "nameJa": "",
-        "tagline": "British barefoot footwear · THB 5,000–8,000",
+        "tagline": "British barefoot footwear",
         "origin": "United Kingdom",
         "concept": "Founded in 2012 by Galahad and Asher Clark, seventh-generation shoemakers from Glastonbury. The brand’s wide, thin and flexible footwear is built around Fit, Feel and Flex. B Corp certified.",
         "target": "New barefoot-shoe customers and everyday wear. Average selling price is higher than VFF.",
@@ -247,7 +246,6 @@
           "Brand Guidelines (Think / Learn / Do / Community)",
           "Product images and logos (Crimson)",
           "Crimson SKU, inventory and order sheet",
-          "T21 Asok Vivobarefoot lineup",
           "Vivobarefoot sales dashboard",
           "Official Vivobarefoot website"
         ],
@@ -258,11 +256,12 @@
         "kpiTexts": [
           "About 200 pairs in the onboarding deck. The BFT dashboard shows 92 pairs plus EDV’s Vivobarefoot sales; the reporting scopes differ.",
           "Hong Kong: about 25,000 pairs a year. Thailand: historically around 1,000, with potential for 20,000 according to Crimson."
-        ]
+        ],
+        "catalogLabel": "Open the Vivobarefoot lineup"
       },
       "oleno": {
         "nameJa": "",
-        "tagline": "Japanese performance socks · THB 700–1,200",
+        "tagline": "Japanese performance socks",
         "origin": "Koryo, Nara, Japan",
         "concept": "Performance socks from Showa Meriyasu, a Japanese manufacturer with over 70 years of history. The range focuses on trail running and includes toe socks, arm sleeves and calf supports.",
         "target": "Trail runners, outdoor enthusiasts and specialty-store customers.",
@@ -277,7 +276,6 @@
           "contactNote": "Thailand’s distribution letter is pending. The Malaysia letter is available."
         },
         "catalogLabel": "Open the OLENO product catalog",
-        "catalogNote": "Product descriptions, images, prices, colors, sizes and product sheets.",
         "issues": [
           "Find more specialty stores like Pathwild.",
           "Improve visibility in running stores that carry competing brands.",
@@ -329,7 +327,6 @@
           "contactNote": "Confirm the fabric and factory contacts and terms."
         },
         "catalogLabel": "Open the official Coolcore Thailand shop on Shopee",
-        "catalogNote": "Example Shopee listing prices: arm sleeves THB 760, Multi-Chill THB 600, Sports Chill Towel THB 550. Platform pricing can change.",
         "issues": [
           "Few new products and variations.",
           "Sales are through our own channels; OEM and ODM services are not established.",
@@ -366,7 +363,6 @@
           "contactNote": "Confirm the fabric supplier and commercial arrangement."
         },
         "catalogLabel": "View the AQOZ AQUAHOLE catalog image",
-        "catalogNote": "The catalog explains the material and shows an example white tee.",
         "issues": [
           "Confirm the official product list, prices, sizes, colors and fabric supplier."
         ],
@@ -377,7 +373,7 @@
           "Sales (EDV POS)"
         ],
         "kpiTexts": [
-          "18 items in August–October 2026, about THB 28,000 before VAT: 13 men’s and 5 women’s running tops."
+          "18 items sold in August–October 2026, about THB 28,000 before VAT, through events and Thaniya."
         ]
       }
     },
@@ -506,7 +502,7 @@
     "brands": {
       "vff": {
         "nameJa": "",
-        "tagline": "รองเท้าห้านิ้วจากอิตาลี · 5,000–7,000 บาท",
+        "tagline": "รองเท้าห้านิ้วจากอิตาลี",
         "origin": "อิตาลี",
         "concept": "รองเท้าห้านิ้วจาก Vibram ผู้ผลิตพื้นรองเท้าจากอิตาลี มีรุ่นสำหรับพื้นเรียบ พื้นไม่เรียบ และเส้นทางขรุขระ พร้อมเทคโนโลยีพื้นรองเท้า Ecostep EVO, XS Dura, Vi-Lite, Megagrip, Gumlite Litebase และ 3D Cocoon",
         "target": "ฟิตเนส เดิน วิ่ง และกิจกรรมกลางแจ้ง พนักงานควรอธิบายวิธีเลือกและสวมรองเท้าห้านิ้วได้",
@@ -521,7 +517,6 @@
           "contactNote": "ยืนยันชื่อและตำแหน่งผู้ติดต่อกับ GM"
         },
         "catalogLabel": "เปิดรายการสินค้า FiveFingers",
-        "catalogNote": "ดูรุ่นประจำและรุ่นอีเวนต์ สี รูปสินค้า และราคาปกติจากรายการสต็อกอีเวนต์",
         "issues": [
           "ยอดขายกว่า 95% มาจากการขายปลีกของเรา มีแผนเปลี่ยนจากฝากขายเป็นขายส่งแบบซื้อขาดสำหรับร้านนอกห้าง",
           "มาร์เก็ตเพลสคิดเป็นกว่า 90% ของยอดขายออนไลน์ ค่าธรรมเนียมที่สูงขึ้นและคูปองกระทบกำไรและมูลค่าแบรนด์ ร้านออนไลน์ของเรายังอยู่ระหว่างจัดทำ ณ ตุลาคม 2026",
@@ -552,7 +547,7 @@
       },
       "vivo": {
         "nameJa": "",
-        "tagline": "รองเท้าแบร์ฟุตจากสหราชอาณาจักร · 5,000–8,000 บาท",
+        "tagline": "รองเท้าแบร์ฟุตจากสหราชอาณาจักร",
         "origin": "สหราชอาณาจักร",
         "concept": "Galahad และ Asher Clark ช่างทำรองเท้ารุ่นที่เจ็ดจากกลาสตันเบอรี ก่อตั้งแบรนด์ในปี 2012 ออกแบบรองเท้าให้กว้าง บาง และยืดหยุ่นตามแนวคิด Fit, Feel และ Flex ได้รับการรับรอง B Corp",
         "target": "ผู้เริ่มใส่รองเท้าแบร์ฟุตและผู้ที่ใช้ในชีวิตประจำวัน ราคาเฉลี่ยสูงกว่า VFF",
@@ -583,7 +578,6 @@
           "คู่มือแบรนด์ (Think / Learn / Do / Community)",
           "รูปสินค้าและโลโก้ (Crimson)",
           "ชีต SKU สต็อกและใบสั่งซื้อของ Crimson",
-          "รายการสินค้า Vivobarefoot งาน T21 Asok",
           "แดชบอร์ดยอดขาย Vivobarefoot",
           "เว็บไซต์ทางการ Vivobarefoot"
         ],
@@ -594,11 +588,12 @@
         "kpiTexts": [
           "ประมาณ 200 คู่ตามเอกสารปฐมนิเทศ แดชบอร์ด BFT แสดง 92 คู่ ยังต้องรวมยอด Vivobarefoot ของ EDV ขอบเขตข้อมูลต่างกัน",
           "ฮ่องกงประมาณ 25,000 คู่ต่อปี ไทยเดิมประมาณ 1,000 คู่ต่อปี Crimson ประเมินศักยภาพที่ 20,000 คู่ต่อปี"
-        ]
+        ],
+        "catalogLabel": "เปิดรายการสินค้า Vivobarefoot"
       },
       "oleno": {
         "nameJa": "",
-        "tagline": "ถุงเท้ากีฬาจากญี่ปุ่น · 700–1,200 บาท",
+        "tagline": "ถุงเท้ากีฬาจากญี่ปุ่น",
         "origin": "โครโย จังหวัดนารา ประเทศญี่ปุ่น",
         "concept": "ถุงเท้ากีฬาจาก Showa Meriyasu ผู้ผลิตญี่ปุ่นที่มีประวัติกว่า 70 ปี เน้นวิ่งเทรล มีถุงเท้าแยกนิ้ว ปลอกแขน และปลอกรัดน่อง",
         "target": "นักวิ่งเทรล ผู้ชื่นชอบกิจกรรมกลางแจ้ง และลูกค้าร้านเฉพาะทาง",
@@ -613,7 +608,6 @@
           "contactNote": "รอหนังสือแต่งตั้งสำหรับไทย มีหนังสือสำหรับมาเลเซียแล้ว"
         },
         "catalogLabel": "เปิดแคตตาล็อกสินค้า OLENO",
-        "catalogNote": "ดูคำอธิบาย รูปสินค้า ราคา สี ขนาด และเอกสารสินค้า",
         "issues": [
           "หาร้านเฉพาะทางเพิ่มแบบ Pathwild",
           "เพิ่มการมองเห็นในร้านวิ่งที่ขายแบรนด์คู่แข่งด้วย",
@@ -665,7 +659,6 @@
           "contactNote": "รอยืนยันผู้ติดต่อและเงื่อนไขของผู้ผลิตผ้าและโรงงาน"
         },
         "catalogLabel": "เปิดร้านทางการ Coolcore Thailand บน Shopee",
-        "catalogNote": "ตัวอย่างราคาที่แสดงบน Shopee: ปลอกแขน 760 บาท, Multi-Chill 600 บาท, Sports Chill Towel 550 บาท ราคาอาจเปลี่ยนได้",
         "issues": [
           "สินค้าใหม่และรุ่นย่อยยังมีน้อย",
           "ขายผ่านช่องทางของเรา ยังไม่ได้รับผลิตแบบ OEM หรือ ODM",
@@ -702,7 +695,6 @@
           "contactNote": "รอยืนยันผู้จัดหาผ้าและรูปแบบการซื้อขาย"
         },
         "catalogLabel": "เปิดภาพแคตตาล็อก AQOZ AQUAHOLE",
-        "catalogNote": "ภาพอธิบายเทคโนโลยีผ้าและแสดงตัวอย่างเสื้อยืดสีขาว",
         "issues": [
           "รอยืนยันรายการสินค้า ราคา ขนาด สี และผู้จัดหาผ้า"
         ],
@@ -713,7 +705,7 @@
           "ยอดขาย (EDV POS)"
         ],
         "kpiTexts": [
-          "สิงหาคม–ตุลาคม 2026 ขาย 18 ชิ้น ประมาณ 28,000 บาทก่อน VAT เสื้อวิ่งผู้ชาย 13 ชิ้น ผู้หญิง 5 ชิ้น"
+          "สิงหาคม–ตุลาคม 2026 ขาย 18 ชิ้น ประมาณ 28,000 บาทก่อน VAT ผ่านอีเวนต์และร้านธนิยะ"
         ]
       }
     },

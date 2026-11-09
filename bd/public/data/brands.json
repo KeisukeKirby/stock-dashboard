@@ -8,7 +8,7 @@
    "nameJa": "ビブラム ファイブフィンガーズ",
    "company": "BFT",
    "origin": "イタリア",
-   "tagline": "伊・5本指シューズ 5,000〜7,000 THB",
+   "tagline": "伊・5本指シューズ",
    "priceRange": "5,000〜7,000 THB",
    "dealType": "タイの独占販売権（販売目標の義務なし）",
    "sinceTH": "2023年7月 販売開始",
@@ -82,8 +82,7 @@
    ],
    "src": "pptx S4-S6 / VFF CATALOGUE_FW27.pdf / Vibram 会議要旨 Doc",
    "catalogUrl": "https://vibram-lineup.vercel.app/",
-   "catalogLabel": "VFF 商品ラインアップを開く",
-   "catalogNote": "レギュラー・イベント取扱モデル、カラー、画像、イベント在庫表に基づく通常価格を確認できます。"
+   "catalogLabel": "VFF 商品ラインアップを開く"
   },
   {
    "id": "vivo",
@@ -92,7 +91,7 @@
    "nameJa": "ビボベアフット",
    "company": "BFT",
    "origin": "イギリス",
-   "tagline": "英・ベアフット 5,000〜8,000 THB",
+   "tagline": "英・ベアフット",
    "priceRange": "5,000〜8,000 THB",
    "dealType": "ディストリビューター Crimson Brand（香港本社 + タイ子会社）経由の小売。Exclusive Retail Partner 化を協議中（未確定・社外秘）",
    "sinceTH": "2026年（VFF 単独販売禁止を機に自社店舗で販売開始）。Crimson はタイで約 2 年前から",
@@ -148,10 +147,6 @@
      "url": "https://docs.google.com/spreadsheets/d/1BWKsUcNk3UtIfDcLbNOIzQp8q9cBks4N0Lj1gA8PFDQ/edit"
     },
     {
-     "label": "T21 Asok Vivo ラインアップ（定価・カラー・サイズ別在庫）",
-     "url": "https://t21-vivo-lineup.vercel.app"
-    },
-    {
      "label": "Vivo 販売ダッシュボード",
      "url": "https://vivo-sales-dashboard.vercel.app"
     },
@@ -163,7 +158,9 @@
    "src": "pptx S4, S7-S8 / Product Training Vivobarefoot.pdf",
    "history": "2012 年、英国グラストンベリー出身で 1825 年から続く靴職人一族の Galahad と Asher Clark が創業。幼少期に Bantham のビーチを裸足で歩いた体験が着想。『人間の足はすでに完成された工学作品』という信念のもと、厚いソールで足を支えたり矯正したりする考え方を否定（足の筋肉を弱らせるため）。デザインの特徴は、裸足のように地面を感じる薄いソール、指が自然に広がる幅広のトゥボックス、あらゆる角度の動きに追従する高い柔軟性。サステナビリティも重視し、リサイクル素材や藻類由来ゴムなどの天然素材を採用して環境負荷を抑える。",
    "fitFeelFlex": "Fit（幅広で自然な形）：Foot-shaped の設計で足指が自由に広がり、バランスと安定した土台をつくる。Feel（感覚・知覚）：極薄ソールにより足裏の神経終末が脳へ情報を送り、俊敏で効率的な動きを促す。Flex（柔軟性）：高い柔軟性で足の筋肉と腱が自ら働き、動き、体重を支えることで長期的に足を強くする（研究では Vivo の着用 6 か月で足の強さが 57% 向上と記載）。",
-   "sizeGuide": "測り方（HOW TO MEASURE）：1) 足より大きい紙を壁際の硬く平らな床に置く（巾木がある場合は紙を下に差し込む）。2) かかとを壁につけて紙の上に立ち、紙がずれないようにする。3) もっとも長い足指の先端に、鉛筆を垂直に立てて印をつける（指の下に潜り込ませない）。4) 紙の端から印までを定規またはメジャーで測る。5) 左右差があるためもう片方も測り、大きい方の値を使う。6) サイズ表と照らし合わせて選ぶ。注意：座らず立って測ること、足は朝より夕方に大きくなるため夕方の計測を推奨。フィット感：SNUG（かかとや前足部の余裕が少なめ）／RECOMMENDED（足長に合わせた推奨サイズ）／SPACIOUS（ゆったり。幅広の足や余裕が欲しい人はワンサイズ上を検討）。Vivobarefoot は足長に合うサイズを推奨するが、好みに応じて上下に調整してよい。サイズ表自体（cm 対応表）は抽出テキストに含まれず、画像のみと思われる。"
+   "sizeGuide": "測り方（HOW TO MEASURE）：1) 足より大きい紙を壁際の硬く平らな床に置く（巾木がある場合は紙を下に差し込む）。2) かかとを壁につけて紙の上に立ち、紙がずれないようにする。3) もっとも長い足指の先端に、鉛筆を垂直に立てて印をつける（指の下に潜り込ませない）。4) 紙の端から印までを定規またはメジャーで測る。5) 左右差があるためもう片方も測り、大きい方の値を使う。6) サイズ表と照らし合わせて選ぶ。注意：座らず立って測ること、足は朝より夕方に大きくなるため夕方の計測を推奨。フィット感：SNUG（かかとや前足部の余裕が少なめ）／RECOMMENDED（足長に合わせた推奨サイズ）／SPACIOUS（ゆったり。幅広の足や余裕が欲しい人はワンサイズ上を検討）。Vivobarefoot は足長に合うサイズを推奨するが、好みに応じて上下に調整してよい。サイズ表自体（cm 対応表）は抽出テキストに含まれず、画像のみと思われる。",
+   "catalogUrl": "https://vivo-lineup.vercel.app/",
+   "catalogLabel": "Vivobarefoot 商品ラインアップを開く"
   },
   {
    "id": "oleno",
@@ -172,11 +169,11 @@
    "nameJa": "オレノ",
    "company": "BFT",
    "origin": "日本（奈良県広陵町）",
-   "tagline": "日・スポーツソックス 700〜1,200 THB",
+   "tagline": "日・スポーツソックス",
    "priceRange": "700〜1,200 THB",
    "dealType": "タイの総代理店",
    "sinceTH": "未入力（2025 年は 2026 年の約 7 割の実績）",
-   "concept": "靴下の町・奈良県広陵町で創業 70 年以上のメーカー（昭和メリヤス）のスポーツソックス。特にトレイルランニング向け。Ultimate / ASO / SHR / TNG / はだし靴下 5 フィンガー / Comod(y) / アームスリーブ・カーフサポーターなど。",
+   "concept": "靴下の町・奈良県広陵町で創業 70 年以上のメーカー（昭和メリヤス）のスポーツソックス。特にトレイルランニング向け。トレイルランニング用を中心に、5本指ソックスやスポーツ用アクセサリーを展開。",
    "target": "トレイルランナー、山好き。コアな客と店員が商品の良さに気づいて勧める店で売れる。",
    "whyTH": "高価格でも 2026 年は約 2,000 足の見込み。販売の大半は自社店舗とオンライン。",
    "principal": {
@@ -251,7 +248,7 @@
    "nameJa": "クールコア",
    "company": "EDV",
    "origin": "アメリカ（生地）",
-   "tagline": "米・冷感生地の自社製品 500〜800 THB",
+   "tagline": "米・冷感生地の自社製品",
    "priceRange": "500〜800 THB",
    "dealType": "自社製品（米国の冷感生地を使用、生地・縫製とも中国、完成品を輸入）",
    "sinceTH": "未入力（4〜5 年横ばいで推移）",
@@ -298,8 +295,7 @@
    ],
    "src": "pptx S4, S10",
    "catalogUrl": "https://shopee.co.th/coolcorethailand",
-   "catalogLabel": "Coolcore Thailand の Shopee 公式店を開く",
-   "catalogNote": "Shopee 掲載価格の例：冷感アームスリーブ ฿760、Multi-Chill ฿600、Sports Chill Towel ฿550。掲載価格は変動します。"
+   "catalogLabel": "Coolcore Thailand の Shopee 公式店を開く"
   },
   {
    "id": "aqos",
@@ -308,7 +304,7 @@
    "nameJa": "アクオス",
    "company": "EDV",
    "origin": "日本（生地）",
-   "tagline": "日本の生地の自社アパレル 1,500〜2,000 THB",
+   "tagline": "日本の生地の自社アパレル",
    "priceRange": "1,500〜2,000 THB",
    "dealType": "自社ブランド（トライアル販売の段階）",
    "sinceTH": "2026年（始めたばかり）",
@@ -323,7 +319,7 @@
    "kpis": [
     {
      "label": "販売実績（EDV POS）",
-     "text": "2026-08〜10 に 18 枚・約 28,000 THB（税抜）。Running Tops for Men 13 枚、Women 5 枚。チャネルはイベント（8 月 12 枚）と Thaniya（10 月 6 枚）。POS 上の表記は「AQOZ」(商品コード AQ)",
+     "text": "2026年8〜10月に18枚、約28,000 THB（税抜）。販売チャネルはイベントと Thaniya。",
      "src": "edv-sales-dashboard dashboard_data.json"
     }
    ],
@@ -342,9 +338,8 @@
     }
    ],
    "src": "pptx S4, S10 / AQOZ カタログ画像 / 東洋染工 AQUAHOLE 技術紹介",
-   "catalogImage": "https://baan-lae-suan-lp.vercel.app/assets/catalog-aqoz-CgfxoNKU.jpg",
    "catalogLabel": "AQOZ の AQUAHOLE 紹介画像を開く",
-   "catalogNote": "AQUAHOLE の仕組みと白いTシャツの使用例。"
+   "catalogUrl": "https://baan-lae-suan-lp.vercel.app/assets/catalog-aqoz-CgfxoNKU.jpg"
   }
  ]
 }

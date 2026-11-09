@@ -27,7 +27,6 @@
   const missing = (label = tr("未入力", "Unavailable", "ยังไม่มีข้อมูล")) => h("span", { class: "missing" }, label);
   const val = (v, s) => (v == null || v === "" ? missing() : h("span", {}, v, src(s)));
   const BRAND_COLOR = { VFF: "var(--c-vff)", Vivo: "var(--c-vivo)", Oleno: "var(--c-oleno)", OLENO: "var(--c-oleno)", Coolcore: "var(--c-coolcore)", AQOZ: "var(--c-aqos)", Others: "var(--c-others)" };
-  const BRAND_ID = { vff: "VFF", vivo: "Vivo", oleno: "Oleno", coolcore: "Coolcore", aqos: "AQOS" };
   const LIGHT = new Set(["vff"]);
 
   // ---------- theme ----------
@@ -57,8 +56,6 @@
   async function loadAll() {
     const files = { brands: "data/brands.json", stores: "data/stores.json", guidelines: "data/guidelines.json", sns: "data/sns.json", sales: "data/sales_monthly.json", terms: "data/terms.json", consignment: "data/consignment.json", translations: "data/section_translations.json" };
     await Promise.all(Object.entries(files).map(async ([k, p]) => { try { D[k] = await loadJSON(p); } catch (e) { console.error(e); D[k] = null; } }));
-    D.products = {};
-    await Promise.all(Object.keys(BRAND_ID).map(async (id) => { try { D.products[id] = await loadJSON(`data/products/${id}.json`); } catch { D.products[id] = null; } }));
   }
 
   // ---------- generic table ----------
@@ -184,10 +181,20 @@
     const details = locale().brands?.[cur.id] || {};
     const b = { ...cur, ...details };
     el.append(h("div", { class: "brand-head" }, h("span", { class: "logo-chip" + (LIGHT.has(b.id) ? " light" : ""), style: `--bc:${BRAND_COLOR[b.short]}` }, b.short), h("div", {}, h("h2", { style: "margin:0" }, b.name, " ", h("span", { class: "muted small" }, b.nameJa)), h("div", { class: "note" }, b.tagline, " ／ ", b.company === "BFT" ? "Barefootinc (Thailand)" : "Endeavorz", src(b.src)))));
+    if (b.catalogUrl) {
+      const label = b.catalogLabel || tr(
+        b.name + " 商品カタログを開く",
+        "Open the " + b.name + " catalog",
+        "เปิดแคตตาล็อก " + b.name
+      );
+      el.append(h("div", { class: "card", style: "margin-bottom:14px" },
+        h("h3", {}, tr("商品情報", "Product information", "ข้อมูลสินค้า")),
+        external(b.catalogUrl, label + " ↗")));
+    }
     el.append(h("div", { class: "grid c2" },
       h("div", { class: "card" }, h("h3", {}, tr("概要", "Overview", "ภาพรวม")), h("dl", { class: "kv" },
         h("dt", {}, tr("出自", "Origin", "ที่มา")), h("dd", {}, b.origin), h("dt", {}, tr("コンセプト", "Concept", "แนวคิด")), h("dd", {}, b.concept), h("dt", {}, tr("ターゲット", "Audience", "กลุ่มเป้าหมาย")), h("dd", {}, val(b.target === "未入力" ? null : b.target)),
-        h("dt", {}, tr("タイで売る理由／現状", "Thailand market", "ตลาดประเทศไทย")), h("dd", {}, b.whyTH), h("dt", {}, tr("価格帯", "Price range", "ช่วงราคา")), h("dd", {}, b.priceRange), h("dt", {}, tr("取り扱い開始", "Start of sales", "เริ่มจำหน่าย")), h("dd", {}, b.sinceTH && !b.sinceTH.startsWith("未入力") ? b.sinceTH : missing(b.sinceTH || "未入力")),
+        h("dt", {}, tr("タイで売る理由／現状", "Thailand market", "ตลาดประเทศไทย")), h("dd", {}, b.whyTH), h("dt", {}, tr("取り扱い開始", "Start of sales", "เริ่มจำหน่าย")), h("dd", {}, b.sinceTH && !b.sinceTH.startsWith("未入力") ? b.sinceTH : missing(b.sinceTH || "未入力")),
         h("dt", {}, tr("契約形態", "Distribution", "รูปแบบการจัดจำหน่าย")), h("dd", {}, b.dealType), h("dt", {}, tr("本国の窓口", "Brand contact", "ผู้ติดต่อแบรนด์")), h("dd", {}, b.principal.company, h("div", { class: "small muted" }, b.principal.role), b.principal.contactNote ? h("div", { class: "small" }, missing(), " ", b.principal.contactNote) : null))),
       h("div", {}, h("div", { class: "card" }, h("h3", {}, tr("数字", "Figures", "ตัวเลข")), h("div", { class: "kpi-row" }, b.kpis.map((k) => k.values ? Object.entries(k.values).map(([y, v]) => h("div", { class: "mini" }, h("div", { class: "l" }, y === "2026見込" ? tr(y, "2026 forecast", "คาดการณ์ 2026") : y), h("div", { class: "v num" }, fmt(v)))) : null)), b.kpis.map((k, index) => h("p", { class: "small", style: "margin:8px 0 0" }, h("strong", {}, b.kpiLabels?.[index] || k.label, " · "), b.kpiTexts?.[index] || k.text || "", src(k.src)))),
         h("div", { class: "card", style: "margin-top:14px" }, h("h3", {}, tr("状況", "Current status", "สถานะ")), h("p", { style: "margin:0" }, b.status), b.goal ? h("p", { class: "small" }, h("strong", {}, tr("目指す形: ", "Proposed partnership · ", "แผนความร่วมมือ · ")), b.goal) : null, b.insight ? h("p", { class: "small" }, h("strong", {}, tr("見立て: ", "What works · ", "ปัจจัยที่ได้ผล · ")), b.insight) : null))));
@@ -196,37 +203,8 @@
     if (b.issues) lists.push(h("div", { class: "card" }, h("h3", {}, tr("課題", "Priorities", "ประเด็นที่ต้องดำเนินการ")), h("ul", { class: "clean small" }, b.issues.map((x) => h("li", {}, x)))));
     if (b.wholesale) lists.push(h("div", { class: "card" }, h("h3", {}, tr("卸先", "Wholesale partners", "ร้านค้าส่ง")), table([{ key: "name", label: tr("卸先", "Wholesale partners", "ร้านค้าส่ง"), wrap: true }, { key: "type", label: tr("形態", "Type", "ประเภท") }, { key: "status", label: tr("状況", "Current status", "สถานะ"), wrap: true }], b.wholesale, { search: false, csv: false })));
     el.append(h("div", { class: "grid c2", style: "margin-top:14px" }, lists));
-    if (b.history || b.fitFeelFlex || b.sizeGuide) el.append(h("div", { class: "grid c3", style: "margin-top:14px" }, b.history ? h("div", { class: "card" }, h("h3", {}, tr("歴史", "History", "ประวัติ")), h("p", { class: "small", style: "margin:0" }, b.history), src("Product Training Vivobarefoot.pdf")) : null, b.fitFeelFlex ? h("div", { class: "card" }, h("h3", {}, "Fit / Feel / Flex"), h("p", { class: "small", style: "margin:0" }, b.fitFeelFlex)) : null, b.sizeGuide ? h("div", { class: "card" }, h("h3", {}, tr("サイズの測り方", "How to measure", "วิธีวัดขนาด")), h("p", { class: "small", style: "margin:0" }, b.sizeGuide)) : null));
-    if (b.links && b.links.length) el.append(h("div", { class: "card", style: "margin-top:14px" }, h("h3", {}, tr("資料・リンク", "Resources", "เอกสารและลิงก์")), h("ul", { class: "clean small" }, b.links.map((l, index) => h("li", {}, external(l.url, b.linkLabels?.[index] || l.label))))));
-    // products
-    const P = D.products[b.id];
-    if (b.catalogImage) el.append(h("figure", { class: "card", style: "margin:14px 0 0;max-width:440px" },
-      external(b.catalogImage, h("img", { src: b.catalogImage, alt: "AQOZ AQUAHOLE", width: 1200, height: 1911, style: "display:block;max-width:100%;height:auto", loading: "lazy" })),
-      h("figcaption", { class: "small", style: "margin-top:8px" }, external(b.catalogImage, b.catalogLabel || "AQOZ AQUAHOLE"), " ", b.catalogNote)));
-    el.append(h("div", { class: "section-title" }, h("h2", {}, tr("取り扱い商品", "Products", "สินค้า")), P ? h("span", { class: "note" }, P.asOf ? tr(`基準 · ${P.asOf}`, "Source product records", "รายการสินค้าจากเอกสารต้นฉบับ") : "", " ", src(P.source)) : null));
-    const catUrl = b.catalogUrl || (P && P.catalog);
-    if (catUrl) el.append(h("a", { class: "infobox", href: catUrl, target: "_blank", rel: "noopener", style: "display:block;margin-bottom:12px;color:inherit" }, h("strong", {}, (b.catalogLabel || tr(`${b.name} 商品カタログを開く`, `Open the ${b.name} catalog`, `เปิดแคตตาล็อก ${b.name}`)) + " →"), h("div", { class: "small" }, b.catalogNote || tr("商品の説明・画像・価格・色・サイズ・商品シートはカタログで確認できます。", "See the catalog for product descriptions, images, prices, colors and sizes.", "ดูคำอธิบาย รูปสินค้า ราคา สี และขนาดในแคตตาล็อก"))));
-    if (!P || !P.items || !P.items.length) { el.append(h("div", { class: "card" }, missing(tr("商品情報なし", "Product information unavailable", "ยังไม่มีข้อมูลสินค้า")), " ", h("span", { class: "small" }, tr("情報リクエストを参照", "No product records yet.", "ยังไม่มีรายการสินค้า")))); return; }
-    const cats = [...new Set(P.items.map((p) => p.category).filter(Boolean))].sort();
-    const grid = h("div", { class: "products" });
-    const sel = h("select", { onchange: draw }, h("option", { value: "" }, tr("すべてのカテゴリ", "All categories", "ทุกหมวดหมู่")), cats.map((c) => h("option", { value: c }, c)));
-    const q = h("input", { type: "search", placeholder: tr("モデル名・色で検索", "Search models or colors", "ค้นหารุ่นหรือสี"), oninput: draw });
-    const count = h("span", { class: "count" });
-    function draw() {
-      const f = q.value.toLowerCase(), c = sel.value;
-      const rows = P.items.filter((p) => (!c || p.category === c) && (!f || JSON.stringify([p.name, p.nameJa, p.colours, p.intro, p.code, p.target, p.brief]).toLowerCase().includes(f)));
-      count.textContent = tr(`${rows.length} / ${P.items.length} 件`, `${rows.length} / ${P.items.length} products`, `${rows.length} / ${P.items.length} รายการ`);
-      grid.replaceChildren(...rows.map((p) => h("div", { class: "product" },
-        h("div", { class: "ph" }, p.image ? h("img", { src: p.image, alt: p.name, loading: "lazy" }) : h("span", {}, p.missing ? tr("資料なし", "No source record", "ไม่มีเอกสารต้นฉบับ") : tr("画像なし（Drive 参照）", "See linked resources for images", "ดูรูปในเอกสารที่ลิงก์"))),
-        h("div", { class: "pb" }, h("div", { class: "pn" }, p.name, p.nameJa ? h("span", { class: "muted small" }, " ", p.nameJa) : null), h("div", { class: "pc" }, [p.category, p.genders && p.genders.join("/"), p.code].filter(Boolean).join(" · ")),
-          h("div", { class: "pp num" }, p.priceThb != null ? `฿${fmt(p.priceThb)}${p.priceThbMax && p.priceThbMax !== p.priceThb ? `–${fmt(p.priceThbMax)}` : ""}` : (p.priceRange ? h("span", { class: "small" }, p.priceRange) : missing(tr("価格未入力", "Price unavailable", "ยังไม่มีราคา")))),
-          p.tagline ? h("div", { class: "small", style: "color:var(--ink-2)" }, p.tagline) : null,
-          p.intro ? h("div", { class: "pd" }, p.intro) : null,
-          (p.colours && p.colours.length) || (p.sizes && p.sizes.length) || (p.features && p.features.length) || p.brief ? h("details", {}, h("summary", {}, tr("色・サイズ・特徴・素材", "Colors, sizes and features", "สี ขนาด และคุณสมบัติ")), p.colours && p.colours.length ? h("div", {}, h("b", {}, tr("色: ", "Colors · ", "สี · ")), p.colours.join(", ")) : null, p.sizes && p.sizes.length ? h("div", {}, h("b", {}, tr("サイズ: ", "Sizes · ", "ขนาด · ")), p.sizes.join(", ")) : null, p.features && p.features.length ? h("ul", { class: "clean" }, p.features.map((f) => h("li", {}, f))) : null, p.weight ? h("div", {}, h("b", {}, tr("重量: ", "Weight · ", "น้ำหนัก · ")), p.weight) : null, p.target ? h("div", {}, h("b", {}, tr("用途・ターゲット: ", "Use and audience · ", "การใช้งานและกลุ่มเป้าหมาย · ")), p.target) : null, p.brief ? h("div", {}, h("b", {}, tr("トレーニング資料: ", "Training notes · ", "หมายเหตุจากคู่มืออบรม · ")), p.brief) : null, p.materials ? h("div", {}, h("b", {}, tr("素材: ", "Materials · ", "วัสดุ · ")), p.materials) : null, p.care ? h("div", {}, h("b", {}, tr("ケア: ", "Care · ", "การดูแล · ")), p.care) : null, p.priceNote ? h("div", { class: "muted" }, p.priceNote) : null) : null,
-          p.links && p.links.jp ? h("a", { class: "small", href: p.links.jp, target: "_blank", rel: "noopener" }, tr("公式ページ（日本）→", "Official page (Japan) ↗", "หน้าทางการ (ญี่ปุ่น) ↗")) : null,
-          p.pdf ? h("a", { class: "small", href: p.pdf, target: "_blank", rel: "noopener" }, tr("商品シート PDF →", "Product sheet (PDF) ↗", "เอกสารสินค้า (PDF) ↗")) : null))));
-    }
-    el.append(h("div", { class: "toolbar" }, q, sel, count), grid); draw();
+    if (b.history || b.fitFeelFlex) el.append(h("div", { class: "grid c3", style: "margin-top:14px" }, b.history ? h("div", { class: "card" }, h("h3", {}, tr("歴史", "History", "ประวัติ")), h("p", { class: "small", style: "margin:0" }, b.history), src("Product Training Vivobarefoot.pdf")) : null, b.fitFeelFlex ? h("div", { class: "card" }, h("h3", {}, "Fit / Feel / Flex"), h("p", { class: "small", style: "margin:0" }, b.fitFeelFlex)) : null));
+    if (b.links && b.links.length) el.append(h("div", { class: "card", style: "margin-top:14px" }, h("h3", {}, tr("資料・リンク", "Resources", "เอกสารและลิงก์")), h("ul", { class: "clean small" }, b.links.map((l, index) => l.url === b.catalogUrl ? null : h("li", {}, external(l.url, b.linkLabels?.[index] || l.label))))));
   };
 
   // ---------- terms / consignment（社内限り。取引条件は GM の判断で全件掲載） ----------
