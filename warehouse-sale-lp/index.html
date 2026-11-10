@@ -560,10 +560,11 @@
         transform: translateY(140%); transition: transform .5s var(--ease);
       }
       body.past-hero:not(.at-access) .mbar { transform: none; }
-      .mb-txt { display: grid; line-height: 1.2; font-family: var(--display); }
-      .mb-txt b { font-size: .82rem; font-weight: 600; letter-spacing: .06em; white-space: nowrap; }
-      .mb-txt span { font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(243,240,234,.6); white-space: nowrap; }
-      .mbar .pill { padding: .55rem .9rem; font-size: .64rem; white-space: nowrap; flex: none; }
+      .mb-txt { display: grid; line-height: 1.2; font-family: var(--display); flex: 1 1 auto; min-width: 0; }
+      .mb-txt b { font-size: .8rem; font-weight: 600; letter-spacing: .04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .mb-txt span { font-size: .56rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(243,240,234,.6); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .mbar .pill { padding: .55rem .8rem; font-size: .62rem; white-space: nowrap; flex: 0 0 auto; }
+      .mbar .pill .dot { display: none; }
     }
 
     /* ---------- lightbox ---------- */
@@ -596,6 +597,8 @@
     .hero-mosaic .t img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.06); transition: transform 1.6s var(--ease); }
     .hero-mosaic .t.in img { transform: none; }
     .hero-mosaic .ta { grid-row: 1 / 3; }
+    .hero-mosaic .tb img { object-position: 72% 50%; }
+    .hero-mosaic .td img { object-position: 50% 88%; }
     .hero-mosaic .tf { display: none; }
     .hero-mosaic::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 10%; z-index: 1; pointer-events: none; background: linear-gradient(90deg, #fff, rgba(255,255,255,0)); }
     .hero-mosaic::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 6rem; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,0)); }
@@ -674,14 +677,14 @@
     .promo-img .zoom { position: absolute; right: .9rem; bottom: .9rem; display: inline-flex; align-items: center; gap: .45rem; padding: .5rem .85rem; background: rgba(11,11,12,.86); color: #fff; font-family: var(--display); font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; pointer-events: none; }
     .promo-img .zoom::before { content: "+"; font-size: 1.1rem; line-height: 1; color: var(--gold); }
     .tiers { position: sticky; top: 5.2rem; display: grid; gap: 0; border-top: 1px solid rgba(27,26,31,.18); }
-    .tier { --tc: var(--t21-m); display: grid; grid-template-columns: 6.4rem 1fr; gap: 1.1rem; align-items: center; padding: 1rem 0; border-bottom: 1px solid rgba(27,26,31,.18); }
+    .tier { --tc: var(--t21-m); display: grid; grid-template-columns: 6.6rem 1fr; gap: .9rem; align-items: center; padding: .7rem 0; border-bottom: 1px solid rgba(27,26,31,.18); }
     .tier-40 { --tc: var(--t21-c); } .tier-30 { --tc: #7B3F9E; } .tier-20 { --tc: #2E9E44; } .tier-socks { --tc: var(--gold); }
-    .tier .pct { display: grid; gap: .15rem; font-family: var(--display); font-weight: 700; line-height: 1; color: var(--tc); letter-spacing: -.02em; }
-    .tier .pct .n { font-size: clamp(2.1rem, 3.6vw, 2.8rem); }
-    .tier .pct .o { font-size: .68rem; letter-spacing: .24em; text-transform: uppercase; color: var(--ink); }
-    .tier .models { font-family: var(--display); font-weight: 500; font-size: clamp(.98rem, 1.4vw, 1.12rem); line-height: 1.45; letter-spacing: .01em; }
-    .tier .models small { font-family: var(--body); font-weight: 400; font-size: .84em; color: #5B5762; }
-    .tier-socks .models { font-weight: 600; }
+    .tier .pct { display: flex; align-items: baseline; gap: .3rem; font-family: var(--display); font-weight: 700; line-height: 1; color: var(--tc); letter-spacing: -.02em; white-space: nowrap; }
+    .tier .pct .n { font-size: clamp(2rem, 3.2vw, 2.4rem); }
+    .tier .pct .o { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink); }
+    .tier .tmodels { font-family: var(--display); font-weight: 500; font-size: clamp(.98rem, 1.4vw, 1.12rem); line-height: 1.4; letter-spacing: .01em; align-self: center; }
+    .tier .tmodels small { font-family: var(--body); font-weight: 400; font-size: .84em; color: #5B5762; }
+    .tier-socks .tmodels { font-weight: 600; }
     .notes { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: .35rem; }
     .notes li { position: relative; padding-left: 1rem; font-size: .88rem; line-height: 1.55; color: #4B4750; }
     .notes li::before { content: "·"; position: absolute; left: .1rem; top: 0; font-weight: 700; color: var(--t21-m); }
@@ -689,7 +692,8 @@
       .promo { grid-template-columns: 1fr; }
       .tiers { position: static; }
       .lineup .sec-head { grid-template-columns: 1fr; }
-      .tier { grid-template-columns: 5.2rem 1fr; }
+      .tier { grid-template-columns: 5.8rem 1fr; gap: .7rem; }
+      .tier .pct .n { font-size: 1.8rem; }
     }
 
     /* booth → sale-day section tweaks */
@@ -735,10 +739,10 @@
     <div class="hero-stage">
     <div class="hero-mosaic" id="heroMosaic" aria-label="Vibram FiveFingers in use: Scramkey, KSO EVO, Trailope, V-Run, V-Trek">
       <figure class="t ta"><img src="images/hero/hero-a-v2.jpg" alt="Scramkey in the field" width="720" height="1161" fetchpriority="high" /></figure>
-      <figure class="t tb"><img src="images/hero/hero-b-v2.jpg" alt="KSO EVO sole, stretching" width="900" height="600" fetchpriority="high" /></figure>
-      <figure class="t tc"><img src="images/hero/hero-c-v2.jpg" alt="Trailope Deep Lake being laced up" width="900" height="600" /></figure>
-      <figure class="t td"><img src="images/hero/hero-d-v2.jpg" alt="V-Run on a city run" width="900" height="600" loading="lazy" /></figure>
-      <figure class="t te"><img src="images/hero/hero-e-v2.jpg" alt="V-Trek on a forest trail" width="640" height="426" loading="lazy" /></figure>
+      <figure class="t tb"><img src="images/hero/hero-b-v3.jpg" alt="KSO EVO sole, stretching" width="900" height="900" fetchpriority="high" /></figure>
+      <figure class="t tc"><img src="images/hero/hero-c-v3.jpg" alt="Trailope Deep Lake being laced up" width="900" height="900" /></figure>
+      <figure class="t td"><img src="images/hero/hero-d-v3.jpg" alt="V-Run on a city run" width="700" height="989" loading="lazy" /></figure>
+      <figure class="t te"><img src="images/hero/hero-e-v3.jpg" alt="V-Trek on a forest trail" width="640" height="640" loading="lazy" /></figure>
           </div>
     <div class="hero-grain" aria-hidden="true"></div>
 
@@ -798,7 +802,7 @@
           <h3 data-i18n-html="brands.socks">Socks <small>all 20% off</small></h3>
           <div class="bcard">
             <div class="blogo"><img class="lg-oleno" src="images/logo-oleno.png" alt="Oleno" width="600" height="457" loading="lazy" /></div>
-            <div><div class="bname">Oleno</div><div class="bdesc" data-i18n="brands.oleno">Five-toe socks made in Nara, Japan. Thin, breathable and the pair most of our staff wear every day.</div></div>
+            <div><div class="bname">Oleno</div><div class="bdesc" data-i18n="brands.oleno">Five-toe socks made in Japan. Thin, breathable and made to pair with barefoot shoes.</div></div>
           </div>
           <div class="bcard">
             <div class="blogo"><img src="images/logo-vff-dark.png" alt="Vibram FiveFingers" width="720" height="155" loading="lazy" /></div>
@@ -806,7 +810,7 @@
           </div>
           <div class="bcard">
             <div class="blogo"><img class="lg-jp" src="images/logo-barefootinc-jp.png" alt="barefootinc" width="900" height="239" loading="lazy" /></div>
-            <div><div class="bname">barefootinc socks</div><div class="bdesc" data-i18n="brands.bfsocks">Our own five-toe socks for everyday wear with any barefoot shoe.</div></div>
+            <div><div class="bname">barefootinc socks</div><div class="bdesc" data-i18n="brands.bfsocks">Five-toe socks made in Japan, for everyday wear with any barefoot shoe.</div></div>
           </div>
         </div>
       </div>
@@ -828,11 +832,11 @@
           <span class="zoom" data-i18n="lineup.zoom">Tap to zoom</span>
         </div>
         <div class="tiers" data-reveal style="--d:120">
-          <div class="tier tier-50"><div class="pct"><span class="n">50%</span><span class="o" data-i18n="tier.off">off</span></div><div class="models" data-i18n-html="tier.l50">Scramkey, Marugo Tabi Shoes</div></div>
-          <div class="tier tier-40"><div class="pct"><span class="n">40%</span><span class="o" data-i18n="tier.off">off</span></div><div class="models" data-i18n-html="tier.l40">Alitza Loop, CVT Hemp, CVT Leather, KSO ECO, V-Train 2.0, KMD EVO</div></div>
-          <div class="tier tier-30"><div class="pct"><span class="n">30%</span><span class="o" data-i18n="tier.off">off</span></div><div class="models" data-i18n-html="tier.l30">Graspifier, KSO, KSO EVO, V-Run, Groundsplay, V-Alpha, V-Trek, V-Train</div></div>
-          <div class="tier tier-20"><div class="pct"><span class="n">20%</span><span class="o" data-i18n="tier.off">off</span></div><div class="models" data-i18n-html="tier.l20">KSO EVO, Trailope, V-Run</div></div>
-          <div class="tier tier-socks"><div class="pct"><span class="n">20%</span><span class="o" data-i18n="tier.off">off</span></div><div class="models" data-i18n-html="tier.lsocks">All socks: Oleno, Barefootinc JP, Vibram FiveFingers</div></div>
+          <div class="tier tier-50"><div class="pct"><span class="n">50%</span><span class="o" data-i18n="tier.off">off</span></div><div class="tmodels" data-i18n-html="tier.l50">Scramkey, Marugo Tabi Shoes</div></div>
+          <div class="tier tier-40"><div class="pct"><span class="n">40%</span><span class="o" data-i18n="tier.off">off</span></div><div class="tmodels" data-i18n-html="tier.l40">Alitza Loop, CVT Hemp, CVT Leather, KSO ECO, V-Train 2.0, KMD EVO</div></div>
+          <div class="tier tier-30"><div class="pct"><span class="n">30%</span><span class="o" data-i18n="tier.off">off</span></div><div class="tmodels" data-i18n-html="tier.l30">Graspifier, KSO, KSO EVO, V-Run, Groundsplay, V-Alpha, V-Trek, V-Train</div></div>
+          <div class="tier tier-20"><div class="pct"><span class="n">20%</span><span class="o" data-i18n="tier.off">off</span></div><div class="tmodels" data-i18n-html="tier.l20">KSO EVO, Trailope, V-Run</div></div>
+          <div class="tier tier-socks"><div class="pct"><span class="n">20%</span><span class="o" data-i18n="tier.off">off</span></div><div class="tmodels" data-i18n-html="tier.lsocks">All socks: Oleno, Barefootinc JP, Vibram FiveFingers</div></div>
           <ul class="notes" data-i18n-html="lineup.notes"><li>Discounts apply to selected colors only.</li><li>Sale prices are shown on the tags at the sale.</li><li>Stock is what is in the warehouse: once a size is gone, it is gone.</li></ul>
         </div>
       </div>
@@ -1010,7 +1014,6 @@
         </div>
       </div>
     </div>
-    <div class="rainbow" aria-hidden="true"></div>
   </footer>
 
   <a class="line-fab" href="https://lin.ee/NtER69r" target="_blank" rel="noopener noreferrer" aria-label="Add Barefootinc Thailand on LINE" title="LINE" data-magnet>
@@ -1018,7 +1021,7 @@
   </a>
 
   <div class="mbar" id="mbar" aria-hidden="false">
-    <div class="mb-txt"><b data-i18n="mbar.a">19 – 21 Nov · up to 50% off</b><span data-i18n="mbar.b">10:00 – 18:00 · Sukhumvit 63</span></div>
+    <div class="mb-txt"><b data-i18n="mbar.a">19–21 Nov · up to 50% off</b><span data-i18n="mbar.b">10:00–18:00 · Ekkamai</span></div>
     <a class="pill" href="#access"><span class="dot"></span><span data-i18n="nav.access">Getting there</span></a>
   </div>
 
@@ -1044,9 +1047,9 @@
         "brands.shoes": "Shoes <small>20–50% off</small>", "brands.socks": "Socks <small>all 20% off</small>",
         "brands.vff": "Five-toe barefoot shoes from Italy. Trail, water, gym, running and everyday models, all on sale.",
         "brands.marugo": "Split-toe tabi shoes from Marugo, a tabi maker in Japan since 1919. Light, flexible and 50% off.",
-        "brands.oleno": "Five-toe socks made in Nara, Japan. Thin, breathable and the pair most of our staff wear every day.",
+        "brands.oleno": "Five-toe socks made in Japan. Thin, breathable and made to pair with barefoot shoes.",
         "brands.vffsocks": "Vibram's own five-toe socks, cut to fit FiveFingers exactly.",
-        "brands.bfsocks": "Our own five-toe socks for everyday wear with any barefoot shoe.",
+        "brands.bfsocks": "Five-toe socks made in Japan, for everyday wear with any barefoot shoe.",
         "stat.k1": "Top discount", "stat.u2": "models", "stat.k2": "On sale", "stat.u3": "days", "stat.k3": "19–21 November", "stat.k4": "All socks",
         "lineup.eyebrow": "Discount lineup", "lineup.title": "What's <span class=\"serif\">on sale</span>",
         "lineup.note": "Sale prices are on the sheet; tap it to zoom in. Sizes and colors are limited to warehouse stock, so come early for the pair you want.",
@@ -1080,7 +1083,7 @@
         "access.mapopen": "Open in Google Maps", "access.map": "See the map", "access.mapnote": "Pinch or scroll to zoom the map",
         "foot.tag": "Barefoot footwear specialist · Bangkok",
         "foot.top": "Back to top",
-        "mbar.a": "19 – 21 Nov · up to 50% off", "mbar.b": "10:00 – 18:00 · Sukhumvit 63",
+        "mbar.a": "19–21 Nov · up to 50% off", "mbar.b": "10:00–18:00 · Ekkamai",
         "nav.why": "Why barefoot?",
         "why.title": "Why <span class=\"serif\">barefoot?</span>", "why.p1": "A big toe that leans inward, a bump at the joint, toes that overlap.", "why.p2": "Arches that feel flat and tired, heels that ache after a day of standing.", "why.p3": "Heavy landings travel up the leg, and small balance corrections never happen.", "why.p4": "The hips and lower back spend the whole day quietly compensating.",
         "why.note": "Have you ever faced these issues?",
@@ -1107,9 +1110,9 @@
         "brands.shoes": "รองเท้า <small>ลด 20–50%</small>", "brands.socks": "ถุงเท้า <small>ลด 20% ทุกคู่</small>",
         "brands.vff": "รองเท้าบาร์ฟุตห้านิ้วจากอิตาลี มีทั้งรุ่นเทรล ลุยน้ำ ยิม วิ่ง และใส่ประจำวัน ลดราคาทุกรุ่น",
         "brands.marugo": "รองเท้าทาบิแยกนิ้วโป้งจาก Marugo ผู้ผลิตทาบิในญี่ปุ่นตั้งแต่ปี 1919 เบา ยืดหยุ่น และลด 50%",
-        "brands.oleno": "ถุงเท้าห้านิ้วผลิตที่จังหวัดนาระ ญี่ปุ่น บาง ระบายอากาศดี และเป็นคู่ที่ทีมงานเราใส่ทุกวัน",
+        "brands.oleno": "ถุงเท้าห้านิ้วผลิตในญี่ปุ่น บาง ระบายอากาศดี ออกแบบมาให้ใส่คู่กับรองเท้าบาร์ฟุต",
         "brands.vffsocks": "ถุงเท้าห้านิ้วของ Vibram เอง ตัดเย็บให้พอดีกับ FiveFingers",
-        "brands.bfsocks": "ถุงเท้าห้านิ้วของเราเอง สำหรับใส่ประจำวันกับรองเท้าบาร์ฟุตทุกคู่",
+        "brands.bfsocks": "ถุงเท้าห้านิ้วผลิตในญี่ปุ่น สำหรับใส่ประจำวันกับรองเท้าบาร์ฟุตทุกคู่",
         "stat.k1": "ลดสูงสุด", "stat.u2": "รุ่น", "stat.k2": "ร่วมรายการ", "stat.u3": "วัน", "stat.k3": "19–21 พฤศจิกายน", "stat.k4": "ถุงเท้าทุกคู่",
         "lineup.eyebrow": "รายการลดราคา", "lineup.title": "มีอะไร<span class=\"serif\">ลดบ้าง</span>",
         "lineup.note": "ราคาเซลล์อยู่ในภาพ แตะเพื่อขยายดู ไซซ์และสีมีเท่าที่อยู่ในคลัง มาแต่เช้าเพื่อคู่ที่คุณต้องการ",
@@ -1143,7 +1146,7 @@
         "access.mapopen": "เปิดใน Google Maps", "access.map": "ดูแผนที่", "access.mapnote": "ซูมแผนที่ได้ด้วยการจีบนิ้วหรือสกรอลล์",
         "foot.tag": "ร้านรองเท้าบาร์ฟุตโดยเฉพาะ · กรุงเทพฯ",
         "foot.top": "กลับขึ้นด้านบน",
-        "mbar.a": "19 – 21 พ.ย. · ลดสูงสุด 50%", "mbar.b": "10:00 – 18:00 · สุขุมวิท 63",
+        "mbar.a": "19–21 พ.ย. · ลดสูงสุด 50%", "mbar.b": "10:00–18:00 · เอกมัย",
         "nav.why": "ทำไมต้องเท้าเปล่า",
         "why.title": "ทำไมต้อง <span class=\"serif\">เท้าเปล่า</span>", "why.p1": "นิ้วโป้งเอียงเข้าด้านใน มีปุ่มนูนที่ข้อ นิ้วซ้อนทับกัน", "why.p2": "อุ้งเท้ารู้สึกแบนและเมื่อย ส้นเท้าตึงหลังยืนทั้งวัน", "why.p3": "การลงเท้าหนัก ๆ ส่งแรงขึ้นไปตามขา และการปรับสมดุลเล็ก ๆ ไม่เคยเกิดขึ้น", "why.p4": "สะโพกและหลังส่วนล่างต้องคอยชดเชยเงียบ ๆ ทั้งวัน",
         "why.note": "คุณเคยเจอปัญหาเหล่านี้ไหม",
