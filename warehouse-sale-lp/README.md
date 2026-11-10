@@ -49,7 +49,7 @@ Terminal 21 Rama 3 版（`terminal21-rama3-lp`）と同じ CSS / JS / EN-TH 切�
 - 駐車場の案内（現在は「駐車スペースは限られているので公共交通・タクシー推奨」と記載）
 - BTS Ekkamai からの行き方の表現（バイクタクシー推奨と記載）
 - 郵便番号 10110（Klongtan-nua, Wattana として記載）
-- 本番 URL（`<head>` の canonical / og:url は `https://warehouse-sale-lp.vercel.app/` を仮置き）
+- 本番 URL（`<head>` の canonical / og:url は `https://barefootinc-warehouse-sale.vercel.app/`）
 
 ## デプロイ
 
