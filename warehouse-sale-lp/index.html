@@ -52,10 +52,10 @@
     "url": "https://barefootinc-warehouse-sale.vercel.app/",
     "location": {
       "@type": "Place",
-      "name": "Barefootinc (Thailand) office, Modern Town",
+      "name": "Barefootinc (Thailand) office, Modern Town 2F",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "87/34 Modern Town, Sukhumvit 63 (Ekkamai)",
+        "streetAddress": "87/34 Modern Town 2F, Sukhumvit 63 (Ekkamai)",
         "addressLocality": "Klongtan-nua, Wattana",
         "addressRegion": "Bangkok",
         "postalCode": "10110",
@@ -73,7 +73,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
-  <link rel="preload" as="image" href="images/hero-warehouse.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="images/hero/hero-a.jpg" fetchpriority="high" />
 
   <style>
     :root {
@@ -580,25 +580,53 @@
     .lb-hint { position: absolute; left: 50%; bottom: 1rem; transform: translateX(-50%); z-index: 2; padding: .42rem .95rem; pointer-events: none; border-radius: 999px; background: rgba(0,0,0,.55); color: rgba(255,255,255,.82); font-size: .76rem; letter-spacing: .06em; transition: opacity .25s ease; }
     .lb.is-zoomed .lb-hint { opacity: 0; }
     /* ================= warehouse sale additions ================= */
-    /* hero: one full-bleed top image */
-    .hero-bg.single { grid-template-columns: 1fr; }
-    .hero-bg.single img { object-position: center 55%; }
-    .hero-bg.single figure::after { background: linear-gradient(180deg, rgba(0,0,0,.66) 0%, rgba(0,0,0,.28) 45%, rgba(0,0,0,.62) 100%); }
-    @media (min-width: 901px) { .hero.single .hero-body { width: 64%; } }
+    /* hero: copy on a solid panel, lifestyle mosaic on the right */
+    .hero.mosaic { background: var(--black); }
+    .hero.mosaic .hero-stage { min-height: calc(100svh - 7.5rem); }
+    .hero-mosaic { position: absolute; top: 0; right: 0; bottom: 0; width: 54%; display: grid; grid-template-columns: 1.05fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px; background: var(--black); }
+    .hero-mosaic .t { position: relative; overflow: hidden; margin: 0; background: #141416; }
+    .hero-mosaic .t img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.06); transition: transform 1.6s var(--ease); }
+    .hero-mosaic .t.in img { transform: none; }
+    .hero-mosaic .ta { grid-row: 1 / 3; }
+    .hero-mosaic .tf { display: none; }
+    .hero-mosaic::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 14%; z-index: 1; pointer-events: none; background: linear-gradient(90deg, var(--black), rgba(11,11,12,0)); }
+    .hero-mosaic::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 7.5rem; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(0,0,0,.72), rgba(0,0,0,0)); }
+    @media (prefers-reduced-motion: reduce) { .hero-mosaic .t img { transform: none; transition: none; } }
+    @media (min-width: 901px) {
+      .hero.mosaic .hero-top, .hero.mosaic .hero-body { width: 46%; padding-right: clamp(1rem, 3vw, 2.5rem); }
+      .hero.mosaic .hero-body { padding-top: clamp(1.6rem, 4vh, 3rem); }
+    }
+    .hero h1 .off-block { display: inline-block; margin-top: .12em; padding: .06em .22em .02em; background: var(--gold); color: #000; font-size: .7em; letter-spacing: 0; line-height: 1.05; transform: rotate(-1.5deg); box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+    :lang(th) .hero h1 .off-block { font-size: .78em; padding: .04em .22em .06em; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: .55rem; background: var(--t21-m); color: #fff;
       font-family: var(--display); font-weight: 700; font-size: clamp(.82rem, 1.5vw, 1.1rem); letter-spacing: .12em; text-transform: uppercase;
-      padding: .42rem .85rem; transform: rotate(-2deg); box-shadow: 0 10px 28px rgba(0,0,0,.35);
+      padding: .42rem .85rem; box-shadow: 0 10px 28px rgba(0,0,0,.35);
     }
     .hero-badge .big { font-size: 1.45em; line-height: 1; }
-    .hero h1 .sale-hl { color: var(--gold); }
     .hero-tag .hero-badge { margin-bottom: .2rem; }
-    @media (max-width: 640px) {
-      .hero-bg.single .one { order: 1; height: 360px; }
-      .hero-bg.single .one img { object-position: center 55%; }
-      .hero-bg.single .one::after { background: linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,.45) 100%); }
+    .hero.mosaic .hero-tag p { text-shadow: none; color: rgba(255,255,255,.92); }
+    .board-item .sub { display: block; margin-top: .15rem; font-family: var(--display); font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+    .board-item .sub i { font-style: normal; color: var(--gold); }
+    @media (max-width: 900px) {
+      .hero-mosaic { position: static; width: auto; height: clamp(300px, 52vw, 420px); order: 1; grid-template-columns: 1.1fr 1fr; grid-template-rows: 1fr 1fr; }
+      .hero-mosaic::before { display: none; }
+      .hero-mosaic .ta { grid-row: 1 / 3; }
+      .hero-mosaic .td, .hero-mosaic .te { display: none; }
+      .hero.mosaic .hero-stage { display: contents; min-height: 0; }
+      .hero.mosaic .hero-top { order: 2; padding-top: 1.4rem; }
+      .hero.mosaic .hero-body { order: 3; padding-bottom: 1.6rem; }
+      .hero.mosaic .hero-board { order: 5; margin-top: 0; }
+      .hero.mosaic .hero-grain { display: none; }
       .hero-board .board-item:first-child { grid-column: auto; }
       .hero-board .board-item:nth-child(3) { grid-column: 1 / -1; }
+    }
+    @media (max-width: 640px) {
+      .hero-mosaic { height: 360px; }
+      .hero.mosaic .hero-top { padding-top: 1.3rem; }
+      .hero.mosaic .hero-board { grid-template-columns: 1fr; gap: .8rem; }
+      .hero.mosaic .hero-board .board-item:nth-child(3) { grid-column: auto; }
+      .hero.mosaic .flap { font-size: 1.35rem; }
     }
 
     /* "biggest sale ever" */
@@ -624,38 +652,32 @@
     @media (max-width: 860px) { .sale-grid { grid-template-columns: 1fr; } }
     @media (max-width: 440px) { .stats { grid-template-columns: 1fr; } }
 
-    /* discount lineup */
+    /* discount lineup: the promotion sheet + one line per tier */
     .lineup { background: var(--bone); color: var(--ink); padding: clamp(4.5rem, 10vw, 9rem) 0; }
     .lineup .sec-head { grid-template-columns: 1fr auto; align-items: end; }
     .lineup .sec-head p { max-width: 54ch; }
-    .tiers { display: grid; gap: clamp(1.2rem, 2.4vw, 2rem); }
-    .tier {
-      --tc: var(--t21-m);
-      display: grid; grid-template-columns: 1.15fr .85fr; background: #fff; border: 1px solid rgba(27,26,31,.12);
-      overflow: hidden; transition: transform .5s var(--ease), box-shadow .5s ease;
+    .promo { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(1.6rem, 4vw, 4rem); align-items: start; }
+    .promo-img { position: relative; cursor: zoom-in; background: #fff; border: 1px solid rgba(27,26,31,.14); box-shadow: 0 24px 60px rgba(0,0,0,.14); overflow: hidden; }
+    .promo-img img { display: block; width: 100%; height: auto; transition: transform .8s var(--ease); }
+    .promo-img:hover img { transform: scale(1.015); }
+    .promo-img .zoom { position: absolute; right: .9rem; bottom: .9rem; display: inline-flex; align-items: center; gap: .45rem; padding: .5rem .85rem; background: rgba(11,11,12,.86); color: #fff; font-family: var(--display); font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; pointer-events: none; }
+    .promo-img .zoom::before { content: "+"; font-size: 1.1rem; line-height: 1; color: var(--gold); }
+    .tiers { position: sticky; top: 5.2rem; display: grid; gap: 0; border-top: 1px solid rgba(27,26,31,.18); }
+    .tier { --tc: var(--t21-m); display: grid; grid-template-columns: 6.4rem 1fr; gap: 1.1rem; align-items: center; padding: 1rem 0; border-bottom: 1px solid rgba(27,26,31,.18); }
+    .tier-40 { --tc: var(--t21-c); } .tier-30 { --tc: #7B3F9E; } .tier-20 { --tc: #2E9E44; } .tier-socks { --tc: var(--gold); }
+    .tier .pct { display: grid; gap: .15rem; font-family: var(--display); font-weight: 700; line-height: 1; color: var(--tc); letter-spacing: -.02em; }
+    .tier .pct .n { font-size: clamp(2.1rem, 3.6vw, 2.8rem); }
+    .tier .pct .o { font-size: .68rem; letter-spacing: .24em; text-transform: uppercase; color: var(--ink); }
+    .tier .models { font-family: var(--display); font-weight: 500; font-size: clamp(.98rem, 1.4vw, 1.12rem); line-height: 1.45; letter-spacing: .01em; }
+    .tier .models small { font-family: var(--body); font-weight: 400; font-size: .84em; color: #5B5762; }
+    .tier-socks .models { font-weight: 600; }
+    .lineup .fine { margin-top: 1.4rem; }
+    @media (max-width: 860px) {
+      .promo { grid-template-columns: 1fr; }
+      .tiers { position: static; }
+      .lineup .sec-head { grid-template-columns: 1fr; }
+      .tier { grid-template-columns: 5.2rem 1fr; }
     }
-    .tier:hover { box-shadow: 0 22px 50px rgba(0,0,0,.12); }
-    .tier-40 { --tc: var(--gold); } .tier-30 { --tc: var(--t21-c); } .tier-20 { --tc: var(--t21-g); } .tier-socks { --tc: var(--slate); }
-    .timg { position: relative; aspect-ratio: 16 / 10; background: #141416; cursor: zoom-in; overflow: hidden; }
-    .timg img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
-    .tier:hover .timg img { transform: scale(1.03); }
-    .timg .tnum {
-      position: absolute; left: 0; top: 0; padding: .55rem .9rem; background: var(--tc); color: #000; font-family: var(--display); font-weight: 700;
-      font-size: clamp(1.1rem, 2vw, 1.5rem); letter-spacing: .06em; text-transform: uppercase; line-height: 1;
-    }
-    .tier-50 .timg .tnum, .tier-socks .timg .tnum { color: #fff; }
-    .tbody { padding: clamp(1.3rem, 2.4vw, 2.2rem); display: grid; align-content: start; gap: .6rem; border-left: 6px solid var(--tc); }
-    .tpct { display: flex; align-items: baseline; gap: .5rem; font-family: var(--display); font-weight: 700; line-height: .9; letter-spacing: -.02em; }
-    .tpct .n { font-size: clamp(3.4rem, 7.6vw, 6.4rem); color: var(--ink); }
-    .tpct .o { font-size: clamp(1.2rem, 2.4vw, 1.9rem); letter-spacing: .08em; text-transform: uppercase; color: var(--tc); }
-    .tier-20 .tpct .o, .tier-40 .tpct .o { color: var(--ink); }
-    .tk { font-family: var(--display); font-size: .66rem; letter-spacing: .24em; text-transform: uppercase; color: var(--mute); }
-    .chips { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .3rem; }
-    .chips span { display: inline-block; font-family: var(--display); font-weight: 500; font-size: .86rem; letter-spacing: .04em; padding: .38rem .7rem; border: 1px solid rgba(27,26,31,.22); background: var(--bone); line-height: 1.2; }
-    .chips span small { font-family: var(--body); font-weight: 400; font-size: .76rem; color: #4B4750; }
-    .tnote { font-size: .8rem; color: var(--mute); line-height: 1.6; margin-top: .4rem; }
-    .lineup .fine { margin-top: 1.6rem; }
-    @media (max-width: 860px) { .tier { grid-template-columns: 1fr; } .tbody { border-left: 0; border-top: 6px solid var(--tc); } .lineup .sec-head { grid-template-columns: 1fr; } }
 
     /* booth → sale-day section tweaks */
     .booth .sec-head p { color: rgba(243,240,234,.7); }
@@ -697,10 +719,15 @@
     </div>
   </nav>
 
-  <header class="hero single" id="top">
+  <header class="hero mosaic" id="top">
     <div class="hero-stage">
-    <div class="hero-bg single" id="heroBg">
-      <figure class="vff one"><img src="images/hero-warehouse.jpg" alt="Vibram FiveFingers at the Barefootinc Warehouse Sale" width="1000" height="1158" fetchpriority="high" /></figure>
+    <div class="hero-mosaic" id="heroMosaic" aria-label="Vibram FiveFingers in use: Scramkey, KSO EVO, V-Train 2.0, V-Run">
+      <figure class="t ta"><img src="images/hero/hero-a.jpg" alt="Scramkey over a mountain stream" width="720" height="1161" fetchpriority="high" /></figure>
+      <figure class="t tb"><img src="images/hero/hero-b.jpg" alt="KSO EVO in the gym" width="900" height="600" fetchpriority="high" /></figure>
+      <figure class="t tc"><img src="images/hero/hero-c.jpg" alt="V-Train 2.0 during a workout" width="900" height="600" /></figure>
+      <figure class="t td"><img src="images/hero/hero-d.jpg" alt="V-Run on the road" width="900" height="600" loading="lazy" /></figure>
+      <figure class="t te"><img src="images/hero/hero-e.jpg" alt="Scramkey close-up on grass" width="900" height="600" loading="lazy" /></figure>
+      <figure class="t tf"><img src="images/hero/hero-f.jpg" alt="KSO EVO in a backbend" width="800" height="800" loading="lazy" /></figure>
     </div>
     <div class="hero-grain" aria-hidden="true"></div>
 
@@ -715,19 +742,19 @@
       <h1>
         <span class="mask"><span data-reveal="line" style="--d:420">Warehouse</span></span>
         <span class="mask"><span data-reveal="line" style="--d:520" data-i18n="hero.l2"><span class="hl">Sale</span></span></span>
-        <span class="mask"><span data-reveal="line" style="--d:620" data-i18n="hero.l3"><span class="sale-hl">Up to 50% off</span></span></span>
+        <span class="mask"><span data-reveal="line" style="--d:620" data-i18n="hero.l3"><span class="off-block">Up to 50% off</span></span></span>
       </h1>
       <div class="hero-tag">
         <span class="hero-badge" data-reveal style="--d:760" data-i18n-html="hero.badge"><span class="big">3</span> days only · Our biggest sale ever</span>
-        <p data-reveal style="--d:860" data-i18n-html="hero.sub">More models than we have ever put on sale, <b class="num">20–50%</b> off.<br />Vibram FiveFingers and more, straight from the warehouse.</p>
+        <p data-reveal style="--d:860" data-i18n-html="hero.sub">More models, bigger discount than ever.<br />Vibram FiveFingers and more, come and feel barefoot shoes.</p>
       </div>
     </div>
     </div>
 
     <div class="hero-board" data-reveal style="--d:980">
-      <div class="board-item"><span class="k" data-i18n="board.k1">Dates</span><span class="flap" data-flap="19 – 21 NOV" aria-label="19 to 21 November 2026"></span></div>
+      <div class="board-item"><span class="k" data-i18n="board.k1">Dates</span><span class="flap" data-flap="19 (THU) – 21 (SAT) NOV" aria-label="Thursday 19 to Saturday 21 November 2026"></span></div>
       <div class="board-item"><span class="k" data-i18n="board.k2">Time</span><span class="flap" data-flap="10:00 – 18:00" aria-label="10 am to 6 pm"></span></div>
-      <div class="board-item"><span class="k" data-i18n="board.k3">Where</span><span class="flap" data-flap="SUKHUMVIT 63" aria-label="Barefootinc office, Sukhumvit 63"></span></div>
+      <div class="board-item"><span class="k" data-i18n="board.k3">Where</span><span class="flap" data-flap="MODERN TOWN 2F" aria-label="Modern Town 2nd floor, Sukhumvit 63, Ekkamai, our office"></span><span class="sub" data-i18n-html="board.sub">(Sukhumvit 63, Ekkamai) <i>*our office</i></span></div>
       <a class="scroll-cue" href="#sale" data-i18n-html="hero.scroll"><span>Scroll</span><i></i></a>
     </div>
   </header>
@@ -759,66 +786,20 @@
           <span class="eyebrow" data-reveal data-i18n="lineup.eyebrow">Discount lineup</span>
           <h2 data-reveal style="--d:80" data-i18n="lineup.title">What's <span class="serif">on sale</span></h2>
         </div>
-        <p data-reveal style="--d:160" data-i18n="lineup.note">Discounts are off the regular price. Sizes and colors are limited to warehouse stock, so come early for the pair you want.</p>
+        <p data-reveal style="--d:160" data-i18n="lineup.note">Sale prices are on the sheet; tap it to zoom in. Sizes and colors are limited to warehouse stock, so come early for the pair you want.</p>
       </div>
-      <div class="tiers">
-        <article class="tier tier-50" data-reveal>
-          <div class="timg" role="button" tabindex="0" aria-label="View image" data-lb="image" data-lb-src="images/sale/tier-50.jpg" data-lb-alt="50% off lineup">
-            <img src="images/sale/tier-50.jpg" alt="50% off: Scramkey and Tabi" width="1600" height="1000" loading="lazy" decoding="async" />
-            <span class="tnum" data-i18n="tier.n50">50% off</span>
-          </div>
-          <div class="tbody">
-            <div class="tpct"><span class="n">50<span style="font-size:.55em">%</span></span><span class="o" data-i18n="tier.off">off</span></div>
-            <span class="tk" data-i18n="tier.k">Models</span>
-            <div class="chips" data-i18n-html="tier.l50"><span>Scramkey</span><span>Tabi</span></div>
-          </div>
-        </article>
-        <article class="tier tier-40" data-reveal>
-          <div class="timg" role="button" tabindex="0" aria-label="View image" data-lb="image" data-lb-src="images/sale/tier-40.jpg" data-lb-alt="40% off lineup">
-            <img src="images/sale/tier-40.jpg" alt="40% off: Alitza, CVT Hemp, CVT Leather, KSO ECO, V-Train Lime, KMD EVO" width="1600" height="1000" loading="lazy" decoding="async" />
-            <span class="tnum" data-i18n="tier.n40">40% off</span>
-          </div>
-          <div class="tbody">
-            <div class="tpct"><span class="n">40<span style="font-size:.55em">%</span></span><span class="o" data-i18n="tier.off">off</span></div>
-            <span class="tk" data-i18n="tier.k">Models</span>
-            <div class="chips" data-i18n-html="tier.l40"><span>Alitza</span><span>CVT Hemp <small>(all)</small></span><span>CVT Leather</span><span>KSO ECO</span><span>V-Train <small>Lime</small></span><span>KMD EVO</span></div>
-          </div>
-        </article>
-        <article class="tier tier-30" data-reveal>
-          <div class="timg" role="button" tabindex="0" aria-label="View image" data-lb="image" data-lb-src="images/sale/tier-30.jpg" data-lb-alt="30% off lineup">
-            <img src="images/sale/tier-30.jpg" alt="30% off: Graspifier, KSO, KSO EVO, V-Run, Groundsplay, V-Alpha, V-Trek, V-Train" width="1600" height="1000" loading="lazy" decoding="async" />
-            <span class="tnum" data-i18n="tier.n30">30% off</span>
-          </div>
-          <div class="tbody">
-            <div class="tpct"><span class="n">30<span style="font-size:.55em">%</span></span><span class="o" data-i18n="tier.off">off</span></div>
-            <span class="tk" data-i18n="tier.k">Models</span>
-            <div class="chips" data-i18n-html="tier.l30"><span>Graspifier <small>Black (not Total Black)</small></span><span>KSO</span><span>KSO EVO <small>Deep Lake · Yellow White · Fig</small></span><span>V-Run <small>Golden · Ivory · Black/Yellow · W Deep Lake · Lime</small></span><span>Groundsplay <small>Black</small></span><span>V-Alpha <small>Deep Lake · Lime</small></span><span>V-Trek</span><span>V-Train <small>Black</small></span></div>
-            <p class="tnote" data-i18n="tier.note30">Selected colors only. Some are the last pairs in stock.</p>
-          </div>
-        </article>
-        <article class="tier tier-20" data-reveal>
-          <div class="timg" role="button" tabindex="0" aria-label="View image" data-lb="image" data-lb-src="images/sale/tier-20.jpg" data-lb-alt="20% off lineup">
-            <img src="images/sale/tier-20.jpg" alt="20% off: KSO EVO other colors, Trailope, V-Run Black Blue" width="1600" height="1000" loading="lazy" decoding="async" />
-            <span class="tnum" data-i18n="tier.n20">20% off</span>
-          </div>
-          <div class="tbody">
-            <div class="tpct"><span class="n">20<span style="font-size:.55em">%</span></span><span class="o" data-i18n="tier.off">off</span></div>
-            <span class="tk" data-i18n="tier.k">Models</span>
-            <div class="chips" data-i18n-html="tier.l20"><span>KSO EVO <small>other colors</small></span><span>Trailope</span><span>V-Run <small>Black Blue</small></span></div>
-          </div>
-        </article>
-        <article class="tier tier-socks" data-reveal>
-          <div class="timg" role="button" tabindex="0" aria-label="View image" data-lb="image" data-lb-src="images/sale/tier-socks.jpg" data-lb-alt="Socks 20% off">
-            <img src="images/sale/tier-socks.jpg" alt="All socks 20% off: Oleno, BFJ, Vibram FiveFingers" width="1600" height="1000" loading="lazy" decoding="async" />
-            <span class="tnum" data-i18n="tier.nsocks">Socks 20% off</span>
-          </div>
-          <div class="tbody">
-            <div class="tpct"><span class="n">20<span style="font-size:.55em">%</span></span><span class="o" data-i18n="tier.offall">off all socks</span></div>
-            <span class="tk" data-i18n="tier.ksocks">Brands</span>
-            <div class="chips" data-i18n-html="tier.lsocks"><span>Oleno</span><span>BFJ</span><span>Vibram FiveFingers</span></div>
-            <p class="tnote" data-i18n="tier.notesocks">Every pair of five-toe socks in the house, no exceptions.</p>
-          </div>
-        </article>
+      <div class="promo">
+        <div class="promo-img" data-reveal role="button" tabindex="0" aria-label="Open the promotion sheet" data-lb="image" data-lb-src="images/sale/promotion.jpg" data-lb-alt="Warehouse Sale promotion: prices by model">
+          <img src="images/sale/promotion-1000.jpg" srcset="images/sale/promotion-1000.jpg 1000w, images/sale/promotion.jpg 2503w" sizes="(max-width: 860px) 100vw, 50vw" alt="Vibram FiveFingers Warehouse Sale promotion sheet, 19–21 November 2026: 50% off Scramkey; 40% off Alitza Loop, CVT Hemp, CVT Leather, KSO ECO, V-Train 2.0, KMD EVO; 30% off Graspifier, KSO, KSO EVO, Groundsplay, V-Run, V-Alpha, V-Trek; 20% off KSO EVO, Trailope, V-Run" width="2503" height="3308" loading="lazy" decoding="async" />
+          <span class="zoom" data-i18n="lineup.zoom">Tap to zoom</span>
+        </div>
+        <div class="tiers" data-reveal style="--d:120">
+          <div class="tier tier-50"><div class="pct"><span class="n">50%</span><span class="o" data-i18n="tier.off">off</span></div><div class="models" data-i18n-html="tier.l50">Scramkey, Tabi</div></div>
+          <div class="tier tier-40"><div class="pct"><span class="n">40%</span><span class="o" data-i18n="tier.off">off</span></div><div class="models" data-i18n-html="tier.l40">Alitza Loop, CVT Hemp <small>(all)</small>, CVT Leather, KSO ECO, V-Train 2.0 <small>(Lime)</small>, KMD EVO</div></div>
+          <div class="tier tier-30"><div class="pct"><span class="n">30%</span><span class="o" data-i18n="tier.off">off</span></div><div class="models" data-i18n-html="tier.l30">Graspifier <small>(Black)</small>, KSO, KSO EVO <small>(Deep Lake / Yellow White / Fig)</small>, V-Run <small>(selected colors)</small>, Groundsplay <small>(Black)</small>, V-Alpha <small>(Deep Lake / Lime)</small>, V-Trek, V-Train <small>(Black)</small></div></div>
+          <div class="tier tier-20"><div class="pct"><span class="n">20%</span><span class="o" data-i18n="tier.off">off</span></div><div class="models" data-i18n-html="tier.l20">KSO EVO <small>(other colors)</small>, Trailope, V-Run <small>(Black Blue)</small></div></div>
+          <div class="tier tier-socks"><div class="pct"><span class="n">20%</span><span class="o" data-i18n="tier.off">off</span></div><div class="models" data-i18n-html="tier.lsocks">All socks <small>(Oleno, BFJ, Vibram FiveFingers)</small></div></div>
+        </div>
       </div>
       <p class="fine" data-reveal data-i18n="lineup.fine">Discounts apply to the colors listed. Prices are shown on the tags at the sale. Stock is what is in the warehouse: once a size is gone, it is gone.</p>
     </div>
@@ -1021,11 +1002,11 @@
       en: {
         "nav.sale": "The sale", "nav.lineup": "Lineup", "nav.booth": "On the day", "nav.access": "Getting there",
         "hero.edition": "Warehouse sale · Barefootinc office",
-        "hero.l2": "<span class=\"hl\">Sale</span>", "hero.l3": "<span class=\"sale-hl\">Up to 50% off</span>",
+        "hero.l2": "<span class=\"hl\">Sale</span>", "hero.l3": "<span class=\"off-block\">Up to 50% off</span>",
         "hero.badge": "<span class=\"big\">3</span> days only · Our biggest sale ever",
-        "hero.sub": "More models than we have ever put on sale, <b class=\"num\">20–50%</b> off.<br />Vibram FiveFingers and more, straight from the warehouse.",
+        "hero.sub": "More models, bigger discount than ever.<br />Vibram FiveFingers and more, come and feel barefoot shoes.",
         "hero.scroll": "<span>Scroll</span><i></i>",
-        "board.k1": "Dates", "board.k2": "Time", "board.k3": "Where",
+        "board.k1": "Dates", "board.k2": "Time", "board.k3": "Where", "board.sub": "(Sukhumvit 63, Ekkamai) <i>*our office</i>",
         "sale.title": "Our biggest<br />sale <span class=\"hl\">ever</span>",
         "sale.sub": "More models, deeper discounts, three days, one office.",
         "sale.desc": "We are opening the warehouse at our Sukhumvit 63 office and putting more Vibram FiveFingers models on sale than ever before: trail, water, gym, running and everyday models, from the Scramkey and KSO EVO to the V-Run and V-Alpha, at 20–50% off. Every pair is there to try on, and every sock in the house is 20% off.",
@@ -1034,16 +1015,13 @@
         "stat.u3": "days", "stat.k3": "19–21 November", "stat.d3": "Thursday to Saturday, 10:00–18:00. Stock is limited and goes first come, first served.",
         "stat.k4": "All socks", "stat.d4": "Every Oleno, BFJ and Vibram five-toe sock in the house.",
         "lineup.eyebrow": "Discount lineup", "lineup.title": "What's <span class=\"serif\">on sale</span>",
-        "lineup.note": "Discounts are off the regular price. Sizes and colors are limited to warehouse stock, so come early for the pair you want.",
-        "tier.off": "off", "tier.offall": "off all socks", "tier.k": "Models", "tier.ksocks": "Brands",
-        "tier.n50": "50% off", "tier.n40": "40% off", "tier.n30": "30% off", "tier.n20": "20% off", "tier.nsocks": "Socks 20% off",
-        "tier.l50": "<span>Scramkey</span><span>Tabi</span>",
-        "tier.l40": "<span>Alitza</span><span>CVT Hemp <small>(all)</small></span><span>CVT Leather</span><span>KSO ECO</span><span>V-Train <small>Lime</small></span><span>KMD EVO</span>",
-        "tier.l30": "<span>Graspifier <small>Black (not Total Black)</small></span><span>KSO</span><span>KSO EVO <small>Deep Lake · Yellow White · Fig</small></span><span>V-Run <small>Golden · Ivory · Black/Yellow · W Deep Lake · Lime</small></span><span>Groundsplay <small>Black</small></span><span>V-Alpha <small>Deep Lake · Lime</small></span><span>V-Trek</span><span>V-Train <small>Black</small></span>",
-        "tier.note30": "Selected colors only. Some are the last pairs in stock.",
-        "tier.l20": "<span>KSO EVO <small>other colors</small></span><span>Trailope</span><span>V-Run <small>Black Blue</small></span>",
-        "tier.lsocks": "<span>Oleno</span><span>BFJ</span><span>Vibram FiveFingers</span>",
-        "tier.notesocks": "Every pair of five-toe socks in the house, no exceptions.",
+        "lineup.note": "Sale prices are on the sheet; tap it to zoom in. Sizes and colors are limited to warehouse stock, so come early for the pair you want.",
+        "tier.off": "off", "lineup.zoom": "Tap to zoom",
+        "tier.l50": "Scramkey, Tabi",
+        "tier.l40": "Alitza Loop, CVT Hemp <small>(all)</small>, CVT Leather, KSO ECO, V-Train 2.0 <small>(Lime)</small>, KMD EVO",
+        "tier.l30": "Graspifier <small>(Black)</small>, KSO, KSO EVO <small>(Deep Lake / Yellow White / Fig)</small>, V-Run <small>(selected colors)</small>, Groundsplay <small>(Black)</small>, V-Alpha <small>(Deep Lake / Lime)</small>, V-Trek, V-Train <small>(Black)</small>",
+        "tier.l20": "KSO EVO <small>(other colors)</small>, Trailope, V-Run <small>(Black Blue)</small>",
+        "tier.lsocks": "All socks <small>(Oleno, BFJ, Vibram FiveFingers)</small>",
         "lineup.fine": "Discounts apply to the colors listed. Prices are shown on the tags at the sale. Stock is what is in the warehouse: once a size is gone, it is gone.",
         "booth.eyebrow": "Three things to do", "booth.title": "On the <span class=\"serif\">day</span>",
         "booth.note": "No appointment, no pressure. Come in your usual shoes and leave the rest to us.",
@@ -1085,11 +1063,11 @@
       th: {
         "nav.sale": "เซลล์", "nav.lineup": "รายการลด", "nav.booth": "ในวันงาน", "nav.access": "วิธีเดินทาง",
         "hero.edition": "แวร์เฮาส์เซลล์ · ออฟฟิศ Barefootinc",
-        "hero.l2": "<span class=\"hl\">Sale</span>", "hero.l3": "<span class=\"sale-hl\">ลดสูงสุด 50%</span>",
+        "hero.l2": "<span class=\"hl\">Sale</span>", "hero.l3": "<span class=\"off-block\">ลดสูงสุด 50%</span>",
         "hero.badge": "<span class=\"big\">3</span> วันเท่านั้น · เซลล์ครั้งใหญ่ที่สุดของเรา",
-        "hero.sub": "รุ่นเยอะกว่าทุกเซลล์ที่เคยจัดมา ลด <b class=\"num\">20–50%</b><br />Vibram FiveFingers และอีกมากมาย ส่งตรงจากคลังสินค้า",
+        "hero.sub": "รุ่นมากกว่า ส่วนลดมากกว่าที่เคย<br />Vibram FiveFingers และอีกมากมาย มาลองสัมผัสรองเท้าบาร์ฟุตได้เลย",
         "hero.scroll": "<span>เลื่อนลง</span><i></i>",
-        "board.k1": "วันที่", "board.k2": "เวลา", "board.k3": "สถานที่",
+        "board.k1": "วันที่", "board.k2": "เวลา", "board.k3": "สถานที่", "board.sub": "(สุขุมวิท 63 เอกมัย) <i>*ออฟฟิศของเรา</i>",
         "sale.title": "เซลล์ครั้งใหญ่<br /><span class=\"hl\">ที่สุด</span>ของเรา",
         "sale.sub": "รุ่นมากกว่า ลดลึกกว่า สามวัน ที่ออฟฟิศของเรา",
         "sale.desc": "เราเปิดคลังสินค้าที่ออฟฟิศสุขุมวิท 63 และนำ Vibram FiveFingers มาลดราคามากรุ่นกว่าที่เคย ทั้งรุ่นเทรล ลุยน้ำ ยิม วิ่ง และใส่ประจำวัน ตั้งแต่ Scramkey, KSO EVO ไปจนถึง V-Run และ V-Alpha ลด 20–50% ทุกคู่ลองสวมได้ และถุงเท้าทุกคู่ในร้านลด 20%",
@@ -1098,16 +1076,13 @@
         "stat.u3": "วัน", "stat.k3": "19–21 พฤศจิกายน", "stat.d3": "พฤหัสบดีถึงเสาร์ 10:00–18:00 สินค้ามีจำนวนจำกัด มาก่อนได้ก่อน",
         "stat.k4": "ถุงเท้าทุกคู่", "stat.d4": "ถุงเท้าห้านิ้ว Oleno, BFJ และ Vibram ทุกคู่ในร้าน",
         "lineup.eyebrow": "รายการลดราคา", "lineup.title": "มีอะไร<span class=\"serif\">ลดบ้าง</span>",
-        "lineup.note": "ส่วนลดคิดจากราคาปกติ ไซซ์และสีมีเท่าที่อยู่ในคลัง มาแต่เช้าเพื่อคู่ที่คุณต้องการ",
-        "tier.off": "ลด", "tier.offall": "ถุงเท้าทุกคู่", "tier.k": "รุ่น", "tier.ksocks": "แบรนด์",
-        "tier.n50": "ลด 50%", "tier.n40": "ลด 40%", "tier.n30": "ลด 30%", "tier.n20": "ลด 20%", "tier.nsocks": "ถุงเท้าลด 20%",
-        "tier.l50": "<span>Scramkey</span><span>Tabi</span>",
-        "tier.l40": "<span>Alitza</span><span>CVT Hemp <small>(ทุกสี)</small></span><span>CVT Leather</span><span>KSO ECO</span><span>V-Train <small>Lime</small></span><span>KMD EVO</span>",
-        "tier.l30": "<span>Graspifier <small>Black (ไม่รวม Total Black)</small></span><span>KSO</span><span>KSO EVO <small>Deep Lake · Yellow White · Fig</small></span><span>V-Run <small>Golden · Ivory · Black/Yellow · W Deep Lake · Lime</small></span><span>Groundsplay <small>Black</small></span><span>V-Alpha <small>Deep Lake · Lime</small></span><span>V-Trek</span><span>V-Train <small>Black</small></span>",
-        "tier.note30": "เฉพาะสีที่ระบุ บางรุ่นเหลือคู่สุดท้ายในสต็อก",
-        "tier.l20": "<span>KSO EVO <small>สีอื่น ๆ</small></span><span>Trailope</span><span>V-Run <small>Black Blue</small></span>",
-        "tier.lsocks": "<span>Oleno</span><span>BFJ</span><span>Vibram FiveFingers</span>",
-        "tier.notesocks": "ถุงเท้าห้านิ้วทุกคู่ในร้าน ไม่มีข้อยกเว้น",
+        "lineup.note": "ราคาเซลล์อยู่ในภาพ แตะเพื่อขยายดู ไซซ์และสีมีเท่าที่อยู่ในคลัง มาแต่เช้าเพื่อคู่ที่คุณต้องการ",
+        "tier.off": "ลด", "lineup.zoom": "แตะเพื่อขยาย",
+        "tier.l50": "Scramkey, Tabi",
+        "tier.l40": "Alitza Loop, CVT Hemp <small>(ทุกสี)</small>, CVT Leather, KSO ECO, V-Train 2.0 <small>(Lime)</small>, KMD EVO",
+        "tier.l30": "Graspifier <small>(Black)</small>, KSO, KSO EVO <small>(Deep Lake / Yellow White / Fig)</small>, V-Run <small>(เฉพาะบางสี)</small>, Groundsplay <small>(Black)</small>, V-Alpha <small>(Deep Lake / Lime)</small>, V-Trek, V-Train <small>(Black)</small>",
+        "tier.l20": "KSO EVO <small>(สีอื่น ๆ)</small>, Trailope, V-Run <small>(Black Blue)</small>",
+        "tier.lsocks": "ถุงเท้าทุกคู่ <small>(Oleno, BFJ, Vibram FiveFingers)</small>",
         "lineup.fine": "ส่วนลดใช้กับสีที่ระบุ ราคาแสดงบนป้ายสินค้าในวันงาน สินค้ามีเท่าที่อยู่ในคลัง ไซซ์ไหนหมดคือหมด",
         "booth.eyebrow": "สามสิ่งที่ควรทำ", "booth.title": "ใน<span class=\"serif\">วันงาน</span>",
         "booth.note": "ไม่ต้องนัด ไม่มีการกดดัน ใส่รองเท้าคู่เดิมมาได้เลย ที่เหลือให้เราจัดการ",
@@ -1263,6 +1238,12 @@
         });
         el.addEventListener("mouseleave", () => { el.style.transform = ""; });
       });
+    })();
+
+    /* hero mosaic: settle the tiles once they have painted */
+    (function () {
+      const tiles = document.querySelectorAll("#heroMosaic .t");
+      tiles.forEach((t, i) => setTimeout(() => t.classList.add("in"), 120 + i * 90));
     })();
 
     /* ===================== lightbox (size charts) ===================== */
