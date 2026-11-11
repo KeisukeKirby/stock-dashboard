@@ -338,8 +338,9 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 .sheet thead tr.h1 th { top: calc(var(--title-h) + var(--row-h)); }
 .sheet thead tr.h2 th { top: calc(var(--title-h) + var(--row-h) + var(--head-h)); }
 .sheet thead tr.h2 th.ret-h { background: var(--x-header-ret); }
-.sheet thead tr.h2 th.rate-h, .sheet thead tr.h2 th.mos-h { background: #2f75b5; font-size: 8.5pt; white-space: normal; line-height: 1.05; padding: 0 1px; }
+.sheet thead tr.h2 th.rate-h, .sheet thead tr.h2 th.mos-h, .sheet thead tr.h2 th.sales-h { background: #2f75b5; font-size: 8.5pt; white-space: normal; line-height: 1.05; padding: 0 1px; }
 .sheet td.rate { color: #1f4e78; }
+.sheet td.sales { color: #1f4e78; font-weight: 700; }
 /* 画面用に列を狭くしたので見出しは小さめ・折り返し可 */
 .sheet thead tr.h1 th.grp { font-size: 9.5pt; white-space: normal; line-height: 1.05; padding: 0 2px; }
 .sheet thead tr.h2 th { font-size: 9pt; padding-left: 1px; }

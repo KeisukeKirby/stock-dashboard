@@ -118,7 +118,7 @@ POS の注文明細（data/event_orders/）は顧客情報を含むため Git �
 
 ## 月平均販売・在庫月数
 
-各店舗（K Village / Central CL / Siam Discovery / Paradise Park / Central LP）、Office（オンライン販売）、Store Total、Company Total（オンライン + イベント + 全店舗）の在庫数の左に「月平均販売」、右に「在庫月数（在庫 ÷ 月平均販売）」を表示します（フィルター欄のチェックで表示／非表示）。
+各店舗（K Village / Central CL / Siam Discovery / Paradise Park / Central LP）、Office（オンライン販売）、Store Total、Company Total（オンライン + イベント + 全店舗）の在庫数の左に「月平均販売」、右に「在庫月数（在庫 ÷ 月平均販売）」を表示します（フィルター欄のチェックで表示／非表示）。Office の Quantity の左には「今年の販売」（Office の月平均販売 × 対象月数を四捨五入した、2026年1〜8月の累計オンライン販売足数）も表示します。
 
 `scripts/sales_rate.py` が 2026年1〜8月の VFF シューズの販売から SKU×店舗（店頭販売）・Online・Event の月平均販売足数を計算し `data/sales_rate.json` に保存、convert.py の 6 つ目の引数で在庫データに付けます。
 
