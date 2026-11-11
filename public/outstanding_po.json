@@ -1,0 +1,2686 @@
+{
+ "source": "ETD_2027_prebook_order_Thailand_20261111.xlsx",
+ "total": 3636,
+ "items": [
+  {
+   "model": "VFF Breezandal",
+   "color": "Brown/Black",
+   "size": "M40",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M4307",
+     "etd": "2026-11-30",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Breezandal",
+   "color": "Brown/Black",
+   "size": "M41",
+   "qty": 18,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M4307",
+     "etd": "2026-11-30",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF Breezandal",
+   "color": "Brown/Black",
+   "size": "M42",
+   "qty": 24,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M4307",
+     "etd": "2026-11-30",
+     "qty": 24
+    }
+   ]
+  },
+  {
+   "model": "VFF Breezandal",
+   "color": "Brown/Black",
+   "size": "M43",
+   "qty": 24,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M4307",
+     "etd": "2026-11-30",
+     "qty": 24
+    }
+   ]
+  },
+  {
+   "model": "VFF Breezandal",
+   "color": "Brown/Black",
+   "size": "M44",
+   "qty": 21,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M4307",
+     "etd": "2026-11-30",
+     "qty": 21
+    }
+   ]
+  },
+  {
+   "model": "VFF Breezandal",
+   "color": "Brown/Black",
+   "size": "M45",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M4307",
+     "etd": "2026-11-30",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Breezandal",
+   "color": "Brown/Black",
+   "size": "M46",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M4307",
+     "etd": "2026-11-30",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Basil/Ivory",
+   "size": "M40",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M0603",
+     "etd": "2026-11-30",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Basil/Ivory",
+   "size": "M41",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M0603",
+     "etd": "2026-11-30",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Basil/Ivory",
+   "size": "M42",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M0603",
+     "etd": "2026-11-30",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Basil/Ivory",
+   "size": "M43",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M0603",
+     "etd": "2026-11-30",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Basil/Ivory",
+   "size": "M44",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M0603",
+     "etd": "2026-11-30",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Basil/Ivory",
+   "size": "M45",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M0603",
+     "etd": "2026-11-30",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Total Black",
+   "size": "M40",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "25M0603",
+     "etd": "2027-03-30",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Total Black",
+   "size": "M41",
+   "qty": 27,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "25M0603",
+     "etd": "2026-11-30",
+     "qty": 12
+    },
+    {
+     "po": "CN27013C",
+     "style": "25M0603",
+     "etd": "2027-03-30",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Total Black",
+   "size": "M42",
+   "qty": 30,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "25M0603",
+     "etd": "2026-11-30",
+     "qty": 15
+    },
+    {
+     "po": "CN27013C",
+     "style": "25M0603",
+     "etd": "2027-03-30",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Total Black",
+   "size": "M43",
+   "qty": 39,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "25M0603",
+     "etd": "2026-11-30",
+     "qty": 15
+    },
+    {
+     "po": "CN27013C",
+     "style": "25M0603",
+     "etd": "2027-03-30",
+     "qty": 24
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Total Black",
+   "size": "M44",
+   "qty": 33,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "25M0603",
+     "etd": "2026-11-30",
+     "qty": 12
+    },
+    {
+     "po": "CN27013C",
+     "style": "25M0603",
+     "etd": "2027-03-30",
+     "qty": 21
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Total Black",
+   "size": "M45",
+   "qty": 21,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "25M0603",
+     "etd": "2026-11-30",
+     "qty": 6
+    },
+    {
+     "po": "CN27013C",
+     "style": "25M0603",
+     "etd": "2027-03-30",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Total Black",
+   "size": "M46",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "25M0603",
+     "etd": "2027-03-30",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Total Black",
+   "size": "W37",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "25W0603",
+     "etd": "2026-11-30",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Total Black",
+   "size": "W38",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "25W0603",
+     "etd": "2026-11-30",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Total Black",
+   "size": "W39",
+   "qty": 18,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "25W0603",
+     "etd": "2026-11-30",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Total Black",
+   "size": "W40",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "25W0603",
+     "etd": "2026-11-30",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Total Black",
+   "size": "W41",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "25W0603",
+     "etd": "2026-11-30",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Graspifier",
+   "color": "Total Black",
+   "size": "W42",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "25W0603",
+     "etd": "2026-11-30",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Ivory/Orange",
+   "size": "M40",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M3204",
+     "etd": "2026-11-30",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Ivory/Orange",
+   "size": "M41",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M3204",
+     "etd": "2026-11-30",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Ivory/Orange",
+   "size": "M42",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M3204",
+     "etd": "2026-11-30",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Ivory/Orange",
+   "size": "M43",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M3204",
+     "etd": "2026-11-30",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Ivory/Orange",
+   "size": "M44",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M3204",
+     "etd": "2026-11-30",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Ivory/Orange",
+   "size": "M45",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M3204",
+     "etd": "2026-11-30",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Ivory/Purple",
+   "size": "W37",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W3205",
+     "etd": "2026-11-30",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Ivory/Purple",
+   "size": "W38",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W3205",
+     "etd": "2026-11-30",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Ivory/Purple",
+   "size": "W39",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W3205",
+     "etd": "2026-11-30",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Ivory/Purple",
+   "size": "W40",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W3205",
+     "etd": "2026-11-30",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Ivory/Purple",
+   "size": "W41",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W3205",
+     "etd": "2026-11-30",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Total Ivory",
+   "size": "M40",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "27M3202",
+     "etd": "2027-03-30",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Total Ivory",
+   "size": "M41",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "27M3202",
+     "etd": "2027-03-30",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Total Ivory",
+   "size": "M42",
+   "qty": 21,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "27M3202",
+     "etd": "2027-03-30",
+     "qty": 21
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Total Ivory",
+   "size": "M43",
+   "qty": 27,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "27M3202",
+     "etd": "2027-03-30",
+     "qty": 27
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Total Ivory",
+   "size": "M44",
+   "qty": 21,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "27M3202",
+     "etd": "2027-03-30",
+     "qty": 21
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Total Ivory",
+   "size": "M45",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "27M3202",
+     "etd": "2027-03-30",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Total Ivory",
+   "size": "M46",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "27M3202",
+     "etd": "2027-03-30",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Total Ivory",
+   "size": "W37",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "27W3202",
+     "etd": "2027-03-30",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Total Ivory",
+   "size": "W38",
+   "qty": 18,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "27W3202",
+     "etd": "2027-03-30",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Total Ivory",
+   "size": "W39",
+   "qty": 30,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "27W3202",
+     "etd": "2027-03-30",
+     "qty": 30
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Total Ivory",
+   "size": "W40",
+   "qty": 33,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "27W3202",
+     "etd": "2027-03-30",
+     "qty": 33
+    }
+   ]
+  },
+  {
+   "model": "VFF Groundsplay LS",
+   "color": "Total Ivory",
+   "size": "W41",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "27W3202",
+     "etd": "2027-03-30",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Spidrwalk",
+   "color": "Total Black",
+   "size": "M40",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "26M5001",
+     "etd": "2027-03-30",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF Spidrwalk",
+   "color": "Total Black",
+   "size": "M41",
+   "qty": 24,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "26M5001",
+     "etd": "2027-03-30",
+     "qty": 24
+    }
+   ]
+  },
+  {
+   "model": "VFF Spidrwalk",
+   "color": "Total Black",
+   "size": "M42",
+   "qty": 27,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "26M5001",
+     "etd": "2027-03-30",
+     "qty": 27
+    }
+   ]
+  },
+  {
+   "model": "VFF Spidrwalk",
+   "color": "Total Black",
+   "size": "M43",
+   "qty": 33,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "26M5001",
+     "etd": "2027-03-30",
+     "qty": 33
+    }
+   ]
+  },
+  {
+   "model": "VFF Spidrwalk",
+   "color": "Total Black",
+   "size": "M44",
+   "qty": 18,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "26M5001",
+     "etd": "2027-03-30",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF Spidrwalk",
+   "color": "Total Black",
+   "size": "M45",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "26M5001",
+     "etd": "2027-03-30",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF Spidrwalk",
+   "color": "Total Black",
+   "size": "M46",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "26M5001",
+     "etd": "2027-03-30",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF Spidrwalk",
+   "color": "Total Black",
+   "size": "W36",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "26W5001",
+     "etd": "2027-03-30",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF Spidrwalk",
+   "color": "Total Black",
+   "size": "W37",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "26W5001",
+     "etd": "2027-03-30",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF Spidrwalk",
+   "color": "Total Black",
+   "size": "W38",
+   "qty": 33,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "26W5001",
+     "etd": "2027-03-30",
+     "qty": 33
+    }
+   ]
+  },
+  {
+   "model": "VFF Spidrwalk",
+   "color": "Total Black",
+   "size": "W39",
+   "qty": 24,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "26W5001",
+     "etd": "2027-03-30",
+     "qty": 24
+    }
+   ]
+  },
+  {
+   "model": "VFF Spidrwalk",
+   "color": "Total Black",
+   "size": "W40",
+   "qty": 24,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "26W5001",
+     "etd": "2027-03-30",
+     "qty": 24
+    }
+   ]
+  },
+  {
+   "model": "VFF Spidrwalk",
+   "color": "Total Black",
+   "size": "W41",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "26W5001",
+     "etd": "2027-03-30",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Ivory/Black",
+   "size": "M41",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M9402",
+     "etd": "2026-12-10",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Ivory/Black",
+   "size": "M42",
+   "qty": 18,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M9402",
+     "etd": "2026-12-10",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Ivory/Black",
+   "size": "M43",
+   "qty": 18,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M9402",
+     "etd": "2026-12-10",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Ivory/Black",
+   "size": "M44",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M9402",
+     "etd": "2026-12-10",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Ivory/Black",
+   "size": "W36",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9402",
+     "etd": "2026-12-10",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Ivory/Black",
+   "size": "W37",
+   "qty": 24,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9402",
+     "etd": "2026-12-10",
+     "qty": 24
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Ivory/Black",
+   "size": "W38",
+   "qty": 33,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9402",
+     "etd": "2026-12-10",
+     "qty": 33
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Ivory/Black",
+   "size": "W39",
+   "qty": 30,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9402",
+     "etd": "2026-12-10",
+     "qty": 30
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Ivory/Black",
+   "size": "W40",
+   "qty": 21,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9402",
+     "etd": "2026-12-10",
+     "qty": 21
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Ivory/Black",
+   "size": "W41",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9402",
+     "etd": "2026-12-10",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Ivory/Black",
+   "size": "W42",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9402",
+     "etd": "2026-12-10",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Total Black",
+   "size": "M40",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M9401",
+     "etd": "2026-12-10",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Total Black",
+   "size": "M41",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M9401",
+     "etd": "2026-12-10",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Total Black",
+   "size": "M42",
+   "qty": 24,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M9401",
+     "etd": "2026-12-10",
+     "qty": 24
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Total Black",
+   "size": "M43",
+   "qty": 27,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M9401",
+     "etd": "2026-12-10",
+     "qty": 27
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Total Black",
+   "size": "M44",
+   "qty": 18,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M9401",
+     "etd": "2026-12-10",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Total Black",
+   "size": "M45",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M9401",
+     "etd": "2026-12-10",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Total Black",
+   "size": "M46",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M9401",
+     "etd": "2026-12-10",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Total Black",
+   "size": "M47",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27M9401",
+     "etd": "2026-12-10",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Total Black",
+   "size": "W36",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9401",
+     "etd": "2026-12-10",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Total Black",
+   "size": "W37",
+   "qty": 18,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9401",
+     "etd": "2026-12-10",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Total Black",
+   "size": "W38",
+   "qty": 27,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9401",
+     "etd": "2026-12-10",
+     "qty": 27
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Total Black",
+   "size": "W39",
+   "qty": 24,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9401",
+     "etd": "2026-12-10",
+     "qty": 24
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Total Black",
+   "size": "W40",
+   "qty": 21,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9401",
+     "etd": "2026-12-10",
+     "qty": 21
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Total Black",
+   "size": "W41",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9401",
+     "etd": "2026-12-10",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Total Black",
+   "size": "W42",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9401",
+     "etd": "2026-12-10",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Triple Brown",
+   "size": "W37",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9407",
+     "etd": "2026-12-10",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Triple Brown",
+   "size": "W38",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9407",
+     "etd": "2026-12-10",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Triple Brown",
+   "size": "W39",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9407",
+     "etd": "2026-12-10",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Triple Brown",
+   "size": "W40",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9407",
+     "etd": "2026-12-10",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Tieralite",
+   "color": "Triple Brown",
+   "size": "W41",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W9407",
+     "etd": "2026-12-10",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Trailope 2",
+   "color": "Brown/Black",
+   "size": "M40",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27013Y",
+     "style": "27M6907",
+     "etd": "2027-03-15",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Trailope 2",
+   "color": "Brown/Black",
+   "size": "M41",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27013Y",
+     "style": "27M6907",
+     "etd": "2027-03-15",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Trailope 2",
+   "color": "Brown/Black",
+   "size": "M42",
+   "qty": 18,
+   "lines": [
+    {
+     "po": "CN27013Y",
+     "style": "27M6907",
+     "etd": "2027-03-15",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF Trailope 2",
+   "color": "Brown/Black",
+   "size": "M43",
+   "qty": 24,
+   "lines": [
+    {
+     "po": "CN27013Y",
+     "style": "27M6907",
+     "etd": "2027-03-15",
+     "qty": 24
+    }
+   ]
+  },
+  {
+   "model": "VFF Trailope 2",
+   "color": "Brown/Black",
+   "size": "M44",
+   "qty": 21,
+   "lines": [
+    {
+     "po": "CN27013Y",
+     "style": "27M6907",
+     "etd": "2027-03-15",
+     "qty": 21
+    }
+   ]
+  },
+  {
+   "model": "VFF Trailope 2",
+   "color": "Brown/Black",
+   "size": "M45",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27013Y",
+     "style": "27M6907",
+     "etd": "2027-03-15",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF Trailope 2",
+   "color": "Brown/Black",
+   "size": "M46",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27013Y",
+     "style": "27M6907",
+     "etd": "2027-03-15",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Ivory/Basil",
+   "size": "M39",
+   "qty": 10,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "27M7003",
+     "etd": "2026-11-15",
+     "qty": 10
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Ivory/Basil",
+   "size": "M40",
+   "qty": 18,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "27M7003",
+     "etd": "2026-11-15",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Ivory/Basil",
+   "size": "M41",
+   "qty": 27,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "27M7003",
+     "etd": "2026-11-15",
+     "qty": 27
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Ivory/Basil",
+   "size": "M42",
+   "qty": 30,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "27M7003",
+     "etd": "2026-11-15",
+     "qty": 30
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Ivory/Basil",
+   "size": "M43",
+   "qty": 26,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "27M7003",
+     "etd": "2026-11-15",
+     "qty": 26
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Ivory/Basil",
+   "size": "M44",
+   "qty": 18,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "27M7003",
+     "etd": "2026-11-15",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Ivory/Basil",
+   "size": "M45",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "27M7003",
+     "etd": "2026-11-15",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Ivory/Basil",
+   "size": "M46",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "27M7003",
+     "etd": "2026-11-15",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Orange/Ivory",
+   "size": "M39",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "27M7004",
+     "etd": "2026-11-15",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Orange/Ivory",
+   "size": "M40",
+   "qty": 21,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "27M7004",
+     "etd": "2026-11-15",
+     "qty": 21
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Orange/Ivory",
+   "size": "M41",
+   "qty": 30,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "27M7004",
+     "etd": "2026-11-15",
+     "qty": 30
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Orange/Ivory",
+   "size": "M42",
+   "qty": 33,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "27M7004",
+     "etd": "2026-11-15",
+     "qty": 33
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Orange/Ivory",
+   "size": "M43",
+   "qty": 27,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "27M7004",
+     "etd": "2026-11-15",
+     "qty": 27
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Orange/Ivory",
+   "size": "M44",
+   "qty": 18,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "27M7004",
+     "etd": "2026-11-15",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Orange/Ivory",
+   "size": "M45",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "27M7004",
+     "etd": "2026-11-15",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Orange/Ivory",
+   "size": "M46",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "27M7004",
+     "etd": "2026-11-15",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Orange/Ivory",
+   "size": "M47",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "27M7004",
+     "etd": "2026-11-15",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Total Black",
+   "size": "M38",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "26M7001",
+     "etd": "2026-11-15",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Total Black",
+   "size": "M39",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "26M7001",
+     "etd": "2026-11-15",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Total Black",
+   "size": "M40",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "26M7001",
+     "etd": "2026-11-15",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Total Black",
+   "size": "M41",
+   "qty": 21,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "26M7001",
+     "etd": "2026-11-15",
+     "qty": 21
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Total Black",
+   "size": "M42",
+   "qty": 30,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "26M7001",
+     "etd": "2026-11-15",
+     "qty": 30
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Total Black",
+   "size": "M43",
+   "qty": 30,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "26M7001",
+     "etd": "2026-11-15",
+     "qty": 30
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Total Black",
+   "size": "M44",
+   "qty": 18,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "26M7001",
+     "etd": "2026-11-15",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Total Black",
+   "size": "M45",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "26M7001",
+     "etd": "2026-11-15",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Total Black",
+   "size": "M46",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "26M7001",
+     "etd": "2026-11-15",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Total Black",
+   "size": "M47",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27002E",
+     "style": "26M7001",
+     "etd": "2026-11-15",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Total Ivory",
+   "size": "W35",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27013E",
+     "style": "26W7002",
+     "etd": "2027-03-15",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Total Ivory",
+   "size": "W36",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27013E",
+     "style": "26W7002",
+     "etd": "2027-03-15",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Total Ivory",
+   "size": "W37",
+   "qty": 15,
+   "lines": [
+    {
+     "po": "CN27013E",
+     "style": "26W7002",
+     "etd": "2027-03-15",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Total Ivory",
+   "size": "W38",
+   "qty": 18,
+   "lines": [
+    {
+     "po": "CN27013E",
+     "style": "26W7002",
+     "etd": "2027-03-15",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Total Ivory",
+   "size": "W39",
+   "qty": 33,
+   "lines": [
+    {
+     "po": "CN27013E",
+     "style": "26W7002",
+     "etd": "2027-03-15",
+     "qty": 33
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Total Ivory",
+   "size": "W40",
+   "qty": 18,
+   "lines": [
+    {
+     "po": "CN27013E",
+     "style": "26W7002",
+     "etd": "2027-03-15",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Run",
+   "color": "Total Ivory",
+   "size": "W41",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27013E",
+     "style": "26W7002",
+     "etd": "2027-03-15",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul",
+   "color": "Brown",
+   "size": "W36",
+   "qty": 21,
+   "lines": [
+    {
+     "po": "CN27007E",
+     "style": "26W7202",
+     "etd": "2026-12-15",
+     "qty": 12
+    },
+    {
+     "po": "CN27013E",
+     "style": "26W7202",
+     "etd": "2027-03-15",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul",
+   "color": "Brown",
+   "size": "W37",
+   "qty": 36,
+   "lines": [
+    {
+     "po": "CN27007E",
+     "style": "26W7202",
+     "etd": "2026-12-15",
+     "qty": 18
+    },
+    {
+     "po": "CN27013E",
+     "style": "26W7202",
+     "etd": "2027-03-15",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul",
+   "color": "Brown",
+   "size": "W38",
+   "qty": 54,
+   "lines": [
+    {
+     "po": "CN27007E",
+     "style": "26W7202",
+     "etd": "2026-12-15",
+     "qty": 24
+    },
+    {
+     "po": "CN27013E",
+     "style": "26W7202",
+     "etd": "2027-03-15",
+     "qty": 30
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul",
+   "color": "Brown",
+   "size": "W39",
+   "qty": 54,
+   "lines": [
+    {
+     "po": "CN27007E",
+     "style": "26W7202",
+     "etd": "2026-12-15",
+     "qty": 24
+    },
+    {
+     "po": "CN27013E",
+     "style": "26W7202",
+     "etd": "2027-03-15",
+     "qty": 30
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul",
+   "color": "Brown",
+   "size": "W40",
+   "qty": 36,
+   "lines": [
+    {
+     "po": "CN27007E",
+     "style": "26W7202",
+     "etd": "2026-12-15",
+     "qty": 18
+    },
+    {
+     "po": "CN27013E",
+     "style": "26W7202",
+     "etd": "2027-03-15",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul",
+   "color": "Brown",
+   "size": "W41",
+   "qty": 21,
+   "lines": [
+    {
+     "po": "CN27007E",
+     "style": "26W7202",
+     "etd": "2026-12-15",
+     "qty": 12
+    },
+    {
+     "po": "CN27013E",
+     "style": "26W7202",
+     "etd": "2027-03-15",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul",
+   "color": "Brown",
+   "size": "W42",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27013E",
+     "style": "26W7202",
+     "etd": "2027-03-15",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul",
+   "color": "Ivory/Basil",
+   "size": "W36",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W7202",
+     "etd": "2026-11-30",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul",
+   "color": "Ivory/Basil",
+   "size": "W37",
+   "qty": 21,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W7202",
+     "etd": "2026-11-30",
+     "qty": 21
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul",
+   "color": "Ivory/Basil",
+   "size": "W38",
+   "qty": 30,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W7202",
+     "etd": "2026-11-30",
+     "qty": 30
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul",
+   "color": "Ivory/Basil",
+   "size": "W39",
+   "qty": 27,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W7202",
+     "etd": "2026-11-30",
+     "qty": 27
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul",
+   "color": "Ivory/Basil",
+   "size": "W40",
+   "qty": 18,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W7202",
+     "etd": "2026-11-30",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul",
+   "color": "Ivory/Basil",
+   "size": "W41",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W7202",
+     "etd": "2026-11-30",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul 26",
+   "color": "Black",
+   "size": "W35",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "26W7201",
+     "etd": "2026-11-30",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul 26",
+   "color": "Black",
+   "size": "W36",
+   "qty": 48,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "26W7201",
+     "etd": "2026-11-30",
+     "qty": 12
+    },
+    {
+     "po": "CN27007E",
+     "style": "26W7201",
+     "etd": "2026-12-15",
+     "qty": 12
+    },
+    {
+     "po": "CN27013E",
+     "style": "26W7201",
+     "etd": "2027-03-15",
+     "qty": 24
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul 26",
+   "color": "Black",
+   "size": "W37",
+   "qty": 96,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "26W7201",
+     "etd": "2026-11-30",
+     "qty": 30
+    },
+    {
+     "po": "CN27007E",
+     "style": "26W7201",
+     "etd": "2026-12-15",
+     "qty": 42
+    },
+    {
+     "po": "CN27013E",
+     "style": "26W7201",
+     "etd": "2027-03-15",
+     "qty": 24
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul 26",
+   "color": "Black",
+   "size": "W38",
+   "qty": 121,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "26W7201",
+     "etd": "2026-11-30",
+     "qty": 33
+    },
+    {
+     "po": "CN27007E",
+     "style": "26W7201",
+     "etd": "2026-12-15",
+     "qty": 48
+    },
+    {
+     "po": "CN27013E",
+     "style": "26W7201",
+     "etd": "2027-03-15",
+     "qty": 40
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul 26",
+   "color": "Black",
+   "size": "W39",
+   "qty": 158,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "26W7201",
+     "etd": "2026-11-30",
+     "qty": 36
+    },
+    {
+     "po": "CN27007E",
+     "style": "26W7201",
+     "etd": "2026-12-15",
+     "qty": 72
+    },
+    {
+     "po": "CN27013E",
+     "style": "26W7201",
+     "etd": "2027-03-15",
+     "qty": 50
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul 26",
+   "color": "Black",
+   "size": "W40",
+   "qty": 108,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "26W7201",
+     "etd": "2026-11-30",
+     "qty": 36
+    },
+    {
+     "po": "CN27007E",
+     "style": "26W7201",
+     "etd": "2026-12-15",
+     "qty": 48
+    },
+    {
+     "po": "CN27013E",
+     "style": "26W7201",
+     "etd": "2027-03-15",
+     "qty": 24
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul 26",
+   "color": "Black",
+   "size": "W41",
+   "qty": 57,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "26W7201",
+     "etd": "2026-11-30",
+     "qty": 21
+    },
+    {
+     "po": "CN27007E",
+     "style": "26W7201",
+     "etd": "2026-12-15",
+     "qty": 18
+    },
+    {
+     "po": "CN27013E",
+     "style": "26W7201",
+     "etd": "2027-03-15",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul 26",
+   "color": "Black",
+   "size": "W42",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27007E",
+     "style": "26W7201",
+     "etd": "2026-12-15",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF V-Soul 26",
+   "color": "Black",
+   "size": "W43",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "26W7201",
+     "etd": "2026-11-30",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF Vi-B X",
+   "color": "Charcoal/Black",
+   "size": "W35",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "27W8701",
+     "etd": "2027-03-30",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF Vi-B X",
+   "color": "Charcoal/Black",
+   "size": "W36",
+   "qty": 27,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W8701",
+     "etd": "2026-11-30",
+     "qty": 9
+    },
+    {
+     "po": "CN27007C",
+     "style": "27W8701",
+     "etd": "2027-01-30",
+     "qty": 9
+    },
+    {
+     "po": "CN27013C",
+     "style": "27W8701",
+     "etd": "2027-03-30",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Vi-B X",
+   "color": "Charcoal/Black",
+   "size": "W37",
+   "qty": 45,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W8701",
+     "etd": "2026-11-30",
+     "qty": 15
+    },
+    {
+     "po": "CN27007C",
+     "style": "27W8701",
+     "etd": "2027-01-30",
+     "qty": 15
+    },
+    {
+     "po": "CN27013C",
+     "style": "27W8701",
+     "etd": "2027-03-30",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Vi-B X",
+   "color": "Charcoal/Black",
+   "size": "W38",
+   "qty": 63,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W8701",
+     "etd": "2026-11-30",
+     "qty": 21
+    },
+    {
+     "po": "CN27007C",
+     "style": "27W8701",
+     "etd": "2027-01-30",
+     "qty": 21
+    },
+    {
+     "po": "CN27013C",
+     "style": "27W8701",
+     "etd": "2027-03-30",
+     "qty": 21
+    }
+   ]
+  },
+  {
+   "model": "VFF Vi-B X",
+   "color": "Charcoal/Black",
+   "size": "W39",
+   "qty": 63,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W8701",
+     "etd": "2026-11-30",
+     "qty": 21
+    },
+    {
+     "po": "CN27007C",
+     "style": "27W8701",
+     "etd": "2027-01-30",
+     "qty": 21
+    },
+    {
+     "po": "CN27013C",
+     "style": "27W8701",
+     "etd": "2027-03-30",
+     "qty": 21
+    }
+   ]
+  },
+  {
+   "model": "VFF Vi-B X",
+   "color": "Charcoal/Black",
+   "size": "W40",
+   "qty": 54,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W8701",
+     "etd": "2026-11-30",
+     "qty": 18
+    },
+    {
+     "po": "CN27007C",
+     "style": "27W8701",
+     "etd": "2027-01-30",
+     "qty": 18
+    },
+    {
+     "po": "CN27013C",
+     "style": "27W8701",
+     "etd": "2027-03-30",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF Vi-B X",
+   "color": "Charcoal/Black",
+   "size": "W41",
+   "qty": 36,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W8701",
+     "etd": "2026-11-30",
+     "qty": 12
+    },
+    {
+     "po": "CN27007C",
+     "style": "27W8701",
+     "etd": "2027-01-30",
+     "qty": 12
+    },
+    {
+     "po": "CN27013C",
+     "style": "27W8701",
+     "etd": "2027-03-30",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF Vi-B X",
+   "color": "Charcoal/Black",
+   "size": "W42",
+   "qty": 18,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W8701",
+     "etd": "2026-11-30",
+     "qty": 6
+    },
+    {
+     "po": "CN27007C",
+     "style": "27W8701",
+     "etd": "2027-01-30",
+     "qty": 6
+    },
+    {
+     "po": "CN27013C",
+     "style": "27W8701",
+     "etd": "2027-03-30",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF Vi-B X",
+   "color": "Charcoal/Black",
+   "size": "W43",
+   "qty": 12,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W8701",
+     "etd": "2026-11-30",
+     "qty": 6
+    },
+    {
+     "po": "CN27007C",
+     "style": "27W8701",
+     "etd": "2027-01-30",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF Vi-B X",
+   "color": "Ivory/Honey",
+   "size": "W35",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "27W8702",
+     "etd": "2027-03-30",
+     "qty": 6
+    }
+   ]
+  },
+  {
+   "model": "VFF Vi-B X",
+   "color": "Ivory/Honey",
+   "size": "W36",
+   "qty": 9,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "27W8702",
+     "etd": "2027-03-30",
+     "qty": 9
+    }
+   ]
+  },
+  {
+   "model": "VFF Vi-B X",
+   "color": "Ivory/Honey",
+   "size": "W37",
+   "qty": 27,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W8702",
+     "etd": "2026-11-30",
+     "qty": 12
+    },
+    {
+     "po": "CN27013C",
+     "style": "27W8702",
+     "etd": "2027-03-30",
+     "qty": 15
+    }
+   ]
+  },
+  {
+   "model": "VFF Vi-B X",
+   "color": "Ivory/Honey",
+   "size": "W38",
+   "qty": 36,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W8702",
+     "etd": "2026-11-30",
+     "qty": 15
+    },
+    {
+     "po": "CN27013C",
+     "style": "27W8702",
+     "etd": "2027-03-30",
+     "qty": 21
+    }
+   ]
+  },
+  {
+   "model": "VFF Vi-B X",
+   "color": "Ivory/Honey",
+   "size": "W39",
+   "qty": 36,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W8702",
+     "etd": "2026-11-30",
+     "qty": 15
+    },
+    {
+     "po": "CN27013C",
+     "style": "27W8702",
+     "etd": "2027-03-30",
+     "qty": 21
+    }
+   ]
+  },
+  {
+   "model": "VFF Vi-B X",
+   "color": "Ivory/Honey",
+   "size": "W40",
+   "qty": 27,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W8702",
+     "etd": "2026-11-30",
+     "qty": 9
+    },
+    {
+     "po": "CN27013C",
+     "style": "27W8702",
+     "etd": "2027-03-30",
+     "qty": 18
+    }
+   ]
+  },
+  {
+   "model": "VFF Vi-B X",
+   "color": "Ivory/Honey",
+   "size": "W41",
+   "qty": 21,
+   "lines": [
+    {
+     "po": "CN27002C",
+     "style": "27W8702",
+     "etd": "2026-11-30",
+     "qty": 9
+    },
+    {
+     "po": "CN27013C",
+     "style": "27W8702",
+     "etd": "2027-03-30",
+     "qty": 12
+    }
+   ]
+  },
+  {
+   "model": "VFF Vi-B X",
+   "color": "Ivory/Honey",
+   "size": "W42",
+   "qty": 6,
+   "lines": [
+    {
+     "po": "CN27013C",
+     "style": "27W8702",
+     "etd": "2027-03-30",
+     "qty": 6
+    }
+   ]
+  }
+ ]
+}

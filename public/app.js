@@ -121,7 +121,7 @@
   const hasOffice = () => data.officeIndex != null;
   // Return (返品) 欄は一旦使わない。戻すときは true にする (入力済みのデータは共有ストレージに残っている)
   const RETURNS_ON = false;
-  const hasRet = (i) => RETURNS_ON && i !== data.officeIndex && !(data.nonStore || []).includes(i) && !(hasOffice() && i === data.stores.length + 1);
+  const hasRet = (i) => RETURNS_ON && i !== data.officeIndex && !(data.nonStore || []).includes(i) && !(hasOffice() && i > data.stores.length);
   const rkey = (it, i) => `${it.code || `${it.model}|${it.color}|${it.size}`}@${data.stores[i]}`;
   // 入力はまず画面上だけに反映し (未保存)、「保存」ボタンで確定する
   let shared = false;      // 共有サーバーが使えるか
@@ -705,11 +705,11 @@
       <tr class="asof">${asofRowHtml(d)}</tr>
       <tr class="h1">
         ${["Model", "Color", "Size"].map((h, k) => `<th rowspan="2">${h}${afBtn(`t${VIEW_TEXT[k]}`, h)}</th>`).join("")}
-        ${groups.map((g, i) => (colKinds(i).length ? `<th class="grp${i === lastG ? "" : " no-af"}" colspan="${colKinds(i).length}" title="${esc(g)}">${esc(shortGroup(g))}${i === lastG ? afBtn("loc", t("f.loc")) : ""}</th>` : "")).join("")}
+        ${groups.map((g, i) => (colKinds(i).length ? `<th class="grp${i === lastG ? "" : " no-af"}${gcls(i)}" colspan="${colKinds(i).length}" title="${esc(g)}">${esc(shortGroup(g))}${i === lastG ? afBtn("loc", t("f.loc")) : ""}</th>` : "")).join("")}
         <th class="ord-h" rowspan="2" title="${esc(t("ord.title"))}">Order</th>
       </tr>
       <tr class="h2">${groups.map((g, i) => colKinds(i).map((k) =>
-        k === "qty" ? (i === lastG ? `<th title="Quantity">Qty${afBtn(`n${i}`, `${g} Quantity`)}</th>` : `<th class="no-af" title="Quantity">Qty</th>`)
+        k === "qty" ? (i === lastG ? `<th class="${gcls(i).trim()}" title="Quantity">Qty${afBtn(`n${i}`, `${g} Quantity`)}</th>` : `<th class="no-af${gcls(i)}" title="Quantity">Qty</th>`)
         : k === "ret" ? `<th class="ret-h">Return</th>`
         : `<th class="${k}-h" title="${esc(t(`col.${k}.title`))}">${esc(t(`col.${k}`))}</th>`).join("")).join("")}</tr>`;
     updateFilterUi();
@@ -757,7 +757,7 @@
   let showRate = true;
   try { showRate = localStorage.getItem("showRate") !== "0"; } catch (_) {}
   const rateStores = () => (data.salesRate && showRate ? data.stores.map((s, i) => (s in data.salesRate.months ? i : -1)).filter((i) => i >= 0) : []);
-  const hasRate = (g) => rateStores().includes(g) || (rateStores().length > 0 && hasOffice() && g >= data.stores.length);
+  const hasRate = (g) => rateStores().includes(g) || (rateStores().length > 0 && hasOffice() && g >= data.stores.length && g !== poIdx());
   const rowRate = (it, g) => {
     const r = (i) => (it.rate ? it.rate[i] || 0 : 0);
     if (g < data.stores.length) return it.rate ? it.rate[g] : null;
@@ -774,8 +774,13 @@
   const numCols = () => VIEW_TEXT.length + sum(groups.map((_, i) => colKinds(i).length)) + 1; // +1 = Order
 
   // 1 行分の Quantity / Return を groups の並びで返す
-  const rowQty = (it) => (hasOffice() ? [...it._adj, it._st, it._tq] : [...it._adj, it._tq]);
-  const rowRet = (it) => (hasOffice() ? [...it._ret, it._tr, null] : [...it._ret, it._tr]);
+  // Outstanding PO (発注済み・未入荷) は Store Total と Company Total の間の列。Company Total には含めない
+  let PO = null; // public/outstanding_po.json
+  const poIdx = () => (PO && hasOffice() ? data.stores.length + 1 : -1);
+  const gcls = (g) => (g === groups.length - 1 ? " ct" : g === poIdx() ? " po" : ""); // Company Total の列は色を変える
+  const poTitle = (it) => (it._poLines ? it._poLines.map((l) => `${l.po}  ${l.qty} (EX/F ${l.etd})`).join("\n") : "");
+  const rowQty = (it) => (hasOffice() ? [...it._adj, it._st, ...(PO ? [it._po || 0] : []), it._tq] : [...it._adj, it._tq]);
+  const rowRet = (it) => (hasOffice() ? [...it._ret, it._tr, ...(PO ? [null] : []), null] : [...it._ret, it._tr]);
 
   function totalsOf(items) {
     const qty = groups.map((_, g) => sum(items.map((it) => rowQty(it)[g])));
@@ -786,10 +791,10 @@
 
   const totalRowHtml = (tot) => `<td>Total</td><td></td><td></td>
       ${groups.map((_, i) => colKinds(i).map((k) =>
-        k === "qty" ? `<td class="c">${nf(tot.qty[i])}</td>`
+        k === "qty" ? `<td class="c${gcls(i)}">${nf(tot.qty[i])}</td>`
         : k === "ret" ? `<td class="c">${nf(tot.ret[i])}</td>`
-        : k === "rate" ? `<td class="c rate">${fmtRate(tot.rate[i])}</td>`
-        : `<td class="c mos">${fmtMos(mos(tot.qty[i], tot.rate[i]))}</td>`).join("")).join("")}
+        : k === "rate" ? `<td class="c rate${gcls(i)}">${fmtRate(tot.rate[i])}</td>`
+        : `<td class="c mos${gcls(i)}">${fmtMos(mos(tot.qty[i], tot.rate[i]))}</td>`).join("")).join("")}
       <td class="c ord-t" id="ordTot">${nf(tot.order)}</td>`;
 
   // Return で在庫が変わったときに在庫月数を更新
@@ -806,13 +811,13 @@
     shown = items;
     const all = items.length === data.items.length;
     const rows = items.map((it) => `<tr data-id="${it._id}">
-        <td title="${esc(it.code)}">${esc(shortModel(it.model))}</td><td title="${esc(it.color)}">${esc(it.color)}</td><td class="c">${esc(it.size)}</td>
+        <td title="${esc(it.code || "")}">${esc(shortModel(it.model))}</td><td title="${esc(it.color)}">${esc(it.color)}</td><td class="c">${esc(it.size)}</td>
         ${rowQty(it).map((q, g) => {
           const tot = g >= data.stores.length;
           return colKinds(g).map((k) => {
-            if (k === "qty") return `<td class="c q${tot ? " b" : ""}${isHl(it, g, "qty") ? " hl" : ""}">${nf(q)}</td>`;
-            if (k === "rate") return `<td class="c rate">${fmtRate(rowRate(it, g))}</td>`;
-            if (k === "mos") return `<td class="c mos" data-g="${g}">${fmtMos(mos(q, rowRate(it, g)))}</td>`;
+            if (k === "qty") return `<td class="c q${tot ? " b" : ""}${isHl(it, g, "qty") ? " hl" : ""}${gcls(g)}"${g === poIdx() && it._poLines ? ` title="${esc(poTitle(it))}"` : ""}>${nf(q)}</td>`;
+            if (k === "rate") return `<td class="c rate${gcls(g)}">${fmtRate(rowRate(it, g))}</td>`;
+            if (k === "mos") return `<td class="c mos${gcls(g)}" data-g="${g}">${fmtMos(mos(q, rowRate(it, g)))}</td>`;
             if (tot) return `<td class="c b tr">${nf(it._tr)}</td>`;
             return `<td class="c ret${isHl(it, g, "ret") ? " hl" : ""}"><input class="ret-in" type="text" inputmode="numeric" autocomplete="off" data-s="${g}" value="${it._ret[g] ?? ""}" aria-label="${esc(data.stores[g])} Return"${it._rc[g] ? ` title="${esc(t("recv.cellTitle", { q: it._rc[g] }))}"` : ""}></td>`;
           }).join("");
@@ -1864,6 +1869,23 @@ if (RETURNS_ON) {
     if (z) applyZort(d, z);
     // 靴下は Socks シートに出すので除き、モデル名のアルファベット順に並べる (同じモデルの中は元の並び: カラー・サイズ順)
     d.items = d.items.filter((it) => !window.IS_SOCKS(it.model));
+    // Outstanding PO をモデル・カラー・サイズで行に当てる (在庫一覧にない モデル・カラー・サイズ は行を追加する)
+    if (PO && d.officeIndex != null) {
+      const nk = (x) => String(x || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+      const key = (m, c, sz) => `${nk(shortModel(m))}|${nk(c)}|${sz}`;
+      const byKey = new Map();
+      d.items.forEach((it) => { const k = key(it.model, it.color, it.size); if (!byKey.has(k)) byKey.set(k, it); });
+      for (const p of PO.items) {
+        let it = byKey.get(key(p.model, p.color, p.size));
+        if (!it) {
+          it = { code: null, model: p.model, color: p.color, size: p.size, qty: d.stores.map(() => 0), ret: d.stores.map(() => null), rate: null, rateEvent: null };
+          d.items.push(it);
+          byKey.set(key(p.model, p.color, p.size), it);
+        }
+        it._po = (it._po || 0) + p.qty;
+        it._poLines = [...(it._poLines || []), ...p.lines];
+      }
+    }
     // 同じモデルの中は カラー (最初に出てきた順。品番のカラー部分で分ける) → サイズ (M → W、小さい順)
     const mkey = (it) => shortModel(it.model).toLowerCase();
     const ckey = (it) => (it.code ? it.code.split(",")[0] : it.color);
@@ -1877,11 +1899,11 @@ if (RETURNS_ON) {
     // どの拠点にも在庫が 1 足もないカラー (そのカラーの全サイズが 0。モデルごと 0 の場合も含む) は「在庫0」シートに移す
     // カラーは品番のカラー部分で分ける (表示名が同じでも品番が違えば別のカラー)
     const gkey = (it) => `${it.model}|${ckey(it)}`;
-    const live = new Set(d.items.filter((it) => it.qty.some((q) => q)).map(gkey));
+    const live = new Set(d.items.filter((it) => it.qty.some((q) => q) || it._po).map(gkey));
     d.zeroItems = d.items.filter((it) => !live.has(gkey(it)));
     d.items = d.items.filter((it) => live.has(gkey(it)));
     shownZort = z ? z.fetchedAt : null;
-    groups = d.officeIndex != null ? [...d.stores, "Store Total", "Company Total"] : [...d.stores, "Total"];
+    groups = d.officeIndex != null ? [...d.stores, "Store Total", ...(PO ? ["Outstanding PO"] : []), "Company Total"] : [...d.stores, "Total"];
     d.items.forEach((it, n) => {
       it._id = n;
       it._search = `${it.code} ${it.model} ${it.color} ${it.size}`.toLowerCase();
@@ -1928,7 +1950,8 @@ if (RETURNS_ON) {
       data = d;
       RKEY = `returns:${d.asOfDate || d.source}`;
       HL = new Set(((d.returnsSeed && d.returnsSeed.highlights) || []).map((h) => `${h.code}@${h.store}@${h.kind}`));
-      return Promise.all([initReturns(), initOrders()]);
+      const po = fetch(`outstanding_po.json?t=${Date.now()}`, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null).then((j) => { PO = j && j.items && j.items.length ? j : null; });
+      return Promise.all([initReturns(), initOrders(), po]);
     })
     .then(() => (window.ZORT_CACHED ? window.ZORT_CACHED : window.ZORT || null))
     .then((z) => {

@@ -221,6 +221,14 @@ python scripts/build_vivo_standalone.py vivo-sales.html          # claude.ai の
 - 開きっぱなしのタブが古い版のままにならないよう、新しい版が出ていたら自動で再読み込みします（入力中・未保存のときは注意書きだけ出します）。
 - 確認用: `api/zort?summary=1` で全アカウントの全倉庫の VFF / Vivo 合計足数を一覧できます。
 
+## Outstanding PO（発注済み・未入荷）
+
+在庫一覧の Company Total の左に「Outstanding PO」列を出します（Company Total には含めません）。数字にマウスを乗せると PO 番号・EX/F 日付が出ます。
+
+- 元データ: 工場からの ETD 表（例 `data/ETD_2027_prebook_order_Thailand_20261111.xlsx`）。Style# の M / W でサイズの M / W を決める。
+- 更新: `python3 scripts/outstanding_po.py <ETD 表.xlsx>` → `public/outstanding_po.json` を作り直してコミット。
+- モデル・カラー・サイズで在庫一覧の行に当て、ない行は追加します。モデル名の読み替えは `scripts/outstanding_po.py` の `MODEL` / `OVERRIDE`（V-Soul Black 26W7201 → V-Soul 26 / Black）。
+
 ## Socks 在庫（在庫一覧の「Socks」）
 
 靴下（Zort の商品名に Socks を含む VFF の SKU）は VFF の在庫一覧から外し、在庫一覧の **VFF / Vivo / Socks** 切り替えの「Socks」シートに出します（`public/socks-stock.js`、Zort から読み込み・在庫がある拠点だけ表示）。VFF の在庫一覧はモデル名のアルファベット順に並べています（同じモデル内はカラー・サイズの元の順）。

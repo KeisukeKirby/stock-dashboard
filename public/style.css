@@ -507,3 +507,13 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 /* Zort 接続の注意書き */
 .zort-warn { margin: 8px 0 0; padding: 6px 12px; font-size: 13px; color: #8a5a00; background: #fff4d6; border: 1px solid #f0d68a; border-radius: 8px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .zort-warn[hidden] { display: none; }
+
+/* Company Total の列 (色を変えて目立たせる) */
+.sheet thead tr.h1 th.ct, .sheet thead tr.h2 th.ct { background: #c55a11; }
+.sheet td.ct { background: #fbe5d6; }
+.sheet td.ct.rate, .sheet td.ct.mos { color: #843c0c; }
+.sheet tr.total td.ct { background: #f8cbad; }
+.sheet tbody td.ct.sel { background-color: #f4b183 !important; }
+/* Outstanding PO の列 */
+.sheet td.po { color: #7030a0; }
+.sheet td.po[title] { cursor: help; }
