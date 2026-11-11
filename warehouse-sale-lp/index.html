@@ -614,6 +614,26 @@
     }
     .hero h1 .off-block { display: inline-block; margin-top: .12em; padding: .06em .22em .02em; background: var(--gold); color: #000; font-size: .5em; letter-spacing: 0; line-height: 1.05; transform: rotate(-1.5deg); box-shadow: 0 12px 30px rgba(0,0,0,.14); }
     :lang(th) .hero h1 .off-block { font-size: .56em; padding: .04em .22em .06em; }
+    .hero-off { display: none; }
+    @media (max-width: 900px) {
+      .hero.mosaic .hero-body { position: relative; }
+      .hero.mosaic .hero-top .eyebrow { display: none; }
+      .hero.mosaic h1 { font-size: clamp(2.6rem, 10vw, 3.6rem); }
+      :lang(th) .hero.mosaic h1 { font-size: clamp(2.4rem, 8.6vw, 3.2rem); }
+      .hero-off {
+        position: absolute; right: max(16px, env(safe-area-inset-right, 0px)); top: -3.1rem; z-index: 2;
+        display: grid; place-items: center; align-content: center; width: 7.6rem; height: 7.6rem; border-radius: 50%;
+        background: var(--gold); color: #000; font-family: var(--display); text-transform: uppercase; line-height: .95; text-align: center;
+        transform: rotate(8deg); box-shadow: 0 14px 34px rgba(0,0,0,.18);
+        animation: offPop .7s var(--ease) .35s both;
+      }
+      .hero-off small { font-size: .64rem; font-weight: 700; letter-spacing: .18em; }
+      .hero-off b { font-size: 2.5rem; font-weight: 700; letter-spacing: -.03em; margin: .05em 0; }
+      :lang(th) .hero-off small:first-child { font-size: .66rem; letter-spacing: .02em; }
+      @keyframes offPop { from { opacity: 0; transform: rotate(8deg) scale(.6); } to { opacity: 1; transform: rotate(8deg) scale(1); } }
+      @media (prefers-reduced-motion: reduce) { .hero-off { animation: none; } }
+    }
+    @media (max-width: 400px) { .hero-off { width: 7rem; height: 7rem; top: -2.9rem; } .hero-off b { font-size: 2.25rem; } }
     .hero-badge {
       display: inline-flex; align-items: center; gap: .55rem; background: var(--t21-m); color: #fff;
       font-family: var(--display); font-weight: 700; font-size: clamp(.82rem, 1.5vw, 1.1rem); letter-spacing: .12em; text-transform: uppercase;
@@ -664,11 +684,12 @@
     .brands { margin-top: clamp(2.4rem, 5vw, 4rem); display: grid; grid-template-columns: 2fr 3fr; gap: clamp(1.4rem, 3vw, 3rem); }
     .bgroup h3 { font-family: var(--display); font-weight: 600; font-size: .78rem; letter-spacing: .26em; text-transform: uppercase; color: var(--mute); padding-bottom: .6rem; border-bottom: 2px solid var(--ink); margin-bottom: .2rem; display: flex; align-items: center; gap: .6rem; }
     .bgroup h3 small { font-weight: 500; letter-spacing: .1em; color: var(--t21-m); }
-    .bcard { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; align-items: center; padding: 1rem 0; border-bottom: 1px solid rgba(27,26,31,.14); }
+    .bcard { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; align-items: center; padding: .9rem 0; border-bottom: 1px solid rgba(27,26,31,.14); }
     .bcard .blogo { display: flex; align-items: center; justify-content: center; min-height: 2.6rem; }
     .bcard .blogo img { max-height: 30px; max-width: 7.5rem; width: auto; height: auto; }
     .bcard .blogo img.lg-oleno { max-height: 44px; }
-    .bcard .blogo img.lg-jp { max-height: 24px; }
+    .bcard .blogo img.lg-vff { max-height: 52px; }
+    .bcard .blogo img.lg-bf { max-height: 64px; }
     .bcard .blogo .wm { font-family: var(--display); font-weight: 700; font-size: 1.35rem; line-height: 1.05; letter-spacing: .02em; text-transform: uppercase; text-align: center; }
     .bcard .blogo .wm small { display: block; font-size: .66rem; letter-spacing: .22em; color: var(--mute); font-weight: 600; }
     .bcard .bname { font-family: var(--display); font-weight: 600; font-size: 1rem; letter-spacing: .02em; }
@@ -765,6 +786,7 @@
     </div>
 
     <div class="hero-body">
+      <span class="hero-off" aria-hidden="true" data-i18n-html="hero.off"><small>Up to</small><b>50%</b><small>off</small></span>
       <h1>
         <span class="mask"><span data-reveal="line" style="--d:420">Warehouse</span></span>
         <span class="mask"><span data-reveal="line" style="--d:520" data-i18n="hero.l2"><span class="hl">Sale</span></span></span>
@@ -800,7 +822,7 @@
         <div class="bgroup" data-reveal>
           <h3 data-i18n-html="brands.shoes">Shoes <small>20–50% off</small></h3>
           <div class="bcard">
-            <div class="blogo"><img src="images/logo-vff-dark.png" alt="Vibram FiveFingers" width="720" height="155" loading="lazy" /></div>
+            <div class="blogo"><img class="lg-vff" src="images/logo-vff-stacked.png" alt="Vibram FiveFingers" width="700" height="456" loading="lazy" /></div>
             <div><div class="bname">Vibram FiveFingers</div><div class="bdesc" data-i18n="brands.vff">Five-toe barefoot shoes from Italy. Trail, water, gym, running and everyday models, all on sale.</div></div>
           </div>
           <div class="bcard">
@@ -815,11 +837,11 @@
             <div><div class="bname">Oleno</div><div class="bdesc" data-i18n="brands.oleno">Socks made in Japan, from trail running to everyday wear, in five-toe and regular styles.</div></div>
           </div>
           <div class="bcard">
-            <div class="blogo"><img src="images/logo-vff-dark.png" alt="Vibram FiveFingers" width="720" height="155" loading="lazy" /></div>
+            <div class="blogo"><img class="lg-vff" src="images/logo-vff-stacked.png" alt="Vibram FiveFingers" width="700" height="456" loading="lazy" /></div>
             <div><div class="bname">Vibram FiveFingers Socks</div><div class="bdesc" data-i18n="brands.vffsocks">Vibram's own five-toe socks, cut to fit FiveFingers exactly.</div></div>
           </div>
           <div class="bcard">
-            <div class="blogo"><img class="lg-jp" src="images/logo-barefootinc-jp.png" alt="barefootinc" width="900" height="239" loading="lazy" /></div>
+            <div class="blogo"><img class="lg-bf" src="images/logo-barefootinc-sq.png" alt="barefootinc" width="700" height="700" loading="lazy" /></div>
             <div><div class="bname">barefootinc socks</div><div class="bdesc" data-i18n="brands.bfsocks">Five-toe socks made in Japan, for everyday wear with any barefoot shoe.</div></div>
           </div>
         </div>
@@ -1048,7 +1070,7 @@
         "nav.sale": "The sale", "nav.lineup": "Lineup", "nav.booth": "On the day", "nav.access": "Getting there",
         "hero.edition": "Warehouse sale · Barefootinc office",
         "hero.l2": "<span class=\"hl\">Sale</span>", "hero.l3": "<span class=\"off-block\">Our biggest sale ever</span>",
-        "hero.badge": "<span class=\"big\">3</span> days only · Up to 50% off",
+        "hero.badge": "<span class=\"big\">3</span> days only · Up to 50% off", "hero.off": "<small>Up to</small><b>50%</b><small>off</small>",
         "hero.sub": "More models, bigger discount than ever.<br />Vibram FiveFingers and more, come and feel barefoot shoes.",
         "hero.scroll": "<span>Scroll</span><i></i>",
         "board.k1": "Dates", "board.k2": "Time", "board.k3": "Where", "board.sub": "(Sukhumvit 63, Ekkamai) <i>*our office</i>",
@@ -1111,7 +1133,7 @@
         "nav.sale": "เซลล์", "nav.lineup": "รายการลด", "nav.booth": "ในวันงาน", "nav.access": "วิธีเดินทาง",
         "hero.edition": "แวร์เฮาส์เซลล์ · ออฟฟิศ Barefootinc",
         "hero.l2": "<span class=\"hl\">Sale</span>", "hero.l3": "<span class=\"off-block\">เซลล์ครั้งใหญ่ที่สุดของเรา</span>",
-        "hero.badge": "<span class=\"big\">3</span> วันเท่านั้น · ลดสูงสุด 50%",
+        "hero.badge": "<span class=\"big\">3</span> วันเท่านั้น · ลดสูงสุด 50%", "hero.off": "<small>ลดสูงสุด</small><b>50%</b><small>OFF</small>",
         "hero.sub": "รุ่นมากกว่า ส่วนลดมากกว่าที่เคย<br />Vibram FiveFingers และอีกมากมาย มาลองสัมผัสรองเท้าบาร์ฟุตได้เลย",
         "hero.scroll": "<span>เลื่อนลง</span><i></i>",
         "board.k1": "วันที่", "board.k2": "เวลา", "board.k3": "สถานที่", "board.sub": "(สุขุมวิท 63 เอกมัย) <i>*ออฟฟิศของเรา</i>",
