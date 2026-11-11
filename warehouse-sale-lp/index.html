@@ -58,7 +58,6 @@
         "streetAddress": "87/34 Modern Town 2F, Sukhumvit 63 (Ekkamai)",
         "addressLocality": "Klongtan-nua, Wattana",
         "addressRegion": "Bangkok",
-        "postalCode": "10110",
         "addressCountry": "TH"
       }
     },
@@ -720,7 +719,7 @@
     .pcard .pprice { display: flex; align-items: baseline; gap: .5rem; margin-top: .25rem; font-family: var(--display); }
     .pcard .pprice b { font-size: 1.5rem; font-weight: 700; color: var(--t21-m); letter-spacing: -.01em; }
     .pcard .pprice s { font-size: .86rem; color: var(--mute); }
-    .pcard .psize { margin-top: auto; padding-top: .55rem; font-size: .84rem; line-height: 1.5; color: var(--ink); }
+    .pcard .psize { margin-top: .5rem; font-size: .84rem; line-height: 1.5; color: var(--ink); }
     .pcard .psize strong { display: inline-block; margin-right: .35rem; padding: .08rem .45rem; background: var(--ink); color: #fff; font-family: var(--display); font-weight: 600; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; vertical-align: .08em; }
     .pcard .poff { position: absolute; top: .6rem; left: .6rem; z-index: 1; padding: .2rem .5rem; background: #FFE000; color: #000; font-family: var(--display); font-weight: 700; font-size: .95rem; letter-spacing: .02em; }
     .pcard.wide { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); }
@@ -734,12 +733,15 @@
     @media (max-width: 1000px) { .pop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 760px) {
       .pcard.wide { grid-template-columns: 1fr; }
-      .pcard.wide .pbody { border-right: 0; border-bottom: 1px solid rgba(27,26,31,.1); padding: 2.6rem 1rem 1rem; }
+      .pcard.wide .pbody { border-right: 0; border-bottom: 1px solid rgba(27,26,31,.1); padding: .85rem 1rem 1rem; }
       .pcard .pbody { padding: .7rem .75rem .85rem; }
       .pcard .pname { font-size: 1.05rem; }
       .pcard .pprice b { font-size: 1.3rem; }
       .pcard .psize { font-size: .78rem; }
-      .vsoul figcaption { padding: .45rem .55rem .7rem; font-size: .76rem; }
+      .vsoul { grid-template-columns: 1fr; }
+      .vsoul figure { display: grid; grid-template-columns: 46% 1fr; align-items: center; }
+      .vsoul figure + figure { border-left: 0; border-top: 1px solid rgba(27,26,31,.1); }
+      .vsoul figcaption { padding: .6rem .9rem .6rem .4rem; font-size: .86rem; }
     }
     .brands { margin-top: clamp(2.4rem, 5vw, 4rem); display: grid; grid-template-columns: 2fr 3fr; gap: clamp(1.4rem, 3vw, 3rem); }
     .bgroup h3 { font-family: var(--display); font-weight: 600; font-size: .78rem; letter-spacing: .26em; text-transform: uppercase; color: var(--mute); padding-bottom: .6rem; border-bottom: 2px solid var(--ink); margin-bottom: .2rem; display: flex; align-items: center; gap: .6rem; }
@@ -882,56 +884,42 @@
       <div class="pop" id="popular">
         <div class="pop-head" data-reveal>
           <h3 data-i18n-html="pop.title">Best sellers <span class="hl">on sale too</span></h3>
-          <p data-i18n="pop.sub">Our most popular models are in the sale, with plenty of sizes to choose from.</p>
+          <p data-i18n="pop.sub">Our most popular models are in the sale too.</p>
         </div>
         <div class="pop-grid">
           <article class="pcard" data-reveal>
-            <span class="poff">-20%</span>
-            <div class="pimg"><img src="images/popular/vrun-blackblue.jpg" alt="Vibram FiveFingers V-Run, Black / Blue" width="800" height="560" loading="lazy" decoding="async" /></div>
+            <div class="pimg"><img src="images/popular/vrun-blacklime.jpg" alt="Vibram FiveFingers V-Run, Black Lime / Black" width="800" height="560" loading="lazy" decoding="async" /></div>
             <div class="pbody">
-              <div class="pname">V-Run</div><div class="pcolor">Black / Blue</div>
-              <div class="pprice"><b>฿4,784</b><s>฿5,980</s></div>
-              <div class="psize" data-i18n-html="pop.vrun"><strong>Men</strong>M41–43, M45–48</div>
+              <div class="pname">V-Run</div><div class="pcolor">Black Lime / Black</div>
             </div>
           </article>
           <article class="pcard" data-reveal style="--d:80">
-            <span class="poff">-20%</span>
             <div class="pimg"><img src="images/popular/ksoevo-black.jpg" alt="Vibram FiveFingers KSO EVO, Black" width="800" height="560" loading="lazy" decoding="async" /></div>
             <div class="pbody">
               <div class="pname">KSO EVO</div><div class="pcolor">Black</div>
-              <div class="pprice"><b>฿4,160</b><s>฿5,200</s></div>
-              <div class="psize" data-i18n-html="pop.ksoevo"><strong>All sizes</strong>M39–48 · W35–42</div>
             </div>
           </article>
           <article class="pcard" data-reveal style="--d:160">
-            <span class="poff">-30%</span>
             <div class="pimg"><img src="images/popular/vtrain-black.jpg" alt="Vibram FiveFingers V-Train 2.0, Black / Black" width="800" height="560" loading="lazy" decoding="async" /></div>
             <div class="pbody">
               <div class="pname">V-Train 2.0</div><div class="pcolor">Black / Black</div>
-              <div class="pprice"><b>฿4,340</b><s>฿6,200</s></div>
-              <div class="psize" data-i18n-html="pop.vtrain"><strong>All sizes</strong>M39–47 · W36–42</div>
             </div>
           </article>
           <article class="pcard" data-reveal style="--d:240">
-            <span class="poff">-30%</span>
             <div class="pimg"><img src="images/popular/vtrek-black.jpg" alt="Vibram FiveFingers V-Trek, Black / Black" width="800" height="560" loading="lazy" decoding="async" /></div>
             <div class="pbody">
               <div class="pname">V-Trek</div><div class="pcolor">Black / Black</div>
-              <div class="pprice"><b>฿4,186</b><s>฿5,980</s></div>
-              <div class="psize" data-i18n-html="pop.vtrek"><strong>Men</strong>M41–47</div>
             </div>
           </article>
           <article class="pcard wide" data-reveal>
-            <span class="poff">-20%</span>
             <div class="pbody">
               <div class="pname">V-Soul</div><div class="pcolor" data-i18n="pop.vsoulc">Purple · Silver · Nude</div>
-              <div class="pprice"><b>฿3,984</b><s>฿4,980</s></div>
-              <div class="psize" data-i18n-html="pop.vsoul"><strong>Women</strong>Only a few pairs per size.</div>
+              <div class="psize" data-i18n-html="pop.vsoul"><strong>Event stock</strong>Sizes and pairs available at the sale</div>
             </div>
             <div class="vsoul">
               <figure><div class="pimg"><img src="images/popular/vsoul-purple.jpg" alt="Vibram FiveFingers V-Soul, Purple" width="800" height="560" loading="lazy" decoding="async" /></div><figcaption><b>Purple</b>W37 ×1 · W38 ×3 · W39 ×2 · W40 ×2 · W41 ×1</figcaption></figure>
               <figure><div class="pimg"><img src="images/popular/vsoul-silver.jpg" alt="Vibram FiveFingers V-Soul, Silver" width="800" height="560" loading="lazy" decoding="async" /></div><figcaption><b>Silver</b>W35 ×1 · W39 ×1 · W40 ×1</figcaption></figure>
-              <figure><div class="pimg"><img src="images/popular/vsoul-nude.jpg" alt="Vibram FiveFingers V-Soul, Nude" width="800" height="560" loading="lazy" decoding="async" /></div><figcaption data-i18n-html="pop.nude"><b>Nude</b>W36–41 ×1 each</figcaption></figure>
+              <figure><div class="pimg"><img src="images/popular/vsoul-nude-v2.jpg" alt="Vibram FiveFingers V-Soul, Nude" width="800" height="560" loading="lazy" decoding="async" /></div><figcaption data-i18n-html="pop.nude"><b>Nude</b>W36–41 ×1 each</figcaption></figure>
             </div>
           </article>
         </div>
@@ -1117,7 +1105,7 @@
         <div>
           <div class="venue-logo" data-reveal style="--d:120"><img src="images/logo-barefootinc-light.png" alt="Barefootinc Thailand" width="520" height="118" /></div>
           <div class="arows" data-reveal style="--d:180">
-            <div class="arow"><div class="k" data-i18n="access.k1">Venue</div><div class="v" data-i18n="access.v1">Barefootinc (Thailand) office<br />87/34 Modern Town 2F, Sukhumvit 63 (Ekkamai), Klongtan-nua, Wattana, Bangkok 10110</div></div>
+            <div class="arow"><div class="k" data-i18n="access.k1">Venue</div><div class="v" data-i18n="access.v1">Barefootinc (Thailand) office<br />87/34 Modern Town 2F, Sukhumvit 63 (Ekkamai), Klongtan-nua, Wattana, Bangkok</div></div>
             <div class="arow"><div class="k" data-i18n="access.k2">Dates</div><div class="v" data-i18n="access.v2">19 November (Thu) – 21 November (Sat) 2026</div></div>
             <div class="arow"><div class="k" data-i18n="access.k3">Hours</div><div class="v" data-i18n="access.v3">10:00 – 18:00</div></div>
             <div class="arow"><div class="k" data-i18n="access.k4">By train</div><div class="v" data-i18n="access.v4">BTS Ekkamai, then head up Sukhumvit 63 (Ekkamai Road) to Modern Town.</div></div>
@@ -1202,10 +1190,8 @@
         "brands.vffsocks": "Vibram's own five-toe socks, cut to fit FiveFingers exactly.",
         "brands.bfsocks": "Five-toe socks made in Japan, for everyday wear with any barefoot shoe.",
         "pop.title": "Best sellers <span class=\"hl\">on sale too</span>",
-        "pop.sub": "Our most popular models are in the sale, with plenty of sizes to choose from.",
-        "pop.vrun": "<strong>Men</strong>M41–43, M45–48", "pop.ksoevo": "<strong>All sizes</strong>M39–48 · W35–42",
-        "pop.vtrain": "<strong>All sizes</strong>M39–47 · W36–42", "pop.vtrek": "<strong>Men</strong>M41–47",
-        "pop.vsoulc": "Purple · Silver · Nude", "pop.vsoul": "<strong>Women</strong>Only a few pairs per size.", "pop.nude": "<b>Nude</b>W36–41 ×1 each",
+        "pop.sub": "Our most popular models are in the sale too.",
+        "pop.vsoulc": "Purple · Silver · Nude", "pop.vsoul": "<strong>Event stock</strong>Sizes and pairs available at the sale", "pop.nude": "<b>Nude</b>W36–41 ×1 each",
         "stat.k1": "Top discount", "stat.u2": "models", "stat.k2": "On sale", "stat.u3": "days", "stat.k3": "19–21 November", "stat.k4": "All socks",
         "lineup.eyebrow": "Discount lineup", "lineup.title": "What's <span class=\"serif\">on sale</span>",
         "lineup.note": "Sale prices are on the sheet; tap it to zoom in. Sizes and colors are limited to warehouse stock, so come early for the pair you want.",
@@ -1230,7 +1216,7 @@
         "faq.q7": "How can I pay?", "faq.a7": "Cash, Thai bank QR payment and credit cards are accepted.",
         "faq.q8": "Can I buy online instead?", "faq.a8": "Warehouse sale prices are for the three days at the office only. Message us on LINE if you have a question before you come.",
         "access.eyebrow": "Getting there", "access.title": "Our office, <span class=\"serif\">Sukhumvit 63</span>",
-        "access.k1": "Venue", "access.v1": "Barefootinc (Thailand) office<br>87/34 Modern Town 2F, Sukhumvit 63 (Ekkamai), Klongtan-nua, Wattana, Bangkok 10110",
+        "access.k1": "Venue", "access.v1": "Barefootinc (Thailand) office<br>87/34 Modern Town 2F, Sukhumvit 63 (Ekkamai), Klongtan-nua, Wattana, Bangkok",
         "access.k2": "Dates", "access.v2": "19 November (Thu) – 21 November (Sat) 2026",
         "access.k3": "Hours", "access.v3": "10:00 – 18:00",
         "access.k4": "By train", "access.v4": "BTS Ekkamai, then head up Sukhumvit 63 (Ekkamai Road) to Modern Town.",
@@ -1270,10 +1256,8 @@
         "brands.vffsocks": "ถุงเท้าห้านิ้วของ Vibram เอง ตัดเย็บให้พอดีกับ FiveFingers",
         "brands.bfsocks": "ถุงเท้าห้านิ้วผลิตในญี่ปุ่น สำหรับใส่ประจำวันกับรองเท้าเท้าเปล่าทุกคู่",
         "pop.title": "รุ่นขายดี<span class=\"hl\">ก็ลดด้วย</span>",
-        "pop.sub": "รุ่นยอดนิยมของเราก็ร่วมรายการ พร้อมไซซ์ให้เลือกมากมาย",
-        "pop.vrun": "<strong>ผู้ชาย</strong>M41–43, M45–48", "pop.ksoevo": "<strong>ครบทุกไซซ์</strong>M39–48 · W35–42",
-        "pop.vtrain": "<strong>ครบทุกไซซ์</strong>M39–47 · W36–42", "pop.vtrek": "<strong>ผู้ชาย</strong>M41–47",
-        "pop.vsoulc": "Purple · Silver · Nude", "pop.vsoul": "<strong>ผู้หญิง</strong>มีไซซ์ละไม่กี่คู่เท่านั้น", "pop.nude": "<b>Nude</b>W36–41 ไซซ์ละ 1 คู่",
+        "pop.sub": "รุ่นยอดนิยมของเราก็ร่วมรายการด้วย",
+        "pop.vsoulc": "Purple · Silver · Nude", "pop.vsoul": "<strong>สต็อกในงาน</strong>ไซซ์และจำนวนคู่ที่มีในงาน", "pop.nude": "<b>Nude</b>W36–41 ไซซ์ละ 1 คู่",
         "stat.k1": "ลดสูงสุด", "stat.u2": "รุ่น", "stat.k2": "ร่วมรายการ", "stat.u3": "วัน", "stat.k3": "19–21 พฤศจิกายน", "stat.k4": "ถุงเท้าทุกคู่",
         "lineup.eyebrow": "รายการลดราคา", "lineup.title": "มีอะไร<span class=\"serif\">ลดบ้าง</span>",
         "lineup.note": "ราคาเซลล์อยู่ในภาพ แตะเพื่อขยายดู ไซซ์และสีมีเท่าที่อยู่ในคลัง มาแต่เช้าเพื่อคู่ที่คุณต้องการ",
@@ -1298,7 +1282,7 @@
         "faq.q7": "ชำระเงินได้ช่องทางไหนบ้าง", "faq.a7": "รับชำระด้วยเงินสด สแกน QR ธนาคารไทย และบัตรเครดิต",
         "faq.q8": "ซื้อออนไลน์แทนได้ไหม", "faq.a8": "ราคาแวร์เฮาส์เซลล์มีเฉพาะสามวันนี้ที่ออฟฟิศเท่านั้น มีคำถามก่อนมา ทัก LINE หาเราได้เลย",
         "access.eyebrow": "วิธีเดินทาง", "access.title": "ออฟฟิศของเรา <span class=\"serif\">สุขุมวิท 63</span>",
-        "access.k1": "สถานที่", "access.v1": "ออฟฟิศ Barefootinc (Thailand)<br>87/34 โมเดิร์นทาวน์ ชั้น 2 สุขุมวิท 63 (เอกมัย) แขวงคลองตันเหนือ เขตวัฒนา กรุงเทพฯ 10110",
+        "access.k1": "สถานที่", "access.v1": "ออฟฟิศ Barefootinc (Thailand)<br>87/34 โมเดิร์นทาวน์ ชั้น 2 สุขุมวิท 63 (เอกมัย) แขวงคลองตันเหนือ เขตวัฒนา กรุงเทพฯ",
         "access.k2": "วันที่", "access.v2": "วันพฤหัสบดีที่ 19 – วันเสาร์ที่ 21 พฤศจิกายน 2569",
         "access.k3": "เวลา", "access.v3": "10:00 – 18:00",
         "access.k4": "รถไฟฟ้า", "access.v4": "BTS เอกมัย แล้วเข้าซอยสุขุมวิท 63 (ถนนเอกมัย) มาที่โมเดิร์นทาวน์",

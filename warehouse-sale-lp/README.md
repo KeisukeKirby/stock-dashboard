@@ -5,7 +5,7 @@ Terminal 21 Rama 3 版（`terminal21-rama3-lp`）と同じ CSS / JS / EN-TH 切�
 
 - **会期:** 2026 年 11 月 19 日（木）– 21 日（土）
 - **時間:** 10:00 – 18:00
-- **会場:** Barefootinc (Thailand) office, 87/34 Modern Town, Sukhumvit 63 (Ekkamai), Klongtan-nua, Wattana, Bangkok 10110
+- **会場:** Barefootinc (Thailand) office, 87/34 Modern Town, Sukhumvit 63 (Ekkamai), Klongtan-nua, Wattana, Bangkok（郵便番号は載せない方針）
 
 ## 構成
 
@@ -15,7 +15,7 @@ Terminal 21 Rama 3 版（`terminal21-rama3-lp`）と同じ CSS / JS / EN-TH 切�
 | --- | --- |
 | `index.html` | ページ本体（CSS・JS・EN/TH の文言をすべて含む） |
 | `images/sale/promotion-v2.jpg` / `promotion-v2-1000.jpg` | 「What's on sale」のプロモーション画像（原寸とサムネ用）。タップで拡大・ピンチ/ドラッグ可 |
-| `images/popular/*.jpg` | 「人気モデルもセール」の商品写真（800×560、白背景。V-Soul Nude はプロモ画像から切り出した仮画像） |
+| `images/popular/*.jpg` | 「人気モデルもセール」の商品写真（800×560、白背景） |
 | `images/hero/hero-a〜f.jpg` | ヒーローのモデル着用写真モザイク（Scramkey / KSO EVO / V-Train 2.0 / V-Run。Drive の素材から切り出し） |
 | `images/logo-*.png` | Barefootinc / Vibram FiveFingers のロゴ（Rama 3 版から流用） |
 | `images/why/`, `images/models/` | Why barefoot? の背景と「最大のセール」セクションの Scramkey 写真（流用） |
@@ -27,7 +27,7 @@ Terminal 21 Rama 3 版（`terminal21-rama3-lp`）と同じ CSS / JS / EN-TH 切�
 1. ナビ（ロゴ・リンク・ไทย/EN・Getting there）
 2. ヒーロー: 左にコピー（WAREHOUSE SALE / Up to 50% off の黄色ブロック）、右にモデル着用写真のモザイク + 日付・時間・場所のロール表示
 3. **Our biggest sale ever**: 見出しと説明文を横並び（スマホは縦）+ 4 つの数字（ラベルが上、数字を大きく）
-   - 人気モデルもセール: V-Run Black/Blue、KSO EVO Black、V-Train 2.0 Black、V-Trek Black、V-Soul（Purple / Silver / Nude、サイズと足数つき）
+   - 人気モデルもセール: 商品写真と名前のみ（価格・割引率なし）。V-Run Black Lime/Black、KSO EVO Black、V-Train 2.0 Black、V-Trek Black、V-Soul（Purple / Silver / Nude、Event stock としてサイズと足数つき）
    - ブランド紹介（Shoes / Socks）
 4. **Discount lineup**: 左にプロモーション画像（タップで拡大・ズーム・パン）、右に 50 / 40 / 30 / 20% とソックスを 1 行ずつ
 5. Why barefoot?（Rama 3 版と同じ）
@@ -51,9 +51,6 @@ Terminal 21 Rama 3 版（`terminal21-rama3-lp`）と同じ CSS / JS / EN-TH 切�
 
 - （駐車場: あり、と確認済み）
 - BTS Ekkamai からの行き方の表現（駅から Sukhumvit 63 を進む、とだけ記載）
-- 郵便番号 10110（Klongtan-nua, Wattana として記載）
-- 人気モデルのサイズ表記（在庫ダッシュボード stock.json の全店舗合計から作成。V-Run Black/Blue は M40・M44 が在庫ゼロのため「全サイズ」と書いていない）
-- V-Soul Nude の写真（プロモ画像からの切り出しで画質が粗い。元写真があれば差し替え）
 - 本番 URL（`<head>` の canonical / og:url は `https://barefootinc-warehouse-sale.vercel.app/`）
 
 ## デプロイ
