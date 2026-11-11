@@ -31,7 +31,7 @@
 
   const uniq = (arr) => [...new Set(arr)];
   const sizeKey = (s) => {
-    const m = /^([A-Z]+)(\d+(?:\.\d+)?)$/.exec(s);
+    const m = /^([A-Z]*)(\d+(?:\.\d+)?)$/.exec(s);
     return m ? [m[1], parseFloat(m[2])] : [s, 0];
   };
   const sum = (a) => a.reduce((x, y) => x + (y || 0), 0);
@@ -1818,7 +1818,7 @@ if (RETURNS_ON) {
     // 靴下 (Socks シート)・T シャツなど靴以外、商品名から モデル/サイズ/カラー が読めない古い登録は除く
     for (const [sku, name] of Object.entries(z.names || {})) {
       if (codes.has(sku) || !sku.startsWith("VFF") || window.IS_SOCKS(name) || /t-?shirt/i.test(name)) continue;
-      const mm = /^(.*)\(([A-Z]{1,2}\d+(?:\.\d+)?),\s*(.+)\)\s*$/.exec(name);
+      const mm = /^(.*)\(([A-Z]{0,2}\d+(?:\.\d+)?),\s*(.+)\)\s*$/.exec(name);
       if (!mm) continue;
       d.items.push({ code: sku, model: mm[1].trim(), color: mm[3].trim(), size: mm[2], qty: d.stores.map(() => 0), ret: d.stores.map(() => null), rate: null, rateEvent: null, _catalog: true });
       codes.add(sku);
