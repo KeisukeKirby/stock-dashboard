@@ -1800,7 +1800,7 @@ if (RETURNS_ON) {
     const codes = new Set(d.items.map((it) => it.code).filter(Boolean));
     for (const loc of z.locations) {
       const k = d.stores.indexOf(loc.name);
-      if (k < 0) continue;
+      if (k < 0 || !locs.includes(loc.name)) continue; // Zort の数を使わない拠点 (Siam・Central CL は棚卸の数) には書き込まない
       for (const [sku, q] of Object.entries(loc.stock)) {
         if (!q || !sku.startsWith("VFF") || window.IS_SOCKS(z.names[sku])) continue; // 靴下は Socks シートに出す
         let it = codes.has(sku) ? d.items.find((x) => x.code === sku) : null;
@@ -1874,10 +1874,12 @@ if (RETURNS_ON) {
       return mkey(a).localeCompare(mkey(b), "en") || cfirst.get(`${mkey(a)}|${ckey(a)}`) - cfirst.get(`${mkey(b)}|${ckey(b)}`)
         || String(sa[0]).localeCompare(String(sb[0])) || sa[1] - sb[1];
     });
-    // どの拠点にも在庫が 1 足もないモデル (全カラー・全サイズが 0) は「在庫0モデル」シートに移す
-    const live = new Set(d.items.filter((it) => it.qty.some((q) => q)).map((it) => it.model));
-    d.zeroItems = d.items.filter((it) => !live.has(it.model));
-    d.items = d.items.filter((it) => live.has(it.model));
+    // どの拠点にも在庫が 1 足もないカラー (そのカラーの全サイズが 0。モデルごと 0 の場合も含む) は「在庫0」シートに移す
+    // カラーは品番のカラー部分で分ける (表示名が同じでも品番が違えば別のカラー)
+    const gkey = (it) => `${it.model}|${ckey(it)}`;
+    const live = new Set(d.items.filter((it) => it.qty.some((q) => q)).map(gkey));
+    d.zeroItems = d.items.filter((it) => !live.has(gkey(it)));
+    d.items = d.items.filter((it) => live.has(gkey(it)));
     shownZort = z ? z.fetchedAt : null;
     groups = d.officeIndex != null ? [...d.stores, "Store Total", "Company Total"] : [...d.stores, "Total"];
     d.items.forEach((it, n) => {
@@ -1906,14 +1908,17 @@ if (RETURNS_ON) {
     const all = data.zeroItems;
     const rows = all.filter((it) => !q || `${it.code} ${it.model} ${it.color} ${it.size}`.toLowerCase().includes(q));
     const models = [...new Set(all.map((it) => it.model))];
+    const colors = new Set(all.map((it) => `${it.model}|${it.code ? it.code.split(",")[0] : it.color}`));
+    // モデルごと在庫 0 のモデル (VFF の在庫一覧に 1 行もないモデル)
+    const whole = models.filter((m) => !data.items.some((it) => it.model === m));
     $("zThead").innerHTML = `
       <tr class="title"><th colspan="4">${esc(t("zero.sheetTitle"))}</th></tr>
       <tr class="asof"><th colspan="4">${esc(shownZort ? t("zort.asof", { t: zortLabel() }) : "")}</th></tr>
       <tr class="h1"><th>Model</th><th>Color</th><th>Size</th><th>Code</th></tr>`;
     $("zTbody").innerHTML = rows.map((it) => `<tr><td>${esc(shortModel(it.model))}</td><td>${esc(it.color)}</td><td class="c">${esc(it.size)}</td><td>${esc(it.code || "")}</td></tr>`).join("")
       || `<tr><td class="empty" colspan="4">${esc(t("empty"))}</td></tr>`;
-    $("zCount").textContent = rows.length === all.length ? t("zero.count", { m: models.length, n: all.length }) : t("count.of", { n: all.length, m: rows.length });
-    $("zNote").textContent = t("zero.note", { list: models.map(shortModel).join("、") });
+    $("zCount").textContent = rows.length === all.length ? t("zero.count", { m: models.length, c: colors.size, n: all.length }) : t("count.of", { n: all.length, m: rows.length });
+    $("zNote").textContent = t("zero.note", { list: whole.map(shortModel).join("、") || "-" });
   }
   $("zq").addEventListener("input", renderZero);
   fetch(`stock.json?t=${Date.now()}`, { cache: "no-store" })
