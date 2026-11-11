@@ -1,34 +1,275 @@
 [
- {"date": "2026-09-30", "store": "Paradise Park", "code": "VFF0005(BK/BK,M42)", "qty": -1, "note": "販売 VFF V-Train 2.0(M42, Black/Black) x1（10/2 の個別調整を 9/30 の販売として記録し直し）"},
- {"date": "2026-09-30", "store": "Paradise Park", "code": "VFF0008(BK,W38)", "qty": -1, "note": "販売 VFF V-Soul(W38, Black) x1（9/30 18:53 の売上票。BK26 の W38 は在庫 0 のため BK から）"},
- {"date": "2026-09-30", "store": "Paradise Park", "code": "VFF0008(SV,W40)", "qty": -1, "note": "販売 VFF V-Soul(W40, Silver) x1（9/30 18:53 の売上票）"},
- {"date": "2026-10-11", "store": "Paradise Park", "code": "VFF0008(PP,W40)", "qty": -1, "note": "Shopee 発送 VFF V-Soul(W40, Purple) x1（Paradise Park から出荷）"},
- {"date": "2026-10-11", "store": "Paradise Park", "code": "VFF0009(BK,M46)", "qty": -1, "note": "Shopee 発送 VFF KSO EVO(M46, Black) x1（Paradise Park から出荷）"},
- {"date": "2026-10-11", "store": "Paradise Park", "code": "VFF0008(PP,W39)", "qty": -1, "note": "Shopee 発送 VFF V-Soul(W39, Purple) x1（Paradise Park から出荷）"},
- {"date": "2026-10-11", "store": "Paradise Park", "code": "VFF0002(BR/IV/BK,M42)", "qty": -1, "note": "Shopee 発送 VFF V-Run(M42, Brown/Ivory/Black) x1（Paradise Park から）"},
- {"date": "2026-10-11", "store": "Paradise Park", "code": "VFF0008(SV,W38)", "qty": -1, "note": "LINE（Thailand Post）発送 VFF V-Soul(W38, Silver) x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0024(BK,M45)", "qty": -1, "note": "Shopee 発送 VFF Trailope(M45, Black) x1（靴下と同梱）（Paradise Park から）"},
- {"date": "2026-10-13", "store": "Paradise Park", "code": "VFF0026(BR/BK,M41)", "qty": -1, "note": "販売 VFF Spidrwalk(M41, Brown/Black) x1（レシート RC-10-202610006）（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0008(PP,W38)", "qty": -2, "note": "Shopee 発送 VFF V-Soul(W38, Purple) x2（別々の注文 2 件）（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0005(BK/BK,M40)", "qty": -1, "note": "Shopee 発送 VFF V-Train 2.0(M40, Black/Black) x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0023(BK,M45)", "qty": -1, "note": "Shopee 発送 VFF V-Alpha(M45, Black) x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0002(TT/BK,M42)", "qty": -2, "note": "Shopee 発送 VFF V-Run(M42, Total Black) x2（別々の注文 2 件）（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0009(BK,W38)", "qty": -1, "note": "Shopee 発送 VFF KSO EVO(W38, Black) x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0005(BK/BK,M42)", "qty": -1, "note": "Shopee 発送 VFF V-Train 2.0(M42, Black/Black) x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0002(BK/LI/BK,M44)", "qty": -1, "note": "Shopee 発送 VFF V-Run(M44, Black/Lime/Black) x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0009(BK,M43)", "qty": -1, "note": "Shopee 発送 KSO EVO(M43, Black) x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0002(TT/IV,W38)", "qty": -1, "note": "Shopee 発送 V-Run(W38, Total Ivory) x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0023(BK,M44)", "qty": -1, "note": "Shopee 発送 V-Alpha(M44, Black) x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0002(TT/BK,M46)", "qty": -1, "note": "Shopee 発送 V-Run(M46, Total Black) x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0008(PP,W39)", "qty": -1, "note": "Shopee 発送 V-Soul(W39, Purple) x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0031(BK/LI,M44)", "qty": -1, "note": "Shopee 発送 Groundsplay LS(M44, Black/Lime)（靴下と同梱） x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0002(TT/IV,W41)", "qty": -1, "note": "Shopee（DHL）発送 V-Run(W41, Total Ivory)（靴下と同梱） x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0009(BK,M44)", "qty": -1, "note": "Shopee 発送 KSO EVO(M44, Black) x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0031(TT/BK,M40)", "qty": -1, "note": "Shopee 発送 Groundsplay LS(M40, Total Black) x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0024(BK,M43)", "qty": -1, "note": "Shopee 発送 Trailope(M43, Black) x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0002(BR/IV/BK,M43)", "qty": -1, "note": "Shopee 発送 V-Run(M43, Brown/Ivory/Black) x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0022(BK,W36)", "qty": -1, "note": "販売 Breezandal(W36, Black)（10/10 の売上票） x1（Paradise Park から）"},
- {"date": "2026-10-10", "store": "Paradise Park", "code": "VFF0008(F/GN,W41)", "qty": -1, "note": "販売 V-Soul(W41, Fig/A. Green)（10/10 の売上票） x1（Paradise Park から）"},
- {"date": "2026-10-08", "store": "Paradise Park", "code": "VFF0031(TT/BK,M42)", "qty": -1, "note": "販売 Groundsplay LS(M42, Total Black)（10/8 の売上票） x1（Paradise Park から）"},
- {"date": "2026-10-31", "store": "Paradise Park", "code": "VFF0008(BK,W37)", "qty": -1, "note": "棚卸の後 V-Soul(W37, Black) x1 を減らす"}
+  {
+    "date": "2026-09-30",
+    "store": "Paradise Park",
+    "code": "VFF0005(BK/BK,M42)",
+    "qty": -1,
+    "note": "販売 VFF V-Train 2.0(M42, Black/Black) x1（10/2 の個別調整を 9/30 の販売として記録し直し）"
+  },
+  {
+    "date": "2026-09-30",
+    "store": "Paradise Park",
+    "code": "VFF0008(BK,W38)",
+    "qty": -1,
+    "note": "販売 VFF V-Soul(W38, Black) x1（9/30 18:53 の売上票。BK26 の W38 は在庫 0 のため BK から）"
+  },
+  {
+    "date": "2026-09-30",
+    "store": "Paradise Park",
+    "code": "VFF0008(SV,W40)",
+    "qty": -1,
+    "note": "販売 VFF V-Soul(W40, Silver) x1（9/30 18:53 の売上票）"
+  },
+  {
+    "date": "2026-10-11",
+    "store": "Paradise Park",
+    "code": "VFF0008(PP,W40)",
+    "qty": -1,
+    "note": "Shopee 発送 VFF V-Soul(W40, Purple) x1（Paradise Park から出荷）"
+  },
+  {
+    "date": "2026-10-11",
+    "store": "Paradise Park",
+    "code": "VFF0009(BK,M46)",
+    "qty": -1,
+    "note": "Shopee 発送 VFF KSO EVO(M46, Black) x1（Paradise Park から出荷）"
+  },
+  {
+    "date": "2026-10-11",
+    "store": "Paradise Park",
+    "code": "VFF0008(PP,W39)",
+    "qty": -1,
+    "note": "Shopee 発送 VFF V-Soul(W39, Purple) x1（Paradise Park から出荷）"
+  },
+  {
+    "date": "2026-10-11",
+    "store": "Paradise Park",
+    "code": "VFF0002(BR/IV/BK,M42)",
+    "qty": -1,
+    "note": "Shopee 発送 VFF V-Run(M42, Brown/Ivory/Black) x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-11",
+    "store": "Paradise Park",
+    "code": "VFF0008(SV,W38)",
+    "qty": -1,
+    "note": "LINE（Thailand Post）発送 VFF V-Soul(W38, Silver) x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0024(BK,M45)",
+    "qty": -1,
+    "note": "Shopee 発送 VFF Trailope(M45, Black) x1（靴下と同梱）（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-13",
+    "store": "Paradise Park",
+    "code": "VFF0026(BR/BK,M41)",
+    "qty": -1,
+    "note": "販売 VFF Spidrwalk(M41, Brown/Black) x1（レシート RC-10-202610006）（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0008(PP,W38)",
+    "qty": -2,
+    "note": "Shopee 発送 VFF V-Soul(W38, Purple) x2（別々の注文 2 件）（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0005(BK/BK,M40)",
+    "qty": -1,
+    "note": "Shopee 発送 VFF V-Train 2.0(M40, Black/Black) x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0023(BK,M45)",
+    "qty": -1,
+    "note": "Shopee 発送 VFF V-Alpha(M45, Black) x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0002(TT/BK,M42)",
+    "qty": -2,
+    "note": "Shopee 発送 VFF V-Run(M42, Total Black) x2（別々の注文 2 件）（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0009(BK,W38)",
+    "qty": -1,
+    "note": "Shopee 発送 VFF KSO EVO(W38, Black) x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0005(BK/BK,M42)",
+    "qty": -1,
+    "note": "Shopee 発送 VFF V-Train 2.0(M42, Black/Black) x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0002(BK/LI/BK,M44)",
+    "qty": -1,
+    "note": "Shopee 発送 VFF V-Run(M44, Black/Lime/Black) x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0009(BK,M43)",
+    "qty": -1,
+    "note": "Shopee 発送 KSO EVO(M43, Black) x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0002(TT/IV,W38)",
+    "qty": -1,
+    "note": "Shopee 発送 V-Run(W38, Total Ivory) x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0023(BK,M44)",
+    "qty": -1,
+    "note": "Shopee 発送 V-Alpha(M44, Black) x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0002(TT/BK,M46)",
+    "qty": -1,
+    "note": "Shopee 発送 V-Run(M46, Total Black) x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0008(PP,W39)",
+    "qty": -1,
+    "note": "Shopee 発送 V-Soul(W39, Purple) x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0031(BK/LI,M44)",
+    "qty": -1,
+    "note": "Shopee 発送 Groundsplay LS(M44, Black/Lime)（靴下と同梱） x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0002(TT/IV,W41)",
+    "qty": -1,
+    "note": "Shopee（DHL）発送 V-Run(W41, Total Ivory)（靴下と同梱） x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0009(BK,M44)",
+    "qty": -1,
+    "note": "Shopee 発送 KSO EVO(M44, Black) x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0031(TT/BK,M40)",
+    "qty": -1,
+    "note": "Shopee 発送 Groundsplay LS(M40, Total Black) x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0024(BK,M43)",
+    "qty": -1,
+    "note": "Shopee 発送 Trailope(M43, Black) x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0002(BR/IV/BK,M43)",
+    "qty": -1,
+    "note": "Shopee 発送 V-Run(M43, Brown/Ivory/Black) x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0022(BK,W36)",
+    "qty": -1,
+    "note": "販売 Breezandal(W36, Black)（10/10 の売上票） x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-10",
+    "store": "Paradise Park",
+    "code": "VFF0008(F/GN,W41)",
+    "qty": -1,
+    "note": "販売 V-Soul(W41, Fig/A. Green)（10/10 の売上票） x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-08",
+    "store": "Paradise Park",
+    "code": "VFF0031(TT/BK,M42)",
+    "qty": -1,
+    "note": "販売 Groundsplay LS(M42, Total Black)（10/8 の売上票） x1（Paradise Park から）"
+  },
+  {
+    "date": "2026-10-31",
+    "store": "Paradise Park",
+    "code": "VFF0008(BK,W37)",
+    "qty": -1,
+    "note": "棚卸の後 V-Soul(W37, Black) x1 を減らす"
+  },
+  {
+    "date": "2026-11-11",
+    "store": "Siam Discovery",
+    "code": "VFF0030(BK,M42)",
+    "qty": -1,
+    "note": "販売 Groundsplay(M42, Black) FRA x1（11/11 にチャットで連絡のあった Siam の売上）"
+  },
+  {
+    "date": "2026-11-11",
+    "store": "Siam Discovery",
+    "code": "VFF0024(BK,M41)",
+    "qty": -1,
+    "note": "販売 Trailope(M41, Black) CHN x1（11/11 にチャットで連絡のあった Siam の売上）"
+  },
+  {
+    "date": "2026-11-11",
+    "store": "Siam Discovery",
+    "code": "VFF0008(PP,W40)",
+    "qty": -1,
+    "note": "販売 V-Soul(W40, Purple) x1（11/11 にチャットで連絡のあった Siam の売上）"
+  },
+  {
+    "date": "2026-11-11",
+    "store": "Siam Discovery",
+    "code": "VFF0008(BK26,W41)",
+    "qty": -1,
+    "note": "販売 V-Soul(W41, Black) x1（11/11 にチャットで連絡のあった Siam の売上）"
+  },
+  {
+    "date": "2026-11-11",
+    "store": "Siam Discovery",
+    "code": "VFF0008(BK26,W41)",
+    "qty": -1,
+    "note": "販売 V-Soul(W41, Black) MYS x1（11/11 にチャットで連絡のあった Siam の売上）"
+  },
+  {
+    "date": "2026-11-11",
+    "store": "Siam Discovery",
+    "code": "VFF0008(PP,W41)",
+    "qty": -1,
+    "note": "販売 V-Soul(W41, Purple) TH x1（11/11 にチャットで連絡のあった Siam の売上）"
+  },
+  {
+    "date": "2026-11-11",
+    "store": "Siam Discovery",
+    "code": "VFF0005(BK/BK,M42)",
+    "qty": -1,
+    "note": "販売 V-Train 2.0(M42, Total Black) x1（11/11 にチャットで連絡のあった Siam の売上）"
+  }
 ]
