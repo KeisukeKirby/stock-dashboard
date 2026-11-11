@@ -19,8 +19,10 @@
     [/pathwild/, "Pathwild", "store"],
     [/^event/, null, "event"], // Event 1 など (名前はそのまま)
   ];
-  // アカウントごとに使う拠点。ここに書いたアカウントは、その拠点の倉庫だけを使う。
-  // ここに書いた拠点は、そのアカウントがつながっている間はほかのアカウントの倉庫を使わない。
+  // アカウントごとに担当する拠点。そのアカウントがつながっている間は、ほかのアカウントの同じ拠点の倉庫は
+  // 「拠点名 (アカウント名)」の別の列にする (例: BFT にもある K Village 倉庫 → "K Village (BFT)")。
+  // 担当アカウントのそのほかの倉庫も「倉庫名 (アカウント名)」の別の列にする (例: EDV の The Mall → "The Mall (EDV)")。
+  // 別の列は、VFF / Vivo の在庫が 1 足でもある (マイナスを含む) ときだけ出す。
   const ACCOUNT_ONLY = { EDV: ["K Village", "Central LP"] };
 
   const norm = (s) => String(s || "").toLowerCase().replace(/[\s._\-/()]/g, "");
@@ -40,9 +42,12 @@
       const acc = String(st.store).toUpperCase();
       for (const wh of st.warehouses) {
         if (/^(รอ|ของเสีย|สินค้าตัวอย่าง)$/.test(String(wh.name).trim())) continue; // 仮の倉庫は使わない
-        const c = classify(wh.name);
-        if (ACCOUNT_ONLY[acc] && !ACCOUNT_ONLY[acc].includes(c.name)) continue;
-        if (owner[c.name] && owner[c.name] !== acc) continue;
+        let c = classify(wh.name);
+        const extra = (ACCOUNT_ONLY[acc] && !ACCOUNT_ONLY[acc].includes(c.name)) || (owner[c.name] && owner[c.name] !== acc);
+        if (extra) {
+          if (!Object.values(wh.stock).some((q) => q)) continue;
+          c = { name: `${ACCOUNT_ONLY[acc] ? String(wh.name).trim() : c.name} (${st.store})`, kind: "other", extra: true };
+        }
         let loc = locations.find((l) => l.name === c.name);
         if (!loc) locations.push((loc = { ...c, stock: {} }));
         for (const [sku, q] of Object.entries(wh.stock)) loc.stock[sku] = (loc.stock[sku] || 0) + q;

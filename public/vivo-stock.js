@@ -60,6 +60,14 @@
       }
       d.counted[k] = true;
     }
+    // Zort の商品マスタにあって在庫がない Vivo の商品も行を出す
+    for (const [sku, name] of Object.entries(z.names || {})) {
+      if (!sku.startsWith("VV") || codes.has(sku)) continue;
+      const mm = /^(.*)\((\w+),\s*(.+)\)\s*$/.exec(name || "");
+      if (!mm) continue;
+      d.items.push({ code: sku, model: mm[1].trim(), color: mm[3].trim(), size: mm[2], qty: d.stores.map(() => 0) });
+      codes.add(sku);
+    }
     d.zortAt = window.ZORT_TIME(z.fetchedAt);
     // Zort に来ていない拠点 (棚卸だけの数) は使わない
     d.stores.forEach((loc, k) => { if (!(loc in z.byLocation)) d.items.forEach((it) => (it.qty[k] = null)); });

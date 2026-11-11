@@ -1776,8 +1776,10 @@ if (RETURNS_ON) {
     // VFF の在庫がない倉庫は VFF の表に出さない (Vivo の表には出る)
     // Siam Discovery と Central CL は店舗の棚卸 (data/counts) の数を使う
     const VFF_SKIP = ["Thaniya", "Siam Discovery", "Central CL (Department)"];
+    // 拠点名に (BFT)・(EDV) が付く別の列は、VFF の在庫 (靴下を除く) があるときだけ出す
+    const hasVff = (loc) => Object.entries(loc.stock).some(([sku, q]) => q && sku.startsWith("VFF") && !window.IS_SOCKS(z.names[sku]));
     for (const loc of z.locations) {
-      if (VFF_SKIP.includes(loc.name)) continue;
+      if (VFF_SKIP.includes(loc.name) || (loc.extra && !hasVff(loc))) continue;
       let k = d.stores.indexOf(loc.name);
       if (k < 0 && loc.kind === "event" && d.eventIndex != null && !locs.includes(d.stores[d.eventIndex])) {
         d.stores[d.eventIndex] = loc.name; // Event Asok の列を Zort のイベント倉庫 (Event 1) の列にする
@@ -1811,6 +1813,15 @@ if (RETURNS_ON) {
         }
         it.qty[k] = q;
       }
+    }
+    // Zort の商品マスタにあって、どの倉庫にも在庫がない商品も行を出す (Order を入力できるように)
+    // 靴下 (Socks シート)・T シャツなど靴以外、商品名から モデル/サイズ/カラー が読めない古い登録は除く
+    for (const [sku, name] of Object.entries(z.names || {})) {
+      if (codes.has(sku) || !sku.startsWith("VFF") || window.IS_SOCKS(name) || /t-?shirt/i.test(name)) continue;
+      const mm = /^(.*)\(([A-Z]{1,2}\d+(?:\.\d+)?),\s*(.+)\)\s*$/.exec(name);
+      if (!mm) continue;
+      d.items.push({ code: sku, model: mm[1].trim(), color: mm[3].trim(), size: mm[2], qty: d.stores.map(() => 0), ret: d.stores.map(() => null), rate: null, rateEvent: null, _catalog: true });
+      codes.add(sku);
     }
     d.zort = { fetchedAt: z.fetchedAt, locs, unmapped: [] };
   }
@@ -1851,8 +1862,16 @@ if (RETURNS_ON) {
     if (z) applyZort(d, z);
     // 靴下は Socks シートに出すので除き、モデル名のアルファベット順に並べる (同じモデルの中は元の並び: カラー・サイズ順)
     d.items = d.items.filter((it) => !window.IS_SOCKS(it.model));
+    // 同じモデルの中は カラー (最初に出てきた順。品番のカラー部分で分ける) → サイズ (M → W、小さい順)
     const mkey = (it) => shortModel(it.model).toLowerCase();
-    d.items = d.items.map((it, i) => [it, i]).sort((a, b) => mkey(a[0]).localeCompare(mkey(b[0]), "en") || a[1] - b[1]).map(([it]) => it);
+    const ckey = (it) => (it.code ? it.code.split(",")[0] : it.color);
+    const cfirst = new Map();
+    d.items.forEach((it, i) => { const k = `${mkey(it)}|${ckey(it)}`; if (!cfirst.has(k)) cfirst.set(k, i); });
+    d.items = d.items.slice().sort((a, b) => {
+      const sa = sizeKey(a.size), sb = sizeKey(b.size);
+      return mkey(a).localeCompare(mkey(b), "en") || cfirst.get(`${mkey(a)}|${ckey(a)}`) - cfirst.get(`${mkey(b)}|${ckey(b)}`)
+        || String(sa[0]).localeCompare(String(sb[0])) || sa[1] - sb[1];
+    });
     shownZort = z ? z.fetchedAt : null;
     groups = d.officeIndex != null ? [...d.stores, "Store Total", "Company Total"] : [...d.stores, "Total"];
     d.items.forEach((it, n) => {

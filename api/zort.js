@@ -20,7 +20,9 @@ const PAGE = 500;
 // 読まない倉庫 (在庫の数ではない仮の倉庫)。รอ = 入荷待ちなどの仮置きで、大きなマイナスになっている
 const SKIP = /^(รอ|ของเสีย|สินค้าตัวอย่าง)$/;
 // アカウントごとに読む倉庫 (ここにないアカウントは全倉庫)。EDV は K Village と Central LP だけ使う
-const ONLY = { EDV: /^kvillage|coollabo/i };
+// アカウントごとに読まない倉庫。EDV の本倉庫は大きなマイナスの仮の数なので読まない (EDV のそのほかの倉庫は全部読む)
+const ACC_SKIP = { EDV: /^คลังสินค้าหลัก$/ };
+const skipWh = (acc, name) => SKIP.test(name.trim()) || (ACC_SKIP[acc.name.toUpperCase()] || /$^/).test(name.trim());
 const norm = (s) => String(s || "").toLowerCase().replace(/[\s._\-/()]/g, "");
 
 function accounts() {
@@ -54,7 +56,7 @@ async function call(acc, path, params = {}) {
 async function warehouseStock(acc, wh, names) {
   const stock = {};
   for (let page = 1; page < 100; page++) {
-    const j = await call(acc, "Product/GetProducts", { page, limit: PAGE, warehousecode: wh.code });
+    const j = await call(acc, "Product/GetProducts", wh.code ? { page, limit: PAGE, warehousecode: wh.code } : { page, limit: PAGE });
     const list = j.list || [];
     for (const p of list) {
       const sku = String(p.sku || "").trim();
@@ -94,7 +96,8 @@ async function kv(commands) {
   if (err) throw new Error(err.error);
   return out.map((x) => x.result);
 }
-const SNAP = "zort:snapshot", SNAP_AT = "zort:fetchedAt", LOCK = "zort:lock";
+// v2: EDV の全倉庫と商品マスタ (在庫 0 の商品名) を含む形式
+const SNAP = "zort:v2:snapshot", SNAP_AT = "zort:v2:fetchedAt", LOCK = "zort:v2:lock";
 const MAX_AGE = 10 * 60 * 1000; // 10 分ごとに Zort から読み直す
 
 async function readZort(accs) {
@@ -103,10 +106,9 @@ async function readZort(accs) {
   const stores = await Promise.all(
     accs.map(async (acc) => {
       const j = await call(acc, "Warehouse/GetWarehouses");
-      const only = ONLY[acc.name.toUpperCase()];
       const whs = (j.list || [])
         .map((w) => ({ code: String(w.code || w.id), name: String(w.name || w.code || "") }))
-        .filter((w) => !SKIP.test(w.name.trim()) && (!only || only.test(norm(w.name))));
+        .filter((w) => !skipWh(acc, w.name));
       // 倉庫は 6 つずつ並行して読む (1 つずつより大幅に速い。Zort への同時接続は控えめに)
       const warehouses = new Array(whs.length);
       let next = 0;
@@ -120,6 +122,8 @@ async function readZort(accs) {
       return { store: acc.name, warehouses };
     })
   );
+  // 商品マスタ全体 (倉庫を指定しない) から商品名を集める: 在庫が 0 の商品も表に行を出すため
+  await Promise.all(accs.map((acc) => warehouseStock(acc, { code: null }, names).catch((e) => console.error("catalog", acc.name, e.message))));
   console.log(`zort: ${stores.map((x) => `${x.store} ${x.warehouses.length} warehouses`).join(", ")} in ${Date.now() - t0} ms`);
   return { configured: true, fetchedAt: new Date().toISOString(), stores, names };
 }
@@ -132,14 +136,13 @@ async function summary(res, accs) {
   const out = [];
   for (const acc of accs) {
     const j = await call(acc, "Warehouse/GetWarehouses");
-    const only = ONLY[acc.name.toUpperCase()];
     const whs = (j.list || []).map((w) => ({ code: String(w.code || w.id), name: String(w.name || w.code || "") }));
     const rows = await Promise.all(whs.map(async (w) => {
       const st = await warehouseStock(acc, w, {});
       const tot = (re) => Object.entries(st).filter(([k]) => re.test(k)).reduce((a, [, q]) => a + q, 0);
       return {
         account: acc.name, code: w.code, name: w.name,
-        used: !SKIP.test(w.name.trim()) && (!only || only.test(norm(w.name))),
+        used: !skipWh(acc, w.name),
         vff: tot(/^VFF/), vivo: tot(/^VV/), skus: Object.keys(st).length,
         negative: Object.values(st).filter((q) => q < 0).length,
       };
