@@ -56,15 +56,16 @@
   applyTheme();
 
   /* ---------- tabs ---------- */
-  let view = ["#detail", "#vivo", "#socks"].includes(location.hash) ? location.hash.slice(1) : "table";
+  let view = ["#detail", "#vivo", "#socks", "#zero"].includes(location.hash) ? location.hash.slice(1) : "table";
   function showView(v, { scroll = false } = {}) {
     view = v;
     // Vivo は在庫一覧の中の切り替え (タブは「在庫一覧」のまま)
-    document.querySelectorAll(".tab").forEach((tab) => tab.setAttribute("aria-selected", tab.dataset.view === (v === "vivo" || v === "socks" ? "table" : v)));
+    document.querySelectorAll(".tab").forEach((tab) => tab.setAttribute("aria-selected", tab.dataset.view === (["vivo", "socks", "zero"].includes(v) ? "table" : v)));
     $("view-table").hidden = v !== "table";
     $("view-detail").hidden = v !== "detail";
     $("view-vivo").hidden = v !== "vivo";
     $("view-socks").hidden = v !== "socks";
+    $("view-zero").hidden = v !== "zero";
     history.replaceState(null, "", v === "table" ? location.pathname + location.search : `#${v}`);
     if (v === "table") fitTable();
     if (scroll) $("view-table").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1754,6 +1755,7 @@ if (RETURNS_ON) {
     render();
     updateReturnInfo();
     updateOrderInfo();
+    renderZero();
     if ($("ordDlg").open) renderOrdHistory();
   });
 
@@ -1872,6 +1874,10 @@ if (RETURNS_ON) {
       return mkey(a).localeCompare(mkey(b), "en") || cfirst.get(`${mkey(a)}|${ckey(a)}`) - cfirst.get(`${mkey(b)}|${ckey(b)}`)
         || String(sa[0]).localeCompare(String(sb[0])) || sa[1] - sb[1];
     });
+    // どの拠点にも在庫が 1 足もないモデル (全カラー・全サイズが 0) は「在庫0モデル」シートに移す
+    const live = new Set(d.items.filter((it) => it.qty.some((q) => q)).map((it) => it.model));
+    d.zeroItems = d.items.filter((it) => !live.has(it.model));
+    d.items = d.items.filter((it) => live.has(it.model));
     shownZort = z ? z.fetchedAt : null;
     groups = d.officeIndex != null ? [...d.stores, "Store Total", "Company Total"] : [...d.stores, "Total"];
     d.items.forEach((it, n) => {
@@ -1890,7 +1896,26 @@ if (RETURNS_ON) {
     $("rateToggle").hidden = !d.salesRate;
     renderFrame(d);
     render();
+    renderZero();
   }
+
+  /* ---------- 在庫0モデル シート ---------- */
+  function renderZero() {
+    if (!data || !data.zeroItems) return;
+    const q = ($("zq").value || "").trim().toLowerCase();
+    const all = data.zeroItems;
+    const rows = all.filter((it) => !q || `${it.code} ${it.model} ${it.color} ${it.size}`.toLowerCase().includes(q));
+    const models = [...new Set(all.map((it) => it.model))];
+    $("zThead").innerHTML = `
+      <tr class="title"><th colspan="4">${esc(t("zero.sheetTitle"))}</th></tr>
+      <tr class="asof"><th colspan="4">${esc(shownZort ? t("zort.asof", { t: zortLabel() }) : "")}</th></tr>
+      <tr class="h1"><th>Model</th><th>Color</th><th>Size</th><th>Code</th></tr>`;
+    $("zTbody").innerHTML = rows.map((it) => `<tr><td>${esc(shortModel(it.model))}</td><td>${esc(it.color)}</td><td class="c">${esc(it.size)}</td><td>${esc(it.code || "")}</td></tr>`).join("")
+      || `<tr><td class="empty" colspan="4">${esc(t("empty"))}</td></tr>`;
+    $("zCount").textContent = rows.length === all.length ? t("zero.count", { m: models.length, n: all.length }) : t("count.of", { n: all.length, m: rows.length });
+    $("zNote").textContent = t("zero.note", { list: models.map(shortModel).join("、") });
+  }
+  $("zq").addEventListener("input", renderZero);
   fetch(`stock.json?t=${Date.now()}`, { cache: "no-store" })
     .then((r) => r.json())
     .then((d) => {
