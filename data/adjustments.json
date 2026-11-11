@@ -271,5 +271,40 @@
     "code": "VFF0005(BK/BK,M42)",
     "qty": -1,
     "note": "販売 V-Train 2.0(M42, Total Black) x1（11/11 にチャットで連絡のあった Siam の売上）"
+  },
+  {
+    "date": "2026-11-02",
+    "store": "Siam Discovery",
+    "code": "VFF0002(DPK,W40)",
+    "qty": -1,
+    "note": "販売 V-Run 25W7003(W40, Dusty Pink) x1（11/02 の Siam の売上・箱の写真でサイズ確認）"
+  },
+  {
+    "date": "2026-11-03",
+    "store": "Siam Discovery",
+    "code": "VFF0009(BK,M42)",
+    "qty": -1,
+    "note": "販売 KSO EVO 14M0701(M42, Black) x1（11/03 の Siam の売上・箱の写真でサイズ確認）"
+  },
+  {
+    "date": "2026-11-04",
+    "store": "Siam Discovery",
+    "code": "VFF0030(BK,M44)",
+    "qty": -1,
+    "note": "販売 Groundsplay 26M8801(M44, Black) x1（11/04 の Siam の売上・箱の写真でサイズ確認）"
+  },
+  {
+    "date": "2026-11-04",
+    "store": "Siam Discovery",
+    "code": "VFF0008(BK26,W38)",
+    "qty": -1,
+    "note": "販売 V-Soul 26W7201(W38, Black) x1（11/04 の Siam の売上・箱の写真でサイズ確認）"
+  },
+  {
+    "date": "2026-11-04",
+    "store": "Siam Discovery",
+    "code": "VFF0008(LI/GN,W39)",
+    "qty": -1,
+    "note": "販売 V-Soul 26W7203(W39, Lime Green) x1（11/04 の Siam の売上・箱の写真でサイズ確認）"
   }
 ]
