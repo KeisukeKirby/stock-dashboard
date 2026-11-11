@@ -617,7 +617,7 @@
     /* "up to 50% off" burst, top-right of the heading */
     .hero.mosaic .hero-body { position: relative; }
     .hero-off {
-      position: absolute; right: -.5rem; top: -1.6rem; z-index: 2;
+      position: absolute; right: -1rem; top: 4.4rem; z-index: 2;
       display: grid; place-items: center; align-content: center; width: 10rem; height: 10rem; border-radius: 50%;
       background: #FFE000; color: #000; font-family: var(--display); text-transform: uppercase; line-height: .95; text-align: center;
       transform: rotate(8deg); box-shadow: 0 14px 34px rgba(0,0,0,.18);
@@ -628,7 +628,7 @@
     :lang(th) .hero-off small:first-child { font-size: .9rem; letter-spacing: .02em; }
     @keyframes offPop { from { opacity: 0; transform: rotate(8deg) scale(.6); } to { opacity: 1; transform: rotate(8deg) scale(1); } }
     @media (prefers-reduced-motion: reduce) { .hero-off { animation: none; } }
-    @media (max-width: 1100px) and (min-width: 901px) { .hero-off { width: 8.6rem; height: 8.6rem; } .hero-off b { font-size: 3rem; } .hero-off small { font-size: .82rem; } }
+    @media (max-width: 1300px) and (min-width: 901px) { .hero-off { width: 8.2rem; height: 8.2rem; top: 3.4rem; right: -1.4rem; } .hero-off b { font-size: 2.9rem; } .hero-off small { font-size: .78rem; } }
     @media (max-width: 900px) {
       .hero.mosaic .hero-top .eyebrow { display: none; }
       .hero.mosaic h1 { font-size: clamp(2.6rem, 10vw, 3.6rem); }
