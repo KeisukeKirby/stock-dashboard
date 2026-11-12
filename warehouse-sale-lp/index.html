@@ -10,7 +10,7 @@
   <meta name="description"
     content="Our biggest sale ever. Vibram FiveFingers and more at 20–50% off, all socks 20% off, at the Barefootinc office on Sukhumvit 63 (Ekkamai), 19–21 November 2026, 10:00–18:00. Warehouse Sale ลดสูงสุด 50% ที่ออฟฟิศ Barefootinc สุขุมวิท 63" />
   <meta name="keywords"
-    content="Barefootinc, warehouse sale, Vibram FiveFingers, barefoot shoes, sale Bangkok, Sukhumvit 63, Ekkamai, รองเท้าเท้าเปล่า, ลดราคา, เซลล์, Scramkey, KSO EVO, V-Run" />
+    content="Barefootinc, warehouse sale, Vibram FiveFingers, barefoot shoes, sale Bangkok, Sukhumvit 63, Ekkamai, รองเท้าเปล่า, ลดราคา, เซลล์, Scramkey, KSO EVO, V-Run" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="author" content="Barefootinc (Thailand)" />
   <link rel="canonical" href="https://barefootinc-warehouse-sale.vercel.app/" />
@@ -683,6 +683,8 @@
     .sale-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.4rem, 4vw, 4.5rem); align-items: end; }
     .sale h2 { font-size: clamp(2.6rem, 6.4vw, 5.6rem); text-transform: uppercase; font-weight: 700; letter-spacing: -.02em; }
     .sale h2 .hl { color: var(--t21-m); }
+    :lang(th) .sale h2 { line-height: 1.32; }
+    .star { color: #D7262E; }
     .sale p.desc { font-size: clamp(1rem, 1.3vw, 1.12rem); line-height: 1.8; max-width: 52ch; padding-bottom: .5rem; }
     .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(2rem, 4vw, 3.2rem); border-top: 2px solid var(--ink); border-bottom: 1px solid rgba(27,26,31,.16); }
     .stat { display: flex; flex-direction: column; gap: .5rem; padding: clamp(1rem, 2vw, 1.5rem) clamp(.6rem, 1.6vw, 1.4rem); min-width: 0; }
@@ -1019,12 +1021,12 @@
         </div>
         <div class="tiers" data-reveal style="--d:120">
           <div class="tier tier-50"><div class="pct"><span class="n">50%</span><span class="o" data-i18n="tier.off">off</span></div><div class="tmodels" data-i18n-html="tier.l50">Scramkey, Marugo Tabi Shoes</div></div>
-          <div class="tier tier-40"><div class="pct"><span class="n">40%</span><span class="o" data-i18n="tier.off">off</span></div><div class="tmodels" data-i18n-html="tier.l40">★Alitza Loop, ★CVT Hemp, ★CVT Leather, ★KSO ECO, V-Train 2.0, KMD EVO</div></div>
-          <div class="tier tier-30"><div class="pct"><span class="n">30%</span><span class="o" data-i18n="tier.off">off</span></div><div class="tmodels" data-i18n-html="tier.l30">V-Train 2.0, KSO EVO, Groundsplay, V-Trek, Graspifier, KSO, ★V-Run, V-Alpha</div></div>
+          <div class="tier tier-40"><div class="pct"><span class="n">40%</span><span class="o" data-i18n="tier.off">off</span></div><div class="tmodels" data-i18n-html="tier.l40"><span class="star">★</span>Alitza Loop, <span class="star">★</span>CVT Hemp, <span class="star">★</span>CVT Leather, <span class="star">★</span>KSO ECO, V-Train 2.0, KMD EVO</div></div>
+          <div class="tier tier-30"><div class="pct"><span class="n">30%</span><span class="o" data-i18n="tier.off">off</span></div><div class="tmodels" data-i18n-html="tier.l30">V-Train 2.0, KSO EVO, Groundsplay, V-Trek, Graspifier, KSO, <span class="star">★</span>V-Run, V-Alpha</div></div>
           <div class="tier tier-20"><div class="pct"><span class="n">20%</span><span class="o" data-i18n="tier.off">off</span></div><div class="tmodels" data-i18n-html="tier.l20">KSO EVO, Trailope, V-Run, V-Soul</div></div>
           <div class="tier tier-socks"><div class="pct"><span class="n">20%</span><span class="o" data-i18n="tier.off">off</span></div><div class="tmodels" data-i18n-html="tier.lsocks">All socks: Oleno, Barefootinc JP, Vibram FiveFingers</div></div>
           <p class="lnote" data-i18n="lineup.note">Sale prices are on the sheet; tap it to zoom in. Sizes and colors are limited to warehouse stock, so come early for the pair you want.</p>
-          <ul class="notes" data-i18n-html="lineup.notes"><li>Discounts apply to selected colors only.</li><li>Sale prices are shown on the tags at the sale.</li><li>Stock is what is in the warehouse: once a size is gone, it is gone.</li><li>Models marked ★ have limited sizes.</li></ul>
+          <ul class="notes" data-i18n-html="lineup.notes"><li>Discounts apply to selected colors only.</li><li>Sale prices are shown on the tags at the sale.</li><li>Stock is what is in the warehouse: once a size is gone, it is gone.</li><li>Models marked <span class="star">★</span> have limited sizes.</li></ul>
         </div>
       </div>
     </div>
@@ -1256,11 +1258,11 @@
         "lineup.note": "Sale prices are on the sheet; tap it to zoom in. Sizes and colors are limited to warehouse stock, so come early for the pair you want.",
         "tier.off": "off", "lineup.zoom": "Tap to zoom",
         "tier.l50": "Scramkey, Marugo Tabi Shoes",
-        "tier.l40": "★Alitza Loop, ★CVT Hemp, ★CVT Leather, ★KSO ECO, V-Train 2.0, KMD EVO",
-        "tier.l30": "V-Train 2.0, KSO EVO, Groundsplay, V-Trek, Graspifier, KSO, ★V-Run, V-Alpha",
+        "tier.l40": "<span class=\"star\">★</span>Alitza Loop, <span class=\"star\">★</span>CVT Hemp, <span class=\"star\">★</span>CVT Leather, <span class=\"star\">★</span>KSO ECO, V-Train 2.0, KMD EVO",
+        "tier.l30": "V-Train 2.0, KSO EVO, Groundsplay, V-Trek, Graspifier, KSO, <span class=\"star\">★</span>V-Run, V-Alpha",
         "tier.l20": "KSO EVO, Trailope, V-Run, V-Soul",
         "tier.lsocks": "All socks: Oleno, Barefootinc JP, Vibram FiveFingers",
-        "lineup.notes": "<li>Discounts apply to selected colors only.</li><li>Sale prices are shown on the tags at the sale.</li><li>Stock is what is in the warehouse: once a size is gone, it is gone.</li><li>Models marked ★ have limited sizes.</li>",
+        "lineup.notes": "<li>Discounts apply to selected colors only.</li><li>Sale prices are shown on the tags at the sale.</li><li>Stock is what is in the warehouse: once a size is gone, it is gone.</li><li>Models marked <span class=\"star\">★</span> have limited sizes.</li>",
                 "booth.eyebrow": "Three things to do", "booth.title": "On the <span class=\"serif\">day</span>",
         "booth.note": "No appointment, no pressure. Come in your usual shoes and leave the rest to us.",
         "booth.h1": "Come to our office", "booth.p1": "The sale is at our office, Modern Town 2F on Sukhumvit 63 (Ekkamai). Doors open at 10:00, and every size and color is limited to what is on the shelf, so please don't miss this opportunity.",
@@ -1302,21 +1304,21 @@
         "lb.hint": "Tap the image to zoom",
       },
       th: {
-        "nav.sale": "เซลล์", "nav.lineup": "รายการลด", "nav.booth": "ในวันงาน", "nav.access": "วิธีเดินทาง",
+        "nav.sale": "โปรโมชั่น", "nav.lineup": "รายการสินค้า", "nav.booth": "ในวันงาน", "nav.access": "วิธีเดินทาง",
         "hero.edition": "แวร์เฮาส์เซลล์ · ออฟฟิศ Barefootinc",
-        "hero.l2": "<span class=\"hl\">Sale</span>", "hero.l3": "<span class=\"off-block\">เซลล์ครั้งใหญ่ที่สุดของเรา</span>",
+        "hero.l2": "<span class=\"hl\">Sale</span>", "hero.l3": "<span class=\"off-block\">ลดราคาครั้งใหญ่ที่สุดของเรา</span>",
         "hero.badge": "<span class=\"big\">3</span> วันเท่านั้น · ลดสูงสุด 50%", "hero.off": "<small>ลดสูงสุด</small><b>50%</b><small>OFF</small>",
-        "hero.sub": "รุ่นมากกว่า ส่วนลดมากกว่าที่เคย<br />Vibram FiveFingers และอีกมากมาย มาลองสัมผัสรองเท้าเท้าเปล่าได้เลย",
+        "hero.sub": "รุ่นมากกว่า ส่วนลดมากกว่าที่เคย<br />Vibram FiveFingers และอีกมากมาย มาลองสัมผัสรองเท้าเปล่าได้เลย",
         "hero.scroll": "<span>เลื่อนลง</span><i></i>",
         "board.k1": "วันที่", "board.k2": "เวลา", "board.k3": "สถานที่", "board.sub": "(สุขุมวิท 63 เอกมัย) <i>*ออฟฟิศของเรา</i>",
-        "sale.title": "เซลล์ครั้งใหญ่<br /><span class=\"hl\">ที่สุด</span>ของเรา",
-                "sale.desc": "เราเปิดคลังสินค้าที่ออฟฟิศสุขุมวิท 63 และนำ Vibram FiveFingers และแบรนด์อื่น ๆ มาลดราคามากรุ่นกว่าที่เคย ทั้งรุ่นเทรล ลุยน้ำ ยิม วิ่ง และใส่ประจำวัน ทุกคู่ลองสวมได้ และถุงเท้าทุกคู่ในร้านลด 20%",
+        "sale.title": "ลดราคาครั้งใหญ่<br /><span class=\"hl\">ที่สุด</span>ของเรา",
+                "sale.desc": "เราเปิดคลังสินค้าที่ออฟฟิศสุขุมวิท 63 และนำ Vibram FiveFingers และแบรนด์อื่น ๆ มาลดราคามากกว่าที่เคย ทั้งรุ่นเทรล ลุยน้ำ ยิม วิ่ง และใส่ประจำวัน ทุกคู่ลองสวมได้ และถุงเท้าทุกคู่ในร้านลด 20%",
         "brands.shoes": "รองเท้า <small>ลด 20–50%</small>", "brands.socks": "ถุงเท้า <small>ลด 20% ทุกคู่</small>",
-        "brands.vff": "รองเท้าเท้าเปล่าห้านิ้วจากอิตาลี มีทั้งรุ่นเทรล ลุยน้ำ ยิม วิ่ง และใส่ประจำวัน ลดราคาทุกรุ่น",
-        "brands.marugo": "ผู้ผลิตรองเท้าทาบิในญี่ปุ่นตั้งแต่ปี 1919 เบาและยืดหยุ่น ลด 50% ในงานนี้",
+        "brands.vff": "รองเท้าเปล่าห้านิ้วจากอิตาลี มีทั้งรุ่นเทรล ลุยน้ำ ยิม วิ่ง และใส่ประจำวัน ลดราคาทุกรุ่น",
+        "brands.marugo": "แบรนด์รองเท้าทาบิในญี่ปุ่นตั้งแต่ปี 1919 เบาและยืดหยุ่น ลด 50% ในงานนี้",
         "brands.oleno": "ถุงเท้าผลิตในญี่ปุ่น ตั้งแต่วิ่งเทรลจนถึงใส่ในชีวิตประจำวัน มีทั้งแบบห้านิ้วและแบบปกติ",
         "brands.vffsocks": "ถุงเท้าห้านิ้วของ Vibram เอง ตัดเย็บให้พอดีกับ FiveFingers",
-        "brands.bfsocks": "ถุงเท้าห้านิ้วผลิตในญี่ปุ่น สำหรับใส่ประจำวันกับรองเท้าเท้าเปล่าทุกคู่",
+        "brands.bfsocks": "ถุงเท้าห้านิ้วผลิตในญี่ปุ่น สำหรับใส่ประจำวันกับรองเท้าเปล่าทุกคู่",
         "pop.title": "รุ่นขายดี<span class=\"hl\">ก็ลดด้วย</span>",
         "pop.sub": "รุ่นขายดีของเราก็ลดด้วย มีไซซ์ให้เลือกหลากหลาย",
         "pop.vrun": "<strong class=\"muted\">ผู้ชาย</strong><span class=\"nw\">M41–43</span>, <span class=\"nw\">M45–48</span>", "pop.ksoevo": "<strong>ครบทุกไซซ์</strong><span class=\"nw\">M39–48</span> · <span class=\"nw\">W35–42</span>",
@@ -1324,19 +1326,19 @@
         "pop.vsoulc": "Purple · Silver · Nude", "pop.vsoul": "<strong class=\"muted\">สต็อกในงาน</strong>ไซซ์และจำนวนคู่ที่มีในงาน", "pop.nude": "<b>Nude</b>W36–41 ไซซ์ละ 1 คู่",
         "stat.k1": "ลดสูงสุด", "stat.u2": "รุ่น", "stat.k2": "ร่วมรายการ", "stat.u3": "วัน", "stat.k3": "19–21 พฤศจิกายน", "stat.k4": "ถุงเท้าทุกคู่",
         "lineup.eyebrow": "รายการลดราคา", "lineup.title": "มีอะไร<span class=\"serif\">ลดบ้าง</span>",
-        "lineup.note": "ราคาเซลล์อยู่ในภาพ แตะเพื่อขยายดู ไซซ์และสีมีเท่าที่อยู่ในคลัง มาแต่เช้าเพื่อคู่ที่คุณต้องการ",
+        "lineup.note": "แตะภาพเพื่อขยายดูราคาลดในภาพได้ ไซซ์และสีมีจำกัด มาก่อนได้ก่อน",
         "tier.off": "ลด", "lineup.zoom": "แตะเพื่อขยาย",
         "tier.l50": "Scramkey, Marugo Tabi Shoes",
-        "tier.l40": "★Alitza Loop, ★CVT Hemp, ★CVT Leather, ★KSO ECO, V-Train 2.0, KMD EVO",
-        "tier.l30": "V-Train 2.0, KSO EVO, Groundsplay, V-Trek, Graspifier, KSO, ★V-Run, V-Alpha",
+        "tier.l40": "<span class=\"star\">★</span>Alitza Loop, <span class=\"star\">★</span>CVT Hemp, <span class=\"star\">★</span>CVT Leather, <span class=\"star\">★</span>KSO ECO, V-Train 2.0, KMD EVO",
+        "tier.l30": "V-Train 2.0, KSO EVO, Groundsplay, V-Trek, Graspifier, KSO, <span class=\"star\">★</span>V-Run, V-Alpha",
         "tier.l20": "KSO EVO, Trailope, V-Run, V-Soul",
         "tier.lsocks": "ถุงเท้าทุกคู่: Oleno, Barefootinc JP, Vibram FiveFingers",
-        "lineup.notes": "<li>ส่วนลดใช้กับสีที่ร่วมรายการเท่านั้น</li><li>ราคาเซลล์แสดงบนป้ายสินค้าในวันงาน</li><li>สินค้ามีเท่าที่อยู่ในคลัง ไซซ์ไหนหมดคือหมด</li><li>รุ่นที่มีเครื่องหมาย ★ มีไซซ์จำกัด</li>",
+        "lineup.notes": "<li>ส่วนลดใช้กับสีที่ร่วมรายการเท่านั้น</li><li>ราคาเซลล์แสดงบนป้ายสินค้าในวันงาน</li><li>สินค้าตรงจากคลังหลัก หมดแล้วหมดเลย</li><li>รุ่นที่มีเครื่องหมาย <span class=\"star\">★</span> มีไซซ์จำกัด</li>",
                 "booth.eyebrow": "สามสิ่งที่ควรทำ", "booth.title": "ใน<span class=\"serif\">วันงาน</span>",
         "booth.note": "ไม่ต้องนัด ไม่มีการกดดัน ใส่รองเท้าคู่เดิมมาได้เลย ที่เหลือให้เราจัดการ",
-        "booth.h1": "มาที่ออฟฟิศของเรา", "booth.p1": "งานจัดที่ออฟฟิศของเรา โมเดิร์นทาวน์ ชั้น 2 สุขุมวิท 63 (เอกมัย) เปิดประตู 10:00 ทุกไซซ์และทุกสีมีเท่าที่อยู่บนชั้น อย่าพลาดโอกาสนี้",
-        "booth.h2": "ลองก่อนซื้อ", "booth.p2": "ไซซ์รองเท้าเท้าเปล่ามักไม่ตรงกับไซซ์ที่คุณใส่ประจำ และสินค้าลดราคาเปลี่ยนไม่ได้ ทีมงานจะวัดเท้าและช่วยเลือกคู่ที่พอดีให้",
-        "booth.h3": "ถามวิธีเริ่มต้น", "booth.p3": "เพิ่งเริ่มใส่รองเท้าเท้าเปล่า? เปลี่ยนเร็วเกินไปมักทำให้น่องตึง เราจะแนะนำว่าช่วงแรกควรใส่มากน้อยแค่ไหน",
+        "booth.h1": "มาที่ออฟฟิศของเรา", "booth.p1": "งานจัดที่ออฟฟิศของเรา โมเดอร์น ทาวน์ ชั้น 2 สุขุมวิท 63 (เอกมัย) งานเริ่ม 10:00 ทุกไซซ์และทุกสีมีเท่าที่อยู่บนชั้น อย่าพลาดโอกาสนี้",
+        "booth.h2": "ลองก่อนซื้อ", "booth.p2": "ไซซ์รองเท้าเปล่ามักไม่ตรงกับไซซ์ที่คุณใส่ประจำ และสินค้าลดราคาเปลี่ยนไม่ได้ ทีมงานจะวัดเท้าและช่วยเลือกคู่ที่พอดีให้",
+        "booth.h3": "ถามวิธีเริ่มต้น", "booth.p3": "เพิ่งเริ่มใส่รองเท้าเปล่า? เปลี่ยนเร็วเกินไปมักทำให้น่องตึง เราจะแนะนำว่าช่วงแรกควรใส่มากน้อยแค่ไหน",
         "booth.care": "<strong>ค่อยเป็นค่อยไป</strong> เท้าของคุณอยู่ในรองเท้าพื้นนุ่มมาหลายปี เริ่มจากใส่ช่วงสั้น ๆ บนพื้นเรียบ แล้วค่อยเพิ่มเวลาและจำนวนวันตามจังหวะของตัวเอง ถ้าเจ็บมากกว่าล้า ให้หยุดสักสองสามวัน ถอยกลับไปหนึ่งขั้น แล้วถามเราหรือผู้เชี่ยวชาญ",
         "faq.eyebrow": "เรื่องน่ารู้", "faq.title": "คำถาม <span class=\"serif\">ที่ได้ยินบ่อย</span>", "faq.note": "มีคำถามอื่น ถามทีมงานในงานหรือทัก LINE หาเราได้เลย",
         "faq.q0": "มีรุ่นและไซซ์อะไรบ้าง", "faq.a0": "ทุกรุ่นที่อยู่ในหน้านี้ จนกว่าสินค้าจะหมด นี่คือแวร์เฮาส์เซลล์ ไซซ์และสีจึงมีจำกัด มาก่อนได้ก่อน",
@@ -1346,17 +1348,17 @@
         "faq.q7": "ชำระเงินได้ช่องทางไหนบ้าง", "faq.a7": "รับชำระด้วยเงินสด สแกน QR ธนาคารไทย และบัตรเครดิต",
         "faq.q8": "ซื้อออนไลน์แทนได้ไหม", "faq.a8": "ราคาแวร์เฮาส์เซลล์มีเฉพาะสามวันนี้ที่ออฟฟิศเท่านั้น มีคำถามก่อนมา ทัก LINE หาเราได้เลย",
         "access.eyebrow": "วิธีเดินทาง", "access.title": "ออฟฟิศของเรา <span class=\"serif\">สุขุมวิท 63</span>",
-        "access.k1": "สถานที่", "access.v1": "ออฟฟิศ Barefootinc (Thailand)<br>87/34 โมเดิร์นทาวน์ ชั้น 2 สุขุมวิท 63 (เอกมัย) แขวงคลองตันเหนือ เขตวัฒนา กรุงเทพฯ",
+        "access.k1": "สถานที่", "access.v1": "ออฟฟิศ Barefootinc (Thailand)<br>87/34 โมเดอร์น ทาวน์ ชั้น 2 สุขุมวิท 63 (เอกมัย) แขวงคลองตันเหนือ เขตวัฒนา กรุงเทพฯ",
         "access.k2": "วันที่", "access.v2": "วันพฤหัสบดีที่ 19 – วันเสาร์ที่ 21 พฤศจิกายน 2569",
         "access.k3": "เวลา", "access.v3": "10:00 – 18:00",
-        "access.k4": "รถไฟฟ้า", "access.v4": "BTS เอกมัย แล้วเข้าซอยสุขุมวิท 63 (ถนนเอกมัย) มาที่โมเดิร์นทาวน์",
-        "access.k5": "รถยนต์", "access.v5": "โมเดิร์นทาวน์ ถนนเอกมัย (สุขุมวิท 63) มีที่จอดรถ",
-        "access.officenote": "<strong>เป็นออฟฟิศ ไม่ใช่หน้าร้าน</strong> มองหาป้าย Barefootinc ที่โมเดิร์นทาวน์แล้วเดินเข้ามาได้เลย หาไม่เจอทัก LINE หาเรา",
+        "access.k4": "รถไฟฟ้า", "access.v4": "BTS เอกมัย แล้วเข้าซอยสุขุมวิท 63 (ถนนเอกมัย) มาที่โมเดอร์น ทาวน์",
+        "access.k5": "รถยนต์", "access.v5": "โมเดอร์น ทาวน์ ถนนเอกมัย (สุขุมวิท 63) มีที่จอดรถ",
+        "access.officenote": "<strong>เป็นออฟฟิศ ไม่ใช่หน้าร้าน</strong> มองหาป้าย Barefootinc ที่โมเดอร์น ทาวน์แล้วเดินเข้ามาได้เลย หาไม่เจอทัก LINE หาเรา",
         "access.mapopen": "เปิดใน Google Maps", "access.map": "ดูแผนที่", "access.mapnote": "ซูมแผนที่ได้ด้วยการจีบนิ้วหรือสกรอลล์",
         "access.kr": "วิดีโอเส้นทาง",
         "access.r1": "จากทางเข้าด้านหน้า", "access.r1d": "ขึ้นบันไดและบันไดเลื่อนไปชั้น 2 แล้วเดินตามทางเดินมาที่ออฟฟิศ",
         "access.r2": "จากที่จอดรถ", "access.r2d": "ขึ้นลิฟต์ไปชั้น P6 (Office Plaza) แล้วเดินตามทางเดินมาที่ออฟฟิศ",
-        "foot.tag": "ร้านรองเท้าเท้าเปล่าโดยเฉพาะ · กรุงเทพฯ",
+        "foot.tag": "ร้านรองเท้าเปล่าโดยเฉพาะ · กรุงเทพฯ",
         "foot.top": "กลับขึ้นด้านบน",
         "mbar.a": "19–21 พ.ย. · ลดสูงสุด 50%", "mbar.b": "10:00–18:00 · เอกมัย",
         "nav.why": "ทำไมต้องเท้าเปล่า",
