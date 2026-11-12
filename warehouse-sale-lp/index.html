@@ -750,31 +750,39 @@
       .pcard:hover .pimg img, .vsoul-card figure:hover .pimg img { transform: scale(1.14) rotate(-5deg); }
       .pop-grid:has(.pcard:hover) .pcard:not(:hover), .vsoul-card:has(figure:hover) figure:not(:hover) { opacity: .5; }
     }
-    /* phones: the block pins to the screen and shows one model at a time as you scroll */
-    .pop-track { position: relative; }
-    .pop-sticky { position: sticky; top: 0; height: 100svh; display: flex; flex-direction: column; justify-content: center; gap: .9rem; padding: 4.2rem 0 5.6rem; }
-    .pop-stage { position: relative; flex: 1; min-height: 0; }
-    .pop-stage > * { position: absolute; inset: 0; margin: 0 !important; display: flex !important; flex-direction: column; justify-content: center; opacity: 0; visibility: hidden; transform: translateY(46px) scale(.86); transition: opacity .45s ease, transform .55s cubic-bezier(.2,.8,.2,1.1), visibility 0s linear .55s; border: 0 !important; background: transparent !important; box-shadow: none !important; }
-    .pop-stage > .is-on { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
-    .pop-stage > .is-before { transform: translateY(-46px) scale(.86); }
-    .pop-stage .pcard .pimg { aspect-ratio: 4 / 3; width: 100%; padding: 0; }
-    .pop-stage .pcard .pbody { padding: .4rem 0 0; align-items: center; text-align: center; gap: .3rem; }
-    .pop-stage .pcard .pname { font-size: 2.2rem; }
-    .pop-stage .pcard .pcolor { font-size: .8rem; }
-    .pop-stage .psize { font-size: 1.15rem; margin-top: .5rem; }
-    .pop-stage .psize strong { font-size: .9rem; padding: .2rem .6rem; }
-    .pop-stage > .is-on .pimg img { animation: popShoe .8s cubic-bezier(.2,.8,.2,1.25) both; }
-    .pop-stage .vsoul-card { gap: .2rem; }
-    .pop-stage .vsoul-card .pbody { border: 0; padding: 0 0 .4rem; align-items: center; text-align: center; }
-    .pop-stage .vsoul-card .pname { font-size: 2rem; }
-    .pop-stage .vsoul-card figure { background: #fff !important; border: 1px solid rgba(27,26,31,.12) !important; grid-template-columns: 34% minmax(0, 1fr); }
-    .pop-stage .vsoul-card figure + figure { border-top: 0 !important; }
-    .pop-stage .vsoul-card figcaption { font-size: .9rem; }
-    .pop-meter { display: flex; align-items: center; gap: .8rem; font-family: var(--display); font-size: .78rem; letter-spacing: .14em; color: var(--mute); }
-    .pop-meter b { color: var(--ink); font-weight: 700; }
-    .pop-meter .bar { flex: 1; height: 3px; background: rgba(27,26,31,.12); position: relative; overflow: hidden; }
-    .pop-meter .bar i { position: absolute; inset: 0; background: var(--t21-m); transform-origin: left; transform: scaleX(var(--p, 0)); }
-    @keyframes popShoe { 0% { transform: translateX(-16%) rotate(-9deg) scale(.88); } 60% { transform: translateX(3%) rotate(2deg) scale(1.06); } 100% { transform: rotate(-3deg) scale(1.02); } }
+    /* phones: a list of model names; the one reaching the middle of the screen opens up with its photo and sizes */
+    @media (max-width: 640px) {
+      .pop.acc .pop-grid { gap: 0; margin-top: .4rem; overflow-anchor: none; }
+      .pop.acc .pcard, .pop.acc .vsoul-card { display: flex; flex-direction: column; align-items: stretch; border: 0; border-bottom: 1px solid rgba(27,26,31,.14); background: transparent; transform: none; box-shadow: none; overflow-anchor: none; }
+      .pop.acc .vsoul-card { margin-top: 0; }
+      .pop.acc .pcard .pbody, .pop.acc .vsoul-card .pbody { display: contents; }
+      .pop.acc .pname { order: 0; padding: 1.05rem 0 1.05rem 0; font-size: 1.7rem; color: rgba(27,26,31,.32); display: flex; align-items: center; justify-content: space-between; transition: color .4s ease, font-size .45s ease, padding .45s ease; }
+      .pop.acc .pname::after { content: ""; width: .55rem; height: .55rem; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg) translateY(-25%); transition: transform .4s ease; }
+      .pop.acc .pimg { order: 1; }
+      .pop.acc .pcolor { order: 2; }
+      .pop.acc .psize { order: 3; }
+      .pop.acc .vsoul-card figure { order: 4; }
+      .pop.acc .pimg, .pop.acc .pcolor, .pop.acc .psize, .pop.acc .vsoul-card figure { max-height: 0; opacity: 0; overflow: hidden; margin: 0; padding-top: 0; padding-bottom: 0; transition: max-height .55s cubic-bezier(.2,.8,.2,1), opacity .4s ease, padding .45s ease, margin .45s ease; }
+      .pop.acc .pcard .pimg { aspect-ratio: auto; width: 100%; padding-left: 0; padding-right: 0; }
+      .pop.acc .pcard .pimg img { width: 100%; height: 190px; object-fit: contain; transform: scale(.82); transition: transform .6s cubic-bezier(.2,.8,.2,1.25); }
+      .pop.acc .vsoul-card figure { border: 0 !important; background: transparent; grid-template-columns: 34% minmax(0, 1fr); gap: .6rem; }
+      .pop.acc .vsoul-card figure .pimg { order: 0; max-height: none; opacity: 1; padding: .1rem 0; }
+      .pop.acc .vsoul-card figure figcaption { order: 1; padding: 0; font-size: .86rem; }
+      /* open */
+      .pop.acc .is-open .pname { color: var(--ink); font-size: 2.3rem; padding-bottom: .3rem; }
+      .pop.acc .is-open .pname::after { color: var(--t21-m); transform: rotate(225deg) translateY(-25%); }
+      .pop.acc .is-open .pimg { max-height: 200px; opacity: 1; }
+      .pop.acc .is-open .pcard-img, .pop.acc .is-open .pimg img { transform: scale(1) rotate(-3deg); }
+      .pop.acc .is-open .pcolor { max-height: 2rem; opacity: 1; padding-top: .2rem; }
+      .pop.acc .is-open .psize { max-height: 4rem; opacity: 1; margin-top: .45rem; padding-bottom: 1.2rem; font-size: 1.05rem; }
+      .pop.acc .is-open .psize strong { font-size: .86rem; padding: .18rem .55rem; }
+      .pop.acc .vsoul-card.is-open figure { max-height: 120px; opacity: 1; padding-top: .15rem; padding-bottom: .15rem; }
+      .pop.acc .vsoul-card.is-open figure:last-of-type { padding-bottom: 1.1rem; }
+      .pop.acc .vsoul-card.is-open .psize { padding-bottom: .5rem; }
+    }
+    @media (max-width: 640px) and (prefers-reduced-motion: reduce) {
+      .pop.acc * { transition: none !important; }
+    }
     .brands { margin-top: clamp(2.4rem, 5vw, 4rem); display: grid; grid-template-columns: 2fr 3fr; gap: clamp(1.4rem, 3vw, 3rem); }
     .bgroup h3 { font-family: var(--display); font-weight: 600; font-size: .78rem; letter-spacing: .26em; text-transform: uppercase; color: var(--mute); padding-bottom: .6rem; border-bottom: 2px solid var(--ink); margin-bottom: .2rem; display: flex; align-items: center; gap: .6rem; }
     .bgroup h3 small { font-weight: 500; letter-spacing: .1em; color: var(--t21-m); }
@@ -1364,33 +1372,30 @@
       if (document.body.classList.contains("is-ready")) go(); else window.addEventListener("hero:go", go, { once: true });
     })();
 
-    /* popular: on phones, pin the block and show one model at a time while scrolling */
+    /* popular: on phones, open the model whose name reaches the middle of the screen */
     (function () {
-      if (fine || reduce || !matchMedia("(max-width: 640px)").matches) return;
+      const mq = matchMedia("(max-width: 640px)");
       const box = document.getElementById("popular");
-      const grid = box.querySelector(".pop-grid"), vs = box.querySelector(".vsoul-card");
-      const slides = [...grid.querySelectorAll(".pcard"), vs];
-      const n = slides.length;
-      const track = document.createElement("div"); track.className = "pop-track";
-      track.style.height = `calc(${n} * 62svh + 100svh)`;
-      track.innerHTML = '<div class="pop-sticky"><div class="pop-stage"></div><div class="pop-meter"><span><b>1</b> / ' + n + '</span><span class="bar"><i></i></span></div></div>';
-      const stage = track.querySelector(".pop-stage"), count = track.querySelector(".pop-meter b"), bar = track.querySelector(".pop-meter .bar");
-      slides.forEach(el => { el.classList.add("in"); stage.appendChild(el); });
-      grid.replaceWith(track);
+      const items = [...box.querySelectorAll(".pcard"), box.querySelector(".vsoul-card")];
+      const n = items.length;
       let cur = -1, ticking = false;
       const update = () => {
         ticking = false;
-        const r = track.getBoundingClientRect(), span = r.height - innerHeight;
-        const p = Math.min(1, Math.max(0, -r.top / span));
-        const i = Math.min(n - 1, Math.floor(p * n));
-        bar.style.setProperty("--p", ((i + 1) / n).toFixed(3));
+        if (!mq.matches) return;
+        const first = items[0].getBoundingClientRect().top, last = items[n - 1].getBoundingClientRect().bottom;
+        const p = (innerHeight * 0.5 - first) / Math.max(1, last - first);
+        const i = Math.min(n - 1, Math.max(0, Math.floor(p * n)));
         if (i === cur) return;
-        slides.forEach((el, k) => { el.classList.toggle("is-on", k === i); el.classList.toggle("is-before", k < i); });
-        count.textContent = i + 1; cur = i;
+        items.forEach((el, k) => el.classList.toggle("is-open", k === i));
+        cur = i;
       };
+      const apply = () => {
+        box.classList.toggle("acc", mq.matches);
+        if (!mq.matches) { items.forEach(el => el.classList.remove("is-open")); cur = -1; } else update();
+      };
+      (mq.addEventListener ? mq.addEventListener("change", apply) : mq.addListener(apply));
       addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-      addEventListener("resize", update);
-      update();
+      apply();
     })();
 
     (function () {
