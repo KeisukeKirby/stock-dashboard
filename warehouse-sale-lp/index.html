@@ -678,7 +678,7 @@
     }
 
     /* "biggest sale ever" + brands */
-    .sale { background: #fff; color: var(--ink); padding: clamp(4.5rem, 10vw, 8rem) 0; position: relative; overflow: hidden; }
+    .sale { background: #fff; color: var(--ink); padding: clamp(4.5rem, 10vw, 8rem) 0; position: relative; overflow: hidden; overflow: clip; }
     .sale .brand-logo { height: clamp(22px, 3vw, 30px); width: auto; margin-bottom: 1.2rem; }
     .sale-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.4rem, 4vw, 4.5rem); align-items: end; }
     .sale h2 { font-size: clamp(2.6rem, 6.4vw, 5.6rem); text-transform: uppercase; font-weight: 700; letter-spacing: -.02em; }
@@ -740,26 +740,41 @@
       .vsoul-card figure { grid-template-columns: 36% minmax(0, 1fr); }
       .vsoul-card figure + figure { border-left: 0; border-top: 1px solid rgba(27,26,31,.1); }
     }
-    /* popular: interaction (PC hover pop-out / phone scroll spotlight) */
-    .pcard, .vsoul-card figure { position: relative; overflow: hidden; background: #fff; transition: transform .38s cubic-bezier(.2,.8,.2,1.15), box-shadow .38s ease, opacity .3s ease, border-color .3s ease; }
+    /* popular: interaction (PC hover pop-out / phone scroll-pinned showcase) */
+    .psize .nw { white-space: nowrap; }
+    .pcard, .vsoul-card figure { position: relative; background: #fff; transition: transform .38s cubic-bezier(.2,.8,.2,1.1), box-shadow .38s ease, opacity .3s ease, border-color .3s ease; }
+    .pcard .pimg, .vsoul-card figure .pimg { overflow: hidden; }
     .pcard .pimg img, .vsoul-card figure .pimg img { transition: transform .45s cubic-bezier(.2,.8,.2,1.2); }
-    .pcard .psize strong, .vsoul-card .psize strong { transition: transform .3s ease; }
     @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-      .pcard:hover, .vsoul-card figure:hover { transform: scale(1.13); z-index: 4; border-color: var(--t21-m); box-shadow: 0 22px 48px -14px rgba(27,26,31,.38), 0 0 0 2px var(--t21-m); cursor: default; }
-      .pcard:hover .pimg img, .vsoul-card figure:hover .pimg img { transform: scale(1.12) rotate(-5deg); }
-      .pcard:hover .psize strong { transform: scale(1.08); }
+      .pcard:hover, .vsoul-card figure:hover { transform: scale(1.08); z-index: 4; border-color: var(--t21-m); box-shadow: 0 22px 48px -14px rgba(27,26,31,.38), 0 0 0 2px var(--t21-m); }
+      .pcard:hover .pimg img, .vsoul-card figure:hover .pimg img { transform: scale(1.14) rotate(-5deg); }
       .pop-grid:has(.pcard:hover) .pcard:not(:hover), .vsoul-card:has(figure:hover) figure:not(:hover) { opacity: .5; }
     }
-    @media (hover: none) and (prefers-reduced-motion: no-preference) {
-      .pcard::before, .vsoul-card figure::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; z-index: 2; background: var(--t21-m); transform: scaleY(0); transform-origin: top; transition: transform .4s ease; }
-      .pcard.is-focus, .vsoul-card figure.is-focus { transform: scale(1.035); z-index: 2; box-shadow: 0 14px 30px -12px rgba(27,26,31,.35); }
-      .pcard.is-focus::before, .vsoul-card figure.is-focus::before { transform: scaleY(1); }
-      .pcard.is-focus .pimg img, .vsoul-card figure.is-focus .pimg img { animation: popShoe .7s cubic-bezier(.2,.8,.2,1.3) both; }
-      .pcard.is-focus .psize strong { animation: popTag .6s .15s ease both; }
-      .pcard:active, .vsoul-card figure:active { transform: scale(.98); transition-duration: .12s; }
-      @keyframes popShoe { 0% { transform: translateX(-14%) rotate(-8deg) scale(.9); } 60% { transform: translateX(3%) rotate(2deg) scale(1.08); } 100% { transform: rotate(-3deg) scale(1.05); } }
-      @keyframes popTag { 0%, 100% { transform: scale(1); } 45% { transform: scale(1.15); } }
-    }
+    /* phones: the block pins to the screen and shows one model at a time as you scroll */
+    .pop-track { position: relative; }
+    .pop-sticky { position: sticky; top: 0; height: 100svh; display: flex; flex-direction: column; justify-content: center; gap: .9rem; padding: 4.2rem 0 5.6rem; }
+    .pop-stage { position: relative; flex: 1; min-height: 0; }
+    .pop-stage > * { position: absolute; inset: 0; margin: 0 !important; display: flex !important; flex-direction: column; justify-content: center; opacity: 0; visibility: hidden; transform: translateY(46px) scale(.86); transition: opacity .45s ease, transform .55s cubic-bezier(.2,.8,.2,1.1), visibility 0s linear .55s; border: 0 !important; background: transparent !important; box-shadow: none !important; }
+    .pop-stage > .is-on { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+    .pop-stage > .is-before { transform: translateY(-46px) scale(.86); }
+    .pop-stage .pcard .pimg { aspect-ratio: 4 / 3; width: 100%; padding: 0; }
+    .pop-stage .pcard .pbody { padding: .4rem 0 0; align-items: center; text-align: center; gap: .3rem; }
+    .pop-stage .pcard .pname { font-size: 2.2rem; }
+    .pop-stage .pcard .pcolor { font-size: .8rem; }
+    .pop-stage .psize { font-size: 1.15rem; margin-top: .5rem; }
+    .pop-stage .psize strong { font-size: .9rem; padding: .2rem .6rem; }
+    .pop-stage > .is-on .pimg img { animation: popShoe .8s cubic-bezier(.2,.8,.2,1.25) both; }
+    .pop-stage .vsoul-card { gap: .2rem; }
+    .pop-stage .vsoul-card .pbody { border: 0; padding: 0 0 .4rem; align-items: center; text-align: center; }
+    .pop-stage .vsoul-card .pname { font-size: 2rem; }
+    .pop-stage .vsoul-card figure { background: #fff !important; border: 1px solid rgba(27,26,31,.12) !important; grid-template-columns: 34% minmax(0, 1fr); }
+    .pop-stage .vsoul-card figure + figure { border-top: 0 !important; }
+    .pop-stage .vsoul-card figcaption { font-size: .9rem; }
+    .pop-meter { display: flex; align-items: center; gap: .8rem; font-family: var(--display); font-size: .78rem; letter-spacing: .14em; color: var(--mute); }
+    .pop-meter b { color: var(--ink); font-weight: 700; }
+    .pop-meter .bar { flex: 1; height: 3px; background: rgba(27,26,31,.12); position: relative; overflow: hidden; }
+    .pop-meter .bar i { position: absolute; inset: 0; background: var(--t21-m); transform-origin: left; transform: scaleX(var(--p, 0)); }
+    @keyframes popShoe { 0% { transform: translateX(-16%) rotate(-9deg) scale(.88); } 60% { transform: translateX(3%) rotate(2deg) scale(1.06); } 100% { transform: rotate(-3deg) scale(1.02); } }
     .brands { margin-top: clamp(2.4rem, 5vw, 4rem); display: grid; grid-template-columns: 2fr 3fr; gap: clamp(1.4rem, 3vw, 3rem); }
     .bgroup h3 { font-family: var(--display); font-weight: 600; font-size: .78rem; letter-spacing: .26em; text-transform: uppercase; color: var(--mute); padding-bottom: .6rem; border-bottom: 2px solid var(--ink); margin-bottom: .2rem; display: flex; align-items: center; gap: .6rem; }
     .bgroup h3 small { font-weight: 500; letter-spacing: .1em; color: var(--t21-m); }
@@ -906,19 +921,19 @@
         <div class="pop-grid" data-reveal>
           <article class="pcard">
             <div class="pimg"><img src="images/popular/c-vrun-blackblue.jpg" alt="Vibram FiveFingers V-Run, Black / Blue" width="600" height="400" loading="lazy" decoding="async" /></div>
-            <div class="pbody"><div class="pname">V-Run</div><div class="pcolor">Black / Blue</div><div class="psize" data-i18n-html="pop.vrun"><strong class="muted">Men</strong>M41–43, M45–48</div></div>
+            <div class="pbody"><div class="pname">V-Run</div><div class="pcolor">Black / Blue</div><div class="psize" data-i18n-html="pop.vrun"><strong class="muted">Men</strong><span class="nw">M41–43</span>, <span class="nw">M45–48</span></div></div>
           </article>
           <article class="pcard">
             <div class="pimg"><img src="images/popular/c-ksoevo-black.jpg" alt="Vibram FiveFingers KSO EVO, Black" width="600" height="400" loading="lazy" decoding="async" /></div>
-            <div class="pbody"><div class="pname">KSO EVO</div><div class="pcolor">Black</div><div class="psize" data-i18n-html="pop.ksoevo"><strong>All sizes</strong>M39–48 · W35–42</div></div>
+            <div class="pbody"><div class="pname">KSO EVO</div><div class="pcolor">Black</div><div class="psize" data-i18n-html="pop.ksoevo"><strong>All sizes</strong><span class="nw">M39–48</span> · <span class="nw">W35–42</span></div></div>
           </article>
           <article class="pcard">
             <div class="pimg"><img src="images/popular/c-vtrain-black.jpg" alt="Vibram FiveFingers V-Train 2.0, Black / Black" width="600" height="400" loading="lazy" decoding="async" /></div>
-            <div class="pbody"><div class="pname">V-Train 2.0</div><div class="pcolor">Black / Black</div><div class="psize" data-i18n-html="pop.vtrain"><strong>All sizes</strong>M39–47 · W36–42</div></div>
+            <div class="pbody"><div class="pname">V-Train 2.0</div><div class="pcolor">Black / Black</div><div class="psize" data-i18n-html="pop.vtrain"><strong>All sizes</strong><span class="nw">M39–47</span> · <span class="nw">W36–42</span></div></div>
           </article>
           <article class="pcard">
             <div class="pimg"><img src="images/popular/c-vtrek-black.jpg" alt="Vibram FiveFingers V-Trek, Black / Black" width="600" height="400" loading="lazy" decoding="async" /></div>
-            <div class="pbody"><div class="pname">V-Trek</div><div class="pcolor">Black / Black</div><div class="psize" data-i18n-html="pop.vtrek"><strong class="muted">Men</strong>M41–47</div></div>
+            <div class="pbody"><div class="pname">V-Trek</div><div class="pcolor">Black / Black</div><div class="psize" data-i18n-html="pop.vtrek"><strong class="muted">Men</strong><span class="nw">M41–47</span></div></div>
           </article>
         </div>
         <div class="vsoul-card" data-reveal>
@@ -1198,8 +1213,8 @@
         "brands.bfsocks": "Five-toe socks made in Japan, for everyday wear with any barefoot shoe.",
         "pop.title": "Best sellers <span class=\"hl\">on sale too</span>",
         "pop.sub": "Our best sellers are in the sale too, in a wide range of sizes.",
-        "pop.vrun": "<strong class=\"muted\">Men</strong>M41–43, M45–48", "pop.ksoevo": "<strong>All sizes</strong>M39–48 · W35–42",
-        "pop.vtrain": "<strong>All sizes</strong>M39–47 · W36–42", "pop.vtrek": "<strong class=\"muted\">Men</strong>M41–47",
+        "pop.vrun": "<strong class=\"muted\">Men</strong><span class=\"nw\">M41–43</span>, <span class=\"nw\">M45–48</span>", "pop.ksoevo": "<strong>All sizes</strong><span class=\"nw\">M39–48</span> · <span class=\"nw\">W35–42</span>",
+        "pop.vtrain": "<strong>All sizes</strong><span class=\"nw\">M39–47</span> · <span class=\"nw\">W36–42</span>", "pop.vtrek": "<strong class=\"muted\">Men</strong><span class=\"nw\">M41–47</span>",
         "pop.vsoulc": "Purple · Silver · Nude", "pop.vsoul": "<strong class=\"muted\">Event stock</strong>Sizes and pairs at the sale", "pop.nude": "<b>Nude</b>W36–41 ×1 each",
         "stat.k1": "Top discount", "stat.u2": "models", "stat.k2": "On sale", "stat.u3": "days", "stat.k3": "19–21 November", "stat.k4": "All socks",
         "lineup.eyebrow": "Discount lineup", "lineup.title": "What's <span class=\"serif\">on sale</span>",
@@ -1266,8 +1281,8 @@
         "brands.bfsocks": "ถุงเท้าห้านิ้วผลิตในญี่ปุ่น สำหรับใส่ประจำวันกับรองเท้าเท้าเปล่าทุกคู่",
         "pop.title": "รุ่นขายดี<span class=\"hl\">ก็ลดด้วย</span>",
         "pop.sub": "รุ่นขายดีของเราก็ลดด้วย มีไซซ์ให้เลือกหลากหลาย",
-        "pop.vrun": "<strong class=\"muted\">ผู้ชาย</strong>M41–43, M45–48", "pop.ksoevo": "<strong>ครบทุกไซซ์</strong>M39–48 · W35–42",
-        "pop.vtrain": "<strong>ครบทุกไซซ์</strong>M39–47 · W36–42", "pop.vtrek": "<strong class=\"muted\">ผู้ชาย</strong>M41–47",
+        "pop.vrun": "<strong class=\"muted\">ผู้ชาย</strong><span class=\"nw\">M41–43</span>, <span class=\"nw\">M45–48</span>", "pop.ksoevo": "<strong>ครบทุกไซซ์</strong><span class=\"nw\">M39–48</span> · <span class=\"nw\">W35–42</span>",
+        "pop.vtrain": "<strong>ครบทุกไซซ์</strong><span class=\"nw\">M39–47</span> · <span class=\"nw\">W36–42</span>", "pop.vtrek": "<strong class=\"muted\">ผู้ชาย</strong><span class=\"nw\">M41–47</span>",
         "pop.vsoulc": "Purple · Silver · Nude", "pop.vsoul": "<strong class=\"muted\">สต็อกในงาน</strong>ไซซ์และจำนวนคู่ที่มีในงาน", "pop.nude": "<b>Nude</b>W36–41 ไซซ์ละ 1 คู่",
         "stat.k1": "ลดสูงสุด", "stat.u2": "รุ่น", "stat.k2": "ร่วมรายการ", "stat.u3": "วัน", "stat.k3": "19–21 พฤศจิกายน", "stat.k4": "ถุงเท้าทุกคู่",
         "lineup.eyebrow": "รายการลดราคา", "lineup.title": "มีอะไร<span class=\"serif\">ลดบ้าง</span>",
@@ -1349,23 +1364,33 @@
       if (document.body.classList.contains("is-ready")) go(); else window.addEventListener("hero:go", go, { once: true });
     })();
 
-    /* popular: on touch screens, spotlight the card in the middle of the screen */
+    /* popular: on phones, pin the block and show one model at a time while scrolling */
     (function () {
-      if (fine || reduce || !("IntersectionObserver" in window)) return;
-      const items = [...document.querySelectorAll("#popular .pcard, #popular .vsoul-card figure")];
+      if (fine || reduce || !matchMedia("(max-width: 640px)").matches) return;
       const box = document.getElementById("popular");
-      let on = false, ticking = false, cur = null;
-      const pick = () => {
+      const grid = box.querySelector(".pop-grid"), vs = box.querySelector(".vsoul-card");
+      const slides = [...grid.querySelectorAll(".pcard"), vs];
+      const n = slides.length;
+      const track = document.createElement("div"); track.className = "pop-track";
+      track.style.height = `calc(${n} * 62svh + 100svh)`;
+      track.innerHTML = '<div class="pop-sticky"><div class="pop-stage"></div><div class="pop-meter"><span><b>1</b> / ' + n + '</span><span class="bar"><i></i></span></div></div>';
+      const stage = track.querySelector(".pop-stage"), count = track.querySelector(".pop-meter b"), bar = track.querySelector(".pop-meter .bar");
+      slides.forEach(el => { el.classList.add("in"); stage.appendChild(el); });
+      grid.replaceWith(track);
+      let cur = -1, ticking = false;
+      const update = () => {
         ticking = false;
-        const mid = innerHeight * 0.5;
-        let best = null, bd = Infinity;
-        items.forEach(el => { const r = el.getBoundingClientRect(); const d = Math.abs(r.top + r.height / 2 - mid); if (d < bd) { bd = d; best = el; } });
-        if (best && bd > innerHeight * 0.3) best = null;
-        if (best !== cur) { if (cur) cur.classList.remove("is-focus"); if (best) best.classList.add("is-focus"); cur = best; }
+        const r = track.getBoundingClientRect(), span = r.height - innerHeight;
+        const p = Math.min(1, Math.max(0, -r.top / span));
+        const i = Math.min(n - 1, Math.floor(p * n));
+        bar.style.setProperty("--p", ((i + 1) / n).toFixed(3));
+        if (i === cur) return;
+        slides.forEach((el, k) => { el.classList.toggle("is-on", k === i); el.classList.toggle("is-before", k < i); });
+        count.textContent = i + 1; cur = i;
       };
-      const onScroll = () => { if (on && !ticking) { ticking = true; requestAnimationFrame(pick); } };
-      new IntersectionObserver(es => { on = es[0].isIntersecting; if (on) pick(); else if (cur) { cur.classList.remove("is-focus"); cur = null; } }).observe(box);
-      addEventListener("scroll", onScroll, { passive: true });
+      addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+      addEventListener("resize", update);
+      update();
     })();
 
     (function () {
