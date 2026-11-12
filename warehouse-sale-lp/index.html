@@ -593,6 +593,7 @@
     .hero.mosaic .hero-stage { min-height: calc(100svh - 7.5rem); }
     .hero-mosaic { position: absolute; top: 0; right: 0; bottom: 0; width: 54%; display: grid; grid-template-columns: 1.05fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 4px; background: #fff; }
     .hero-mosaic .t { position: relative; overflow: hidden; margin: 0; background: var(--bone); }
+    .hero-mosaic .t picture { display: block; width: 100%; height: 100%; }
     .hero-mosaic .t img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.06); transition: transform 1.6s var(--ease); }
     .hero-mosaic .t.in img { transform: none; }
     .hero-mosaic .ta { grid-column: 1; grid-row: 1 / 3; }
@@ -603,7 +604,7 @@
     .hero-mosaic .tb img { object-position: 72% 50%; }
     .hero-mosaic .td img { object-position: 50% 62%; }
     .hero-mosaic .tc img { object-position: 50% 50%; }
-    .hero-mosaic .te img { object-position: 32% 50%; }
+    .hero-mosaic .te img { object-position: 50% 55%; }
     .hero-mosaic .tf { display: none; }
     .hero-mosaic::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 10%; z-index: 1; pointer-events: none; background: linear-gradient(90deg, #fff, rgba(255,255,255,0)); }
     .hero-mosaic::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 6rem; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,0)); }
@@ -656,7 +657,8 @@
       .hero-mosaic .tc { grid-column: 1; grid-row: 1 / 3; }
       .hero-mosaic .tb { grid-column: 2; grid-row: 1; }
       .hero-mosaic .td { grid-column: 2; grid-row: 2; }
-      .hero-mosaic .td img { object-position: 50% 62%; }
+      .hero-mosaic .td img { object-position: 50% 68%; }
+      .hero-mosaic .tb img { object-position: 50% 50%; }
       .hero-mosaic .tc img { object-position: 50% 50%; }
       .hero.mosaic .hero-stage { display: contents; min-height: 0; }
       .hero.mosaic .hero-top { order: 2; padding-top: 1.4rem; }
@@ -826,10 +828,10 @@
     <div class="hero-stage">
     <div class="hero-mosaic" id="heroMosaic" aria-label="Vibram FiveFingers in use: Scramkey, KSO EVO, Trailope, V-Run, V-Trek">
       <figure class="t ta"><img src="images/hero/hero-a-v2.jpg" alt="Scramkey in the field" width="720" height="1161" fetchpriority="high" /></figure>
-      <figure class="t tb"><img src="images/hero/hero-b-v3.jpg" alt="KSO EVO sole, stretching" width="900" height="900" fetchpriority="high" /></figure>
+      <figure class="t tb"><picture><source media="(max-width: 900px)" srcset="images/hero/hero-b-sp.jpg" width="1110" height="1070" /><img src="images/hero/hero-b-v3.jpg" alt="KSO EVO sole, stretching" width="900" height="900" fetchpriority="high" /></picture></figure>
       <figure class="t tc"><img src="images/hero/hero-c-v6.jpg" alt="V-Soul in Silver, worn" width="1000" height="1643" /></figure>
-      <figure class="t td"><img src="images/hero/hero-d-v12.jpg" alt="V-Run in Black / Blue on a running track" width="399" height="741" /></figure>
-      <figure class="t te"><img src="images/hero/hero-e-v6.jpg" alt="V-Train 2.0 in Black, worn during a gym session" width="1100" height="1374" loading="lazy" /></figure>
+      <figure class="t td"><picture><source media="(max-width: 900px)" srcset="images/hero/hero-d-sp.jpg" width="589" height="741" /><img src="images/hero/hero-d-v12.jpg" alt="V-Run in Black / Blue on a running track" width="399" height="741" /></picture></figure>
+      <figure class="t te"><img src="images/hero/hero-e-v3.jpg" alt="V-Trek on a forest trail" width="640" height="640" loading="lazy" /></figure>
           </div>
     <div class="hero-grain" aria-hidden="true"></div>
 
