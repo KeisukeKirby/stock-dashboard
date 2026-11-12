@@ -740,6 +740,26 @@
       .vsoul-card figure { grid-template-columns: 36% minmax(0, 1fr); }
       .vsoul-card figure + figure { border-left: 0; border-top: 1px solid rgba(27,26,31,.1); }
     }
+    /* popular: interaction (PC hover pop-out / phone scroll spotlight) */
+    .pcard, .vsoul-card figure { position: relative; overflow: hidden; background: #fff; transition: transform .38s cubic-bezier(.2,.8,.2,1.15), box-shadow .38s ease, opacity .3s ease, border-color .3s ease; }
+    .pcard .pimg img, .vsoul-card figure .pimg img { transition: transform .45s cubic-bezier(.2,.8,.2,1.2); }
+    .pcard .psize strong, .vsoul-card .psize strong { transition: transform .3s ease; }
+    @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+      .pcard:hover, .vsoul-card figure:hover { transform: scale(1.13); z-index: 4; border-color: var(--t21-m); box-shadow: 0 22px 48px -14px rgba(27,26,31,.38), 0 0 0 2px var(--t21-m); cursor: default; }
+      .pcard:hover .pimg img, .vsoul-card figure:hover .pimg img { transform: scale(1.12) rotate(-5deg); }
+      .pcard:hover .psize strong { transform: scale(1.08); }
+      .pop-grid:has(.pcard:hover) .pcard:not(:hover), .vsoul-card:has(figure:hover) figure:not(:hover) { opacity: .5; }
+    }
+    @media (hover: none) and (prefers-reduced-motion: no-preference) {
+      .pcard::before, .vsoul-card figure::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; z-index: 2; background: var(--t21-m); transform: scaleY(0); transform-origin: top; transition: transform .4s ease; }
+      .pcard.is-focus, .vsoul-card figure.is-focus { transform: scale(1.035); z-index: 2; box-shadow: 0 14px 30px -12px rgba(27,26,31,.35); }
+      .pcard.is-focus::before, .vsoul-card figure.is-focus::before { transform: scaleY(1); }
+      .pcard.is-focus .pimg img, .vsoul-card figure.is-focus .pimg img { animation: popShoe .7s cubic-bezier(.2,.8,.2,1.3) both; }
+      .pcard.is-focus .psize strong { animation: popTag .6s .15s ease both; }
+      .pcard:active, .vsoul-card figure:active { transform: scale(.98); transition-duration: .12s; }
+      @keyframes popShoe { 0% { transform: translateX(-14%) rotate(-8deg) scale(.9); } 60% { transform: translateX(3%) rotate(2deg) scale(1.08); } 100% { transform: rotate(-3deg) scale(1.05); } }
+      @keyframes popTag { 0%, 100% { transform: scale(1); } 45% { transform: scale(1.15); } }
+    }
     .brands { margin-top: clamp(2.4rem, 5vw, 4rem); display: grid; grid-template-columns: 2fr 3fr; gap: clamp(1.4rem, 3vw, 3rem); }
     .bgroup h3 { font-family: var(--display); font-weight: 600; font-size: .78rem; letter-spacing: .26em; text-transform: uppercase; color: var(--mute); padding-bottom: .6rem; border-bottom: 2px solid var(--ink); margin-bottom: .2rem; display: flex; align-items: center; gap: .6rem; }
     .bgroup h3 small { font-weight: 500; letter-spacing: .1em; color: var(--t21-m); }
@@ -1327,6 +1347,25 @@
       els.filter(e => !hero.contains(e)).forEach(e => io.observe(e));
       const go = () => inHero.forEach(e => e.classList.add("in"));
       if (document.body.classList.contains("is-ready")) go(); else window.addEventListener("hero:go", go, { once: true });
+    })();
+
+    /* popular: on touch screens, spotlight the card in the middle of the screen */
+    (function () {
+      if (fine || reduce || !("IntersectionObserver" in window)) return;
+      const items = [...document.querySelectorAll("#popular .pcard, #popular .vsoul-card figure")];
+      const box = document.getElementById("popular");
+      let on = false, ticking = false, cur = null;
+      const pick = () => {
+        ticking = false;
+        const mid = innerHeight * 0.5;
+        let best = null, bd = Infinity;
+        items.forEach(el => { const r = el.getBoundingClientRect(); const d = Math.abs(r.top + r.height / 2 - mid); if (d < bd) { bd = d; best = el; } });
+        if (best && bd > innerHeight * 0.3) best = null;
+        if (best !== cur) { if (cur) cur.classList.remove("is-focus"); if (best) best.classList.add("is-focus"); cur = best; }
+      };
+      const onScroll = () => { if (on && !ticking) { ticking = true; requestAnimationFrame(pick); } };
+      new IntersectionObserver(es => { on = es[0].isIntersecting; if (on) pick(); else if (cur) { cur.classList.remove("is-focus"); cur = null; } }).observe(box);
+      addEventListener("scroll", onScroll, { passive: true });
     })();
 
     (function () {
