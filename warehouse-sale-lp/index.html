@@ -836,19 +836,17 @@
     .venue-logo img { height: 34px; width: auto; display: block; }
     .access-note { margin-top: 1.4rem; padding: 1rem 1.2rem; border-left: 4px solid var(--gold); background: rgba(0,0,0,.18); font-size: .9rem; line-height: 1.7; color: rgba(255,255,255,.85); }
     .access-note strong { color: #fff; }
-    /* walk-through videos */
-    .routes { margin-top: clamp(2.6rem, 6vw, 4.2rem); padding-top: clamp(1.6rem, 3vw, 2.4rem); border-top: 1px solid rgba(255,255,255,.18); }
-    .routes-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem 2rem; margin-bottom: 1.2rem; }
-    .routes-head h3 { font-family: var(--display); font-weight: 700; font-size: clamp(1.4rem, 2.6vw, 2rem); text-transform: uppercase; color: #fff; line-height: 1.05; }
-    .routes-head p { font-size: .9rem; color: rgba(255,255,255,.7); }
-    .routes-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 290px)); gap: clamp(.8rem, 2.4vw, 2rem); }
-    .route { margin: 0; min-width: 0; }
-    .route video { display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; background: #000; border-radius: 10px; border: 1px solid rgba(255,255,255,.2); }
-    .route figcaption { margin-top: .7rem; }
-    .route .rtag { display: inline-flex; align-items: center; gap: .5rem; font-family: var(--display); font-weight: 700; font-size: 1.05rem; letter-spacing: .02em; color: #fff; }
-    .route .rtag b { display: inline-grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--gold); color: #1B1A1F; font-size: .85rem; }
-    .route .rdesc { margin-top: .3rem; font-size: .86rem; line-height: 1.6; color: rgba(255,255,255,.75); }
-    @media (max-width: 640px) { .routes-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .route .rtag { font-size: .92rem; } .route .rdesc { font-size: .8rem; } }
+    /* walk-through video links (under Venue) */
+    .rlinks { display: grid; gap: .55rem; margin-top: .2rem; }
+    .rlink-row { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: .5rem 1rem; }
+    .rlink { display: inline-flex; align-items: center; gap: .55rem; padding: .5rem .95rem .5rem .55rem; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; background: rgba(255,255,255,.06); color: #fff; font: inherit; font-weight: 600; font-size: .9rem; cursor: pointer; white-space: nowrap; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+    .rlink:hover, .rlink:focus-visible { background: var(--gold); border-color: var(--gold); color: #1B1A1F; }
+    .rlink i { display: inline-grid; place-items: center; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--gold); color: #1B1A1F; font-style: normal; font-size: .7rem; padding-left: 2px; }
+    .rlink:hover i, .rlink:focus-visible i { background: #1B1A1F; color: var(--gold); }
+    .rlink-row .rdesc { font-size: .84rem; line-height: 1.55; color: rgba(255,255,255,.75); }
+    @media (max-width: 640px) { .rlink-row { grid-template-columns: 1fr; gap: .3rem; } .rlink { justify-self: start; } }
+    .vb .lb-stage { padding: 3.8rem 1rem 1.2rem; touch-action: auto; }
+    .vb video { max-width: 100%; max-height: 100%; aspect-ratio: 9 / 16; height: 100%; background: #000; border-radius: 10px; }
 
     /* footer with logo */
     .foot-top { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; padding: 2.2rem 0 1.6rem; }
@@ -1149,6 +1147,10 @@
           <div class="venue-logo" data-reveal style="--d:120"><img src="images/logo-barefootinc-light.png" alt="Barefootinc Thailand" width="520" height="118" /></div>
           <div class="arows" data-reveal style="--d:180">
             <div class="arow"><div class="k" data-i18n="access.k1">Venue</div><div class="v" data-i18n="access.v1">Barefootinc (Thailand) office<br />87/34 Modern Town 2F, Sukhumvit 63 (Ekkamai), Klongtan-nua, Wattana, Bangkok</div></div>
+            <div class="arow"><div class="k" data-i18n="access.kr">Route videos</div><div class="v"><div class="rlinks">
+              <div class="rlink-row"><button type="button" class="rlink" data-vb="videos/route-entrance.mp4" data-vb-poster="videos/route-entrance.jpg"><i>&#9654;</i><span data-i18n="access.r1">From the main entrance</span></button><span class="rdesc" data-i18n="access.r1d">Up the stairs and escalators to 2F, then along the corridor to our door.</span></div>
+              <div class="rlink-row"><button type="button" class="rlink" data-vb="videos/route-parking.mp4" data-vb-poster="videos/route-parking.jpg"><i>&#9654;</i><span data-i18n="access.r2">From the car park</span></button><span class="rdesc" data-i18n="access.r2d">Take the lift to P6 (Office Plaza), then follow the corridor to our door.</span></div>
+            </div></div></div>
             <div class="arow"><div class="k" data-i18n="access.k2">Dates</div><div class="v" data-i18n="access.v2">19 November (Thu) – 21 November (Sat) 2026</div></div>
             <div class="arow"><div class="k" data-i18n="access.k3">Hours</div><div class="v" data-i18n="access.v3">10:00 – 18:00</div></div>
             <div class="arow"><div class="k" data-i18n="access.k4">By train</div><div class="v" data-i18n="access.v4">BTS Ekkamai, then head up Sukhumvit 63 (Ekkamai Road) to Modern Town.</div></div>
@@ -1165,22 +1167,6 @@
             src="https://www.google.com/maps?q=87%2F34+Modern+Town,+Sukhumvit+63,+Klongtan+Nua,+Wattana,+Bangkok&z=16&hl=en&output=embed"></iframe>
           <span class="map-note"><span data-i18n="access.mapnote">Pinch or scroll to zoom the map</span><a href="https://www.google.com/maps/search/?api=1&query=87%2F34+Modern+Town+Sukhumvit+63+Klongtan+Nua+Wattana+Bangkok" target="_blank" rel="noopener noreferrer" data-i18n="access.map">See the map</a></span>
           </div>
-        </div>
-      </div>
-      <div class="routes" data-reveal>
-        <div class="routes-head">
-          <h3 data-i18n="access.rtitle">Walk-through videos</h3>
-          <p data-i18n="access.rsub">The way to our door, played at 2× speed.</p>
-        </div>
-        <div class="routes-grid">
-          <figure class="route">
-            <video src="videos/route-entrance.mp4" poster="videos/route-entrance.jpg" muted loop playsinline controls preload="metadata" width="540" height="960" aria-label="Video: walking from the main entrance to the Barefootinc office"></video>
-            <figcaption><span class="rtag"><b>1</b><span data-i18n="access.r1">From the main entrance</span></span><p class="rdesc" data-i18n="access.r1d">Up the stairs and escalators to 2F, then along the corridor to our door.</p></figcaption>
-          </figure>
-          <figure class="route">
-            <video src="videos/route-parking.mp4" poster="videos/route-parking.jpg" muted loop playsinline controls preload="metadata" width="540" height="960" aria-label="Video: walking from the car park to the Barefootinc office"></video>
-            <figcaption><span class="rtag"><b>2</b><span data-i18n="access.r2">From the car park</span></span><p class="rdesc" data-i18n="access.r2d">Take the lift to P6 (Office Plaza), then follow the corridor to our door.</p></figcaption>
-          </figure>
         </div>
       </div>
     </div>
@@ -1221,6 +1207,11 @@
   <div class="mbar" id="mbar" aria-hidden="false">
     <div class="mb-txt"><b data-i18n="mbar.a">19–21 Nov · up to 50% off</b><span data-i18n="mbar.b">10:00–18:00 · Ekkamai</span></div>
     <a class="pill" href="#access"><span class="dot"></span><span data-i18n="nav.access">Getting there</span></a>
+  </div>
+
+  <div class="lb vb" id="vb" hidden role="dialog" aria-modal="true" aria-label="Route video">
+    <button type="button" class="lb-close" id="vbClose" aria-label="Close">&times;</button>
+    <div class="lb-stage" id="vbStage"><video id="vbVideo" controls playsinline muted loop preload="none"></video></div>
   </div>
 
   <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Image">
@@ -1284,7 +1275,7 @@
         "access.k5": "By car", "access.v5": "Modern Town on Sukhumvit 63 (Ekkamai Road). Parking is available.",
         "access.officenote": "<strong>It is an office, not a shop.</strong> Look for the Barefootinc sign at Modern Town and come straight in. Message us on LINE if you cannot find it.",
         "access.mapopen": "Open in Google Maps", "access.map": "See the map", "access.mapnote": "Pinch or scroll to zoom the map",
-        "access.rtitle": "Walk-through videos", "access.rsub": "The way to our door, played at 2× speed.",
+        "access.kr": "Route videos",
         "access.r1": "From the main entrance", "access.r1d": "Up the stairs and escalators to 2F, then along the corridor to our door.",
         "access.r2": "From the car park", "access.r2d": "Take the lift to P6 (Office Plaza), then follow the corridor to our door.",
         "foot.tag": "Barefoot footwear specialist · Bangkok",
@@ -1355,7 +1346,7 @@
         "access.k5": "รถยนต์", "access.v5": "โมเดิร์นทาวน์ ถนนเอกมัย (สุขุมวิท 63) มีที่จอดรถ",
         "access.officenote": "<strong>เป็นออฟฟิศ ไม่ใช่หน้าร้าน</strong> มองหาป้าย Barefootinc ที่โมเดิร์นทาวน์แล้วเดินเข้ามาได้เลย หาไม่เจอทัก LINE หาเรา",
         "access.mapopen": "เปิดใน Google Maps", "access.map": "ดูแผนที่", "access.mapnote": "ซูมแผนที่ได้ด้วยการจีบนิ้วหรือสกรอลล์",
-        "access.rtitle": "วิดีโอเส้นทางมาออฟฟิศ", "access.rsub": "เส้นทางจนถึงหน้าออฟฟิศ (เปิดเร็ว 2 เท่า)",
+        "access.kr": "วิดีโอเส้นทาง",
         "access.r1": "จากทางเข้าด้านหน้า", "access.r1d": "ขึ้นบันไดและบันไดเลื่อนไปชั้น 2 แล้วเดินตามทางเดินมาที่ออฟฟิศ",
         "access.r2": "จากที่จอดรถ", "access.r2d": "ขึ้นลิฟต์ไปชั้น P6 (Office Plaza) แล้วเดินตามทางเดินมาที่ออฟฟิศ",
         "foot.tag": "ร้านรองเท้าเท้าเปล่าโดยเฉพาะ · กรุงเทพฯ",
@@ -1405,14 +1396,6 @@
       els.filter(e => !hero.contains(e)).forEach(e => io.observe(e));
       const go = () => inHero.forEach(e => e.classList.add("in"));
       if (document.body.classList.contains("is-ready")) go(); else window.addEventListener("hero:go", go, { once: true });
-    })();
-
-    /* route videos: play (muted) only while on screen */
-    (function () {
-      const vids = [...document.querySelectorAll(".route video")];
-      if (reduce || !("IntersectionObserver" in window)) return;
-      const io = new IntersectionObserver(es => es.forEach(en => { const v = en.target; if (en.isIntersecting) { const p = v.play(); if (p && p.catch) p.catch(() => {}); } else v.pause(); }), { threshold: 0.3 });
-      vids.forEach(v => io.observe(v));
     })();
 
     /* popular: on phones, open the model whose name reaches the middle of the screen */
@@ -1531,6 +1514,18 @@
     (function () {
       const tiles = document.querySelectorAll("#heroMosaic .t");
       tiles.forEach((t, i) => setTimeout(() => t.classList.add("in"), 120 + i * 90));
+    })();
+
+    /* ===================== route video viewer ===================== */
+    (function () {
+      const vb = document.getElementById("vb"), v = document.getElementById("vbVideo"), stage = document.getElementById("vbStage"), btn = document.getElementById("vbClose");
+      let opener = null;
+      const open = tr => { opener = tr; v.poster = tr.dataset.vbPoster || ""; if (v.getAttribute("src") !== tr.dataset.vb) v.setAttribute("src", tr.dataset.vb); v.currentTime = 0; vb.hidden = false; document.body.style.overflow = "hidden"; document.body.classList.add("lb-open"); const p = v.play(); if (p && p.catch) p.catch(() => {}); btn.focus(); };
+      const close = () => { v.pause(); vb.hidden = true; document.body.style.overflow = ""; document.body.classList.remove("lb-open"); if (opener) opener.focus(); };
+      document.querySelectorAll("[data-vb]").forEach(tr => tr.addEventListener("click", () => open(tr)));
+      btn.addEventListener("click", close);
+      stage.addEventListener("click", e => { if (e.target === stage) close(); });
+      document.addEventListener("keydown", e => { if (!vb.hidden && e.key === "Escape") close(); });
     })();
 
     /* ===================== lightbox (size charts) ===================== */
