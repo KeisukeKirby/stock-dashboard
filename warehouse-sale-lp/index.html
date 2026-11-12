@@ -750,35 +750,42 @@
       .pcard:hover .pimg img, .vsoul-card figure:hover .pimg img { transform: scale(1.14) rotate(-5deg); }
       .pop-grid:has(.pcard:hover) .pcard:not(:hover), .vsoul-card:has(figure:hover) figure:not(:hover) { opacity: .5; }
     }
-    /* phones: each model keeps a fixed slot (no layout shift); the one at the middle of the screen fills in with its photo and sizes */
+    /* phones: a plain list of model names; each one opens (photo + sizes) as it reaches the middle of the screen.
+       Opened models stay open while you are in the block, so nothing above the reading point ever shrinks (no jumping). */
     @media (max-width: 640px) {
       .pop.acc .pop-grid { gap: 0; margin-top: .4rem; }
-      .pop.acc .pcard, .pop.acc .vsoul-card { display: flex; flex-direction: column; align-items: stretch; border: 0; border-bottom: 1px solid rgba(27,26,31,.14); background: transparent; transform: none; box-shadow: none; padding: .2rem 0 1.1rem; }
+      .pop.acc .pcard, .pop.acc .vsoul-card { display: flex; flex-direction: column; align-items: stretch; border: 0; border-bottom: 1px solid rgba(27,26,31,.14); background: transparent; transform: none; box-shadow: none; }
       .pop.acc .vsoul-card { margin-top: 0; }
       .pop.acc .pcard .pbody, .pop.acc .vsoul-card .pbody { display: contents; }
-      .pop.acc .pname { order: 0; position: relative; padding: .9rem 0 .2rem .9rem; font-size: 2rem; color: rgba(27,26,31,.28); transition: color .25s ease; }
-      .pop.acc .pname::before { content: ""; position: absolute; left: 0; top: 1rem; bottom: .35rem; width: 4px; background: var(--t21-m); transform: scaleY(0); transform-origin: top; transition: transform .3s cubic-bezier(.3,1.3,.5,1); }
+      .pop.acc .pname { order: 0; position: relative; padding: .95rem 0 .95rem .9rem; font-size: 1.9rem; color: rgba(27,26,31,.3); transition: color .25s ease, padding .3s ease; }
+      .pop.acc .pname::before { content: ""; position: absolute; left: 0; top: 1.05rem; bottom: 1.05rem; width: 4px; background: var(--t21-m); transform: scaleY(0); transform-origin: top; transition: transform .3s cubic-bezier(.3,1.3,.5,1); }
       .pop.acc .pimg { order: 1; }
       .pop.acc .pcolor { order: 2; padding-left: .9rem; }
-      .pop.acc .psize { order: 3; padding-left: .9rem; margin-top: .4rem; font-size: 1.02rem; }
+      .pop.acc .psize { order: 3; padding-left: .9rem; font-size: 1.02rem; }
       .pop.acc .psize strong { font-size: .84rem; padding: .16rem .5rem; }
-      .pop.acc .pcard .pimg { aspect-ratio: auto; width: 100%; height: 180px; padding: 0; overflow: visible; }
-      .pop.acc .pcard .pimg img { width: 100%; height: 100%; object-fit: contain; }
-      .pop.acc .vsoul-card figure { order: 4; border: 0 !important; background: transparent; grid-template-columns: 34% minmax(0, 1fr); gap: .6rem; padding: .1rem 0 .1rem .9rem; }
-      .pop.acc .vsoul-card figure .pimg { order: 0; padding: .1rem 0; overflow: visible; }
-      .pop.acc .vsoul-card figure figcaption { order: 1; padding: 0; font-size: .86rem; }
-      /* resting: name in grey, a faint ghost of the shoe, details hidden (space kept) */
-      .pop.acc .pimg img, .pop.acc .vsoul-card figure { opacity: .1; filter: grayscale(1); transform: scale(.86); transition: opacity .22s ease, filter .22s ease, transform .22s ease; }
-      .pop.acc .pcolor, .pop.acc .psize, .pop.acc .vsoul-card figcaption { position: relative; z-index: 2; opacity: 0; transform: translateY(10px); transition: opacity .2s ease, transform .2s ease; }
-      /* active: snaps in */
-      .pop.acc .is-open .pname { color: var(--ink); }
-      .pop.acc .is-open .pname::before { transform: scaleY(1); }
-      .pop.acc .is-open .pimg img { opacity: 1; filter: none; animation: shoeIn .5s cubic-bezier(.3,1.45,.5,1) both; }
-      .pop.acc .vsoul-card.is-open figure { opacity: 1; filter: none; transform: none; transition: opacity .3s ease, filter .3s ease, transform .4s cubic-bezier(.3,1.45,.5,1); }
-      .pop.acc .vsoul-card.is-open figure:nth-of-type(2) { transition-delay: .06s; }
-      .pop.acc .vsoul-card.is-open figure:nth-of-type(3) { transition-delay: .12s; }
-      .pop.acc .is-open .pcolor, .pop.acc .is-open .psize, .pop.acc .vsoul-card.is-open figcaption { opacity: 1; transform: none; transition: opacity .3s ease .12s, transform .35s cubic-bezier(.3,1.45,.5,1) .12s; }
-      @keyframes shoeIn { 0% { transform: translateX(-12%) scale(.8) rotate(-8deg); } 100% { transform: scale(.92) rotate(-3deg); } }
+      .pop.acc .pcard .pimg { aspect-ratio: auto; width: 100%; padding: 0; }
+      .pop.acc .pcard .pimg img { width: 100%; height: 170px; object-fit: contain; }
+      .pop.acc .vsoul-card figure { order: 4; border: 0 !important; background: transparent; grid-template-columns: 34% minmax(0, 1fr); gap: .6rem; padding: 0 0 0 .9rem; }
+      .pop.acc .vsoul-card figure .pimg { order: 0; padding: .1rem 0; }
+      .pop.acc .vsoul-card figure figcaption { order: 1; padding: 0; font-size: .86rem; position: relative; z-index: 2; }
+      .pop.acc .pcolor, .pop.acc .psize { position: relative; z-index: 2; }
+      /* closed: name only */
+      .pop.acc .pimg, .pop.acc .pcolor, .pop.acc .psize, .pop.acc .vsoul-card figure { max-height: 0; opacity: 0; overflow: hidden; margin: 0; transition: max-height .4s cubic-bezier(.3,1,.4,1), opacity .25s ease, margin .4s ease, padding .4s ease; }
+      /* open */
+      .pop.acc .is-open .pname { color: rgba(27,26,31,.55); padding-bottom: .2rem; }
+      .pop.acc .is-open .pimg { max-height: 190px; opacity: 1; overflow: visible; }
+      .pop.acc .is-open .pcolor { max-height: 2rem; opacity: 1; }
+      .pop.acc .is-open .psize { max-height: 4rem; opacity: 1; margin-top: .4rem; padding-bottom: 1.1rem; }
+      .pop.acc .vsoul-card.is-open .psize { padding-bottom: .5rem; }
+      .pop.acc .vsoul-card.is-open figure { max-height: 120px; opacity: 1; padding-top: .1rem; padding-bottom: .1rem; overflow: visible; }
+      .pop.acc .vsoul-card.is-open figure:last-of-type { padding-bottom: 1.1rem; }
+      /* the one being read */
+      .pop.acc .is-cur .pname { color: var(--ink); }
+      .pop.acc .is-cur .pname::before { transform: scaleY(1); }
+      .pop.acc .is-open:not(.is-cur) .pimg img, .pop.acc .is-open:not(.is-cur) .pcolor, .pop.acc .is-open:not(.is-cur) .psize, .pop.acc .vsoul-card.is-open:not(.is-cur) figure { opacity: 0; }
+      .pop.acc .pimg img, .pop.acc .vsoul-card figure { transition: opacity .3s ease, filter .3s ease, max-height .4s cubic-bezier(.3,1,.4,1), padding .4s ease; }
+      .pop.acc .is-cur .pimg img { animation: shoeIn .5s cubic-bezier(.3,1.45,.5,1) both; }
+      @keyframes shoeIn { 0% { transform: translateX(-12%) scale(.8) rotate(-8deg); } 100% { transform: scale(.94) rotate(-3deg); } }
     }
     @media (max-width: 640px) and (prefers-reduced-motion: reduce) {
       .pop.acc * { transition: none !important; animation: none !important; }
@@ -1398,26 +1405,30 @@
       if (document.body.classList.contains("is-ready")) go(); else window.addEventListener("hero:go", go, { once: true });
     })();
 
-    /* popular: on phones, open the model whose name reaches the middle of the screen */
+    /* popular: on phones, open each model as its name reaches the middle of the screen; opened ones stay open */
     (function () {
       const mq = matchMedia("(max-width: 640px)");
       const box = document.getElementById("popular");
       const items = [...box.querySelectorAll(".pcard"), box.querySelector(".vsoul-card")];
-      const n = items.length;
-      let cur = -1, ticking = false;
+      let cur = -2, maxOpen = -1, ticking = false;
       const update = () => {
         ticking = false;
         if (!mq.matches) return;
-        const mid = innerHeight * 0.5;
-        let i = 0, bd = Infinity;
-        items.forEach((el, k) => { const r = el.getBoundingClientRect(); const d = Math.abs(r.top + r.height / 2 - mid) - (k === cur ? 40 : 0); if (d < bd) { bd = d; i = k; } });
+        const line = innerHeight * 0.58;
+        if (box.getBoundingClientRect().top > innerHeight) {          /* block is below the screen: reset quietly */
+          if (maxOpen !== -1) { maxOpen = -1; items.forEach(el => el.classList.remove("is-open", "is-cur")); cur = -2; }
+          return;
+        }
+        let i = -1;
+        items.forEach((el, k) => { if (el.getBoundingClientRect().top < line) i = k; });
+        if (i > maxOpen) maxOpen = i;
         if (i === cur) return;
-        items.forEach((el, k) => el.classList.toggle("is-open", k === i));
+        items.forEach((el, k) => { el.classList.toggle("is-open", k <= maxOpen); el.classList.toggle("is-cur", k === i); });
         cur = i;
       };
       const apply = () => {
         box.classList.toggle("acc", mq.matches);
-        if (!mq.matches) { items.forEach(el => el.classList.remove("is-open")); cur = -1; } else update();
+        if (!mq.matches) { items.forEach(el => el.classList.remove("is-open", "is-cur")); cur = -2; maxOpen = -1; } else update();
       };
       (mq.addEventListener ? mq.addEventListener("change", apply) : mq.addListener(apply));
       addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
