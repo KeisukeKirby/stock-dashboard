@@ -19,7 +19,7 @@ Terminal 21 Rama 3 版（`terminal21-rama3-lp`）と同じ CSS / JS / EN-TH 切�
 | `images/hero/hero-a〜f.jpg` | ヒーローのモデル着用写真モザイク（Scramkey / KSO EVO / V-Train 2.0 / V-Run。Drive の素材から切り出し） |
 | `images/logo-*.png` | Barefootinc / Vibram FiveFingers のロゴ（Rama 3 版から流用） |
 | `images/why/`, `images/models/` | Why barefoot? の背景と「最大のセール」セクションの Scramkey 写真（流用） |
-| `og-vrun-v1.jpg` | SNS シェア用サムネイル（V-Run Black/Blue の写真、399×501） |
+| `og-sale-v1.jpg` | SNS シェア用サムネイル（2400×1260 = 1200×630 の2倍、JPG 約280KB） |
 | `vercel.json` | このフォルダをそのまま配信する設定（Rama 3 版と同じ） |
 
 ## セクション
