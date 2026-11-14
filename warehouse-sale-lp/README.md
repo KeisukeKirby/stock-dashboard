@@ -19,7 +19,7 @@ Terminal 21 Rama 3 版（`terminal21-rama3-lp`）と同じ CSS / JS / EN-TH 切�
 | `images/hero/hero-a〜f.jpg` | ヒーローのモデル着用写真モザイク（Scramkey / KSO EVO / V-Train 2.0 / V-Run。Drive の素材から切り出し） |
 | `images/logo-*.png` | Barefootinc / Vibram FiveFingers のロゴ（Rama 3 版から流用） |
 | `images/why/`, `images/models/` | Why barefoot? の背景と「最大のセール」セクションの Scramkey 写真（流用） |
-| `og-image.jpg` | 1200×630 の SNS シェア用画像（仮） |
+| `og-vrun-v1.jpg` | SNS シェア用サムネイル（V-Run Black/Blue の写真、399×501） |
 | `vercel.json` | このフォルダをそのまま配信する設定（Rama 3 版と同じ） |
 
 ## セクション
@@ -51,7 +51,7 @@ Terminal 21 Rama 3 版（`terminal21-rama3-lp`）と同じ CSS / JS / EN-TH 切�
 
 - （駐車場: あり、と確認済み）
 - BTS Ekkamai からの行き方の表現（駅から Sukhumvit 63 を進む、とだけ記載）
-- 本番 URL（`<head>` の canonical / og:url は `https://barefootinc-warehouse-sale.vercel.app/`）
+- 本番 URL（`<head>` の canonical / og:url / og:image は `https://warehouse-sale-lp-blue.vercel.app/`（SHIMA's projects）。barefootinc-warehouse-sale.vercel.app を移したら書き換える）
 
 ## デプロイ
 
