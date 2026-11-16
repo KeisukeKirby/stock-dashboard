@@ -220,13 +220,27 @@
   }
 
   views.sales = (el) => {
-    const links = D.sales?.sources || [];
-    const labels = {
-      bft: tr("BFT 販売実績ダッシュボード", "BFT Sales Dashboard", "แดชบอร์ดยอดขาย BFT"),
-      edv: tr("EDV 販売実績ダッシュボード", "EDV Sales Dashboard", "แดชบอร์ดยอดขาย EDV")
+    const S = D.sales?.summary;
+    if (!S) { el.append(h("p", { class: "error" }, tr("データを読み込めませんでした", "Could not load the data", "โหลดข้อมูลไม่ได้"))); return; }
+    const millions = (n) => (n / 1e6).toLocaleString("ja-JP", { maximumFractionDigits: 2 }) + "M";
+    const roles = {
+      bft: tr("VFF・Vivobarefoot・OLENO の輸入とブランド運営。Paradise Park・Siam Discovery・Central Chidlom とオンラインで販売", "Imports and runs VFF, Vivobarefoot and OLENO. Sells at Paradise Park, Siam Discovery, Central Chidlom and online", "นำเข้าและดูแลแบรนด์ VFF, Vivobarefoot, OLENO ขายที่ Paradise Park, Siam Discovery, Central Chidlom และออนไลน์"),
+      edv: tr("店舗運営の会社。K Village・Central Ladprao・Thaniya の 3 店舗と自社ブランド Coolcore・AQOS", "Runs the shops: K Village, Central Ladprao and Thaniya, plus its own brands Coolcore and AQOS", "บริษัทที่ดูแลร้าน K Village, Central Ladprao, Thaniya และแบรนด์ของตัวเอง Coolcore, AQOS")
     };
-    el.append(h("div", { class: "grid c2" }, links.map(link =>
-      external(link.url, h("strong", {}, labels[link.id] || link.label, " ↗"), { class: "card" }))));
+    el.append(h("p", { class: "note", style: "margin:0 0 14px" },
+      tr("グループは 2 社です。上が Barefootinc (Thailand)（BFT）、下が Endeavorz（EDV）。金額はタイバーツ（THB）、M = 100 万。",
+         "The group has two companies: Barefootinc (Thailand) (BFT) above and Endeavorz (EDV) below. Amounts in Thai baht (THB); M = million.",
+         "กลุ่มมี 2 บริษัท: ด้านบนคือ Barefootinc (Thailand) (BFT) ด้านล่างคือ Endeavorz (EDV) จำนวนเงินเป็นบาท (THB) M = ล้าน")));
+    for (const c of S.companies) {
+      el.append(h("section", { class: "card", style: "margin-bottom:16px" },
+        h("h2", { style: "margin:0" }, c.name, " ", h("span", { class: "pill" }, c.short)),
+        h("p", { class: "note", style: "margin:4px 0 14px" }, roles[c.id]),
+        h("div", { class: "kpis" },
+          h("div", { class: "kpi" }, h("p", { class: "kpi-label" }, tr("1〜10 月の売上（暫定）", "Sales Jan–Oct (provisional)", "ยอดขาย ม.ค.–ต.ค. (เบื้องต้น)")), h("p", { class: "kpi-value" }, millions(c.ytd)), h("p", { class: "kpi-note" }, "THB")),
+          h("div", { class: "kpi" }, h("p", { class: "kpi-label" }, tr("10 月の売上", "Sales in October", "ยอดขายเดือนตุลาคม")), h("p", { class: "kpi-value" }, millions(c.month)), h("p", { class: "kpi-note" }, "THB"))),
+        h("div", { style: "margin-top:14px" }, external(c.url, tr(`詳しくは ${c.short} 販売実績ダッシュボードへ ↗`, `See the ${c.short} sales dashboard for details ↗`, `ดูรายละเอียดในแดชบอร์ดยอดขาย ${c.short} ↗`), { class: "ghost" }))));
+    }
+    el.append(h("p", { class: "note" }, tr(`出典: ${S.source}`, "Source: figures provided by the GM (16 Nov 2026). Jan–Oct is provisional.", "ที่มา: ตัวเลขจาก GM (16 พ.ย. 2026) ม.ค.–ต.ค. เป็นตัวเลขเบื้องต้น")));
   };
 
   views.stores = (el) => {
