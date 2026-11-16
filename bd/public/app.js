@@ -140,7 +140,7 @@
     stores: ["店舗一覧", "Stores", "รายชื่อร้าน"],
     consignment: ["委託販売", "Consignment", "การฝากขาย"],
     terms: ["取引条件", "Trade terms", "เงื่อนไขการค้า"],
-    sns: ["SNS", "Social media", "โซเชียลมีเดีย"]
+    sns: ["SNS・EC", "Social & online shops", "โซเชียลและร้านออนไลน์"]
   };
   function applyLanguage() {
     document.documentElement.lang = language;
@@ -324,14 +324,25 @@
   };
 
   views.sns = (el) => {
-    const rows = (D.sns?.items || []).map(item => [
-      item.brand === "Vivobarefoot（公式 SNS）" ? "Vivobarefoot" : item.brand,
-      item.platform === "Instagram ほか" ? "Instagram" : item.platform,
-      item.handle || null,
-      item.url ? external(item.url, item.url.replace(/^https?:\/\/(?:www\.)?/, "")) : null
-    ]);
-    el.append(simpleTable([tr("ブランド", "Brand", "แบรนด์"), tr("プラットフォーム", "Platform", "แพลตฟอร์ม"), tr("アカウント", "Account", "บัญชี"), "URL"], rows));
+    const EC = new Set(["Shopee", "Lazada", "Website"]);
+    const brandLabel = (b) => b === "Barefootinc (Thailand)" ? tr("Barefootinc (Thailand)（会社全体）", "Barefootinc (Thailand) (company-wide)", "Barefootinc (Thailand) (ทั้งบริษัท)") : b;
+    el.append(h("p", { class: "note", style: "margin:0 0 12px" }, tr(
+      "ブランド順に、SNS アカウントと EC（ネット販売）のショップを並べています。会社全体のアカウントは最後です。",
+      "Social accounts and online shops, listed by brand. Company-wide accounts are last.",
+      "บัญชีโซเชียลและร้านออนไลน์ เรียงตามแบรนด์ บัญชีของทั้งบริษัทอยู่ท้ายสุด")));
+    const rows = (D.sns?.items || []).map(item => {
+      const isEc = EC.has(item.platform);
+      return [
+        brandLabel(item.brand),
+        isEc ? tr("EC", "Online shop", "ร้านออนไลน์") : "SNS",
+        item.platform,
+        item.handle || null,
+        item.url ? external(item.url, isEc ? tr("ショップページへ ↗", "Go to the shop ↗", "ไปที่ร้าน ↗") : tr("アカウントページへ ↗", "Go to the account ↗", "ไปที่บัญชี ↗")) : null
+      ];
+    });
+    el.append(simpleTable([tr("ブランド", "Brand", "แบรนด์"), tr("種類", "Type", "ประเภท"), tr("プラットフォーム", "Platform", "แพลตฟอร์ม"), tr("アカウント", "Account", "บัญชี"), tr("リンク", "Link", "ลิงก์")], rows));
   };
+
 
   views.consignment = (el) => gate(el, "consignment", (el, C) => {
     const months = C.months || [];

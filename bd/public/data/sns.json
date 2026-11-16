@@ -12,6 +12,78 @@
  ],
  "items": [
   {
+   "brand": "VFF",
+   "platform": "Shopee",
+   "handle": "barefootinc.th",
+   "url": "https://shopee.co.th/barefootinc.th?categoryId=100532&entryPoint=ShopByPDP&itemId=23185955487",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "URL 確認済み",
+   "src": "ユーザー提供リンク（2026-11-17）"
+  },
+  {
+   "brand": "VFF",
+   "platform": "Lazada",
+   "handle": "barefootinc",
+   "url": "https://www.lazada.co.th/shop/barefootinc/?spm=a2o4m.pdp_revamp.seller.1.28ab169dkiFy1B&itemId=16182046591&channelSource=pdp",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "URL 確認済み",
+   "src": "ユーザー提供リンク（2026-11-17）"
+  },
+  {
+   "brand": "OLENO",
+   "platform": "Instagram",
+   "handle": "@olenothailand",
+   "url": "https://www.instagram.com/olenothailand/",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "URL 確認済み",
+   "src": "ユーザー提供リンク（2026-11-09）"
+  },
+  {
+   "brand": "OLENO",
+   "platform": "Facebook",
+   "handle": "OLENO Thailand",
+   "url": "https://www.facebook.com/profile.php?id=61584056561538",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "URL 確認済み",
+   "src": "ユーザー提供リンク（2026-11-09）"
+  },
+  {
+   "brand": "Coolcore",
+   "platform": "Instagram",
+   "handle": "@coolcoreth",
+   "url": "https://www.instagram.com/coolcoreth/",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "URL 確認済み",
+   "src": "ユーザー提供リンク（2026-11-09）"
+  },
+  {
+   "brand": "Coolcore",
+   "platform": "Facebook",
+   "handle": "Coolcore Thailand",
+   "url": "https://www.facebook.com/coolcorethailand",
+   "owner": "",
+   "followers": null,
+   "followersAsOf": "",
+   "policy": "",
+   "status": "URL 確認済み",
+   "src": "ユーザー提供リンク（2026-11-09）"
+  },
+  {
    "brand": "Barefootinc (Thailand)",
    "platform": "Instagram",
    "handle": "@barefootinc.th",
@@ -60,43 +132,7 @@
    "src": "barefootinc-t21-asok-event/index.html"
   },
   {
-   "brand": "VFF",
-   "platform": "Shopee",
-   "handle": "VIBRAM FiveFingers Thailand",
-   "url": "",
-   "owner": "",
-   "followers": null,
-   "followersAsOf": "",
-   "policy": "",
-   "status": "店舗名のみ判明。URL 未確認。別店舗「Barefootinc.th」も存在（Sale 2026 の Shopee Barefoot シート）",
-   "src": "Sale 2026 (Google Sheet) / Drive 検索"
-  },
-  {
-   "brand": "VFF",
-   "platform": "Lazada",
-   "handle": "VIBRAM FiveFingers Thailand",
-   "url": "",
-   "owner": "",
-   "followers": null,
-   "followersAsOf": "",
-   "policy": "",
-   "status": "店舗名のみ判明。URL 未確認。Coolcore / Coollabo の Lazada 店舗もシートあり",
-   "src": "Sale 2026 (Google Sheet) / Drive 検索"
-  },
-  {
-   "brand": "OLENO",
-   "platform": "Instagram",
-   "handle": "@olenothailand",
-   "url": "https://www.instagram.com/olenothailand/",
-   "owner": "",
-   "followers": null,
-   "followersAsOf": "",
-   "policy": "",
-   "status": "URL 確認済み",
-   "src": "ユーザー提供リンク（2026-11-09）"
-  },
-  {
-   "brand": "BFT",
+   "brand": "Barefootinc (Thailand)",
    "platform": "Website",
    "handle": "barefootinc.co.th",
    "url": "https://barefootinc.co.th/",
@@ -106,54 +142,14 @@
    "policy": "",
    "status": "WordPress サイト。公開状態は未確認。自社 EC は約 1 か月後に公開予定（2026-10 時点）",
    "src": "Drive 検索 / pptx S11"
-  },
-  {
-   "brand": "Vivobarefoot（公式 SNS）",
-   "platform": "Instagram ほか",
-   "handle": "",
-   "url": "",
-   "owner": "",
-   "followers": null,
-   "followersAsOf": "",
-   "policy": "",
-   "status": "Exclusive Retail Partner 化が決まれば弊社が公式 SNS を担う構想（未確定）",
-   "src": "pptx S8"
-  },
-  {
-   "brand": "Coolcore",
-   "platform": "Instagram",
-   "handle": "@coolcoreth",
-   "url": "https://www.instagram.com/coolcoreth/",
-   "owner": "",
-   "followers": null,
-   "followersAsOf": "",
-   "policy": "",
-   "status": "URL 確認済み",
-   "src": "ユーザー提供リンク（2026-11-09）"
-  },
-  {
-   "brand": "OLENO",
-   "platform": "Facebook",
-   "handle": "OLENO Thailand",
-   "url": "https://www.facebook.com/profile.php?id=61584056561538",
-   "owner": "",
-   "followers": null,
-   "followersAsOf": "",
-   "policy": "",
-   "status": "URL 確認済み",
-   "src": "ユーザー提供リンク（2026-11-09）"
-  },
-  {
-   "brand": "Coolcore",
-   "platform": "Facebook",
-   "handle": "Coolcore Thailand",
-   "url": "https://www.facebook.com/coolcorethailand",
-   "owner": "",
-   "followers": null,
-   "followersAsOf": "",
-   "policy": "",
-   "status": "URL 確認済み",
-   "src": "ユーザー提供リンク（2026-11-09）"
   }
+ ],
+ "brandOrder": [
+  "VFF",
+  "Vivobarefoot",
+  "OLENO",
+  "Coolcore",
+  "AQOZ",
+  "Barefootinc (Thailand)"
  ]
 }
