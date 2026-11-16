@@ -4,17 +4,12 @@
       {
         "counterparty": "Siam Discovery",
         "brand": "VFF / OLENO",
-        "condition": "百貨店手数料は売上の32%（観測値）"
+        "condition": "百貨店手数料は売上の32%"
       },
       {
         "counterparty": "Central Chidlom / Ladprao / EastVille / Central World",
         "brand": "VFF / OLENO",
-        "condition": "百貨店手数料は売上の30%（2026年の観測値）"
-      },
-      {
-        "counterparty": "Crimson Brand",
-        "brand": "Vivobarefoot",
-        "condition": "仕入卸価格（USD）は推奨小売価格の50%（観測値）"
+        "condition": "百貨店手数料は売上の30%"
       },
       {
         "counterparty": "Pathwild",
@@ -25,31 +20,6 @@
         "counterparty": "Bananarun / Run2Paradise / Highlandner / Caveman / Curve ほか",
         "brand": "OLENO / VFF / Coolcore",
         "condition": "委託中心。百貨店以外は買取卸に切り替える方針"
-      },
-      {
-        "counterparty": "Vibram S.p.A.",
-        "brand": "VFF",
-        "condition": "タイの独占販売権。販売目標の義務なし"
-      },
-      {
-        "counterparty": "昭和メリヤス",
-        "brand": "OLENO",
-        "condition": "タイの総代理店"
-      },
-      {
-        "counterparty": "EDV 店舗・イベントスタッフ",
-        "brand": "全ブランド",
-        "condition": "販売コミッションは2025年の店舗記録で1%、Event BFIの記録で0.5%"
-      },
-      {
-        "counterparty": "Shopee / Lazada",
-        "brand": "VFF / Coolcore / OLENO",
-        "condition": "マーケットプレイス手数料あり。料率は未確認"
-      },
-      {
-        "counterparty": "BFT ⇄ EDV",
-        "brand": "VFF ほか",
-        "condition": "BFTからEDVへの卸売、EDVからBFTへのサービス請求。卸掛率は未確認"
       }
     ]
   },
@@ -58,17 +28,12 @@
       {
         "counterparty": "Siam Discovery",
         "brand": "VFF / OLENO",
-        "condition": "Department store commission: 32% of sales (observed)."
+        "condition": "Department store commission: 32% of sales."
       },
       {
         "counterparty": "Central Chidlom / Ladprao / EastVille / Central World",
         "brand": "VFF / OLENO",
-        "condition": "Department store commission: 30% of sales (observed in 2026)."
-      },
-      {
-        "counterparty": "Crimson Brand",
-        "brand": "Vivobarefoot",
-        "condition": "Wholesale purchase price (USD): 50% of recommended retail price (observed)."
+        "condition": "Department store commission: 30% of sales."
       },
       {
         "counterparty": "Pathwild",
@@ -79,31 +44,6 @@
         "counterparty": "Bananarun / Run2Paradise / Highlandner / Caveman / Curve and others",
         "brand": "OLENO / VFF / Coolcore",
         "condition": "Mainly consignment; planned transition to outright wholesale outside department stores."
-      },
-      {
-        "counterparty": "Vibram S.p.A.",
-        "brand": "VFF",
-        "condition": "Exclusive distribution in Thailand. No mandatory sales targets."
-      },
-      {
-        "counterparty": "Showa Meriyasu",
-        "brand": "OLENO",
-        "condition": "Distributor for Thailand."
-      },
-      {
-        "counterparty": "EDV store and event staff",
-        "brand": "All brands",
-        "condition": "Sales commission: 1% in 2025 store records; 0.5% in the Event BFI record."
-      },
-      {
-        "counterparty": "Shopee / Lazada",
-        "brand": "VFF / Coolcore / OLENO",
-        "condition": "Marketplace fees apply; rate unconfirmed."
-      },
-      {
-        "counterparty": "BFT ↔ EDV",
-        "brand": "VFF and others",
-        "condition": "BFT supplies wholesale goods to EDV. EDV bills BFT for services. Wholesale rate unconfirmed."
       }
     ],
     "guidelines": {
@@ -390,17 +330,12 @@
       {
         "counterparty": "Siam Discovery",
         "brand": "VFF / OLENO",
-        "condition": "ค่าคอมมิชชันห้าง 32% ของยอดขาย (ตามข้อมูลที่พบ)"
+        "condition": "ค่าคอมมิชชันห้าง 32% ของยอดขาย"
       },
       {
         "counterparty": "Central Chidlom / Ladprao / EastVille / Central World",
         "brand": "VFF / OLENO",
-        "condition": "ค่าคอมมิชชันห้าง 30% ของยอดขาย (ตามข้อมูลปี 2026)"
-      },
-      {
-        "counterparty": "Crimson Brand",
-        "brand": "Vivobarefoot",
-        "condition": "ราคาซื้อส่ง (USD) เท่ากับ 50% ของราคาขายปลีกแนะนำ (ตามข้อมูลที่พบ)"
+        "condition": "ค่าคอมมิชชันห้าง 30% ของยอดขาย"
       },
       {
         "counterparty": "Pathwild",
@@ -411,31 +346,6 @@
         "counterparty": "Bananarun / Run2Paradise / Highlandner / Caveman / Curve และรายอื่น ๆ",
         "brand": "OLENO / VFF / Coolcore",
         "condition": "ส่วนใหญ่เป็นการฝากขาย มีแผนเปลี่ยนเป็นขายส่งแบบซื้อขาดสำหรับร้านนอกห้าง"
-      },
-      {
-        "counterparty": "Vibram S.p.A.",
-        "brand": "VFF",
-        "condition": "สิทธิ์จัดจำหน่ายแต่เพียงผู้เดียวในไทย ไม่มีข้อผูกมัดเรื่องเป้ายอดขาย"
-      },
-      {
-        "counterparty": "Showa Meriyasu",
-        "brand": "OLENO",
-        "condition": "ตัวแทนจัดจำหน่ายในประเทศไทย"
-      },
-      {
-        "counterparty": "พนักงานร้านและอีเวนต์ EDV",
-        "brand": "ทุกแบรนด์",
-        "condition": "ค่าคอมมิชชันการขาย 1% ตามข้อมูลร้านปี 2025 และ 0.5% ตามข้อมูล Event BFI"
-      },
-      {
-        "counterparty": "Shopee / Lazada",
-        "brand": "VFF / Coolcore / OLENO",
-        "condition": "มีค่าธรรมเนียมแพลตฟอร์ม ยังไม่ได้ยืนยันอัตรา"
-      },
-      {
-        "counterparty": "BFT ↔ EDV",
-        "brand": "VFF และแบรนด์อื่น ๆ",
-        "condition": "BFT ขายส่งสินค้าให้ EDV และ EDV เรียกเก็บค่าบริการจาก BFT ยังไม่ได้ยืนยันอัตราขายส่ง"
       }
     ],
     "guidelines": {
