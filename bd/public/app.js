@@ -397,13 +397,23 @@
         const r = { name: c.name }; let t = 0; for (const m of last) { r[m] = c.monthlyByBrand[b][m] || 0; t += r[m]; } r.total = t; return r; });
       if (!brows.length) return null;
       const total = { name: tr("合計", "Total", "รวม") }; for (const m of [...last, "total"]) total[m] = sum(brows, m);
-      return h("div", { style: "margin-top:16px" }, h("h4", { style: "margin:0 0 6px" }, b, h("span", { class: "muted small" }, `  ${tr("合計", "Total", "รวม")} ${fmt(total.total)}`)),
-        table([{ key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") }, ...last.map((m) => ({ key: m, label: m.slice(2).replace("-", "/"), num: true })), { key: "total", label: tr("合計", "Total", "รวม"), num: true }],
-          brows, { search: false, csvName: `consignment_${b}`, total: () => total }));
+      const cols = [{ key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") }, ...last.map((m) => ({ key: m, label: m.slice(2).replace("-", "/"), num: true })), { key: "total", label: tr("合計", "Total", "รวม"), num: true }];
+      const cell = (c, r) => h("td", { class: c.num ? "num" : "" }, c.num ? fmt(r[c.key]) : r[c.key]);
+      return h("div", { style: "margin-top:18px" }, h("h4", { class: "table-label" }, b),
+        h("div", { class: "tablewrap" }, h("table", { class: "dt" },
+          h("thead", {}, h("tr", {}, cols.map((c) => h("th", { class: c.num ? "num" : "" }, c.label)))),
+          h("tbody", {}, brows.map((r) => h("tr", {}, cols.map((c) => cell(c, r)))), h("tr", { class: "total" }, cols.map((c) => cell(c, total)))))));
     });
     el.append(fold(tr("委託先 × 月（販売足数・ブランド別、直近 18 か月）", "Units sold by consignee and month, by brand (last 18 months)", "จำนวนที่ขายตามผู้รับฝากขายและเดือน แยกตามแบรนด์ (18 เดือนล่าสุด)"),
       ...brandTables,
       srcLine(tr("Stock VFF Consignment.xlsx の SKU 行（品番の頭 VFF / OLN / CP / MTB / BFJ でブランドを判定）", "SKU rows in Stock VFF Consignment.xlsx (brand from the code prefix VFF / OLN / CP / MTB / BFJ)", "แถว SKU ใน Stock VFF Consignment.xlsx (แยกแบรนด์จากรหัส VFF / OLN / CP / MTB / BFJ)"))));
+    // 4. 委託販売の課題
+    el.append(h("div", { class: "section-title", style: "margin-top:28px" }, h("h2", {}, tr("委託販売の課題", "Consignment issues", "ปัญหาการฝากขาย"))));
+    el.append(h("section", { class: "card" },
+      h("h3", { style: "margin:0 0 4px" }, tr("販売先の陳列が整っていない", "Displays at partner stores are not well organised", "การจัดวางสินค้าที่ร้านคู่ค้ายังไม่เป็นระเบียบ")),
+      h("p", { class: "note", style: "margin:0 0 12px" }, tr("委託先の売場の例（写真）", "Examples from partner stores (photos)", "ตัวอย่างจากร้านคู่ค้า (ภาพถ่าย)")),
+      h("div", { class: "photo-grid" }, [1, 2, 3].map((n) => h("a", { href: `img/consignment/display-${n}.jpg`, target: "_blank", rel: "noopener" },
+        h("img", { src: `img/consignment/display-${n}.jpg`, alt: tr(`委託先の売場の陳列例 ${n}`, `Partner store display example ${n}`, `ตัวอย่างการจัดวางที่ร้านคู่ค้า ${n}`), loading: "lazy" }))))));
   });
 
 

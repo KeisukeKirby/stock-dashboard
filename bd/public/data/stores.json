@@ -157,7 +157,7 @@
    "mapQuery": "Paradise Park Srinakarin Bangkok",
    "hours": "毎日 10:00〜19:00（Google マップ）／ 10:00〜20:00（公式店舗案内）",
    "staff": "店舗スタッフ 1名",
-   "opened": "2026年4月（社内資料）／ 5月（店舗案内）",
+   "opened": "2026年4月",
    "monthly": "約 50 足 → 10月 約 20 足",
    "status": "急減。マーケ拠点化は未着手",
    "zort": "Paradise Park (BFT)",
@@ -167,9 +167,9 @@
    "lat": 13.6877,
    "lng": 100.6475,
    "floor": {
-    "ja": "Paradise Park 屋外の Sidewalk Zone（階数の記載なし）",
-    "en": "Paradise Park, outdoor Sidewalk Zone (no floor given)",
-    "th": "พาราไดซ์ พาร์ค โซน Sidewalk ด้านนอก (ไม่ระบุชั้น)"
+    "ja": "Paradise Park 屋外",
+    "en": "Paradise Park, outdoor",
+    "th": "พาราไดซ์ พาร์ค ด้านนอกอาคาร"
    },
    "pin": {
     "label": "Paradise Park",
@@ -220,7 +220,7 @@
     "OLENO"
    ],
    "size": "",
-   "location": "Central Chidlom（階数は1F／3Fで資料差あり）",
+   "location": "Central Chidlom 3F",
    "address": "1027 Phloen Chit Road, Lumphini, Pathum Wan, Bangkok 10330",
    "mapQuery": "Central Chidlom Bangkok",
    "hours": "毎日 10:00〜22:00",
@@ -234,9 +234,9 @@
    "lat": 13.7444,
    "lng": 100.5444,
    "floor": {
-    "ja": "Central Chidlom（1F／3F 要確認）",
-    "en": "Central Chidlom (1F or 3F, to be confirmed)",
-    "th": "เซ็นทรัล ชิดลม (ชั้น 1 หรือ 3 รอยืนยัน)"
+    "ja": "Central Chidlom 3F",
+    "en": "Central Chidlom, 3F",
+    "th": "เซ็นทรัล ชิดลม ชั้น 3"
    },
    "pin": {
     "label": "Central Chidlom",
@@ -500,7 +500,6 @@
  ],
  "missing": [
   "店舗担当者と Thaniya の住所・営業時間・開店日",
-  "Central Chidlom の階数と Barefoot Park の開店月・営業時間（資料間で相違）",
   "自社 EC の URL と公開日",
   "小規模委託先が現在も継続中か",
   "MEGA Bangna の閉店時期",

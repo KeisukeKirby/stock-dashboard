@@ -152,7 +152,7 @@
         "name": "Barefoot Park (Paradise Park)",
         "location": "Sidewalk Zone, behind Paradise Park, Srinakarin",
         "hours": "Daily 10:00–19:00 (Google Maps); 10:00–20:00 (official guide)",
-        "opened": "April 2026 (internal records); May 2026 (store guide)"
+        "opened": "April 2026"
       },
       "siam-dis": {
         "name": "Siam Discovery 1F",
@@ -162,7 +162,7 @@
       },
       "central-cl": {
         "name": "Central Chidlom",
-        "location": "Central Chidlom (floor to confirm: 1F or 3F)",
+        "location": "Central Chidlom, 3F",
         "hours": "Daily 10:00–22:00",
         "opened": "November 2025"
       }
@@ -484,7 +484,7 @@
         "name": "Barefoot Park (พาราไดซ์ พาร์ค)",
         "location": "Sidewalk Zone ด้านหลังพาราไดซ์ พาร์ค ศรีนครินทร์",
         "hours": "ทุกวัน 10:00–19:00 น. (Google Maps) / 10:00–20:00 น. (คู่มือร้านอย่างเป็นทางการ)",
-        "opened": "เมษายน 2026 (เอกสารภายใน) / พฤษภาคม 2026 (คู่มือร้าน)"
+        "opened": "เมษายน 2026"
       },
       "siam-dis": {
         "name": "สยามดิสคัฟเวอรี่ ชั้น 1",
@@ -494,7 +494,7 @@
       },
       "central-cl": {
         "name": "เซ็นทรัล ชิดลม",
-        "location": "เซ็นทรัล ชิดลม (รอยืนยันชั้น 1 หรือ 3)",
+        "location": "เซ็นทรัล ชิดลม ชั้น 3",
         "hours": "ทุกวัน 10:00–22:00 น.",
         "opened": "พฤศจิกายน 2025"
       }
