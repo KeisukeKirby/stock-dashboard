@@ -60,7 +60,18 @@
    "src": "pptx S11 / 店舗案内 / Google マップ / Barefootinc 公式店舗案内",
    "map": "https://maps.app.goo.gl/pMoezQd6LMqPpJss5",
    "phone": "+66 2 661 2993（vivobarefoot-lp 記載、要確認）",
-   "googleName": "Barefootinc Flagship Store (Official distributor of Vibram FiveFingers)"
+   "googleName": "Barefootinc Flagship Store (Official distributor of Vibram FiveFingers)",
+   "lat": 13.7208242,
+   "lng": 100.5695848,
+   "floor": {
+    "ja": "K Village Building B 1F",
+    "en": "K Village, Building B, 1F",
+    "th": "K Village อาคาร B ชั้น 1"
+   },
+   "pin": {
+    "label": "K Village",
+    "side": "right"
+   }
   },
   {
    "id": "central-lp",
@@ -84,7 +95,18 @@
    "status": "約 8 割が VFF。販売員の力量次第",
    "zort": "Coollabo Cen LP 3F (EDV)",
    "src": "pptx S11 / Google マップ（3F） / 店舗案内（ポップアップ開始月）",
-   "map": "https://maps.app.goo.gl/WGSpFUVMjzHQmjv57"
+   "map": "https://maps.app.goo.gl/WGSpFUVMjzHQmjv57",
+   "lat": 13.8166,
+   "lng": 100.5605,
+   "floor": {
+    "ja": "Central Ladprao 3F",
+    "en": "Central Ladprao, 3F",
+    "th": "เซ็นทรัล ลาดพร้าว ชั้น 3"
+   },
+   "pin": {
+    "label": "Central Ladprao",
+    "side": "right"
+   }
   },
   {
    "id": "thaniya",
@@ -106,7 +128,18 @@
    "monthly": "平均 約 30 万 THB",
    "status": "Coolcore 中心。最近 2〜3 割減",
    "zort": "Thaniya",
-   "src": "pptx S11"
+   "src": "pptx S11",
+   "lat": 13.7284,
+   "lng": 100.533,
+   "floor": {
+    "ja": "Thaniya Plaza 2F",
+    "en": "Thaniya Plaza, 2F",
+    "th": "ธนิยะ พลาซ่า ชั้น 2"
+   },
+   "pin": {
+    "label": "Thaniya Plaza",
+    "side": "left"
+   }
   },
   {
    "id": "paradise",
@@ -130,7 +163,18 @@
    "zort": "Paradise Park (BFT)",
    "src": "pptx S11 / README / 店舗案内 / Google マップ / Barefootinc 公式店舗案内",
    "googleName": "Barefoot Park (Paradise Park Branch)",
-   "map": "https://maps.app.goo.gl/Qk3BCFSf71CTgVsv6"
+   "map": "https://maps.app.goo.gl/Qk3BCFSf71CTgVsv6",
+   "lat": 13.6877,
+   "lng": 100.6475,
+   "floor": {
+    "ja": "Paradise Park 1F（屋外の Sidewalk Zone）",
+    "en": "Paradise Park, 1F (outdoor Sidewalk Zone)",
+    "th": "พาราไดซ์ พาร์ค ชั้น 1 (โซน Sidewalk ด้านนอก)"
+   },
+   "pin": {
+    "label": "Paradise Park",
+    "side": "right"
+   }
   },
   {
    "id": "siam-dis",
@@ -153,7 +197,18 @@
    "zort": "Siam Discovery",
    "src": "pptx S11 / 店舗案内 / Google マップ",
    "googleName": "Barefootinc Siam Discovery (Official distributor …)",
-   "map": "https://maps.app.goo.gl/zbc2yHStg9e9kLfT7"
+   "map": "https://maps.app.goo.gl/zbc2yHStg9e9kLfT7",
+   "lat": 13.7466,
+   "lng": 100.5315,
+   "floor": {
+    "ja": "Siam Discovery 1F",
+    "en": "Siam Discovery, 1F",
+    "th": "สยามดิสคัฟเวอรี่ ชั้น 1"
+   },
+   "pin": {
+    "label": "Siam Discovery",
+    "side": "left"
+   }
   },
   {
    "id": "central-cl",
@@ -175,7 +230,18 @@
    "status": "デパート委託",
    "zort": "Central CL",
    "src": "pptx S11 / 会社プレゼン p11 / 店舗案内 / Google マップ / Central 公式店舗案内",
-   "map": "https://maps.app.goo.gl/mMzfDovCCQjzD6h19"
+   "map": "https://maps.app.goo.gl/mMzfDovCCQjzD6h19",
+   "lat": 13.7444,
+   "lng": 100.5444,
+   "floor": {
+    "ja": "Central Chidlom（1F／3F 要確認）",
+    "en": "Central Chidlom (1F or 3F, to be confirmed)",
+    "th": "เซ็นทรัล ชิดลม (ชั้น 1 หรือ 3 รอยืนยัน)"
+   },
+   "pin": {
+    "label": "Central Chidlom",
+    "side": "right"
+   }
   },
   {
    "id": "central-others",
@@ -445,5 +511,6 @@
   "address": "87/35 Modern Town Bldg, Soi Sukhumvit 63, Bangkok",
   "src": "Drive 契約書類（登記住所）"
  },
- "referenceUrl": "https://scratch-seven-vert.vercel.app/"
+ "referenceUrl": "https://scratch-seven-vert.vercel.app/",
+ "geoSource": "K Village は Google マップのリンク、他は Wikipedia・Sygic のモールの座標（誤差は数十〜100m 程度）"
 }

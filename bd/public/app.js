@@ -261,27 +261,46 @@
   views.stores = (el) => {
     if (!D.stores) return;
     const storeLabels = locale().stores || {};
+    const pick = (o) => (o && (o[language] || o.ja)) || "";
     const rows = D.stores.items.filter(store =>
       store.type === "direct" || (store.type === "dept" && store.id !== "central-others"));
-    const links = [
-      [D.stores.referenceUrl, tr("店舗資料", "Store reference", "เอกสารอ้างอิงร้าน")],
-      ["https://stock-dashboard-kadq.vercel.app/", tr("店舗・オフィス在庫", "Store and office inventory", "สต็อกร้านและสำนักงาน")],
-      ["https://vff-stock-dashboard.vercel.app/", tr("VFF 在庫・欠品予測", "VFF stock and shortage forecast", "สต็อก VFF และคาดการณ์สินค้าขาด")],
-      ["https://kaizen-manual.vercel.app/", tr("店舗・倉庫の業務マニュアル", "Store and warehouse procedures", "คู่มือปฏิบัติงานร้านและคลังสินค้า")]
-    ];
-    el.append(simpleTable(
-      [tr("店舗", "Store", "ร้าน"), tr("所在地", "Location", "ที่ตั้ง"), tr("営業時間", "Hours", "เวลาเปิด"), tr("開店", "Opened", "เปิดร้าน"), tr("リンク", "Link", "ลิงก์")],
+    const mapUrl = (store) => store.map || (store.mapQuery ? "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(store.mapQuery) : "");
+    el.append(h("p", { class: "note", style: "margin:0 0 12px" }, tr(
+      `店舗は ${rows.length} つです。ピンを押すと店名・場所・営業時間が出て、Google マップで開けます。`,
+      `We have ${rows.length} shops. Tap a pin to see the name, location and hours, and open it in Google Maps.`,
+      `มีร้านทั้งหมด ${rows.length} แห่ง แตะหมุดเพื่อดูชื่อร้าน ที่ตั้ง เวลาเปิด และเปิดใน Google Maps`)));
+    const mapBox = h("div", { id: "storeMap", class: "store-map", role: "region", "aria-label": tr("店舗の地図", "Shop map", "แผนที่ร้าน") });
+    el.append(mapBox);
+    const located = rows.filter(r => r.lat && r.lng);
+    if (window.L && located.length) {
+      requestAnimationFrame(() => {
+        const map = L.map(mapBox, { scrollWheelZoom: false });
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "&copy; OpenStreetMap contributors" }).addTo(map);
+        const bounds = [];
+        for (const store of located) {
+          const info = { ...store, ...storeLabels[store.id] };
+          const pop = h("div", { class: "pin-pop" }, h("strong", {}, info.name), h("div", {}, pick(store.floor)),
+            info.hours ? h("div", { class: "muted" }, info.hours) : null,
+            mapUrl(store) ? h("div", { style: "margin-top:4px" }, external(mapUrl(store), tr("Google マップで開く ↗", "Open in Google Maps ↗", "เปิดใน Google Maps ↗"))) : null);
+          L.marker([store.lat, store.lng], { title: info.name }).addTo(map).bindPopup(pop)
+            .bindTooltip(store.pin?.label || info.name, { permanent: true, direction: store.pin?.side || "right", offset: store.pin?.side === "left" ? [-14, -20] : [14, -20], className: "pin-label" });
+          bounds.push([store.lat, store.lng]);
+        }
+        const padX = mapBox.clientWidth < 500 ? 120 : 90; map.fitBounds(bounds, { paddingTopLeft: [padX, 50], paddingBottomRight: [padX, 30] });
+      });
+    } else mapBox.append(h("p", { class: "muted", style: "padding:16px" }, tr("地図を読み込めませんでした", "Could not load the map", "โหลดแผนที่ไม่ได้")));
+    el.append(h("div", { style: "margin-top:16px" }, simpleTable(
+      [tr("店舗", "Shop", "ร้าน"), tr("所在地", "Location", "ที่ตั้ง"), tr("営業時間", "Hours", "เวลาเปิด"), tr("開店", "Opened", "เปิดร้าน"), "Google Maps"],
       rows.map(store => {
         const info = { ...store, ...storeLabels[store.id] };
-        const map = store.map || (store.mapQuery ? "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(store.mapQuery) : "");
-        return [info.name, h("div", {}, info.location, info.address && h("div", { class: "muted small" }, info.address)), info.hours || null,
-          info.opened || null, map ? external(map, "Google Maps ↗") : null];
-      })
-    ));
-    el.append(h("div", { class: "card", style: "margin-top:14px" },
-      h("h2", {}, tr("関連リンク", "Related links", "ลิงก์ที่เกี่ยวข้อง")),
-      h("ul", { class: "clean" }, links.filter(([url]) => url).map(([url, label]) => h("li", {}, external(url, label))))));
+        const url = mapUrl(store);
+        return [info.name, pick(store.floor) || info.location, info.hours || null, info.opened || null, url ? external(url, tr("地図を開く ↗", "Open map ↗", "เปิดแผนที่ ↗")) : null];
+      }))));
+    if (D.stores.referenceUrl) el.append(h("div", { class: "card", style: "margin-top:14px" },
+      h("h2", {}, tr("関連資料", "Related document", "เอกสารที่เกี่ยวข้อง")),
+      h("ul", { class: "clean" }, h("li", {}, external(D.stores.referenceUrl, tr("店舗一覧 ↗", "Shop list ↗", "รายชื่อร้าน ↗"))))));
   };
+
 
 
   views.terms = (el) => {

@@ -179,3 +179,10 @@ table.dt tr:last-child td { border-bottom: none; }
   .card { padding: 14px; }
 }
 @media print { .tabs, .top-actions, .toolbar { display: none !important; } .view[hidden] { display: block !important; } }
+
+/* store map */
+.store-map { height: 480px; border-radius: var(--radius); border: 1px solid var(--line); overflow: hidden; background: var(--surface-2); z-index: 0; }
+@media (max-width: 640px) { .store-map { height: 360px; } }
+.pin-pop { font-size: 13px; line-height: 1.5; min-width: 180px; }
+.leaflet-tooltip.pin-label { background: var(--surface); color: var(--ink); border: 1px solid var(--line-strong); border-radius: 6px; font-size: 12px; font-weight: 600; padding: 2px 6px; box-shadow: var(--shadow); }
+.leaflet-tooltip.pin-label::before { display: none; }
