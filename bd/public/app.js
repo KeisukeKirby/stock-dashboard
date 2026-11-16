@@ -100,7 +100,7 @@
   }
 
   // ---------- SVG stacked bar chart ----------
-  function stackedBars(months, series, { height = 260, fmtY = fmtM } = {}) {
+  function stackedBars(months, series, { height = 260, fmtY = fmtM, unit = "" } = {}) {
     // series: [{name,color,values:{month:number}}]
     const W = 900, H = height, padL = 56, padR = 12, padT = 12, padB = 34;
     const totals = months.map((m) => series.reduce((s, x) => s + (x.values[m] || 0), 0));
@@ -113,12 +113,23 @@
     for (let i = 0; i <= 4; i++) { const v = (max / 4) * i; svg.append(ns("line", { x1: padL, x2: W - padR, y1: y(v), y2: y(v), stroke: "var(--line)" })); const t = ns("text", { x: padL - 6, y: y(v) + 4, "text-anchor": "end", "font-size": 11 }); t.textContent = fmtY(v); svg.append(t); }
     months.forEach((m, i) => {
       let acc = 0;
-      for (const s of series) { const v = s.values[m] || 0; if (!v) continue; const r = ns("rect", { x: padL + i * bw + bw * 0.15, width: bw * 0.7, y: y(acc + v), height: Math.max(0, y(acc) - y(acc + v)), fill: s.color, rx: 2 }); const title = ns("title", {}); title.textContent = `${m} ${s.name}: ${fmt(v)}`; r.append(title); svg.append(r); acc += v; }
+      for (const s of series) { const v = s.values[m] || 0; if (!v) continue; const r = ns("rect", { x: padL + i * bw + bw * 0.15, width: bw * 0.7, y: y(acc + v), height: Math.max(0, y(acc) - y(acc + v)), fill: s.color, rx: 2, class: "bar-seg", tabindex: 0 }); r.dataset.tip = `${s.name}\n${m.replace("-", "/")}: ${fmt(v)}${unit}`; svg.append(r); acc += v; }
       const t = ns("text", { x: padL + i * bw + bw / 2, y: H - padB + 16, "text-anchor": "middle", "font-size": 11 }); t.textContent = m.slice(2).replace("-", "/"); svg.append(t);
       const tt = ns("text", { x: padL + i * bw + bw / 2, y: y(totals[i]) - 4, "text-anchor": "middle", "font-size": 10.5 }); tt.textContent = totals[i] ? fmtY(totals[i]) : ""; svg.append(tt);
     });
     const legend = h("div", { class: "legend" }, series.map((s) => h("span", {}, h("i", { style: `background:${s.color}` }), s.name)));
-    return h("div", {}, svg, legend);
+    const tip = h("div", { class: "chart-tip", hidden: true });
+    const wrap = h("div", { class: "chart-wrap" }, svg, tip);
+    const show = (e) => {
+      const seg = e.target.closest && e.target.closest(".bar-seg"); if (!seg) { tip.hidden = true; return; }
+      const box = wrap.getBoundingClientRect(), r = seg.getBoundingClientRect();
+      tip.textContent = seg.dataset.tip; tip.hidden = false;
+      tip.style.left = Math.min(box.width - 170, Math.max(0, r.left - box.left + r.width / 2 - 80)) + "px";
+      tip.style.top = Math.max(0, r.top - box.top - tip.offsetHeight - 6) + "px";
+    };
+    svg.addEventListener("mouseover", show); svg.addEventListener("focusin", show); svg.addEventListener("click", show);
+    svg.addEventListener("mouseleave", () => { tip.hidden = true; });
+    return h("div", {}, wrap, legend);
   }
 
   // ---------- router ----------
@@ -275,7 +286,7 @@
     if (window.L && located.length) {
       requestAnimationFrame(() => {
         const map = L.map(mapBox, { scrollWheelZoom: false });
-        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "&copy; OpenStreetMap contributors" }).addTo(map);
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, referrerPolicy: "strict-origin-when-cross-origin", attribution: "&copy; OpenStreetMap contributors" }).addTo(map);
         const bounds = [];
         for (const store of located) {
           const info = { ...store, ...storeLabels[store.id] };
@@ -323,9 +334,9 @@
   };
 
   views.consignment = (el) => gate(el, "consignment", (el, C) => {
-    el.append(h("div", { class: "section-title" }, h("h2", {}, tr("委託販売実績（足数）", "Consignment sales (units)", "ยอดฝากขาย (จำนวนชิ้น)")), h("span", { class: "note" }, `${C.period || ""} · ${tr("更新", "Updated", "อัปเดต")} ${C.updatedAt}`, src(C.source))));
-    if (C.notes) el.append(h("div", { class: "infobox" }, h("ul", { class: "clean small" }, (locale().consignmentNotes || C.notes).map((n) => h("li", {}, n)))));
     const months = C.months || [];
+    const fileUrl = C.sourceUrl;
+    const srcLine = (text) => h("p", { class: "note", style: "margin:8px 0 0" }, tr("出典: ", "Source: ", "ที่มา: "), fileUrl ? external(fileUrl, text + " ↗") : text);
     const consigneeTypes = {
       "デパート委託": tr("デパート委託", "Department store", "ห้างสรรพสินค้า"),
       "アウトドア店委託": tr("アウトドア店委託", "Outdoor store", "ร้านอุปกรณ์กลางแจ้ง"),
@@ -335,18 +346,55 @@
       "個人・小規模委託": tr("個人・小規模委託", "Individual or small business", "บุคคลหรือธุรกิจขนาดเล็ก"),
       "カフェ委託": tr("カフェ委託", "Café", "คาเฟ่")
     };
-    const rows = C.consignees.map((c) => ({ ...c, type: consigneeTypes[c.type] || c.type, brandsText: (c.brands || []).join(" / "), last12: months.slice(-12).reduce((a, m) => a + ((c.monthly || {})[m] || 0), 0) }));
-    el.append(h("div", { class: "card", style: "margin-top:14px" }, table([{ key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") }, { key: "type", label: tr("形態", "Type", "ประเภท") }, { key: "brandsText", label: tr("ブランド", "Brand", "แบรนด์") }, { key: "skuCount", label: "SKU", num: true }, { key: "delivered", label: tr("納品", "Delivered", "ส่งมอบ"), num: true }, { key: "sold", label: tr("販売", "Sold", "ขาย"), num: true }, { key: "returned", label: tr("返品", "Returned", "คืน"), num: true }, { key: "balance", label: tr("残", "Balance", "คงเหลือ"), num: true }, { key: "last12", label: tr("直近12か月 販売", "Sold in last 12 months", "ขายใน 12 เดือนล่าสุด"), num: true }, { key: "firstMonth", label: tr("開始", "First sale", "ขายครั้งแรก") }, { key: "lastMonth", label: tr("最終販売", "Last sale", "ขายล่าสุด") }], rows, { sortKey: "sold", desc: true, csvName: "consignment", total: (rs) => ({ name: tr("合計", "Total", "รวม"), skuCount: rs.reduce((a, r) => a + (r.skuCount || 0), 0), delivered: rs.reduce((a, r) => a + (r.delivered || 0), 0), sold: rs.reduce((a, r) => a + (r.sold || 0), 0), returned: rs.reduce((a, r) => a + (r.returned || 0), 0), balance: rs.reduce((a, r) => a + (r.balance || 0), 0), last12: rs.reduce((a, r) => a + (r.last12 || 0), 0) }) })));
-    if (months.length) {
-      const top = rows.slice().sort((a, b) => b.sold - a.sold).slice(0, 8);
-      const palette = ["#3b82c4", "#d03b3b", "#2e9e5b", "#d99100", "#7c5cbf", "#00a7e1", "#8a8c8f", "#c2185b"];
-      const last = months.slice(-18);
-      el.append(h("div", { class: "card", style: "margin-top:14px" }, h("h3", {}, tr("委託先別 月次販売足数（上位 8・直近 18 か月）", "Monthly consignment sales (top 8, last 18 months)", "ยอดฝากขายรายเดือน (8 อันดับแรก ใน 18 เดือนล่าสุด)")), stackedBars(last, top.map((c, i) => ({ name: c.name, color: palette[i % palette.length], values: c.monthly || {} })), { fmtY: (v) => fmt(v) })));
-      const mrows = rows.map((c) => { const r = { name: c.name }; for (const m of last) r[m] = (c.monthly || {})[m] || 0; return r; });
-      el.append(h("div", { class: "card", style: "margin-top:14px" }, h("h3", {}, tr("委託先 × 月（販売足数）", "Units sold by consignee and month", "จำนวนที่ขายแยกตามผู้รับฝากขายและเดือน")), table([{ key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") }, ...last.map((m) => ({ key: m, label: m.slice(2), num: true }))], mrows, { search: false, csvName: "consignment_monthly" })));
-    }
-    if (C.byBrandTotal) el.append(h("div", { class: "card", style: "margin-top:14px" }, h("h3", {}, tr("ブランド別 合計", "Totals by brand", "ยอดรวมตามแบรนด์")), table([{ key: "brand", label: tr("ブランド", "Brand", "แบรนด์") }, { key: "delivered", label: tr("納品", "Delivered", "ส่งมอบ"), num: true }, { key: "sold", label: tr("販売", "Sold", "ขาย"), num: true }, { key: "balance", label: tr("残", "Balance", "คงเหลือ"), num: true }], Object.entries(C.byBrandTotal).map(([b, v]) => ({ brand: b, ...v })), { search: false, csv: false })));
+    const isDept = (c) => c.type === "デパート委託";
+    const ordered = C.consignees.slice().sort((a, b) => (isDept(b) - isDept(a)) || (b.sold - a.sold));
+    const rows = ordered.map((c) => ({ ...c, typeLabel: consigneeTypes[c.type] || c.type, brandsText: (c.brands || []).join(" / "), last12: months.slice(-12).reduce((a, m) => a + ((c.monthly || {})[m] || 0), 0) }));
+    const sum = (rs, k) => rs.reduce((a, r) => a + (r[k] || 0), 0);
+    // 1. 委託販売先一覧
+    el.append(h("div", { class: "section-title" }, h("h2", {}, tr("委託販売先一覧", "Consignment partners", "รายชื่อผู้รับฝากขาย")), h("span", { class: "note" }, `${C.period || ""} · ${tr("単位: 足・個", "Units: pairs / pieces", "หน่วย: คู่ / ชิ้น")}`)));
+    el.append(h("div", { class: "card" }, table([
+      { key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") },
+      { key: "typeLabel", label: tr("形態", "Type", "ประเภท") },
+      { key: "brandsText", label: tr("ブランド", "Brand", "แบรนด์") },
+      { key: "skuCount", label: "SKU", num: true },
+      { key: "delivered", label: tr("納品", "Delivered", "ส่งมอบ"), num: true },
+      { key: "sold", label: tr("販売", "Sold", "ขาย"), num: true },
+      { key: "returned", label: tr("返品", "Returned", "คืน"), num: true },
+      { key: "balance", label: tr("残", "Balance", "คงเหลือ"), num: true },
+      { key: "last12", label: tr("直近12か月 販売", "Sold in last 12 months", "ขายใน 12 เดือนล่าสุด"), num: true },
+      { key: "firstMonth", label: tr("開始", "First sale", "ขายครั้งแรก") },
+      { key: "lastMonth", label: tr("最終販売", "Last sale", "ขายล่าสุด") },
+      { key: "sheet", label: tr("出典（シート）", "Source (sheet)", "ที่มา (ชีต)"), render: (v) => fileUrl ? external(fileUrl, (v || "") + " ↗") : (v || "–") }
+    ], rows, { csvName: "consignment_partners", total: (rs) => ({ name: tr("合計", "Total", "รวม"), skuCount: sum(rs, "skuCount"), delivered: sum(rs, "delivered"), sold: sum(rs, "sold"), returned: sum(rs, "returned"), balance: sum(rs, "balance"), last12: sum(rs, "last12") }) }),
+      srcLine(tr("Stock VFF Consignment.xlsx（BFT 経理、委託先ごとのシート）。SKU〜最終販売はすべてこのファイルの数量から集計", "Stock VFF Consignment.xlsx (BFT accounting, one sheet per consignee). SKU through last sale are all counted from this file", "Stock VFF Consignment.xlsx (บัญชี BFT แยกชีตตามผู้รับฝากขาย) ตั้งแต่ SKU ถึงขายล่าสุดนับจากไฟล์นี้ทั้งหมด"))));
+    if (!months.length) return;
+    const last = months.slice(-18);
+    const fold = (title, ...body) => h("details", { class: "card fold", style: "margin-top:14px" }, h("summary", {}, h("h3", { style: "display:inline;margin:0" }, title)), h("div", { style: "margin-top:12px" }, ...body));
+    // 2. 委託先別 月次販売足数（グラフ）
+    const top = rows.slice().sort((a, b) => b.sold - a.sold).slice(0, 8);
+    const palette = ["#3b82c4", "#d03b3b", "#2e9e5b", "#d99100", "#7c5cbf", "#00a7e1", "#8a8c8f", "#c2185b"];
+    el.append(fold(tr("委託先別 月次販売足数（上位 8・直近 18 か月）", "Monthly units sold by consignee (top 8, last 18 months)", "ยอดขายรายเดือนตามผู้รับฝากขาย (8 อันดับแรก 18 เดือนล่าสุด)"),
+      h("p", { class: "note", style: "margin:0 0 8px" }, tr("色の部分にカーソルを置く（スマホはタップ）と、その委託先の月の販売数が出ます。", "Hover over a colour (tap on a phone) to see that consignee's units for the month.", "วางเมาส์บนสี (แตะบนมือถือ) เพื่อดูยอดของผู้รับฝากขายในเดือนนั้น")),
+      stackedBars(last, top.map((c, i) => ({ name: c.name, color: palette[i % palette.length], values: c.monthly || {} })), { fmtY: (v) => fmt(v), unit: tr(" 足", " units", " ชิ้น") }),
+      srcLine(tr("Stock VFF Consignment.xlsx の各シートの月別販売列", "monthly sales columns in each sheet of Stock VFF Consignment.xlsx", "คอลัมน์ยอดขายรายเดือนในแต่ละชีตของ Stock VFF Consignment.xlsx"))));
+    // 3. 委託先 × 月（ブランド別）
+    const brands = [...new Set(C.consignees.flatMap((c) => Object.keys(c.monthlyByBrand || {})))];
+    const brandOrder = ["VFF", "OLENO", "Coolcore", "Tabi (Marugo)", "BFJ"];
+    brands.sort((a, b) => (brandOrder.indexOf(a) + 99 * (brandOrder.indexOf(a) < 0)) - (brandOrder.indexOf(b) + 99 * (brandOrder.indexOf(b) < 0)));
+    const brandTables = brands.map((b) => {
+      const brows = ordered.filter((c) => c.monthlyByBrand?.[b] && last.some((m) => c.monthlyByBrand[b][m])).map((c) => {
+        const r = { name: c.name }; let t = 0; for (const m of last) { r[m] = c.monthlyByBrand[b][m] || 0; t += r[m]; } r.total = t; return r; });
+      if (!brows.length) return null;
+      const total = { name: tr("合計", "Total", "รวม") }; for (const m of [...last, "total"]) total[m] = sum(brows, m);
+      return h("div", { style: "margin-top:16px" }, h("h4", { style: "margin:0 0 6px" }, b, h("span", { class: "muted small" }, `  ${tr("合計", "Total", "รวม")} ${fmt(total.total)}`)),
+        table([{ key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") }, ...last.map((m) => ({ key: m, label: m.slice(2).replace("-", "/"), num: true })), { key: "total", label: tr("合計", "Total", "รวม"), num: true }],
+          brows, { search: false, csvName: `consignment_${b}`, total: () => total }));
+    });
+    el.append(fold(tr("委託先 × 月（販売足数・ブランド別、直近 18 か月）", "Units sold by consignee and month, by brand (last 18 months)", "จำนวนที่ขายตามผู้รับฝากขายและเดือน แยกตามแบรนด์ (18 เดือนล่าสุด)"),
+      ...brandTables,
+      srcLine(tr("Stock VFF Consignment.xlsx の SKU 行（品番の頭 VFF / OLN / CP / MTB / BFJ でブランドを判定）", "SKU rows in Stock VFF Consignment.xlsx (brand from the code prefix VFF / OLN / CP / MTB / BFJ)", "แถว SKU ใน Stock VFF Consignment.xlsx (แยกแบรนด์จากรหัส VFF / OLN / CP / MTB / BFJ)"))));
   });
+
 
   (async () => { await loadAll(); applyLanguage(); })();
 })();
