@@ -167,9 +167,9 @@
    "lat": 13.6877,
    "lng": 100.6475,
    "floor": {
-    "ja": "Paradise Park 1F（屋外の Sidewalk Zone）",
-    "en": "Paradise Park, 1F (outdoor Sidewalk Zone)",
-    "th": "พาราไดซ์ พาร์ค ชั้น 1 (โซน Sidewalk ด้านนอก)"
+    "ja": "Paradise Park 屋外の Sidewalk Zone（階数の記載なし）",
+    "en": "Paradise Park, outdoor Sidewalk Zone (no floor given)",
+    "th": "พาราไดซ์ พาร์ค โซน Sidewalk ด้านนอก (ไม่ระบุชั้น)"
    },
    "pin": {
     "label": "Paradise Park",
