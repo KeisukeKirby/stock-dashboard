@@ -54,7 +54,7 @@
   const D = {};
   async function loadJSON(path) { const r = await fetch(path, { cache: "no-store" }); if (!r.ok) throw new Error(`${path}: ${r.status}`); return r.json(); }
   async function loadAll() {
-    const files = { brands: "data/brands.json", stores: "data/stores.json", guidelines: "data/guidelines.json", sns: "data/sns.json", sales: "data/sales_monthly.json", terms: "data/terms.json", consignment: "data/consignment.json", translations: "data/section_translations.json" };
+    const files = { brands: "data/brands.json", stores: "data/stores.json", guidelines: "data/guidelines.json", sns: "data/sns.json", sales: "data/sales_monthly.json", terms: "data/terms.json", consignment: "data/consignment.json", translations: "data/section_translations.json", hub: "data/brand_hub.json" };
     await Promise.all(Object.entries(files).map(async ([k, p]) => { try { D[k] = await loadJSON(p); } catch (e) { console.error(e); D[k] = null; } }));
   }
 
@@ -126,7 +126,6 @@
   const sections = {
     sales: ["売上", "Sales", "ยอดขาย"],
     brands: ["ブランド", "Brands", "แบรนด์"],
-    guidelines: ["ガイドライン", "Brand guidelines", "คู่มือแบรนด์"],
     stores: ["店舗一覧", "Stores", "รายชื่อร้าน"],
     consignment: ["委託販売", "Consignment", "การฝากขาย"],
     terms: ["取引条件", "Trade terms", "เงื่อนไขการค้า"],
@@ -156,7 +155,10 @@
   }));
   function route() {
     const hash = (location.hash || "#sales").slice(1);
-    const [view, sub] = hash.split("-", 2).length > 1 && hash.startsWith("brand-") ? ["brands", hash.slice(6)] : [hash, null];
+    let view = hash, sub = null;
+    if (hash === "guidelines") { view = "brands"; sub = "guidelines"; history.replaceState(null, "", "#brands-guidelines"); }
+    else if (hash.startsWith("brands-")) { view = "brands"; sub = hash.slice(7); }
+    else if (hash.startsWith("brand-")) { view = "brands"; history.replaceState(null, "", "#brands"); }
     const name = Object.hasOwn(views, view) ? view : "sales";
     if (name !== view) history.replaceState(null, "", "#sales");
     document.querySelectorAll(".view").forEach((v) => (v.hidden = v.id !== `view-${name}`));
@@ -172,39 +174,52 @@
   }
   window.addEventListener("hashchange", route);
 
-  // ---------- BRANDS ----------
+  // ---------- BRANDS（ブランド一覧 / ガイドライン / カタログ） ----------
   views.brands = (el, sub) => {
-    const B = D.brands ? D.brands.items : [];
-    const cur = B.find((b) => b.id === sub) || B[0];
-    el.append(h("div", { class: "subtabs" }, B.map((b) => h("a", { class: "subtab" + (b.id === cur.id ? " active" : "") + (LIGHT.has(b.id) ? " light" : ""), href: `#brand-${b.id}`, style: `--bc:${BRAND_COLOR[b.short]}` }, b.name))));
-    if (!cur) return;
-    const details = locale().brands?.[cur.id] || {};
-    const b = { ...cur, ...details };
-    el.append(h("div", { class: "brand-head" }, h("span", { class: "logo-chip" + (LIGHT.has(b.id) ? " light" : ""), style: `--bc:${BRAND_COLOR[b.short]}` }, b.short), h("div", {}, h("h2", { style: "margin:0" }, b.name, " ", h("span", { class: "muted small" }, b.nameJa)), h("div", { class: "note" }, b.tagline, " ／ ", b.company === "BFT" ? "Barefootinc (Thailand)" : "Endeavorz", src(b.src)))));
-    if (b.catalogUrl) {
-      const label = b.catalogLabel || tr(
-        b.name + " 商品カタログを開く",
-        "Open the " + b.name + " catalog",
-        "เปิดแคตตาล็อก " + b.name
-      );
-      el.append(h("div", { class: "card", style: "margin-bottom:14px" },
-        h("h3", {}, tr("商品情報", "Product information", "ข้อมูลสินค้า")),
-        external(b.catalogUrl, label + " ↗")));
+    const H = D.hub;
+    if (!H) { el.append(h("p", { class: "error" }, tr("データを読み込めませんでした", "Could not load the data", "โหลดข้อมูลไม่ได้"))); return; }
+    const t = (o) => (o && (o[language] || o.ja)) || "";
+    const parts = [
+      ["list", tr("ブランド一覧", "Brand list", "รายชื่อแบรนด์")],
+      ["guidelines", tr("ガイドライン", "Brand guidelines", "คู่มือแบรนด์")],
+      ["catalogs", tr("カタログ", "Catalogs", "แคตตาล็อก")]
+    ];
+    const cur = parts.some(([k]) => k === sub) ? sub : "list";
+    el.append(h("nav", { class: "subtabs", "aria-label": tr("ブランドの項目", "Brand sections", "หัวข้อแบรนด์") },
+      parts.map(([k, label]) => h("a", { class: "subtab" + (k === cur ? " active" : ""), href: k === "list" ? "#brands" : `#brands-${k}`, "aria-current": k === cur ? "page" : null }, label))));
+    const companyName = (c) => c === "BFT" ? "Barefootinc (Thailand)" : "Endeavorz";
+    if (cur === "list") {
+      el.append(h("p", { class: "note", style: "margin:0 0 14px" }, tr(
+        "取り扱いブランドは 5 つです。Barefootinc (Thailand)（BFT）が 3 ブランド、Endeavorz（EDV）が 2 ブランドを扱っています。",
+        "We handle five brands: three through Barefootinc (Thailand) (BFT) and two through Endeavorz (EDV).",
+        "เราดูแล 5 แบรนด์: 3 แบรนด์โดย Barefootinc (Thailand) (BFT) และ 2 แบรนด์โดย Endeavorz (EDV)")));
+      el.append(h("div", { class: "grid c2" }, H.brands.map((b) => h("section", { class: "brand-card", style: `--bc:${BRAND_COLOR[b.short] || "var(--accent)"}` },
+        h("div", { class: "bc" }, companyName(b.company)),
+        h("h2", { class: "bn", style: "margin:2px 0 6px" }, b.name),
+        h("p", { class: "bt", style: "margin:0 0 12px" }, t(b.desc)),
+        b.lineup ? external(b.lineup, tr("製品ラインナップはこちら ↗", "See the product line-up ↗", "ดูไลน์อัปสินค้า ↗"), { class: "ghost" })
+                 : h("span", { class: "muted small" }, tr("製品ラインナップのページはまだありません", "No product line-up page yet", "ยังไม่มีหน้าไลน์อัปสินค้า"))))));
+    } else {
+      const groups = cur === "guidelines" ? H.guidelines : H.catalogs;
+      el.append(h("p", { class: "note", style: "margin:0 0 14px" }, cur === "guidelines"
+        ? tr("メーカーが定めた公式のブランドガイドライン（PDF）です。ロゴや写真、SNS 投稿を作る前に必ず確認してください。",
+             "Official brand guidelines (PDF) from each maker. Check them before making anything with the logo, photos or social posts.",
+             "คู่มือแบรนด์ทางการ (PDF) จากผู้ผลิต โปรดตรวจสอบก่อนใช้โลโก้ รูปภาพ หรือโพสต์โซเชียล")
+        : tr("シーズンごとの製品カタログ（PDF）です。SS = 春夏、FW / AW = 秋冬。",
+             "Product catalogs (PDF) by season. SS = spring/summer, FW / AW = fall/winter.",
+             "แคตตาล็อกสินค้า (PDF) ตามฤดูกาล SS = ใบไม้ผลิ/ร้อน, FW / AW = ใบไม้ร่วง/หนาว")));
+      el.append(h("div", { class: "grid c2" }, groups.map((g) => h("section", { class: "card" },
+        h("h2", { style: "margin:0 0 10px" }, g.brand),
+        h("ul", { class: "clean" }, g.docs.map((d) => h("li", { style: "margin:8px 0" }, external(d.url, "📄 " + t(d.label) + " ↗"))))))));
+      if (cur === "guidelines") el.append(h("p", { class: "note" }, tr(
+        "PDF は Google Drive にあります。開けない場合は GM に閲覧権限を依頼してください。",
+        "The PDFs are in Google Drive. If one will not open, ask the GM for access.",
+        "ไฟล์ PDF อยู่ใน Google Drive หากเปิดไม่ได้ โปรดขอสิทธิ์จาก GM")));
+      else el.append(h("p", { class: "note" }, tr(
+        "VFF は Google Drive、Vivobarefoot AW27 はこのダッシュボード内の PDF です。",
+        "VFF catalogs are in Google Drive; the Vivobarefoot AW27 catalog is stored in this dashboard.",
+        "แคตตาล็อก VFF อยู่ใน Google Drive ส่วน Vivobarefoot AW27 เก็บไว้ในแดชบอร์ดนี้")));
     }
-    el.append(h("div", { class: "grid c2" },
-      h("div", { class: "card" }, h("h3", {}, tr("概要", "Overview", "ภาพรวม")), h("dl", { class: "kv" },
-        h("dt", {}, tr("出自", "Origin", "ที่มา")), h("dd", {}, b.origin), h("dt", {}, tr("コンセプト", "Concept", "แนวคิด")), h("dd", {}, b.concept), h("dt", {}, tr("ターゲット", "Audience", "กลุ่มเป้าหมาย")), h("dd", {}, val(b.target === "未入力" ? null : b.target)),
-        h("dt", {}, tr("タイで売る理由／現状", "Thailand market", "ตลาดประเทศไทย")), h("dd", {}, b.whyTH), h("dt", {}, tr("取り扱い開始", "Start of sales", "เริ่มจำหน่าย")), h("dd", {}, b.sinceTH && !b.sinceTH.startsWith("未入力") ? b.sinceTH : missing(b.sinceTH || "未入力")),
-        h("dt", {}, tr("契約形態", "Distribution", "รูปแบบการจัดจำหน่าย")), h("dd", {}, b.dealType), h("dt", {}, tr("本国の窓口", "Brand contact", "ผู้ติดต่อแบรนด์")), h("dd", {}, b.principal.company, h("div", { class: "small muted" }, b.principal.role), b.principal.contactNote ? h("div", { class: "small" }, missing(), " ", b.principal.contactNote) : null))),
-      h("div", {}, h("div", { class: "card" }, h("h3", {}, tr("数字", "Figures", "ตัวเลข")), h("div", { class: "kpi-row" }, b.kpis.map((k) => k.values ? Object.entries(k.values).map(([y, v]) => h("div", { class: "mini" }, h("div", { class: "l" }, y === "2026見込" ? tr(y, "2026 forecast", "คาดการณ์ 2026") : y), h("div", { class: "v num" }, fmt(v)))) : null)), b.kpis.map((k, index) => h("p", { class: "small", style: "margin:8px 0 0" }, h("strong", {}, b.kpiLabels?.[index] || k.label, " · "), b.kpiTexts?.[index] || k.text || "", src(k.src)))),
-        h("div", { class: "card", style: "margin-top:14px" }, h("h3", {}, tr("状況", "Current status", "สถานะ")), h("p", { style: "margin:0" }, b.status), b.goal ? h("p", { class: "small" }, h("strong", {}, tr("目指す形: ", "Proposed partnership · ", "แผนความร่วมมือ · ")), b.goal) : null, b.insight ? h("p", { class: "small" }, h("strong", {}, tr("見立て: ", "What works · ", "ปัจจัยที่ได้ผล · ")), b.insight) : null))));
-    const lists = [];
-    if (b.constraints) lists.push(h("div", { class: "warnbox" }, h("strong", {}, tr("制限・禁止事項", "Restrictions", "ข้อจำกัด")), h("ul", { class: "clean small" }, b.constraints.map((x) => h("li", {}, x)))));
-    if (b.issues) lists.push(h("div", { class: "card" }, h("h3", {}, tr("課題", "Priorities", "ประเด็นที่ต้องดำเนินการ")), h("ul", { class: "clean small" }, b.issues.map((x) => h("li", {}, x)))));
-    if (b.wholesale) lists.push(h("div", { class: "card" }, h("h3", {}, tr("卸先", "Wholesale partners", "ร้านค้าส่ง")), table([{ key: "name", label: tr("卸先", "Wholesale partners", "ร้านค้าส่ง"), wrap: true }, { key: "type", label: tr("形態", "Type", "ประเภท") }, { key: "status", label: tr("状況", "Current status", "สถานะ"), wrap: true }], b.wholesale, { search: false, csv: false })));
-    el.append(h("div", { class: "grid c2", style: "margin-top:14px" }, lists));
-    if (b.history || b.fitFeelFlex) el.append(h("div", { class: "grid c3", style: "margin-top:14px" }, b.history ? h("div", { class: "card" }, h("h3", {}, tr("歴史", "History", "ประวัติ")), h("p", { class: "small", style: "margin:0" }, b.history), src("Product Training Vivobarefoot.pdf")) : null, b.fitFeelFlex ? h("div", { class: "card" }, h("h3", {}, "Fit / Feel / Flex"), h("p", { class: "small", style: "margin:0" }, b.fitFeelFlex)) : null));
-    if (b.links && b.links.length) el.append(h("div", { class: "card", style: "margin-top:14px" }, h("h3", {}, tr("資料・リンク", "Resources", "เอกสารและลิงก์")), h("ul", { class: "clean small" }, b.links.map((l, index) => l.url === b.catalogUrl ? null : h("li", {}, external(l.url, b.linkLabels?.[index] || l.label))))));
   };
 
   // ---------- terms / consignment（社内限り。取引条件は GM の判断で全件掲載） ----------
@@ -240,7 +255,7 @@
           h("div", { class: "kpi" }, h("p", { class: "kpi-label" }, tr("10 月の売上", "Sales in October", "ยอดขายเดือนตุลาคม")), h("p", { class: "kpi-value" }, millions(c.month)), h("p", { class: "kpi-note" }, "THB"))),
         h("div", { style: "margin-top:14px" }, external(c.url, tr(`詳しくは ${c.short} 販売実績ダッシュボードへ ↗`, `See the ${c.short} sales dashboard for details ↗`, `ดูรายละเอียดในแดชบอร์ดยอดขาย ${c.short} ↗`), { class: "ghost" }))));
     }
-    el.append(h("p", { class: "note" }, tr(`出典: ${S.source}`, "Source: figures provided by the GM (16 Nov 2026). Jan–Oct is provisional.", "ที่มา: ตัวเลขจาก GM (16 พ.ย. 2026) ม.ค.–ต.ค. เป็นตัวเลขเบื้องต้น")));
+    el.append(h("p", { class: "note" }, tr("出典: BFT・EDV それぞれの販売実績ダッシュボード（1〜10 月は暫定）", "Source: the BFT and EDV sales dashboards (January–October is provisional)", "ที่มา: แดชบอร์ดยอดขายของ BFT และ EDV (ม.ค.–ต.ค. เป็นตัวเลขเบื้องต้น)")));
   };
 
   views.stores = (el) => {
@@ -268,13 +283,6 @@
       h("ul", { class: "clean" }, links.filter(([url]) => url).map(([url, label]) => h("li", {}, external(url, label))))));
   };
 
-  views.guidelines = (el) => {
-    const labels = locale().guidelines || {};
-    el.append(h("div", { class: "grid c2" }, (D.guidelines?.brands || []).map(group =>
-      h("div", { class: "card" }, h("h2", {}, group.brand === "Vivo" ? "Vivobarefoot" : "Vibram FiveFingers"),
-        h("ul", { class: "clean" }, group.docs.map((doc, index) =>
-          h("li", {}, external(doc.url, labels[group.brand]?.[index] || doc.label))))))));
-  };
 
   views.terms = (el) => {
     const conditions = locale().terms || D.translations?.ja?.terms || [];
