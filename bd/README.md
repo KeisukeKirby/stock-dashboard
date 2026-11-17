@@ -3,8 +3,8 @@
 新しく入社した Business Development 担当者が「ブランド・数字・取引先・ルール」を一箇所で確認するための社内ダッシュボード。
 静的 HTML + JSON（ビルド不要）。Vercel チーム `barefootinc-th` のプロジェクト **`bd-dashboard`**（Root Directory = `bd`）として配信中。
 
-- **常に最新の URL: https://bd-onboarding-barefootinc.vercel.app** — ブランチ `claude/laughing-pascal-1qck8z` に紐づけたドメイン。push するたびに Vercel が自動でビルドし、この URL が最新版になる（手動の反映は不要）
-- 旧 URL https://bd-dashboard-mu.vercel.app と https://bd-dashboard-barefootinc-th.vercel.app は、開くと上の URL に自動で転送される（vercel.json の redirects）
+- **常に最新の URL: https://bd-onboarding-barefootinc.vercel.app** — プロジェクトの Production ドメイン（2026-11-17 に切替）。Production Branch は `claude/laughing-pascal-1qck8z`。このブランチに push するたびに Vercel が本番としてビルドし、この URL が最新版になる（手動の反映は不要）
+- 旧 URL https://bd-dashboard-mu.vercel.app と https://bd-dashboard-barefootinc-th.vercel.app は、開くと上の URL に自動で転送される（Vercel の Domains の Redirect と vercel.json の redirects）
 - アクセス制限なし（2026-11-17 に Vercel Authentication を無効化）。リンクを知っている人は誰でも開ける。検索エンジンには出ない（noindex）。制限が必要になったら Settings → Deployment Protection で Password Protection か Vercel Authentication を有効にする
 
 - 画面: ホーム／ブランド × 5（VFF・Vivobarefoot・OLENO・Coolcore・AQOS）／ガイドライン（VFF・Vivo）／月次売上／店舗一覧／委託販売／取引条件／SNS／未入力一覧
@@ -41,7 +41,7 @@ scripts/bd/
 
 1. 作成済み（2026-11-09、プロジェクト `bd-dashboard`、Root Directory = `bd`、Framework = Other、Output Directory = `public`）。作り直す場合は Add New Project → `KeisukeKirby/stock-dashboard` → Root Directory `bd`。
 2. 環境変数は不要。
-3. Settings → Git → Production Branch は `main`（このリポジトリの他プロジェクトと同じ運用）。
+3. Settings → Environments → Production → Branch Tracking を `claude/laughing-pascal-1qck8z` に（2026-11-17 変更）。Domains で `bd-onboarding-barefootinc.vercel.app` を Production に、`bd-dashboard-mu.vercel.app` はそこへの Redirect にしている。
 4. アクセス制限が必要なら Settings → Deployment Protection（Password Protection / Vercel Authentication）を有効にする。
 
 ## データの更新手順
