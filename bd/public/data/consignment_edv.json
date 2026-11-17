@@ -1,0 +1,204 @@
+{
+  "updatedAt": "2026-11-17",
+  "company": "Endeavorz",
+  "brand": "Coolcore",
+  "period": "2026-01〜2026-10",
+  "months": [
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07",
+    "2026-08",
+    "2026-09",
+    "2026-10"
+  ],
+  "source": "Zort 受注明細エクスポート order_detail_202611171435（Endeavorz の請求書、2026-01〜2026-10）",
+  "notes": {
+    "excluded": {
+      "bftInvoices": 44,
+      "bftCoolcoreUnits": 469,
+      "voidedRows": 8,
+      "nonConsigneeRows": 11
+    },
+    "method": "店頭販売額 = 請求書の商品行の合計（税込・定価から行値引き後）。EDV 受取額 = 請求書の小計（GP 差引後・税抜）。未入金 = 支払状況が Pending の請求書の小計。取消（Voided）は除外。個人名・住所・電話・税番号は取り込んでいない"
+  },
+  "rows": [
+    {
+      "name": "Bananarun",
+      "links": [
+        {
+          "kind": "web",
+          "url": "https://mystore411.com/store/view/1113238195/Thailand/On-Running-Shoes-Bangkok",
+          "note": "Lumpini 公園裏・Sarasin Rd"
+        }
+      ],
+      "invoices": 10,
+      "units": 389,
+      "gross": 194881,
+      "gp": "30%",
+      "net": 127492,
+      "netPending": 15849,
+      "first": "2026-01",
+      "last": "2026-10",
+      "monthly": {
+        "2026-01": 36,
+        "2026-02": 18,
+        "2026-03": 57,
+        "2026-04": 73,
+        "2026-05": 33,
+        "2026-06": 67,
+        "2026-07": 41,
+        "2026-08": 21,
+        "2026-09": 29,
+        "2026-10": 14
+      }
+    },
+    {
+      "name": "Avarin",
+      "links": [],
+      "invoices": 10,
+      "units": 73,
+      "gross": 44045,
+      "gp": "30%",
+      "net": 28814,
+      "netPending": 3376,
+      "first": "2026-01",
+      "last": "2026-10",
+      "monthly": {
+        "2026-01": 5,
+        "2026-02": 6,
+        "2026-03": 6,
+        "2026-04": 12,
+        "2026-05": 11,
+        "2026-06": 7,
+        "2026-07": 14,
+        "2026-08": 4,
+        "2026-10": 8
+      }
+    },
+    {
+      "name": "East West",
+      "links": [],
+      "invoices": 3,
+      "units": 21,
+      "gross": 10600,
+      "gp": "30%",
+      "net": 6935,
+      "netPending": 0,
+      "first": "2026-04",
+      "last": "2026-08",
+      "monthly": {
+        "2026-04": 2,
+        "2026-05": 12,
+        "2026-08": 7
+      }
+    },
+    {
+      "name": "Runnercart",
+      "links": [],
+      "invoices": 8,
+      "units": 19,
+      "gross": 14020,
+      "gp": "30%",
+      "net": 9172,
+      "netPending": 0,
+      "first": "2026-02",
+      "last": "2026-09",
+      "monthly": {
+        "2026-02": 1,
+        "2026-03": 1,
+        "2026-04": 3,
+        "2026-05": 1,
+        "2026-06": 2,
+        "2026-07": 4,
+        "2026-08": 5,
+        "2026-09": 2
+      }
+    },
+    {
+      "name": "Highlandner",
+      "links": [
+        {
+          "kind": "web",
+          "url": "https://mystore411.com/store/view/1113236680/Thailand/On-Running-Shoes-Chiang-Mai",
+          "note": "Chiang Mai・Changpuek Rd"
+        }
+      ],
+      "invoices": 8,
+      "units": 14,
+      "gross": 8590,
+      "gp": "30%",
+      "net": 5620,
+      "netPending": 0,
+      "first": "2026-01",
+      "last": "2026-10",
+      "monthly": {
+        "2026-01": 2,
+        "2026-03": 2,
+        "2026-04": 3,
+        "2026-05": 3,
+        "2026-06": 1,
+        "2026-08": 1,
+        "2026-09": 1,
+        "2026-10": 1
+      }
+    },
+    {
+      "name": "Caveman",
+      "links": [],
+      "invoices": 5,
+      "units": 14,
+      "gross": 7020,
+      "gp": "30%",
+      "net": 4593,
+      "netPending": 0,
+      "first": "2026-01",
+      "last": "2026-09",
+      "monthly": {
+        "2026-01": 4,
+        "2026-02": 4,
+        "2026-05": 1,
+        "2026-08": 2,
+        "2026-09": 3
+      }
+    },
+    {
+      "name": "Anvil Camp",
+      "links": [],
+      "invoices": 5,
+      "units": 11,
+      "gross": 6770,
+      "gp": "30%",
+      "net": 4429,
+      "netPending": 0,
+      "first": "2026-01",
+      "last": "2026-10",
+      "monthly": {
+        "2026-01": 2,
+        "2026-03": 3,
+        "2026-04": 2,
+        "2026-06": 3,
+        "2026-10": 1
+      }
+    },
+    {
+      "name": "Pathwild",
+      "links": [],
+      "invoices": 2,
+      "units": 2,
+      "gross": 1600,
+      "gp": "30%",
+      "net": 1047,
+      "netPending": 523,
+      "first": "2026-07",
+      "last": "2026-10",
+      "monthly": {
+        "2026-07": 1,
+        "2026-10": 1
+      }
+    }
+  ]
+}

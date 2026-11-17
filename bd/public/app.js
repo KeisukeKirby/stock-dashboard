@@ -54,7 +54,7 @@
   const D = {};
   async function loadJSON(path) { const r = await fetch(path, { cache: "no-store" }); if (!r.ok) throw new Error(`${path}: ${r.status}`); return r.json(); }
   async function loadAll() {
-    const files = { brands: "data/brands.json", stores: "data/stores.json", guidelines: "data/guidelines.json", sns: "data/sns.json", sales: "data/sales_monthly.json", terms: "data/terms.json", consignment: "data/consignment.json", translations: "data/section_translations.json", hub: "data/brand_hub.json" };
+    const files = { brands: "data/brands.json", stores: "data/stores.json", guidelines: "data/guidelines.json", sns: "data/sns.json", sales: "data/sales_monthly.json", terms: "data/terms.json", consignment: "data/consignment.json", consignmentEdv: "data/consignment_edv.json", translations: "data/section_translations.json", hub: "data/brand_hub.json" };
     await Promise.all(Object.entries(files).map(async ([k, p]) => { try { D[k] = await loadJSON(p); } catch (e) { console.error(e); D[k] = null; } }));
   }
 
@@ -414,8 +414,36 @@
       [{ key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") }, linksCol, { key: "brandsText", label: tr("ブランド", "Brand", "แบรนด์") }, ...numCols],
       deptRows.map((c) => ({ ...c, brandsText: (c.brands || []).slice().sort(byOrder).join(" / ") })), "consignment_department_stores"));
     const others = ordered.filter((c) => !isDept(c));
-    const otherBrands = [...new Set(others.flatMap((c) => Object.keys(c.byBrand || {})))].sort(byOrder);
+    const E = D.consignmentEdv;
+    const otherBrands = [...new Set([...others.flatMap((c) => Object.keys(c.byBrand || {})), ...(E?.rows?.length ? ["Coolcore"] : [])])].sort(byOrder);
     for (const b of otherBrands) {
+      if (b === "Coolcore" && E) {
+        const ecols = [
+          { key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") }, linksCol,
+          { key: "invoices", label: tr("請求回数", "Invoices", "จำนวนใบแจ้งหนี้"), num: true },
+          { key: "units", label: tr("販売数", "Units sold", "จำนวนที่ขาย"), num: true },
+          { key: "gross", label: tr("店頭販売額（税込）", "Shelf sales (incl. VAT)", "ยอดขายหน้าร้าน (รวม VAT)"), num: true },
+          { key: "gp", label: tr("委託先の取り分（GP）", "Partner's share (GP)", "ส่วนแบ่งผู้รับฝาก (GP)") },
+          { key: "net", label: tr("EDV の受取額（税抜）", "EDV receives (excl. VAT)", "EDV ได้รับ (ไม่รวม VAT)"), num: true },
+          { key: "netPending", label: tr("うち未入金", "Of which unpaid", "ยังไม่ชำระ"), num: true },
+          { key: "first", label: tr("開始", "First sale", "ขายครั้งแรก") },
+          { key: "last", label: tr("最終販売", "Last sale", "ขายล่าสุด") }
+        ];
+        const etotal = (rs) => ({ name: tr("合計", "Total", "รวม"), invoices: sum(rs, "invoices"), units: sum(rs, "units"), gross: sum(rs, "gross"), net: sum(rs, "net"), netPending: sum(rs, "netPending") });
+        const ex = E.notes?.excluded || {};
+        el.append(h("section", { class: "card", style: "margin-bottom:14px" },
+          h("h3", { class: "table-label" }, tr("Coolcore（Endeavorz の委託）", "Coolcore (consigned by Endeavorz)", "Coolcore (ฝากขายโดย Endeavorz)")),
+          h("p", { class: "note", style: "margin:0 0 10px" }, tr(
+            `${E.period}・単位: 個・金額は THB。委託先が売れた分を毎月 EDV が請求する形で、委託先の取り分（GP）は売値の 30%。BFT（グループ会社）向けの請求 ${ex.bftInvoices || 0} 件（Central Chidlom・イベント向け Coolcore ${fmt(ex.bftCoolcoreUnits)} 個など）は委託先ではないので除いています。`,
+            `${E.period} · units; amounts in THB. EDV invoices each partner monthly for what sold; the partner keeps 30% of the selling price (GP). ${ex.bftInvoices || 0} invoices to BFT (our group company; e.g. ${fmt(ex.bftCoolcoreUnits)} Coolcore units for Central Chidlom and events) are not consignment and are left out.`,
+            `${E.period} · หน่วย: ชิ้น จำนวนเงินเป็นบาท EDV ออกใบแจ้งหนี้ทุกเดือนตามที่ขายได้ ผู้รับฝากได้ 30% ของราคาขาย (GP) ใบแจ้งหนี้ถึง BFT ${ex.bftInvoices || 0} ใบ (บริษัทในกลุ่ม เช่น Coolcore ${fmt(ex.bftCoolcoreUnits)} ชิ้นสำหรับ Central Chidlom และอีเวนต์) ไม่ใช่การฝากขายจึงไม่นับ`)),
+          table(ecols, E.rows, { csvName: "consignment_Coolcore_EDV", search: false, total: etotal }),
+          h("p", { class: "note", style: "margin:8px 0 0" }, tr("出典: ", "Source: ", "ที่มา: "), tr(
+            "Zort の受注明細（EDV の請求書）2026 年 1〜10 月。取消分は除外。店頭販売額 = 請求書の商品行の合計、EDV の受取額 = GP を引いた小計、未入金 = 支払状況が未払いの請求書",
+            "Zort order details (EDV invoices), Jan–Oct 2026; voided invoices excluded. Shelf sales = total of product lines; EDV receives = subtotal after GP; unpaid = invoices still marked pending",
+            "รายละเอียดคำสั่งซื้อใน Zort (ใบแจ้งหนี้ EDV) ม.ค.–ต.ค. 2026 ไม่นับรายการที่ยกเลิก ยอดหน้าร้าน = รวมรายการสินค้า, EDV ได้รับ = ยอดหลังหัก GP, ยังไม่ชำระ = ใบแจ้งหนี้ที่ยังค้างชำระ"))));
+        continue;
+      }
       const brs = others.filter((c) => c.byBrand?.[b]).map((c) => {
         const x = c.byBrand[b], mb = (c.monthlyByBrand || {})[b] || {}, sm = soldMonths(mb);
         return { name: c.displayName || c.name, links: c.links, typeLabel: consigneeTypes[c.type] || c.type, sheet: c.sheet,
@@ -450,6 +478,18 @@
           h("thead", {}, h("tr", {}, cols.map((c) => h("th", { class: c.num ? "num" : "" }, c.label)))),
           h("tbody", {}, brows.map((r) => h("tr", {}, cols.map((c) => cell(c, r)))), h("tr", { class: "total" }, cols.map((c) => cell(c, total)))))));
     });
+    if (E?.rows?.length) {
+      const em = E.months;
+      const erows = E.rows.map((r) => { const o = { name: r.name }; let t = 0; for (const m of em) { o[m] = r.monthly[m] || 0; t += o[m]; } o.total = t; return o; });
+      const et = { name: tr("合計", "Total", "รวม") }; for (const m of [...em, "total"]) et[m] = sum(erows, m);
+      const ecols = [{ key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") }, ...em.map((m) => ({ key: m, label: m.slice(2).replace("-", "/"), num: true })), { key: "total", label: tr("合計", "Total", "รวม"), num: true }];
+      const ecell = (c, r) => h("td", { class: c.num ? "num" : "" }, c.num ? fmt(r[c.key]) : r[c.key]);
+      const ci = brands.indexOf("Coolcore");
+      brandTables.splice(ci < 0 ? brandTables.length : ci + 1, 0, h("div", { style: "margin-top:18px" }, h("h4", { class: "table-label" }, tr("Coolcore（Endeavorz の委託、請求書ベース）", "Coolcore (consigned by Endeavorz, from invoices)", "Coolcore (ฝากขายโดย Endeavorz จากใบแจ้งหนี้)")),
+        h("div", { class: "tablewrap" }, h("table", { class: "dt" },
+          h("thead", {}, h("tr", {}, ecols.map((c) => h("th", { class: c.num ? "num" : "" }, c.label)))),
+          h("tbody", {}, erows.map((r) => h("tr", {}, ecols.map((c) => ecell(c, r)))), h("tr", { class: "total" }, ecols.map((c) => ecell(c, et))))))));
+    }
     el.append(fold(tr("委託先 × 月（販売足数・ブランド別、直近 18 か月）", "Units sold by consignee and month, by brand (last 18 months)", "จำนวนที่ขายตามผู้รับฝากขายและเดือน แยกตามแบรนด์ (18 เดือนล่าสุด)"),
       ...brandTables,
       srcLine(tr("Stock VFF Consignment.xlsx の SKU 行（品番の頭 VFF / OLN / CP / MTB / BFJ でブランドを判定）", "SKU rows in Stock VFF Consignment.xlsx (brand from the code prefix VFF / OLN / CP / MTB / BFJ)", "แถว SKU ใน Stock VFF Consignment.xlsx (แยกแบรนด์จากรหัส VFF / OLN / CP / MTB / BFJ)"))));
@@ -508,6 +548,8 @@
       R("stores", tr("店舗一覧（関連資料）", "Shop list (related document)", "รายชื่อร้าน (เอกสารที่เกี่ยวข้อง)"), ["web"], [L(st.referenceUrl, tr("店舗一覧", "Shop list", "รายชื่อร้าน"))]),
       R("consignment", tr("委託販売先一覧と販売実績（SKU・納品・販売・返品・残・月別販売）", "Consignment partners and results (SKU, delivered, sold, returned, balance, monthly sales)", "ผู้รับฝากขายและผลงาน (SKU ส่งมอบ ขาย คืน คงเหลือ ยอดรายเดือน)"), ["sheet"],
         [L(C.sourceUrl, "Stock VFF Consignment.xlsx")], tr("Google Drive（BFT 経理）", "Google Drive (BFT accounting)", "Google Drive (บัญชี BFT)")),
+      R("consignment", tr("Coolcore（Endeavorz）の委託先別の販売数・金額・未入金", "Coolcore (Endeavorz) consignment: units, amounts and unpaid by partner", "Coolcore (Endeavorz) ฝากขาย: จำนวน ยอดเงิน และยอดค้างชำระตามร้าน"), ["sheet"], [],
+        tr("Zort の受注明細（EDV の請求書）を Excel で書き出したもの。ダッシュボードには集計値だけを掲載", "Zort order details (EDV invoices) exported to Excel; only totals are shown here", "รายละเอียดคำสั่งซื้อจาก Zort (ใบแจ้งหนี้ EDV) ส่งออกเป็น Excel แสดงเฉพาะยอดรวม")),
       R("consignment", tr("委託先の店舗情報", "Partner store info", "ข้อมูลร้านของผู้รับฝากขาย"), ["map", "web", "sns"], [],
         tr("Google マップ・店舗のウェブサイト・Facebook（リンクは委託販売先一覧の各行）", "Google Maps, store websites and Facebook (links are on each row of the partner list)", "Google Maps เว็บไซต์ร้าน และ Facebook (ลิงก์อยู่ในแต่ละแถวของรายชื่อ)")),
       R("consignment", tr("委託販売の課題（売場の陳列写真）", "Consignment issues (store display photos)", "ปัญหาการฝากขาย (ภาพการจัดวางในร้าน)"), ["photo"], [], tr("社内で撮影した写真", "Photos taken by our team", "ภาพที่ทีมงานถ่าย")),
