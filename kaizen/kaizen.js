@@ -19,6 +19,7 @@
   /* ======================= 画面の文言 ======================= */
   var I18N = {
     ja: {
+      viewInfo: 'イラスト', viewText: '文章',
       docTitle: '業務改善マニュアル', toc: '目次', tocChapter: function (n) { return '第' + n + '章'; },
       chapter: function (n) { return '第 ' + n + ' 章'; }, appendix: '付録', history: '改訂履歴',
       historyHead: ['版', '日付', '内容'], confidential: '社内資料・取り扱い注意',
@@ -46,6 +47,7 @@
       chars: '文字', switchDiscard: '保存していない変更があります。言語を切り替えますか？（下書きはこのブラウザに残ります）'
     },
     en: {
+      viewInfo: 'Illustrated', viewText: 'Text',
       docTitle: 'Process Improvement Manual', toc: 'Contents', tocChapter: function (n) { return 'Ch. ' + n; },
       chapter: function (n) { return 'Chapter ' + n; }, appendix: 'Appendix', history: 'Revision history',
       historyHead: ['Version', 'Date', 'Changes'], confidential: 'Internal use only',
@@ -73,6 +75,7 @@
       chars: 'characters', switchDiscard: 'You have unsaved changes. Switch language anyway? (Your draft stays in this browser.)'
     },
     th: {
+      viewInfo: 'ภาพประกอบ', viewText: 'ข้อความ',
       docTitle: 'คู่มือปรับปรุงการทำงาน', toc: 'สารบัญ', tocChapter: function (n) { return 'บทที่ ' + n; },
       chapter: function (n) { return 'บทที่ ' + n; }, appendix: 'ภาคผนวก', history: 'ประวัติการแก้ไข',
       historyHead: ['ฉบับ', 'วันที่', 'รายละเอียด'], confidential: 'เอกสารใช้ภายในบริษัท',
@@ -102,6 +105,7 @@
   };
 
   var lang = pickLang();
+  var view = pickView(); // 'info' = イラスト版、'text' = 文章版
   var T = I18N[lang];
   var state = { text: '', updatedAt: null, shared: false, locked: false, editing: false, dirty: false };
 
@@ -114,6 +118,12 @@
     if (/^th/i.test(nav)) return 'th';
     if (/^en/i.test(nav)) return 'en';
     return 'ja';
+  }
+  function pickView() {
+    var q = params.get('view');
+    if (q === 'info' || q === 'text') return q;
+    var saved = safeGet('kaizen.view');
+    return saved === 'text' ? 'text' : 'info';
   }
   function lsKey(base) { return lang === 'ja' ? base : base + '.' + lang; } // ja は従来のキーのまま
   var LS_KEY = 'kaizen.editKey';
@@ -132,11 +142,33 @@
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
     document.querySelectorAll('.help-body').forEach(function (el) { el.hidden = el.getAttribute('data-lang') !== lang; });
+    document.querySelectorAll('.view-switch button').forEach(function (b) {
+      var on = b.getAttribute('data-view') === view;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.textContent = b.getAttribute('data-view') === 'info' ? T.viewInfo : T.viewText;
+    });
+    document.body.classList.toggle('is-info', view === 'info');
   }
 
   document.querySelectorAll('.lang-switch button').forEach(function (b) {
     b.addEventListener('click', function () { switchLang(b.getAttribute('data-lang')); });
   });
+  document.querySelectorAll('.view-switch button').forEach(function (b) {
+    b.addEventListener('click', function () { switchView(b.getAttribute('data-view')); });
+  });
+
+  function switchView(next) {
+    if (next === view || (next !== 'info' && next !== 'text')) return;
+    if (state.editing && state.dirty && !confirm(T.discard)) return;
+    if (state.editing) { state.editing = false; state.dirty = false; document.body.classList.remove('is-editing'); }
+    view = next;
+    safeSet('kaizen.view', view);
+    var u = new URL(location.href); u.searchParams.set('view', view); history.replaceState(null, '', u);
+    applyUi();
+    showDoc();
+    window.scrollTo(0, 0);
+  }
 
   function switchLang(next) {
     if (next === lang || LANGS.indexOf(next) < 0) return;
@@ -202,7 +234,11 @@
   /* ======================= 描画 ======================= */
   function showDoc() {
     var data = window.KaizenMD.parse(state.text);
-    doc.innerHTML = renderDoc(data);
+    if (view === 'info' && window.KaizenInfo) {
+      doc.innerHTML = window.KaizenInfo.render(lang, { title: data.title || T.docTitle, subtitle: data.subtitle, company: data.company, dateText: fmtDay(data.date) });
+    } else {
+      doc.innerHTML = renderDoc(data);
+    }
     doc.setAttribute('aria-busy', 'false');
     doc.dataset.ready = '1';
     var title = data.title || T.docTitle;
@@ -356,7 +392,11 @@
   /* ======================= 編集 ======================= */
   var ta = $('editor'), preview = $('preview'), renderTimer = null;
 
-  $('editBtn').addEventListener('click', function () { state.editing ? closeEditor() : openEditor(); });
+  $('editBtn').addEventListener('click', function () {
+    if (state.editing) return closeEditor();
+    if (view === 'info') switchView('text'); // 編集は文章版で行う
+    openEditor();
+  });
   $('cancelBtn').addEventListener('click', closeEditor);
   $('saveBtn').addEventListener('click', save);
   $('helpBtn').addEventListener('click', function () { $('help').hidden = !$('help').hidden; });
