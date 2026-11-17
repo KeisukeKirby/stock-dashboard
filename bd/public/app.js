@@ -480,7 +480,6 @@
     const L = (url, label) => url ? { url, label } : null;
     const hub = D.hub || {}, brandsH = hub.brands || [], S = D.sales?.summary, C = D.consignment || {}, st = D.stores || {};
     const pick = (o) => (o && (o[language] || o.ja)) || "";
-    const deck = tr("BD オンボーディング資料", "BD onboarding deck", "เอกสารปฐมนิเทศ BD");
     const driveNote = tr("Google Drive", "Google Drive", "Google Drive");
     const termsFile = (D.terms?.items || []).find((i) => i.sourceUrl)?.sourceUrl;
     const storeRows = (st.items || []).filter((x) => x.type === "direct" || (x.type === "dept" && x.id !== "central-others"));
@@ -517,7 +516,9 @@
       R("sns", tr("SNS アカウント（Instagram・Facebook・TikTok・LINE）", "Social accounts (Instagram, Facebook, TikTok, LINE)", "บัญชีโซเชียล (Instagram, Facebook, TikTok, LINE)"), ["sns"],
         snsItems.filter((i) => !isEc(i) && i.url).map((i) => L(i.url, `${i.brand === "Barefootinc (Thailand)" ? "BFT" : i.brand} ${i.platform}`))),
       R("sns", tr("EC ショップ（Shopee・Lazada・自社サイト）", "Online shops (Shopee, Lazada, own website)", "ร้านออนไลน์ (Shopee, Lazada, เว็บไซต์บริษัท)"), ["ec"],
-        snsItems.filter((i) => isEc(i) && i.url).map((i) => L(i.url, `${i.brand === "Barefootinc (Thailand)" ? "BFT" : i.brand} ${i.platform}`)))
+        snsItems.filter((i) => isEc(i) && i.url).map((i) => L(i.url, `${i.brand === "Barefootinc (Thailand)" ? "BFT" : i.brand} ${i.platform}`))),
+      R("other", tr("BD オンボーディングガイド（英語版）：会社概要・ブランドの現状と課題・店舗とチャネル・取り扱いの注意", "BD Onboarding Guide (English): company overview, brands' current state and challenges, stores and channels, handling notes", "คู่มือปฐมนิเทศ BD (ภาษาอังกฤษ): ภาพรวมบริษัท สถานะและความท้าทายของแบรนด์ ร้านและช่องทาง ข้อควรระวัง"), ["slides"],
+        [L("docs/BD_Onboarding_Guide_EN.pptx", "BD_Onboarding_Guide_EN.pptx")], tr("このダッシュボード内（押すとダウンロード）。2026 年 10 月版・社外秘", "Stored in this dashboard (downloads when clicked). October 2026 edition, confidential", "เก็บในแดชบอร์ดนี้ (กดเพื่อดาวน์โหลด) ฉบับ ต.ค. 2026 ข้อมูลลับ"))
     ];
     const types = [...new Set(rows.flatMap((r) => r.types))];
     el.append(h("div", { class: "card", style: "margin-bottom:14px" },
@@ -527,7 +528,7 @@
     const body = rows.map((r) => {
       const first = r.sec !== prev; prev = r.sec;
       return h("tr", { class: first ? "sec-first" : "" },
-        h("td", {}, first ? h("a", { href: `#${r.sec}`, class: "sec-link" }, tr(...sections[r.sec])) : ""),
+        h("td", {}, first ? (sections[r.sec] ? h("a", { href: `#${r.sec}`, class: "sec-link" }, tr(...sections[r.sec])) : h("span", { class: "sec-link" }, tr("その他", "Other", "อื่น ๆ"))) : ""),
         h("td", { class: "wrap" }, r.info),
         h("td", {}, r.types.map((k) => h("span", { class: `src-type t-${k}` }, tr(...T[k])))),
         h("td", { class: "wrap" }, r.links.length ? h("span", { class: "link-list" }, r.links.map((l) => external(l.url, l.label + " ↗"))) : null,
