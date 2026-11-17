@@ -2,7 +2,7 @@
 
 対象: 新任 Business Development 担当者（BD）。渡す側: GM／社長補佐。
 使い方: 1 行ずつ「渡した／確認した」をチェック。✅ 済 ／ ⬜ 未。各行の [ ] はダッシュボードの該当セクション。
-ダッシュボード: https://bd-onboarding-barefootinc.vercel.app （Vercel チーム barefootinc-th、プロジェクト bd-dashboard）。資料の原本は Google Drive 共有アイテム。
+ダッシュボード: https://bd-onboarding-barefootinc.vercel.app （Vercel の SHIMA's projects、プロジェクト bd-onboarding。2026-11-17 に barefootinc-th の bd-dashboard から移行）。資料の原本は Google Drive 共有アイテム。
 
 ## 1. 初日に渡すもの
 - [ ] BD オンボーディング資料（pptx、2026-10 版）本体と、ダッシュボードの URL
