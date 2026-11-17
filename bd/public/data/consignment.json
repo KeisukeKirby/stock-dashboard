@@ -60,24 +60,24 @@
  },
  "byBrandTotal": {
   "VFF": {
-   "delivered": 2723.0,
-   "sold": 1428.0,
-   "balance": 1020.0
+   "delivered": 2297.0,
+   "sold": 1352.0,
+   "balance": 670.0
+  },
+  "Tabi (Marugo)": {
+   "delivered": 100.0,
+   "sold": 24.0,
+   "balance": 67.0
+  },
+  "BFJ": {
+   "delivered": 240.0,
+   "sold": 84.0,
+   "balance": 114.0
   },
   "OLENO": {
    "delivered": 593.0,
    "sold": 332.0,
    "balance": 232.0
-  },
-  "BFJ": {
-   "delivered": 312.0,
-   "sold": 95.0,
-   "balance": 175.0
-  },
-  "Tabi (Marugo)": {
-   "delivered": 127.0,
-   "sold": 24.0,
-   "balance": 94.0
   },
   "Coolcore": {
    "delivered": 177.0,
@@ -608,12 +608,9 @@
      "kind": "web",
      "url": "https://mystore411.com/store/view/1113236389/Thailand/On-Running-Shoes-Phuket",
      "note": "Phuket・Koh Kaew"
-    },
-    {
-     "kind": "fb",
-     "url": "https://www.facebook.com/Run2Paradise2014"
     }
-   ]
+   ],
+   "displayName": "Run2Paradise（Phuket）"
   },
   {
    "name": "Caveman",
@@ -736,78 +733,6 @@
      "2026-01": 2.0
     }
    }
-  },
-  {
-   "name": "Central World",
-   "sheet": "Central World (Department)",
-   "type": "デパート委託",
-   "brands": [
-    "BFJ",
-    "Tabi (Marugo)",
-    "VFF"
-   ],
-   "skuCount": 222,
-   "delivered": 525.0,
-   "returned": 0,
-   "netDelivered": 525.0,
-   "sold": 87.0,
-   "balance": 438.0,
-   "monthly": {
-    "2026-05": 38.0,
-    "2026-06": 37.0,
-    "2026-07": 12.0
-   },
-   "yearOnly": null,
-   "byBrand": {
-    "VFF": {
-     "skuCount": 202,
-     "delivered": 426.0,
-     "returned": 0,
-     "sold": 76.0,
-     "balance": 350.0
-    },
-    "Tabi (Marugo)": {
-     "skuCount": 12,
-     "delivered": 27.0,
-     "returned": 0,
-     "sold": 0,
-     "balance": 27.0
-    },
-    "BFJ": {
-     "skuCount": 8,
-     "delivered": 72.0,
-     "returned": 0,
-     "sold": 11.0,
-     "balance": 61.0
-    }
-   },
-   "firstMonth": "2026-05",
-   "lastMonth": "2026-07",
-   "deliveryDates": [
-    "IVT-202604",
-    "IVT-202605",
-    "IVT-202606",
-    "IVT-202607"
-   ],
-   "notes": [],
-   "parseWarning": null,
-   "monthlyByBrand": {
-    "VFF": {
-     "2026-05": 32.0,
-     "2026-06": 32.0,
-     "2026-07": 12.0
-    },
-    "BFJ": {
-     "2026-05": 6.0,
-     "2026-06": 5.0
-    }
-   },
-   "links": [
-    {
-     "kind": "map",
-     "url": "https://www.google.com/maps/search/?api=1&query=centralworld+Bangkok"
-    }
-   ]
   },
   {
    "name": "Bananarun (2)",
@@ -1261,13 +1186,7 @@
      "2026-02": 4.0,
      "2026-08": 5.0
     }
-   },
-   "links": [
-    {
-     "kind": "fb",
-     "url": "https://www.facebook.com/Run2Paradise2014"
-    }
-   ]
+   }
   },
   {
    "name": "Bonita Cafe",

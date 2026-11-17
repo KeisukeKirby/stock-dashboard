@@ -359,7 +359,7 @@
     };
     const isDept = (c) => c.type === "デパート委託";
     const ordered = C.consignees.slice().sort((a, b) => (isDept(b) - isDept(a)) || (b.sold - a.sold));
-    const rows = ordered.map((c) => ({ ...c, typeLabel: consigneeTypes[c.type] || c.type, brandsText: (c.brands || []).join(" / "), last12: months.slice(-12).reduce((a, m) => a + ((c.monthly || {})[m] || 0), 0) }));
+    const rows = ordered.map((c) => ({ ...c, name: c.displayName || c.name, typeLabel: consigneeTypes[c.type] || c.type, brandsText: (c.brands || []).join(" / "), last12: months.slice(-12).reduce((a, m) => a + ((c.monthly || {})[m] || 0), 0) }));
     const sum = (rs, k) => rs.reduce((a, r) => a + (r[k] || 0), 0);
     // 1. 委託販売先一覧
     el.append(h("div", { class: "section-title" }, h("h2", {}, tr("委託販売先一覧", "Consignment partners", "รายชื่อผู้รับฝากขาย")), h("span", { class: "note" }, `${C.period || ""} · ${tr("単位: 足・個", "Units: pairs / pieces", "หน่วย: คู่ / ชิ้น")}`)));
@@ -395,7 +395,7 @@
     brands.sort((a, b) => (brandOrder.indexOf(a) + 99 * (brandOrder.indexOf(a) < 0)) - (brandOrder.indexOf(b) + 99 * (brandOrder.indexOf(b) < 0)));
     const brandTables = brands.map((b) => {
       const brows = ordered.filter((c) => c.monthlyByBrand?.[b] && last.some((m) => c.monthlyByBrand[b][m])).map((c) => {
-        const r = { name: c.name }; let t = 0; for (const m of last) { r[m] = c.monthlyByBrand[b][m] || 0; t += r[m]; } r.total = t; return r; });
+        const r = { name: c.displayName || c.name }; let t = 0; for (const m of last) { r[m] = c.monthlyByBrand[b][m] || 0; t += r[m]; } r.total = t; return r; });
       if (!brows.length) return null;
       const total = { name: tr("合計", "Total", "รวม") }; for (const m of [...last, "total"]) total[m] = sum(brows, m);
       const cols = [{ key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") }, ...last.map((m) => ({ key: m, label: m.slice(2).replace("-", "/"), num: true })), { key: "total", label: tr("合計", "Total", "รวม"), num: true }];
