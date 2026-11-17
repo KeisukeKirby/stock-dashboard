@@ -73,7 +73,8 @@
     "side": "right"
    },
    "photo": "img/stores/kvillage.jpg",
-   "photoSrc": "Drive: K Village/store_exterior.jpg"
+   "photoSrc": "Drive: K Village/store_exterior.jpg",
+   "photoFull": "img/stores/full/kvillage.jpg"
   },
   {
    "id": "central-lp",
@@ -181,7 +182,8 @@
     "side": "right"
    },
    "photo": "img/stores/paradise.jpg",
-   "photoSrc": "Drive: Barefoot Park/brand_logo.jpg"
+   "photoSrc": "Drive: Barefoot Park/brand_logo.jpg",
+   "photoFull": "img/stores/full/paradise.jpg"
   },
   {
    "id": "siam-dis",
@@ -217,7 +219,8 @@
     "side": "left"
    },
    "photo": "img/stores/siam-dis.jpg",
-   "photoSrc": "Drive: Siam Discovery/siam_discovery.jpg"
+   "photoSrc": "Drive: Siam Discovery/siam_discovery.jpg",
+   "photoFull": "img/stores/full/siam-dis.jpg"
   },
   {
    "id": "central-cl",
@@ -252,7 +255,8 @@
     "side": "right"
    },
    "photo": "img/stores/central-cl.jpg",
-   "photoSrc": "Drive: Central Chidlom/132747.jpg"
+   "photoSrc": "Drive: Central Chidlom/132747.jpg",
+   "photoFull": "img/stores/full/central-cl.jpg"
   },
   {
    "id": "central-others",

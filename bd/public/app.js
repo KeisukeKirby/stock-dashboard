@@ -330,7 +330,7 @@
       const url = mapUrl(store);
       return h("article", { class: "store-card" },
         h("div", { class: "store-photo" }, store.photo
-          ? h("button", { type: "button", class: "photo-zoom", title: tr("クリックで拡大", "Click to enlarge", "คลิกเพื่อขยาย"), "aria-label": tr(`${info.name} の写真を拡大`, `Enlarge the photo of ${info.name}`, `ขยายรูปของ ${info.name}`), onclick: () => openLightbox(store.photo, info.name) },
+          ? h("button", { type: "button", class: "photo-zoom", title: tr("クリックで拡大", "Click to enlarge", "คลิกเพื่อขยาย"), "aria-label": tr(`${info.name} の写真を拡大`, `Enlarge the photo of ${info.name}`, `ขยายรูปของ ${info.name}`), onclick: () => openLightbox(store.photoFull || store.photo, info.name) },
               h("img", { src: store.photo, alt: info.name, loading: "lazy", style: store.photoPos ? `object-position:${store.photoPos}` : null }),
               h("span", { class: "zoom-hint", "aria-hidden": "true" }, "⤢"))
           : h("span", {}, tr("写真なし", "No photo yet", "ยังไม่มีรูป"))),
