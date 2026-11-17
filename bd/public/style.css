@@ -269,3 +269,11 @@ table.dt td a { font-weight: 600; }
 .brand-logo-text { color: var(--bc, #1a1a1a); text-transform: uppercase; letter-spacing: .08em; }
 
 .brand-links { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* 共有リスト */
+.src-type { display: inline-block; padding: 2px 10px; margin: 2px 6px 2px 0; border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap; background: color-mix(in srgb, var(--st) 14%, transparent); border: 1px solid color-mix(in srgb, var(--st) 55%, transparent); color: var(--ink); }
+.t-dashboard { --st: #3b82c4; } .t-web { --st: #2e9e5b; } .t-pdf { --st: #d03b3b; } .t-sheet { --st: #1f8a4c; } .t-slides { --st: #d99100; }
+.t-map { --st: #00a7e1; } .t-photo { --st: #7c5cbf; } .t-sns { --st: #c2185b; } .t-ec { --st: #e8590c; } .t-text { --st: #8a8c8f; }
+table.shared-list tr.sec-first td { border-top: 2px solid var(--line); }
+table.shared-list .sec-link { font-weight: 700; }
+table.shared-list th { cursor: default; }

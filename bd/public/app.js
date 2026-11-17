@@ -140,7 +140,8 @@
     stores: ["店舗一覧", "Stores", "รายชื่อร้าน"],
     consignment: ["委託販売", "Consignment", "การฝากขาย"],
     terms: ["取引条件", "Trade terms", "เงื่อนไขการค้า"],
-    sns: ["SNS・EC", "Social & online shops", "โซเชียลและร้านออนไลน์"]
+    sns: ["SNS・EC", "Social & online shops", "โซเชียลและร้านออนไลน์"],
+    shared: ["共有リスト", "What we share", "รายการข้อมูลที่แชร์"]
   };
   function applyLanguage() {
     document.documentElement.lang = language;
@@ -185,6 +186,7 @@
       const lead = {
         consignment: tr("委託販売先、販売実績、課題です。", "Consignment partners, sales and issues.", "ผู้รับฝากขาย ยอดขาย และปัญหา"),
         terms: tr("取引先ごとの手数料と取引の形です。", "Commission and deal type for each partner.", "ค่าคอมมิชชันและรูปแบบการค้าของแต่ละคู่ค้า"),
+        shared: tr("このダッシュボードで BD に共有している情報と、その出どころ（ソース）の一覧です。売上から順に並べています。", "Everything this dashboard shares with BD and where each item comes from, in tab order starting with Sales.", "ข้อมูลทั้งหมดที่แดชบอร์ดนี้แชร์ให้ BD และแหล่งที่มา เรียงตามแท็บเริ่มจากยอดขาย"),
       }[name];
       el.append(h("header", { class: "page-head" }, h("h2", {}, tr(...sections[name])), lead ? h("p", {}, lead) : null));
       views[name](el, sub); el.dataset.ready = "1";
@@ -382,13 +384,11 @@
     const ordered = C.consignees.slice().sort((a, b) => (isDept(b) - isDept(a)) || (b.sold - a.sold));
     const rows = ordered.map((c) => ({ ...c, name: c.displayName || c.name, typeLabel: consigneeTypes[c.type] || c.type, brandsText: (c.brands || []).join(" / "), last12: months.slice(-12).reduce((a, m) => a + ((c.monthly || {})[m] || 0), 0) }));
     const sum = (rs, k) => rs.reduce((a, r) => a + (r[k] || 0), 0);
-    // 1. 委託販売先一覧
-    el.append(h("div", { class: "section-title" }, h("h2", {}, tr("委託販売先一覧", "Consignment partners", "รายชื่อผู้รับฝากขาย")), h("span", { class: "note" }, `${C.period || ""} · ${tr("単位: 足・個", "Units: pairs / pieces", "หน่วย: คู่ / ชิ้น")}`)));
-    el.append(h("div", { class: "card" }, table([
-      { key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") },
-      { key: "links", label: tr("店舗情報", "Store info", "ข้อมูลร้าน"), csv: (v) => (v || []).map((l) => l.url).join(" "), render: (v) => (v && v.length) ? h("span", { class: "link-list" }, v.map((l) => external(l.url, ({ map: tr("Google マップ", "Google Maps", "Google Maps"), web: tr("店舗情報", "Store page", "ข้อมูลร้าน"), fb: "Facebook" }[l.kind] || "Link") + " ↗", { title: l.note || "" }))) : h("span", { class: "muted" }, "–") },
-      { key: "typeLabel", label: tr("形態", "Type", "ประเภท") },
-      { key: "brandsText", label: tr("ブランド", "Brand", "แบรนด์") },
+    // 1. 委託販売先一覧（百貨店をひとまとめ、それ以外はブランドごと）
+    const brandOrder = ["VFF", "OLENO", "Coolcore", "Tabi (Marugo)", "BFJ"];
+    const byOrder = (a, b) => (brandOrder.indexOf(a) + 99 * (brandOrder.indexOf(a) < 0)) - (brandOrder.indexOf(b) + 99 * (brandOrder.indexOf(b) < 0));
+    const linksCol = { key: "links", label: tr("店舗情報", "Store info", "ข้อมูลร้าน"), csv: (v) => (v || []).map((l) => l.url).join(" "), render: (v) => (v && v.length) ? h("span", { class: "link-list" }, v.map((l) => external(l.url, ({ map: tr("Google マップ", "Google Maps", "Google Maps"), web: tr("店舗情報", "Store page", "ข้อมูลร้าน"), fb: "Facebook" }[l.kind] || "Link") + " ↗", { title: l.note || "" }))) : h("span", { class: "muted" }, "–") };
+    const numCols = [
       { key: "skuCount", label: "SKU", num: true },
       { key: "delivered", label: tr("納品", "Delivered", "ส่งมอบ"), num: true },
       { key: "sold", label: tr("販売", "Sold", "ขาย"), num: true },
@@ -398,8 +398,33 @@
       { key: "firstMonth", label: tr("開始", "First sale", "ขายครั้งแรก") },
       { key: "lastMonth", label: tr("最終販売", "Last sale", "ขายล่าสุด") },
       { key: "sheet", label: tr("出典（シート）", "Source (sheet)", "ที่มา (ชีต)"), render: (v) => fileUrl ? external(fileUrl, (v || "") + " ↗") : (v || "–") }
-    ], rows, { csvName: "consignment_partners", total: (rs) => ({ name: tr("合計", "Total", "รวม"), skuCount: sum(rs, "skuCount"), delivered: sum(rs, "delivered"), sold: sum(rs, "sold"), returned: sum(rs, "returned"), balance: sum(rs, "balance"), last12: sum(rs, "last12") }) }),
-      srcLine(tr("Stock VFF Consignment.xlsx（BFT 経理、委託先ごとのシート）。SKU〜最終販売はすべてこのファイルの数量から集計", "Stock VFF Consignment.xlsx (BFT accounting, one sheet per consignee). SKU through last sale are all counted from this file", "Stock VFF Consignment.xlsx (บัญชี BFT แยกชีตตามผู้รับฝากขาย) ตั้งแต่ SKU ถึงขายล่าสุดนับจากไฟล์นี้ทั้งหมด"))));
+    ];
+    const groupTotal = (rs) => ({ name: tr("合計", "Total", "รวม"), skuCount: sum(rs, "skuCount"), delivered: sum(rs, "delivered"), sold: sum(rs, "sold"), returned: sum(rs, "returned"), balance: sum(rs, "balance"), last12: sum(rs, "last12") });
+    const soldMonths = (m) => Object.keys(m || {}).filter((k) => m[k]).sort();
+    el.append(h("div", { class: "section-title" }, h("h2", {}, tr("委託販売先一覧", "Consignment partners", "รายชื่อผู้รับฝากขาย")), h("span", { class: "note" }, `${C.period || ""} · ${tr("単位: 足・個", "Units: pairs / pieces", "หน่วย: คู่ / ชิ้น")}`)));
+    el.append(h("p", { class: "note", style: "margin:0 0 12px" }, tr(
+      "百貨店はひとつのグループにまとめ、それ以外の委託先はブランドごとに分けています。複数のブランドを置いている委託先は、それぞれのブランドの表に出ます（数字はそのブランドの分だけ）。",
+      "Department stores are grouped together; other partners are split by brand. A partner that carries several brands appears in each of those brand tables, with that brand's numbers only.",
+      "ห้างสรรพสินค้ารวมเป็นกลุ่มเดียว ผู้รับฝากขายอื่นแยกตามแบรนด์ ร้านที่มีหลายแบรนด์จะอยู่ในตารางของแต่ละแบรนด์ (ตัวเลขเฉพาะแบรนด์นั้น)")));
+    const groupCard = (title, cols, rs, csvName) => h("section", { class: "card", style: "margin-bottom:14px" },
+      h("h3", { class: "table-label" }, title),
+      table(cols, rs, { csvName, search: false, total: groupTotal }));
+    const deptRows = rows.filter(isDept);
+    if (deptRows.length) el.append(groupCard(tr("百貨店", "Department stores", "ห้างสรรพสินค้า"),
+      [{ key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") }, linksCol, { key: "brandsText", label: tr("ブランド", "Brand", "แบรนด์") }, ...numCols],
+      deptRows.map((c) => ({ ...c, brandsText: (c.brands || []).slice().sort(byOrder).join(" / ") })), "consignment_department_stores"));
+    const others = ordered.filter((c) => !isDept(c));
+    const otherBrands = [...new Set(others.flatMap((c) => Object.keys(c.byBrand || {})))].sort(byOrder);
+    for (const b of otherBrands) {
+      const brs = others.filter((c) => c.byBrand?.[b]).map((c) => {
+        const x = c.byBrand[b], mb = (c.monthlyByBrand || {})[b] || {}, sm = soldMonths(mb);
+        return { name: c.displayName || c.name, links: c.links, typeLabel: consigneeTypes[c.type] || c.type, sheet: c.sheet,
+          skuCount: x.skuCount, delivered: x.delivered, sold: x.sold, returned: x.returned, balance: x.balance,
+          last12: months.slice(-12).reduce((a, m) => a + (mb[m] || 0), 0), firstMonth: sm[0] || "", lastMonth: sm[sm.length - 1] || "" };
+      }).sort((p, q) => q.sold - p.sold);
+      el.append(groupCard(b, [{ key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") }, linksCol, { key: "typeLabel", label: tr("形態", "Type", "ประเภท") }, ...numCols], brs, `consignment_${b.replace(/\W+/g, "_")}`));
+    }
+    el.append(srcLine(tr("Stock VFF Consignment.xlsx（BFT 経理、委託先ごとのシート）。SKU〜最終販売はすべてこのファイルの数量から集計。ブランドは品番の頭（VFF / OLN / CP / MTB / BFJ）で判定", "Stock VFF Consignment.xlsx (BFT accounting, one sheet per consignee). SKU through last sale are all counted from this file; brand is taken from the code prefix (VFF / OLN / CP / MTB / BFJ)", "Stock VFF Consignment.xlsx (บัญชี BFT แยกชีตตามผู้รับฝากขาย) ตั้งแต่ SKU ถึงขายล่าสุดนับจากไฟล์นี้ทั้งหมด แยกแบรนด์จากรหัส (VFF / OLN / CP / MTB / BFJ)")));
     if (!months.length) return;
     const last = months.slice(-18);
     const fold = (title, ...body) => h("details", { class: "card fold", style: "margin-top:14px" }, h("summary", {}, h("h3", { style: "display:inline;margin:0" }, title)), h("div", { style: "margin-top:12px" }, ...body));
@@ -412,8 +437,7 @@
       srcLine(tr("Stock VFF Consignment.xlsx の各シートの月別販売列", "monthly sales columns in each sheet of Stock VFF Consignment.xlsx", "คอลัมน์ยอดขายรายเดือนในแต่ละชีตของ Stock VFF Consignment.xlsx"))));
     // 3. 委託先 × 月（ブランド別）
     const brands = [...new Set(C.consignees.flatMap((c) => Object.keys(c.monthlyByBrand || {})))];
-    const brandOrder = ["VFF", "OLENO", "Coolcore", "Tabi (Marugo)", "BFJ"];
-    brands.sort((a, b) => (brandOrder.indexOf(a) + 99 * (brandOrder.indexOf(a) < 0)) - (brandOrder.indexOf(b) + 99 * (brandOrder.indexOf(b) < 0)));
+    brands.sort(byOrder);
     const brandTables = brands.map((b) => {
       const brows = ordered.filter((c) => c.monthlyByBrand?.[b] && last.some((m) => c.monthlyByBrand[b][m])).map((c) => {
         const r = { name: c.displayName || c.name }; let t = 0; for (const m of last) { r[m] = c.monthlyByBrand[b][m] || 0; t += r[m]; } r.total = t; return r; });
@@ -438,6 +462,90 @@
         h("img", { src: `img/consignment/display-${n}.jpg`, alt: tr(`委託先の売場の陳列例 ${n}`, `Partner store display example ${n}`, `ตัวอย่างการจัดวางที่ร้านคู่ค้า ${n}`), loading: "lazy" }))))));
   });
 
+
+  // ---------- 共有リスト（何を・どのソースから共有しているか） ----------
+  views.shared = (el) => {
+    const T = {
+      dashboard: ["ダッシュボード", "Dashboard", "แดชบอร์ด"],
+      web: ["ウェブサイト", "Website", "เว็บไซต์"],
+      pdf: ["PDF", "PDF", "PDF"],
+      sheet: ["スプレッドシート（Excel）", "Spreadsheet (Excel)", "สเปรดชีต (Excel)"],
+      slides: ["スライド（PowerPoint）", "Slides (PowerPoint)", "สไลด์ (PowerPoint)"],
+      map: ["Google マップ", "Google Maps", "Google Maps"],
+      photo: ["写真・画像", "Photos / images", "ภาพถ่าย / รูปภาพ"],
+      sns: ["SNS", "Social media", "โซเชียลมีเดีย"],
+      ec: ["EC サイト", "Online shop", "ร้านออนไลน์"],
+      text: ["社内で用意した文章", "Text written in-house", "ข้อความที่จัดทำภายใน"]
+    };
+    const L = (url, label) => url ? { url, label } : null;
+    const hub = D.hub || {}, brandsH = hub.brands || [], S = D.sales?.summary, C = D.consignment || {}, st = D.stores || {};
+    const pick = (o) => (o && (o[language] || o.ja)) || "";
+    const deck = tr("BD オンボーディング資料", "BD onboarding deck", "เอกสารปฐมนิเทศ BD");
+    const driveNote = tr("Google Drive", "Google Drive", "Google Drive");
+    const termsFile = (D.terms?.items || []).find((i) => i.sourceUrl)?.sourceUrl;
+    const storeRows = (st.items || []).filter((x) => x.type === "direct" || (x.type === "dept" && x.id !== "central-others"));
+    const storeLabels = locale().stores || {};
+    const snsItems = D.sns?.items || [];
+    const isEc = (i) => ["Shopee", "Lazada", "Website"].includes(i.platform);
+    const R = (sec, info, types, links, where) => ({ sec, info, types, links: (links || []).filter(Boolean), where });
+    const rows = [
+      R("sales", tr("BFT の売上（1〜10 月の暫定、10 月）", "BFT sales (Jan–Oct provisional, October)", "ยอดขาย BFT (ม.ค.–ต.ค. เบื้องต้น, ต.ค.)"), ["dashboard"],
+        [L(S?.companies?.find((c) => c.id === "bft")?.url, tr("BFT 販売実績ダッシュボード", "BFT sales dashboard", "แดชบอร์ดยอดขาย BFT"))]),
+      R("sales", tr("EDV の売上（1〜10 月の暫定、10 月）", "EDV sales (Jan–Oct provisional, October)", "ยอดขาย EDV (ม.ค.–ต.ค. เบื้องต้น, ต.ค.)"), ["dashboard"],
+        [L(S?.companies?.find((c) => c.id === "edv")?.url, tr("EDV 販売実績ダッシュボード", "EDV sales dashboard", "แดชบอร์ดยอดขาย EDV"))]),
+      R("brands", tr("ブランドの紹介文（どの会社が扱うか、どんなブランドか）", "Brand introductions (which company handles it, what the brand is)", "คำแนะนำแบรนด์ (บริษัทที่ดูแล และแบรนด์คืออะไร)"), ["text"], [],
+        tr("社内で用意した文章をそのまま掲載", "Text written in-house, shown as is", "ข้อความที่จัดทำภายใน แสดงตามเดิม")),
+      R("brands", tr("ブランドのロゴ", "Brand logos", "โลโก้แบรนด์"), ["photo"], [], tr("各ブランドのロゴ画像（Coolcore は未入手）", "Each brand's logo image (Coolcore not yet received)", "รูปโลโก้ของแต่ละแบรนด์ (ยังไม่มีของ Coolcore)")),
+      R("brands", tr("製品ラインナップ", "Product line-ups", "ไลน์อัปสินค้า"), ["web", "ec"],
+        brandsH.filter((b) => b.lineup).map((b) => L(b.lineup, b.lineup.includes("shopee.") ? `${b.name}（Shopee）` : b.name)),
+        tr("VFF・Vivobarefoot・OLENO は社内で作ったラインナップサイト、Coolcore は Shopee のショップ", "VFF, Vivobarefoot and OLENO: line-up sites made in-house; Coolcore: its Shopee shop", "VFF, Vivobarefoot, OLENO: เว็บไลน์อัปที่ทำภายใน; Coolcore: ร้านบน Shopee")),
+      R("brands", tr("公式サイト", "Official websites", "เว็บไซต์ทางการ"), ["web"], brandsH.filter((b) => b.official).map((b) => L(b.official, b.name)),
+        tr("各メーカーの公式サイト", "Each maker's official site", "เว็บไซต์ทางการของผู้ผลิต")),
+      R("brands", tr("ブランドガイドライン", "Brand guidelines", "คู่มือแบรนด์"), ["pdf"],
+        (hub.guidelines || []).flatMap((g) => g.docs.map((d) => L(d.url, `${g.short}: ${pick(d.label)}`))), driveNote),
+      R("brands", tr("製品カタログ", "Product catalogs", "แคตตาล็อกสินค้า"), ["pdf"],
+        (hub.catalogs || []).flatMap((g) => g.docs.map((d) => L(d.url, `${g.short} ${d.season}`))),
+        tr("VFF は Google Drive、Vivobarefoot AW27 はこのダッシュボード内", "VFF in Google Drive; Vivobarefoot AW27 stored in this dashboard", "VFF อยู่ใน Google Drive; Vivobarefoot AW27 อยู่ในแดชบอร์ดนี้")),
+      R("stores", tr("店舗の地図・所在地（階数）・営業時間", "Shop map, location (floor) and hours", "แผนที่ร้าน ที่ตั้ง (ชั้น) และเวลาเปิด"), ["map"],
+        storeRows.filter((x) => x.map).map((x) => L(x.map, (storeLabels[x.id] || {}).name || x.name))),
+      R("stores", tr("店舗の開店時期", "When each shop opened", "เวลาที่แต่ละร้านเปิด"), ["slides"], [], deck),
+      R("stores", tr("店舗の写真", "Shop photos", "รูปร้าน"), ["photo"], [], tr("Google Drive の店舗資料フォルダ", "Store folders in Google Drive", "โฟลเดอร์ร้านใน Google Drive")),
+      R("stores", tr("店舗一覧（関連資料）", "Shop list (related document)", "รายชื่อร้าน (เอกสารที่เกี่ยวข้อง)"), ["web"], [L(st.referenceUrl, tr("店舗一覧", "Shop list", "รายชื่อร้าน"))]),
+      R("consignment", tr("委託販売先一覧と販売実績（SKU・納品・販売・返品・残・月別販売）", "Consignment partners and results (SKU, delivered, sold, returned, balance, monthly sales)", "ผู้รับฝากขายและผลงาน (SKU ส่งมอบ ขาย คืน คงเหลือ ยอดรายเดือน)"), ["sheet"],
+        [L(C.sourceUrl, "Stock VFF Consignment.xlsx")], tr("Google Drive（BFT 経理）", "Google Drive (BFT accounting)", "Google Drive (บัญชี BFT)")),
+      R("consignment", tr("委託先の店舗情報", "Partner store info", "ข้อมูลร้านของผู้รับฝากขาย"), ["map", "web", "sns"], [],
+        tr("Google マップ・店舗のウェブサイト・Facebook（リンクは委託販売先一覧の各行）", "Google Maps, store websites and Facebook (links are on each row of the partner list)", "Google Maps เว็บไซต์ร้าน และ Facebook (ลิงก์อยู่ในแต่ละแถวของรายชื่อ)")),
+      R("consignment", tr("委託販売の課題（売場の陳列写真）", "Consignment issues (store display photos)", "ปัญหาการฝากขาย (ภาพการจัดวางในร้าน)"), ["photo"], [], tr("社内で撮影した写真", "Photos taken by our team", "ภาพที่ทีมงานถ่าย")),
+      R("terms", tr("百貨店の手数料（Siam Discovery・Central）", "Department store commission (Siam Discovery, Central)", "ค่าคอมมิชชันห้าง (Siam Discovery, Central)"), ["sheet"],
+        [L(termsFile, "Sales Record_Coollabo Shop 2026.xlsx")], tr("Google Drive（精算シート）", "Google Drive (settlement sheets)", "Google Drive (ชีตสรุปยอด)")),
+      R("terms", tr("それ以外の取引先の条件（Pathwild・小規模委託先）", "Terms for other partners (Pathwild, small consignees)", "เงื่อนไขของคู่ค้าอื่น (Pathwild, ผู้รับฝากขายรายเล็ก)"), ["slides"], [], deck),
+      R("sns", tr("SNS アカウント（Instagram・Facebook・TikTok・LINE）", "Social accounts (Instagram, Facebook, TikTok, LINE)", "บัญชีโซเชียล (Instagram, Facebook, TikTok, LINE)"), ["sns"],
+        snsItems.filter((i) => !isEc(i) && i.url).map((i) => L(i.url, `${i.brand === "Barefootinc (Thailand)" ? "BFT" : i.brand} ${i.platform}`))),
+      R("sns", tr("EC ショップ（Shopee・Lazada・自社サイト）", "Online shops (Shopee, Lazada, own website)", "ร้านออนไลน์ (Shopee, Lazada, เว็บไซต์บริษัท)"), ["ec"],
+        snsItems.filter((i) => isEc(i) && i.url).map((i) => L(i.url, `${i.brand === "Barefootinc (Thailand)" ? "BFT" : i.brand} ${i.platform}`)))
+    ];
+    const types = [...new Set(rows.flatMap((r) => r.types))];
+    el.append(h("div", { class: "card", style: "margin-bottom:14px" },
+      h("p", { class: "note", style: "margin:0 0 8px" }, tr("ソースの種類", "Kinds of source", "ประเภทแหล่งที่มา")),
+      h("div", {}, types.map((k) => h("span", { class: `src-type t-${k}` }, tr(...T[k]), " ", h("span", { class: "muted small" }, `${rows.filter((r) => r.types.includes(k)).length}`))))));
+    let prev = null;
+    const body = rows.map((r) => {
+      const first = r.sec !== prev; prev = r.sec;
+      return h("tr", { class: first ? "sec-first" : "" },
+        h("td", {}, first ? h("a", { href: `#${r.sec}`, class: "sec-link" }, tr(...sections[r.sec])) : ""),
+        h("td", { class: "wrap" }, r.info),
+        h("td", {}, r.types.map((k) => h("span", { class: `src-type t-${k}` }, tr(...T[k])))),
+        h("td", { class: "wrap" }, r.links.length ? h("span", { class: "link-list" }, r.links.map((l) => external(l.url, l.label + " ↗"))) : null,
+          r.where ? h("div", { class: "muted small", style: r.links.length ? "margin-top:4px" : "" }, r.where) : (r.links.length ? null : "–")));
+    });
+    el.append(h("div", { class: "card" }, h("div", { class: "tablewrap" }, h("table", { class: "dt shared-list" },
+      h("thead", {}, h("tr", {}, [tr("セクション", "Tab", "แท็บ"), tr("共有している情報", "What is shared", "ข้อมูลที่แชร์"), tr("ソースの種類", "Kind of source", "ประเภทแหล่งที่มา"), tr("ソース（開く・保管場所）", "Source (open / where it is kept)", "แหล่งที่มา (เปิด / ที่จัดเก็บ)")].map((c) => h("th", { scope: "col" }, c)))),
+      h("tbody", {}, body)))));
+    el.append(h("p", { class: "note" }, tr(
+      "Google Drive のファイルが開けない場合は GM に閲覧権限を依頼してください。リンクが無い行は、このダッシュボードにだけ載せている情報です。",
+      "If a Google Drive file will not open, ask the GM for access. Rows without a link are shown only in this dashboard.",
+      "หากเปิดไฟล์ใน Google Drive ไม่ได้ โปรดขอสิทธิ์จาก GM แถวที่ไม่มีลิงก์คือข้อมูลที่แสดงเฉพาะในแดชบอร์ดนี้")));
+  };
 
   (async () => { await loadAll(); applyLanguage(); })();
 })();
