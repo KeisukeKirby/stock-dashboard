@@ -217,8 +217,10 @@
         h("div", { class: "bc" }, companyName(b.company)),
         h("h2", { class: "bn", style: "margin:2px 0 6px" }, b.name),
         h("p", { class: "bt", style: "margin:0 0 12px" }, t(b.desc)),
-        b.lineup ? external(b.lineup, tr("製品ラインナップはこちら ↗", "See the product line-up ↗", "ดูไลน์อัปสินค้า ↗"), { class: "ghost" })
-                 : h("span", { class: "muted small" }, tr("製品ラインナップのページはまだありません", "No product line-up page yet", "ยังไม่มีหน้าไลน์อัปสินค้า"))))));
+        h("div", { class: "brand-links" },
+          b.lineup ? external(b.lineup, tr("製品ラインナップはこちら ↗", "See the product line-up ↗", "ดูไลน์อัปสินค้า ↗"), { class: "ghost" })
+                   : h("span", { class: "muted small" }, tr("製品ラインナップのページはまだありません", "No product line-up page yet", "ยังไม่มีหน้าไลน์อัปสินค้า")),
+          b.official ? external(b.official, tr("公式サイト ↗", "Official website ↗", "เว็บไซต์ทางการ ↗"), { class: "ghost" }) : null)))));
     } else {
       const groups = cur === "guidelines" ? H.guidelines : H.catalogs;
       el.append(h("p", { class: "note", style: "margin:0 0 14px" }, cur === "guidelines"

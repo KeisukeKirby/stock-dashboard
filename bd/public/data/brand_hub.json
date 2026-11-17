@@ -12,7 +12,8 @@
         "th": "รองเท้าห้านิ้วจาก Vibram ผู้ผลิตพื้นรองเท้าเก่าแก่จากอิตาลี"
       },
       "lineup": "https://vibram-lineup.vercel.app/",
-      "logo": "img/logos/vff.png"
+      "logo": "img/logos/vff.png",
+      "official": "https://www.vibram.com/us/shop/fivefingers"
     },
     {
       "id": "vivo",
@@ -25,7 +26,8 @@
         "th": "ก่อตั้งในปี 2012 โดย Galahad และ Asher Clark ทายาทรุ่นที่ 7 ของตระกูลช่างทำรองเท้าในอังกฤษ"
       },
       "lineup": "https://vivo-lineup.vercel.app/",
-      "logo": "img/logos/vivo.png"
+      "logo": "img/logos/vivo.png",
+      "official": "https://www.vivobarefoot.com/rw/"
     },
     {
       "id": "oleno",
@@ -38,7 +40,8 @@
         "th": "ถุงเท้ากีฬาจาก Showa Meriyasu ผู้ผลิตอายุกว่า 70 ปีในเมืองโคเรียว จังหวัดนารา เมืองแห่งถุงเท้าของญี่ปุ่น เหมาะเป็นพิเศษสำหรับเทรลรันนิง"
       },
       "lineup": "https://oleno-catalog.vercel.app/",
-      "logo": "img/logos/oleno.png"
+      "logo": "img/logos/oleno.png",
+      "official": "https://oleno.jp/en"
     },
     {
       "id": "coolcore",

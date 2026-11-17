@@ -267,3 +267,5 @@ table.dt td a { font-weight: 600; }
 .kpi-label { font-size: 18px; }
 .page-head + p.note { margin-top: -8px !important; }
 .brand-logo-text { color: var(--bc, #1a1a1a); text-transform: uppercase; letter-spacing: .08em; }
+
+.brand-links { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
