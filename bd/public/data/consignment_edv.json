@@ -58,7 +58,38 @@
     },
     {
       "name": "Avarin",
-      "links": [],
+      "links": [
+        {
+          "kind": "web",
+          "url": "https://mystore411.com/store/view/1113236679/Thailand/On-Running-Shoes-Bangkok",
+          "note": "Bangkok・The Crystal Park Veranda 1F",
+          "label": {
+            "ja": "Crystal Park Veranda",
+            "en": "Crystal Park Veranda",
+            "th": "Crystal Park Veranda"
+          }
+        },
+        {
+          "kind": "web",
+          "url": "https://mystore411.com/store/view/1113236678/Thailand/On-Running-Shoes-Nonthaburi",
+          "note": "Nonthaburi・The Crystal SB Ratchaphruek 1F",
+          "label": {
+            "ja": "Crystal SB Ratchaphruek",
+            "en": "Crystal SB Ratchaphruek",
+            "th": "Crystal SB Ratchaphruek"
+          }
+        },
+        {
+          "kind": "web",
+          "url": "https://mystore411.com/store/view/1113235993/Thailand/On-Running-Shoes-Samutsakorn",
+          "note": "Samut Sakhon・Porto Chino 2F",
+          "label": {
+            "ja": "Porto Chino",
+            "en": "Porto Chino",
+            "th": "Porto Chino"
+          }
+        }
+      ],
       "invoices": 10,
       "units": 73,
       "gross": 44045,
@@ -81,7 +112,13 @@
     },
     {
       "name": "East West",
-      "links": [],
+      "links": [
+        {
+          "kind": "web",
+          "url": "https://www.eastwestfitness.com/our-pro-shops/",
+          "note": "East West Fitness の Pro-Shop（Sukhumvit 69）"
+        }
+      ],
       "invoices": 3,
       "units": 21,
       "gross": 10600,
@@ -98,7 +135,13 @@
     },
     {
       "name": "Runnercart",
-      "links": [],
+      "links": [
+        {
+          "kind": "web",
+          "url": "https://runnercart.com/en",
+          "note": "Bangkok Khlong Toei の店舗と通販"
+        }
+      ],
       "invoices": 8,
       "units": 19,
       "gross": 14020,
@@ -148,7 +191,13 @@
     },
     {
       "name": "Caveman",
-      "links": [],
+      "links": [
+        {
+          "kind": "fb",
+          "url": "https://www.facebook.com/cavemanstorethailand/",
+          "note": "Chonburi・Ban Suan"
+        }
+      ],
       "invoices": 5,
       "units": 14,
       "gross": 7020,
@@ -167,7 +216,13 @@
     },
     {
       "name": "Anvil Camp",
-      "links": [],
+      "links": [
+        {
+          "kind": "fb",
+          "url": "https://www.facebook.com/Theanvilcamp/",
+          "note": "Rayong・Noen Phra"
+        }
+      ],
       "invoices": 5,
       "units": 11,
       "gross": 6770,
@@ -186,7 +241,13 @@
     },
     {
       "name": "Pathwild",
-      "links": [],
+      "links": [
+        {
+          "kind": "fb",
+          "url": "https://www.facebook.com/pathwild/",
+          "note": "Bangkok Bang Khen・Phahonyothin Rd"
+        }
+      ],
       "invoices": 2,
       "units": 2,
       "gross": 1600,

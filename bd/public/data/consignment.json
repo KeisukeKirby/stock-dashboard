@@ -495,7 +495,14 @@
      "2025-07": 8.0,
      "2025-08": 14.0
     }
-   }
+   },
+   "links": [
+    {
+     "kind": "fb",
+     "url": "https://www.facebook.com/pathwild/",
+     "note": "Bangkok Bang Khen・Phahonyothin Rd"
+    }
+   ]
   },
   {
    "name": "Run2Paradise",
@@ -732,7 +739,14 @@
      "2025-10": 3.0,
      "2026-01": 2.0
     }
-   }
+   },
+   "links": [
+    {
+     "kind": "fb",
+     "url": "https://www.facebook.com/cavemanstorethailand/",
+     "note": "Chonburi・Ban Suan"
+    }
+   ]
   },
   {
    "name": "Bananarun (2)",
@@ -1043,7 +1057,14 @@
     "BFJ": {
      "2026-08": 3.0
     }
-   }
+   },
+   "links": [
+    {
+     "kind": "web",
+     "url": "https://www.eastwestfitness.com/our-pro-shops/",
+     "note": "East West Fitness の Pro-Shop（Sukhumvit 69）"
+    }
+   ]
   },
   {
    "name": "K.Pok (2)",
@@ -1186,7 +1207,14 @@
      "2026-02": 4.0,
      "2026-08": 5.0
     }
-   }
+   },
+   "links": [
+    {
+     "kind": "fb",
+     "url": "https://www.facebook.com/Run2ParadiseChiangmai/",
+     "note": "Chiang Mai・Nimmanhemin Soi 15"
+    }
+   ]
   },
   {
    "name": "Bonita Cafe",
@@ -1237,7 +1265,19 @@
      "2024-08": 2.0,
      "2025-07": 2.0
     }
-   }
+   },
+   "links": [
+    {
+     "kind": "web",
+     "url": "https://bonitacafesocialclub.wordpress.com/2015/09/30/now-we-are-thailands-only-one-vivram-official-retail-pro-shop/",
+     "note": "2015 年のブログ記事（Silom 近く）",
+     "label": {
+      "ja": "2015 年のブログ",
+      "en": "2015 blog post",
+      "th": "บล็อกปี 2015"
+     }
+    }
+   ]
   },
   {
    "name": "BananaRun",

@@ -387,7 +387,7 @@
     // 1. 委託販売先一覧（百貨店をひとまとめ、それ以外はブランドごと）
     const brandOrder = ["VFF", "OLENO", "Coolcore", "Tabi (Marugo)", "BFJ"];
     const byOrder = (a, b) => (brandOrder.indexOf(a) + 99 * (brandOrder.indexOf(a) < 0)) - (brandOrder.indexOf(b) + 99 * (brandOrder.indexOf(b) < 0));
-    const linksCol = { key: "links", label: tr("店舗情報", "Store info", "ข้อมูลร้าน"), csv: (v) => (v || []).map((l) => l.url).join(" "), render: (v) => (v && v.length) ? h("span", { class: "link-list" }, v.map((l) => external(l.url, ({ map: tr("Google マップ", "Google Maps", "Google Maps"), web: tr("店舗情報", "Store page", "ข้อมูลร้าน"), fb: "Facebook" }[l.kind] || "Link") + " ↗", { title: l.note || "" }))) : h("span", { class: "muted" }, "–") };
+    const linksCol = { key: "links", label: tr("店舗情報", "Store info", "ข้อมูลร้าน"), csv: (v) => (v || []).map((l) => l.url).join(" "), render: (v) => (v && v.length) ? h("span", { class: "link-list" }, v.map((l) => external(l.url, (l.label ? (l.label[language] || l.label.ja) : ({ map: tr("Google マップ", "Google Maps", "Google Maps"), web: tr("店舗情報", "Store page", "ข้อมูลร้าน"), fb: "Facebook" }[l.kind] || "Link")) + " ↗", { title: l.note || "" }))) : h("span", { class: "muted" }, "–") };
     const numCols = [
       { key: "skuCount", label: "SKU", num: true },
       { key: "delivered", label: tr("納品", "Delivered", "ส่งมอบ"), num: true },
