@@ -5,7 +5,7 @@
 
 - **常に最新の URL: https://bd-onboarding-barefootinc.vercel.app** — ブランチ `claude/laughing-pascal-1qck8z` に紐づけたドメイン。push するたびに Vercel が自動でビルドし、この URL が最新版になる（手動の反映は不要）
 - 旧 URL https://bd-dashboard-mu.vercel.app と https://bd-dashboard-barefootinc-th.vercel.app は、開くと上の URL に自動で転送される（vercel.json の redirects）
-- チーム既定で Vercel Authentication（ssoProtection）が有効。Vercel チームにログインしていない人が開けない場合は、Settings → Deployment Protection で Vercel Authentication を無効にするか Password Protection に切り替える
+- アクセス制限なし（2026-11-17 に Vercel Authentication を無効化）。リンクを知っている人は誰でも開ける。検索エンジンには出ない（noindex）。制限が必要になったら Settings → Deployment Protection で Password Protection か Vercel Authentication を有効にする
 
 - 画面: ホーム／ブランド × 5（VFF・Vivobarefoot・OLENO・Coolcore・AQOS）／ガイドライン（VFF・Vivo）／月次売上／店舗一覧／委託販売／取引条件／SNS／未入力一覧
 - 数字・文には出典バッジ `src` が付く（マウスを乗せると出典）。出典のない数字は載せていない。埋まらなかった項目は「未入力」と表示し、「未入力一覧」（情報リクエスト）に集約。
