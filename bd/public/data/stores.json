@@ -71,7 +71,9 @@
    "pin": {
     "label": "K Village",
     "side": "right"
-   }
+   },
+   "photo": "img/stores/kvillage.jpg",
+   "photoSrc": "Drive: K Village/store_exterior.jpg"
   },
   {
    "id": "central-lp",
@@ -106,7 +108,9 @@
    "pin": {
     "label": "Central Ladprao",
     "side": "right"
-   }
+   },
+   "photo": "img/stores/central-lp.jpg",
+   "photoSrc": "Drive: Central Ladprao Popup/151460_0.jpg"
   },
   {
    "id": "thaniya",
@@ -174,7 +178,9 @@
    "pin": {
     "label": "Paradise Park",
     "side": "right"
-   }
+   },
+   "photo": "img/stores/paradise.jpg",
+   "photoSrc": "Drive: Barefoot Park/brand_logo.jpg"
   },
   {
    "id": "siam-dis",
@@ -208,7 +214,9 @@
    "pin": {
     "label": "Siam Discovery",
     "side": "left"
-   }
+   },
+   "photo": "img/stores/siam-dis.jpg",
+   "photoSrc": "Drive: Siam Discovery/siam_discovery.jpg"
   },
   {
    "id": "central-cl",
@@ -241,7 +249,9 @@
    "pin": {
     "label": "Central Chidlom",
     "side": "right"
-   }
+   },
+   "photo": "img/stores/central-cl.jpg",
+   "photoSrc": "Drive: Central Chidlom/132747.jpg"
   },
   {
    "id": "central-others",

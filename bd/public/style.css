@@ -202,3 +202,68 @@ details.fold[open] > summary::before { transform: rotate(90deg); }
 @media (max-width: 640px) { .photo-grid img { height: 300px; } }
 
 .link-list { display: inline-flex; flex-direction: column; gap: 2px; }
+
+/* ===== readability pass (2026-11-17) ===== */
+body { font-size: 16px; line-height: 1.65; }
+.page { max-width: 1180px; padding: 28px 20px 72px; }
+h1 { font-size: 26px; }
+.tabs { gap: 6px; padding-top: 10px; padding-bottom: 10px; }
+.tab { font-size: 15.5px; padding: 9px 16px; font-weight: 500; }
+.page-head { margin: 8px 0 22px; }
+.page-head h2 { margin: 0; font-size: 28px; line-height: 1.25; letter-spacing: -.01em; }
+.page-head p { margin: 6px 0 0; font-size: 16px; color: var(--ink-2); }
+.page-head + .note, .page-head + p.note { font-size: 15px; color: var(--ink-2); margin-bottom: 18px !important; }
+.note { font-size: 14px; color: var(--ink-2); }
+.card { padding: 20px 22px; border-radius: 16px; }
+.card h2 { font-size: 21px; } .card h3 { font-size: 17px; }
+.section-title h2 { font-size: 22px; }
+.kpi { padding: 18px 20px; }
+.kpi-label { font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: 0; }
+.kpi-value { font-size: 40px; margin-top: 6px; }
+.kpi-note { font-size: 13px; }
+.subtab { font-size: 15px; padding: 8px 16px; }
+.ghost, button.ghost { font-size: 14px; padding: 8px 14px; }
+.tablewrap { border-radius: 14px; }
+table.dt { font-size: 15px; }
+table.dt th, table.dt td { padding: 11px 14px; }
+table.dt th { font-size: 13.5px; color: var(--ink); font-weight: 700; }
+table.dt tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--surface-2) 55%, transparent); }
+table.dt tbody tr:hover td { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+table.dt td a { font-weight: 600; }
+.brand-tag { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; }
+.brand-tag::before { content: ""; width: 10px; height: 10px; border-radius: 3px; background: var(--bc, var(--accent)); flex: 0 0 auto; }
+@media (max-width: 640px) {
+  .page { padding: 18px 14px 56px; }
+  h1 { font-size: 21px; } .page-head h2 { font-size: 23px; }
+  .kpi-value { font-size: 32px; }
+  table.dt { font-size: 14px; } table.dt th, table.dt td { padding: 9px 10px; }
+}
+
+/* brand logos */
+.brand-card { padding: 20px 22px 20px 26px; }
+.brand-logo { height: 76px; display: flex; align-items: center; justify-content: flex-start; margin: 0 0 14px; padding: 10px 14px; background: #fff; border: 1px solid var(--line); border-radius: 12px; }
+.brand-logo img { max-height: 54px; max-width: 100%; object-fit: contain; }
+.brand-logo.dark { background: #000; border-color: #000; }
+.brand-logo-text { font-size: 22px; font-weight: 800; color: #1a1a1a; letter-spacing: .02em; }
+.brand-card .bn { font-size: 20px; }
+.brand-card .bt { font-size: 15px; color: var(--ink-2); }
+
+/* store cards */
+.store-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 16px; margin-top: 18px; }
+.store-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+.store-photo { aspect-ratio: 16 / 10; background: var(--surface-2); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 14px; }
+.store-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.store-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.store-body h3 { margin: 0; font-size: 19px; }
+.store-facts { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 0; font-size: 15px; }
+.store-facts dt { color: var(--muted); font-size: 13.5px; padding-top: 2px; }
+.store-facts dd { margin: 0; }
+.store-body .ghost { align-self: flex-start; margin-top: auto; }
+@media (max-width: 640px) { .store-cards { grid-template-columns: 1fr; } }
+
+.tabs { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
+@media (max-width: 640px) { .tabs { margin-left: -14px; margin-right: -14px; padding-left: 14px; padding-right: 14px; } }
+
+.kpi-label { font-size: 18px; }
+.page-head + p.note { margin-top: -8px !important; }
+.brand-logo-text { color: var(--bc, #1a1a1a); text-transform: uppercase; letter-spacing: .08em; }

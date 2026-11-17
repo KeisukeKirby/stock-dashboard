@@ -1,46 +1,167 @@
 {
   "updatedAt": "2026-11-16",
   "brands": [
-    {"id": "vff", "name": "Vibram FiveFingers", "short": "VFF", "company": "BFT",
-     "desc": {"ja": "イタリアの老舗ソールメーカー Vibram の5本指シューズ。",
-              "en": "Five-toe shoes from Vibram, the long-established Italian sole maker.",
-              "th": "รองเท้าห้านิ้วจาก Vibram ผู้ผลิตพื้นรองเท้าเก่าแก่จากอิตาลี"},
-     "lineup": "https://vibram-lineup.vercel.app/"},
-    {"id": "vivo", "name": "Vivobarefoot", "short": "Vivo", "company": "BFT",
-     "desc": {"ja": "イギリスの靴職人一族 7 代目の Galahad & Asher Clark が 2012 年に創業。",
-              "en": "Founded in 2012 by Galahad and Asher Clark, the seventh generation of a British shoemaking family.",
-              "th": "ก่อตั้งในปี 2012 โดย Galahad และ Asher Clark ทายาทรุ่นที่ 7 ของตระกูลช่างทำรองเท้าในอังกฤษ"},
-     "lineup": "https://vivo-lineup.vercel.app/"},
-    {"id": "oleno", "name": "OLENO", "short": "OLENO", "company": "BFT",
-     "desc": {"ja": "日本の靴下の町・奈良県広陵町で創業 70 年以上のメーカー（昭和メリヤス）のスポーツソックス。特にトレイルランニング向け。",
-              "en": "Sports socks from Showa Meriyasu, a maker founded over 70 years ago in Koryo, Nara, Japan's sock-making town. Made especially for trail running.",
-              "th": "ถุงเท้ากีฬาจาก Showa Meriyasu ผู้ผลิตอายุกว่า 70 ปีในเมืองโคเรียว จังหวัดนารา เมืองแห่งถุงเท้าของญี่ปุ่น เหมาะเป็นพิเศษสำหรับเทรลรันนิง"},
-     "lineup": "https://oleno-catalog.vercel.app/"},
-    {"id": "coolcore", "name": "Coolcore", "short": "Coolcore", "company": "EDV",
-     "desc": {"ja": "米国 Coolcore 社の冷感生地を使ったブランド。",
-              "en": "A brand made with cooling fabric from Coolcore, a US company.",
-              "th": "แบรนด์ที่ใช้ผ้าเย็นจากบริษัท Coolcore ของสหรัฐอเมริกา"},
-     "lineup": "https://shopee.co.th/coolcorethailand"},
-    {"id": "aqoz", "name": "AQOZ", "short": "AQOZ", "company": "EDV",
-     "desc": {"ja": "AQUAHOLE（アクアホール）を使った EDV の自社アパレル。",
-              "en": "EDV's own apparel brand made with AQUAHOLE fabric.",
-              "th": "แบรนด์เสื้อผ้าของ EDV ที่ใช้ผ้า AQUAHOLE"},
-     "lineup": null}
+    {
+      "id": "vff",
+      "name": "Vibram FiveFingers",
+      "short": "VFF",
+      "company": "BFT",
+      "desc": {
+        "ja": "イタリアの老舗ソールメーカー Vibram の5本指シューズ。",
+        "en": "Five-toe shoes from Vibram, the long-established Italian sole maker.",
+        "th": "รองเท้าห้านิ้วจาก Vibram ผู้ผลิตพื้นรองเท้าเก่าแก่จากอิตาลี"
+      },
+      "lineup": "https://vibram-lineup.vercel.app/",
+      "logo": "img/logos/vff.png"
+    },
+    {
+      "id": "vivo",
+      "name": "Vivobarefoot",
+      "short": "Vivo",
+      "company": "BFT",
+      "desc": {
+        "ja": "イギリスの靴職人一族 7 代目の Galahad & Asher Clark が 2012 年に創業。",
+        "en": "Founded in 2012 by Galahad and Asher Clark, the seventh generation of a British shoemaking family.",
+        "th": "ก่อตั้งในปี 2012 โดย Galahad และ Asher Clark ทายาทรุ่นที่ 7 ของตระกูลช่างทำรองเท้าในอังกฤษ"
+      },
+      "lineup": "https://vivo-lineup.vercel.app/",
+      "logo": "img/logos/vivo.png"
+    },
+    {
+      "id": "oleno",
+      "name": "OLENO",
+      "short": "OLENO",
+      "company": "BFT",
+      "desc": {
+        "ja": "日本の靴下の町・奈良県広陵町で創業 70 年以上のメーカー（昭和メリヤス）のスポーツソックス。特にトレイルランニング向け。",
+        "en": "Sports socks from Showa Meriyasu, a maker founded over 70 years ago in Koryo, Nara, Japan's sock-making town. Made especially for trail running.",
+        "th": "ถุงเท้ากีฬาจาก Showa Meriyasu ผู้ผลิตอายุกว่า 70 ปีในเมืองโคเรียว จังหวัดนารา เมืองแห่งถุงเท้าของญี่ปุ่น เหมาะเป็นพิเศษสำหรับเทรลรันนิง"
+      },
+      "lineup": "https://oleno-catalog.vercel.app/",
+      "logo": "img/logos/oleno.png"
+    },
+    {
+      "id": "coolcore",
+      "name": "Coolcore",
+      "short": "Coolcore",
+      "company": "EDV",
+      "desc": {
+        "ja": "米国 Coolcore 社の冷感生地を使ったブランド。",
+        "en": "A brand made with cooling fabric from Coolcore, a US company.",
+        "th": "แบรนด์ที่ใช้ผ้าเย็นจากบริษัท Coolcore ของสหรัฐอเมริกา"
+      },
+      "lineup": "https://shopee.co.th/coolcorethailand"
+    },
+    {
+      "id": "aqoz",
+      "name": "AQOZ",
+      "short": "AQOZ",
+      "company": "EDV",
+      "desc": {
+        "ja": "AQUAHOLE（アクアホール）を使った EDV の自社アパレル。",
+        "en": "EDV's own apparel brand made with AQUAHOLE fabric.",
+        "th": "แบรนด์เสื้อผ้าของ EDV ที่ใช้ผ้า AQUAHOLE"
+      },
+      "lineup": null,
+      "logo": "img/logos/aqoz.png",
+      "logoDark": true
+    }
   ],
   "guidelines": [
-    {"brand": "Vibram FiveFingers", "short": "VFF", "docs": [
-      {"label": {"ja": "Marketing Guidelines（ブランド・マーケティング規定、英語）", "en": "Marketing Guidelines (English)", "th": "Marketing Guidelines (ภาษาอังกฤษ)"}, "url": "https://drive.google.com/file/d/1G9JVTwtHrFsFzlpvBCakpi1dzJYdKrRR/view"},
-      {"label": {"ja": "Logo Guidelines（ロゴ使用規定、英語）", "en": "Logo Guidelines (English)", "th": "Logo Guidelines (ภาษาอังกฤษ)"}, "url": "https://drive.google.com/file/d/1TJ2gFJONQ7YpOXnIsmaEERs2M5NI-43k/view"}]},
-    {"brand": "Vivobarefoot", "short": "Vivo", "docs": [
-      {"label": {"ja": "Vivobarefoot Brand Guidelines（2026 年 5 月版、英語・約 430MB）", "en": "Vivobarefoot Brand Guidelines (May 2026, English, about 430 MB)", "th": "Vivobarefoot Brand Guidelines (พ.ค. 2026 ภาษาอังกฤษ ประมาณ 430 MB)"}, "url": "https://drive.google.com/file/d/1IY25fKU9Hj1EPlmzp0tWql4mp3WgeFIW/view"}]}
+    {
+      "brand": "Vibram FiveFingers",
+      "short": "VFF",
+      "docs": [
+        {
+          "label": {
+            "ja": "Marketing Guidelines（ブランド・マーケティング規定、英語）",
+            "en": "Marketing Guidelines (English)",
+            "th": "Marketing Guidelines (ภาษาอังกฤษ)"
+          },
+          "url": "https://drive.google.com/file/d/1G9JVTwtHrFsFzlpvBCakpi1dzJYdKrRR/view"
+        },
+        {
+          "label": {
+            "ja": "Logo Guidelines（ロゴ使用規定、英語）",
+            "en": "Logo Guidelines (English)",
+            "th": "Logo Guidelines (ภาษาอังกฤษ)"
+          },
+          "url": "https://drive.google.com/file/d/1TJ2gFJONQ7YpOXnIsmaEERs2M5NI-43k/view"
+        }
+      ]
+    },
+    {
+      "brand": "Vivobarefoot",
+      "short": "Vivo",
+      "docs": [
+        {
+          "label": {
+            "ja": "Vivobarefoot Brand Guidelines（2026 年 5 月版、英語・約 430MB）",
+            "en": "Vivobarefoot Brand Guidelines (May 2026, English, about 430 MB)",
+            "th": "Vivobarefoot Brand Guidelines (พ.ค. 2026 ภาษาอังกฤษ ประมาณ 430 MB)"
+          },
+          "url": "https://drive.google.com/file/d/1IY25fKU9Hj1EPlmzp0tWql4mp3WgeFIW/view"
+        }
+      ]
+    }
   ],
   "catalogs": [
-    {"brand": "Vibram FiveFingers", "short": "VFF", "docs": [
-      {"season": "SS26", "label": {"ja": "2026 春夏（SS26）", "en": "Spring/Summer 2026 (SS26)", "th": "ฤดูใบไม้ผลิ/ร้อน 2026 (SS26)"}, "url": "https://drive.google.com/file/d/1MeprUjTysmuyVlvdz9dFF_Z9l7yK23-l/view"},
-      {"season": "FW26", "label": {"ja": "2026 秋冬（FW26）", "en": "Fall/Winter 2026 (FW26)", "th": "ฤดูใบไม้ร่วง/หนาว 2026 (FW26)"}, "url": "https://drive.google.com/file/d/1STcDpp92NHZZN_8mIJ2dikGw27fPs0vN/view"},
-      {"season": "SS27", "label": {"ja": "2027 春夏（SS27）", "en": "Spring/Summer 2027 (SS27)", "th": "ฤดูใบไม้ผลิ/ร้อน 2027 (SS27)"}, "url": "https://drive.google.com/file/d/18Fi7ZvlfKP1qxXbWMsSSJrcskzN7irqr/view"},
-      {"season": "FW27", "label": {"ja": "2027 秋冬（FW27）", "en": "Fall/Winter 2027 (FW27)", "th": "ฤดูใบไม้ร่วง/หนาว 2027 (FW27)"}, "url": "https://drive.google.com/file/d/1uYUKfWPtBAEPj5FfTLNHx-wVNIudBJj4/view"}]},
-    {"brand": "Vivobarefoot", "short": "Vivo", "docs": [
-      {"season": "AW27", "label": {"ja": "2027 秋冬（AW27）フルレンジ", "en": "Autumn/Winter 2027 (AW27) full range", "th": "ฤดูใบไม้ร่วง/หนาว 2027 (AW27) ครบทุกรุ่น"}, "url": "docs/Vivobarefoot_AW27_Catalogue.pdf"}]}
+    {
+      "brand": "Vibram FiveFingers",
+      "short": "VFF",
+      "docs": [
+        {
+          "season": "SS26",
+          "label": {
+            "ja": "2026 春夏（SS26）",
+            "en": "Spring/Summer 2026 (SS26)",
+            "th": "ฤดูใบไม้ผลิ/ร้อน 2026 (SS26)"
+          },
+          "url": "https://drive.google.com/file/d/1MeprUjTysmuyVlvdz9dFF_Z9l7yK23-l/view"
+        },
+        {
+          "season": "FW26",
+          "label": {
+            "ja": "2026 秋冬（FW26）",
+            "en": "Fall/Winter 2026 (FW26)",
+            "th": "ฤดูใบไม้ร่วง/หนาว 2026 (FW26)"
+          },
+          "url": "https://drive.google.com/file/d/1STcDpp92NHZZN_8mIJ2dikGw27fPs0vN/view"
+        },
+        {
+          "season": "SS27",
+          "label": {
+            "ja": "2027 春夏（SS27）",
+            "en": "Spring/Summer 2027 (SS27)",
+            "th": "ฤดูใบไม้ผลิ/ร้อน 2027 (SS27)"
+          },
+          "url": "https://drive.google.com/file/d/18Fi7ZvlfKP1qxXbWMsSSJrcskzN7irqr/view"
+        },
+        {
+          "season": "FW27",
+          "label": {
+            "ja": "2027 秋冬（FW27）",
+            "en": "Fall/Winter 2027 (FW27)",
+            "th": "ฤดูใบไม้ร่วง/หนาว 2027 (FW27)"
+          },
+          "url": "https://drive.google.com/file/d/1uYUKfWPtBAEPj5FfTLNHx-wVNIudBJj4/view"
+        }
+      ]
+    },
+    {
+      "brand": "Vivobarefoot",
+      "short": "Vivo",
+      "docs": [
+        {
+          "season": "AW27",
+          "label": {
+            "ja": "2027 秋冬（AW27）フルレンジ",
+            "en": "Autumn/Winter 2027 (AW27) full range",
+            "th": "ฤดูใบไม้ร่วง/หนาว 2027 (AW27) ครบทุกรุ่น"
+          },
+          "url": "docs/Vivobarefoot_AW27_Catalogue.pdf"
+        }
+      ]
+    }
   ]
 }

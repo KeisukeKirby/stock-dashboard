@@ -26,7 +26,7 @@
   const src = (text) => text ? h("span", { class: "src", title: `${tr("出典", "Source", "ที่มา")} · ${text}` }, "src") : null;
   const missing = (label = tr("未入力", "Unavailable", "ยังไม่มีข้อมูล")) => h("span", { class: "missing" }, label);
   const val = (v, s) => (v == null || v === "" ? missing() : h("span", {}, v, src(s)));
-  const BRAND_COLOR = { VFF: "var(--c-vff)", Vivo: "var(--c-vivo)", Oleno: "var(--c-oleno)", OLENO: "var(--c-oleno)", Coolcore: "var(--c-coolcore)", AQOZ: "var(--c-aqos)", Others: "var(--c-others)" };
+  const BRAND_COLOR = { VFF: "var(--c-vff)", Vivo: "var(--c-vivo)", Oleno: "var(--c-oleno)", OLENO: "var(--c-oleno)", Coolcore: "var(--c-coolcore)", AQOZ: "var(--c-aqos)", Vivobarefoot: "var(--c-vivo)", "Vibram FiveFingers": "var(--c-vff)", "Barefootinc (Thailand)": "var(--accent)", Others: "var(--c-others)" };
   const LIGHT = new Set(["vff"]);
 
   // ---------- theme ----------
@@ -180,7 +180,15 @@
       else tab.removeAttribute("aria-current");
     });
     const el = $(`view-${name}`);
-    if (!el.dataset.ready || name === "brands") { el.replaceChildren(); views[name](el, sub); el.dataset.ready = "1"; }
+    if (!el.dataset.ready || name === "brands") {
+      el.replaceChildren();
+      const lead = {
+        consignment: tr("委託販売先、販売実績、課題です。", "Consignment partners, sales and issues.", "ผู้รับฝากขาย ยอดขาย และปัญหา"),
+        terms: tr("取引先ごとの手数料と取引の形です。", "Commission and deal type for each partner.", "ค่าคอมมิชชันและรูปแบบการค้าของแต่ละคู่ค้า"),
+      }[name];
+      el.append(h("header", { class: "page-head" }, h("h2", {}, tr(...sections[name])), lead ? h("p", {}, lead) : null));
+      views[name](el, sub); el.dataset.ready = "1";
+    }
     window.scrollTo({ top: 0 });
   }
   window.addEventListener("hashchange", route);
@@ -205,6 +213,7 @@
         "We handle five brands: three through Barefootinc (Thailand) (BFT) and two through Endeavorz (EDV).",
         "เราดูแล 5 แบรนด์: 3 แบรนด์โดย Barefootinc (Thailand) (BFT) และ 2 แบรนด์โดย Endeavorz (EDV)")));
       el.append(h("div", { class: "grid c2" }, H.brands.map((b) => h("section", { class: "brand-card", style: `--bc:${BRAND_COLOR[b.short] || "var(--accent)"}` },
+        h("div", { class: "brand-logo" + (b.logoDark ? " dark" : "") }, b.logo ? h("img", { src: b.logo, alt: `${b.name} logo`, loading: "lazy" }) : h("span", { class: "brand-logo-text" }, b.name)),
         h("div", { class: "bc" }, companyName(b.company)),
         h("h2", { class: "bn", style: "margin:2px 0 6px" }, b.name),
         h("p", { class: "bt", style: "margin:0 0 12px" }, t(b.desc)),
@@ -300,13 +309,21 @@
         const padX = mapBox.clientWidth < 500 ? 120 : 90; map.fitBounds(bounds, { paddingTopLeft: [padX, 50], paddingBottomRight: [padX, 30] });
       });
     } else mapBox.append(h("p", { class: "muted", style: "padding:16px" }, tr("地図を読み込めませんでした", "Could not load the map", "โหลดแผนที่ไม่ได้")));
-    el.append(h("div", { style: "margin-top:16px" }, simpleTable(
-      [tr("店舗", "Shop", "ร้าน"), tr("所在地", "Location", "ที่ตั้ง"), tr("営業時間", "Hours", "เวลาเปิด"), tr("開店", "Opened", "เปิดร้าน"), "Google Maps"],
-      rows.map(store => {
-        const info = { ...store, ...storeLabels[store.id] };
-        const url = mapUrl(store);
-        return [info.name, pick(store.floor) || info.location, info.hours || null, info.opened || null, url ? external(url, tr("地図を開く ↗", "Open map ↗", "เปิดแผนที่ ↗")) : null];
-      }))));
+    el.append(h("div", { class: "store-cards" }, rows.map(store => {
+      const info = { ...store, ...storeLabels[store.id] };
+      const url = mapUrl(store);
+      return h("article", { class: "store-card" },
+        h("div", { class: "store-photo" }, store.photo
+          ? h("img", { src: store.photo, alt: info.name, loading: "lazy" })
+          : h("span", {}, tr("写真なし", "No photo yet", "ยังไม่มีรูป"))),
+        h("div", { class: "store-body" },
+          h("h3", {}, info.name),
+          h("dl", { class: "store-facts" },
+            h("dt", {}, tr("所在地", "Location", "ที่ตั้ง")), h("dd", {}, pick(store.floor) || info.location || "–"),
+            h("dt", {}, tr("営業時間", "Hours", "เวลาเปิด")), h("dd", {}, info.hours || "–"),
+            h("dt", {}, tr("開店", "Opened", "เปิดร้าน")), h("dd", {}, info.opened || "–")),
+          url ? external(url, tr("Google マップで開く ↗", "Open in Google Maps ↗", "เปิดใน Google Maps ↗"), { class: "ghost" }) : null));
+    })));
     if (D.stores.referenceUrl) el.append(h("div", { class: "card", style: "margin-top:14px" },
       h("h2", {}, tr("関連資料", "Related document", "เอกสารที่เกี่ยวข้อง")),
       h("ul", { class: "clean" }, h("li", {}, external(D.stores.referenceUrl, tr("店舗一覧 ↗", "Shop list ↗", "รายชื่อร้าน ↗"))))));
@@ -330,10 +347,12 @@
       "ブランド順に、SNS アカウントと EC（ネット販売）のショップを並べています。会社全体のアカウントは最後です。",
       "Social accounts and online shops, listed by brand. Company-wide accounts are last.",
       "บัญชีโซเชียลและร้านออนไลน์ เรียงตามแบรนด์ บัญชีของทั้งบริษัทอยู่ท้ายสุด")));
+    let prevBrand = null;
     const rows = (D.sns?.items || []).map(item => {
       const isEc = EC.has(item.platform);
+      const first = item.brand !== prevBrand; prevBrand = item.brand;
       return [
-        brandLabel(item.brand),
+        first ? h("span", { class: "brand-tag", style: `--bc:${BRAND_COLOR[item.brand] || "var(--c-others)"}` }, brandLabel(item.brand)) : "",
         isEc ? tr("EC", "Online shop", "ร้านออนไลน์") : "SNS",
         item.platform,
         item.handle || null,
