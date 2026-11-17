@@ -132,6 +132,18 @@
     return h("div", {}, wrap, legend);
   }
 
+  // ---------- lightbox（写真を拡大して全体を表示） ----------
+  function openLightbox(src, caption) {
+    const close = () => { box.remove(); document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+    const onKey = (e) => { if (e.key === "Escape") close(); };
+    const box = h("div", { class: "lightbox", role: "dialog", "aria-modal": "true", "aria-label": caption, onclick: close },
+      h("figure", {}, h("img", { src, alt: caption }), h("figcaption", {}, caption)),
+      h("button", { type: "button", class: "lightbox-close", "aria-label": tr("閉じる", "Close", "ปิด") }, "×"));
+    document.body.append(box); document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKey);
+    box.querySelector(".lightbox-close").focus();
+  }
+
   // ---------- router ----------
   const views = Object.create(null);
   const sections = {
@@ -318,7 +330,9 @@
       const url = mapUrl(store);
       return h("article", { class: "store-card" },
         h("div", { class: "store-photo" }, store.photo
-          ? h("img", { src: store.photo, alt: info.name, loading: "lazy" })
+          ? h("button", { type: "button", class: "photo-zoom", title: tr("クリックで拡大", "Click to enlarge", "คลิกเพื่อขยาย"), "aria-label": tr(`${info.name} の写真を拡大`, `Enlarge the photo of ${info.name}`, `ขยายรูปของ ${info.name}`), onclick: () => openLightbox(store.photo, info.name) },
+              h("img", { src: store.photo, alt: info.name, loading: "lazy", style: store.photoPos ? `object-position:${store.photoPos}` : null }),
+              h("span", { class: "zoom-hint", "aria-hidden": "true" }, "⤢"))
           : h("span", {}, tr("写真なし", "No photo yet", "ยังไม่มีรูป"))),
         h("div", { class: "store-body" },
           h("h3", {}, info.name),

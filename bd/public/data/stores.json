@@ -110,7 +110,8 @@
     "side": "right"
    },
    "photo": "img/stores/central-lp.jpg",
-   "photoSrc": "ユーザー提供写真（Coollabo 売場、2026-11-17）"
+   "photoSrc": "ユーザー提供写真（Coollabo 売場、2026-11-17）",
+   "photoPos": "center 72%"
   },
   {
    "id": "thaniya",

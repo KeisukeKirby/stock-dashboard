@@ -277,3 +277,14 @@ table.dt td a { font-weight: 600; }
 table.shared-list tr.sec-first td { border-top: 2px solid var(--line); }
 table.shared-list .sec-link { font-weight: 700; }
 table.shared-list th { cursor: default; }
+
+/* 写真の拡大表示 */
+.store-photo { position: relative; overflow: hidden; }
+.photo-zoom { all: unset; position: absolute; inset: 0; display: block; cursor: zoom-in; }
+.photo-zoom:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+.zoom-hint { position: absolute; right: 10px; bottom: 10px; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: rgba(0,0,0,.55); color: #fff; font-size: 18px; line-height: 1; }
+.lightbox { position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,.85); display: flex; align-items: center; justify-content: center; padding: 16px; cursor: zoom-out; }
+.lightbox figure { margin: 0; max-width: 100%; max-height: 100%; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.lightbox img { max-width: min(1100px, 100%); max-height: calc(100vh - 80px); object-fit: contain; border-radius: 8px; background: #111; }
+.lightbox figcaption { color: #fff; font-size: 15px; text-align: center; }
+.lightbox-close { position: fixed; top: 12px; right: 16px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(255,255,255,.15); color: #fff; font-size: 28px; line-height: 1; cursor: pointer; }
