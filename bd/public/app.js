@@ -365,6 +365,7 @@
     el.append(h("div", { class: "section-title" }, h("h2", {}, tr("委託販売先一覧", "Consignment partners", "รายชื่อผู้รับฝากขาย")), h("span", { class: "note" }, `${C.period || ""} · ${tr("単位: 足・個", "Units: pairs / pieces", "หน่วย: คู่ / ชิ้น")}`)));
     el.append(h("div", { class: "card" }, table([
       { key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") },
+      { key: "links", label: tr("店舗情報", "Store info", "ข้อมูลร้าน"), csv: (v) => (v || []).map((l) => l.url).join(" "), render: (v) => (v && v.length) ? h("span", { class: "link-list" }, v.map((l) => external(l.url, ({ map: tr("Google マップ", "Google Maps", "Google Maps"), web: tr("店舗情報", "Store page", "ข้อมูลร้าน"), fb: "Facebook" }[l.kind] || "Link") + " ↗", { title: l.note || "" }))) : h("span", { class: "muted" }, "–") },
       { key: "typeLabel", label: tr("形態", "Type", "ประเภท") },
       { key: "brandsText", label: tr("ブランド", "Brand", "แบรนด์") },
       { key: "skuCount", label: "SKU", num: true },

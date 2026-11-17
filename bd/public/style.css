@@ -200,3 +200,5 @@ details.fold[open] > summary::before { transform: rotate(90deg); }
 .photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
 .photo-grid img { width: 100%; height: 360px; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); display: block; }
 @media (max-width: 640px) { .photo-grid img { height: 300px; } }
+
+.link-list { display: inline-flex; flex-direction: column; gap: 2px; }

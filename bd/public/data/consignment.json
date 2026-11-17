@@ -234,7 +234,13 @@
      "2026-09": 2.0,
      "2026-10": 2.0
     }
-   }
+   },
+   "links": [
+    {
+     "kind": "map",
+     "url": "https://maps.app.goo.gl/mMzfDovCCQjzD6h19"
+    }
+   ]
   },
   {
    "name": "Highlandner",
@@ -351,7 +357,14 @@
      "2026-08": 2.0,
      "2026-09": 1.0
     }
-   }
+   },
+   "links": [
+    {
+     "kind": "web",
+     "url": "https://mystore411.com/store/view/1113236680/Thailand/On-Running-Shoes-Chiang-Mai",
+     "note": "Chiang Mai・Changpuek Rd"
+    }
+   ]
   },
   {
    "name": "Pathwild",
@@ -589,7 +602,18 @@
      "2026-05": 4.0,
      "2026-06": 1.0
     }
-   }
+   },
+   "links": [
+    {
+     "kind": "web",
+     "url": "https://mystore411.com/store/view/1113236389/Thailand/On-Running-Shoes-Phuket",
+     "note": "Phuket・Koh Kaew"
+    },
+    {
+     "kind": "fb",
+     "url": "https://www.facebook.com/Run2Paradise2014"
+    }
+   ]
   },
   {
    "name": "Caveman",
@@ -777,7 +801,13 @@
      "2026-05": 6.0,
      "2026-06": 5.0
     }
-   }
+   },
+   "links": [
+    {
+     "kind": "map",
+     "url": "https://www.google.com/maps/search/?api=1&query=centralworld+Bangkok"
+    }
+   ]
   },
   {
    "name": "Bananarun (2)",
@@ -869,7 +899,14 @@
      "2026-08": 5.0,
      "2026-09": 1.0
     }
-   }
+   },
+   "links": [
+    {
+     "kind": "web",
+     "url": "https://mystore411.com/store/view/1113238195/Thailand/On-Running-Shoes-Bangkok",
+     "note": "Lumpini 公園裏・Sarasin Rd"
+    }
+   ]
   },
   {
    "name": "Curve",
@@ -1012,7 +1049,13 @@
     "BFJ": {
      "2026-04": 1.0
     }
-   }
+   },
+   "links": [
+    {
+     "kind": "map",
+     "url": "https://www.google.com/maps/search/?api=1&query=Central+Ladprao+Bangkok"
+    }
+   ]
   },
   {
    "name": "East West",
@@ -1218,7 +1261,13 @@
      "2026-02": 4.0,
      "2026-08": 5.0
     }
-   }
+   },
+   "links": [
+    {
+     "kind": "fb",
+     "url": "https://www.facebook.com/Run2Paradise2014"
+    }
+   ]
   },
   {
    "name": "Bonita Cafe",
@@ -1302,7 +1351,14 @@
    ],
    "notes": [],
    "parseWarning": null,
-   "monthlyByBrand": {}
+   "monthlyByBrand": {},
+   "links": [
+    {
+     "kind": "web",
+     "url": "https://mystore411.com/store/view/1113238195/Thailand/On-Running-Shoes-Bangkok",
+     "note": "Lumpini 公園裏・Sarasin Rd"
+    }
+   ]
   }
  ],
  "sourceUrl": "https://drive.google.com/file/d/143tb-C36U2iLpYZmI79KxIdNcQptpY1U/view"
