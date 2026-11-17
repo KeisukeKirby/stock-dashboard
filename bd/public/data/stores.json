@@ -145,7 +145,10 @@
    "pin": {
     "label": "Thaniya Plaza",
     "side": "left"
-   }
+   },
+   "photo": "img/stores/thaniya.jpg",
+   "photoFull": "img/stores/full/thaniya.jpg",
+   "photoSrc": "ユーザー提供写真（Coollabo 売場、2026-11-17）"
   },
   {
    "id": "paradise",

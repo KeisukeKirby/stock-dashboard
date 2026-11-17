@@ -150,7 +150,7 @@
     sales: ["売上", "Sales", "ยอดขาย"],
     brands: ["ブランド", "Brands", "แบรนด์"],
     stores: ["店舗一覧", "Stores", "รายชื่อร้าน"],
-    consignment: ["委託販売", "Consignment", "การฝากขาย"],
+    consignment: ["B to B", "B to B", "B to B"],
     terms: ["取引条件", "Trade terms", "เงื่อนไขการค้า"],
     sns: ["SNS・EC", "Social & online shops", "โซเชียลและร้านออนไลน์"],
     shared: ["共有リスト", "What we share", "รายการข้อมูลที่แชร์"]
@@ -196,7 +196,7 @@
     if (!el.dataset.ready || name === "brands") {
       el.replaceChildren();
       const lead = {
-        consignment: tr("委託販売先、販売実績、課題です。", "Consignment partners, sales and issues.", "ผู้รับฝากขาย ยอดขาย และปัญหา"),
+        consignment: tr("取引先（委託・買取）ごとの販売実績と、委託販売の課題です。", "Sales by business partner (consignment or outright purchase) and consignment issues.", "ยอดขายตามคู่ค้า (ฝากขายหรือซื้อขาด) และปัญหาการฝากขาย"),
         terms: tr("取引先ごとの手数料と取引の形です。", "Commission and deal type for each partner.", "ค่าคอมมิชชันและรูปแบบการค้าของแต่ละคู่ค้า"),
         shared: tr("このダッシュボードで BD に共有している情報と、その出どころ（ソース）の一覧です。売上から順に並べています。", "Everything this dashboard shares with BD and where each item comes from, in tab order starting with Sales.", "ข้อมูลทั้งหมดที่แดชบอร์ดนี้แชร์ให้ BD และแหล่งที่มา เรียงตามแท็บเริ่มจากยอดขาย"),
       }[name];
@@ -383,130 +383,104 @@
 
   views.consignment = (el) => gate(el, "consignment", (el, C) => {
     const months = C.months || [];
+    const last = months.slice(-18);
     const fileUrl = C.sourceUrl;
     const srcLine = (text) => h("p", { class: "note", style: "margin:8px 0 0" }, tr("出典: ", "Source: ", "ที่มา: "), fileUrl ? external(fileUrl, text + " ↗") : text);
-    const consigneeTypes = {
-      "デパート委託": tr("デパート委託", "Department store", "ห้างสรรพสินค้า"),
-      "アウトドア店委託": tr("アウトドア店委託", "Outdoor store", "ร้านอุปกรณ์กลางแจ้ง"),
-      "店舗（買取へ移行中）": tr("店舗（買取へ移行中）", "Store moving to outright purchase", "ร้านค้าที่กำลังเปลี่ยนเป็นซื้อขาด"),
-      "ランニングショップ委託": tr("ランニングショップ委託", "Running store", "ร้านอุปกรณ์วิ่ง"),
-      "店舗委託": tr("店舗委託", "Retail store", "ร้านค้าปลีก"),
-      "個人・小規模委託": tr("個人・小規模委託", "Individual or small business", "บุคคลหรือธุรกิจขนาดเล็ก"),
-      "カフェ委託": tr("カフェ委託", "Café", "คาเฟ่")
-    };
-    const isDept = (c) => c.type === "デパート委託";
-    const ordered = C.consignees.slice().sort((a, b) => (isDept(b) - isDept(a)) || (b.sold - a.sold));
-    const rows = ordered.map((c) => ({ ...c, name: c.displayName || c.name, typeLabel: consigneeTypes[c.type] || c.type, brandsText: (c.brands || []).join(" / "), last12: months.slice(-12).reduce((a, m) => a + ((c.monthly || {})[m] || 0), 0) }));
     const sum = (rs, k) => rs.reduce((a, r) => a + (r[k] || 0), 0);
-    // 1. 委託販売先一覧（百貨店をひとまとめ、それ以外はブランドごと）
+    const isDept = (c) => c.type === "デパート委託";
+    // 形態は「委託」か「買取」の 2 つだけ（Pathwild は買取）
+    const isBuyout = (name, type) => /^Pathwild/i.test(name || "") || /買取/.test(type || "");
+    const dealLabel = (name, type) => isBuyout(name, type) ? tr("買取", "Outright purchase", "ซื้อขาด") : tr("委託", "Consignment", "ฝากขาย");
+    const nameOf = (c) => (c.displayName || c.name) + (isDept(c) ? tr("（百貨店）", " (dept. store)", " (ห้าง)") : "");
     const brandOrder = ["VFF", "OLENO", "Coolcore", "Tabi (Marugo)", "BFJ"];
     const byOrder = (a, b) => (brandOrder.indexOf(a) + 99 * (brandOrder.indexOf(a) < 0)) - (brandOrder.indexOf(b) + 99 * (brandOrder.indexOf(b) < 0));
+    const brandColor = { VFF: "var(--c-vff)", OLENO: "var(--c-oleno)", Coolcore: "var(--c-coolcore)" };
     const linksCol = { key: "links", label: tr("店舗情報", "Store info", "ข้อมูลร้าน"), csv: (v) => (v || []).map((l) => l.url).join(" "), render: (v) => (v && v.length) ? h("span", { class: "link-list" }, v.map((l) => external(l.url, (l.label ? (l.label[language] || l.label.ja) : ({ map: tr("Google マップ", "Google Maps", "Google Maps"), web: tr("店舗情報", "Store page", "ข้อมูลร้าน"), fb: "Facebook" }[l.kind] || "Link")) + " ↗", { title: l.note || "" }))) : h("span", { class: "muted" }, "–") };
-    const numCols = [
-      { key: "skuCount", label: "SKU", num: true },
-      { key: "delivered", label: tr("納品", "Delivered", "ส่งมอบ"), num: true },
-      { key: "sold", label: tr("販売", "Sold", "ขาย"), num: true },
-      { key: "returned", label: tr("返品", "Returned", "คืน"), num: true },
-      { key: "balance", label: tr("残", "Balance", "คงเหลือ"), num: true },
-      { key: "last12", label: tr("直近12か月 販売", "Sold in last 12 months", "ขายใน 12 เดือนล่าสุด"), num: true },
-      { key: "firstMonth", label: tr("開始", "First sale", "ขายครั้งแรก") },
-      { key: "lastMonth", label: tr("最終販売", "Last sale", "ขายล่าสุด") },
-      { key: "sheet", label: tr("出典（シート）", "Source (sheet)", "ที่มา (ชีต)"), render: (v) => fileUrl ? external(fileUrl, (v || "") + " ↗") : (v || "–") }
-    ];
-    const groupTotal = (rs) => ({ name: tr("合計", "Total", "รวม"), skuCount: sum(rs, "skuCount"), delivered: sum(rs, "delivered"), sold: sum(rs, "sold"), returned: sum(rs, "returned"), balance: sum(rs, "balance"), last12: sum(rs, "last12") });
+    const nameCol = { key: "name", label: tr("取引先", "Partner", "คู่ค้า") };
+    const typeCol = { key: "deal", label: tr("形態", "Type", "รูปแบบ") };
     const soldMonths = (m) => Object.keys(m || {}).filter((k) => m[k]).sort();
-    el.append(h("div", { class: "section-title" }, h("h2", {}, tr("委託販売先一覧", "Consignment partners", "รายชื่อผู้รับฝากขาย")), h("span", { class: "note" }, `${C.period || ""} · ${tr("単位: 足・個", "Units: pairs / pieces", "หน่วย: คู่ / ชิ้น")}`)));
-    el.append(h("p", { class: "note", style: "margin:0 0 12px" }, tr(
-      "百貨店はひとつのグループにまとめ、それ以外の委託先はブランドごとに分けています。複数のブランドを置いている委託先は、それぞれのブランドの表に出ます（数字はそのブランドの分だけ）。",
-      "Department stores are grouped together; other partners are split by brand. A partner that carries several brands appears in each of those brand tables, with that brand's numbers only.",
-      "ห้างสรรพสินค้ารวมเป็นกลุ่มเดียว ผู้รับฝากขายอื่นแยกตามแบรนด์ ร้านที่มีหลายแบรนด์จะอยู่ในตารางของแต่ละแบรนด์ (ตัวเลขเฉพาะแบรนด์นั้น)")));
-    const groupCard = (title, cols, rs, csvName) => h("section", { class: "card", style: "margin-bottom:14px" },
-      h("h3", { class: "table-label" }, title),
-      table(cols, rs, { csvName, search: false, total: groupTotal }));
-    const deptRows = rows.filter(isDept);
-    if (deptRows.length) el.append(groupCard(tr("百貨店", "Department stores", "ห้างสรรพสินค้า"),
-      [{ key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") }, linksCol, { key: "brandsText", label: tr("ブランド", "Brand", "แบรนด์") }, ...numCols],
-      deptRows.map((c) => ({ ...c, brandsText: (c.brands || []).slice().sort(byOrder).join(" / ") })), "consignment_department_stores"));
-    const others = ordered.filter((c) => !isDept(c));
+    const fold = (title, ...body) => h("details", { class: "fold", style: "margin-top:14px" }, h("summary", {}, h("h4", { style: "display:inline;margin:0" }, title)), h("div", { style: "margin-top:12px" }, ...body));
+    const palette = ["#3b82c4", "#d03b3b", "#2e9e5b", "#d99100", "#7c5cbf", "#00a7e1", "#8a8c8f", "#c2185b"];
+    const monthTable = (rws, ms) => {
+      const rs = rws.map((r) => { const o = { name: r.name }; let t = 0; for (const m of ms) { o[m] = r.monthly[m] || 0; t += o[m]; } o.total = t; return o; }).filter((r) => r.total);
+      if (!rs.length) return h("p", { class: "muted small" }, tr("この期間の販売はありません", "No sales in this period", "ไม่มียอดขายในช่วงนี้"));
+      const tot = { name: tr("合計", "Total", "รวม") }; for (const m of [...ms, "total"]) tot[m] = sum(rs, m);
+      const cols = [{ key: "name", label: tr("取引先", "Partner", "คู่ค้า") }, ...ms.map((m) => ({ key: m, label: m.slice(2).replace("-", "/"), num: true })), { key: "total", label: tr("合計", "Total", "รวม"), num: true }];
+      const cell = (c, r) => h("td", { class: c.num ? "num" : "" }, c.num ? fmt(r[c.key]) : r[c.key]);
+      return h("div", { class: "tablewrap" }, h("table", { class: "dt" },
+        h("thead", {}, h("tr", {}, cols.map((c) => h("th", { class: c.num ? "num" : "" }, c.label)))),
+        h("tbody", {}, rs.map((r) => h("tr", {}, cols.map((c) => cell(c, r)))), h("tr", { class: "total" }, cols.map((c) => cell(c, tot))))));
+    };
+    const monthChart = (rws, ms) => {
+      const top = rws.filter((r) => ms.some((m) => r.monthly[m])).sort((a, b) => b.sold - a.sold).slice(0, 8);
+      return top.length ? stackedBars(ms, top.map((r, i) => ({ name: r.name, color: palette[i % palette.length], values: r.monthly })), { fmtY: (v) => fmt(v), unit: tr(" 足・個", " units", " ชิ้น") }) : null;
+    };
+
+    el.append(h("p", { class: "note", style: "margin:0 0 14px" }, tr(
+      `${C.period || ""}・単位: 足・個。ブランドごとに取引先をまとめています。形態は「委託」（売れた分だけ精算）と「買取」の 2 つ。百貨店は名前の後ろに（百貨店）と付けています。`,
+      `${C.period || ""} · units: pairs / pieces. Partners are grouped by brand. Type is either consignment (settled only for what sells) or outright purchase. Department stores are marked (dept. store).`,
+      `${C.period || ""} · หน่วย: คู่ / ชิ้น จัดกลุ่มคู่ค้าตามแบรนด์ รูปแบบมี 2 แบบ คือ ฝากขาย (ชำระเฉพาะที่ขายได้) และ ซื้อขาด ห้างสรรพสินค้าจะมี (ห้าง) ต่อท้ายชื่อ`)));
+
     const E = D.consignmentEdv;
-    const otherBrands = [...new Set([...others.flatMap((c) => Object.keys(c.byBrand || {})), ...(E?.rows?.length ? ["Coolcore"] : [])])].sort(byOrder);
-    for (const b of otherBrands) {
-      if (b === "Coolcore" && E) {
-        const ecols = [
-          { key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") }, linksCol,
-          { key: "invoices", label: tr("請求回数", "Invoices", "จำนวนใบแจ้งหนี้"), num: true },
-          { key: "units", label: tr("販売数", "Units sold", "จำนวนที่ขาย"), num: true },
-          { key: "gross", label: tr("店頭販売額（税込）", "Shelf sales (incl. VAT)", "ยอดขายหน้าร้าน (รวม VAT)"), num: true },
-          { key: "gp", label: tr("委託先の取り分（GP）", "Partner's share (GP)", "ส่วนแบ่งผู้รับฝาก (GP)") },
-          { key: "net", label: tr("EDV の受取額（税抜）", "EDV receives (excl. VAT)", "EDV ได้รับ (ไม่รวม VAT)"), num: true },
-          { key: "netPending", label: tr("うち未入金", "Of which unpaid", "ยังไม่ชำระ"), num: true },
-          { key: "first", label: tr("開始", "First sale", "ขายครั้งแรก") },
-          { key: "last", label: tr("最終販売", "Last sale", "ขายล่าสุด") }
-        ];
-        const etotal = (rs) => ({ name: tr("合計", "Total", "รวม"), invoices: sum(rs, "invoices"), units: sum(rs, "units"), gross: sum(rs, "gross"), net: sum(rs, "net"), netPending: sum(rs, "netPending") });
+    const brands = [...new Set([...C.consignees.flatMap((c) => Object.keys(c.byBrand || {})), ...(E?.rows?.length ? ["Coolcore"] : [])])].sort(byOrder);
+    for (const b of brands) {
+      const card = h("section", { class: "card brand-block", style: `--bc:${brandColor[b] || "var(--c-others)"};margin-bottom:18px` });
+      card.append(h("h2", { class: "brand-block-title" }, b));
+      if (b === "VFF") card.append(h("div", { class: "alert", role: "note" },
+        h("strong", {}, tr("VFF の委託は年内で廃止予定", "VFF consignment is to end by the end of this year", "การฝากขาย VFF จะยกเลิกภายในสิ้นปีนี้")),
+        h("span", {}, tr("今後は買取のみに切り替えます。", "From then on, outright purchase only.", "หลังจากนั้นจะเป็นแบบซื้อขาดเท่านั้น"))));
+      // BFT の在庫表（Stock VFF Consignment.xlsx）
+      const brs = C.consignees.filter((c) => c.byBrand?.[b]).map((c) => {
+        const x = c.byBrand[b], mb = (c.monthlyByBrand || {})[b] || {}, sm = soldMonths(mb);
+        return { name: nameOf(c), dept: isDept(c), links: c.links, deal: dealLabel(c.name, c.type), sheet: c.sheet, monthly: mb,
+          skuCount: x.skuCount, delivered: x.delivered, sold: x.sold, returned: x.returned, balance: x.balance,
+          last12: months.slice(-12).reduce((a, m) => a + (mb[m] || 0), 0), firstMonth: sm[0] || "", lastMonth: sm[sm.length - 1] || "" };
+      }).sort((p, q) => (q.dept - p.dept) || (q.sold - p.sold));
+      if (brs.length) {
+        if (b === "Coolcore") card.append(h("h3", { class: "table-label" }, tr("Barefootinc (Thailand) の在庫表より", "From the Barefootinc (Thailand) stock sheet", "จากชีตสต็อกของ Barefootinc (Thailand)")));
+        card.append(table([nameCol, linksCol, typeCol,
+          { key: "skuCount", label: "SKU", num: true },
+          { key: "delivered", label: tr("納品", "Delivered", "ส่งมอบ"), num: true },
+          { key: "sold", label: tr("販売", "Sold", "ขาย"), num: true },
+          { key: "returned", label: tr("返品", "Returned", "คืน"), num: true },
+          { key: "balance", label: tr("残", "Balance", "คงเหลือ"), num: true },
+          { key: "last12", label: tr("直近12か月 販売", "Sold in last 12 months", "ขายใน 12 เดือนล่าสุด"), num: true },
+          { key: "firstMonth", label: tr("開始", "First sale", "ขายครั้งแรก") },
+          { key: "lastMonth", label: tr("最終販売", "Last sale", "ขายล่าสุด") },
+          { key: "sheet", label: tr("出典（シート）", "Source (sheet)", "ที่มา (ชีต)"), render: (v) => fileUrl ? external(fileUrl, (v || "") + " ↗") : (v || "–") }
+        ], brs, { csvName: `b2b_${b.replace(/\W+/g, "_")}`, search: false, total: (rs) => ({ name: tr("合計", "Total", "รวม"), skuCount: sum(rs, "skuCount"), delivered: sum(rs, "delivered"), sold: sum(rs, "sold"), returned: sum(rs, "returned"), balance: sum(rs, "balance"), last12: sum(rs, "last12") }) }));
+        card.append(srcLine(tr("Stock VFF Consignment.xlsx（BFT 経理、取引先ごとのシート）。ブランドは品番の頭（VFF / OLN / CP / MTB / BFJ）で判定", "Stock VFF Consignment.xlsx (BFT accounting, one sheet per partner); brand from the code prefix (VFF / OLN / CP / MTB / BFJ)", "Stock VFF Consignment.xlsx (บัญชี BFT แยกชีตตามคู่ค้า) แยกแบรนด์จากรหัส (VFF / OLN / CP / MTB / BFJ)")));
+        if (last.length) card.append(fold(tr("月別の販売数（直近 18 か月）", "Monthly units sold (last 18 months)", "ยอดขายรายเดือน (18 เดือนล่าสุด)"),
+          h("p", { class: "note", style: "margin:0 0 8px" }, tr("色の部分にカーソルを置く（スマホはタップ）と、その取引先の月の販売数が出ます。", "Hover over a colour (tap on a phone) to see that partner's units for the month.", "วางเมาส์บนสี (แตะบนมือถือ) เพื่อดูยอดของคู่ค้าในเดือนนั้น")),
+          monthChart(brs, last), monthTable(brs, last)));
+      }
+      // EDV の請求書（Coolcore）
+      if (b === "Coolcore" && E?.rows?.length) {
         const ex = E.notes?.excluded || {};
-        el.append(h("section", { class: "card", style: "margin-bottom:14px" },
-          h("h3", { class: "table-label" }, tr("Coolcore（Endeavorz の委託）", "Coolcore (consigned by Endeavorz)", "Coolcore (ฝากขายโดย Endeavorz)")),
+        const erows = E.rows.map((r) => ({ ...r, deal: dealLabel(r.name), sold: r.units }));
+        card.append(h("h3", { class: "table-label", style: "margin-top:20px" }, tr("Endeavorz の請求書より", "From Endeavorz invoices", "จากใบแจ้งหนี้ของ Endeavorz")),
           h("p", { class: "note", style: "margin:0 0 10px" }, tr(
-            `${E.period}・単位: 個・金額は THB。委託先が売れた分を毎月 EDV が請求する形で、委託先の取り分（GP）は売値の 30%。BFT（グループ会社）向けの請求 ${ex.bftInvoices || 0} 件（Central Chidlom・イベント向け Coolcore ${fmt(ex.bftCoolcoreUnits)} 個など）は委託先ではないので除いています。`,
-            `${E.period} · units; amounts in THB. EDV invoices each partner monthly for what sold; the partner keeps 30% of the selling price (GP). ${ex.bftInvoices || 0} invoices to BFT (our group company; e.g. ${fmt(ex.bftCoolcoreUnits)} Coolcore units for Central Chidlom and events) are not consignment and are left out.`,
-            `${E.period} · หน่วย: ชิ้น จำนวนเงินเป็นบาท EDV ออกใบแจ้งหนี้ทุกเดือนตามที่ขายได้ ผู้รับฝากได้ 30% ของราคาขาย (GP) ใบแจ้งหนี้ถึง BFT ${ex.bftInvoices || 0} ใบ (บริษัทในกลุ่ม เช่น Coolcore ${fmt(ex.bftCoolcoreUnits)} ชิ้นสำหรับ Central Chidlom และอีเวนต์) ไม่ใช่การฝากขายจึงไม่นับ`)),
-          table(ecols, E.rows, { csvName: "consignment_Coolcore_EDV", search: false, total: etotal }),
+            `${E.period}・金額は THB。売れた分を毎月 EDV が請求し、取引先の取り分（GP）は売値の 30%。BFT（グループ会社）向けの請求 ${ex.bftInvoices || 0} 件（Central Chidlom・イベント向け ${fmt(ex.bftCoolcoreUnits)} 個など）は除いています。`,
+            `${E.period} · amounts in THB. EDV invoices each partner monthly for what sold; the partner keeps 30% (GP). ${ex.bftInvoices || 0} invoices to BFT (group company; e.g. ${fmt(ex.bftCoolcoreUnits)} units for Central Chidlom and events) are left out.`,
+            `${E.period} · จำนวนเงินเป็นบาท EDV ออกใบแจ้งหนี้ทุกเดือนตามที่ขายได้ คู่ค้าได้ 30% (GP) ไม่นับใบแจ้งหนี้ถึง BFT ${ex.bftInvoices || 0} ใบ (บริษัทในกลุ่ม เช่น ${fmt(ex.bftCoolcoreUnits)} ชิ้นสำหรับ Central Chidlom และอีเวนต์)`)),
+          table([nameCol, linksCol, typeCol,
+            { key: "invoices", label: tr("請求回数", "Invoices", "จำนวนใบแจ้งหนี้"), num: true },
+            { key: "units", label: tr("販売数", "Units sold", "จำนวนที่ขาย"), num: true },
+            { key: "gross", label: tr("店頭販売額（税込）", "Shelf sales (incl. VAT)", "ยอดขายหน้าร้าน (รวม VAT)"), num: true },
+            { key: "gp", label: tr("取引先の取り分（GP）", "Partner's share (GP)", "ส่วนแบ่งคู่ค้า (GP)") },
+            { key: "net", label: tr("EDV の受取額（税抜）", "EDV receives (excl. VAT)", "EDV ได้รับ (ไม่รวม VAT)"), num: true },
+            { key: "netPending", label: tr("うち未入金", "Of which unpaid", "ยังไม่ชำระ"), num: true },
+            { key: "first", label: tr("開始", "First sale", "ขายครั้งแรก") },
+            { key: "last", label: tr("最終販売", "Last sale", "ขายล่าสุด") }
+          ], erows, { csvName: "b2b_Coolcore_EDV", search: false, total: (rs) => ({ name: tr("合計", "Total", "รวม"), invoices: sum(rs, "invoices"), units: sum(rs, "units"), gross: sum(rs, "gross"), net: sum(rs, "net"), netPending: sum(rs, "netPending") }) }),
           h("p", { class: "note", style: "margin:8px 0 0" }, tr("出典: ", "Source: ", "ที่มา: "), tr(
             "Zort の受注明細（EDV の請求書）2026 年 1〜10 月。取消分は除外。店頭販売額 = 請求書の商品行の合計、EDV の受取額 = GP を引いた小計、未入金 = 支払状況が未払いの請求書",
             "Zort order details (EDV invoices), Jan–Oct 2026; voided invoices excluded. Shelf sales = total of product lines; EDV receives = subtotal after GP; unpaid = invoices still marked pending",
-            "รายละเอียดคำสั่งซื้อใน Zort (ใบแจ้งหนี้ EDV) ม.ค.–ต.ค. 2026 ไม่นับรายการที่ยกเลิก ยอดหน้าร้าน = รวมรายการสินค้า, EDV ได้รับ = ยอดหลังหัก GP, ยังไม่ชำระ = ใบแจ้งหนี้ที่ยังค้างชำระ"))));
-        continue;
+            "รายละเอียดคำสั่งซื้อใน Zort (ใบแจ้งหนี้ EDV) ม.ค.–ต.ค. 2026 ไม่นับรายการที่ยกเลิก ยอดหน้าร้าน = รวมรายการสินค้า, EDV ได้รับ = ยอดหลังหัก GP, ยังไม่ชำระ = ใบแจ้งหนี้ที่ยังค้างชำระ")),
+          fold(tr("月別の販売数（Endeavorz の請求書、2026 年）", "Monthly units sold (Endeavorz invoices, 2026)", "ยอดขายรายเดือน (ใบแจ้งหนี้ Endeavorz ปี 2026)"), monthChart(erows, E.months), monthTable(erows, E.months)));
       }
-      const brs = others.filter((c) => c.byBrand?.[b]).map((c) => {
-        const x = c.byBrand[b], mb = (c.monthlyByBrand || {})[b] || {}, sm = soldMonths(mb);
-        return { name: c.displayName || c.name, links: c.links, typeLabel: consigneeTypes[c.type] || c.type, sheet: c.sheet,
-          skuCount: x.skuCount, delivered: x.delivered, sold: x.sold, returned: x.returned, balance: x.balance,
-          last12: months.slice(-12).reduce((a, m) => a + (mb[m] || 0), 0), firstMonth: sm[0] || "", lastMonth: sm[sm.length - 1] || "" };
-      }).sort((p, q) => q.sold - p.sold);
-      el.append(groupCard(b, [{ key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") }, linksCol, { key: "typeLabel", label: tr("形態", "Type", "ประเภท") }, ...numCols], brs, `consignment_${b.replace(/\W+/g, "_")}`));
+      el.append(card);
     }
-    el.append(srcLine(tr("Stock VFF Consignment.xlsx（BFT 経理、委託先ごとのシート）。SKU〜最終販売はすべてこのファイルの数量から集計。ブランドは品番の頭（VFF / OLN / CP / MTB / BFJ）で判定", "Stock VFF Consignment.xlsx (BFT accounting, one sheet per consignee). SKU through last sale are all counted from this file; brand is taken from the code prefix (VFF / OLN / CP / MTB / BFJ)", "Stock VFF Consignment.xlsx (บัญชี BFT แยกชีตตามผู้รับฝากขาย) ตั้งแต่ SKU ถึงขายล่าสุดนับจากไฟล์นี้ทั้งหมด แยกแบรนด์จากรหัส (VFF / OLN / CP / MTB / BFJ)")));
-    if (!months.length) return;
-    const last = months.slice(-18);
-    const fold = (title, ...body) => h("details", { class: "card fold", style: "margin-top:14px" }, h("summary", {}, h("h3", { style: "display:inline;margin:0" }, title)), h("div", { style: "margin-top:12px" }, ...body));
-    // 2. 委託先別 月次販売足数（グラフ）
-    const top = rows.slice().sort((a, b) => b.sold - a.sold).slice(0, 8);
-    const palette = ["#3b82c4", "#d03b3b", "#2e9e5b", "#d99100", "#7c5cbf", "#00a7e1", "#8a8c8f", "#c2185b"];
-    el.append(fold(tr("委託先別 月次販売足数（上位 8・直近 18 か月）", "Monthly units sold by consignee (top 8, last 18 months)", "ยอดขายรายเดือนตามผู้รับฝากขาย (8 อันดับแรก 18 เดือนล่าสุด)"),
-      h("p", { class: "note", style: "margin:0 0 8px" }, tr("色の部分にカーソルを置く（スマホはタップ）と、その委託先の月の販売数が出ます。", "Hover over a colour (tap on a phone) to see that consignee's units for the month.", "วางเมาส์บนสี (แตะบนมือถือ) เพื่อดูยอดของผู้รับฝากขายในเดือนนั้น")),
-      stackedBars(last, top.map((c, i) => ({ name: c.name, color: palette[i % palette.length], values: c.monthly || {} })), { fmtY: (v) => fmt(v), unit: tr(" 足", " units", " ชิ้น") }),
-      srcLine(tr("Stock VFF Consignment.xlsx の各シートの月別販売列", "monthly sales columns in each sheet of Stock VFF Consignment.xlsx", "คอลัมน์ยอดขายรายเดือนในแต่ละชีตของ Stock VFF Consignment.xlsx"))));
-    // 3. 委託先 × 月（ブランド別）
-    const brands = [...new Set(C.consignees.flatMap((c) => Object.keys(c.monthlyByBrand || {})))];
-    brands.sort(byOrder);
-    const brandTables = brands.map((b) => {
-      const brows = ordered.filter((c) => c.monthlyByBrand?.[b] && last.some((m) => c.monthlyByBrand[b][m])).map((c) => {
-        const r = { name: c.displayName || c.name }; let t = 0; for (const m of last) { r[m] = c.monthlyByBrand[b][m] || 0; t += r[m]; } r.total = t; return r; });
-      if (!brows.length) return null;
-      const total = { name: tr("合計", "Total", "รวม") }; for (const m of [...last, "total"]) total[m] = sum(brows, m);
-      const cols = [{ key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") }, ...last.map((m) => ({ key: m, label: m.slice(2).replace("-", "/"), num: true })), { key: "total", label: tr("合計", "Total", "รวม"), num: true }];
-      const cell = (c, r) => h("td", { class: c.num ? "num" : "" }, c.num ? fmt(r[c.key]) : r[c.key]);
-      return h("div", { style: "margin-top:18px" }, h("h4", { class: "table-label" }, b),
-        h("div", { class: "tablewrap" }, h("table", { class: "dt" },
-          h("thead", {}, h("tr", {}, cols.map((c) => h("th", { class: c.num ? "num" : "" }, c.label)))),
-          h("tbody", {}, brows.map((r) => h("tr", {}, cols.map((c) => cell(c, r)))), h("tr", { class: "total" }, cols.map((c) => cell(c, total)))))));
-    });
-    if (E?.rows?.length) {
-      const em = E.months;
-      const erows = E.rows.map((r) => { const o = { name: r.name }; let t = 0; for (const m of em) { o[m] = r.monthly[m] || 0; t += o[m]; } o.total = t; return o; });
-      const et = { name: tr("合計", "Total", "รวม") }; for (const m of [...em, "total"]) et[m] = sum(erows, m);
-      const ecols = [{ key: "name", label: tr("委託先", "Consignee", "ผู้รับฝากขาย") }, ...em.map((m) => ({ key: m, label: m.slice(2).replace("-", "/"), num: true })), { key: "total", label: tr("合計", "Total", "รวม"), num: true }];
-      const ecell = (c, r) => h("td", { class: c.num ? "num" : "" }, c.num ? fmt(r[c.key]) : r[c.key]);
-      const ci = brands.indexOf("Coolcore");
-      brandTables.splice(ci < 0 ? brandTables.length : ci + 1, 0, h("div", { style: "margin-top:18px" }, h("h4", { class: "table-label" }, tr("Coolcore（Endeavorz の委託、請求書ベース）", "Coolcore (consigned by Endeavorz, from invoices)", "Coolcore (ฝากขายโดย Endeavorz จากใบแจ้งหนี้)")),
-        h("div", { class: "tablewrap" }, h("table", { class: "dt" },
-          h("thead", {}, h("tr", {}, ecols.map((c) => h("th", { class: c.num ? "num" : "" }, c.label)))),
-          h("tbody", {}, erows.map((r) => h("tr", {}, ecols.map((c) => ecell(c, r)))), h("tr", { class: "total" }, ecols.map((c) => ecell(c, et))))))));
-    }
-    el.append(fold(tr("委託先 × 月（販売足数・ブランド別、直近 18 か月）", "Units sold by consignee and month, by brand (last 18 months)", "จำนวนที่ขายตามผู้รับฝากขายและเดือน แยกตามแบรนด์ (18 เดือนล่าสุด)"),
-      ...brandTables,
-      srcLine(tr("Stock VFF Consignment.xlsx の SKU 行（品番の頭 VFF / OLN / CP / MTB / BFJ でブランドを判定）", "SKU rows in Stock VFF Consignment.xlsx (brand from the code prefix VFF / OLN / CP / MTB / BFJ)", "แถว SKU ใน Stock VFF Consignment.xlsx (แยกแบรนด์จากรหัส VFF / OLN / CP / MTB / BFJ)"))));
     // 4. 委託販売の課題
     el.append(h("div", { class: "section-title", style: "margin-top:28px" }, h("h2", {}, tr("委託販売の課題", "Consignment issues", "ปัญหาการฝากขาย"))));
     el.append(h("section", { class: "card" },
@@ -560,7 +534,7 @@
         storeRows.filter((x) => x.map).map((x) => L(x.map, (storeLabels[x.id] || {}).name || x.name))),
       R("stores", tr("店舗の写真", "Shop photos", "รูปร้าน"), ["photo"], [], tr("Google Drive の店舗資料フォルダ", "Store folders in Google Drive", "โฟลเดอร์ร้านใน Google Drive")),
       R("stores", tr("店舗一覧（関連資料）", "Shop list (related document)", "รายชื่อร้าน (เอกสารที่เกี่ยวข้อง)"), ["web"], [L(st.referenceUrl, tr("店舗一覧", "Shop list", "รายชื่อร้าน"))]),
-      R("consignment", tr("委託販売先一覧と販売実績（SKU・納品・販売・返品・残・月別販売）", "Consignment partners and results (SKU, delivered, sold, returned, balance, monthly sales)", "ผู้รับฝากขายและผลงาน (SKU ส่งมอบ ขาย คืน คงเหลือ ยอดรายเดือน)"), ["sheet"],
+      R("consignment", tr("ブランドごとの取引先（委託・買取）と販売実績（SKU・納品・販売・返品・残・月別販売）", "Partners by brand (consignment / outright) and results (SKU, delivered, sold, returned, balance, monthly)", "คู่ค้าตามแบรนด์ (ฝากขาย / ซื้อขาด) และผลงาน (SKU ส่งมอบ ขาย คืน คงเหลือ รายเดือน)"), ["sheet"],
         [L(C.sourceUrl, "Stock VFF Consignment.xlsx")], tr("Google Drive（BFT 経理）", "Google Drive (BFT accounting)", "Google Drive (บัญชี BFT)")),
       R("consignment", tr("Coolcore（Endeavorz）の委託先別の販売数・金額・未入金", "Coolcore (Endeavorz) consignment: units, amounts and unpaid by partner", "Coolcore (Endeavorz) ฝากขาย: จำนวน ยอดเงิน และยอดค้างชำระตามร้าน"), ["sheet"], [],
         tr("Zort の受注明細（EDV の請求書）を Excel で書き出したもの。ダッシュボードには集計値だけを掲載", "Zort order details (EDV invoices) exported to Excel; only totals are shown here", "รายละเอียดคำสั่งซื้อจาก Zort (ใบแจ้งหนี้ EDV) ส่งออกเป็น Excel แสดงเฉพาะยอดรวม")),

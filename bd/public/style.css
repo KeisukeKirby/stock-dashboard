@@ -288,3 +288,11 @@ table.shared-list th { cursor: default; }
 .lightbox img { max-width: min(1100px, 100%); max-height: calc(100vh - 80px); object-fit: contain; border-radius: 8px; background: #111; }
 .lightbox figcaption { color: #fff; font-size: 15px; text-align: center; }
 .lightbox-close { position: fixed; top: 12px; right: 16px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(255,255,255,.15); color: #fff; font-size: 28px; line-height: 1; cursor: pointer; }
+
+/* B to B: ブランドごとのまとまり */
+.brand-block { border-top: 5px solid var(--bc); }
+.brand-block-title { margin: 0 0 10px; font-size: 24px; }
+.alert { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; margin: 0 0 14px; padding: 12px 16px; border-radius: 10px; background: color-mix(in srgb, #d03b3b 12%, var(--surface)); border: 2px solid #d03b3b; color: var(--ink); }
+.alert strong { font-size: 18px; color: #c62828; }
+:root[data-theme="dark"] .alert strong { color: #ff8a80; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .alert strong { color: #ff8a80; } }

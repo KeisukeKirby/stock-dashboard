@@ -60,9 +60,9 @@
  },
  "byBrandTotal": {
   "VFF": {
-   "delivered": 2297.0,
-   "sold": 1352.0,
-   "balance": 670.0
+   "delivered": 2270.0,
+   "sold": 1341.0,
+   "balance": 656.0
   },
   "Tabi (Marugo)": {
    "delivered": 100.0,
@@ -1113,60 +1113,8 @@
      "2024-01": 12.0,
      "2024-02": 1.0
     }
-   }
-  },
-  {
-   "name": "K.Pok",
-   "sheet": "K.Pok",
-   "type": "個人・小規模委託",
-   "brands": [
-    "VFF"
-   ],
-   "skuCount": 15,
-   "delivered": 27.0,
-   "returned": 2.0,
-   "netDelivered": 25.0,
-   "sold": 11.0,
-   "balance": 14.0,
-   "monthly": {
-    "2023-08": 1.0,
-    "2023-09": 1.0,
-    "2023-10": 2.0,
-    "2024-01": 4.0,
-    "2024-02": 1.0,
-    "2024-03": 1.0,
-    "2024-05": 1.0
    },
-   "yearOnly": null,
-   "byBrand": {
-    "VFF": {
-     "skuCount": 15,
-     "delivered": 27.0,
-     "returned": 2.0,
-     "sold": 11.0,
-     "balance": 14.0
-    }
-   },
-   "firstMonth": "2023-08",
-   "lastMonth": "2024-05",
-   "deliveryDates": [
-    "2023-08-09",
-    "2023-10-03",
-    "2024-03-11"
-   ],
-   "notes": [],
-   "parseWarning": null,
-   "monthlyByBrand": {
-    "VFF": {
-     "2023-08": 1.0,
-     "2023-09": 1.0,
-     "2023-10": 2.0,
-     "2024-01": 4.0,
-     "2024-02": 1.0,
-     "2024-03": 1.0,
-     "2024-05": 1.0
-    }
-   }
+   "displayName": "K.Pok"
   },
   {
    "name": "Run2Paradise (Chiang Mai)",
