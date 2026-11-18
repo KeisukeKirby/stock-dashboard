@@ -79,7 +79,7 @@
       ths.forEach((th, i) => { th.classList.toggle("sorted", cols[i].key === sortKey); th.classList.toggle("desc", cols[i].key === sortKey && desc); });
       tbody.replaceChildren();
       const rs = current();
-      for (const r of rs) tbody.append(h("tr", { class: r._total ? "total" : "" }, cols.map((c) => h("td", { class: (c.num ? "num " : "") + (c.wrap ? "wrap" : "") }, cell(c, r)))));
+      for (const r of rs) tbody.append(h("tr", { class: r._total ? "total" : r.ended ? "ended" : "" }, cols.map((c) => h("td", { class: (c.num ? "num " : "") + (c.wrap ? "wrap" : "") }, cell(c, r)))));
       if (opts.total) { const t = opts.total(rs); if (t) tbody.append(h("tr", { class: "total" }, cols.map((c) => h("td", { class: c.num ? "num" : "" }, t[c.key] == null ? "" : c.num ? fmt(t[c.key], c.digits || 0) : t[c.key])))); }
       if (counter) counter.textContent = tr(`${rs.length} 件`, `${rs.length} rows`, `${rs.length} รายการ`);
     }
@@ -445,6 +445,7 @@
     const pwName = (P && P.partner) || "Pathwild";
     const PATHWILD_BRANDS = P?.currentBrands || ["OLENO"];  // Pathwild の現在の取り扱いは OLENO のみ
     const noSale = tr("販売なし", "No sales", "ไม่มียอดขาย");
+    const endedLabel = tr("委託終了", "Consignment ended", "สิ้นสุดการฝากขาย");
     for (const b of brands) {
       const card = h("section", { class: "card brand-block", style: `--bc:${brandColor[b] || "var(--c-others)"};margin-bottom:18px` });
       card.append(h("h2", { class: "brand-block-title" }, b));
@@ -458,8 +459,8 @@
         if (!c.byBrand?.[b]) continue;
         if (/^Pathwild/i.test(c.name) && (pw || !PATHWILD_BRANDS.includes(b))) continue;
         const x = c.byBrand[b], mb = (c.monthlyByBrand || {})[b] || {}, sm = soldMonths(mb);
-        rows.push({ name: nameOf(c), dept: isDept(c), links: c.links, deal: dealLabel(c.name, c.type), monthly: mb,
-          delivered: x.delivered, sold: x.sold, returned: x.returned, balance: x.balance, net: null, netPending: null,
+        rows.push({ name: nameOf(c), dept: isDept(c), ended: !!c.ended, links: c.links, deal: c.ended ? endedLabel : dealLabel(c.name, c.type), monthly: mb,
+          delivered: x.delivered, sold: x.sold, returned: x.returned, balance: c.ended ? 0 : x.balance, sheetBalance: x.balance, net: null, netPending: null,
           last12: win12.reduce((a, m) => a + (mb[m] || 0), 0), firstMonth: sm[0] || noSale, lastMonth: sm[sm.length - 1] || noSale,
           srcNode: srcSheet(c.sheet), srcText: `Stock VFF Consignment.xlsx / ${c.sheet}` });
       }
@@ -478,7 +479,7 @@
           last12: win12.reduce((a, m) => a + (r.monthly[m] || 0), 0), firstMonth: r.first, lastMonth: r.last,
           srcText: tr("EDV 請求書", "EDV invoices", "ใบแจ้งหนี้ EDV") });
       }
-      rows.sort((p, q) => ((q.dept || 0) - (p.dept || 0)) || (q.sold - p.sold));
+      rows.sort((p, q) => ((p.ended || 0) - (q.ended || 0)) || ((q.dept || 0) - (p.dept || 0)) || (q.sold - p.sold));
       card.append(table(cols, rows, { csvName: `b2b_${b.replace(/\W+/g, "_")}`, search: false, total: totalRow }));
       // 出典と読み方
       const notes = [tr("「–」はその出典に無い項目。委託の数量は BFT 経理の在庫表（Stock VFF Consignment.xlsx、ブランドは品番の頭で判定）、売上額は請求書から。",
@@ -491,6 +492,11 @@
         `Central Chidlom 以外は Endeavorz の請求書（${E.period}）。売れた分を毎月請求し、取引先の取り分（GP）は売値の 30%。売上額は GP を引いた税抜。BFT（グループ会社）向けの請求 ${ex.bftInvoices || 0} 件は除外。`,
         `Except Central Chidlom, rows come from Endeavorz invoices (${E.period}): billed monthly for what sold; partner keeps 30% (GP); sales after GP, excl. VAT. ${ex.bftInvoices || 0} invoices to BFT (group company) are left out.`,
         `ยกเว้น Central Chidlom มาจากใบแจ้งหนี้ Endeavorz (${E.period}) เรียกเก็บรายเดือนตามที่ขายได้ คู่ค้าได้ 30% (GP) ยอดขายหลังหัก GP ไม่รวม VAT ไม่นับใบแจ้งหนี้ถึง BFT ${ex.bftInvoices || 0} ใบ`)); }
+      const ended = rows.filter((r) => r.ended);
+      if (ended.length) notes.push(tr(
+        `「委託終了」の ${ended.map((r) => r.name).join("・")} は商品を引き取り済みのため、残を 0 と表示（在庫表では ${ended.map((r) => `${r.name} ${fmt(r.sheetBalance)}`).join("、")} のまま）。`,
+        `${ended.map((r) => r.name).join(", ")} (consignment ended): goods have been taken back, so the balance shows 0 (the stock sheet still says ${ended.map((r) => `${r.name} ${fmt(r.sheetBalance)}`).join(", ")}).`,
+        `${ended.map((r) => r.name).join(", ")} (สิ้นสุดการฝากขาย): รับสินค้าคืนแล้ว จึงแสดงคงเหลือเป็น 0 (ในชีตสต็อกยังเป็น ${ended.map((r) => `${r.name} ${fmt(r.sheetBalance)}`).join(", ")})`));
       card.append(h("div", { class: "note", style: "margin:8px 0 0" }, notes.map((t) => h("p", { style: "margin:2px 0" }, t))));
       if (lastM.length) card.append(fold(tr("月別の販売数（直近 18 か月）", "Monthly units sold (last 18 months)", "ยอดขายรายเดือน (18 เดือนล่าสุด)"),
         h("p", { class: "note", style: "margin:0 0 8px" }, tr("色の部分にカーソルを置く（スマホはタップ）と、その取引先の月の販売数が出ます。", "Hover over a colour (tap on a phone) to see that partner's units for the month.", "วางเมาส์บนสี (แตะบนมือถือ) เพื่อดูยอดของคู่ค้าในเดือนนั้น")),

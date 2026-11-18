@@ -923,7 +923,9 @@
      "2025-09": 3.0,
      "2026-01": 2.0
     }
-   }
+   },
+   "ended": true,
+   "endedNote": "VFF の委託は終了・商品は引き取り済み（2026-11-18 社内確認）。在庫表の残は未修正のため、ダッシュボードでは 0 と表示"
   },
   {
    "name": "Central Lat Phrao",
@@ -1114,7 +1116,9 @@
      "2024-02": 1.0
     }
    },
-   "displayName": "K.Pok"
+   "displayName": "K.Pok",
+   "ended": true,
+   "endedNote": "VFF の委託は終了・商品は引き取り済み（2026-11-18 社内確認）。在庫表の残は未修正のため、ダッシュボードでは 0 と表示"
   },
   {
    "name": "Run2Paradise (Chiang Mai)",
@@ -1265,7 +1269,9 @@
      "url": "https://mystore411.com/store/view/1113238195/Thailand/On-Running-Shoes-Bangkok",
      "note": "Lumpini 公園裏・Sarasin Rd"
     }
-   ]
+   ],
+   "ended": true,
+   "endedNote": "VFF の委託は終了・商品は引き取り済み（2026-11-18 社内確認）。在庫表の残は未修正のため、ダッシュボードでは 0 と表示"
   }
  ],
  "sourceUrl": "https://drive.google.com/file/d/143tb-C36U2iLpYZmI79KxIdNcQptpY1U/view"

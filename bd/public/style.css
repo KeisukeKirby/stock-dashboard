@@ -300,3 +300,7 @@ table.shared-list th { cursor: default; }
 /* B to B: 2 行見出しは折り返して幅を狭く */
 .brand-block table.dt th { white-space: nowrap; line-height: 1.3; vertical-align: bottom; }
 .brand-block table.dt th, .brand-block table.dt td { padding-left: 10px; padding-right: 10px; }
+
+/* 委託終了の行は薄く */
+table.dt tr.ended td { color: var(--muted); }
+table.dt tr.ended td:nth-child(3) { font-weight: 700; color: var(--ink-2); }
