@@ -235,7 +235,7 @@
   function showDoc() {
     var data = window.KaizenMD.parse(state.text);
     if (view === 'info' && window.KaizenInfo) {
-      doc.innerHTML = window.KaizenInfo.render(lang, { title: data.title || T.docTitle, subtitle: data.subtitle, company: data.company, dateText: fmtDay(data.date) });
+      doc.innerHTML = window.KaizenInfo.render(lang, { title: data.title || T.docTitle, subtitle: data.subtitle, company: data.company, dateText: fmtDay(window.KaizenInfo.date || data.date) });
       if (window.KaizenInfo.mount) window.KaizenInfo.mount(doc);
     } else {
       doc.innerHTML = renderDoc(data);
