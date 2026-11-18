@@ -1,6 +1,7 @@
 /* 業務改善マニュアル — イラスト版（インフォグラフィック）
  *
- *   window.KaizenInfo.render(lang, meta) → HTML
+ *   window.KaizenInfo.render(lang, meta) → HTML（冊子 × 横長スライド 1280×720）
+ *   window.KaizenInfo.mount(el)      → ページ送り・拡大縮小・印刷範囲の設定
  *   lang: 'ja' | 'en' | 'th'、meta: 本文（kaizen.md など）の title / subtitle / company / date / version
  *
  *   イラストはすべてこのファイルの SVG で描いています（外部画像なし。PDF にしても崩れません）。
@@ -544,8 +545,22 @@
     note: { ja: '数える人と Zort に入力する人は別。Zort の移動と売上レポートは経理だけが行う。', en: 'The person who counts never enters the numbers in Zort. Only Accounting moves stock in Zort and runs sales reports.', th: 'คนนับกับคนบันทึกใน Zort ต้องเป็นคนละคน การโอนใน Zort และรายงานยอดขายทำโดยฝ่ายบัญชีเท่านั้น' }
   };
 
+  /* ======================= 冊子（スライド）の文言 ======================= */
+  var DK = {
+    ja: { shelf: '部門ごとの冊子', open: 'クリックして開く', items: function (n) { return n + ' 項目'; }, toShelf: '冊子一覧', prev: '前へ', next: '次へ',
+      full: '全画面', exitFull: '全画面を終了', contents: 'この冊子の内容', rotate: '横向きにすると大きく表示されます', handbook: 'イベント手順書',
+      keys: '← → キーでページ送り', page: function (a, b) { return a + ' / ' + b; } },
+    en: { shelf: 'Booklets by department', open: 'Click to open', items: function (n) { return n + (n === 1 ? ' topic' : ' topics'); }, toShelf: 'All booklets', prev: 'Back', next: 'Next',
+      full: 'Full screen', exitFull: 'Exit full screen', contents: 'In this booklet', rotate: 'Turn your phone sideways for a bigger view', handbook: 'Event handbook',
+      keys: 'Use the ← → keys to turn pages', page: function (a, b) { return a + ' / ' + b; } },
+    th: { shelf: 'คู่มือแยกตามแผนก', open: 'คลิกเพื่อเปิดอ่าน', items: function (n) { return n + ' หัวข้อ'; }, toShelf: 'คู่มือทั้งหมด', prev: 'ก่อนหน้า', next: 'ถัดไป',
+      full: 'เต็มจอ', exitFull: 'ออกจากเต็มจอ', contents: 'เนื้อหาในเล่มนี้', rotate: 'หมุนโทรศัพท์เป็นแนวนอนเพื่อดูภาพใหญ่ขึ้น', handbook: 'คู่มือขั้นตอนอีเวนต์',
+      keys: 'กดปุ่ม ← → เพื่อเปลี่ยนหน้า', page: function (a, b) { return a + ' / ' + b; } }
+  };
+  var APX_BOOK = 1; // イベント手順書（付録）は物流の冊子の最後に入れる
+
   /* ======================= 組み立て ======================= */
-  var lang = 'ja';
+  var lang = 'ja', meta = {};
   function L(v) { return v == null ? '' : (typeof v === 'string' ? v : (v[lang] != null ? v[lang] : v.ja)); }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function icon(name, cls) {
@@ -562,74 +577,102 @@
     else body = (ICON[name] || ICON.check)();
     return svg('0 0 48 48', body, cls || 'ig-ic');
   }
+  function colVars(i) { return '--c:' + CH[i].c + ';--s:' + CH[i].s; }
+  function itemsOf(i) { return ITEMS.filter(function (it) { return it.ch === i; }); }
 
-  function renderCover(m) {
-    var art = ground(310, 300, 290, C.light) + warehouse(10, 196, 1.2) + truck(140, 248, 0.95, C.teal) +
-      person(285, 300, 1.15, { shirt: C.navy, mood: 'happy', arms: 'up' }) + person(350, 300, 1.08, { shirt: C.gold, mood: 'happy', long: 1 }) +
-      person(415, 300, 1.12, { shirt: C.teal, mood: 'happy', arms: 'hold' }) + store(455, 165, 1.45) +
-      clipboard(318, 34, 1.5, [1, 1, 1]) + okCircle(404, 52, 20) + shoe(36, 120, 1.0, C.red) +
-      sparkle(160, 96, 13) + sparkle(256, 70, 8, C.blue) + sparkle(596, 120, 10, C.blue);
-    var chips = CHAPTERS.map(function (c, i) {
-      return '<span class="ig-chip" style="--c:' + CH[i].c + ';--s:' + CH[i].s + '">' + icon(c.icon, 'ig-chip-ic') + '<b>' + esc(L(c.t)) + '</b></span>';
-    }).join('');
-    return '<section class="ig-cover" id="top">' +
-      '<div class="cover-top"><span>' + esc(m.company || '') + '</span><span>' + esc(m.dateText || '') + '</span></div>' +
-      '<p class="ig-kicker">' + esc(UI[lang].kicker) + '</p>' +
-      '<h1 class="ig-title">' + esc(m.title || '') + '</h1>' +
-      (m.subtitle ? '<p class="ig-sub">' + esc(m.subtitle) + '</p>' : '') +
-      '<div class="ig-chips">' + chips + '</div>' +
-      '<div class="ig-cover-art">' + svg('0 0 620 320', art) + '</div>' +
-      '<p class="cover-foot">' + esc(UI[lang].confidential) + '</p></section>';
+  // 冊子ごとのページ一覧（表紙・各項目・付録）
+  function pagesOf(i) {
+    var p = [{ kind: 'cover' }];
+    itemsOf(i).forEach(function (it, k) { p.push({ kind: 'item', it: it, no: (i + 1) + '.' + (k + 1) }); });
+    if (i === APX_BOOK) { p.push({ kind: 'apx1' }); p.push({ kind: 'apx2' }); }
+    return p;
   }
 
-  function renderGuide() {
+  function slide(b, p, cls, style, body, foot) {
+    return '<section class="sl ' + cls + '" data-b="' + b + '" data-p="' + p + '"' + (style ? ' style="' + style + '"' : '') + '>' +
+      '<div class="sl-in">' + body + '</div>' + (foot || '') + '</section>';
+  }
+  function foot(i, p, n) {
     var U = UI[lang];
-    var h = '<section class="ig-guide"><h2 class="ig-h2" id="toc">' + esc(U.howToRead) + '</h2><div class="ig-legend">' +
-      '<div class="ig-leg is-before">' + svg('0 0 120 92', MINI.pile(U), 'ig-leg-art') + '<b>' + esc(U.before) + '</b><span>' + esc(U.legendBefore) + '</span></div>' +
-      '<div class="ig-leg-arrow" aria-hidden="true">➜</div>' +
-      '<div class="ig-leg is-after">' + svg('0 0 120 92', MINI.check(U), 'ig-leg-art') + '<b>' + esc(U.after) + '</b><span>' + esc(U.legendAfter) + '</span></div>' +
-      '<div class="ig-leg-arrow" aria-hidden="true">➜</div>' +
-      '<div class="ig-leg is-check">' + svg('0 0 48 48', okCircle(24, 24, 18), 'ig-leg-art ig-leg-ok') + '<b>' + esc(U.check) + '</b><span>' + esc(U.legendCheck) + '</span></div></div>';
-    h += '<h2 class="ig-h2">' + esc(U.areas) + '</h2><div class="ig-areas">';
-    CHAPTERS.forEach(function (c, i) {
-      var items = ITEMS.filter(function (it) { return it.ch === i; });
-      h += '<a class="ig-area" href="#igch' + (i + 1) + '" style="--c:' + CH[i].c + ';--s:' + CH[i].s + '">' + icon(c.icon, 'ig-area-ic') +
-        '<span class="ig-area-no">' + esc(U.chapter(i + 1)) + '</span><b>' + esc(L(c.t)) + '</b><span class="ig-area-d">' + esc(L(c.d)) + '</span>' +
-        '<ul>' + items.map(function (it) { return '<li>' + esc(L(it.t)) + '</li>'; }).join('') + '</ul></a>';
-    });
-    return h + '</div><p class="ig-textnote">' + esc(U.textNote) + '</p></section>';
+    return '<footer class="sl-foot"><span>' + esc(meta.company || '') + ' · ' + esc(meta.title || '') + '</span>' +
+      '<span><b>' + esc(U.chapter(i + 1)) + ' ' + esc(L(CHAPTERS[i].t)) + '</b>　' + esc(DK[lang].page(p, n)) + '</span></footer>';
   }
 
+  // 1 枚目：冊子が並んだ本棚
+  function renderShelf() {
+    var U = UI[lang], D = DK[lang];
+    var art = sparkle(40, 30, 12) + sparkle(1180, 40, 9, C.blue);
+    var books = CHAPTERS.map(function (c, i) {
+      var n = itemsOf(i).length;
+      return '<a class="bk" href="#/b' + (i + 1) + '" data-go="b' + (i + 1) + '" style="' + colVars(i) + '">' +
+        '<span class="bk-no">' + esc(U.chapter(i + 1)) + '</span>' + icon(c.icon, 'bk-ic') +
+        '<b class="bk-t">' + esc(L(c.t)) + '</b><span class="bk-d">' + esc(L(c.d)) + '</span>' +
+        '<span class="bk-n">' + esc(D.items(n)) + (i === APX_BOOK ? ' + ' + esc(D.handbook) : '') + '</span></a>';
+    }).join('');
+    var legend = '<div class="sh-legend">' +
+      '<span class="lg is-before">' + svg('0 0 120 92', MINI.pile(U), 'lg-art') + '<b>' + esc(U.before) + '</b><small>' + esc(U.legendBefore) + '</small></span><i>➜</i>' +
+      '<span class="lg is-after">' + svg('0 0 120 92', MINI.check(U), 'lg-art') + '<b>' + esc(U.after) + '</b><small>' + esc(U.legendAfter) + '</small></span><i>➜</i>' +
+      '<span class="lg is-check">' + svg('0 0 48 48', okCircle(24, 24, 18), 'lg-art lg-ok') + '<b>' + esc(U.check) + '</b><small>' + esc(U.legendCheck) + '</small></span></div>';
+    return slide(0, 1, 'sl-shelf', '',
+      '<div class="sh-top"><span>' + esc(meta.company || '') + '</span><span>' + esc(meta.dateText || '') + '</span></div>' +
+      '<div class="sh-head"><div><p class="sh-kicker">' + esc(U.kicker) + '</p><h1 class="sh-title">' + esc(meta.title || '') + '</h1></div>' +
+      '<p class="sh-hint">' + esc(D.shelf) + '<br><span>👆 ' + esc(D.open) + '</span></p></div>' +
+      '<div class="sh-books">' + books + '</div><div class="sh-plank" aria-hidden="true">' + svg('0 0 1200 60', art) + '</div>' +
+      '<div class="sh-bottom"><span class="sh-how">' + esc(U.howToRead) + '</span>' + legend + '</div>',
+      '<footer class="sl-foot"><span>' + esc(U.confidential) + '</span><span class="sl-keys">' + esc(D.keys) + '</span></footer>');
+  }
+
+  // 冊子の表紙
+  function renderBookCover(i, pages) {
+    var U = UI[lang], D = DK[lang], c = CHAPTERS[i];
+    var rows = pages.map(function (pg, k) {
+      if (pg.kind === 'cover') return '';
+      if (pg.kind === 'apx2') return '';
+      var label = pg.kind === 'item' ? L(pg.it.t) : D.handbook;
+      var no = pg.kind === 'item' ? pg.no : U.appendix;
+      return '<li><a href="#/b' + (i + 1) + '/' + (k + 1) + '" data-go="b' + (i + 1) + '/' + (k + 1) + '"><span class="tc-no">' + esc(no) + '</span><span class="tc-t">' + esc(label) + '</span>' +
+        (pg.kind === 'item' && pg.it.review ? '<span class="ig-pill">' + esc(U.inReview) + '</span>' : '') + '<span class="tc-p">' + (k + 1) + '</span></a></li>';
+    }).join('');
+    var heroScene = SCENES[itemsOf(i)[0].scene](U);
+    return slide(i + 1, 1, 'sl-bcover', colVars(i),
+      '<div class="bc-cover"><span class="bc-no">' + esc(U.chapter(i + 1)) + '</span>' + icon(c.icon, 'bc-ic') +
+      '<h1 class="bc-t">' + esc(L(c.t)) + '</h1><p class="bc-d">' + esc(L(c.d)) + '</p>' +
+      '<div class="bc-art">' + svg(VB, heroScene) + '</div><span class="bc-co">' + esc(meta.company || '') + '</span></div>' +
+      '<div class="bc-toc"><h2>' + esc(D.contents) + '</h2><ol>' + rows + '</ol></div>',
+      foot(i, 1, pages.length));
+  }
+
+  // 項目のページ
   function renderItem(it, no) {
-    var U = UI[lang], col = CH[it.ch];
-    var h = '<article class="ig-item' + (it.small ? ' is-small' : '') + '" style="--c:' + col.c + ';--s:' + col.s + '">';
-    h += '<header class="ig-item-head"><span class="ig-no">' + no + '</span><h3>' + esc(L(it.t)) + '</h3>' +
+    var U = UI[lang];
+    var h = '<header class="ig-item-head"><span class="ig-no">' + no + '</span><h2>' + esc(L(it.t)) + '</h2>' +
       (it.review ? '<span class="ig-pill">' + esc(U.inReview) + '</span>' : '') + (it.when ? '<span class="ig-when">🕘 ' + esc(L(it.when)) + '</span>' : '') + '</header>';
     if (it.small) {
-      return h + '<div class="ig-small">' + svg(VB, SCENES[it.scene](U), 'ig-hero') + '<div class="ig-ba-one is-after"><b>' + esc(U.after) + '</b><p>' + esc(L(it.a)) + '</p></div></div></article>';
+      return h + '<div class="it-body is-small"><div class="it-left">' + svg(VB, SCENES[it.scene](U), 'ig-hero') + '</div>' +
+        '<div class="it-right"><div class="ig-ba-one"><b>' + esc(U.after) + '</b><p>' + esc(L(it.a)) + '</p></div></div></div>';
     }
-    h += '<div class="ig-top">' + svg(VB, SCENES[it.scene](U), 'ig-hero') + '<div class="ig-ba">' +
-      '<div class="ig-card is-before">' + svg('0 0 120 92', MINI[it.bm](U), 'ig-mini') + '<div><b>' + esc(U.before) + '</b><p>' + esc(L(it.b)) + '</p></div></div>' +
+    var left = svg(VB, SCENES[it.scene](U), 'ig-hero');
+    if (it.extra) left += '<div class="ig-extra">' + it.extra.map(function (e) { return '<div>' + icon(e[0]) + '<span>' + esc(L(e[1])) + '</span></div>'; }).join('') + '</div>';
+    var right = '<div class="ig-card is-before">' + svg('0 0 120 92', MINI[it.bm](U), 'ig-mini') + '<div><b>' + esc(U.before) + '</b><p>' + esc(L(it.b)) + '</p></div></div>' +
       '<div class="ig-down" aria-hidden="true">▼</div>' +
-      '<div class="ig-card is-after">' + svg('0 0 120 92', MINI[it.am](U), 'ig-mini') + '<div><b>' + esc(U.after) + '</b><p>' + esc(L(it.a)) + '</p></div></div>' +
-      '</div></div>';
-    if (it.steps) h += '<div class="ig-how"><span class="ig-label">' + esc(U.how) + '</span><ol class="ig-steps">' + it.steps.map(function (s, i) {
+      '<div class="ig-card is-after">' + svg('0 0 120 92', MINI[it.am](U), 'ig-mini') + '<div><b>' + esc(U.after) + '</b><p>' + esc(L(it.a)) + '</p></div></div>';
+    if (it.steps) right += '<div class="ig-how"><span class="ig-label">' + esc(U.how) + '</span><ol class="ig-steps">' + it.steps.map(function (s, i) {
       return '<li><span class="ig-step-n">' + (i + 1) + '</span>' + icon(s[0]) + '<span>' + esc(L(s[1])) + '</span></li>';
     }).join('') + '</ol></div>';
-    if (it.extra) h += '<div class="ig-extra">' + it.extra.map(function (e) { return '<div>' + icon(e[0]) + '<span>' + esc(L(e[1])) + '</span></div>'; }).join('') + '</div>';
-    if (it.timeline) h += timeline();
-    if (it.stats) h += stats();
-    if (it.bins) h += '<div class="ig-bins">' + X.bins.map(function (b) { return '<div style="--b:' + b.col + '">' + icon(b.ic) + '<b>' + esc(L(b.l)) + '</b></div>'; }).join('') + '</div>';
-    if (it.tree) h += '<div class="ig-tree">' + X.tree.map(function (r) {
+    if (it.timeline) right += timeline();
+    if (it.stats) right += stats();
+    if (it.bins) right += '<div class="ig-bins">' + X.bins.map(function (b) { return '<div style="--b:' + b.col + '">' + icon(b.ic) + '<b>' + esc(L(b.l)) + '</b></div>'; }).join('') + '</div>';
+    if (it.tree) right += '<div class="ig-tree">' + X.tree.map(function (r) {
       var ic = r.tag ? svg('0 0 72 40', tag(2, 2, 1, r.tag, r.col), 'ig-tag') : icon(r.ic);
-      return '<div class="ig-tree-row" style="--b:' + r.col + '">' + ic + '<b>' + esc(L(r.k)) + '</b><span class="ig-tree-arrow">➜</span><span>' + esc(L(r.v)) + '</span></div>';
+      return '<div class="ig-tree-row" style="--b:' + r.col + '">' + ic + '<b>' + esc(L(r.k)) + '</b><span>' + esc(L(r.v)) + '</span></div>';
     }).join('') + '</div>';
-    if (it.areas) h += '<div class="ig-bins ig-areas4">' + X.areas.map(function (a) { return '<div style="--b:' + C.green + '">' + icon(a.ic) + '<b>' + esc(L(a.l)) + '</b></div>'; }).join('') + '</div>';
-    if (it.stages) h += '<div class="ig-stages">' + X.stages.map(function (s, i) {
+    if (it.areas) right += '<div class="ig-bins">' + X.areas.map(function (a) { return '<div style="--b:' + C.green + '">' + icon(a.ic) + '<b>' + esc(L(a.l)) + '</b></div>'; }).join('') + '</div>';
+    if (it.stages) right += '<div class="ig-stages">' + X.stages.map(function (s, i) {
       return '<div>' + icon(s.ic) + '<b>' + esc(L(s.l)) + '</b><span>' + s.n + '</span></div>' + (i < 2 ? '<span class="ig-stage-arrow">➜</span>' : '');
     }).join('') + '</div>';
+    h += '<div class="it-body"><div class="it-left">' + left + '</div><div class="it-right">' + right + '</div></div>';
     if (it.c) h += '<div class="ig-check">' + svg('0 0 48 48', okCircle(24, 24, 20), 'ig-check-ic') + '<b>' + esc(U.check) + '</b><span>' + esc(L(it.c)) + '</span></div>';
-    return h + '</article>';
+    return h;
   }
 
   function timeline() {
@@ -639,60 +682,175 @@
       '<line x1="350" y1="22" x2="350" y2="72"' + sw(C.red, 4) + '/>' + clock(350, 14, 12, 14, 0, { ring: C.red }) +
       t(40, 30, '9:00', { fs: 13, a: 'start', fill: C.ink }) + t(560, 30, '18:00', { fs: 13, a: 'end', fill: C.gray });
     return '<div class="ig-timeline">' + svg('0 0 600 80', b) +
-      '<div class="ig-tl-labels"><span class="is-today">✔ ' + esc(w[2]) + '</span><span class="is-cut">' + esc(w[1]) + '</span><span class="is-next">' + esc(w[3]) + '</span></div></div>';
+      '<div class="ig-tl-labels"><span class="is-today">✔ ' + esc(w[2]) + '</span><span class="is-next">' + esc(w[3]) + '</span></div></div>';
   }
   function stats() {
     var e = X.example[lang] || X.example.ja;
     var h = '<div class="ig-stats">' + X.stats.map(function (s) {
       return '<div style="--b:' + s.col + '">' + icon(s.ic) + '<b class="ig-stat-v">' + s.v + '</b><span class="ig-stat-u">' + esc(L(s.u)) + '</span><span class="ig-stat-l">' + esc(L(s.l)) + '</span></div>';
     }).join('') + '</div>';
-    // 例：300 足（棒グラフ。1 時間 = 30 px）
     var rows = [[e.qc, e.p1, 500, '8h20m'], [e.qc, e.p2, 250, '4h10m'], [e.pack, e.p1, 160, '2h40m'], [e.pack, e.p2, 80, '1h20m']];
     var b = '';
     rows.forEach(function (r, i) {
-      var y = 10 + i * 30, w = r[2] * 30 / 60, col = i < 2 ? C.red : C.teal;
-      b += t(150, y + 15, esc(r[0]) + ' · ' + esc(r[1]), { fs: 12, a: 'end', fw: 600 }) +
-        '<rect x="160" y="' + y + '" width="' + w + '" height="20" rx="5" fill="' + col + '" opacity="' + (i % 2 ? 0.6 : 1) + '"/>' + t(168 + w, y + 15, r[3], { fs: 12, a: 'start' });
+      var y = 6 + i * 28, w = r[2] * 30 / 60, col = i < 2 ? C.red : C.teal;
+      b += t(170, y + 15, esc(r[0]) + ' · ' + esc(r[1]), { fs: 13, a: 'end', fw: 600 }) +
+        '<rect x="180" y="' + y + '" width="' + w + '" height="20" rx="5" fill="' + col + '" opacity="' + (i % 2 ? 0.6 : 1) + '"/>' + t(188 + w, y + 15, r[3], { fs: 13, a: 'start' });
     });
-    return h + '<div class="ig-example"><b>' + esc(e.title) + '</b>' + svg('0 0 600 130', b) + '</div>';
+    return h + '<div class="ig-example"><b>' + esc(e.title) + '</b>' + svg('0 0 600 118', b) + '</div>';
   }
 
-  function renderChapterHead(i) {
-    var c = CHAPTERS[i];
-    return '<header class="ig-ch-head" id="igch' + (i + 1) + '" style="--c:' + CH[i].c + ';--s:' + CH[i].s + '">' + icon(c.icon, 'ig-ch-ic') +
-      '<div><span class="ig-ch-no">' + esc(UI[lang].chapter(i + 1)) + '</span><h2>' + esc(L(c.t)) + '</h2><p>' + esc(L(c.d)) + '</p></div></header>';
+  // 付録（イベント手順書）：1 枚目＝担当と Case、2 枚目＝15 ステップ
+  function renderApx1() {
+    var U = UI[lang], D = DK[lang];
+    return '<header class="ig-item-head"><span class="ig-no is-apx">' + esc(U.appendix) + '</span><h2>' + esc(D.handbook) + '：' + esc(L(APX.rolesTitle)) + '</h2></header>' +
+      '<div class="ig-roles">' + APX.roles.map(function (r) {
+        return '<div style="--b:' + r.col + '">' + svg('0 0 48 48', face(24, 26, 20, r.col), 'ig-role-ic') + '<b>' + esc(L(r.n)) + '</b><span>' + esc(L(r.r)) + '</span></div>';
+      }).join('') + '</div>' +
+      '<div class="ig-cases">' + APX.cases.map(function (c) { return '<div><b>' + c.k + '</b><span>' + esc(L(c.v)) + '</span></div>'; }).join('') + '</div>' +
+      '<div class="ig-check">' + svg('0 0 48 48', okCircle(24, 24, 20), 'ig-check-ic') + '<span>' + esc(L(APX.note)) + '</span></div>';
+  }
+  function renderApx2() {
+    var U = UI[lang], D = DK[lang];
+    return '<header class="ig-item-head"><span class="ig-no is-apx">' + esc(U.appendix) + '</span><h2>' + esc(L(APX.title)) + '</h2></header>' +
+      '<div class="ig-lanes">' + APX.lanes.map(function (ln) {
+        return '<div class="ig-lane" style="--b:' + ln.col + '"><h3>' + esc(L(ln.l)) + '</h3><ol>' + ln.steps.map(function (s) {
+          return '<li><span class="ig-step-n">' + s[0] + '</span><b>' + esc(L(s[1])) + '</b><span class="ig-who">' + esc(L(s[2])) + '</span></li>';
+        }).join('') + '</ol></div>';
+      }).join('') + '</div>';
   }
 
-  function renderAppendix() {
-    var U = UI[lang];
-    var h = '<section class="ig-chapter ig-apx" id="igapx"><header class="ig-ch-head" style="--c:' + C.ink + ';--s:' + C.light + '">' + icon('booth', 'ig-ch-ic') +
-      '<div><span class="ig-ch-no">' + esc(U.appendix) + '</span><h2>' + esc(L(APX.title)) + '</h2></div></header>';
-    h += '<h3 class="ig-h3">' + esc(L(APX.rolesTitle)) + '</h3><div class="ig-roles">' + APX.roles.map(function (r) {
-      return '<div style="--b:' + r.col + '">' + svg('0 0 48 48', face(24, 26, 20, r.col), 'ig-role-ic') + '<b>' + esc(L(r.n)) + '</b><span>' + esc(L(r.r)) + '</span></div>';
-    }).join('') + '</div>';
-    h += '<div class="ig-lanes">' + APX.lanes.map(function (ln) {
-      return '<div class="ig-lane" style="--b:' + ln.col + '"><h4>' + esc(L(ln.l)) + '</h4><ol>' + ln.steps.map(function (s) {
-        return '<li><span class="ig-step-n">' + s[0] + '</span><b>' + esc(L(s[1])) + '</b><span class="ig-who">' + esc(L(s[2])) + '</span></li>';
-      }).join('') + '</ol></div>';
-    }).join('') + '</div>';
-    h += '<div class="ig-cases">' + APX.cases.map(function (c) { return '<div><b>' + c.k + '</b><span>' + esc(L(c.v)) + '</span></div>'; }).join('') + '</div>';
-    h += '<div class="ig-check ig-apx-note">' + svg('0 0 48 48', okCircle(24, 24, 20), 'ig-check-ic') + '<span>' + esc(L(APX.note)) + '</span></div>';
-    return h + '</section>';
-  }
-
-  function render(lng, meta) {
+  function render(lng, m) {
     lang = UI[lng] ? lng : 'ja';
-    meta = meta || {};
-    var h = '<div class="ig">' + renderCover(meta) + renderGuide();
+    meta = m || {};
+    var D = DK[lang];
+    var h = '<div class="deck" id="deck"><div class="stage"><div class="slides">' + renderShelf();
     CHAPTERS.forEach(function (c, i) {
-      var n = 0;
-      h += '<section class="ig-chapter">' + renderChapterHead(i);
-      ITEMS.forEach(function (it) { if (it.ch === i) { n++; h += renderItem(it, (i + 1) + '.' + n); } });
-      h += '</section>';
+      var pages = pagesOf(i), n = pages.length;
+      pages.forEach(function (pg, k) {
+        if (pg.kind === 'cover') { h += renderBookCover(i, pages); return; }
+        var body = pg.kind === 'item' ? renderItem(pg.it, pg.no) : pg.kind === 'apx1' ? renderApx1() : renderApx2();
+        h += slide(i + 1, k + 1, 'sl-item' + (pg.kind === 'item' ? '' : ' sl-apx'), colVars(i) + (pg.kind === 'item' ? '' : ';--z0:' + (pg.kind === 'apx1' ? 1.15 : 1.3)), body, foot(i, k + 1, n));
+      });
     });
-    h += renderAppendix() + '</div>';
+    h += '</div></div>' +
+      '<nav class="deck-nav" aria-label="pages">' +
+      '<button type="button" class="dn-shelf" data-act="shelf">▦ ' + esc(D.toShelf) + '</button>' +
+      '<span class="dn-mid"><button type="button" data-act="prev" aria-label="' + esc(D.prev) + '">‹ ' + esc(D.prev) + '</button>' +
+      '<span class="dn-page" aria-live="polite"></span>' +
+      '<button type="button" data-act="next" aria-label="' + esc(D.next) + '">' + esc(D.next) + ' ›</button></span>' +
+      '<button type="button" class="dn-full" data-act="full" data-on="' + esc(D.exitFull) + '" data-off="' + esc(D.full) + '">⛶ ' + esc(D.full) + '</button>' +
+      '</nav><p class="deck-rotate">📱↻ ' + esc(D.rotate) + '</p></div>';
     return h;
   }
 
-  root.KaizenInfo = { render: render };
+  /* ======================= 画面の動き（ページ送り・拡大縮小・印刷） ======================= */
+  var deck = null, cur = { b: 0, p: 1 };
+  function counts(b) { return b === 0 ? 1 : pagesOf(b - 1).length; }
+  function parseHash() {
+    var m = /^#\/b(\d)(?:\/(\d+))?$/.exec(location.hash || '');
+    if (!m) return { b: 0, p: 1 };
+    var b = Math.min(Math.max(+m[1], 1), CHAPTERS.length);
+    return { b: b, p: Math.min(Math.max(+(m[2] || 1), 1), counts(b)) };
+  }
+  function go(b, p, replace) {
+    var hash = b === 0 ? '#/' : '#/b' + b + (p > 1 ? '/' + p : '');
+    if (location.hash !== hash) { if (replace) history.replaceState(null, '', hash); else location.hash = hash; }
+    show();
+  }
+  function show() {
+    if (!deck || !document.body.contains(deck)) return;
+    cur = parseHash();
+    deck.querySelectorAll('.sl').forEach(function (s) { s.classList.toggle('on', +s.dataset.b === cur.b && +s.dataset.p === cur.p); });
+    var n = counts(cur.b), D = DK[lang];
+    deck.classList.toggle('at-shelf', cur.b === 0);
+    deck.querySelector('.dn-page').textContent = cur.b === 0 ? '' : L(CHAPTERS[cur.b - 1].t) + '　' + D.page(cur.p, n);
+    deck.querySelector('[data-act="prev"]').disabled = cur.b === 0;
+    deck.querySelector('[data-act="next"]').disabled = cur.b === 0 || cur.p >= n;
+    fit();
+  }
+  function step(d) {
+    if (cur.b === 0) { if (d > 0) go(1, 1); return; }
+    var n = counts(cur.b), p = cur.p + d;
+    if (p < 1) { go(0, 1); return; }
+    if (p > n) { if (cur.b < CHAPTERS.length) go(cur.b + 1, 1); return; }
+    go(cur.b, p);
+  }
+  // 画面の大きさに合わせてスライド（1280 × 720）を縮小・拡大
+  function fit() {
+    if (!deck) return;
+    var stage = deck.querySelector('.stage'), nav = deck.querySelector('.deck-nav');
+    var top = stage.getBoundingClientRect().top + window.scrollY;
+    var fs = document.fullscreenElement != null;
+    var w = Math.max(200, window.innerWidth - (fs ? 0 : 24));
+    var h = Math.max(150, window.innerHeight - (fs || window.innerHeight <= 520 ? 0 : top) - nav.offsetHeight - (fs ? 8 : 20));
+    var k = Math.min(w / 1280, h / 720);
+    if (window.innerWidth < 700) k = Math.min(w / 1280, 1); // スマホは幅いっぱい
+    deck.style.setProperty('--k', k.toFixed(4));
+  }
+  // 文字がはみ出すページだけ、文字を少し小さくする
+  function shrinkToFit() {
+    if (!deck) return;
+    deck.classList.add('measuring');
+    deck.querySelectorAll('.sl').forEach(function (s) {
+      var inner = s.querySelector('.sl-in'), z = parseFloat(s.style.getPropertyValue('--z0')) || 1;
+      s.style.setProperty('--z', z.toFixed(2));
+      while (inner.scrollHeight > inner.clientHeight + 1 && z > 0.72) { z -= 0.04; s.style.setProperty('--z', z.toFixed(2)); }
+    });
+    deck.classList.remove('measuring');
+  }
+  function markPrint() {
+    if (!deck) return;
+    var b = parseHash().b; // 本棚なら全冊、冊子を開いているならその冊子だけ
+    var last = null;
+    deck.querySelectorAll('.sl').forEach(function (s) {
+      var on = b === 0 || +s.dataset.b === b;
+      s.classList.toggle('pr', on); s.classList.remove('pr-last'); if (on) last = s;
+    });
+    if (last) last.classList.add('pr-last');
+  }
+  var bound = false;
+  function mount(el) {
+    deck = el.querySelector('.deck');
+    if (!deck) return;
+    deck.addEventListener('click', function (e) {
+      var a = e.target.closest('[data-go]');
+      if (a) { e.preventDefault(); var m = /^b(\d)(?:\/(\d+))?$/.exec(a.dataset.go); go(+m[1], +(m[2] || 1)); return; }
+      var btn = e.target.closest('[data-act]');
+      if (!btn) return;
+      var act = btn.dataset.act;
+      if (act === 'prev') step(-1); else if (act === 'next') step(1); else if (act === 'shelf') go(0, 1);
+      else if (act === 'full') {
+        if (document.fullscreenElement) document.exitFullscreen(); else if (deck.requestFullscreen) deck.requestFullscreen().catch(function () {});
+      }
+    });
+    var sx = null;
+    deck.addEventListener('touchstart', function (e) { sx = e.touches.length === 1 ? e.touches[0].clientX : null; }, { passive: true });
+    deck.addEventListener('touchend', function (e) {
+      if (sx == null) return; var dx = e.changedTouches[0].clientX - sx; sx = null;
+      if (Math.abs(dx) > 60) step(dx < 0 ? 1 : -1);
+    });
+    if (!bound) {
+      bound = true;
+      window.addEventListener('hashchange', show);
+      window.addEventListener('resize', fit);
+      window.addEventListener('beforeprint', markPrint);
+      document.addEventListener('fullscreenchange', function () {
+        var b = deck && deck.querySelector('[data-act="full"]');
+        if (b) b.textContent = '⛶ ' + (document.fullscreenElement ? b.dataset.on : b.dataset.off);
+        fit();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (!deck || !document.body.contains(deck) || document.body.classList.contains('is-editing')) return;
+        if (/^(INPUT|TEXTAREA|SELECT)$/.test((e.target && e.target.tagName) || '')) return;
+        if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); step(1); }
+        else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); step(-1); }
+        else if (e.key === 'Home') { e.preventDefault(); go(0, 1); }
+      });
+    }
+    show();
+    var after = function () { shrinkToFit(); fit(); };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(after); else after();
+  }
+
+  root.KaizenInfo = { render: render, mount: mount, markPrint: function () { markPrint(); } };
 })(typeof self !== 'undefined' ? self : this);
