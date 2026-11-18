@@ -37,6 +37,28 @@
       "has": [
         {
           "type": "host",
+          "value": "bd-onboarding.vercel.app"
+        }
+      ],
+      "destination": "https://bd-onboarding-barefootinc.vercel.app/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "bd-onboarding-shima-s-projects2.vercel.app"
+        }
+      ],
+      "destination": "https://bd-onboarding-barefootinc.vercel.app/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
           "value": "bd-dashboard-mu.vercel.app"
         }
       ],

@@ -4,7 +4,7 @@
 静的 HTML + JSON（ビルド不要）。Vercel の **SHIMA's projects**（`shima-s-projects2`）のプロジェクト **`bd-onboarding`**（Root Directory = `bd`）として配信中（2026-11-17 に Barefootinc TH の `bd-dashboard` から移行。Barefootinc TH が Hobby の 1 日 100 デプロイ上限に達したため）。
 
 - **常に最新の URL: https://bd-onboarding-barefootinc.vercel.app** — プロジェクトの Production ドメイン（2026-11-17 に切替）。Production Branch は `claude/laughing-pascal-1qck8z`。このブランチに push するたびに Vercel が本番としてビルドし、この URL が最新版になる（手動の反映は不要）
-- 旧 URL https://bd-dashboard-mu.vercel.app は、開くと上の URL に自動で転送される（`bd-onboarding` の Domains の Redirect）。https://bd-onboarding.vercel.app も同じ中身
+- 旧 URL https://bd-dashboard-mu.vercel.app は、開くと上の URL に自動で転送される（`bd-onboarding` の Domains の Redirect）。https://bd-onboarding.vercel.app（プロジェクトの自動 URL）も開くと上の URL に転送される（vercel.json の redirects）
 - アクセス制限なし（2026-11-17 に Vercel Authentication を無効化）。リンクを知っている人は誰でも開ける。検索エンジンには出ない（noindex）。制限が必要になったら Settings → Deployment Protection で Password Protection か Vercel Authentication を有効にする
 
 - 画面: ホーム／ブランド × 5（VFF・Vivobarefoot・OLENO・Coolcore・AQOS）／ガイドライン（VFF・Vivo）／月次売上／店舗一覧／委託販売／取引条件／SNS／未入力一覧
