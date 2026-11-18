@@ -514,16 +514,28 @@ html:lang(en) table.b-table .nw, html:lang(th) table.b-table .nw { white-space: 
 
 /* 改善案の手順（1 改善 1 ページ） */
 .ig-detail { grid-template-columns: 21em 1fr; }
-.ig-dh { background: var(--s); border-radius: 14px; padding: .7em 1em; display: flex; flex-direction: column; }
-.ig-dh small { font-size: .78em; color: var(--ink-2); font-weight: 700; }
-.ig-dh b { font-family: var(--f-head); font-size: 2em; font-weight: 800; color: var(--c); line-height: 1.2; }
-.ig-dnow { background: #fdeceb; border-radius: 14px; padding: .7em 1em; }
+.ig-hbar { background: var(--s); border-radius: 14px; padding: .6em .9em .7em; display: flex; flex-direction: column; gap: .35em; }
+.ig-hbar > small { display: flex; align-items: center; gap: .4em; font-size: .78em; font-weight: 700; color: var(--ink-2); }
+.hb-ppl { width: 2.2em; height: 2.2em; flex: none; }
+.hb-row { display: grid; grid-template-columns: 4.6em 1fr 3.6em; align-items: center; gap: .5em; font-family: var(--f-head); font-weight: 700; font-size: .9em; }
+.hb-row i { display: block; height: 1.15em; background: #fff; border-radius: 6px; overflow: hidden; }
+.hb-row em { display: block; height: 100%; border-radius: 6px; }
+.hb-row.is-now em { background: #e7a39b; } .hb-row.is-now span, .hb-row.is-now b { color: #c0392b; }
+.hb-row.is-new em { background: #2f8f5b; } .hb-row.is-new span, .hb-row.is-new b { color: #237447; }
+.hb-row b { text-align: right; font-size: 1.15em; }
+.hb-save { display: flex; align-items: center; flex-wrap: wrap; gap: .1em .5em; background: #fff; border-radius: 10px; padding: .3em .6em; margin-top: .15em; }
+.hb-ic { width: 1.8em; height: 1.8em; flex: none; }
+.hb-save b { font-family: var(--f-head); font-size: 1.3em; color: #237447; }
+.hb-save span { font-size: .8em; color: var(--ink-2); font-weight: 700; }
+.ig-dnow { display: flex; gap: .6em; align-items: flex-start; background: #fdeceb; border-radius: 14px; padding: .6em .9em; }
+.ig-dnow-art { width: 4.6em; height: auto; flex: none; }
 .ig-dnow b { font-family: var(--f-head); color: #c0392b; font-size: .95em; }
-.ig-dnow ul { margin: .3em 0 0; padding-left: 1.1em; font-size: .92em; line-height: 1.5; }
+.ig-dnow ul { margin: .2em 0 0; padding-left: 1.1em; font-size: .88em; line-height: 1.45; }
 .ig-dsteps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .4em; }
-.ig-dsteps li { position: relative; display: grid; grid-template-columns: 7.5em 1fr; align-items: center; gap: .6em; background: #e3f4ea; border-radius: 10px; padding: .45em .8em .45em 2.6em; font-family: var(--f-head); font-weight: 700; font-size: .95em; line-height: 1.4; }
+.ig-dsteps li { position: relative; display: grid; grid-template-columns: 2.4em 7em 1fr; align-items: center; gap: .6em; background: #e3f4ea; border-radius: 10px; padding: .45em .8em .45em 2.6em; font-family: var(--f-head); font-weight: 700; font-size: .95em; line-height: 1.4; }
 .ig-dsteps .ig-step-n { top: 50%; transform: translateY(-50%); left: .6em; background: #237447; }
 .ig-dsteps small { font-size: .8em; color: #237447; }
+.ig-dic { width: 2.4em; height: 2.4em; background: #fff; border-radius: 50%; padding: .15em; }
 .ig-dnote { margin: .5em 0 0; font-size: .82em; color: var(--ink-2); }
 
 /* 付録 3：チェックする所 */
