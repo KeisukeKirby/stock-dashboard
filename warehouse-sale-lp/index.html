@@ -511,6 +511,9 @@
     .venue-chip img { width: 180px; }
     .maplinks { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.4rem; }
     .mapbox { border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.25); background: rgba(0,0,0,.2); }
+    .map-static { display: block; }
+    .map-static img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3.2; object-fit: cover; }
+    .mapbox.live .map-static, .mapbox:not(.live) .map-embed, .mapbox.live .mn-static, .mapbox:not(.live) .mn-live { display: none; }
     .map-embed { display: block; width: 100%; aspect-ratio: 4 / 3.2; border: 0; background: #DCD9E1; filter: saturate(.9); }
     .map-note { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .6rem .9rem; font-size: .76rem; letter-spacing: .05em; color: rgba(255,255,255,.72); }
     .map-note a { color: #fff; text-decoration: none; border-bottom: 1px solid var(--t21-y); font-weight: 600; }
@@ -556,7 +559,7 @@
         position: fixed; left: .8rem; right: 4.6rem; bottom: calc(.8rem + env(safe-area-inset-bottom)); z-index: 85;
         background: rgba(11,11,12,.86); color: var(--bone); border: 1px solid rgba(255,255,255,.14); border-radius: 999px;
         padding: .45rem .5rem .45rem 1rem; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-        transform: translateY(140%); transition: transform .5s var(--ease);
+        transform: translateY(calc(100% + 1.6rem + env(safe-area-inset-bottom))); transition: transform .5s var(--ease);
       }
       body.past-hero:not(.at-access) .mbar { transform: none; }
       .mb-txt { display: grid; line-height: 1.2; font-family: var(--display); flex: 1 1 auto; min-width: 0; }
@@ -1172,9 +1175,10 @@
         </div>
         <div>
           <div class="mapbox" data-reveal style="--d:240">
+          <a class="map-static" href="https://www.google.com/maps/search/?api=1&query=87%2F34+Modern+Town+Sukhumvit+63+Klongtan+Nua+Wattana+Bangkok" target="_blank" rel="noopener noreferrer" aria-label="Open the map in Google Maps"><img src="images/access/map-static-v1.jpg" alt="Map: Modern Town on Sukhumvit 63 (Ekkamai)" width="1072" height="854" loading="lazy" decoding="async" /></a>
           <iframe class="map-embed" title="Map of the Barefootinc office, Modern Town, Sukhumvit 63" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
-            src="https://www.google.com/maps?q=87%2F34+Modern+Town,+Sukhumvit+63,+Klongtan+Nua,+Wattana,+Bangkok&z=16&hl=en&output=embed"></iframe>
-          <span class="map-note"><span data-i18n="access.mapnote">Pinch or scroll to zoom the map</span><a href="https://www.google.com/maps/search/?api=1&query=87%2F34+Modern+Town+Sukhumvit+63+Klongtan+Nua+Wattana+Bangkok" target="_blank" rel="noopener noreferrer" data-i18n="access.map">See the map</a></span>
+            data-src="https://www.google.com/maps?q=87%2F34+Modern+Town,+Sukhumvit+63,+Klongtan+Nua,+Wattana,+Bangkok&z=16&hl=en&output=embed"></iframe>
+          <span class="map-note"><span class="mn-live" data-i18n="access.mapnote">Pinch or scroll to zoom the map</span><span class="mn-static" data-i18n="access.mapnote2">Tap the map to open it in Google Maps</span><a href="https://www.google.com/maps/search/?api=1&query=87%2F34+Modern+Town+Sukhumvit+63+Klongtan+Nua+Wattana+Bangkok" target="_blank" rel="noopener noreferrer" data-i18n="access.map">See the map</a></span>
           </div>
         </div>
       </div>
@@ -1283,7 +1287,7 @@
         "access.k4": "By train", "access.v4": "BTS Ekkamai, then head up Sukhumvit 63 (Ekkamai Road) to Modern Town.",
         "access.k5": "By car", "access.v5": "Modern Town on Sukhumvit 63 (Ekkamai Road). Parking is available.",
         "access.officenote": "<strong>It is an office, not a shop.</strong> Look for the Barefootinc sign at Modern Town and come straight in. Message us on LINE if you cannot find it.",
-        "access.mapopen": "Open in Google Maps", "access.map": "See the map", "access.mapnote": "Pinch or scroll to zoom the map",
+        "access.mapopen": "Open in Google Maps", "access.map": "See the map", "access.mapnote": "Pinch or scroll to zoom the map", "access.mapnote2": "Tap the map to open it in Google Maps",
         "access.kr": "Route videos",
         "access.r1": "From the main entrance", "access.r1d": "Up the stairs and escalators to 2F, then along the corridor to our door.",
         "access.r2": "From the car park", "access.r2d": "Take the lift to P6 (Office Plaza), then follow the corridor to our door.",
@@ -1354,7 +1358,7 @@
         "access.k4": "รถไฟฟ้า", "access.v4": "BTS เอกมัย แล้วเข้าซอยสุขุมวิท 63 (ถนนเอกมัย) มาที่โมเดอร์น ทาวน์",
         "access.k5": "รถยนต์", "access.v5": "โมเดอร์น ทาวน์ ถนนเอกมัย (สุขุมวิท 63) มีที่จอดรถ",
         "access.officenote": "<strong>เป็นออฟฟิศ ไม่ใช่หน้าร้าน</strong> มองหาป้าย Barefootinc ที่โมเดอร์น ทาวน์แล้วเดินเข้ามาได้เลย หาไม่เจอทัก LINE หาเรา",
-        "access.mapopen": "เปิดใน Google Maps", "access.map": "ดูแผนที่", "access.mapnote": "ซูมแผนที่ได้ด้วยการจีบนิ้วหรือสกรอลล์",
+        "access.mapopen": "เปิดใน Google Maps", "access.map": "ดูแผนที่", "access.mapnote": "ซูมแผนที่ได้ด้วยการจีบนิ้วหรือสกรอลล์", "access.mapnote2": "แตะแผนที่เพื่อเปิดใน Google Maps",
         "access.kr": "วิดีโอเส้นทาง",
         "access.r1": "จากทางเข้าด้านหน้า", "access.r1d": "ขึ้นบันไดและบันไดเลื่อนไปชั้น 2 แล้วเดินตามทางเดินมาที่ออฟฟิศ",
         "access.r2": "จากที่จอดรถ", "access.r2d": "ขึ้นลิฟต์ไปชั้น P6 (Office Plaza) แล้วเดินตามทางเดินมาที่ออฟฟิศ",
@@ -1527,6 +1531,13 @@
     (function () {
       const tiles = document.querySelectorAll("#heroMosaic .t");
       tiles.forEach((t, i) => setTimeout(() => t.classList.add("in"), 120 + i * 90));
+    })();
+
+    /* map: interactive Google map, except on Android where in-app browsers refuse to frame it (static map + link instead) */
+    (function () {
+      const box = document.querySelector(".mapbox"), fr = box && box.querySelector(".map-embed");
+      if (!fr || /Android/i.test(navigator.userAgent)) return;
+      fr.src = fr.dataset.src; box.classList.add("live");
     })();
 
     /* ===================== route video viewer ===================== */
