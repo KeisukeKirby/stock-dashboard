@@ -133,6 +133,10 @@
     return h("div", {}, wrap, legend);
   }
 
+  // 画像の URL に版を付ける（ブラウザに古い・壊れた写真が残っていても読み直させる）
+  const IMG_VER = "20261118";
+  const imgUrl = (p) => p ? `${p}${p.includes("?") ? "&" : "?"}v=${IMG_VER}` : p;
+
   // ---------- lightbox（写真を拡大して全体を表示） ----------
   function openLightbox(src, caption) {
     const close = () => { box.remove(); document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
@@ -331,9 +335,9 @@
       const url = mapUrl(store);
       return h("article", { class: "store-card" },
         h("div", { class: "store-photo" }, store.photo
-          ? h("button", { type: "button", class: "photo-zoom", title: tr("クリックで拡大", "Click to enlarge", "คลิกเพื่อขยาย"), "aria-label": tr(`${info.name} の写真を拡大`, `Enlarge the photo of ${info.name}`, `ขยายรูปของ ${info.name}`), onclick: () => openLightbox(store.photoFull || store.photo, info.name) },
-              h("img", { class: "photo-bg", src: store.photoFull || store.photo, alt: "", "aria-hidden": "true", loading: "lazy" }),
-              h("img", { class: "photo-fg", src: store.photoFull || store.photo, alt: info.name, loading: "lazy" }),
+          ? h("button", { type: "button", class: "photo-zoom", title: tr("クリックで拡大", "Click to enlarge", "คลิกเพื่อขยาย"), "aria-label": tr(`${info.name} の写真を拡大`, `Enlarge the photo of ${info.name}`, `ขยายรูปของ ${info.name}`), onclick: () => openLightbox(imgUrl(store.photoFull || store.photo), info.name) },
+              h("img", { class: "photo-bg", src: imgUrl(store.photoFull || store.photo), alt: "", "aria-hidden": "true", loading: "lazy" }),
+              h("img", { class: "photo-fg", src: imgUrl(store.photoFull || store.photo), alt: info.name, loading: "lazy" }),
               h("span", { class: "zoom-hint", "aria-hidden": "true" }, "⤢"))
           : h("span", {}, tr("写真なし", "No photo yet", "ยังไม่มีรูป"))),
         h("div", { class: "store-body" },
