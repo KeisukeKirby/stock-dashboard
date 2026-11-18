@@ -19,7 +19,7 @@
   };
   var CH = [ // 章ごとの色
     { c: C.navy, s: C.sky }, { c: C.teal, s: C.tealS }, { c: '#b7790f', s: C.cream },
-    { c: C.purple, s: C.purpleS }, { c: C.green, s: C.greenS }
+    { c: C.purple, s: C.purpleS }, { c: '#c4572e', s: '#fbe6dc' }, { c: C.green, s: C.greenS }
   ];
 
   /* ======================= SVG の部品 ======================= */
@@ -247,7 +247,7 @@
     },
     restock: function (L) {
       return ground(150, 168, 146) + warehouse(6, 74, 0.95) + truck(106, 116, 0.82, C.teal) + store(196, 80, 0.95) +
-        calendar(126, 20, 1, L.mon, { top: C.teal, fs: 13 }) + doc(196, 6, 0.95) + stamp(232, 52, 12) + arrow(110, 160, 190, 160, C.teal, true);
+        calendar(126, 20, 1, L.monThu, { top: C.teal, fs: 11 }) + doc(196, 6, 0.95) + stamp(232, 52, 12) + arrow(110, 160, 190, 160, C.teal, true);
     },
     online: function (L) {
       return ground(150, 168, 140) + phone(26, 66, 1.3) + clock(150, 76, 50, 14, 0, { ring: C.red, hand: C.red }) +
@@ -288,6 +288,47 @@
     }
   };
 
+  // 追加分の主役イラスト
+  Object.assign(SCENES, {
+    input: function () {
+      return ground(150, 168, 140) + papers(14, 70, 1.15) + arrow(80, 100, 108, 100, C.gray, true) + robot(114, 46, 1.05) +
+        arrow(188, 100, 214, 100, C.gray, true) + doc(220, 40, 1.15, 'bars') + okCircle(270, 140, 12);
+    },
+    wholesale: function () {
+      return ground(150, 168, 140) + store(14, 60, 1.05) + truck(112, 120, 0.55, C.teal) +
+        person(214, 168, 0.95, { shirt: C.teal, mood: 'happy', arms: 'up' }) + person(262, 168, 0.95, { shirt: C.navy, mood: 'happy' }) +
+        t(262, 44, 'BD', { fs: 14, fill: C.navy }) + bubble(176, 20, 0.9, 'check');
+    },
+    zort: function () {
+      return ground(150, 168, 140) + warehouse(6, 74, 0.95) + box(118, 120, 0.8) + box(132, 96, 0.7) + arrow(170, 110, 196, 96, C.gray, true) +
+        g(204, 30, 1.9, ICON.data()) + t(250, 134, 'Zort', { fs: 18, fill: C.blue, fw: 800 }) + okCircle(282, 40, 12);
+    },
+    shift: function () {
+      var cols = [C.blue, C.gold, C.green, C.purple, C.red];
+      return ground(150, 168, 140) + tableGrid(14, 30, 180, 124, 4, 5, function (r, c) {
+        if (c === 0) return function (x, y) { return '<rect x="' + (x - 12) + '" y="' + (y - 4) + '" width="24" height="8" rx="3" fill="' + C.light + '"/>'; };
+        return function (x, y, m) { return face(x, y, m * 0.3, cols[(r * 2 + c) % 5]); };
+      }) + clock(250, 80, 34, 9, 0, { ring: C.purple }) + t(250, 140, 'IN · OUT', { fs: 13, fill: C.purple });
+    },
+    claim: function () {
+      return ground(150, 168, 140) + phone(24, 50, 1.45) + shoe(96, 104, 1.15, C.red) + magnifier(150, 70, 0.9) +
+        doc(214, 34, 1.05) + okCircle(268, 132, 13);
+    },
+    basics: function (L) {
+      return ground(150, 168, 140) + calendar(20, 36, 1.35, '', { top: C.blue }) + doc(118, 40, 1.05) + stamp(160, 104, 15) +
+        bubble(210, 46, 1.25, 'dots') + sparkle(200, 30, 7);
+    },
+    deadline: function (L) {
+      return ground(150, 168, 140) + clock(94, 84, 56, 17, 0, { ring: C.red, hand: C.red }) + t(94, 164, L.today, { fs: 14, fill: C.red }) +
+        person(226, 168, 0.95, { shirt: C.green, mood: 'happy', arms: 'up' }) + okCircle(270, 50, 13);
+    },
+    rollout: function (L) {
+      return ground(150, 168, 140) + calendar(18, 40, 1.2, L.fri, { top: C.gold, fs: 14 }) + arrow(92, 96, 116, 96, C.gray, true) +
+        calendar(122, 40, 1.2, '1', { top: C.teal, fs: 18 }) + arrow(196, 96, 218, 96, C.gray, true) + calendar(224, 40, 1.2, '2', { top: C.green, fs: 18 }) +
+        okCircle(278, 132, 12);
+    }
+  });
+
   /* 「これまで」「これから」の小さな絵（120 × 92） */
   var MINI = {
     pile: function () { return person(36, 88, 0.82, { mood: 'worried', arms: 'head', shirt: C.gray }) + papers(66, 30, 0.95) + qmark(108, 16, 9); },
@@ -318,7 +359,11 @@
     truck: function () { return truck(2, 14, 0.42, C.teal); },
     load: function () { return box(2, 14, 0.5) + truck(18, 22, 0.28, C.teal); },
     booth: function () { return booth(2, 8, 0.37); },
-    count: function () { return clipboard(12, 4, 0.62, [1, 1, 0]); }
+    count: function () { return clipboard(12, 4, 0.62, [1, 1, 0]); },
+    cal: function () { return calendar(5, 4, 0.68, '', { top: C.blue }); },
+    chat: function () { return bubble(2, 4, 0.85, 'dots'); },
+    clock: function () { return clock(24, 24, 18, 10, 10, { ring: C.navy }); },
+    claim: function () { return phone(6, 4, 0.66) + shoe(22, 22, 0.42, C.red); }
   };
 
   /* ======================= 文言（3 言語） ======================= */
@@ -328,36 +373,38 @@
       howToRead: 'このマニュアルの見方', legendBefore: '困っていたこと', legendAfter: '新しいやり方', legendCheck: 'できているかの確認',
       areas: '改善する 5 つのエリア', chapter: function (n) { return '第 ' + n + ' 章'; }, appendix: '付録', inReview: '内容確認中',
       textNote: 'くわしい説明は右上の「文章」で見られます。', confidential: '社内資料・取り扱い注意',
-      am: '朝', today: '今日', ours: '自社', bizDays: '営業日', mon: '月', minus1: '前日', handbook: '手順書', perPair: '1 足あたり'
+      am: '朝', today: '今日', monThu: '月・木', fri: '金', ours: '自社', bizDays: '営業日', mon: '月', minus1: '前日', handbook: '手順書', perPair: '1 足あたり'
     },
     en: {
       kicker: 'Process improvement, in pictures', before: 'Before', after: 'From now on', how: 'How', check: 'Check',
       howToRead: 'How to read this manual', legendBefore: 'What went wrong', legendAfter: 'The new way', legendCheck: 'How we know it works',
       areas: '5 areas we are improving', chapter: function (n) { return 'Chapter ' + n; }, appendix: 'Appendix', inReview: 'Being confirmed',
       textNote: 'For full details, switch to “Text” at the top right.', confidential: 'Internal use only',
-      am: 'AM', today: 'Today', ours: 'Ours', bizDays: 'business days', mon: 'MON', minus1: '−1 day', handbook: 'Handbook', perPair: 'per pair'
+      am: 'AM', today: 'Today', monThu: 'MON·THU', fri: 'FRI', ours: 'Ours', bizDays: 'business days', mon: 'MON', minus1: '−1 day', handbook: 'Handbook', perPair: 'per pair'
     },
     th: {
       kicker: 'ปรับปรุงการทำงาน ดูเข้าใจง่ายด้วยภาพ', before: 'แบบเดิม', after: 'แบบใหม่', how: 'วิธีทำ', check: 'ตรวจสอบ',
       howToRead: 'วิธีอ่านคู่มือนี้', legendBefore: 'ปัญหาที่เคยเกิด', legendAfter: 'วิธีทำงานแบบใหม่', legendCheck: 'ดูว่าทำได้จริงหรือไม่',
       areas: '5 ส่วนงานที่จะปรับปรุง', chapter: function (n) { return 'บทที่ ' + n; }, appendix: 'ภาคผนวก', inReview: 'อยู่ระหว่างตรวจสอบ',
       textNote: 'ดูรายละเอียดทั้งหมดได้ที่ปุ่ม “ข้อความ” มุมขวาบน', confidential: 'เอกสารใช้ภายในบริษัท',
-      am: 'เช้า', today: 'วันนี้', ours: 'ของเรา', bizDays: 'วันทำการ', mon: 'จ.', minus1: '−1 วัน', handbook: 'คู่มือ', perPair: 'ต่อ 1 คู่'
+      am: 'เช้า', today: 'วันนี้', monThu: 'จ.·พฤ.', fri: 'ศ.', ours: 'ของเรา', bizDays: 'วันทำการ', mon: 'จ.', minus1: '−1 วัน', handbook: 'คู่มือ', perPair: 'ต่อ 1 คู่'
     }
   };
 
   // 章
   var CHAPTERS = [
     { icon: 'pos', t: { ja: '経理', en: 'Accounting', th: 'บัญชี' },
-      d: { ja: '売上・決済・返金を毎日確認', en: 'Check sales, payments and refunds every day', th: 'ตรวจยอดขาย การชำระเงิน และการคืนเงินทุกวัน' } },
+      d: { ja: '売上を毎日確認し、手入力を減らす', en: 'Check sales daily, type less', th: 'ตรวจยอดขายทุกวัน ลดการคีย์มือ' } },
     { icon: 'truck', t: { ja: '店舗・イベント・オンライン物流', en: 'Store, Event & Online Logistics', th: 'โลจิสติกส์ร้านค้า อีเวนต์ และออนไลน์' },
       d: { ja: '商品の動きをオフィスが計画的に管理', en: 'The office plans how stock moves', th: 'ออฟฟิศวางแผนการเคลื่อนย้ายสินค้า' } },
-    { icon: 'search', t: { ja: 'QC・検品', en: 'QC & Inspection', th: 'QC และการตรวจสินค้า' },
-      d: { ja: '時間の基準と、仕分けのルール', en: 'Standard times and sorting rules', th: 'เวลามาตรฐานและกฎการคัดแยก' } },
-    { icon: 'check', t: { ja: '人事', en: 'HR', th: 'ฝ่ายบุคคล' },
+    { icon: 'box', t: { ja: '在庫・倉庫・QC', en: 'Stock, Warehouse & QC', th: 'สต็อก คลังสินค้า และ QC' },
+      d: { ja: '在庫は Zort で管理、QC は基準どおり', en: 'Stock in Zort, QC by the standard', th: 'สต็อกใน Zort และ QC ตามมาตรฐาน' } },
+    { icon: 'check', t: { ja: 'HR・PC 管理', en: 'HR & PC Management', th: 'HR และการดูแล PC' },
       d: { ja: 'だれが・いつ・どこに入るかを見える化', en: 'Show who works where, and when', th: 'เห็นชัดว่าใคร อยู่ที่ไหน เมื่อไร' } },
+    { icon: 'claim', t: { ja: 'EC・顧客対応', en: 'E-commerce & Customer Service', th: 'อีคอมเมิร์ซและบริการลูกค้า' },
+      d: { ja: 'クレームは証明がそろってから', en: 'Claims only with full proof', th: 'รับเคลมเมื่อหลักฐานครบ' } },
     { icon: 'clean', t: { ja: '全体', en: 'Company-wide', th: 'ทั้งบริษัท' },
-      d: { ja: '全員で守るルール', en: 'Rules for everyone', th: 'กฎที่ทุกคนต้องทำ' } }
+      d: { ja: '全員で守るルールと進め方', en: 'Rules for everyone, and the roll-out', th: 'กฎที่ทุกคนต้องทำ และขั้นตอนเริ่มใช้' } }
   ];
 
   // 項目
@@ -367,7 +414,7 @@
       t: { ja: '売上を毎日照合', en: 'Reconcile sales daily', th: 'กระทบยอดขายทุกวัน' },
       when: { ja: '毎朝', en: 'Every morning', th: 'ทุกเช้า' },
       b: { ja: 'まとめて確認していたので、差額の原因が分からない', en: 'Checked in batches, so gaps couldn’t be traced', th: 'ตรวจรวมทีหลัง จึงหาสาเหตุส่วนต่างไม่ได้' },
-      a: { ja: '毎朝、前日分を照合する', en: 'Every morning, check yesterday’s sales', th: 'ทุกเช้า กระทบยอดของเมื่อวาน' },
+      a: { ja: '毎朝、前日の店舗・イベントの売上を照合', en: 'Every morning, check yesterday’s store and event sales', th: 'ทุกเช้า กระทบยอดของเมื่อวาน ทั้งหน้าร้านและอีเวนต์' },
       steps: [
         ['pos', { ja: 'POS 売上を出す', en: 'Pull POS sales', th: 'ดึงยอด POS' }],
         ['pay', { ja: '決済データと照合', en: 'Match payments', th: 'เทียบยอดชำระเงิน' }],
@@ -380,6 +427,21 @@
       b: { ja: 'すぐ確認せず、お客様を待たせていた', en: 'Not checked right away — customers waited', th: 'ไม่ได้เช็กทันที ลูกค้าต้องรอ' },
       a: { ja: 'その日か、翌朝いちばんに処理', en: 'Process it the same day, or first thing next morning', th: 'ทำภายในวัน หรือเป็นงานแรกของเช้าวันถัดไป' },
       c: { ja: '発生日と処理日を記録', en: 'Record when it happened and when it was done', th: 'บันทึกวันที่เกิดและวันที่ทำ' } },
+    { ch: 0, scene: 'input', bm: 'pile', am: 'ai',
+      t: { ja: '手入力を「取り込む・読む・貼る」に', en: 'Import, read, paste — not type', th: 'เลิกคีย์มือ: นำเข้า อ่าน วาง' },
+      b: { ja: '手入力と二重確認が多く、売上の確認は週 1 回だけ', en: 'Lots of typing and double checks — sales checked only weekly', th: 'คีย์มือและตรวจซ้ำมาก ตรวจยอดขายได้แค่สัปดาห์ละครั้ง' },
+      a: { ja: '①〜⑦を新しいやり方で。本番までは今のやり方と並行', en: 'Do ①–⑦ the new way, alongside the old way until go-live', th: 'ทำ ①–⑦ ด้วยวิธีใหม่ ทำคู่กับวิธีเดิมจนกว่าจะใช้จริง' },
+      kpi: { v: '107', u: { ja: '時間 減らせる見込み', en: 'hours saved (expected)', th: 'ชั่วโมงที่คาดว่าลดได้' },
+        l: { ja: '350 時間の 31%・少なくても約 49 時間。空いた時間で売上を毎日確認', en: '31% of 350 hours · at least about 49. The time goes to daily sales checks', th: '31% ของ 350 ชั่วโมง · อย่างน้อยประมาณ 49 ใช้เวลาที่ได้คืนตรวจยอดขายทุกวัน' } },
+      rows: [
+        [{ ja: '① 銀行', en: '① Bank', th: '① ธนาคาร' }, { ja: '明細を取り込み、AI の候補を確認', en: 'Import statements, check AI matches', th: 'นำเข้ารายการ แล้วตรวจคู่ที่ AI เสนอ' }],
+        [{ ja: '② Sales Record', en: '② Sales Record', th: '② Sales Record' }, { ja: 'POS レポートを貼る', en: 'Paste the POS report', th: 'วางรายงาน POS' }],
+        [{ ja: '③ Shopee・Lazada', en: '③ Shopee · Lazada', th: '③ Shopee · Lazada' }, { ja: 'マクロで照合', en: 'Match with a macro', th: 'ตรวจด้วยแมโคร' }],
+        [{ ja: '④ 経費・仕入 VAT', en: '④ Expenses · purchase VAT', th: '④ ค่าใช้จ่าย · VAT ซื้อ' }, { ja: 'AI で読み取る', en: 'Read with AI', th: 'ให้ AI อ่านเอกสาร' }],
+        [{ ja: '⑤ 百貨店', en: '⑤ Department stores', th: '⑤ ห้างสรรพสินค้า' }, { ja: 'SKU 対応表と突合表', en: 'SKU mapping + matching sheet', th: 'ตารางจับคู่ SKU + ตารางกระทบยอด' }],
+        [{ ja: '⑥ 定型書類', en: '⑥ Routine documents', th: '⑥ เอกสารประจำ' }, { ja: 'Excel で一括取込', en: 'Bulk import from Excel', th: 'นำเข้าจาก Excel ทีเดียว' }],
+        [{ ja: '⑦ 紙', en: '⑦ Paper', th: '⑦ กระดาษ' }, { ja: '必要な書類だけ紙で', en: 'Paper only where required', th: 'ใช้กระดาษเฉพาะที่จำเป็น' }]],
+      c: { ja: '結果が今のやり方と同じか・作業時間が減ったか', en: 'Results match the old way · less work time', th: 'ผลตรงกับวิธีเดิมไหม · เวลาทำงานลดลงไหม' } },
     { ch: 0, scene: 'sku', bm: 'search', am: 'ai', review: true,
       t: { ja: 'SKU コードの照合', en: 'Match SKU codes', th: 'เทียบรหัส SKU' },
       when: { ja: 'Siam Discovery・Central', en: 'Siam Discovery · Central', th: 'Siam Discovery · Central' },
@@ -391,31 +453,38 @@
 
     /* ---------- 第 2 章 物流 ---------- */
     { ch: 1, scene: 'restock', bm: 'mess', am: 'calendar',
-      t: { ja: '店舗の補充は毎週月曜', en: 'Restock stores every Monday', th: 'เติมสินค้าสาขาทุกวันจันทร์' },
-      when: { ja: '毎週月曜日', en: 'Every Monday', th: 'ทุกวันจันทร์' },
-      b: { ja: 'PC が毎回、在庫を見て依頼していた', en: 'PCs checked stock and asked for items each time', th: 'PC ต้องเช็กสต็อกและขอของเองทุกครั้ง' },
-      a: { ja: 'オフィスが在庫を見て、月曜にまとめて補充', en: 'The office checks stock and restocks on Monday', th: 'ออฟฟิศดูสต็อก แล้วเติมให้ทุกวันจันทร์' },
+      t: { ja: '店舗の補充は月曜・木曜', en: 'Restock stores Mon & Thu', th: 'เติมสินค้าสาขาทุกจันทร์และพฤหัสฯ' },
+      when: { ja: '月・木（Paradise は 15 日・30 日）', en: 'Mon & Thu (Paradise: 15th & 30th)', th: 'จ. และ พฤ. (Paradise วันที่ 15 และ 30)' },
+      b: { ja: 'PC が毎回、在庫を見て発注していた', en: 'PCs checked stock and ordered each time', th: 'PC ต้องเช็กสต็อกและสั่งของเองทุกครั้ง' },
+      a: { ja: 'Ying が売上と在庫を見て補充リストを作り、配送日に送る', en: 'Ying makes the list from sales and stock, and ships on delivery days', th: 'Ying ทำรายการจากยอดขายและสต็อก แล้วส่งในวันจัดส่ง' },
       steps: [
         ['list', { ja: '補充リスト', en: 'Restock list', th: 'รายการเติมของ' }],
         ['box', { ja: 'ピッキング・DN 作成', en: 'Pick · Delivery Note', th: 'หยิบของ · DN' }],
-        ['stamp', { ja: '承認して発送', en: 'Approve & ship', th: 'อนุมัติแล้วส่ง' }],
+        ['stamp', { ja: '送る前に伝票と中身を照合', en: 'Check note vs. contents, then ship', th: 'ตรวจใบส่งของกับของ แล้วส่ง' }],
         ['data', { ja: '在庫データ更新', en: 'Update stock data', th: 'อัปเดตสต็อก' }],
-        ['store', { ja: '店舗で受領チェック', en: 'Store checks it in', th: 'สาขาตรวจรับ' }]],
+        ['store', { ja: '店舗でも伝票と中身を照合', en: 'Store checks note vs. contents', th: 'สาขาตรวจใบส่งของกับของ' }]],
       extra: [
-        ['count', { ja: '月末：PC が在庫を数えて報告', en: 'Month-end: the PC counts and reports stock', th: 'สิ้นเดือน: PC นับสต็อกแล้วรายงาน' }],
-        ['truck', { ja: '週末：Paradise Park のオンライン発送はリストで報告', en: 'Weekends: list online orders shipped from Paradise Park', th: 'เสาร์–อาทิตย์: ออเดอร์ออนไลน์จาก Paradise Park ทำรายการแจ้ง' }]],
-      c: { ja: '月曜に全店舗へ発送・月末の差異を記録', en: 'All stores shipped on Monday · month-end gaps recorded', th: 'ส่งครบทุกสาขาวันจันทร์ · บันทึกส่วนต่างสิ้นเดือน' } },
+        ['store', { ja: 'PC は在庫カウントと発注をやめ、接客と売場に集中', en: 'PCs stop counting and ordering — customers and the floor come first', th: 'PC เลิกนับสต็อกและสั่งของ โฟกัสลูกค้าและหน้าร้าน' }],
+        ['truck', { ja: '週末のオンライン発送は PC が Online Shipping シートに入力', en: 'Weekend online shipments: the PC fills in the Online Shipping sheet', th: 'การส่งออนไลน์ช่วงสุดสัปดาห์ PC บันทึกในชีต Online Shipping' }]],
+      c: { ja: '伝票と中身が合っている。違いはその日にグループへ', en: 'Notes match the contents; gaps go to the group the same day', th: 'ใบส่งของตรงกับของ ไม่ตรงแจ้งกลุ่มภายในวัน' } },
+    { ch: 1, scene: 'wholesale', am: 'check',
+      t: { ja: '卸取引先は補充後にフォロー', en: 'Follow up wholesale customers', th: 'ติดตามลูกค้าค้าส่งหลังเติมสินค้า' },
+      a: { ja: '補充したら、コーディネーターが取引先にフォロー', en: 'After restocking, the coordinator follows up', th: 'หลังเติมสินค้า ผู้ประสานงานติดตามผลกับลูกค้า' },
+      steps: [
+        ['truck', { ja: '卸取引先に補充', en: 'Restock the customer', th: 'เติมสินค้าให้ลูกค้า' }],
+        ['check', { ja: '取引先にフォロー', en: 'Follow up', th: 'ติดตามผล' }],
+        ['store', { ja: 'バンコクは陳列後に BD と訪問', en: 'Bangkok: visit with BD once displayed', th: 'กรุงเทพฯ: ไปเยี่ยมพร้อม BD หลังวางขาย' }]] },
     { ch: 1, scene: 'online', bm: 'late', am: 'fast',
       t: { ja: 'オンラインは 14:00 締め', en: 'Online: 2 PM cut-off', th: 'ออนไลน์ปิดรับ 14:00 น.' },
       when: { ja: '毎日', en: 'Every day', th: 'ทุกวัน' },
       b: { ja: '朝の発送のあとの注文は、翌日発送だった', en: 'Orders after the morning shipment waited a day', th: 'ออเดอร์หลังส่งรอบเช้า ต้องรอวันถัดไป' },
-      a: { ja: '14:00 までの注文は当日発送', en: 'Orders by 2 PM ship the same day', th: 'สั่งก่อน 14:00 น. ส่งภายในวัน' },
+      a: { ja: '毎日 14:00 に Ying が Shopee を確認し、当日発送', en: 'Ying checks Shopee at 2 PM daily and ships the same day', th: 'Ying เช็ก Shopee ทุกวัน 14:00 น. แล้วส่งภายในวัน' },
       timeline: true,
       c: { ja: '発送したら表にチェック', en: 'Tick the sheet once shipped', th: 'ส่งแล้วติ๊กในตาราง' } },
     { ch: 1, scene: 'equip', bm: 'search', am: 'check',
       t: { ja: 'イベント備品はリストで準備', en: 'Event equipment: use the list', th: 'เตรียมอุปกรณ์อีเวนต์ตามรายการ' },
       b: { ja: '探すのに時間がかかり、忘れ物も出ていた', en: 'Time lost searching, and things were forgotten', th: 'เสียเวลาหาของ และมีของตกหล่น' },
-      a: { ja: '備品リストで 3 回チェック', en: 'Check the list 3 times', th: 'เช็กตามรายการ 3 ครั้ง' },
+      a: { ja: 'Ying が什器リストを確定し、3 回チェック', en: 'Ying finalizes the fixtures list; check it 3 times', th: 'Ying สรุปรายการอุปกรณ์ แล้วเช็ก 3 ครั้ง' },
       steps: [
         ['check', { ja: '準備するとき', en: 'Preparing', th: 'ตอนเตรียม' }],
         ['load', { ja: '積み込む前', en: 'Before loading', th: 'ก่อนขึ้นรถ' }],
@@ -424,16 +493,28 @@
     { ch: 1, scene: 'vehicle', bm: 'wait', am: 'fast',
       t: { ja: '車は前日までに確保', en: 'Book the vehicle a day ahead', th: 'จองรถล่วงหน้า 1 วัน' },
       b: { ja: '直前に手配して、待ち時間が出ていた', en: 'Last-minute booking meant waiting', th: 'จองกระชั้นชิด ต้องรอรถ' },
-      a: { ja: '1 日前までに車両を確保', en: 'Have the vehicle confirmed the day before', th: 'ได้รถก่อนวันงานอย่างน้อย 1 วัน' },
+      a: { ja: '1 日前までに Ying が車両を確保', en: 'Ying confirms the vehicle by the day before', th: 'Ying จองรถให้ได้ก่อนวันงาน 1 วัน' },
       c: { ja: '配車表に記入。グループには「時間」と「確保完了」だけ', en: 'Fill in the vehicle sheet; post only the time and “confirmed”', th: 'กรอกตารางจัดรถ แจ้งกลุ่มแค่ “เวลา” และ “ได้รถแล้ว”' } },
     { ch: 1, scene: 'event', bm: 'mess', am: 'check',
       t: { ja: 'イベントは手順書どおり', en: 'Run events by the handbook', th: 'ทำอีเวนต์ตามคู่มือ' },
       b: { ja: 'やり方がバラバラで遅く、在庫のずれも出た', en: 'Different every time — slow, with stock gaps', th: 'ทำไม่เหมือนกัน ช้า และสต็อกไม่ตรง' },
       a: { ja: '手順書どおりに進める（付録）', en: 'Follow the handbook (appendix)', th: 'ทำตามคู่มือ (ภาคผนวก)' },
       stages: true,
+      extra: [
+        ['stamp', { ja: '③ の承認が出るまで、準備を始めない', en: 'Don’t start preparing until step ③ is approved', th: 'ห้ามเริ่มเตรียมจนกว่าขั้นที่ ③ จะอนุมัติ' }],
+        ['count', { ja: '初日の朝、販売前に全商品を数える（PC 責任者）', en: 'First morning: count everything before selling (PC lead)', th: 'เช้าวันแรก นับสินค้าทั้งหมดก่อนขาย (หัวหน้า PC)' }],
+        ['list', { ja: 'Close 後 2 営業日以内に結果を報告（Ying）', en: 'Report results within 2 working days of Close (Ying)', th: 'รายงานผลภายใน 2 วันทำการหลังปิดงาน (Ying)' }]],
       c: { ja: 'Delivery Note ＝ 返送＋販売。ずれは報告して承認', en: 'Delivery Note = returned + sold. Gaps reported and approved', th: 'Delivery Note = ส่งกลับ + ขาย ส่วนต่างต้องรายงานและอนุมัติ' } },
 
-    /* ---------- 第 3 章 QC ---------- */
+    /* ---------- 第 3 章 在庫・倉庫・QC ---------- */
+    { ch: 2, scene: 'zort', am: 'check',
+      t: { ja: '在庫は Zort で管理', en: 'Manage stock in Zort', th: 'จัดการสต็อกใน Zort' },
+      a: { ja: '入出庫はすべて Zort に記録。毎回の全数カウントはやめる', en: 'Record every in and out in Zort; stop full counts every time', th: 'บันทึกเข้า-ออกทั้งหมดใน Zort เลิกนับทั้งหมดทุกครั้ง' },
+      rules: [
+        ['box', { ja: '在庫を動かす仕事（オンライン配送・イベント準備・返品交換・店舗補充）は倉庫担当が責任を持つ', en: 'Warehouse staff own every job that moves stock (online shipping, event prep, returns & exchanges, store restock)', th: 'พนักงานคลังรับผิดชอบงานที่เคลื่อนย้ายสต็อก (ส่งออนไลน์ เตรียมอีเวนต์ คืน-เปลี่ยนสินค้า เติมสินค้าสาขา)' }],
+        ['data', { ja: '入出庫を Zort に記録する', en: 'Record ins and outs in Zort', th: 'บันทึกเข้า-ออกใน Zort' }],
+        ['count', { ja: '毎月末、経理と倉庫担当で棚卸し', en: 'Month-end stock count: Accounting + warehouse', th: 'นับสต็อกสิ้นเดือน: บัญชี + คลัง' }],
+        ['truck', { ja: '例：コーディネーターは梱包・配送までを請け負う', en: 'e.g. the coordinator takes on packing and shipping', th: 'ตัวอย่าง: ผู้ประสานงานรับงานถึงการแพ็กและจัดส่ง' }]] },
     { ch: 2, scene: 'times', bm: 'wait', am: 'timer',
       t: { ja: '基準時間で計画する', en: 'Plan with standard times', th: 'วางแผนด้วยเวลามาตรฐาน' },
       b: { ja: '時間が読めず、直前に人を集めていた', en: 'Time was unpredictable; help was found last minute', th: 'คาดเวลาไม่ได้ ต้องหาคนกระชั้นชิด' },
@@ -453,21 +534,61 @@
       tree: true,
       c: { ja: '販売・修理までの日数／B 品の在庫数（月 1 回）', en: 'Days to sale or repair · B-grade stock (monthly)', th: 'จำนวนวันถึงขายหรือซ่อม · สต็อกเกรด B (เดือนละครั้ง)' } },
 
-    /* ---------- 第 4 章 人事 ---------- */
+    /* ---------- 第 4 章 HR・PC 管理 ---------- */
     { ch: 3, scene: 'pc', bm: 'search', am: 'table',
       t: { ja: '担当 PC の予定表', en: 'PC schedule', th: 'ตาราง PC' },
       b: { ja: 'だれがどこにいるか、分かりにくかった', en: 'Hard to know who was where', th: 'ไม่รู้ว่าใครอยู่ที่ไหน' },
       a: { ja: '「日付 × 店舗・イベント」の表を作る', en: 'One table: date × store / event', th: 'ทำตาราง “วันที่ × สาขา / อีเวนต์”' },
       c: { ja: '空欄（担当未定）がない', en: 'No blank (unassigned) cells', th: 'ไม่มีช่องว่าง (ยังไม่มีคนประจำ)' } },
+    { ch: 3, scene: 'shift', am: 'table',
+      t: { ja: 'シフト表で配置と打刻を見る', en: 'Shift sheet: who’s where, and clock-ins', th: 'ตารางกะ: ใครอยู่ไหน และเวลาเข้า-ออก' },
+      a: { ja: 'Pong がシフト表に配置と実際の打刻を入力', en: 'Pong enters assignments and actual clock-ins', th: 'Pong กรอกการจัดคนและเวลาเข้า-ออกจริง' },
+      steps: [
+        ['list', { ja: '配置と打刻を入力', en: 'Enter assignments & clock-ins', th: 'กรอกการจัดคนและเวลา' }],
+        ['pos', { ja: '売上と打刻を合わせて見る', en: 'Look at sales with clock-ins', th: 'ดูยอดขายคู่กับเวลาเข้า-ออก' }],
+        ['search', { ja: '売上ゼロ・打刻の異常は現場を確認', en: 'Zero sales or odd clock-ins: check on site', th: 'ยอดเป็นศูนย์หรือเวลาผิดปกติ ไปดูหน้างาน' }]] },
 
-    /* ---------- 第 5 章 全体 ---------- */
-    { ch: 4, scene: 'clean', bm: 'mess', am: 'check',
+    /* ---------- 第 5 章 EC・顧客対応 ---------- */
+    { ch: 4, scene: 'claim', am: 'check',
+      t: { ja: 'クレームは証明がそろってから', en: 'Claims: proof first', th: 'เคลม: ต้องมีหลักฐานครบก่อน' },
+      a: { ja: '購入証明と破損写真がそろうまで、先へ進めない', en: 'Nothing moves until we have proof of purchase and damage photos', th: 'ยังไม่ดำเนินการจนกว่าจะได้หลักฐานการซื้อและรูปความเสียหาย' },
+      steps: [
+        ['list', { ja: '購入証明と破損写真', en: 'Proof of purchase + damage photos', th: 'หลักฐานการซื้อ + รูปความเสียหาย' }],
+        ['store', { ja: '卸先で購入 → その店舗へ案内', en: 'Bought at a retailer → send to that store', th: 'ซื้อจากร้านตัวแทน → แนะนำไปร้านนั้น' }],
+        ['ok', { ja: '自社で購入 → 修理・交換・返金', en: 'Bought from us → repair, replace or refund', th: 'ซื้อจากเรา → ซ่อม เปลี่ยน หรือคืนเงิน' }],
+        ['search', { ja: '迷ったら島田さん・Bew さんに確認', en: 'Unsure? Ask Shimada or Bew', th: 'ไม่แน่ใจ ถามคุณชิมาดะหรือคุณ Bew' }]] },
+
+    /* ---------- 第 6 章 全体 ---------- */
+    { ch: 5, scene: 'clean', bm: 'mess', am: 'check',
       t: { ja: 'ゴミ・掃除は当番制', en: 'Trash & cleaning rota', th: 'เวรทิ้งขยะและทำความสะอาด' },
       when: { ja: '週替わり', en: 'Weekly', th: 'หมุนเวียนรายสัปดาห์' },
       b: { ja: '気づいた人だけがやっていた', en: 'Only whoever noticed did it', th: 'ใครเห็นก็ทำ' },
       a: { ja: '週替わりの当番が、チェックリストで行う', en: 'A weekly rota, done with a checklist', th: 'เวรประจำสัปดาห์ ทำตามเช็กลิสต์' },
       areas: true,
-      c: { ja: '当番表のチェック欄が毎週うまっている', en: 'The rota is ticked every week', th: 'ช่องเช็กในตารางเวรครบทุกสัปดาห์' } }
+      c: { ja: '当番表のチェック欄が毎週うまっている', en: 'The rota is ticked every week', th: 'ช่องเช็กในตารางเวรครบทุกสัปดาห์' } },
+    { ch: 5, scene: 'basics', am: 'check',
+      t: { ja: '毎日の基本ルール', en: 'Everyday basics', th: 'กฎพื้นฐานทุกวัน' },
+      a: { ja: '決めた手順を、全員が同じように守る', en: 'Everyone follows the agreed steps the same way', th: 'ทุกคนทำตามขั้นตอนที่ตกลงกันเหมือนกัน' },
+      rules: [
+        ['list', { ja: '日報に「作業・時間・困ったこと」を毎日書く', en: 'Daily report: tasks, time, problems — every day', th: 'รายงานประจำวัน: งาน เวลา ปัญหา ทุกวัน' }],
+        ['cal', { ja: '予定と期限は Google カレンダーへ', en: 'Plans and deadlines go in Google Calendar', th: 'แผนงานและกำหนดส่ง ใส่ใน Google Calendar' }],
+        ['stamp', { ja: '書類は作成者が先にサイン', en: 'The person who makes a document signs first', th: 'ผู้ทำเอกสารเซ็นก่อน' }],
+        ['chat', { ja: '店舗・取引先の情報は、その日のうちにグループへ', en: 'News from stores or partners goes to the group the same day', th: 'ข้อมูลจากร้านหรือคู่ค้า แจ้งกลุ่มภายในวันนั้น' }],
+        ['clock', { ja: '止まったタスクは、自分から催促する', en: 'Chase stalled tasks yourself', th: 'งานที่ค้าง ให้ตามเอง' }]] },
+    { ch: 5, scene: 'deadline', am: 'fast',
+      t: { ja: '期限のない指示は、その日のうちに', en: 'No deadline given? Finish it today', th: 'คำสั่งไม่มีกำหนดส่ง ทำให้เสร็จวันนั้น' },
+      a: { ja: '指示があった日が締め切り', en: 'The day you get it is the deadline', th: 'วันที่ได้รับคำสั่งคือวันกำหนดส่ง' },
+      rules: [
+        ['clock', { ja: 'その日のうちに終える', en: 'Finish it the same day', th: 'ทำให้เสร็จภายในวันนั้น' }],
+        ['chat', { ja: '間に合わないときは島田さんに説明し、何日かかるか報告', en: 'Can’t make it? Tell Shimada why, and how many days it will take', th: 'ทำไม่ทัน ให้อธิบายคุณชิมาดะ และแจ้งว่าใช้เวลากี่วัน' }]] },
+    { ch: 5, scene: 'rollout', am: 'check',
+      t: { ja: '進め方：2 か月で見直す', en: 'Roll-out: review after 2 months', th: 'ขั้นตอน: ทบทวนใน 2 เดือน' },
+      a: { ja: '開始日から、新しい手順で始める', en: 'From the start date, work the new way', th: 'เริ่มทำตามขั้นตอนใหม่ตั้งแต่วันเริ่ม' },
+      phases: true,
+      rules: [
+        ['list', { ja: '日報を毎日。オフィスが AI で分析し、フォローに使う', en: 'Daily report every day — the office analyses it with AI for follow-up', th: 'รายงานประจำวันทุกวัน ออฟฟิศใช้ AI วิเคราะห์เพื่อติดตามผล' }],
+        ['chat', { ja: '例外や困ったことは、止めずにその日のうちにグループへ', en: 'Exceptions or problems: don’t stop — tell the group the same day', th: 'กรณีพิเศษหรือปัญหา ไม่ต้องหยุดงาน แจ้งกลุ่มภายในวันนั้น' }],
+        ['cal', { ja: '毎月初めの月次定例で、前月の状況を報告', en: 'Report last month at the monthly meeting', th: 'รายงานเดือนก่อนในประชุมประจำเดือน' }]] }
   ];
 
   // 追加の図で使う文言
@@ -503,10 +624,16 @@
       { l: { ja: 'ゴミ出し', en: 'Trash', th: 'ทิ้งขยะ' }, ic: 'bin' }, { l: { ja: '床・机', en: 'Floor & desks', th: 'พื้นและโต๊ะ' }, ic: 'broom' },
       { l: { ja: '倉庫の通路', en: 'Warehouse aisles', th: 'ทางเดินในคลัง' }, ic: 'box' }, { l: { ja: 'トイレ・給湯', en: 'Toilet & kitchenette', th: 'ห้องน้ำและมุมเครื่องดื่ม' }, ic: 'spark' }
     ],
+    phases: [
+      { w: { ja: '開始日から', en: 'From the start', th: 'ตั้งแต่วันเริ่ม' }, b: { ja: '始める', en: 'Start', th: 'เริ่ม' }, d: { ja: '新しい手順で', en: 'Work the new way', th: 'ทำตามขั้นตอนใหม่' }, col: C.teal },
+      { w: { ja: '毎週金曜', en: 'Every Friday', th: 'ทุกวันศุกร์' }, b: { ja: 'フォロー', en: 'Follow-up', th: 'ติดตามผล' }, d: { ja: '15 分で進み具合と困りごと', en: '15 min: progress & problems', th: '15 นาที: ความคืบหน้าและปัญหา' }, col: C.gold },
+      { w: { ja: '1 か月後', en: 'After 1 month', th: 'หลัง 1 เดือน' }, b: { ja: '中間確認', en: 'Midpoint check', th: 'ตรวจกลางทาง' }, d: { ja: '手順を少し直す', en: 'Adjust the steps', th: 'ปรับขั้นตอนเล็กน้อย' }, col: C.blue },
+      { w: { ja: '2 か月後', en: 'After 2 months', th: 'หลัง 2 เดือน' }, b: { ja: '見直し', en: 'Review', th: 'ทบทวน' }, d: { ja: '止める・直すを決める', en: 'Decide what to stop or fix', th: 'ตัดสินใจหยุดหรือแก้' }, col: C.green }
+    ],
     stages: [
-      { l: { ja: '準備・出庫', en: 'Prepare & stock out', th: 'เตรียมของ · เบิกออก' }, n: '1–5', ic: 'box' },
-      { l: { ja: '会期中', en: 'During the event', th: 'ระหว่างงาน' }, n: '6–8', ic: 'booth' },
-      { l: { ja: 'Close・棚戻し', en: 'Close & back to shelves', th: 'ปิดงาน · เก็บขึ้นชั้น' }, n: '9–15', ic: 'check' }
+      { l: { ja: '準備・出庫', en: 'Prepare & stock out', th: 'เตรียมของ · เบิกออก' }, n: { ja: '1–6 · 3〜1 営業日前', en: '1–6 · 3–1 working days before', th: '1–6 · 3–1 วันทำการก่อนงาน' }, ic: 'box' },
+      { l: { ja: '会期中', en: 'During the event', th: 'ระหว่างงาน' }, n: { ja: '7–8 · 初日〜', en: '7–8 · from day 1', th: '7–8 · ตั้งแต่วันแรก' }, ic: 'booth' },
+      { l: { ja: 'Close・棚戻し', en: 'Close & back to shelves', th: 'ปิดงาน · เก็บขึ้นชั้น' }, n: { ja: '9–15 · 〜2 営業日目', en: '9–15 · to working day 2', th: '9–15 · ถึงวันทำการที่ 2' }, ic: 'check' }
     ]
   };
 
@@ -523,14 +650,14 @@
       { n: 'Shimada', r: { ja: 'Delivery Note と差異の承認', en: 'Approves the Delivery Note and differences', th: 'อนุมัติ Delivery Note และส่วนต่าง' }, col: C.red }
     ],
     lanes: [
-      { l: { ja: '準備・出庫', en: 'Prepare & stock out', th: 'เตรียมของ · เบิกออก' }, col: C.navy, steps: [
+      { l: { ja: '準備・出庫（3〜1 営業日前）', en: 'Prepare & stock out (3–1 working days before)', th: 'เตรียมของ · เบิกออก (3–1 วันทำการก่อนงาน)' }, col: C.navy, steps: [
         ['1', 'Event Proposal', 'Hoshino'], ['2', 'Delivery Note', 'Ying'], ['3', { ja: '承認（Sign）', en: 'Sign', th: 'ลงนาม (Sign)' }, 'Shimada'],
         ['4', { ja: '商品準備', en: 'Prepare', th: 'เตรียมสินค้า' }, { ja: 'Ying＋倉庫', en: 'Ying + warehouse', th: 'Ying + คลัง' }], ['5', { ja: 'Zort 出庫', en: 'Stock out (Zort)', th: 'เบิกออก (Zort)' }, { ja: '経理', en: 'Accounting', th: 'บัญชี' }]] },
-      { l: { ja: '会期中', en: 'During the event', th: 'ระหว่างงาน' }, col: C.teal, steps: [
+      { l: { ja: '会期中（初日〜）', en: 'During the event (from day 1)', th: 'ระหว่างงาน (ตั้งแต่วันแรก)' }, col: C.teal, steps: [
         ['6', { ja: '設営（前日）', en: 'Setup (day before)', th: 'จัดบูธ (วันก่อนงาน)' }, { ja: 'Ying＋倉庫', en: 'Ying + warehouse', th: 'Ying + คลัง' }],
         ['7', { ja: '受領カウント（初日朝）', en: 'Receipt count (first morning)', th: 'นับรับสินค้า (เช้าวันแรก)' }, 'PC'],
         ['8', { ja: '補充（発送＋Zort）', en: 'Refill (ship + Zort)', th: 'เติมสินค้า (ส่ง + Zort)' }, { ja: 'Ying・経理', en: 'Ying · Accounting', th: 'Ying · บัญชี' }]] },
-      { l: { ja: 'Close・棚戻し', en: 'Close & back to shelves', th: 'ปิดงาน · เก็บขึ้นชั้น' }, col: '#b7790f', steps: [
+      { l: { ja: 'Close・棚戻し（Close 当日〜2 営業日目）', en: 'Close & back to shelves (Close day to working day 2)', th: 'ปิดงาน · เก็บขึ้นชั้น (วันปิดงานถึงวันทำการที่ 2)' }, col: '#b7790f', steps: [
         ['9', { ja: 'Close（封印・搬出）', en: 'Close (seal, load out)', th: 'ปิดงาน (ซีลกล่อง ขนออก)' }, { ja: 'PC・Ying・倉庫', en: 'PC · Ying · warehouse', th: 'PC · Ying · คลัง' }],
         ['10', { ja: 'カウント（翌営業日）', en: 'Count (next business day)', th: 'นับสินค้า (วันทำการถัดไป)' }, { ja: '倉庫', en: 'Warehouse', th: 'คลัง' }],
         ['11', { ja: '照合', en: 'Reconcile', th: 'กระทบยอด' }, { ja: '経理', en: 'Accounting', th: 'บัญชี' }],
@@ -654,12 +781,18 @@
     }
     var left = svg(VB, SCENES[it.scene](U), 'ig-hero');
     if (it.extra) left += '<div class="ig-extra">' + it.extra.map(function (e) { return '<div>' + icon(e[0]) + '<span>' + esc(L(e[1])) + '</span></div>'; }).join('') + '</div>';
-    var right = '<div class="ig-card is-before">' + svg('0 0 120 92', MINI[it.bm](U), 'ig-mini') + '<div><b>' + esc(U.before) + '</b><p>' + esc(L(it.b)) + '</p></div></div>' +
-      '<div class="ig-down" aria-hidden="true">▼</div>' +
+    if (it.kpi) left += '<div class="ig-kpi"><b>' + esc(it.kpi.v) + '</b><span><strong>' + esc(L(it.kpi.u)) + '</strong>' + esc(L(it.kpi.l)) + '</span></div>';
+    var right = (it.b ? '<div class="ig-card is-before">' + svg('0 0 120 92', MINI[it.bm](U), 'ig-mini') + '<div><b>' + esc(U.before) + '</b><p>' + esc(L(it.b)) + '</p></div></div>' +
+      '<div class="ig-down" aria-hidden="true">▼</div>' : '') +
       '<div class="ig-card is-after">' + svg('0 0 120 92', MINI[it.am](U), 'ig-mini') + '<div><b>' + esc(U.after) + '</b><p>' + esc(L(it.a)) + '</p></div></div>';
     if (it.steps) right += '<div class="ig-how"><span class="ig-label">' + esc(U.how) + '</span><ol class="ig-steps">' + it.steps.map(function (s, i) {
       return '<li><span class="ig-step-n">' + (i + 1) + '</span>' + icon(s[0]) + '<span>' + esc(L(s[1])) + '</span></li>';
     }).join('') + '</ol></div>';
+    if (it.rows) right += '<div class="ig-rows">' + it.rows.map(function (r) { return '<div><b>' + esc(L(r[0])) + '</b><span>' + esc(L(r[1])) + '</span></div>'; }).join('') + '</div>';
+    if (it.phases) right += '<ol class="ig-phases">' + X.phases.map(function (p) {
+      return '<li style="--b:' + p.col + '"><small>' + esc(L(p.w)) + '</small><b>' + esc(L(p.b)) + '</b><span>' + esc(L(p.d)) + '</span></li>';
+    }).join('') + '</ol>';
+    if (it.rules) right += '<ul class="ig-rules">' + it.rules.map(function (r) { return '<li>' + icon(r[0]) + '<span>' + esc(L(r[1])) + '</span></li>'; }).join('') + '</ul>';
     if (it.timeline) right += timeline();
     if (it.stats) right += stats();
     if (it.bins) right += '<div class="ig-bins">' + X.bins.map(function (b) { return '<div style="--b:' + b.col + '">' + icon(b.ic) + '<b>' + esc(L(b.l)) + '</b></div>'; }).join('') + '</div>';
@@ -669,7 +802,7 @@
     }).join('') + '</div>';
     if (it.areas) right += '<div class="ig-bins">' + X.areas.map(function (a) { return '<div style="--b:' + C.green + '">' + icon(a.ic) + '<b>' + esc(L(a.l)) + '</b></div>'; }).join('') + '</div>';
     if (it.stages) right += '<div class="ig-stages">' + X.stages.map(function (s, i) {
-      return '<div>' + icon(s.ic) + '<b>' + esc(L(s.l)) + '</b><span>' + s.n + '</span></div>' + (i < 2 ? '<span class="ig-stage-arrow">➜</span>' : '');
+      return '<div>' + icon(s.ic) + '<b>' + esc(L(s.l)) + '</b><span>' + esc(L(s.n)) + '</span></div>' + (i < 2 ? '<span class="ig-stage-arrow">➜</span>' : '');
     }).join('') + '</div>';
     h += '<div class="it-body"><div class="it-left">' + left + '</div><div class="it-right">' + right + '</div></div>';
     if (it.c) h += '<div class="ig-check">' + svg('0 0 48 48', okCircle(24, 24, 20), 'ig-check-ic') + '<b>' + esc(U.check) + '</b><span>' + esc(L(it.c)) + '</span></div>';
@@ -730,7 +863,7 @@
       pages.forEach(function (pg, k) {
         if (pg.kind === 'cover') { h += renderBookCover(i, pages); return; }
         var body = pg.kind === 'item' ? renderItem(pg.it, pg.no) : pg.kind === 'apx1' ? renderApx1() : renderApx2();
-        h += slide(i + 1, k + 1, 'sl-item' + (pg.kind === 'item' ? '' : ' sl-apx'), colVars(i) + (pg.kind === 'item' ? '' : ';--z0:' + (pg.kind === 'apx1' ? 1.15 : 1.3)), body, foot(i, k + 1, n));
+        h += slide(i + 1, k + 1, 'sl-item' + (pg.kind === 'item' ? '' : ' sl-apx'), colVars(i) + (pg.kind === 'item' ? (pg.it.b || pg.it.small ? '' : ';--z0:1.15') : ';--z0:' + (pg.kind === 'apx1' ? 1.15 : 1.3)), body, foot(i, k + 1, n));
       });
     });
     h += '</div></div>' +
