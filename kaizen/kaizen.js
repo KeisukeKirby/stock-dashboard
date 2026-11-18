@@ -236,6 +236,7 @@
     var data = window.KaizenMD.parse(state.text);
     if (view === 'info' && window.KaizenInfo) {
       doc.innerHTML = window.KaizenInfo.render(lang, { title: data.title || T.docTitle, subtitle: data.subtitle, company: data.company, dateText: fmtDay(data.date) });
+      if (window.KaizenInfo.mount) window.KaizenInfo.mount(doc);
     } else {
       doc.innerHTML = renderDoc(data);
     }
@@ -578,8 +579,11 @@
   var footerStyle = null;
   function setFooter(text) {
     if (!footerStyle) { footerStyle = document.createElement('style'); document.head.appendChild(footerStyle); }
-    footerStyle.textContent = '@page { @bottom-left { content: ' + JSON.stringify(text) + '; } }\n' +
-      '@page :first { @bottom-left { content: none; } @bottom-center { content: none; } }';
+    footerStyle.textContent = view === 'info'
+      // イラスト版は横長スライド（13.333 × 7.5 インチ = 1280 × 720 px）を 1 枚 1 ページで印刷
+      ? '@page { size: 13.333in 7.5in; margin: 0; @bottom-left { content: none; } @bottom-center { content: none; } }'
+      : '@page { @bottom-left { content: ' + JSON.stringify(text) + '; } }\n' +
+        '@page :first { @bottom-left { content: none; } @bottom-center { content: none; } }';
   }
   function safeGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function safeSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }

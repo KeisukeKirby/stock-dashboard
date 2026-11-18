@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* 業務改善マニュアル (kaizen/index.html) を A4 縦の PDF にする。
+/* 業務改善マニュアル (kaizen/index.html) を PDF にする（イラスト版＝横長スライド、?view=text の文章版＝A4 縦）。
  *
  *   node scripts/build_kaizen_pdf.mjs                                  # ローカルの kaizen/ から -> out/kaizen.pdf
  *   node scripts/build_kaizen_pdf.mjs out/manual.pdf                   # 出力先を指定
@@ -42,6 +42,9 @@ try {
   await page.goto(liveUrl || `${base}/index.html${docLang ? '?lang=' + docLang : ''}`, { waitUntil: 'networkidle' });
   await page.waitForSelector('#doc[data-ready="1"]', { timeout: 30000 });
   await page.evaluate(() => document.fonts.ready);
+  await page.waitForTimeout(300); // イラスト版：文字のはみ出し調整が終わるのを待つ
+  // イラスト版は印刷する範囲（本棚＝全冊）を決めてから PDF にする（文章版では何もしない）
+  await page.evaluate(() => { if (window.KaizenInfo && window.KaizenInfo.markPrint) window.KaizenInfo.markPrint(); });
   await page.emulateMedia({ media: 'print' });
   fs.mkdirSync(path.dirname(out), { recursive: true });
   await page.pdf({ path: out, format: 'A4', printBackground: true, preferCSSPageSize: true });
