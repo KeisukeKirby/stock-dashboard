@@ -17,9 +17,10 @@
   --warn: #b4531a; --warn-soft: #fbe9df;
   --info: #1f4e78; --info-soft: #e3ebf4;
   --draft: #8a6d00; --draft-soft: #fff6d6;
-  --f-body: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", "IPAPGothic", "Meiryo", system-ui, sans-serif;
-  --f-head: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", "IPAPGothic", sans-serif;
-  --f-title: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", "IPAPMincho", serif;
+  /* フォント：見出し＝M PLUS 1p、本文＝Noto Sans JP（倉庫担当マニュアルと同じ）、タイ語＝Noto Sans Thai */
+  --f-body: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", system-ui, sans-serif;
+  --f-head: "M PLUS 1p", "Noto Sans JP", "Hiragino Sans", system-ui, sans-serif;
+  --f-title: "M PLUS 1p", "Noto Sans JP", "Hiragino Sans", system-ui, sans-serif;
   --fs: 10.5pt;
   --lh: 1.75;
 }
@@ -234,7 +235,7 @@ dl.kv dt { font-weight: 700; color: var(--navy); background: #f3f6fa; }
 .editor {
   width: 100%; height: 100%; margin: 0; padding: 14px 16px; border: 0; border-right: 1px solid var(--rule); resize: none; outline: none;
   background: #fff; color: var(--ink);
-  font: 13.5px/1.7 ui-monospace, "SFMono-Regular", Menlo, Consolas, "Zen Kaku Gothic New", monospace;
+  font: 13.5px/1.7 ui-monospace, "SFMono-Regular", Menlo, Consolas, "Noto Sans JP", monospace;
   tab-size: 2;
 }
 .editor:focus { box-shadow: inset 3px 0 0 var(--navy); }
@@ -245,15 +246,10 @@ dl.kv dt { font-weight: 700; color: var(--navy); background: #f3f6fa; }
 
 
 /* ===== 言語ごとのフォント ===== */
-:root:lang(en) {
-  --f-body: "Noto Sans", "Helvetica Neue", Arial, sans-serif;
-  --f-head: "Noto Sans", "Helvetica Neue", Arial, sans-serif;
-  --f-title: "Noto Serif", Georgia, serif;
-}
 :root:lang(th) {
-  --f-body: "Noto Sans Thai", "Noto Sans", "Leelawadee UI", Tahoma, sans-serif;
-  --f-head: "Noto Sans Thai", "Noto Sans", "Leelawadee UI", Tahoma, sans-serif;
-  --f-title: "Noto Serif Thai", "Noto Sans Thai", serif;
+  --f-body: "Noto Sans Thai", "Noto Sans JP", "Leelawadee UI", Tahoma, sans-serif;
+  --f-head: "Noto Sans Thai", "M PLUS 1p", "Leelawadee UI", Tahoma, sans-serif;
+  --f-title: "Noto Sans Thai", "M PLUS 1p", "Leelawadee UI", Tahoma, sans-serif;
   --lh: 1.85;
 }
 /* タイ語は字間を空けると声調記号の位置がずれるため 0 に */
@@ -267,7 +263,7 @@ html:lang(en) table.b-table .nw, html:lang(th) table.b-table .nw { white-space: 
 .lang-switch { display: inline-flex; border: 1px solid var(--navy-line); border-radius: 999px; overflow: hidden; background: #fff; }
 .lang-switch button {
   font: inherit; font-size: 12.5px; line-height: 1; padding: 7px 12px; border: 0; background: transparent; color: var(--navy); cursor: pointer;
-  font-family: "Zen Kaku Gothic New", "Noto Sans", "Noto Sans Thai", system-ui, sans-serif;
+  font-family: "Noto Sans JP", "Noto Sans Thai", system-ui, sans-serif;
 }
 .lang-switch button + button { border-left: 1px solid var(--navy-line); }
 .lang-switch button:hover { background: var(--navy-soft); }
@@ -280,13 +276,13 @@ html:lang(en) table.b-table .nw, html:lang(th) table.b-table .nw { white-space: 
   margin: 18mm 16mm 20mm 16mm;
   @bottom-center {
     content: counter(page);
-    font-family: "Zen Kaku Gothic New", "Noto Sans", "Noto Sans Thai", "IPAPGothic", sans-serif;
+    font-family: "Noto Sans JP", "Noto Sans Thai", sans-serif;
     font-size: 9pt;
     color: #7c838c;
   }
   @bottom-left {
     content: "業務改善マニュアル";
-    font-family: "Zen Kaku Gothic New", "Noto Sans", "Noto Sans Thai", "IPAPGothic", sans-serif;
+    font-family: "Noto Sans JP", "Noto Sans Thai", sans-serif;
     font-size: 8pt;
     color: #7c838c;
   }
@@ -373,7 +369,7 @@ html:lang(en) table.b-table .nw, html:lang(th) table.b-table .nw { white-space: 
 .sh-top { display: flex; justify-content: space-between; font-size: 14px; color: var(--ink-2); border-bottom: 2px solid var(--navy); padding-bottom: 6px; letter-spacing: .03em; }
 .sh-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
 .sh-kicker { margin: 4px 0 2px; color: var(--gold); font-weight: 700; font-size: 18px; letter-spacing: .05em; }
-.sh-title { margin: 0; font-family: var(--f-title); font-size: 46px; line-height: 1.2; color: var(--navy); }
+.sh-title { margin: 0; font-family: var(--f-title); font-weight: 800; font-size: 48px; line-height: 1.2; color: var(--navy); }
 .sh-hint { margin: 0; text-align: right; font-size: 20px; font-weight: 700; color: var(--ink); line-height: 1.4; }
 .sh-hint span { font-size: 15px; color: var(--ink-3); font-weight: 500; }
 .sh-books { display: grid; grid-template-columns: repeat(5, 1fr); gap: 26px; padding: 6px 14px 0; align-items: end; }
@@ -516,6 +512,16 @@ html:lang(en) table.b-table .nw, html:lang(th) table.b-table .nw { white-space: 
 
 html:lang(th) .sh-title, html:lang(th) .bc-t, html:lang(th) .sh-top, html:lang(th) .sh-kicker { letter-spacing: 0; }
 html:lang(th) .sl { line-height: 1.55; }
+
+/* 見出し・ラベル・大事な一言は M PLUS 1p（太め）で */
+.sl h1, .sl h2, .sl h3, .sh-kicker, .sh-hint, .sh-how, .bk-no, .bk-t, .bk-n, .bc-no, .tc-no, .tc-t,
+.ig-no, .ig-when, .ig-pill, .ig-card b, .ig-card.is-after p, .ig-ba-one b, .ig-ba-one p, .ig-label, .ig-steps li, .ig-step-n,
+.ig-check b, .ig-stat-v, .ig-stat-l, .ig-bins b, .ig-tree-row b, .ig-stages b, .ig-lane b, .ig-roles b, .ig-cases b, .lg b, .ig-tl-labels, .ig-example b {
+  font-family: var(--f-head);
+}
+.sl h1, .sl h2, .bk-t, .ig-no, .ig-card.is-after p, .ig-ba-one p, .ig-stat-v { font-weight: 800; }
+.ig-card p { font-size: 1.12em; }
+.ig-check { font-size: 1.05em; }
 
 /* 印刷：横長スライドを 1 枚 1 ページ（本棚から印刷＝全冊、冊子を開いて印刷＝その冊子だけ） */
 @media print {
