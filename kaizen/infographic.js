@@ -428,7 +428,11 @@
   // 章
   var CHAPTERS = [
     { icon: 'pos', t: { ja: '経理', en: 'Accounting', th: 'บัญชี' },
-      d: { ja: '売上を毎日確認し、手入力を減らす', en: 'Check sales daily, type less', th: 'ตรวจยอดขายทุกวัน ลดการคีย์มือ' } },
+      d: { ja: '売上を毎日確認し、手入力を減らす', en: 'Check sales daily, type less', th: 'ตรวจยอดขายทุกวัน ลดการคีย์มือ' },
+      kpi: { v: '107', per: 'NEE 56.8h / NUT 50.6h',
+        u: { ja: '時間 減らせる見込み', en: 'hours saved (expected)', th: 'ชั่วโมงที่คาดว่าลดได้' },
+        l: { ja: '2 名・38 営業日の 350 時間の 31%。約 95 時間を毎日の照合・毎月の元帳・棚卸し・月次レポートへ', en: '31% of 350 hours (2 people, 38 working days). About 95 hours go to daily checks, monthly ledgers, stock counts and the monthly report', th: '31% ของ 350 ชั่วโมง (2 คน 38 วันทำการ) ประมาณ 95 ชั่วโมงใช้กับการตรวจรายวัน บัญชีรายเดือน นับสต็อก และรายงานประจำเดือน' },
+        per2: 'NEE 189.7h / NUT 160.7h' } },
     { icon: 'truck', t: { ja: '店舗・イベント・オンライン物流', en: 'Store, Event & Online Logistics', th: 'โลจิสติกส์ร้านค้า อีเวนต์ และออนไลน์' },
       d: { ja: '商品の動きをオフィスが計画的に管理', en: 'The office plans how stock moves', th: 'ออฟฟิศวางแผนการเคลื่อนย้ายสินค้า' } },
     { icon: 'box', t: { ja: '在庫・倉庫・QC', en: 'Stock, Warehouse & QC', th: 'สต็อก คลังสินค้า และ QC' },
@@ -465,8 +469,6 @@
       t: { ja: '手入力を「取り込む・読む・貼る」に', en: 'Import, read, paste — not type', th: 'เลิกคีย์มือ: นำเข้า อ่าน วาง' },
       b: { ja: '手入力と二重確認が多く、売上の確認は週 1 回だけ', en: 'Lots of typing and double checks — sales checked only weekly', th: 'คีย์มือและตรวจซ้ำมาก ตรวจยอดขายได้แค่สัปดาห์ละครั้ง' },
       a: { ja: '①〜⑦を新しいやり方で。空いた時間は品質の確認へ', en: 'Do ①–⑦ the new way; the time saved goes to quality checks', th: 'ทำ ①–⑦ ด้วยวิธีใหม่ เวลาที่ได้คืนใช้ตรวจคุณภาพ' },
-      kpi: { v: '107', u: { ja: '時間 減らせる見込み', en: 'hours saved (expected)', th: 'ชั่วโมงที่คาดว่าลดได้' },
-        l: { ja: '2 名・38 営業日の 350 時間の 31%。約 95 時間を毎日の照合・毎月の元帳・棚卸し・月次レポートへ', en: '31% of 350 hours (2 people, 38 working days). About 95 hours go to daily checks, monthly ledgers, stock counts and the monthly report', th: '31% ของ 350 ชั่วโมง (2 คน 38 วันทำการ) ประมาณ 95 ชั่วโมงใช้กับการตรวจรายวัน บัญชีรายเดือน นับสต็อก และรายงานประจำเดือน' } },
       rows: [
         [{ ja: '① 銀行', en: '① Bank', th: '① ธนาคาร' }, { ja: '明細を取り込み、AI の候補を確認', en: 'Import statements, check AI matches', th: 'นำเข้ารายการ แล้วตรวจคู่ที่ AI เสนอ' }],
         [{ ja: '② Sales Record', en: '② Sales Record', th: '② Sales Record' }, { ja: 'POS レポートを貼る', en: 'Paste the POS report', th: 'วางรายงาน POS' }],
@@ -829,6 +831,7 @@
   /* ======================= 組み立て ======================= */
   var lang = 'ja', meta = {};
   var COMPANY = 'BAREFOOTINC(THAILAND) CO., LTD / Endeavorz Co., Ltd.';
+  var DOC_DATE = '2026-11-18'; // イラスト版の日付（文章版の date とは別）
   function L(v) { return v == null ? '' : (typeof v === 'string' ? v : (v[lang] != null ? v[lang] : v.ja)); }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function icon(name, cls) {
@@ -874,7 +877,7 @@
       var n = itemsOf(i).length;
       return '<a class="bk" href="#/b' + (i + 1) + '" data-go="b' + (i + 1) + '" style="' + colVars(i) + '">' +
         '<span class="bk-no">' + esc(U.chapter(i + 1)) + '</span>' + icon(c.icon, 'bk-ic') +
-        '<b class="bk-t">' + esc(L(c.t)) + '</b><span class="bk-d">' + esc(L(c.d)) + '</span>' +
+        '<b class="bk-t">' + esc(L(c.t)) + '</b>' +
         '<span class="bk-n">' + esc(D.items(n)) + (i === APX_BOOK ? ' + ' + esc(D.handbook) : '') + '</span></a>';
     }).join('');
     var legend = '<div class="sh-legend">' +
@@ -906,7 +909,9 @@
       '<div class="bc-cover"><span class="bc-no">' + esc(U.chapter(i + 1)) + '</span>' + icon(c.icon, 'bc-ic') +
       '<h1 class="bc-t">' + esc(L(c.t)) + '</h1><p class="bc-d">' + esc(L(c.d)) + '</p>' +
       '<div class="bc-art">' + svg(VB, heroScene) + '</div><span class="bc-co">' + esc(COMPANY) + '</span></div>' +
-      '<div class="bc-toc"><h2>' + esc(D.contents) + '</h2><ol>' + rows + '</ol></div>',
+      '<div class="bc-toc"><h2>' + esc(D.contents) + '</h2><ol>' + rows + '</ol>' + (c.kpi ?
+        '<div class="ig-kpi bc-kpi"><b>' + esc(c.kpi.v) + '</b><span><strong>' + esc(L(c.kpi.u)) + ' <small>(' + esc(c.kpi.per) + ')</small></strong>' +
+        esc(L(c.kpi.l)) + ' <small>(350h = ' + esc(c.kpi.per2) + ')</small></span></div>' : '') + '</div>',
       foot(i, 1, pages.length));
   }
 
@@ -1134,5 +1139,5 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(after); else after();
   }
 
-  root.KaizenInfo = { render: render, mount: mount, markPrint: function () { markPrint(); } };
+  root.KaizenInfo = { date: DOC_DATE, render: render, mount: mount, markPrint: function () { markPrint(); } };
 })(typeof self !== 'undefined' ? self : this);

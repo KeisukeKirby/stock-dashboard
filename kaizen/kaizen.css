@@ -493,6 +493,8 @@ html:lang(en) table.b-table .nw, html:lang(th) table.b-table .nw { white-space: 
 .ig-stage-arrow { align-self: center; color: var(--c); }
 
 /* 追加分：数字・一覧・進め方・ルール */
+.bc-kpi { margin-top: 18px; font-size: 19px; }
+.ig-kpi small { font-size: .78em; font-weight: 500; color: var(--ink-3); }
 .ig-kpi { display: flex; align-items: center; gap: .6em; background: var(--s); border-radius: 12px; padding: .5em .9em; }
 .ig-kpi > b { font-family: var(--f-head); font-size: 2.6em; font-weight: 800; color: var(--c); line-height: 1; }
 .ig-kpi span { font-size: .82em; line-height: 1.4; color: var(--ink-2); }
