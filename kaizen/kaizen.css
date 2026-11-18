@@ -468,7 +468,7 @@ html:lang(en) table.b-table .nw, html:lang(th) table.b-table .nw { white-space: 
 .ig-tl-labels .is-today { color: #2f8f5b; }
 .ig-tl-labels .is-next { color: var(--ink-3); text-align: right; }
 
-.ig-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5em; }
+.ig-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: .45em; }
 .ig-stats div { border-radius: 12px; background: #f4f6f9; border-top: 4px solid var(--b); padding: .35em .3em; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .ig-stats .ig-ic { width: 2em; height: 2em; }
 .ig-stat-v { font-size: 1.55em; font-weight: 800; color: var(--b); line-height: 1.1; }
@@ -509,6 +509,14 @@ html:lang(en) table.b-table .nw, html:lang(th) table.b-table .nw { white-space: 
 .ig-rules { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .4em; }
 .ig-rules li { display: flex; align-items: center; gap: .7em; background: var(--s); border-radius: 12px; padding: .35em .8em .35em .45em; font-family: var(--f-head); font-weight: 700; font-size: .95em; line-height: 1.4; }
 .ig-rules .ig-ic { width: 2.3em; height: 2.3em; background: #fff; border-radius: 50%; padding: .2em; }
+
+/* 付録 3：チェックする所 */
+.ig-checks { display: flex; flex-direction: column; gap: .35em; }
+.ig-checks div { display: grid; grid-template-columns: 2em 8em 1fr 1fr; align-items: center; gap: .6em; background: #f4f6f9; border-left: 5px solid var(--c); border-radius: 8px; padding: .3em .7em; font-size: .85em; line-height: 1.35; }
+.ig-checks .ig-step-n { position: static; width: 1.7em; height: 1.7em; font-size: .95em; }
+.ig-checks b { font-family: var(--f-head); color: var(--c); }
+.ig-checks em { font-style: normal; color: var(--ink-2); }
+.ig-forms { margin: .2em 0 0; font-size: .8em; color: var(--ink-2); }
 
 /* 付録（イベント手順書） */
 .ig-roles { display: grid; grid-template-columns: repeat(3, 1fr); gap: .7em; }
