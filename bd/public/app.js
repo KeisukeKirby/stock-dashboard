@@ -65,7 +65,8 @@
     const tbl = h("table", { class: "dt" });
     const thead = h("thead"), tbody = h("tbody");
     let sortKey = opts.sortKey || null, desc = opts.desc || false, filter = "";
-    const ths = cols.map((c) => h("th", { class: (c.num ? "num " : "") + (c.wrap ? "wrap" : ""), onclick: () => { if (sortKey === c.key) desc = !desc; else { sortKey = c.key; desc = !!c.num; } draw(); } }, c.label));
+    const headNode = (l) => typeof l === "string" && l.includes("\n") ? l.split("\n").flatMap((x, i) => i ? [h("br"), x] : [x]) : l;
+    const ths = cols.map((c) => h("th", { class: (c.num ? "num " : "") + (c.wrap ? "wrap" : ""), onclick: () => { if (sortKey === c.key) desc = !desc; else { sortKey = c.key; desc = !!c.num; } draw(); } }, headNode(c.label)));
     thead.append(h("tr", {}, ths)); tbl.append(thead, tbody); wrap.append(tbl);
     const cell = (c, r) => { const v = r[c.key]; return c.render ? c.render(v, r) : c.num ? fmt(v, c.digits || 0) : (v == null || v === "" ? missing() : String(v)); };
     function current() {
@@ -93,7 +94,7 @@
   }
   function csv(cols, rows, name) {
     const q = (s) => `"${String(s ?? "").replace(/"/g, '""')}"`;
-    const lines = [cols.map((c) => q(c.label)).join(",")];
+    const lines = [cols.map((c) => q(String(c.label).replace(/\n/g, " "))).join(",")];
     for (const r of rows) lines.push(cols.map((c) => q(c.csv ? c.csv(r[c.key], r) : r[c.key])).join(","));
     const blob = new Blob(["﻿" + lines.join("\n")], { type: "text/csv;charset=utf-8" });
     const a = h("a", { href: URL.createObjectURL(blob), download: `${name}_${new Date().toISOString().slice(0, 10)}.csv` }); document.body.append(a); a.click(); a.remove();
@@ -426,23 +427,23 @@
     const win12 = allMonths.slice(-12);
     const lastM = allMonths.slice(-18);
     const sumN = (rs, k) => rs.some((r) => r[k] != null) ? rs.reduce((a, r) => a + (r[k] || 0), 0) : null;
-    const srcSheet = (v) => fileUrl ? external(fileUrl, tr(`在庫表「${v}」`, `Stock sheet "${v}"`, `ชีตสต็อก "${v}"`) + " ↗") : v;
+    const srcSheet = (v) => fileUrl ? external(fileUrl, tr("在庫表", "Stock sheet", "ชีตสต็อก") + " ↗", { title: `Stock VFF Consignment.xlsx / ${v}` }) : v;
     const brands = [...new Set([...C.consignees.flatMap((c) => Object.keys(c.byBrand || {})), ...(E?.rows?.length ? ["Coolcore"] : []), ...Object.keys(P?.byBrand || {})])].sort(byOrder);
-    // 全ブランド共通の項目
+    // 全ブランド共通の項目（長い見出しは 2 行にして幅を狭める）
+    const two = (ja1, ja2, en1, en2, th1, th2) => ({ label: tr([ja1, ja2], [en1, en2], [th1, th2]).join("\n") });
     const cols = [nameCol, linksCol, typeCol,
-      { key: "delivered", label: tr("納品", "Delivered", "ส่งมอบ"), num: true },
-      { key: "sold", label: tr("販売", "Sold", "ขาย"), num: true },
-      { key: "returned", label: tr("返品", "Returned", "คืน"), num: true },
-      { key: "balance", label: tr("残（委託在庫）", "Balance (on consignment)", "คงเหลือ (ฝากขาย)"), num: true },
-      { key: "last12", label: tr("直近12か月 販売", "Sold in last 12 months", "ขายใน 12 เดือนล่าสุด"), num: true },
-      { key: "net", label: tr("売上額（税抜 THB）", "Sales (THB, excl. VAT)", "ยอดขาย (บาท ไม่รวม VAT)"), num: true },
-      { key: "netPending", label: tr("うち未入金", "Of which unpaid", "ยังไม่ชำระ"), num: true },
       { key: "firstMonth", label: tr("開始", "First sale", "ขายครั้งแรก") },
       { key: "lastMonth", label: tr("最終販売", "Last sale", "ขายล่าสุด") },
+      { key: "delivered", label: tr("納品", "Delivered", "ส่งมอบ"), num: true },
+      { key: "sold", label: tr("販売", "Sold", "ขาย"), num: true },
+      { key: "balance", num: true, ...two("残", "（委託在庫）", "Balance", "(consigned)", "คงเหลือ", "(ฝากขาย)") },
+      { key: "last12", num: true, ...two("直近12か月", "販売", "Sold in", "last 12 months", "ขายใน", "12 เดือนล่าสุด") },
+      { key: "net", num: true, ...two("売上額", "（税抜 THB）", "Sales", "(THB excl. VAT)", "ยอดขาย", "(บาท ไม่รวม VAT)") },
       { key: "src", label: tr("出典", "Source", "ที่มา"), csv: (v, r) => r.srcText || "", render: (v, r) => r.srcNode || r.srcText || "–" }
     ];
-    const totalRow = (rs) => { const t = { name: tr("合計", "Total", "รวม") }; for (const k of ["delivered", "sold", "returned", "balance", "last12", "net", "netPending"]) t[k] = sumN(rs, k); return t; };
+    const totalRow = (rs) => { const t = { name: tr("合計", "Total", "รวม") }; for (const k of ["delivered", "sold", "balance", "last12", "net"]) t[k] = sumN(rs, k); return t; };
     const pwName = (P && P.partner) || "Pathwild";
+    const PATHWILD_BRANDS = P?.currentBrands || ["OLENO"];  // Pathwild の現在の取り扱いは OLENO のみ
     const noSale = tr("販売なし", "No sales", "ไม่มียอดขาย");
     for (const b of brands) {
       const card = h("section", { class: "card brand-block", style: `--bc:${brandColor[b] || "var(--c-others)"};margin-bottom:18px` });
@@ -452,10 +453,10 @@
         h("span", {}, tr("今後は買取のみに切り替えます。", "From then on, outright purchase only.", "หลังจากนั้นจะเป็นแบบซื้อขาดเท่านั้น"))));
       const rows = [];
       // 1) BFT の在庫表（委託）。Pathwild は請求書（卸）の実績に置き換える
-      const pw = P?.byBrand?.[b];
+      const pw = PATHWILD_BRANDS.includes(b) ? P?.byBrand?.[b] : null;
       for (const c of C.consignees) {
         if (!c.byBrand?.[b]) continue;
-        if (pw && /^Pathwild/i.test(c.name)) continue;
+        if (/^Pathwild/i.test(c.name) && (pw || !PATHWILD_BRANDS.includes(b))) continue;
         const x = c.byBrand[b], mb = (c.monthlyByBrand || {})[b] || {}, sm = soldMonths(mb);
         rows.push({ name: nameOf(c), dept: isDept(c), links: c.links, deal: dealLabel(c.name, c.type), monthly: mb,
           delivered: x.delivered, sold: x.sold, returned: x.returned, balance: x.balance, net: null, netPending: null,
@@ -468,14 +469,14 @@
         rows.push({ name: pwName, links: pwLinks, deal: dealLabel(pwName), monthly: pw.monthly,
           delivered: pw.units, sold: pw.units, returned: null, balance: null, net: pw.net, netPending: pw.netPending,
           last12: win12.reduce((a, m) => a + (pw.monthly[m] || 0), 0),
-          firstMonth: pw.first, lastMonth: pw.last, srcText: tr("BFT の請求書（2026 年）", "BFT invoices (2026)", "ใบแจ้งหนี้ BFT (2026)") });
+          firstMonth: pw.first, lastMonth: pw.last, srcText: tr("BFT 請求書", "BFT invoices", "ใบแจ้งหนี้ BFT") });
       }
       // 3) Coolcore は Endeavorz の請求書も同じ表に
-      if (b === "Coolcore" && E?.rows?.length) for (const r of E.rows) {
+      if (b === "Coolcore" && E?.rows?.length) for (const r of E.rows.filter((r) => !/^Pathwild/i.test(r.name) || PATHWILD_BRANDS.includes(b))) {
         rows.push({ name: r.name, links: r.links, deal: dealLabel(r.name), monthly: r.monthly,
           delivered: null, sold: r.units, returned: null, balance: null, net: r.net, netPending: r.netPending,
           last12: win12.reduce((a, m) => a + (r.monthly[m] || 0), 0), firstMonth: r.first, lastMonth: r.last,
-          srcText: tr("EDV の請求書（2026 年）", "EDV invoices (2026)", "ใบแจ้งหนี้ EDV (2026)") });
+          srcText: tr("EDV 請求書", "EDV invoices", "ใบแจ้งหนี้ EDV") });
       }
       rows.sort((p, q) => ((q.dept || 0) - (p.dept || 0)) || (q.sold - p.sold));
       card.append(table(cols, rows, { csvName: `b2b_${b.replace(/\W+/g, "_")}`, search: false, total: totalRow }));
