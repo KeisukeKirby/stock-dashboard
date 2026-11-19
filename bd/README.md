@@ -41,7 +41,7 @@ scripts/bd/
 
 1. 作成済み（2026-11-09、プロジェクト `bd-dashboard`、Root Directory = `bd`、Framework = Other、Output Directory = `public`）。作り直す場合は Add New Project → `KeisukeKirby/stock-dashboard` → Root Directory `bd`。
 2. 環境変数は不要。
-3. Settings → Environments → Production → Branch Tracking を `claude/laughing-pascal-1qck8z` に。Domains で `bd-onboarding-barefootinc.vercel.app` を Production に、`bd-dashboard-mu.vercel.app` はそこへの Redirect にしている。Deployment Protection（Vercel Authentication）は無効。
+3. Settings → Environments → Production → Branch Tracking を `claude/laughing-pascal-1qck8z` に。Domains で `bd-onboarding-barefootinc.vercel.app` を Production に、`bd-dashboard-mu.vercel.app` はそこへの Redirect にしている。Deployment Protection（Vercel Authentication）は無効。プレビューデプロイは無効（2026-11-19。ほかの作業ブランチには bd フォルダがなく、毎回失敗して通知メールが出ていたため）。本番ブランチへの push だけがデプロイされる。
 4. アクセス制限が必要なら Settings → Deployment Protection（Password Protection / Vercel Authentication）を有効にする。
 
 ## データの更新手順
