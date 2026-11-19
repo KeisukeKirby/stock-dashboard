@@ -195,12 +195,20 @@
     }
     .pill:hover { background: var(--bone); }
     .pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #000; }
+    .route-pill { box-shadow: 0 4px 14px -6px rgba(0,0,0,.35); }
+    .route-pill:hover { background: var(--ink); color: var(--gold); }
+    .route-pill:hover .dot { background: var(--gold); }
+    @media (hover: none) { .route-pill:hover { background: var(--gold); color: #000; } }
     @media (max-width: 900px) {
       .nav { grid-template-columns: 1fr auto; }
       .nav-links { display: none; }
-      .nav .pill { display: none; }
+      .nav .pill.route-pill { padding: .5rem .8rem; font-size: .62rem; letter-spacing: .08em; white-space: nowrap; }
+      .nav .pill.route-pill .dot { display: none; }
+      .nav-right { gap: .5rem; }
     }
     @media (max-width: 620px) { .nav-brand img { height: 24px; } }
+    @media (max-width: 380px) { .nav-brand img { height: 20px; } .lang button { padding: .28rem .5rem; } .nav .pill.route-pill { padding: .48rem .65rem; } }
+    #routes { scroll-margin-top: 6rem; }
 
     /* ---------- hero ---------- */
     .hero { position: relative; min-height: 100svh; display: grid; grid-template-rows: 1fr auto; overflow: hidden; background: #000; color: #fff; }
@@ -511,6 +519,15 @@
     .venue-chip img { width: 180px; }
     .maplinks { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.4rem; }
     .mapbox { border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.25); background: rgba(0,0,0,.2); }
+    .rphotos { margin-top: 1.2rem; }
+    .rphotos-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: .6rem; font-family: var(--display); font-weight: 600; font-size: .95rem; letter-spacing: .04em; color: #fff; }
+    .rphotos-head small { font-family: inherit; font-weight: 400; font-size: .72rem; color: rgba(255,255,255,.6); letter-spacing: .04em; }
+    .rphotos-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
+    .rphoto { margin: 0; cursor: zoom-in; min-width: 0; }
+    .rphoto img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,.2); transition: transform .3s ease; }
+    .rphoto:hover img, .rphoto:focus-visible img { transform: translateY(-2px); }
+    .rphoto figcaption { display: flex; gap: .4rem; align-items: flex-start; margin-top: .45rem; font-size: .76rem; line-height: 1.45; color: rgba(255,255,255,.82); }
+    .rphoto figcaption b { flex: 0 0 auto; display: inline-grid; place-items: center; width: 1.25rem; height: 1.25rem; border-radius: 50%; background: var(--gold); color: #1B1A1F; font-size: .7rem; }
     .map-static { display: block; }
     .map-static img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3.2; object-fit: cover; }
     .mapbox.live .map-static, .mapbox:not(.live) .map-embed, .mapbox.live .mn-static, .mapbox:not(.live) .mn-live { display: none; }
@@ -853,6 +870,11 @@
     .rlink-row { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: .5rem 1rem; }
     .rlink { display: inline-flex; align-items: center; gap: .55rem; padding: .5rem .95rem .5rem .55rem; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; background: rgba(255,255,255,.06); color: #fff; font: inherit; font-weight: 600; font-size: .9rem; cursor: pointer; white-space: nowrap; transition: background .2s ease, border-color .2s ease, color .2s ease; }
     .rlink:hover, .rlink:focus-visible { background: var(--gold); border-color: var(--gold); color: #1B1A1F; }
+    .rlink { padding-left: .35rem; }
+    .rthumb { position: relative; flex: 0 0 auto; width: 2.4rem; height: 3.2rem; border-radius: .55rem; overflow: hidden; }
+    .rthumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .rthumb i { position: absolute; inset: 0; margin: auto; }
+    .rlink { border-radius: 1rem; }
     .rlink i { display: inline-grid; place-items: center; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--gold); color: #1B1A1F; font-style: normal; font-size: .7rem; padding-left: 2px; }
     .rlink:hover i, .rlink:focus-visible i { background: #1B1A1F; color: var(--gold); }
     .rlink-row .rdesc { font-size: .84rem; line-height: 1.55; color: rgba(255,255,255,.75); }
@@ -887,7 +909,7 @@
         <button type="button" data-lang="th" aria-pressed="true"><span>ไทย</span></button>
         <button type="button" data-lang="en" aria-pressed="false"><span>EN</span></button>
       </div>
-      <a class="pill" href="#access" data-magnet><span class="dot"></span><span data-i18n="nav.access">Getting there</span></a>
+      <a class="pill route-pill" href="#routes" data-magnet><span class="dot"></span><span data-i18n="nav.access">How to get here</span></a>
     </div>
   </nav>
 
@@ -1159,9 +1181,9 @@
           <div class="venue-logo" data-reveal style="--d:120"><img src="images/logo-barefootinc-light.png" alt="Barefootinc Thailand" width="520" height="118" /></div>
           <div class="arows" data-reveal style="--d:180">
             <div class="arow"><div class="k" data-i18n="access.k1">Venue</div><div class="v" data-i18n="access.v1">Barefootinc (Thailand) office<br />87/34 Modern Town 2F, Sukhumvit 63 (Ekkamai), Klongtan-nua, Wattana, Bangkok</div></div>
-            <div class="arow"><div class="k" data-i18n="access.kr">Route videos</div><div class="v"><div class="rlinks">
-              <div class="rlink-row"><button type="button" class="rlink" data-vb="videos/route-entrance.mp4" data-vb-poster="videos/route-entrance.jpg"><i>&#9654;</i><span data-i18n="access.r1">From the main entrance</span></button><span class="rdesc" data-i18n="access.r1d">Up the stairs and escalators to 2F, then along the corridor to our door.</span></div>
-              <div class="rlink-row"><button type="button" class="rlink" data-vb="videos/route-parking.mp4" data-vb-poster="videos/route-parking.jpg"><i>&#9654;</i><span data-i18n="access.r2">From the car park</span></button><span class="rdesc" data-i18n="access.r2d">Take the lift to P6 (Office Plaza), then follow the corridor to our door.</span></div>
+            <div class="arow" id="routes"><div class="k" data-i18n="access.kr">Route videos</div><div class="v"><div class="rlinks">
+              <div class="rlink-row"><button type="button" class="rlink" data-vb="videos/route-entrance.mp4" data-vb-poster="videos/route-entrance-poster-v1.jpg"><span class="rthumb"><img src="videos/thumb-entrance-v1.jpg" alt="" width="120" height="160" /><i>&#9654;</i></span><span data-i18n="access.r1">From the main entrance</span></button><span class="rdesc" data-i18n="access.r1d">Up the stairs and escalators to 2F, then along the corridor to our door.</span></div>
+              <div class="rlink-row"><button type="button" class="rlink" data-vb="videos/route-parking.mp4" data-vb-poster="videos/route-parking.jpg"><span class="rthumb"><img src="videos/thumb-parking-v1.jpg" alt="" width="120" height="160" /><i>&#9654;</i></span><span data-i18n="access.r2">From the car park</span></button><span class="rdesc" data-i18n="access.r2d">Take the lift to P6 (Office Plaza), then follow the corridor to our door.</span></div>
             </div></div></div>
             <div class="arow"><div class="k" data-i18n="access.k2">Dates</div><div class="v" data-i18n="access.v2">19 November (Thu) – 21 November (Sat) 2026</div></div>
             <div class="arow"><div class="k" data-i18n="access.k3">Hours</div><div class="v" data-i18n="access.v3">10:00 – 18:00</div></div>
@@ -1179,6 +1201,14 @@
           <iframe class="map-embed" title="Map of the Barefootinc office, Modern Town, Sukhumvit 63" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
             data-src="https://www.google.com/maps?q=87%2F34+Modern+Town,+Sukhumvit+63,+Klongtan+Nua,+Wattana,+Bangkok&z=16&hl=en&output=embed"></iframe>
           <span class="map-note"><span class="mn-live" data-i18n="access.mapnote">Pinch or scroll to zoom the map</span><span class="mn-static" data-i18n="access.mapnote2">Tap the map to open it in Google Maps</span><a href="https://www.google.com/maps/search/?api=1&query=87%2F34+Modern+Town+Sukhumvit+63+Klongtan+Nua+Wattana+Bangkok" target="_blank" rel="noopener noreferrer" data-i18n="access.map">See the map</a></span>
+          </div>
+          <div class="rphotos" data-reveal style="--d:280">
+            <div class="rphotos-head"><span data-i18n="access.ptitle">From the main entrance</span><small data-i18n="access.psub">Tap a photo to enlarge</small></div>
+            <div class="rphotos-grid">
+              <figure class="rphoto" role="button" tabindex="0" data-lb="image" data-lb-src="images/route/entrance-1.jpg" data-lb-alt="Main entrance of Modern Town with the stairs"><img src="images/route/entrance-1-480.jpg" alt="Main entrance of Modern Town" width="480" height="640" loading="lazy" decoding="async" /><figcaption><b>1</b><span data-i18n="access.p1">Main entrance</span></figcaption></figure>
+              <figure class="rphoto" role="button" tabindex="0" data-lb="image" data-lb-src="images/route/entrance-2.jpg" data-lb-alt="Barefootinc Warehouse Sale banner at the foot of the stairs"><img src="images/route/entrance-2-480.jpg" alt="Our banner at the foot of the stairs" width="480" height="640" loading="lazy" decoding="async" /><figcaption><b>2</b><span data-i18n="access.p2">Find our banner and go up the stairs</span></figcaption></figure>
+              <figure class="rphoto" role="button" tabindex="0" data-lb="image" data-lb-src="images/route/entrance-3.jpg" data-lb-alt="Lobby with escalators to the 2nd floor"><img src="images/route/entrance-3-480.jpg" alt="Lobby with escalators" width="480" height="640" loading="lazy" decoding="async" /><figcaption><b>3</b><span data-i18n="access.p3">Escalator to 2F, turn right and walk to the end</span></figcaption></figure>
+            </div>
           </div>
         </div>
       </div>
@@ -1219,7 +1249,7 @@
 
   <div class="mbar" id="mbar" aria-hidden="false">
     <div class="mb-txt"><b data-i18n="mbar.a">19–21 Nov · up to 50% off</b><span data-i18n="mbar.b">10:00–18:00 · Ekkamai</span></div>
-    <a class="pill" href="#access"><span class="dot"></span><span data-i18n="nav.access">Getting there</span></a>
+    <a class="pill" href="#routes"><span class="dot"></span><span data-i18n="nav.access">How to get here</span></a>
   </div>
 
   <div class="lb vb" id="vb" hidden role="dialog" aria-modal="true" aria-label="Route video">
@@ -1237,7 +1267,7 @@
     /* ===================== copy ===================== */
     const I18N = {
       en: {
-        "nav.sale": "The sale", "nav.lineup": "Lineup", "nav.booth": "On the day", "nav.access": "Getting there",
+        "nav.sale": "The sale", "nav.lineup": "Lineup", "nav.booth": "On the day", "nav.access": "How to get here",
         "hero.edition": "Warehouse sale · Barefootinc office",
         "hero.l2": "<span class=\"hl\">Sale</span>", "hero.l3": "<span class=\"off-block\">Our biggest sale ever</span>",
         "hero.badge": "<span class=\"big\">3</span> days only · Up to 50% off", "hero.off": "<small>Up to</small><b>50%</b><small>off</small>",
@@ -1289,6 +1319,8 @@
         "access.officenote": "<strong>It is an office, not a shop.</strong> Look for the Barefootinc sign at Modern Town and come straight in. Message us on LINE if you cannot find it.",
         "access.mapopen": "Open in Google Maps", "access.map": "See the map", "access.mapnote": "Pinch or scroll to zoom the map", "access.mapnote2": "Tap the map to open it in Google Maps",
         "access.kr": "Route videos",
+        "access.ptitle": "From the main entrance", "access.psub": "Tap a photo to enlarge",
+        "access.p1": "Main entrance", "access.p2": "Find our banner and go up the stairs", "access.p3": "Escalator to 2F, turn right and walk to the end",
         "access.r1": "From the main entrance", "access.r1d": "Up the stairs and escalators to 2F, then along the corridor to our door.",
         "access.r2": "From the car park", "access.r2d": "Take the lift to P6 (Office Plaza), then follow the corridor to our door.",
         "foot.tag": "Barefoot footwear specialist · Bangkok",
@@ -1308,7 +1340,7 @@
         "lb.hint": "Tap the image to zoom",
       },
       th: {
-        "nav.sale": "โปรโมชั่น", "nav.lineup": "รายการสินค้า", "nav.booth": "ในวันงาน", "nav.access": "วิธีเดินทาง",
+        "nav.sale": "โปรโมชั่น", "nav.lineup": "รายการสินค้า", "nav.booth": "ในวันงาน", "nav.access": "วิธีเดินทางมางาน",
         "hero.edition": "แวร์เฮาส์เซลล์ · ออฟฟิศ Barefootinc",
         "hero.l2": "<span class=\"hl\">Sale</span>", "hero.l3": "<span class=\"off-block\">ลดราคาครั้งใหญ่ที่สุดของเรา</span>",
         "hero.badge": "<span class=\"big\">3</span> วันเท่านั้น · ลดสูงสุด 50%", "hero.off": "<small>ลดสูงสุด</small><b>50%</b><small>OFF</small>",
@@ -1360,6 +1392,8 @@
         "access.officenote": "<strong>เป็นออฟฟิศ ไม่ใช่หน้าร้าน</strong> มองหาป้าย Barefootinc ที่โมเดอร์น ทาวน์แล้วเดินเข้ามาได้เลย หาไม่เจอทัก LINE หาเรา",
         "access.mapopen": "เปิดใน Google Maps", "access.map": "ดูแผนที่", "access.mapnote": "ซูมแผนที่ได้ด้วยการจีบนิ้วหรือสกรอลล์", "access.mapnote2": "แตะแผนที่เพื่อเปิดใน Google Maps",
         "access.kr": "วิดีโอเส้นทาง",
+        "access.ptitle": "เส้นทางจากทางเข้าด้านหน้า", "access.psub": "แตะภาพเพื่อขยาย",
+        "access.p1": "ทางเข้าด้านหน้า", "access.p2": "เจอป้ายของเรา แล้วเดินขึ้นบันได", "access.p3": "ใช้บันไดเลื่อนไปชั้น 2 เลี้ยวขวาและเดินไปจนสุดทาง",
         "access.r1": "จากทางเข้าด้านหน้า", "access.r1d": "ขึ้นบันไดและบันไดเลื่อนไปชั้น 2 แล้วเดินตามทางเดินมาที่ออฟฟิศ",
         "access.r2": "จากที่จอดรถ", "access.r2d": "ขึ้นลิฟต์ไปชั้น P6 (Office Plaza) แล้วเดินตามทางเดินมาที่ออฟฟิศ",
         "foot.tag": "ร้านรองเท้าเปล่าโดยเฉพาะ · กรุงเทพฯ",
