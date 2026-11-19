@@ -155,8 +155,7 @@
     }
     .nav.hide { transform: translateY(-110%); }
     .nav.solid {
-      background: rgba(243, 240, 234, .86); color: var(--ink);
-      backdrop-filter: blur(18px) saturate(1.3); -webkit-backdrop-filter: blur(18px) saturate(1.3);
+      background: rgba(243, 240, 234, .97); color: var(--ink);
       box-shadow: 0 1px 0 rgba(0, 0, 0, .06); padding-block: .6rem;
     }
     .nav.on-light:not(.solid) { color: var(--ink); }
@@ -1453,6 +1452,17 @@
       if (document.body.classList.contains("is-ready")) go(); else window.addEventListener("hero:go", go, { once: true });
     })();
 
+    /* "How to get here": jump to the route videos and re-align once late layout settles */
+    (function () {
+      const target = document.getElementById("routes"), nav = document.getElementById("nav");
+      if (!target) return;
+      const go = () => { const y = target.getBoundingClientRect().top + scrollY - (nav.offsetHeight + 16); window.scrollTo({ top: Math.max(0, y), behavior: "instant" }); };
+      document.querySelectorAll('a[href="#routes"]').forEach(a => a.addEventListener("click", e => {
+        e.preventDefault(); go(); setTimeout(go, 250); setTimeout(go, 800);
+        if (history.replaceState) history.replaceState(null, "", "#routes");
+      }));
+    })();
+
     /* popular: on phones, open each model as its name reaches the middle of the screen; opened ones stay open */
     (function () {
       const mq = matchMedia("(max-width: 640px)");
@@ -1463,15 +1473,19 @@
         ticking = false;
         if (!mq.matches) return;
         const line = innerHeight * 0.58;
-        if (box.getBoundingClientRect().top > innerHeight) {          /* block is below the screen: reset quietly */
+        const br = box.getBoundingClientRect();
+        if (br.top > innerHeight) {          /* block is below the screen: reset quietly */
           if (maxOpen !== -1) { maxOpen = -1; items.forEach(el => el.classList.remove("is-open", "is-cur")); cur = -2; }
           return;
         }
+        if (br.bottom < 0) return;           /* block is above the screen (e.g. after a jump): leave it alone */
         let i = -1;
         items.forEach((el, k) => { if (el.getBoundingClientRect().top < line) i = k; });
-        if (i > maxOpen) maxOpen = i;
         if (i === cur) return;
-        items.forEach((el, k) => { el.classList.toggle("is-open", k <= maxOpen); el.classList.toggle("is-cur", k === i); });
+        /* open the model being read only if its name is on screen, so nothing above the viewport ever changes height */
+        if (i >= 0 && items[i].getBoundingClientRect().top >= 0) items[i].classList.add("is-open");
+        items.forEach((el, k) => el.classList.toggle("is-cur", k === i));
+        maxOpen = Math.max(maxOpen, i);
         cur = i;
       };
       const apply = () => {
