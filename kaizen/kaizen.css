@@ -538,6 +538,52 @@ html:lang(en) table.b-table .nw, html:lang(th) table.b-table .nw { white-space: 
 .ig-dic { width: 2.4em; height: 2.4em; background: #fff; border-radius: 50%; padding: .15em; }
 .ig-dnote { margin: .5em 0 0; font-size: .82em; color: var(--ink-2); }
 
+/* 改善案の手順：絵が主役、文は小さな補足 */
+.dt-top { display: grid; grid-template-columns: 20em 1fr; gap: .8em; flex: none; }
+.dt-now { background: #fdeceb; border-radius: 14px; padding: .5em .8em; display: flex; flex-direction: column; gap: .3em; }
+.dt-now-h, .dt-new-h { display: flex; align-items: center; gap: .4em; }
+.dt-now-h b { font-family: var(--f-head); color: #c0392b; }
+.dt-new-h b { font-family: var(--f-head); color: #237447; font-size: 1.05em; }
+.dt-now-art { width: 3.2em; height: auto; flex: none; }
+.dt-now ol { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: .5em; }
+.dt-now li { position: relative; background: #fff; border-radius: 10px; padding: .4em .4em .35em; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .1em; }
+.dt-now li::after { content: "✕"; position: absolute; top: .15em; right: .35em; color: #e25c4b; font-weight: 800; font-size: .8em; }
+.dn-ic { width: 2.4em; height: 2.4em; opacity: .85; }
+.dt-now li b { font-family: var(--f-head); font-size: .82em; line-height: 1.3; color: #9b2c20; }
+.dt-now li small, .dt-flow li small { font-size: .62em; line-height: 1.35; color: var(--ink-3); }
+.dt-new { flex: none; background: #e3f4ea; border-radius: 14px; padding: .55em .8em .7em; display: flex; flex-direction: column; gap: .35em; }
+.dt-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 1em; }
+.dt-flow li { position: relative; background: #fff; border-radius: 12px; padding: .5em .5em .5em; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .2em; }
+.dt-flow li + li::before { content: "➜"; position: absolute; left: -.95em; top: 2.6em; color: #237447; font-size: 1em; }
+.df-n { position: absolute; top: .35em; left: .4em; width: 1.5em; height: 1.5em; border-radius: 50%; background: #237447; color: #fff; font-size: .8em; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+.df-when { font-size: .66em; font-weight: 700; color: #237447; background: #e3f4ea; border-radius: 999px; padding: .05em .6em; margin-left: 1.4em; }
+.df-ic { width: 3.6em; height: 3.6em; background: #f4faf6; border-radius: 50%; padding: .35em; }
+.dt-flow li b { font-family: var(--f-head); font-size: .95em; line-height: 1.3; }
+.ig-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: .5em; flex: none; }
+.ig-cards li { background: var(--s); border-radius: 12px; padding: .5em .45em; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .2em; }
+.cd-ic { width: 2.8em; height: 2.8em; background: #fff; border-radius: 50%; padding: .25em; }
+.ig-cards b { font-family: var(--f-head); font-size: .8em; line-height: 1.25; color: var(--c); }
+.cd-bars { width: 100%; display: flex; flex-direction: column; gap: 3px; }
+.cd-bars i { display: block; height: .5em; border-radius: 4px; }
+.cd-bars .is-now { background: #e7a39b; } .cd-bars .is-new { background: #2f8f5b; }
+.ig-cards em { font-style: normal; font-family: var(--f-head); font-weight: 800; font-size: .78em; color: #237447; }
+.ig-cards small { font-size: .62em; line-height: 1.3; color: var(--ink-3); }
+.gl-after { flex: none; }
+.gl-tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: .6em; flex: none; }
+.gl-tiles li { background: var(--s); border-radius: 14px; padding: .6em .4em; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .25em; }
+.gl-cal { width: 4.4em; height: auto; }
+.gl-sub { font-size: .66em; color: var(--ink-2); font-weight: 700; margin-top: -.2em; }
+.gl-ic { width: 2.6em; height: 2.6em; background: #fff; border-radius: 50%; padding: .2em; }
+.gl-tiles b { font-family: var(--f-head); font-size: .82em; line-height: 1.25; color: var(--c); }
+.gl-bottom { display: flex; align-items: center; gap: 1.2em; flex: none; }
+.gl-friday { display: flex; align-items: center; gap: .6em; background: var(--cream, #fff4d6); border-radius: 14px; padding: .4em .9em; }
+.gl-friday b { font-family: var(--f-head); font-size: .9em; }
+.gl-friday ol { list-style: none; margin: 0; padding: 0; display: flex; gap: .35em; align-items: center; }
+.gl-fri { width: 2.8em; height: auto; }
+.gl-more { font-weight: 800; color: var(--ink-3); }
+.gl-bottom .ig-dnote { display: flex; align-items: center; gap: .4em; margin: 0; }
+.gl-note-ic { width: 1.8em; height: 1.8em; flex: none; }
+
 /* 付録 3：チェックする所 */
 .ig-checks { display: flex; flex-direction: column; gap: .35em; }
 .ig-checks div { display: grid; grid-template-columns: 2em 8em 1fr 1fr; align-items: center; gap: .6em; background: #f4f6f9; border-left: 5px solid var(--c); border-radius: 8px; padding: .3em .7em; font-size: .85em; line-height: 1.35; }
