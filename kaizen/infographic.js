@@ -407,6 +407,28 @@
       var b = ''; for (var i = 0; i < 8; i++) b += '<rect x="21" y="5" width="6" height="9" rx="1.5" fill="' + C.gray + '" transform="rotate(' + (i * 45) + ' 24 24)"/>';
       return b + '<circle cx="24" cy="24" r="12" fill="' + C.gray + '"/><circle cx="24" cy="24" r="5" fill="#fff"/>';
     },
+    type: function () {
+      var b = '<rect x="3" y="14" width="42" height="24" rx="4" fill="' + C.light + '"' + sw(C.navy, 2) + '/>';
+      for (var r = 0; r < 3; r++) for (var c = 0; c < 6; c++) b += '<rect x="' + (7 + c * 6.2) + '" y="' + (18 + r * 6) + '" width="4.6" height="4" rx="1" fill="' + C.navy + '" opacity=".75"/>';
+      return b + '<path d="M30 4 l6 6 l-14 14 l-7 1 l1 -7z" fill="' + C.gold + '"' + sw(C.ink, 1.2) + '/>';
+    },
+    xls: function () {
+      var b = '<rect x="6" y="6" width="36" height="36" rx="4" fill="#fff"' + sw('#1d7a45', 2.5) + '/><rect x="6" y="6" width="36" height="9" rx="3" fill="#1d7a45"/>';
+      for (var r = 0; r < 3; r++) b += '<line x1="6" y1="' + (24 + r * 6) + '" x2="42" y2="' + (24 + r * 6) + '"' + sw('#9ccfb1', 1.2) + '/>';
+      return b + '<line x1="18" y1="15" x2="18" y2="42"' + sw('#9ccfb1', 1.2) + '/><line x1="30" y1="15" x2="30" y2="42"' + sw('#9ccfb1', 1.2) + '/>';
+    },
+    pen: function () { return '<path d="M34 6 l8 8 l-22 22 l-11 3 l3 -11z" fill="' + C.gold + '"' + sw(C.ink, 1.6) + '/><path d="M12 28 l8 8"' + sw(C.ink, 1.6) + '/>'; },
+    paper: function () { return papers(0, 2, 0.92); },
+    calc: function () {
+      var b = '<rect x="10" y="4" width="28" height="40" rx="4" fill="' + C.navy + '"/><rect x="14" y="8" width="20" height="9" rx="2" fill="' + C.sky + '"/>';
+      for (var r = 0; r < 3; r++) for (var c = 0; c < 3; c++) b += '<rect x="' + (14 + c * 7) + '" y="' + (21 + r * 7) + '" width="5.5" height="5" rx="1" fill="#fff"/>';
+      return b;
+    },
+    two: function () { return face(16, 26, 12, C.gray) + face(32, 26, 12, C.gray); },
+    bank: function () {
+      return '<path d="M4 18 L24 6 L44 18z" fill="' + C.navy + '"/><rect x="6" y="38" width="36" height="5" rx="1" fill="' + C.navy + '"/>' +
+        '<rect x="10" y="20" width="5" height="17" fill="' + C.blue + '"/><rect x="21.5" y="20" width="5" height="17" fill="' + C.blue + '"/><rect x="33" y="20" width="5" height="17" fill="' + C.blue + '"/>' + t(24, 16, '฿', { fs: 8, fill: '#fff' });
+    },
     sort: function () {
       return '<rect x="4" y="6" width="17" height="15" rx="3" fill="' + C.green + '"/><rect x="27" y="6" width="17" height="15" rx="3" fill="' + C.gold + '"/>' +
         '<rect x="4" y="27" width="17" height="15" rx="3" fill="' + C.red + '"/><rect x="27" y="27" width="17" height="15" rx="3" fill="' + C.gray + '"/>';
@@ -477,18 +499,21 @@
       t: { ja: '手入力を「取り込む・読む・貼る」に', en: 'Import, read, paste — not type', th: 'เลิกคีย์มือ: นำเข้า อ่าน วาง' },
       b: { ja: '手入力と二重確認が多く、売上の確認は週 1 回だけ', en: 'Lots of typing and double checks — sales checked only weekly', th: 'คีย์มือและตรวจซ้ำมาก ตรวจยอดขายได้แค่สัปดาห์ละครั้ง' },
       a: { ja: '①〜⑦を新しいやり方で。空いた時間は品質の確認へ', en: 'Do ①–⑦ the new way; the time saved goes to quality checks', th: 'ทำ ①–⑦ ด้วยวิธีใหม่ เวลาที่ได้คืนใช้ตรวจคุณภาพ' },
-      rows: [
-        [{ ja: '① 銀行', en: '① Bank', th: '① ธนาคาร' }, { ja: '明細を取り込み、AI の候補を確認', en: 'Import statements, check AI matches', th: 'นำเข้ารายการ แล้วตรวจคู่ที่ AI เสนอ' }],
-        [{ ja: '② Sales Record', en: '② Sales Record', th: '② Sales Record' }, { ja: 'POS レポートを貼る', en: 'Paste the POS report', th: 'วางรายงาน POS' }],
-        [{ ja: '③ Shopee・Lazada', en: '③ Shopee · Lazada', th: '③ Shopee · Lazada' }, { ja: 'マクロで照合、番号は PEAK で', en: 'Match with a macro; PEAK numbers them', th: 'ตรวจด้วยแมโคร ให้ PEAK ออกเลข' }],
-        [{ ja: '④ 経費・仕入 VAT', en: '④ Expenses · purchase VAT', th: '④ ค่าใช้จ่าย · VAT ซื้อ' }, { ja: 'AI で読み取る', en: 'Read with AI', th: 'ให้ AI อ่านเอกสาร' }],
-        [{ ja: '⑤ 百貨店', en: '⑤ Department stores', th: '⑤ ห้างสรรพสินค้า' }, { ja: 'SKU 対応表と突合表', en: 'SKU mapping + matching sheet', th: 'ตารางจับคู่ SKU + ตารางกระทบยอด' }],
-        [{ ja: '⑥ 定型書類', en: '⑥ Routine documents', th: '⑥ เอกสารประจำ' }, { ja: 'Excel で一括取込', en: 'Bulk import from Excel', th: 'นำเข้าจาก Excel ทีเดียว' }],
-        [{ ja: '⑦ 紙', en: '⑦ Paper', th: '⑦ กระดาษ' }, { ja: '必要な書類だけ紙で', en: 'Paper only where required', th: 'ใช้กระดาษเฉพาะที่จำเป็น' }]],
+      cards: [
+        ['bank', { ja: '① 銀行', en: '① Bank', th: '① ธนาคาร' }, { ja: '明細を取り込み、AI の候補を確認', en: 'Import statements, check AI matches', th: 'นำเข้ารายการ แล้วตรวจคู่ที่ AI เสนอ' }, 40.5, 17.7],
+        ['chart', { ja: '② Sales Record', en: '② Sales Record', th: '② Sales Record' }, { ja: 'POS レポートを貼る', en: 'Paste the POS report', th: 'วางรายงาน POS' }, 8.1, 3.2],
+        ['sort', { ja: '③ Shopee・Lazada', en: '③ Shopee · Lazada', th: '③ Shopee · Lazada' }, { ja: 'マクロで照合、番号は PEAK で', en: 'Match with a macro; PEAK numbers them', th: 'ตรวจด้วยแมโคร ให้ PEAK ออกเลข' }, 34.1, 14.4],
+        ['ai', { ja: '④ 経費・仕入 VAT', en: '④ Expenses · purchase VAT', th: '④ ค่าใช้จ่าย · VAT ซื้อ' }, { ja: 'AI で読み取る', en: 'Read with AI', th: 'ให้ AI อ่านเอกสาร' }, 61.7, 33.5],
+        ['store', { ja: '⑤ 百貨店', en: '⑤ Department stores', th: '⑤ ห้างสรรพสินค้า' }, { ja: 'SKU 対応表と突合表', en: 'SKU mapping + matching sheet', th: 'ตารางจับคู่ SKU + ตารางกระทบยอด' }, 16.4, 8.0],
+        ['gear', { ja: '⑥ 定型書類', en: '⑥ Routine documents', th: '⑥ เอกสารประจำ' }, { ja: 'Excel で一括取込', en: 'Bulk import from Excel', th: 'นำเข้าจาก Excel ทีเดียว' }, 26.8, 16.0],
+        ['paper', { ja: '⑦ 紙', en: '⑦ Paper', th: '⑦ กระดาษ' }, { ja: '必要な書類だけ紙で', en: 'Paper only where required', th: 'ใช้กระดาษเฉพาะที่จำเป็น' }, 41.7, 29.1]],
       c: { ja: '結果が今のやり方と同じか・作業時間が減ったか', en: 'Results match the old way · less work time', th: 'ผลตรงกับวิธีเดิมไหม · เวลาทำงานลดลงไหม' } },
     { ch: 0, cont: true, mark: '①', scene: 'input',
       t: { ja: '① 銀行：明細を取り込み、AI の候補で照合', en: '① Bank: import statements, match with AI', th: '① ธนาคาร: นำเข้ารายการ แล้วกระทบยอดด้วย AI' },
       detail: { h: '40.5h → 17.7h',
+        ni: ['type', 'store', 'xls', 'pen'],
+        ns: [{ ja: '手で入力', en: 'Typed by hand', th: 'คีย์เอง' }, { ja: '店舗分も別に入力', en: 'Stores typed separately', th: 'คีย์ยอดร้านแยก' }, { ja: '数か月まとめて照合', en: 'Months matched at once', th: 'กระทบยอดรวมหลายเดือน' }, { ja: 'PEAK で手直し', en: 'Fixed by hand in PEAK', th: 'แก้เองใน PEAK' }],
+        as: [{ ja: 'ダウンロード', en: 'Download', th: 'ดาวน์โหลด' }, { ja: 'PEAK に取込', en: 'Import to PEAK', th: 'นำเข้า PEAK' }, { ja: 'AI の候補を確定', en: 'Confirm AI matches', th: 'ยืนยันคู่จาก AI' }, { ja: '合わない分だけ調査', en: 'Check mismatches only', th: 'ตรวจเฉพาะที่ไม่ตรง' }, { ja: '月末に残高確認', en: 'Month-end balance check', th: 'ตรวจยอดสิ้นเดือน' }],
         now: [{ ja: '銀行明細を見て、入金額を手で入力', en: 'Type deposits in by hand from the statement', th: 'ดูรายการเดินบัญชีแล้วคีย์ยอดเงินเข้าเอง' },
           { ja: '店舗の入金も別に入力', en: 'Enter store deposits separately', th: 'คีย์เงินเข้าจากร้านแยกอีกรอบ' },
           { ja: '2〜3 か月分をまとめて Excel で照合', en: 'Match 2–3 months at once in Excel', th: 'กระทบยอด 2–3 เดือนรวมกันใน Excel' },
@@ -503,6 +528,9 @@
     { ch: 0, cont: true, mark: '②', scene: 'input',
       t: { ja: '② Sales Record：POS レポートを貼るだけ', en: '② Sales Record: just paste the POS report', th: '② Sales Record: แค่วางรายงาน POS' },
       detail: { h: '8.1h → 3.2h',
+        ni: ['paper', 'calc', 'type'],
+        ns: [{ ja: 'レシートを集める', en: 'Collect receipts', th: 'รวบรวมใบเสร็จ' }, { ja: '店舗別に集計', en: 'Total by store', th: 'รวมยอดตามร้าน' }, { ja: '3〜4 店を手入力', en: 'Type 3–4 stores', th: 'คีย์ 3–4 ร้าน' }],
+        as: [{ ja: 'Zort から出力', en: 'Export from Zort', th: 'ส่งออกจาก Zort' }, { ja: 'シートに貼る', en: 'Paste into the sheet', th: 'วางลงชีต' }, { ja: '自動で集計', en: 'Totals made for you', th: 'สรุปยอดอัตโนมัติ' }],
         now: [{ ja: '店舗ごとの EDC 伝票やレシートを集める', en: 'Collect EDC slips and receipts from each store', th: 'รวบรวมสลิป EDC และใบเสร็จของแต่ละร้าน' },
           { ja: '店舗別に集計する', en: 'Total them by store', th: 'รวมยอดแยกตามร้าน' },
           { ja: 'スプレッドシートに 3〜4 店分を入力', en: 'Type 3–4 stores into the spreadsheet', th: 'คีย์ 3–4 ร้านลงสเปรดชีต' }],
@@ -514,6 +542,9 @@
     { ch: 0, cont: true, mark: '③', scene: 'input',
       t: { ja: '③ Shopee・Lazada：マクロで照合、番号は PEAK で', en: '③ Shopee · Lazada: macro matching, PEAK numbering', th: '③ Shopee · Lazada: ตรวจด้วยแมโคร PEAK ออกเลข' },
       detail: { h: '34.1h → 14.4h',
+        ni: ['xls', 'pay', 'pen', 'ng'],
+        ns: [{ ja: 'Excel で突き合わせ', en: 'Matched in Excel', th: 'เทียบใน Excel' }, { ja: '入金を照合', en: 'Payouts matched', th: 'เทียบเงินเข้า' }, { ja: '番号を 1 件ずつ修正', en: 'Numbers fixed one by one', th: 'แก้เลขทีละรายการ' }, { ja: '重複を手で取消', en: 'Duplicates cancelled by hand', th: 'ยกเลิกรายการซ้ำเอง' }],
+        as: [{ ja: 'データを出力', en: 'Export data', th: 'ส่งออกข้อมูล' }, { ja: 'マクロ実行', en: 'Run the macro', th: 'รันแมโคร' }, { ja: '4 つに自動で分類', en: 'Sorted into 4', th: 'แยก 4 กลุ่มอัตโนมัติ' }, { ja: '差異だけ確認', en: 'Check gaps only', th: 'ตรวจเฉพาะส่วนต่าง' }, { ja: 'PEAK が番号を振る', en: 'PEAK numbers them', th: 'PEAK ออกเลข' }, { ja: 'VAT 合計を確認', en: 'Check VAT totals', th: 'ตรวจยอด VAT' }],
         now: [{ ja: '売上・費用・入金を Excel で突き合わせる', en: 'Match sales, fees and payments in Excel', th: 'เทียบยอดขาย ค่าธรรมเนียม และเงินเข้าใน Excel' },
           { ja: '銀行明細と入金額を照合', en: 'Match payments to the bank statement', th: 'เทียบเงินเข้ากับรายการเดินบัญชี' },
           { ja: '月 215〜258 件の番号を 1 件ずつ直す', en: 'Fix 215–258 numbers one by one each month', th: 'แก้เลข 215–258 รายการทีละรายการทุกเดือน' },
@@ -529,6 +560,9 @@
     { ch: 0, cont: true, mark: '④', scene: 'input',
       t: { ja: '④ 経費・仕入 VAT：AI で読み取る', en: '④ Expenses · purchase VAT: read with AI', th: '④ ค่าใช้จ่าย · VAT ซื้อ: ให้ AI อ่าน' },
       detail: { h: '61.7h → 33.5h',
+        ni: ['paper', 'xls', 'two'],
+        ns: [{ ja: '紙を見て手入力', en: 'Typed from paper', th: 'คีย์จากกระดาษ' }, { ja: 'Excel で報告書', en: 'Report built in Excel', th: 'ทำรายงานใน Excel' }, { ja: '2 人で全件確認', en: 'Two people check all', th: 'สองคนตรวจทุกใบ' }],
+        as: [{ ja: 'File Vault へ', en: 'Into File Vault', th: 'ใส่ File Vault' }, { ja: 'AI が読み取る', en: 'AI reads it', th: 'AI อ่านเอกสาร' }, { ja: '原本と見比べる', en: 'Compare with original', th: 'เทียบต้นฉบับ' }, { ja: '科目を確定', en: 'Set the account', th: 'กำหนดบัญชี' }, { ja: 'PP.30 を出力', en: 'Output PP.30', th: 'ออก ภ.พ.30' }, { ja: '2 人目は一部だけ', en: 'Second check: some only', th: 'คนที่สองตรวจบางส่วน' }],
         now: [{ ja: '紙の請求書を見て支払伝票を手で入力', en: 'Type payment vouchers from paper invoices', th: 'ดูใบแจ้งหนี้กระดาษแล้วคีย์ใบสำคัญจ่าย' },
           { ja: '仕入 VAT 報告書を Excel で作る', en: 'Build the purchase VAT report in Excel', th: 'ทำรายงาน VAT ซื้อใน Excel' },
           { ja: '2 人が同じ書類を全件確認', en: 'Two people check every document', th: 'สองคนตรวจเอกสารเดียวกันทุกใบ' }],
@@ -543,6 +577,9 @@
     { ch: 0, cont: true, mark: '⑤', scene: 'sku',
       t: { ja: '⑤ 百貨店：SKU 対応表と突合表', en: '⑤ Department stores: SKU table & matching sheet', th: '⑤ ห้าง: ตารางจับคู่ SKU และตารางกระทบยอด' },
       detail: { h: '16.4h → 8.0h',
+        ni: ['search', 'list', 'pen'],
+        ns: [{ ja: 'SKU を 1 行ずつ確認', en: 'SKUs checked line by line', th: 'ตรวจ SKU ทีละบรรทัด' }, { ja: '店ごとに別データ', en: 'A file per store', th: 'ทำไฟล์แยกแต่ละห้าง' }, { ja: 'CN 前に手で確認', en: 'Hand-check before CN', th: 'ตรวจเองก่อนออก CN' }],
+        as: [{ ja: '補充リスト受取', en: 'Get the restock list', th: 'รับรายการเติมของ' }, { ja: '貼ると自動作成', en: 'Paste → files made', th: 'วางแล้วได้ไฟล์' }, { ja: '赤い行だけ確認', en: 'Check red rows only', th: 'ตรวจแถวสีแดง' }, { ja: '納品書を発行', en: 'Issue delivery notes', th: 'ออกใบส่งของ' }, { ja: '差の分だけ CN', en: 'CN for the gap only', th: 'ออก CN ส่วนต่าง' }],
         now: [{ ja: '表記の違う SKU を 1 行ずつ確認', en: 'Check differently written SKUs line by line', th: 'ตรวจ SKU ที่เขียนต่างกันทีละบรรทัด' },
           { ja: 'Siam 用と Central 用のデータを別々に作る', en: 'Make Siam and Central data separately', th: 'ทำข้อมูลของ Siam และ Central แยกกัน' },
           { ja: 'CN の前に金額を手で確認', en: 'Check amounts by hand before each CN', th: 'ตรวจยอดเองก่อนออก CN' }],
@@ -556,6 +593,9 @@
     { ch: 0, cont: true, mark: '⑥', scene: 'input',
       t: { ja: '⑥ 定型書類：Excel でまとめて取り込む', en: '⑥ Routine documents: bulk import from Excel', th: '⑥ เอกสารประจำ: นำเข้าจาก Excel ทีเดียว' },
       detail: { h: '26.8h → 16.0h',
+        ni: ['type', 'list', 'pos'],
+        ns: [{ ja: '費用を 1 件ずつ仕訳', en: 'Fees posted one by one', th: 'บันทึกค่าธรรมเนียมทีละรายการ' }, { ja: '請求書を 1 件ずつ', en: 'Invoices one by one', th: 'ใบแจ้งหนี้ทีละใบ' }, { ja: '画面で手入力', en: 'Typed on screen', th: 'คีย์บนหน้าจอ' }],
+        as: [{ ja: '明細を集める', en: 'Gather statements', th: 'รวบรวมรายการ' }, { ja: 'マクロで変換', en: 'Convert by macro', th: 'แปลงด้วยแมโคร' }, { ja: '例外を確認', en: 'Check exceptions', th: 'ตรวจรายการพิเศษ' }, { ja: 'PEAK へ取込', en: 'Import to PEAK', th: 'นำเข้า PEAK' }, { ja: '確認して承認', en: 'Review & approve', th: 'ตรวจแล้วอนุมัติ' }],
         now: [{ ja: 'Shopee・Lazada・KBank の費用を 1 件ずつ仕訳', en: 'Post Shopee, Lazada and KBank fees one by one', th: 'บันทึกค่าธรรมเนียม Shopee Lazada KBank ทีละรายการ' },
           { ja: '委託先やグループ間の請求書を 1 件ずつ作る', en: 'Make consignment and group invoices one by one', th: 'ทำใบแจ้งหนี้ฝากขายและระหว่างกลุ่มทีละใบ' },
           { ja: '委託の売上や商品データを画面で入力', en: 'Type consignment sales and product data on screen', th: 'คีย์ยอดฝากขายและข้อมูลสินค้าบนหน้าจอ' }],
@@ -569,14 +609,15 @@
     { ch: 0, scene: 'cutover', am: 'check',
       t: { ja: '切り替えは「並行」で', en: 'Switch over in parallel', th: 'เปลี่ยนแบบทำคู่กัน' },
       a: { ja: '試してから今のやり方と並行で回し、問題なければ本番へ', en: 'Try it, run it next to the old way, then go live if all is well', th: 'ทดลอง ทำคู่กับวิธีเดิม ถ้าไม่มีปัญหาจึงใช้จริง' },
-      rows: [
-        [{ ja: '① 銀行', en: '① Bank', th: '① ธนาคาร' }, { ja: '11 月 23 日から本番', en: 'Live from 23 Nov', th: 'ใช้จริงตั้งแต่ 23 พ.ย.' }],
-        [{ ja: '② Sales Record', en: '② Sales Record', th: '② Sales Record' }, { ja: '11 月 23 日から本番', en: 'Live from 23 Nov', th: 'ใช้จริงตั้งแต่ 23 พ.ย.' }],
-        [{ ja: '③ Shopee・Lazada', en: '③ Shopee · Lazada', th: '③ Shopee · Lazada' }, { ja: '11 月の締めから', en: 'From the November close', th: 'ตั้งแต่ปิดงวดเดือน พ.ย.' }],
-        [{ ja: '④ 経費・仕入 VAT', en: '④ Expenses · VAT', th: '④ ค่าใช้จ่าย · VAT' }, { ja: '11 月 30 日から本番', en: 'Live from 30 Nov', th: 'ใช้จริงตั้งแต่ 30 พ.ย.' }],
-        [{ ja: '⑤ 百貨店', en: '⑤ Department stores', th: '⑤ ห้างสรรพสินค้า' }, { ja: '12 月 3 日の納品から', en: 'From the 3 Dec delivery', th: 'ตั้งแต่การส่งของ 3 ธ.ค.' }],
-        [{ ja: '⑥ 定型書類', en: '⑥ Routine documents', th: '⑥ เอกสารประจำ' }, { ja: '12 月分の請求から', en: 'From December invoices', th: 'ตั้งแต่ใบแจ้งหนี้เดือน ธ.ค.' }],
-        [{ ja: '⑦ 紙', en: '⑦ Paper', th: '⑦ กระดาษ' }, { ja: 'Hikari の確認後', en: 'After Hikari confirms', th: 'หลัง Hikari ยืนยัน' }]],
+      golive: [
+        ['bank', { ja: '① 銀行', en: '① Bank', th: '① ธนาคาร' }, '11/23'],
+        ['chart', { ja: '② Sales Record', en: '② Sales Record', th: '② Sales Record' }, '11/23'],
+        ['sort', { ja: '③ Shopee・Lazada', en: '③ Shopee · Lazada', th: '③ Shopee · Lazada' }, { ja: '11月締め', en: 'Nov close', th: 'ปิด พ.ย.' }],
+        ['ai', { ja: '④ 経費・仕入 VAT', en: '④ Expenses · VAT', th: '④ ค่าใช้จ่าย · VAT' }, '11/30'],
+        ['store', { ja: '⑤ 百貨店', en: '⑤ Dept. stores', th: '⑤ ห้าง' }, '12/3', { ja: 'の納品から', en: 'delivery', th: 'รอบส่งของ' }],
+        ['gear', { ja: '⑥ 定型書類', en: '⑥ Routine docs', th: '⑥ เอกสารประจำ' }, { ja: '12月分', en: 'Dec', th: 'ธ.ค.' }, { ja: 'の請求から', en: 'invoices', th: 'ใบแจ้งหนี้' }],
+        ['paper', { ja: '⑦ 紙', en: '⑦ Paper', th: '⑦ กระดาษ' }, '?', { ja: 'Hikari の確認後', en: 'after Hikari confirms', th: 'หลัง Hikari ยืนยัน' }]],
+      fridays: ['11/27', '12/4', '12/11', '12/18'],
       rules: [
         ['clock', { ja: '毎週金曜 15 分で確認（11 月 27 日から）', en: 'Every Friday, 15 minutes (from 27 Nov)', th: 'ทุกวันศุกร์ 15 นาที (ตั้งแต่ 27 พ.ย.)' }],
         ['stamp', { ja: '問題があれば本番に進まず、手順を直して続ける', en: 'Problems? Don’t go live — fix the steps and keep going', th: 'มีปัญหา ไม่ใช้จริง ปรับขั้นตอนแล้วทำต่อ' }]] },
@@ -1014,12 +1055,29 @@
       (it.review ? '<span class="ig-pill">' + esc(U.inReview) + '</span>' : '') + (it.when ? '<span class="ig-when">🕘 ' + esc(L(it.when)) + '</span>' : '') + '</header>';
     if (it.detail) {
       var d = it.detail;
-      return h + '<div class="it-body ig-detail"><div class="it-left">' +
-        hoursBars(d.h, U) +
-        '<div class="ig-dnow">' + svg('0 0 120 92', MINI.pile(U), 'ig-dnow-art') + '<div><b>' + esc(U.nowWay) + '</b><ul>' + d.now.map(function (x) { return '<li>' + esc(L(x)) + '</li>'; }).join('') + '</ul></div></div>' +
-        '</div><div class="it-right"><span class="ig-label">' + esc(U.newWay) + '</span><ol class="ig-dsteps">' + d.after.map(function (x, k) {
-          return '<li><span class="ig-step-n">' + (k + 1) + '</span>' + icon(x[2] || 'check', 'ig-ic ig-dic') + '<small>' + esc(L(x[0])) + '</small><span>' + esc(L(x[1])) + '</span></li>';
-        }).join('') + '</ol>' + (d.note ? '<p class="ig-dnote">※ ' + esc(L(d.note)) + '</p>' : '') + '</div></div>';
+      var nowTiles = d.now.map(function (x, k) {
+        return '<li>' + icon((d.ni || [])[k] || 'ng', 'ig-ic dn-ic') + '<b>' + esc(L((d.ns || [])[k] || x)) + '</b><small>' + esc(L(x)) + '</small></li>';
+      }).join('');
+      var flow = d.after.map(function (x, k) {
+        return '<li><span class="df-n">' + (k + 1) + '</span><span class="df-when">' + esc(L(x[0])) + '</span>' + icon(x[2] || 'check', 'ig-ic df-ic') +
+          '<b>' + esc(L((d.as || [])[k] || x[1])) + '</b><small>' + esc(L(x[1])) + '</small></li>';
+      }).join('');
+      return h + '<div class="dt-top">' + hoursBars(d.h, U) +
+        '<div class="dt-now"><div class="dt-now-h">' + svg('0 0 120 92', MINI.pile(U), 'dt-now-art') + '<b>' + esc(U.nowWay) + '</b></div><ol>' + nowTiles + '</ol></div></div>' +
+        '<div class="dt-new"><div class="dt-new-h">' + svg('0 0 120 92', MINI.check(U), 'dt-now-art') + '<b>' + esc(U.newWay) + '</b></div><ol class="dt-flow">' + flow + '</ol></div>' +
+        (d.note ? '<p class="ig-dnote">※ ' + esc(L(d.note)) + '</p>' : '');
+    }
+    if (it.golive) {
+      var tiles = it.golive.map(function (g) {
+        var lab = typeof g[2] === 'string' ? g[2] : L(g[2]);
+        return '<li>' + svg('0 0 56 58', calendar(0, 2, 1, esc(lab), { top: C.green, fs: calFs(lab) }), 'gl-cal') +
+          (g[3] ? '<small class="gl-sub">' + esc(L(g[3])) + '</small>' : '') + icon(g[0], 'ig-ic gl-ic') + '<b>' + esc(L(g[1])) + '</b></li>';
+      }).join('');
+      var fr = it.fridays.map(function (f) { return '<li>' + svg('0 0 56 58', calendar(0, 2, 1, f, { top: C.gold, fs: 13 }), 'gl-fri') + '</li>'; }).join('') + '<li class="gl-more">…</li>';
+      return h + '<div class="ig-card is-after gl-after">' + svg('0 0 120 92', MINI.check(U), 'ig-mini') + '<div><b>' + esc(U.after) + '</b><p>' + esc(L(it.a)) + '</p></div></div>' +
+        '<ol class="gl-tiles">' + tiles + '</ol>' +
+        '<div class="gl-bottom"><div class="gl-friday">' + icon('clock', 'ig-ic') + '<b>' + esc(L(it.rules[0][1])) + '</b><ol>' + fr + '</ol></div>' +
+        '<p class="ig-dnote">' + icon('stamp', 'ig-ic gl-note-ic') + esc(L(it.rules[1][1])) + '</p></div>';
     }
     if (it.small) {
       return h + '<div class="it-body is-small"><div class="it-left">' + svg(VB, SCENES[it.scene](U), 'ig-hero') + '</div>' +
@@ -1051,10 +1109,20 @@
       return '<div>' + icon(s.ic) + '<b>' + esc(L(s.l)) + '</b><span>' + esc(L(s.n)) + '</span></div>' + (i < 2 ? '<span class="ig-stage-arrow">➜</span>' : '');
     }).join('') + '</div>';
     h += '<div class="it-body"><div class="it-left">' + left + '</div><div class="it-right">' + right + '</div></div>';
+    if (it.cards) h += '<ol class="ig-cards">' + it.cards.map(function (c) {
+      return '<li>' + icon(c[0], 'ig-ic cd-ic') + '<b>' + esc(L(c[1])) + '</b>' +
+        '<span class="cd-bars"><i class="is-now" style="width:100%"></i><i class="is-new" style="width:' + (c[4] / c[3] * 100).toFixed(0) + '%"></i></span>' +
+        '<em>' + c[3].toFixed(1) + ' → ' + c[4].toFixed(1) + 'h</em><small>' + esc(L(c[2])) + '</small></li>';
+    }).join('') + '</ol>';
     if (it.c) h += '<div class="ig-check">' + svg('0 0 48 48', okCircle(24, 24, 20), 'ig-check-ic') + '<b>' + esc(U.check) + '</b><span>' + esc(L(it.c)) + '</span></div>';
     return h;
   }
 
+  // カレンダーの数字・文字が枠（幅 約 48）に収まる大きさ
+  function calFs(lab) {
+    var w = 0; for (var i = 0; i < lab.length; i++) w += lab.charCodeAt(i) > 0x2e7f ? 1 : 0.62;
+    return Math.max(8, Math.min(15, Math.floor(46 / w)));
+  }
   // 「今 → 変えた後」の時間を棒グラフで（2 名・38 営業日の合計）
   function hoursBars(h, U) {
     var m = /([\d.]+)h\s*→\s*([\d.]+)h/.exec(h) || [0, 1, 1];
