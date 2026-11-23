@@ -442,32 +442,36 @@
       howToRead: 'このマニュアルの見方', legendBefore: '困っていたこと', legendAfter: '新しいやり方', legendCheck: 'できているかの確認',
       areas: '改善する 5 つのエリア', chapter: function (n) { return '第 ' + n + ' 章'; }, appendix: '付録', inReview: '内容確認中',
       textNote: 'くわしい説明は右上の「文章」で見られます。', confidential: '社内資料・取り扱い注意',
-      am: '朝', today: '今日', hours: '2 名が 38 営業日でこの作業にかけた時間', nowWay: '今のやり方', newWay: '変えた後', hbNow: '今', hbNew: '変えた後', perDay: function (m) { return '1 日あたり 約 ' + m + ' 分 短縮（2 名合計）'; }, monthEnd: '月末', monThu: '月・木', fri: '金', ours: '自社', bizDays: '営業日', mon: '月', minus1: '前日', handbook: '手順書', perPair: '1 足あたり'
+      am: '朝', today: '今日', hours: '2 名がこの作業にかける時間（1 か月 = 21 営業日）', perMonthU: '時間 / 月', nowWay: '今のやり方', newWay: '変えた後', hbNow: '今', hbNew: '変えた後', perDay: function (m) { return '1 日あたり 約 ' + m + ' 分 短縮（2 名合計）'; }, monthEnd: '月末', monThu: '月・木', fri: '金', ours: '自社', bizDays: '営業日', mon: '月', minus1: '前日', handbook: '手順書', perPair: '1 足あたり'
     },
     en: {
       kicker: 'Process improvement, in pictures', before: 'Before', after: 'From now on', how: 'How', check: 'Check',
       howToRead: 'How to read this manual', legendBefore: 'What went wrong', legendAfter: 'The new way', legendCheck: 'How we know it works',
       areas: '5 areas we are improving', chapter: function (n) { return 'Chapter ' + n; }, appendix: 'Appendix', inReview: 'Being confirmed',
       textNote: 'For full details, switch to “Text” at the top right.', confidential: 'Internal use only',
-      am: 'AM', today: 'Today', hours: 'Time 2 people spent on this in 38 working days', nowWay: 'The way it is now', newWay: 'The new way', hbNow: 'Now', hbNew: 'New way', perDay: function (m) { return 'About ' + m + ' min saved a day (2 people)'; }, monthEnd: 'END', monThu: 'MON·THU', fri: 'FRI', ours: 'Ours', bizDays: 'business days', mon: 'MON', minus1: '−1 day', handbook: 'Handbook', perPair: 'per pair'
+      am: 'AM', today: 'Today', hours: 'Time 2 people spend on this a month (21 working days)', perMonthU: 'hours / month', nowWay: 'The way it is now', newWay: 'The new way', hbNow: 'Now', hbNew: 'New way', perDay: function (m) { return 'About ' + m + ' min saved a day (2 people)'; }, monthEnd: 'END', monThu: 'MON·THU', fri: 'FRI', ours: 'Ours', bizDays: 'business days', mon: 'MON', minus1: '−1 day', handbook: 'Handbook', perPair: 'per pair'
     },
     th: {
       kicker: 'ปรับปรุงการทำงาน ดูเข้าใจง่ายด้วยภาพ', before: 'แบบเดิม', after: 'แบบใหม่', how: 'วิธีทำ', check: 'ตรวจสอบ',
       howToRead: 'วิธีอ่านคู่มือนี้', legendBefore: 'ปัญหาที่เคยเกิด', legendAfter: 'วิธีทำงานแบบใหม่', legendCheck: 'ดูว่าทำได้จริงหรือไม่',
       areas: '5 ส่วนงานที่จะปรับปรุง', chapter: function (n) { return 'บทที่ ' + n; }, appendix: 'ภาคผนวก', inReview: 'อยู่ระหว่างตรวจสอบ',
       textNote: 'ดูรายละเอียดทั้งหมดได้ที่ปุ่ม “ข้อความ” มุมขวาบน', confidential: 'เอกสารใช้ภายในบริษัท',
-      am: 'เช้า', today: 'วันนี้', hours: 'เวลาที่ 2 คนใช้กับงานนี้ใน 38 วันทำการ', nowWay: 'วิธีที่ทำอยู่ตอนนี้', newWay: 'วิธีใหม่', hbNow: 'ตอนนี้', hbNew: 'วิธีใหม่', perDay: function (m) { return 'ลดได้ประมาณ ' + m + ' นาทีต่อวัน (2 คนรวมกัน)'; }, monthEnd: 'สิ้นเดือน', monThu: 'จ.·พฤ.', fri: 'ศ.', ours: 'ของเรา', bizDays: 'วันทำการ', mon: 'จ.', minus1: '−1 วัน', handbook: 'คู่มือ', perPair: 'ต่อ 1 คู่'
+      am: 'เช้า', today: 'วันนี้', hours: 'เวลาที่ 2 คนใช้กับงานนี้ต่อเดือน (21 วันทำการ)', perMonthU: 'ชั่วโมง / เดือน', nowWay: 'วิธีที่ทำอยู่ตอนนี้', newWay: 'วิธีใหม่', hbNow: 'ตอนนี้', hbNew: 'วิธีใหม่', perDay: function (m) { return 'ลดได้ประมาณ ' + m + ' นาทีต่อวัน (2 คนรวมกัน)'; }, monthEnd: 'สิ้นเดือน', monThu: 'จ.·พฤ.', fri: 'ศ.', ours: 'ของเรา', bizDays: 'วันทำการ', mon: 'จ.', minus1: '−1 วัน', handbook: 'คู่มือ', perPair: 'ต่อ 1 คู่'
     }
   };
 
   // 章
   var CHAPTERS = [
     { icon: 'pos', t: { ja: '経理', en: 'Accounting', th: 'บัญชี' },
-      d: { ja: '売上を毎日確認し、手入力を減らす', en: 'Check sales daily, type less', th: 'ตรวจยอดขายทุกวัน ลดการคีย์มือ' },
-      kpi: { v: '107', per: 'NEE 56.8h / NUT 50.6h',
-        u: { ja: '時間 減らせる見込み', en: 'hours saved (expected)', th: 'ชั่วโมงที่คาดว่าลดได้' },
-        l: { ja: '2 名・38 営業日の 350 時間の 31%。約 95 時間を毎日の照合・毎月の元帳・棚卸し・月次レポートへ', en: '31% of 350 hours (2 people, 38 working days). About 95 hours go to daily checks, monthly ledgers, stock counts and the monthly report', th: '31% ของ 350 ชั่วโมง (2 คน 38 วันทำการ) ประมาณ 95 ชั่วโมงใช้กับการตรวจรายวัน บัญชีรายเดือน นับสต็อก และรายงานประจำเดือน' },
-        per2: 'NEE 189.7h / NUT 160.7h' } },
+      d: null,
+      kpi: { v: '59.4', per: 'NEE 31.4h / NUT 28.0h',
+        u: { ja: '時間 / 月 減らせる見込み', en: 'hours a month saved (expected)', th: 'ชั่วโมงต่อเดือนที่คาดว่าลดได้' },
+        l: { ja: '2 名で月 193.6 時間の 31%。空いた約 52.5 時間 / 月は、毎日の照合・毎月の元帳・棚卸し・月次レポートへ', en: '31% of 193.6 hours a month (2 people). The freed ~52.5 hours a month go to daily checks, monthly ledgers, stock counts and the monthly report', th: '31% ของ 193.6 ชั่วโมงต่อเดือน (2 คน) เวลาที่ได้คืนประมาณ 52.5 ชั่วโมงต่อเดือน ใช้กับการตรวจรายวัน บัญชีรายเดือน นับสต็อก และรายงานประจำเดือน' },
+        per2: 'NEE 104.8h / NUT 88.8h', base: '193.6h',
+        notes: [
+          { ja: '作業時間：NUT・NEE の Daily Report（2/11〜4/3）から、決算書関連の業務を除いた時間で算出', en: 'Work hours: from NUT’s and NEE’s Daily Reports (11 Feb – 3 Apr), excluding year-end closing work', th: 'ชั่วโมงทำงาน: จาก Daily Report ของ NUT และ NEE (11 ก.พ. – 3 เม.ย.) ไม่รวมงานปิดงบ' },
+          { ja: '削減見込み：Daily Report を AI が分析して出した推定', en: 'Expected saving: an estimate from AI analysis of the Daily Reports', th: 'ที่คาดว่าลดได้: ประมาณการจากการวิเคราะห์ Daily Report ด้วย AI' },
+          { ja: '1 か月 = 21 営業日（今月の営業日数）で換算', en: '1 month = 21 working days (this month’s count)', th: '1 เดือน = 21 วันทำการ (จำนวนวันทำการเดือนนี้)' }] } },
     { icon: 'truck', t: { ja: '店舗・イベント・オンライン物流', en: 'Store, Event & Online Logistics', th: 'โลจิสติกส์ร้านค้า อีเวนต์ และออนไลน์' },
       d: { ja: '商品の動きをオフィスが計画的に管理', en: 'The office plans how stock moves', th: 'ออฟฟิศวางแผนการเคลื่อนย้ายสินค้า' } },
     { icon: 'box', t: { ja: '在庫・倉庫・QC', en: 'Stock, Warehouse & QC', th: 'สต็อก คลังสินค้า และ QC' },
@@ -1040,11 +1044,12 @@
     var heroScene = SCENES[itemsOf(i)[0].scene](U);
     return slide(i + 1, 1, 'sl-bcover', colVars(i),
       '<div class="bc-cover"><span class="bc-no">' + esc(U.chapter(i + 1)) + '</span>' + icon(c.icon, 'bc-ic') +
-      '<h1 class="bc-t">' + esc(L(c.t)) + '</h1><p class="bc-d">' + esc(L(c.d)) + '</p>' +
+      '<h1 class="bc-t">' + esc(L(c.t)) + '</h1>' + (c.d ? '<p class="bc-d">' + esc(L(c.d)) + '</p>' : '') +
       '<div class="bc-art">' + svg(VB, heroScene) + '</div><span class="bc-co">' + esc(COMPANY) + '</span></div>' +
       '<div class="bc-toc"><h2>' + esc(D.contents) + '</h2><ol>' + rows + '</ol>' + (c.kpi ?
         '<div class="ig-kpi bc-kpi"><b>' + esc(c.kpi.v) + '</b><span><strong>' + esc(L(c.kpi.u)) + ' <small>(' + esc(c.kpi.per) + ')</small></strong>' +
-        esc(L(c.kpi.l)) + ' <small>(350h = ' + esc(c.kpi.per2) + ')</small></span></div>' : '') + '</div>',
+        esc(L(c.kpi.l)) + ' <small>(' + esc(c.kpi.base) + ' = ' + esc(c.kpi.per2) + ')</small></span></div>' +
+        '<ul class="bc-notes">' + c.kpi.notes.map(function (n) { return '<li>' + esc(L(n)) + '</li>'; }).join('') + '</ul>' : '') + '</div>',
       foot(i, 1, pages.length));
   }
 
@@ -1109,10 +1114,10 @@
       return '<div>' + icon(s.ic) + '<b>' + esc(L(s.l)) + '</b><span>' + esc(L(s.n)) + '</span></div>' + (i < 2 ? '<span class="ig-stage-arrow">➜</span>' : '');
     }).join('') + '</div>';
     h += '<div class="it-body"><div class="it-left">' + left + '</div><div class="it-right">' + right + '</div></div>';
-    if (it.cards) h += '<ol class="ig-cards">' + it.cards.map(function (c) {
+    if (it.cards) h += '<p class="cd-unit">' + esc(U.hours) + '</p><ol class="ig-cards">' + it.cards.map(function (c) {
       return '<li>' + icon(c[0], 'ig-ic cd-ic') + '<b>' + esc(L(c[1])) + '</b>' +
         '<span class="cd-bars"><i class="is-now" style="width:100%"></i><i class="is-new" style="width:' + (c[4] / c[3] * 100).toFixed(0) + '%"></i></span>' +
-        '<em>' + c[3].toFixed(1) + ' → ' + c[4].toFixed(1) + 'h</em><small>' + esc(L(c[2])) + '</small></li>';
+        '<em>' + perMonth(c[3]).toFixed(1) + ' → ' + perMonth(c[4]).toFixed(1) + 'h</em><small>' + esc(L(c[2])) + '</small></li>';
     }).join('') + '</ol>';
     if (it.c) h += '<div class="ig-check">' + svg('0 0 48 48', okCircle(24, 24, 20), 'ig-check-ic') + '<b>' + esc(U.check) + '</b><span>' + esc(L(it.c)) + '</span></div>';
     return h;
@@ -1123,14 +1128,17 @@
     var w = 0; for (var i = 0; i < lab.length; i++) w += lab.charCodeAt(i) > 0x2e7f ? 1 : 0.62;
     return Math.max(8, Math.min(15, Math.floor(46 / w)));
   }
-  // 「今 → 変えた後」の時間を棒グラフで（2 名・38 営業日の合計）
+  // 経理の時間は日報の 38 営業日分。1 か月 = 21 営業日に換算して見せる
+  var REPORT_DAYS = 38, MONTH_DAYS = 21;
+  function perMonth(h) { return Math.round(h * MONTH_DAYS / REPORT_DAYS * 10) / 10; }
+  // 「今 → 変えた後」の時間を棒グラフで（2 名合計・1 か月あたり）
   function hoursBars(h, U) {
     var m = /([\d.]+)h\s*→\s*([\d.]+)h/.exec(h) || [0, 1, 1];
-    var a = parseFloat(m[1]), b = parseFloat(m[2]), cut = a - b;
-    var pct = Math.round(cut / a * 100), perDay = Math.round(cut * 60 / 38);
+    var a = perMonth(parseFloat(m[1])), b = perMonth(parseFloat(m[2])), cut = a - b;
+    var pct = Math.round(cut / a * 100), perDay = Math.round(cut * 60 / MONTH_DAYS);
     return '<div class="ig-hbar"><small>' + svg('0 0 48 48', face(16, 24, 11, C.blue) + face(32, 24, 11, C.gold), 'hb-ppl') + esc(U.hours) + '</small>' +
-      '<div class="hb-row is-now"><span>' + esc(U.hbNow) + '</span><i><em style="width:100%"></em></i><b>' + a + 'h</b></div>' +
-      '<div class="hb-row is-new"><span>' + esc(U.hbNew) + '</span><i><em style="width:' + (b / a * 100).toFixed(1) + '%"></em></i><b>' + b + 'h</b></div>' +
+      '<div class="hb-row is-now"><span>' + esc(U.hbNow) + '</span><i><em style="width:100%"></em></i><b>' + a.toFixed(1) + 'h</b></div>' +
+      '<div class="hb-row is-new"><span>' + esc(U.hbNew) + '</span><i><em style="width:' + (b / a * 100).toFixed(1) + '%"></em></i><b>' + b.toFixed(1) + 'h</b></div>' +
       '<div class="hb-save">' + icon('clock', 'hb-ic') + '<b>−' + cut.toFixed(1) + 'h（−' + pct + '%）</b><span>' + esc(U.perDay(perDay)) + '</span></div></div>';
   }
 
