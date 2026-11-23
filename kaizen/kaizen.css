@@ -595,32 +595,40 @@ html:lang(en) table.b-table .nw, html:lang(th) table.b-table .nw { white-space: 
 .gl-bottom .ig-dnote { display: flex; align-items: center; gap: .4em; margin: 0; }
 .gl-note-ic { width: 1.8em; height: 1.8em; flex: none; }
 
-/* はじめに：経理の業務全体（土台＋3 本の柱） */
+/* はじめに：経理の業務全体（土台＋3 本の柱、業務はアイコンのタイル） */
 .mp { flex: none; display: flex; flex-direction: column; gap: .4em; }
 .mp-total { display: flex; align-items: center; gap: .5em; background: var(--s); border-radius: 12px; padding: .3em .9em; font-family: var(--f-head); font-weight: 700; font-size: .9em; }
 .mp-ppl { width: 2em; height: 2em; flex: none; }
 .mp-total b { font-size: 1.5em; color: #c0392b; } .mp-total b.is-new { color: #237447; }
 .mp-arr { color: var(--ink-3); }
-.mp-total em { font-style: normal; margin-left: auto; color: #fff; background: #2f8f5b; border-radius: 999px; padding: .1em .9em; font-size: 1.1em; }
+.mp-total em { font-style: normal; margin-left: auto; color: #fff; background: #2f8f5b; border-radius: 999px; padding: .1em .9em; font-size: 1.05em; }
 .mp-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5em; }
-.mp-card { background: #fff; border: 2px solid var(--s); border-top: 6px solid var(--c); border-radius: 12px; padding: .4em .6em; display: flex; flex-direction: column; gap: .2em; }
-.mp-h { display: flex; align-items: center; gap: .45em; }
-.mp-ic { width: 2.3em; height: 2.3em; background: var(--s); border-radius: 50%; padding: .2em; flex: none; }
-.mp-h b { display: block; font-family: var(--f-head); font-size: .92em; color: var(--c); line-height: 1.2; }
-.mp-h small { display: block; font-size: .62em; color: var(--ink-3); line-height: 1.2; }
-.mp-h strong { margin-left: auto; font-family: var(--f-head); font-weight: 800; font-size: 1.25em; }
-.mp-bar { position: relative; height: .5em; }
-.mp-bar i { position: absolute; left: 0; top: 0; height: 100%; border-radius: 4px; } .mp-bar .is-now { width: 100%; background: #f1c7c1; } .mp-bar .is-new { background: #2f8f5b; }
-.mp-cut { display: flex; align-items: center; gap: .5em; font-family: var(--f-head); font-weight: 700; font-size: .72em; color: #237447; }
-.mp-cut span { color: #fff; background: #2f8f5b; border-radius: 999px; padding: 0 .6em; }
-.mp-cut.is-none { color: var(--ink-3); background: #f4f6f9; border-radius: 6px; padding: .1em .5em; }
-.mp-card ul { list-style: none; margin: 0; padding: 0; }
-.mp-card li { display: flex; justify-content: space-between; gap: .5em; border-top: 1px solid #eef1f5; padding: .08em 0; font-size: .64em; line-height: 1.35; color: var(--ink-2); }
-.mp-card li em { font-style: normal; white-space: nowrap; color: var(--ink-3); }
-.mp-card li em b { color: #237447; }
-.mp-up { text-align: center; font-family: var(--f-head); font-weight: 700; font-size: .72em; color: #8a6d00; }
-.mp-card.is-base { --c: #b7790f; --s: #fff4d6; background: #fffaf0; }
-.mp-card.is-base ul { display: grid; grid-template-columns: 1fr 1fr; column-gap: 1.4em; }
+.mp-card { background: var(--ms); border-radius: 14px; border-top: 6px solid var(--mc); padding: .35em .5em .45em; display: flex; flex-direction: column; gap: .3em; }
+.mp-h { display: flex; align-items: center; gap: .4em; }
+.mp-ic { width: 2.2em; height: 2.2em; background: #fff; border-radius: 50%; padding: .2em; flex: none; }
+.mp-h > b { font-family: var(--f-head); font-weight: 800; font-size: 1em; color: var(--mc); }
+.mp-h strong { margin-left: auto; display: flex; align-items: center; gap: .3em; font-family: var(--f-head); font-weight: 800; font-size: 1.1em; }
+.mp-to { color: #237447; font-size: .85em; }
+.mp-pct { color: #fff; background: #2f8f5b; border-radius: 999px; padding: 0 .55em; font-size: .7em; }
+.mp-pct.is-none { background: #fff; color: var(--ink-3); }
+.mp-tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: .3em; }
+.mp-card.is-base .mp-tiles { grid-template-columns: repeat(8, 1fr); }
+.mp-tiles li { position: relative; background: #fff; border-radius: 10px; padding: .3em .25em .25em; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .1em; }
+.mt-ic { width: 2em; height: 2em; }
+.mp-tiles b { font-family: var(--f-head); font-size: .6em; line-height: 1.2; color: var(--ink); }
+.mt-bar { position: relative; display: block; width: 90%; height: .35em; margin-top: .1em; }
+.mt-bar i { position: absolute; left: 0; top: 0; height: 100%; border-radius: 3px; background: #f1c7c1; } .mt-bar i.is-new { background: #2f8f5b; }
+.mp-tiles em { font-style: normal; font-size: .55em; color: var(--ink-3); white-space: nowrap; }
+.mp-tiles em b { font-size: 1em; color: #237447; }
+.mt-mk { position: absolute; top: .15em; right: .25em; font-family: var(--f-head); font-weight: 800; font-size: .62em; color: #fff; background: var(--c); border-radius: 999px; padding: 0 .35em; }
+.mp-up { display: flex; align-items: center; justify-content: center; gap: .3em; font-family: var(--f-head); font-weight: 700; font-size: .72em; color: #8a6d00; }
+.mp-up-ic { width: 1.6em; height: 1.6em; }
+/* 改善がどの分類に当たるか（品質・効率・入力）の札 */
+.cat-pills { display: inline-flex; flex-wrap: wrap; gap: .25em; justify-content: center; }
+.cat-pill { display: inline-flex; align-items: center; gap: .2em; font-family: var(--f-head); font-weight: 700; font-size: .62em; color: var(--b); background: var(--bs); border: 1px solid var(--b); border-radius: 999px; padding: .05em .55em .05em .15em; line-height: 1.4; }
+.cat-pill .ig-ic { width: 1.5em; height: 1.5em; }
+.ig-item-head .cat-pills { justify-content: flex-start; }
+.ig-item-head .cat-pill { font-size: .78em; }
 
 /* はじめに：原因 → 問題、AI で変える → 効果 */
 .wy { flex: none; display: flex; flex-direction: column; gap: .55em; }
