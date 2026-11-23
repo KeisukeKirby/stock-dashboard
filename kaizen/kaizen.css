@@ -569,6 +569,7 @@ html:lang(en) table.b-table .nw, html:lang(th) table.b-table .nw { white-space: 
 .cd-bars i { display: block; height: .5em; border-radius: 4px; }
 .cd-bars .is-now { background: #e7a39b; } .cd-bars .is-new { background: #2f8f5b; }
 .ig-cards em { font-style: normal; font-family: var(--f-head); font-weight: 800; font-size: .78em; color: #237447; }
+.cd-pct { font-family: var(--f-head); font-weight: 800; font-size: .95em; color: #fff; background: #2f8f5b; border-radius: 999px; padding: .05em .7em; }
 .ig-cards small { font-size: .62em; line-height: 1.3; color: var(--ink-3); }
 .gl-after { flex: none; }
 .gl-tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: .6em; flex: none; }
