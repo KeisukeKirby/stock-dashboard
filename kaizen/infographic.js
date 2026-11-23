@@ -398,6 +398,10 @@
     clock: function () { return clock(24, 24, 18, 10, 10, { ring: C.navy }); },
     claim: function () { return phone(6, 4, 0.66) + shoe(22, 22, 0.42, C.red); },
     face: function () { return face(24, 26, 18, C.blue); },
+    vault: function () {
+      return '<rect x="5" y="8" width="38" height="34" rx="4" fill="' + C.navy + '"/><rect x="9" y="12" width="30" height="26" rx="3" fill="' + C.sky + '"/>' +
+        '<circle cx="24" cy="25" r="8" fill="#fff"' + sw(C.navy, 2.5) + '/><path d="M24 19 v12 M18 25 h12"' + sw(C.navy, 2) + '/>' + doc(28, 2, 0.32);
+    },
     dl: function () { return doc(10, 4, 0.55) + '<path d="M34 22 v16 M27 31 l7 8 l7 -8"' + sw(C.green, 3.5) + 'fill="none"/>'; },
     ai: function () { return robot(8, 4, 0.55); },
     chart: function () { return doc(10, 4, 0.6, 'bars'); },
@@ -442,21 +446,21 @@
       howToRead: 'このマニュアルの見方', legendBefore: '困っていたこと', legendAfter: '新しいやり方', legendCheck: 'できているかの確認',
       areas: '改善する 5 つのエリア', chapter: function (n) { return '第 ' + n + ' 章'; }, appendix: '付録', inReview: '内容確認中',
       textNote: 'くわしい説明は右上の「文章」で見られます。', confidential: '社内資料・取り扱い注意',
-      am: '朝', today: '今日', hours: '2 名がこの作業にかける時間（1 か月 = 21 営業日）', perMonthU: '時間 / 月', nowWay: '今のやり方', newWay: '変えた後', hbNow: '今', hbNew: '変えた後', perDay: function (m) { return '1 日あたり 約 ' + m + ' 分 短縮（2 名合計）'; }, monthEnd: '月末', monThu: '月・木', fri: '金', ours: '自社', bizDays: '営業日', mon: '月', minus1: '前日', handbook: '手順書', perPair: '1 足あたり'
+      am: '朝', today: '今日', hours: '2 名がこの作業にかける時間（1 か月 = 21 営業日）', perMonthU: '時間 / 月', nowWay: '今のやり方', newWay: '変えた後', hbNow: '今', hbNew: '変えた後', tryStart: '新しいやり方を試し始める日', perDay: function (m) { return '1 日あたり 約 ' + m + ' 分 短縮（2 名合計）'; }, monthEnd: '月末', monThu: '月・木', fri: '金', ours: '自社', bizDays: '営業日', mon: '月', minus1: '前日', handbook: '手順書', perPair: '1 足あたり'
     },
     en: {
       kicker: 'Process improvement, in pictures', before: 'Before', after: 'From now on', how: 'How', check: 'Check',
       howToRead: 'How to read this manual', legendBefore: 'What went wrong', legendAfter: 'The new way', legendCheck: 'How we know it works',
       areas: '5 areas we are improving', chapter: function (n) { return 'Chapter ' + n; }, appendix: 'Appendix', inReview: 'Being confirmed',
       textNote: 'For full details, switch to “Text” at the top right.', confidential: 'Internal use only',
-      am: 'AM', today: 'Today', hours: 'Time 2 people spend on this a month (21 working days)', perMonthU: 'hours / month', nowWay: 'The way it is now', newWay: 'The new way', hbNow: 'Now', hbNew: 'New way', perDay: function (m) { return 'About ' + m + ' min saved a day (2 people)'; }, monthEnd: 'END', monThu: 'MON·THU', fri: 'FRI', ours: 'Ours', bizDays: 'business days', mon: 'MON', minus1: '−1 day', handbook: 'Handbook', perPair: 'per pair'
+      am: 'AM', today: 'Today', hours: 'Time 2 people spend on this a month (21 working days)', perMonthU: 'hours / month', nowWay: 'The way it is now', newWay: 'The new way', hbNow: 'Now', hbNew: 'New way', tryStart: 'The day we start trying the new way', perDay: function (m) { return 'About ' + m + ' min saved a day (2 people)'; }, monthEnd: 'END', monThu: 'MON·THU', fri: 'FRI', ours: 'Ours', bizDays: 'business days', mon: 'MON', minus1: '−1 day', handbook: 'Handbook', perPair: 'per pair'
     },
     th: {
       kicker: 'ปรับปรุงการทำงาน ดูเข้าใจง่ายด้วยภาพ', before: 'แบบเดิม', after: 'แบบใหม่', how: 'วิธีทำ', check: 'ตรวจสอบ',
       howToRead: 'วิธีอ่านคู่มือนี้', legendBefore: 'ปัญหาที่เคยเกิด', legendAfter: 'วิธีทำงานแบบใหม่', legendCheck: 'ดูว่าทำได้จริงหรือไม่',
       areas: '5 ส่วนงานที่จะปรับปรุง', chapter: function (n) { return 'บทที่ ' + n; }, appendix: 'ภาคผนวก', inReview: 'อยู่ระหว่างตรวจสอบ',
       textNote: 'ดูรายละเอียดทั้งหมดได้ที่ปุ่ม “ข้อความ” มุมขวาบน', confidential: 'เอกสารใช้ภายในบริษัท',
-      am: 'เช้า', today: 'วันนี้', hours: 'เวลาที่ 2 คนใช้กับงานนี้ต่อเดือน (21 วันทำการ)', perMonthU: 'ชั่วโมง / เดือน', nowWay: 'วิธีที่ทำอยู่ตอนนี้', newWay: 'วิธีใหม่', hbNow: 'ตอนนี้', hbNew: 'วิธีใหม่', perDay: function (m) { return 'ลดได้ประมาณ ' + m + ' นาทีต่อวัน (2 คนรวมกัน)'; }, monthEnd: 'สิ้นเดือน', monThu: 'จ.·พฤ.', fri: 'ศ.', ours: 'ของเรา', bizDays: 'วันทำการ', mon: 'จ.', minus1: '−1 วัน', handbook: 'คู่มือ', perPair: 'ต่อ 1 คู่'
+      am: 'เช้า', today: 'วันนี้', hours: 'เวลาที่ 2 คนใช้กับงานนี้ต่อเดือน (21 วันทำการ)', perMonthU: 'ชั่วโมง / เดือน', nowWay: 'วิธีที่ทำอยู่ตอนนี้', newWay: 'วิธีใหม่', hbNow: 'ตอนนี้', hbNew: 'วิธีใหม่', tryStart: 'วันที่เริ่มทดลองวิธีใหม่', perDay: function (m) { return 'ลดได้ประมาณ ' + m + ' นาทีต่อวัน (2 คนรวมกัน)'; }, monthEnd: 'สิ้นเดือน', monThu: 'จ.·พฤ.', fri: 'ศ.', ours: 'ของเรา', bizDays: 'วันทำการ', mon: 'จ.', minus1: '−1 วัน', handbook: 'คู่มือ', perPair: 'ต่อ 1 คู่'
     }
   };
 
@@ -566,7 +570,7 @@
       detail: { h: '61.7h → 33.5h',
         ni: ['paper', 'xls', 'two'],
         ns: [{ ja: '紙を見て手入力', en: 'Typed from paper', th: 'คีย์จากกระดาษ' }, { ja: 'Excel で報告書', en: 'Report built in Excel', th: 'ทำรายงานใน Excel' }, { ja: '2 人で全件確認', en: 'Two people check all', th: 'สองคนตรวจทุกใบ' }],
-        as: [{ ja: 'File Vault へ', en: 'Into File Vault', th: 'ใส่ File Vault' }, { ja: 'AI が読み取る', en: 'AI reads it', th: 'AI อ่านเอกสาร' }, { ja: '原本と見比べる', en: 'Compare with original', th: 'เทียบต้นฉบับ' }, { ja: '科目を確定', en: 'Set the account', th: 'กำหนดบัญชี' }, { ja: 'PP.30 を出力', en: 'Output PP.30', th: 'ออก ภ.พ.30' }, { ja: '2 人目は一部だけ', en: 'Second check: some only', th: 'คนที่สองตรวจบางส่วน' }],
+        as: [{ ja: 'File Vault へ', en: 'Into File Vault', th: 'ใส่ File Vault' }, { ja: 'AI が読み取る', en: 'AI reads it', th: 'AI อ่านเอกสาร' }, { ja: '原本と見比べる', en: 'Compare with original', th: 'เทียบต้นฉบับ' }, { ja: '科目を確定', en: 'Set the account', th: 'กำหนดบัญชี' }, { ja: 'PP.30 を出力', en: 'Output PP.30', th: 'ออก ภ.พ.30' }],
         now: [{ ja: '紙の請求書を見て支払伝票を手で入力', en: 'Type payment vouchers from paper invoices', th: 'ดูใบแจ้งหนี้กระดาษแล้วคีย์ใบสำคัญจ่าย' },
           { ja: '仕入 VAT 報告書を Excel で作る', en: 'Build the purchase VAT report in Excel', th: 'ทำรายงาน VAT ซื้อใน Excel' },
           { ja: '2 人が同じ書類を全件確認', en: 'Two people check every document', th: 'สองคนตรวจเอกสารเดียวกันทุกใบ' }],
@@ -575,9 +579,10 @@
           [{ ja: '週 2 回', en: 'Twice a week', th: 'สัปดาห์ละ 2 ครั้ง' }, { ja: 'SMART Key が番号・明細・取引先を読み取る', en: 'SMART Key reads the number, lines and supplier', th: 'SMART Key อ่านเลขที่ รายการ และคู่ค้า' }, 'ai'],
           [{ ja: '続けて', en: 'Then', th: 'ต่อจากนั้น' }, { ja: '原本と入力欄を同じ画面で確認し、オレンジの警告を消す', en: 'Compare original and fields side by side; clear orange warnings', th: 'เทียบต้นฉบับกับช่องกรอกในหน้าเดียว แก้คำเตือนสีส้ม' }, 'search'],
           [{ ja: '続けて', en: 'Then', th: 'ต่อจากนั้น' }, { ja: '勘定科目を確定して記録', en: 'Fix the account and record it', th: 'กำหนดผังบัญชีแล้วบันทึก' }, 'stamp'],
-          [{ ja: '毎月 19〜20 日', en: '19th–20th', th: 'วันที่ 19–20' }, { ja: 'PEAK TAX で PP.30 と仕入税の報告書を出力', en: 'Make PP.30 and the purchase tax report in PEAK TAX', th: 'ออก ภ.พ.30 และรายงานภาษีซื้อใน PEAK TAX' }, 'list'],
-          [{ ja: '毎月 20〜21 日', en: '20th–21st', th: 'วันที่ 20–21' }, { ja: '2 人目は高額・新規取引先・抜き取りだけ確認', en: 'The second check covers only large, new-supplier and sampled items', th: 'คนที่สองตรวจเฉพาะยอดสูง คู่ค้าใหม่ และสุ่มตรวจ' }, 'face']],
-        note: { ja: '2 人目の確認を絞るのは B-Like が認めたあと', en: 'The second check is reduced only after B-Like agrees', th: 'ลดการตรวจของคนที่สองหลัง B-Like เห็นชอบเท่านั้น' } } },
+          [{ ja: '毎月 19〜20 日', en: '19th–20th', th: 'วันที่ 19–20' }, { ja: 'PEAK TAX で PP.30 と仕入税の報告書を出力', en: 'Make PP.30 and the purchase tax report in PEAK TAX', th: 'ออก ภ.พ.30 และรายงานภาษีซื้อใน PEAK TAX' }, 'list'],],
+        gloss: [
+          ['vault', { ja: 'File Vault', en: 'File Vault', th: 'File Vault' }, { ja: 'PEAK の書類の保管庫。請求書や領収書を写真・PDF で入れ、番号で探せる', en: 'PEAK’s document store. Put invoices and receipts in as photos or PDFs; find them by number', th: 'คลังเอกสารใน PEAK ใส่ใบแจ้งหนี้และใบเสร็จเป็นรูปหรือ PDF ค้นหาด้วยเลขที่ได้' }],
+          ['ai', { ja: 'SMART Key', en: 'SMART Key', th: 'SMART Key' }, { ja: 'PEAK が書類を読み取り、番号・明細・取引先を自動で入力する機能', en: 'PEAK reads the document and fills in the number, lines and supplier for you', th: 'PEAK อ่านเอกสาร แล้วกรอกเลขที่ รายการ และคู่ค้าให้อัตโนมัติ' }]] } },
     { ch: 0, cont: true, mark: '⑤', scene: 'sku',
       t: { ja: '⑤ 百貨店：SKU 対応表と突合表', en: '⑤ Department stores: SKU table & matching sheet', th: '⑤ ห้าง: ตารางจับคู่ SKU และตารางกระทบยอด' },
       detail: { h: '16.4h → 8.0h',
@@ -592,8 +597,7 @@
           [{ ja: '続けて', en: 'Then', th: 'ต่อจากนั้น' }, { ja: 'Excel に貼ると Siam 用と SCON 用ができる', en: 'Paste into Excel — Siam and SCON files are made', th: 'วางใน Excel ได้ไฟล์ Siam และ SCON' }, 'data'],
           [{ ja: '続けて', en: 'Then', th: 'ต่อจากนั้น' }, { ja: '赤い行だけ確認して対応表に追加', en: 'Check only red rows and add them to the table', th: 'ตรวจเฉพาะแถวสีแดง แล้วเพิ่มในตาราง' }, 'search'],
           [{ ja: '木曜の配送前', en: 'Before Thursday delivery', th: 'ก่อนส่งวันพฤหัสฯ' }, { ja: '納品書を発行（Siam は PO を依頼、Central は SCON へ）', en: 'Issue delivery notes (ask Siam for a PO; Central goes into SCON)', th: 'ออกใบส่งของ (ขอ PO จาก Siam, Central ใส่ใน SCON)' }, 'truck'],
-          [{ ja: '売上報告が届いたら', en: 'When sales reports arrive', th: 'เมื่อได้รายงานยอดขาย' }, { ja: '貼って差を見て、差の分だけ CN を発行', en: 'Paste, see the difference, issue CN only for it', th: 'วางแล้วดูส่วนต่าง ออก CN เฉพาะส่วนต่าง' }, 'pay']],
-        note: { ja: 'SKU 確認の時間はこれから測るので、削減はもっと大きくなる見込み', en: 'SKU-check time is not measured yet, so the saving should be larger', th: 'ยังไม่ได้วัดเวลาตรวจ SKU จึงคาดว่าลดได้มากกว่านี้' } } },
+          [{ ja: '売上報告が届いたら', en: 'When sales reports arrive', th: 'เมื่อได้รายงานยอดขาย' }, { ja: '貼って差を見て、差の分だけ CN を発行', en: 'Paste, see the difference, issue CN only for it', th: 'วางแล้วดูส่วนต่าง ออก CN เฉพาะส่วนต่าง' }, 'pay']] } },
     { ch: 0, cont: true, mark: '⑥', scene: 'input',
       t: { ja: '⑥ 定型書類：Excel でまとめて取り込む', en: '⑥ Routine documents: bulk import from Excel', th: '⑥ เอกสารประจำ: นำเข้าจาก Excel ทีเดียว' },
       detail: { h: '26.8h → 16.0h',
@@ -612,29 +616,14 @@
         note: { ja: '源泉徴収票と E-Tax は社外へ出す書類なので、今回は変えない', en: 'Withholding certificates and E-Tax go to outside parties, so they stay as they are', th: 'หนังสือรับรองหัก ณ ที่จ่ายและ E-Tax ส่งออกภายนอก จึงยังไม่เปลี่ยน' } } },
     { ch: 0, scene: 'cutover', am: 'check',
       t: { ja: '切り替えは「並行」で', en: 'Switch over in parallel', th: 'เปลี่ยนแบบทำคู่กัน' },
-      a: { ja: '試してから今のやり方と並行で回し、問題なければ本番へ', en: 'Try it, run it next to the old way, then go live if all is well', th: 'ทดลอง ทำคู่กับวิธีเดิม ถ้าไม่มีปัญหาจึงใช้จริง' },
+      a: { ja: '問題が起きたら手順の見直しを続け、作業内容が明確になり問題が無いことを確認してから本番へ', en: 'If problems come up, keep reviewing the steps; go live only once the work is clear and problem-free', th: 'ถ้ามีปัญหา ให้ทบทวนขั้นตอนต่อไป เมื่องานชัดเจนและไม่มีปัญหาแล้วจึงใช้จริง' },
       golive: [
-        ['bank', { ja: '① 銀行', en: '① Bank', th: '① ธนาคาร' }, '11/23'],
-        ['chart', { ja: '② Sales Record', en: '② Sales Record', th: '② Sales Record' }, '11/23'],
+        ['bank', { ja: '① 銀行', en: '① Bank', th: '① ธนาคาร' }, '11/24'],
+        ['chart', { ja: '② Sales Record', en: '② Sales Record', th: '② Sales Record' }, '11/24'],
         ['sort', { ja: '③ Shopee・Lazada', en: '③ Shopee · Lazada', th: '③ Shopee · Lazada' }, { ja: '11月締め', en: 'Nov close', th: 'ปิด พ.ย.' }],
         ['ai', { ja: '④ 経費・仕入 VAT', en: '④ Expenses · VAT', th: '④ ค่าใช้จ่าย · VAT' }, '11/30'],
-        ['store', { ja: '⑤ 百貨店', en: '⑤ Dept. stores', th: '⑤ ห้าง' }, '12/3', { ja: 'の納品から', en: 'delivery', th: 'รอบส่งของ' }],
-        ['gear', { ja: '⑥ 定型書類', en: '⑥ Routine docs', th: '⑥ เอกสารประจำ' }, { ja: '12月分', en: 'Dec', th: 'ธ.ค.' }, { ja: 'の請求から', en: 'invoices', th: 'ใบแจ้งหนี้' }],
-        ['paper', { ja: '⑦ 紙', en: '⑦ Paper', th: '⑦ กระดาษ' }, '?', { ja: 'Hikari の確認後', en: 'after Hikari confirms', th: 'หลัง Hikari ยืนยัน' }]],
-      fridays: ['11/27', '12/4', '12/11', '12/18'],
-      rules: [
-        ['clock', { ja: '毎週金曜 15 分で確認（11 月 27 日から）', en: 'Every Friday, 15 minutes (from 27 Nov)', th: 'ทุกวันศุกร์ 15 นาที (ตั้งแต่ 27 พ.ย.)' }],
-        ['stamp', { ja: '問題があれば本番に進まず、手順を直して続ける', en: 'Problems? Don’t go live — fix the steps and keep going', th: 'มีปัญหา ไม่ใช้จริง ปรับขั้นตอนแล้วทำต่อ' }]] },
-    { ch: 0, scene: 'sku', bm: 'search', am: 'ai',
-      t: { ja: '百貨店の SKU は対応表で', en: 'Department-store SKUs: one mapping table', th: 'SKU ห้าง: ใช้ตารางจับคู่' },
-      when: { ja: 'Siam Discovery・Central', en: 'Siam Discovery · Central', th: 'Siam Discovery · Central' },
-      b: { ja: 'コードが違うので、1 行ずつ目で確認', en: 'Their codes differ — every line checked by eye', th: 'รหัสไม่ตรงกัน ต้องตรวจด้วยตาทีละบรรทัด' },
-      a: { ja: '自社 SKU と百貨店コードの対応表を 1 つ作る', en: 'Build one table: our SKU ↔ store codes', th: 'ทำตารางเดียว: SKU ของเรา ↔ รหัสห้าง' },
-      steps: [
-        ['list', { ja: '補充リストを貼る', en: 'Paste the restock list', th: 'วางรายการเติมของ' }],
-        ['data', { ja: '各百貨店の形式で自動作成', en: 'Each store’s format is made for you', th: 'ได้ไฟล์ตามรูปแบบแต่ละห้าง' }],
-        ['search', { ja: '赤い行だけ確認して表に追加', en: 'Check only red rows; add them to the table', th: 'ตรวจเฉพาะแถวสีแดง แล้วเพิ่มในตาราง' }],
-        ['pay', { ja: '売上報告との差の分だけ CN', en: 'CN only for the difference', th: 'ออก CN เฉพาะส่วนต่าง' }]] },
+        ['store', { ja: '⑤ 百貨店', en: '⑤ Dept. stores', th: '⑤ ห้าง' }, { ja: '次回納品', en: 'Next drop', th: 'ส่งรอบหน้า' }, { ja: '次回の納品時から', en: 'from the next delivery', th: 'ตั้งแต่ส่งของรอบหน้า' }],
+        ['gear', { ja: '⑥ 定型書類', en: '⑥ Routine docs', th: '⑥ เอกสารประจำ' }, { ja: '12月分', en: 'Dec', th: 'ธ.ค.' }, { ja: 'の請求から', en: 'invoices', th: 'ใบแจ้งหนี้' }]] },
     { ch: 0, scene: 'monthly', bm: 'wait', am: 'check',
       t: { ja: '月次財務レポート', en: 'Monthly financial report', th: 'รายงานการเงินประจำเดือน' },
       when: { ja: '毎月初 5 営業日以内', en: 'Within 5 working days each month', th: 'ภายใน 5 วันทำการแรกของเดือน' },
@@ -1070,6 +1059,9 @@
       return h + '<div class="dt-top">' + hoursBars(d.h, U) +
         '<div class="dt-now"><div class="dt-now-h">' + svg('0 0 120 92', MINI.pile(U), 'dt-now-art') + '<b>' + esc(U.nowWay) + '</b></div><ol>' + nowTiles + '</ol></div></div>' +
         '<div class="dt-new"><div class="dt-new-h">' + svg('0 0 120 92', MINI.check(U), 'dt-now-art') + '<b>' + esc(U.newWay) + '</b></div><ol class="dt-flow">' + flow + '</ol></div>' +
+        (d.gloss ? '<ul class="dt-gloss">' + d.gloss.map(function (g) {
+          return '<li>' + icon(g[0], 'ig-ic dg-ic') + '<b>' + esc(L(g[1])) + '</b><span>' + esc(L(g[2])) + '</span></li>';
+        }).join('') + '</ul>' : '') +
         (d.note ? '<p class="ig-dnote">※ ' + esc(L(d.note)) + '</p>' : '');
     }
     if (it.golive) {
@@ -1078,11 +1070,8 @@
         return '<li>' + svg('0 0 56 58', calendar(0, 2, 1, esc(lab), { top: C.green, fs: calFs(lab) }), 'gl-cal') +
           (g[3] ? '<small class="gl-sub">' + esc(L(g[3])) + '</small>' : '') + icon(g[0], 'ig-ic gl-ic') + '<b>' + esc(L(g[1])) + '</b></li>';
       }).join('');
-      var fr = it.fridays.map(function (f) { return '<li>' + svg('0 0 56 58', calendar(0, 2, 1, f, { top: C.gold, fs: 13 }), 'gl-fri') + '</li>'; }).join('') + '<li class="gl-more">…</li>';
       return h + '<div class="ig-card is-after gl-after">' + svg('0 0 120 92', MINI.check(U), 'ig-mini') + '<div><b>' + esc(U.after) + '</b><p>' + esc(L(it.a)) + '</p></div></div>' +
-        '<ol class="gl-tiles">' + tiles + '</ol>' +
-        '<div class="gl-bottom"><div class="gl-friday">' + icon('clock', 'ig-ic') + '<b>' + esc(L(it.rules[0][1])) + '</b><ol>' + fr + '</ol></div>' +
-        '<p class="ig-dnote">' + icon('stamp', 'ig-ic gl-note-ic') + esc(L(it.rules[1][1])) + '</p></div>';
+        '<p class="gl-head">' + icon('cal', 'ig-ic gl-head-ic') + esc(U.tryStart) + '</p><ol class="gl-tiles">' + tiles + '</ol>';
     }
     if (it.small) {
       return h + '<div class="it-body is-small"><div class="it-left">' + svg(VB, SCENES[it.scene](U), 'ig-hero') + '</div>' +
