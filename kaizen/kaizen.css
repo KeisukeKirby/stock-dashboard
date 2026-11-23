@@ -788,3 +788,12 @@ html:lang(th) .sl { line-height: 1.55; }
 .ev-skip s { color: var(--ink-3); font-family: var(--f-head); font-size: 1.2em; text-decoration-thickness: 2px; text-decoration-color: #c0392b; }
 .ev-nosell { margin: 0; display: flex; align-items: center; gap: .3em; font-size: .6em; font-weight: 700; color: #c0392b; }
 .ev-ng { width: 1.5em; height: 1.5em; }
+.mp-sum { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .4em; font-family: var(--f-head); font-weight: 700; font-size: .78em; }
+.mp-sum span { display: flex; align-items: center; gap: .3em; color: var(--mc); background: #fff; border: 2px solid var(--mc); border-radius: 999px; padding: .05em .7em .05em .3em; }
+.mp-sum span b { color: #237447; }
+.mp-sum-ic { width: 1.5em; height: 1.5em; }
+.mp-sum i { font-style: normal; color: var(--ink-3); font-weight: 800; }
+.mp-sum strong { color: #fff; background: #2f8f5b; border-radius: 999px; padding: .05em .9em; font-size: 1.1em; }
+.ev-who { width: 100%; }
+.ev-who > span { min-width: 0; max-width: 100%; overflow-wrap: anywhere; word-break: break-all; }
+.ev-st b { max-width: 100%; overflow-wrap: anywhere; }
