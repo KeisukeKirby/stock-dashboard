@@ -595,6 +595,36 @@ html:lang(en) table.b-table .nw, html:lang(th) table.b-table .nw { white-space: 
 .gl-bottom .ig-dnote { display: flex; align-items: center; gap: .4em; margin: 0; }
 .gl-note-ic { width: 1.8em; height: 1.8em; flex: none; }
 
+/* はじめに：原因 → 問題、AI で変える → 効果 */
+.wy { flex: none; display: flex; flex-direction: column; gap: .55em; }
+.wy-row { position: relative; display: flex; align-items: center; gap: .7em; border-radius: 16px; padding: 1.4em .9em .8em; }
+.wy-row.is-now { background: #fdeceb; } .wy-row.is-new { background: #e3f4ea; }
+.wy-tag { position: absolute; top: .45em; left: .9em; font-family: var(--f-head); font-weight: 800; font-size: .85em; }
+.is-now .wy-tag { color: #c0392b; } .is-new .wy-tag { color: #237447; }
+.wy-cause { flex: 0 0 16em; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .2em; background: #fff; border-radius: 14px; padding: .5em; }
+.wy-art { width: 5.4em; height: auto; }
+.wy-ics { display: flex; gap: .3em; }
+.wy-cause b { font-family: var(--f-head); font-size: 1.15em; color: #9b2c20; line-height: 1.35; }
+.wy-arr { font-size: 1.6em; color: var(--ink-3); flex: none; }
+.is-new .wy-arr { color: #237447; }
+.wy-tiles { list-style: none; margin: 0; padding: 0; display: flex; gap: .5em; flex: 1; align-items: stretch; }
+.wy-tiles li { flex: 1; position: relative; background: #fff; border-radius: 14px; padding: .6em .4em; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: .25em; }
+.wy-tiles b { font-family: var(--f-head); font-size: 1em; line-height: 1.35; }
+.wy-tiles.is-bad li::after { content: "!"; position: absolute; top: .3em; right: .5em; width: 1.3em; height: 1.3em; border-radius: 50%; background: #e25c4b; color: #fff; font-weight: 800; font-size: .8em; display: flex; align-items: center; justify-content: center; }
+.wy-tiles.is-bad b { color: #9b2c20; }
+.wy-tiles.is-step { flex: 0 0 auto; }
+.wy-tiles.is-step li { flex: 0 0 7.5em; }
+.wy-tiles li.wy-sep { flex: none; background: none; padding: 0; color: #237447; font-size: 1.3em; }
+.wy-tiles.is-good b { color: #1d6b3f; }
+.wy-ic { width: 3em; height: 3em; background: #f4f6f9; border-radius: 50%; padding: .3em; }
+.wy-mid { display: flex; align-items: center; justify-content: center; gap: .6em; background: var(--s); border-radius: 999px; padding: .35em 1.2em; align-self: center; }
+.wy-mid-ic { width: 2.8em; height: 2.8em; background: #fff; border-radius: 50%; padding: .2em; }
+.wy-mid b { font-family: var(--f-head); font-weight: 800; font-size: 1.2em; color: var(--c); }
+.wy-mid span { color: var(--c); }
+.wy-goal { flex: 0 0 9em; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .3em; background: #2f8f5b; border-radius: 14px; padding: .7em .5em; }
+.wy-goal-ic { width: 3.2em; height: 3.2em; }
+.wy-goal b { font-family: var(--f-head); font-weight: 800; color: #fff; font-size: 1.05em; line-height: 1.35; }
+
 /* 付録 3：チェックする所 */
 .ig-checks { display: flex; flex-direction: column; gap: .35em; }
 .ig-checks div { display: grid; grid-template-columns: 2em 8em 1fr 1fr; align-items: center; gap: .6em; background: #f4f6f9; border-left: 5px solid var(--c); border-radius: 8px; padding: .3em .7em; font-size: .85em; line-height: 1.35; }

@@ -446,21 +446,21 @@
       howToRead: 'このマニュアルの見方', legendBefore: '困っていたこと', legendAfter: '新しいやり方', legendCheck: 'できているかの確認',
       areas: '改善する 5 つのエリア', chapter: function (n) { return '第 ' + n + ' 章'; }, appendix: '付録', inReview: '内容確認中',
       textNote: 'くわしい説明は右上の「文章」で見られます。', confidential: '社内資料・取り扱い注意',
-      am: '朝', today: '今日', hours: '2 名がこの作業にかける時間（1 か月 = 21 営業日）', perMonthU: '時間 / 月', nowWay: '今のやり方', newWay: '変えた後', hbNow: '今', hbNew: '変えた後', tryStart: '新しいやり方を試し始める日', perDay: function (m) { return '1 日あたり 約 ' + m + ' 分 短縮（2 名合計）'; }, monthEnd: '月末', monThu: '月・木', fri: '金', ours: '自社', bizDays: '営業日', mon: '月', minus1: '前日', handbook: '手順書', perPair: '1 足あたり'
+      am: '朝', today: '今日', hours: '2 名がこの作業にかける時間（1 か月 = 21 営業日）', perMonthU: '時間 / 月', nowWay: '今のやり方', newWay: '変えた後', hbNow: '今', hbNew: '変えた後', overview: 'はじめに', nowTag: 'いま', newTag: 'これから', tryStart: '新しいやり方を試し始める日', perDay: function (m) { return '1 日あたり 約 ' + m + ' 分 短縮（2 名合計）'; }, monthEnd: '月末', monThu: '月・木', fri: '金', ours: '自社', bizDays: '営業日', mon: '月', minus1: '前日', handbook: '手順書', perPair: '1 足あたり'
     },
     en: {
       kicker: 'Process improvement, in pictures', before: 'Before', after: 'From now on', how: 'How', check: 'Check',
       howToRead: 'How to read this manual', legendBefore: 'What went wrong', legendAfter: 'The new way', legendCheck: 'How we know it works',
       areas: '5 areas we are improving', chapter: function (n) { return 'Chapter ' + n; }, appendix: 'Appendix', inReview: 'Being confirmed',
       textNote: 'For full details, switch to “Text” at the top right.', confidential: 'Internal use only',
-      am: 'AM', today: 'Today', hours: 'Time 2 people spend on this a month (21 working days)', perMonthU: 'hours / month', nowWay: 'The way it is now', newWay: 'The new way', hbNow: 'Now', hbNew: 'New way', tryStart: 'The day we start trying the new way', perDay: function (m) { return 'About ' + m + ' min saved a day (2 people)'; }, monthEnd: 'END', monThu: 'MON·THU', fri: 'FRI', ours: 'Ours', bizDays: 'business days', mon: 'MON', minus1: '−1 day', handbook: 'Handbook', perPair: 'per pair'
+      am: 'AM', today: 'Today', hours: 'Time 2 people spend on this a month (21 working days)', perMonthU: 'hours / month', nowWay: 'The way it is now', newWay: 'The new way', hbNow: 'Now', hbNew: 'New way', overview: 'Overview', nowTag: 'Now', newTag: 'From now on', tryStart: 'The day we start trying the new way', perDay: function (m) { return 'About ' + m + ' min saved a day (2 people)'; }, monthEnd: 'END', monThu: 'MON·THU', fri: 'FRI', ours: 'Ours', bizDays: 'business days', mon: 'MON', minus1: '−1 day', handbook: 'Handbook', perPair: 'per pair'
     },
     th: {
       kicker: 'ปรับปรุงการทำงาน ดูเข้าใจง่ายด้วยภาพ', before: 'แบบเดิม', after: 'แบบใหม่', how: 'วิธีทำ', check: 'ตรวจสอบ',
       howToRead: 'วิธีอ่านคู่มือนี้', legendBefore: 'ปัญหาที่เคยเกิด', legendAfter: 'วิธีทำงานแบบใหม่', legendCheck: 'ดูว่าทำได้จริงหรือไม่',
       areas: '5 ส่วนงานที่จะปรับปรุง', chapter: function (n) { return 'บทที่ ' + n; }, appendix: 'ภาคผนวก', inReview: 'อยู่ระหว่างตรวจสอบ',
       textNote: 'ดูรายละเอียดทั้งหมดได้ที่ปุ่ม “ข้อความ” มุมขวาบน', confidential: 'เอกสารใช้ภายในบริษัท',
-      am: 'เช้า', today: 'วันนี้', hours: 'เวลาที่ 2 คนใช้กับงานนี้ต่อเดือน (21 วันทำการ)', perMonthU: 'ชั่วโมง / เดือน', nowWay: 'วิธีที่ทำอยู่ตอนนี้', newWay: 'วิธีใหม่', hbNow: 'ตอนนี้', hbNew: 'วิธีใหม่', tryStart: 'วันที่เริ่มทดลองวิธีใหม่', perDay: function (m) { return 'ลดได้ประมาณ ' + m + ' นาทีต่อวัน (2 คนรวมกัน)'; }, monthEnd: 'สิ้นเดือน', monThu: 'จ.·พฤ.', fri: 'ศ.', ours: 'ของเรา', bizDays: 'วันทำการ', mon: 'จ.', minus1: '−1 วัน', handbook: 'คู่มือ', perPair: 'ต่อ 1 คู่'
+      am: 'เช้า', today: 'วันนี้', hours: 'เวลาที่ 2 คนใช้กับงานนี้ต่อเดือน (21 วันทำการ)', perMonthU: 'ชั่วโมง / เดือน', nowWay: 'วิธีที่ทำอยู่ตอนนี้', newWay: 'วิธีใหม่', hbNow: 'ตอนนี้', hbNew: 'วิธีใหม่', overview: 'ภาพรวม', nowTag: 'ตอนนี้', newTag: 'ต่อจากนี้', tryStart: 'วันที่เริ่มทดลองวิธีใหม่', perDay: function (m) { return 'ลดได้ประมาณ ' + m + ' นาทีต่อวัน (2 คนรวมกัน)'; }, monthEnd: 'สิ้นเดือน', monThu: 'จ.·พฤ.', fri: 'ศ.', ours: 'ของเรา', bizDays: 'วันทำการ', mon: 'จ.', minus1: '−1 วัน', handbook: 'คู่มือ', perPair: 'ต่อ 1 คู่'
     }
   };
 
@@ -491,6 +491,22 @@
   // 項目
   var ITEMS = [
     /* ---------- 第 1 章 経理 ---------- */
+    { ch: 0, intro: true, why: true,
+      t: { ja: 'なぜ、やり方を変えるのか', en: 'Why we are changing how we work', th: 'ทำไมต้องเปลี่ยนวิธีทำงาน' },
+      cause: { ja: '手入力作業や照合作業が多い', en: 'Lots of typing and matching by hand', th: 'งานคีย์มือและกระทบยอดเยอะ' },
+      effects: [
+        ['search', { ja: '確認の漏れ', en: 'Checks get missed', th: 'ตรวจตกหล่น' }],
+        ['pay', { ja: '返金処理の遅れ', en: 'Refunds run late', th: 'คืนเงินล่าช้า' }],
+        ['chart', { ja: '月次財務レポートの遅れ', en: 'Monthly report runs late', th: 'รายงานประจำเดือนล่าช้า' }]],
+      change: { ja: 'AI を活用して、やり方を変える', en: 'Use AI to change how we work', th: 'ใช้ AI เปลี่ยนวิธีทำงาน' },
+      flow: [
+        ['gear', { ja: '効率化', en: 'Work smarter', th: 'ทำงานมีประสิทธิภาพ' }],
+        ['clock', { ja: '作業時間を削減', en: 'Less work time', th: 'ลดเวลาทำงาน' }]],
+      gains: [
+        ['check', { ja: '毎日の確認業務', en: 'Daily checks', th: 'ตรวจทุกวัน' }],
+        ['pay', { ja: '返金などの迅速な処理', en: 'Refunds handled fast', th: 'คืนเงินได้รวดเร็ว' }],
+        ['chart', { ja: '期限内のレポート提出', en: 'Reports on time', th: 'ส่งรายงานตรงเวลา' }]],
+      goal: { ja: '問題の発生を防ぐ', en: 'Problems are prevented', th: 'ป้องกันปัญหา' } },
     { ch: 0, scene: 'pos', bm: 'pile', am: 'check',
       t: { ja: '売上の毎日照合と返金メモ', en: 'Daily sales check & refund memos', th: 'กระทบยอดขายทุกวัน และบันทึกคืนเงิน' },
       when: { ja: '毎朝（11 月 4 日から）', en: 'Every morning (from 4 Nov)', th: 'ทุกเช้า (ตั้งแต่ 4 พ.ย.)' },
@@ -974,6 +990,7 @@
     var p = [{ kind: 'cover' }];
     var n = 0;
     itemsOf(i).forEach(function (it) {
+      if (it.intro) { p.push({ kind: 'item', it: it, no: '' }); return; }
       if (!it.cont) n++;
       p.push({ kind: 'item', it: it, no: (i + 1) + '.' + n });
     });
@@ -1020,13 +1037,13 @@
     var U = UI[lang], D = DK[lang], c = CHAPTERS[i];
     var rows = pages.map(function (pg, k) {
       if (pg.kind === 'cover') return '';
-      if (pg.kind === 'apx2' || pg.kind === 'apx3' || (pg.kind === 'item' && pg.it.cont)) return '';
+      if (pg.kind === 'apx2' || pg.kind === 'apx3' || (pg.kind === 'item' && (pg.it.cont || pg.it.intro))) return '';
       var label = pg.kind === 'item' ? L(pg.it.t) : D.handbook;
       var no = pg.kind === 'item' ? pg.no : U.appendix;
       return '<li><a href="#/b' + (i + 1) + '/' + (k + 1) + '" data-go="b' + (i + 1) + '/' + (k + 1) + '"><span class="tc-no">' + esc(no) + '</span><span class="tc-t">' + esc(label) + '</span>' +
         (pg.kind === 'item' && pg.it.review ? '<span class="ig-pill">' + esc(U.inReview) + '</span>' : '') + '<span class="tc-p">' + (k + 1) + '</span></a></li>';
     }).join('');
-    var heroScene = SCENES[itemsOf(i)[0].scene](U);
+    var heroScene = SCENES[itemsOf(i).filter(function (it) { return it.scene; })[0].scene](U);
     return slide(i + 1, 1, 'sl-bcover', colVars(i),
       '<div class="bc-cover"><span class="bc-no">' + esc(U.chapter(i + 1)) + '</span>' + icon(c.icon, 'bc-ic') +
       '<h1 class="bc-t">' + esc(L(c.t)) + '</h1>' + (c.d ? '<p class="bc-d">' + esc(L(c.d)) + '</p>' : '') +
@@ -1041,8 +1058,21 @@
   // 項目のページ
   function renderItem(it, no) {
     var U = UI[lang];
-    var h = '<header class="ig-item-head"><span class="ig-no">' + no + '</span><h2>' + esc(L(it.t)) + '</h2>' +
+    var h = '<header class="ig-item-head"><span class="ig-no' + (it.intro ? ' is-apx' : '') + '">' + (it.intro ? esc(U.overview) : no) + '</span><h2>' + esc(L(it.t)) + '</h2>' +
       (it.review ? '<span class="ig-pill">' + esc(U.inReview) + '</span>' : '') + (it.when ? '<span class="ig-when">🕘 ' + esc(L(it.when)) + '</span>' : '') + '</header>';
+    if (it.why) {
+      var tile = function (x, cls) { return '<li class="' + (cls || '') + '">' + icon(x[0], 'ig-ic wy-ic') + '<b>' + esc(L(x[1])) + '</b></li>'; };
+      return h + '<div class="wy">' +
+        '<div class="wy-row is-now"><span class="wy-tag">' + esc(U.nowTag) + '</span>' +
+          '<div class="wy-cause">' + svg('0 0 120 92', MINI.pile(U), 'wy-art') + '<div class="wy-ics">' + icon('type', 'ig-ic wy-ic') + icon('xls', 'ig-ic wy-ic') + '</div><b>' + esc(L(it.cause)) + '</b></div>' +
+          '<span class="wy-arr">➜</span><ul class="wy-tiles is-bad">' + it.effects.map(function (x) { return tile(x); }).join('') + '</ul></div>' +
+        '<div class="wy-mid">' + icon('ai', 'ig-ic wy-mid-ic') + '<b>' + esc(L(it.change)) + '</b><span>▼</span></div>' +
+        '<div class="wy-row is-new"><span class="wy-tag">' + esc(U.newTag) + '</span>' +
+          '<ul class="wy-tiles is-step">' + it.flow.map(function (x) { return tile(x); }).join('<li class="wy-sep">➜</li>') + '</ul>' +
+          '<span class="wy-arr">➜</span><ul class="wy-tiles is-good">' + it.gains.map(function (x) { return tile(x); }).join('') + '</ul>' +
+          '<span class="wy-arr">➜</span><div class="wy-goal">' + svg('0 0 48 48', okCircle(24, 24, 20), 'wy-goal-ic') + '<b>' + esc(L(it.goal)) + '</b></div></div>' +
+        '</div>';
+    }
     if (it.detail) {
       var d = it.detail;
       var nowTiles = d.now.map(function (x, k) {
