@@ -595,6 +595,33 @@ html:lang(en) table.b-table .nw, html:lang(th) table.b-table .nw { white-space: 
 .gl-bottom .ig-dnote { display: flex; align-items: center; gap: .4em; margin: 0; }
 .gl-note-ic { width: 1.8em; height: 1.8em; flex: none; }
 
+/* はじめに：経理の業務全体（土台＋3 本の柱） */
+.mp { flex: none; display: flex; flex-direction: column; gap: .4em; }
+.mp-total { display: flex; align-items: center; gap: .5em; background: var(--s); border-radius: 12px; padding: .3em .9em; font-family: var(--f-head); font-weight: 700; font-size: .9em; }
+.mp-ppl { width: 2em; height: 2em; flex: none; }
+.mp-total b { font-size: 1.5em; color: #c0392b; } .mp-total b.is-new { color: #237447; }
+.mp-arr { color: var(--ink-3); }
+.mp-total em { font-style: normal; margin-left: auto; color: #fff; background: #2f8f5b; border-radius: 999px; padding: .1em .9em; font-size: 1.1em; }
+.mp-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5em; }
+.mp-card { background: #fff; border: 2px solid var(--s); border-top: 6px solid var(--c); border-radius: 12px; padding: .4em .6em; display: flex; flex-direction: column; gap: .2em; }
+.mp-h { display: flex; align-items: center; gap: .45em; }
+.mp-ic { width: 2.3em; height: 2.3em; background: var(--s); border-radius: 50%; padding: .2em; flex: none; }
+.mp-h b { display: block; font-family: var(--f-head); font-size: .92em; color: var(--c); line-height: 1.2; }
+.mp-h small { display: block; font-size: .62em; color: var(--ink-3); line-height: 1.2; }
+.mp-h strong { margin-left: auto; font-family: var(--f-head); font-weight: 800; font-size: 1.25em; }
+.mp-bar { position: relative; height: .5em; }
+.mp-bar i { position: absolute; left: 0; top: 0; height: 100%; border-radius: 4px; } .mp-bar .is-now { width: 100%; background: #f1c7c1; } .mp-bar .is-new { background: #2f8f5b; }
+.mp-cut { display: flex; align-items: center; gap: .5em; font-family: var(--f-head); font-weight: 700; font-size: .72em; color: #237447; }
+.mp-cut span { color: #fff; background: #2f8f5b; border-radius: 999px; padding: 0 .6em; }
+.mp-cut.is-none { color: var(--ink-3); background: #f4f6f9; border-radius: 6px; padding: .1em .5em; }
+.mp-card ul { list-style: none; margin: 0; padding: 0; }
+.mp-card li { display: flex; justify-content: space-between; gap: .5em; border-top: 1px solid #eef1f5; padding: .08em 0; font-size: .64em; line-height: 1.35; color: var(--ink-2); }
+.mp-card li em { font-style: normal; white-space: nowrap; color: var(--ink-3); }
+.mp-card li em b { color: #237447; }
+.mp-up { text-align: center; font-family: var(--f-head); font-weight: 700; font-size: .72em; color: #8a6d00; }
+.mp-card.is-base { --c: #b7790f; --s: #fff4d6; background: #fffaf0; }
+.mp-card.is-base ul { display: grid; grid-template-columns: 1fr 1fr; column-gap: 1.4em; }
+
 /* はじめに：原因 → 問題、AI で変える → 効果 */
 .wy { flex: none; display: flex; flex-direction: column; gap: .55em; }
 .wy-row { position: relative; display: flex; align-items: center; gap: .7em; border-radius: 16px; padding: 1.4em .9em .8em; }

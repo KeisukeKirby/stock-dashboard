@@ -446,21 +446,21 @@
       howToRead: 'このマニュアルの見方', legendBefore: '困っていたこと', legendAfter: '新しいやり方', legendCheck: 'できているかの確認',
       areas: '改善する 5 つのエリア', chapter: function (n) { return '第 ' + n + ' 章'; }, appendix: '付録', inReview: '内容確認中',
       textNote: 'くわしい説明は右上の「文章」で見られます。', confidential: '社内資料・取り扱い注意',
-      am: '朝', today: '今日', hours: '2 名がこの作業にかける時間（1 か月 = 21 営業日）', perMonthU: '時間 / 月', nowWay: '今のやり方', newWay: '変えた後', hbNow: '今', hbNew: '変えた後', overview: 'はじめに', nowTag: 'いま', newTag: 'これから', tryStart: '新しいやり方を試し始める日', perDay: function (m) { return '1 日あたり 約 ' + m + ' 分 短縮（2 名合計）'; }, monthEnd: '月末', monThu: '月・木', fri: '金', ours: '自社', bizDays: '営業日', mon: '月', minus1: '前日', handbook: '手順書', perPair: '1 足あたり'
+      am: '朝', today: '今日', hours: '2 名がこの作業にかける時間（1 か月 = 21 営業日）', perMonthU: '時間 / 月', nowWay: '今のやり方', newWay: '変えた後', hbNow: '今', hbNew: '変えた後', overview: 'はじめに', notMeasured: '未計測', newWork: '新規', noCut: '今回は削減なし', nowTag: 'いま', newTag: 'これから', tryStart: '新しいやり方を試し始める日', perDay: function (m) { return '1 日あたり 約 ' + m + ' 分 短縮（2 名合計）'; }, monthEnd: '月末', monThu: '月・木', fri: '金', ours: '自社', bizDays: '営業日', mon: '月', minus1: '前日', handbook: '手順書', perPair: '1 足あたり'
     },
     en: {
       kicker: 'Process improvement, in pictures', before: 'Before', after: 'From now on', how: 'How', check: 'Check',
       howToRead: 'How to read this manual', legendBefore: 'What went wrong', legendAfter: 'The new way', legendCheck: 'How we know it works',
       areas: '5 areas we are improving', chapter: function (n) { return 'Chapter ' + n; }, appendix: 'Appendix', inReview: 'Being confirmed',
       textNote: 'For full details, switch to “Text” at the top right.', confidential: 'Internal use only',
-      am: 'AM', today: 'Today', hours: 'Time 2 people spend on this a month (21 working days)', perMonthU: 'hours / month', nowWay: 'The way it is now', newWay: 'The new way', hbNow: 'Now', hbNew: 'New way', overview: 'Overview', nowTag: 'Now', newTag: 'From now on', tryStart: 'The day we start trying the new way', perDay: function (m) { return 'About ' + m + ' min saved a day (2 people)'; }, monthEnd: 'END', monThu: 'MON·THU', fri: 'FRI', ours: 'Ours', bizDays: 'business days', mon: 'MON', minus1: '−1 day', handbook: 'Handbook', perPair: 'per pair'
+      am: 'AM', today: 'Today', hours: 'Time 2 people spend on this a month (21 working days)', perMonthU: 'hours / month', nowWay: 'The way it is now', newWay: 'The new way', hbNow: 'Now', hbNew: 'New way', overview: 'Overview', notMeasured: 'not measured', newWork: 'new', noCut: 'No cut this time', nowTag: 'Now', newTag: 'From now on', tryStart: 'The day we start trying the new way', perDay: function (m) { return 'About ' + m + ' min saved a day (2 people)'; }, monthEnd: 'END', monThu: 'MON·THU', fri: 'FRI', ours: 'Ours', bizDays: 'business days', mon: 'MON', minus1: '−1 day', handbook: 'Handbook', perPair: 'per pair'
     },
     th: {
       kicker: 'ปรับปรุงการทำงาน ดูเข้าใจง่ายด้วยภาพ', before: 'แบบเดิม', after: 'แบบใหม่', how: 'วิธีทำ', check: 'ตรวจสอบ',
       howToRead: 'วิธีอ่านคู่มือนี้', legendBefore: 'ปัญหาที่เคยเกิด', legendAfter: 'วิธีทำงานแบบใหม่', legendCheck: 'ดูว่าทำได้จริงหรือไม่',
       areas: '5 ส่วนงานที่จะปรับปรุง', chapter: function (n) { return 'บทที่ ' + n; }, appendix: 'ภาคผนวก', inReview: 'อยู่ระหว่างตรวจสอบ',
       textNote: 'ดูรายละเอียดทั้งหมดได้ที่ปุ่ม “ข้อความ” มุมขวาบน', confidential: 'เอกสารใช้ภายในบริษัท',
-      am: 'เช้า', today: 'วันนี้', hours: 'เวลาที่ 2 คนใช้กับงานนี้ต่อเดือน (21 วันทำการ)', perMonthU: 'ชั่วโมง / เดือน', nowWay: 'วิธีที่ทำอยู่ตอนนี้', newWay: 'วิธีใหม่', hbNow: 'ตอนนี้', hbNew: 'วิธีใหม่', overview: 'ภาพรวม', nowTag: 'ตอนนี้', newTag: 'ต่อจากนี้', tryStart: 'วันที่เริ่มทดลองวิธีใหม่', perDay: function (m) { return 'ลดได้ประมาณ ' + m + ' นาทีต่อวัน (2 คนรวมกัน)'; }, monthEnd: 'สิ้นเดือน', monThu: 'จ.·พฤ.', fri: 'ศ.', ours: 'ของเรา', bizDays: 'วันทำการ', mon: 'จ.', minus1: '−1 วัน', handbook: 'คู่มือ', perPair: 'ต่อ 1 คู่'
+      am: 'เช้า', today: 'วันนี้', hours: 'เวลาที่ 2 คนใช้กับงานนี้ต่อเดือน (21 วันทำการ)', perMonthU: 'ชั่วโมง / เดือน', nowWay: 'วิธีที่ทำอยู่ตอนนี้', newWay: 'วิธีใหม่', hbNow: 'ตอนนี้', hbNew: 'วิธีใหม่', overview: 'ภาพรวม', notMeasured: 'ยังไม่วัด', newWork: 'ใหม่', noCut: 'รอบนี้ไม่ลด', nowTag: 'ตอนนี้', newTag: 'ต่อจากนี้', tryStart: 'วันที่เริ่มทดลองวิธีใหม่', perDay: function (m) { return 'ลดได้ประมาณ ' + m + ' นาทีต่อวัน (2 คนรวมกัน)'; }, monthEnd: 'สิ้นเดือน', monThu: 'จ.·พฤ.', fri: 'ศ.', ours: 'ของเรา', bizDays: 'วันทำการ', mon: 'จ.', minus1: '−1 วัน', handbook: 'คู่มือ', perPair: 'ต่อ 1 คู่'
     }
   };
 
@@ -507,6 +507,39 @@
         ['pay', { ja: '返金などの迅速な処理', en: 'Refunds handled fast', th: 'คืนเงินได้รวดเร็ว' }],
         ['chart', { ja: '期限内のレポート提出', en: 'Reports on time', th: 'ส่งรายงานตรงเวลา' }]],
       goal: { ja: '問題の発生を防ぐ', en: 'Problems are prevented', th: 'ป้องกันปัญหา' } },
+    { ch: 0, intro: true, map: true,
+      t: { ja: '経理の業務全体（1 か月あたり）', en: 'All accounting work, per month', th: 'ภาพรวมงานบัญชี (ต่อเดือน)' },
+      total: [350.4, 243.0],
+      groups: [
+        { ic: 'check', n: { ja: '品質・正確さ', en: 'Quality & accuracy', th: 'คุณภาพและความถูกต้อง' }, d: { ja: '正確さを守る確認', en: 'Checks that keep things right', th: 'งานตรวจเพื่อความถูกต้อง' }, now: 71.5, after: 49.6, items: [
+          [{ ja: '仕入 VAT 報告書の確認', en: 'Check purchase VAT report', th: 'ตรวจรายงาน VAT ซื้อ' }, 28.1, 14.4],
+          [{ ja: '売上照合・E-Tax の確認', en: 'Sales check · E-Tax', th: 'ตรวจยอดขาย · E-Tax' }, 20.2, null],
+          [{ ja: '銀行照合', en: 'Bank matching', th: 'กระทบยอดธนาคาร' }, 16.4, 8.2],
+          [{ ja: '支払・源泉書類の確認', en: 'Payment & WHT papers', th: 'เอกสารจ่ายและหัก ณ ที่จ่าย' }, 6.8, null],
+          [{ ja: '返金・振替メモ', en: 'Refund & transfer memos', th: 'บันทึกคืนเงินและโอน' }, '?', null]] },
+        { ic: 'gear', n: { ja: '効率', en: 'Efficiency', th: 'ประสิทธิภาพ' }, d: { ja: '量が多く手間がかかる作業', en: 'High-volume, slow work', th: 'งานปริมาณมากและใช้เวลา' }, now: 85.9, after: 48.0, items: [
+          [{ ja: '紙の印刷・仕分け・保管', en: 'Printing, sorting, filing paper', th: 'พิมพ์ คัดแยก เก็บเอกสาร' }, 41.7, 29.1],
+          [{ ja: 'Shopee・Lazada の照合', en: 'Shopee · Lazada matching', th: 'กระทบยอด Shopee · Lazada' }, 17.2, 7.6],
+          [{ ja: 'Shopee・Lazada の番号振り', en: 'Shopee · Lazada numbering', th: 'ออกเลข Shopee · Lazada' }, 10.6, 3.3],
+          [{ ja: 'SKU 確認（Siam・Central）', en: 'SKU check (Siam · Central)', th: 'ตรวจ SKU (Siam · Central)' }, 8.4, 4.2],
+          [{ ja: '百貨店の CN 発行・照合', en: 'Dept-store CN', th: 'CN ห้าง' }, 8.0, 3.8]] },
+        { ic: 'list', n: { ja: 'その他の業務', en: 'Other work', th: 'งานอื่น ๆ' }, d: { ja: '検品・指導・会議など', en: 'Inspection, training, meetings…', th: 'ตรวจรับ สอนงาน ประชุม ฯลฯ' }, now: 93.9, after: null, items: [
+          [{ ja: '検品・QC・梱包', en: 'Inspection · QC · packing', th: 'ตรวจรับ · QC · แพ็ก' }, 27.9, null],
+          [{ ja: 'POS 設定・PC 指導', en: 'POS setup · PC training', th: 'ตั้งค่า POS · สอน PC' }, 26.4, null],
+          [{ ja: 'メール・会議・調整', en: 'Email · meetings', th: 'อีเมล · ประชุม' }, 16.7, null],
+          [{ ja: '登記・銀行・設備', en: 'Registry · bank · equipment', th: 'จดทะเบียน · ธนาคาร · อุปกรณ์' }, 12.0, null],
+          [{ ja: '税務申告', en: 'Tax filing', th: 'ยื่นภาษี' }, 10.9, null],
+          [{ ja: '月次財務レポート', en: 'Monthly financial report', th: 'รายงานการเงินประจำเดือน' }, 'new', null]] }],
+      base: { ic: 'type', n: { ja: '入力作業（すべての土台）', en: 'Data entry (the base of everything)', th: 'งานคีย์ข้อมูล (ฐานของทุกงาน)' }, d: { ja: '入力が減るほど、上の 3 つに使える時間が増える', en: 'Less typing frees time for the three above', th: 'คีย์น้อยลง มีเวลาให้ 3 ส่วนด้านบนมากขึ้น' }, now: 99.0, after: 51.4, items: [
+          [{ ja: '支払伝票・経費の入力', en: 'Payment vouchers · expenses', th: 'ใบสำคัญจ่าย · ค่าใช้จ่าย' }, 27.9, 15.0],
+          [{ ja: '入金・預金の入力と PEAK 修正', en: 'Deposits & PEAK fixes', th: 'เงินเข้าและแก้ใน PEAK' }, 24.1, 9.5],
+          [{ ja: '請求書・領収書・E-Tax の発行', en: 'Invoices · receipts · E-Tax', th: 'ใบแจ้งหนี้ · ใบเสร็จ · E-Tax' }, 16.4, 11.6],
+          [{ ja: '仕入 VAT 報告書の作成', en: 'Make purchase VAT report', th: 'ทำรายงาน VAT ซื้อ' }, 10.3, 5.2],
+          [{ ja: 'Sales Record の入力', en: 'Sales Record entry', th: 'กรอก Sales Record' }, 8.1, 3.2],
+          [{ ja: '売上 VAT 報告書の作成', en: 'Make sales VAT report', th: 'ทำรายงาน VAT ขาย' }, 6.3, 3.5],
+          [{ ja: '委託・店舗の売上・在庫入力', en: 'Consignment & store entry', th: 'กรอกฝากขายและร้าน' }, 3.8, 1.9],
+          [{ ja: '商品マスタ・その他', en: 'Product master · other', th: 'ข้อมูลสินค้า · อื่น ๆ' }, 2.1, 1.5]] },
+      foot: { ja: '別枠：年 1 回の決算（252.2 時間・2/18〜3/13）は含まない', en: 'Not included: the yearly close (252.2 hours, 18 Feb – 13 Mar)', th: 'ไม่รวม: งานปิดงบปีละครั้ง (252.2 ชั่วโมง 18 ก.พ. – 13 มี.ค.)' } },
     { ch: 0, scene: 'pos', bm: 'pile', am: 'check',
       t: { ja: '売上の毎日照合と返金メモ', en: 'Daily sales check & refund memos', th: 'กระทบยอดขายทุกวัน และบันทึกคืนเงิน' },
       when: { ja: '毎朝（11 月 4 日から）', en: 'Every morning (from 4 Nov)', th: 'ทุกเช้า (ตั้งแต่ 4 พ.ย.)' },
@@ -1060,6 +1093,30 @@
     var U = UI[lang];
     var h = '<header class="ig-item-head"><span class="ig-no' + (it.intro ? ' is-apx' : '') + '">' + (it.intro ? esc(U.overview) : no) + '</span><h2>' + esc(L(it.t)) + '</h2>' +
       (it.review ? '<span class="ig-pill">' + esc(U.inReview) + '</span>' : '') + (it.when ? '<span class="ig-when">🕘 ' + esc(L(it.when)) + '</span>' : '') + '</header>';
+    if (it.map) {
+      var fmt = function (v) { return perMonth(v).toFixed(1); };
+      var rows = function (items) {
+        return items.map(function (x) {
+          var v = x[1] === '?' ? U.notMeasured : x[1] === 'new' ? U.newWork : fmt(x[1]) + (x[2] != null ? ' → <b>' + fmt(x[2]) + '</b>' : '');
+          return '<li><span>' + esc(L(x[0])) + '</span><em>' + v + '</em></li>';
+        }).join('');
+      };
+      var card = function (g, cls) {
+        var cut = g.after != null ? Math.round((g.now - g.after) / g.now * 100) : 0;
+        return '<div class="mp-card ' + (cls || '') + '"><div class="mp-h">' + icon(g.ic, 'ig-ic mp-ic') + '<div><b>' + esc(L(g.n)) + '</b><small>' + esc(L(g.d)) + '</small></div>' +
+          '<strong>' + fmt(g.now) + 'h</strong></div>' +
+          (g.after != null ? '<div class="mp-bar"><i class="is-now"></i><i class="is-new" style="width:' + (g.after / g.now * 100).toFixed(0) + '%"></i></div>' +
+            '<div class="mp-cut">' + fmt(g.now) + ' → ' + fmt(g.after) + 'h<span>−' + cut + '%</span></div>' : '<div class="mp-cut is-none">' + esc(U.noCut) + '</div>') +
+          '<ul>' + rows(g.items) + '</ul></div>';
+      };
+      var tn = it.total[0], ta = it.total[1];
+      return h + '<div class="mp">' +
+        '<div class="mp-total">' + svg('0 0 48 48', face(16, 24, 11, C.blue) + face(32, 24, 11, C.gold), 'mp-ppl') + '<span>' + esc(U.hours) + '</span>' +
+          '<b>' + fmt(tn) + 'h</b><span class="mp-arr">➜</span><b class="is-new">' + fmt(ta) + 'h</b><em>−' + perMonth(tn - ta).toFixed(1) + 'h（−' + Math.round((tn - ta) / tn * 100) + '%）</em></div>' +
+        '<div class="mp-cols">' + it.groups.map(function (g) { return card(g); }).join('') + '</div>' +
+        '<div class="mp-up">▲ ' + esc(L(it.base.d)) + ' ▲</div>' + card(it.base, 'is-base') +
+        '<p class="ig-dnote">※ ' + esc(L(it.foot)) + '</p></div>';
+    }
     if (it.why) {
       var tile = function (x, cls) { return '<li class="' + (cls || '') + '">' + icon(x[0], 'ig-ic wy-ic') + '<b>' + esc(L(x[1])) + '</b></li>'; };
       return h + '<div class="wy">' +
