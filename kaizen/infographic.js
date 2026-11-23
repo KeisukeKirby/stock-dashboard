@@ -452,21 +452,21 @@
     ja: {
       kicker: 'イラストで見る 業務改善', before: 'これまで', after: 'これから', how: 'やり方', check: 'チェック',
       howToRead: 'このマニュアルの見方', legendBefore: '困っていたこと', legendAfter: '新しいやり方', legendCheck: 'できているかの確認',
-      areas: '改善する 5 つのエリア', chapter: function (n) { return '第 ' + n + ' 章'; }, appendix: '付録', nowHere: 'いまここ', inReview: '内容確認中',
+      areas: '改善する 5 つのエリア', chapter: function (n) { return '第 ' + n + ' 章'; }, appendix: '付録', openPage: '公式ページ', aiLv: 'AI 移行', aiTitle: 'AI への移行の難易度', aiLvs: ['低', '中', '高'], aiLegend: 'AI 移行の難易度　低：すぐ AI に移せる／中：AI＋人の確認／高：人が行う（税務など社外へ出すものは AI 任せにしない）', nowHere: 'いまここ', inReview: '内容確認中',
       textNote: 'くわしい説明は右上の「文章」で見られます。', confidential: '社内資料・取り扱い注意',
       am: '朝', today: '今日', hours: '2 名がこの作業にかける時間（1 か月 = 21 営業日）', perMonthU: '時間 / 月', nowWay: '今のやり方', newWay: '変えた後', hbNow: '今', hbNew: '変えた後', overview: 'はじめに', notMeasured: '未計測', newWork: '新規', noCut: '今回は削減なし', twoTotal: '・2 名合計', lessTyping: '入力が減るほど、上の 3 つに使える時間が増える', nowTag: 'いま', newTag: 'これから', tryStart: '新しいやり方を試し始める日', perDay: function (m) { return '1 日あたり 約 ' + m + ' 分 短縮（2 名合計）'; }, monthEnd: '月末', monThu: '月・木', fri: '金', ours: '自社', bizDays: '営業日', mon: '月', minus1: '前日', handbook: '手順書', perPair: '1 足あたり'
     },
     en: {
       kicker: 'Process improvement, in pictures', before: 'Before', after: 'From now on', how: 'How', check: 'Check',
       howToRead: 'How to read this manual', legendBefore: 'What went wrong', legendAfter: 'The new way', legendCheck: 'How we know it works',
-      areas: '5 areas we are improving', chapter: function (n) { return 'Chapter ' + n; }, appendix: 'Appendix', nowHere: 'We are here', inReview: 'Being confirmed',
+      areas: '5 areas we are improving', chapter: function (n) { return 'Chapter ' + n; }, appendix: 'Appendix', openPage: 'Official page', aiLv: 'AI move', aiTitle: 'How hard to move to AI', aiLvs: ['Low', 'Mid', 'High'], aiLegend: 'How hard to move to AI — Low: move now / Mid: AI + a person checks / High: people do it (tax and anything sent outside is never left to AI alone)', nowHere: 'We are here', inReview: 'Being confirmed',
       textNote: 'For full details, switch to “Text” at the top right.', confidential: 'Internal use only',
       am: 'AM', today: 'Today', hours: 'Time 2 people spend on this a month (21 working days)', perMonthU: 'hours / month', nowWay: 'The way it is now', newWay: 'The new way', hbNow: 'Now', hbNew: 'New way', overview: 'Overview', notMeasured: 'not measured', newWork: 'new', noCut: 'No cut this time', twoTotal: ', 2 people', lessTyping: 'Less typing frees time for the three above', nowTag: 'Now', newTag: 'From now on', tryStart: 'The day we start trying the new way', perDay: function (m) { return 'About ' + m + ' min saved a day (2 people)'; }, monthEnd: 'END', monThu: 'MON·THU', fri: 'FRI', ours: 'Ours', bizDays: 'business days', mon: 'MON', minus1: '−1 day', handbook: 'Handbook', perPair: 'per pair'
     },
     th: {
       kicker: 'ปรับปรุงการทำงาน ดูเข้าใจง่ายด้วยภาพ', before: 'แบบเดิม', after: 'แบบใหม่', how: 'วิธีทำ', check: 'ตรวจสอบ',
       howToRead: 'วิธีอ่านคู่มือนี้', legendBefore: 'ปัญหาที่เคยเกิด', legendAfter: 'วิธีทำงานแบบใหม่', legendCheck: 'ดูว่าทำได้จริงหรือไม่',
-      areas: '5 ส่วนงานที่จะปรับปรุง', chapter: function (n) { return 'บทที่ ' + n; }, appendix: 'ภาคผนวก', nowHere: 'ตอนนี้', inReview: 'อยู่ระหว่างตรวจสอบ',
+      areas: '5 ส่วนงานที่จะปรับปรุง', chapter: function (n) { return 'บทที่ ' + n; }, appendix: 'ภาคผนวก', openPage: 'หน้าเว็บทางการ', aiLv: 'ย้ายไป AI', aiTitle: 'ความยากในการย้ายไปใช้ AI', aiLvs: ['ต่ำ', 'กลาง', 'สูง'], aiLegend: 'ความยากในการย้ายไปใช้ AI ต่ำ: ย้ายได้ทันที / กลาง: AI + คนตรวจ / สูง: คนทำ (ภาษีและเอกสารที่ส่งออกภายนอก ไม่ปล่อยให้ AI ทำเองทั้งหมด)', nowHere: 'ตอนนี้', inReview: 'อยู่ระหว่างตรวจสอบ',
       textNote: 'ดูรายละเอียดทั้งหมดได้ที่ปุ่ม “ข้อความ” มุมขวาบน', confidential: 'เอกสารใช้ภายในบริษัท',
       am: 'เช้า', today: 'วันนี้', hours: 'เวลาที่ 2 คนใช้กับงานนี้ต่อเดือน (21 วันทำการ)', perMonthU: 'ชั่วโมง / เดือน', nowWay: 'วิธีที่ทำอยู่ตอนนี้', newWay: 'วิธีใหม่', hbNow: 'ตอนนี้', hbNew: 'วิธีใหม่', overview: 'ภาพรวม', notMeasured: 'ยังไม่วัด', newWork: 'ใหม่', noCut: 'รอบนี้ไม่ลด', twoTotal: ' · 2 คนรวมกัน', lessTyping: 'คีย์น้อยลง มีเวลาให้ 3 ส่วนด้านบนมากขึ้น', nowTag: 'ตอนนี้', newTag: 'ต่อจากนี้', tryStart: 'วันที่เริ่มทดลองวิธีใหม่', perDay: function (m) { return 'ลดได้ประมาณ ' + m + ' นาทีต่อวัน (2 คนรวมกัน)'; }, monthEnd: 'สิ้นเดือน', monThu: 'จ.·พฤ.', fri: 'ศ.', ours: 'ของเรา', bizDays: 'วันทำการ', mon: 'จ.', minus1: '−1 วัน', handbook: 'คู่มือ', perPair: 'ต่อ 1 คู่'
     }
@@ -950,7 +950,7 @@
     title: { ja: 'イベント手順（15 ステップ）', en: 'Event procedure (15 steps)', th: 'ขั้นตอนอีเวนต์ (15 ขั้นตอน)' },
     rolesTitle: { ja: '担当と役割', en: 'Who does what', th: 'ใครทำอะไร' },
     roles: [
-      { n: 'Hoshino', r: { ja: 'Event Proposal（レイアウト・商品リスト）、Case ①／② の判断', en: 'Event Proposal (layout, product list); decides Case ① or ②', th: 'ทำ Event Proposal (Layout, Product list) และตัดสิน Case ①/②' }, col: C.navy },
+      { n: 'Hoshino', r: { ja: 'Event Proposal（レイアウト・商品リスト）', en: 'Event Proposal (layout, product list)', th: 'ทำ Event Proposal (Layout, Product list)' }, col: C.navy },
       { n: { ja: 'コーディネーター', en: 'Coordinator', th: 'ผู้ประสานงาน' }, r: { ja: 'Delivery Note、商品準備、設営、補充、撤収、結果報告', en: 'Delivery Note, preparing stock, setup, restocks, pack-up, report', th: 'Delivery Note เตรียมสินค้า จัดบูธ เติมสินค้า เก็บบูธ รายงานผล' }, col: C.teal },
       { n: { ja: '倉庫担当', en: 'Warehouse', th: 'คลังสินค้า' }, r: { ja: '商品準備、設営、撤収、翌営業日のカウント、棚戻し（着任までは経理が主導）', en: 'Preparing stock, setup, pack-up, next-day count, back to shelves (Accounting leads until they start)', th: 'เตรียมสินค้า จัดบูธ เก็บบูธ นับวันถัดไป เก็บขึ้นชั้น (บัญชีดูแลจนกว่าจะมีคน)' }, col: '#b7790f' },
       { n: { ja: 'PC 責任者', en: 'PC in charge', th: 'PC ผู้รับผิดชอบ' }, r: { ja: '初日朝の受領カウント、補充のカウント、レジ締め', en: 'First-morning count, restock count, closes the register', th: 'นับรับสินค้าเช้าวันแรก นับสินค้าเติม ปิดยอด POS' }, col: C.purple },
@@ -1017,40 +1017,43 @@
     title: { ja: 'PEAK の機能と効率化', en: 'PEAK features that save work', th: 'ฟีเจอร์ PEAK ที่ช่วยลดงาน' },
     short: { ja: 'PEAK 機能表', en: 'PEAK features', th: 'ฟีเจอร์ PEAK' },
     note: { ja: 'PEAK 公式ページの情報。当社は PRO Plus を契約済みなので、どの機能のプラン条件も満たしている', en: 'From PEAK’s official pages. We are on PRO Plus, so we meet the plan condition for every feature', th: 'ข้อมูลจากหน้าเว็บทางการของ PEAK บริษัทใช้แพ็กเกจ PRO Plus จึงใช้ได้ทุกฟีเจอร์ในหน้านี้' },
-    more: { ja: '詳しい使い方：PEAK のオンラインマニュアル・学習センター（peakaccount.com）', en: 'How-to guides: PEAK online manual and learning center (peakaccount.com)', th: 'วิธีใช้: คู่มือออนไลน์และศูนย์การเรียนรู้ของ PEAK (peakaccount.com)' },
+    more1: { ja: 'カードを押すと PEAK の公式ページが開く。全般：', en: 'Click a card to open PEAK’s official page. General: ', th: 'กดที่การ์ดเพื่อเปิดหน้าเว็บทางการของ PEAK ทั่วไป: ' },
+    manual: { ja: 'オンラインマニュアル', en: 'Online manual', th: 'คู่มือออนไลน์' },
+    center: { ja: '学習センター', en: 'Learning center', th: 'ศูนย์การเรียนรู้' },
+    price: { ja: '料金・プラン', en: 'Plans & prices', th: 'แพ็กเกจและราคา' },
     pages: [[
       { mk: '①', ic: 'bank', t: { ja: '銀行', en: 'Bank', th: 'ธนาคาร' }, f: [
-        ['dl', { ja: '銀行明細の取込', en: 'Bank statement import', th: 'นำเข้ารายการเดินบัญชี' }, { ja: 'KBank・BBL の明細を読み込み、手入力をなくす', en: 'Load KBank and BBL statements — no typing', th: 'โหลดรายการ KBank · BBL ไม่ต้องคีย์' }, 'PRO'],
-        ['ai', { ja: 'AI 自動照合', en: 'AI auto-matching', th: 'กระทบยอดอัตโนมัติด้วย AI' }, { ja: '一致の候補をまとめて確定し、不一致だけ見る', en: 'Confirm matches at once; check only the rest', th: 'ยืนยันคู่ที่ตรงพร้อมกัน ดูเฉพาะที่ไม่ตรง' }, 'PRO'],
-        ['list', { ja: '照合画面から伝票作成', en: 'Documents from the matching screen', th: 'สร้างเอกสารจากหน้ากระทบยอด' }, { ja: '入金と経費の入力を同じ画面で済ませる', en: 'Enter receipts and expenses on one screen', th: 'บันทึกรับเงินและค่าใช้จ่ายในหน้าเดียว' }, 'PP']] },
+        ['dl', { ja: '銀行明細の取込', en: 'Bank statement import', th: 'นำเข้ารายการเดินบัญชี' }, { ja: 'KBank・BBL の明細を読み込み、手入力をなくす', en: 'Load KBank and BBL statements — no typing', th: 'โหลดรายการ KBank · BBL ไม่ต้องคีย์' }, 'PRO', 'https://intercom.help/peak/en/articles/8415719-นำเข-าไฟล-เพื-อกระทบยอดธนาคาร-ใน-peak'],
+        ['ai', { ja: 'AI 自動照合', en: 'AI auto-matching', th: 'กระทบยอดอัตโนมัติด้วย AI' }, { ja: '一致の候補をまとめて確定し、不一致だけ見る', en: 'Confirm matches at once; check only the rest', th: 'ยืนยันคู่ที่ตรงพร้อมกัน ดูเฉพาะที่ไม่ตรง' }, 'PRO', 'https://intercom.help/peak/en/articles/6697193-กระทบยอดธนาคาร-ด-วยระบบอัตโนมัติ-ใน-peak'],
+        ['list', { ja: '照合画面から伝票作成', en: 'Documents from the matching screen', th: 'สร้างเอกสารจากหน้ากระทบยอด' }, { ja: '入金と経費の入力を同じ画面で済ませる', en: 'Enter receipts and expenses on one screen', th: 'บันทึกรับเงินและค่าใช้จ่ายในหน้าเดียว' }, 'PP', 'https://intercom.help/peak/en/articles/10293812-สร-างรายการผ-านหน-ากระทบยอดธนาคาร-ใน-peak']] },
       { mk: '②', ic: 'chart', t: { ja: 'Sales Record', en: 'Sales Record', th: 'Sales Record' }, f: [
-        ['pos', { ja: 'POS 売上の連携', en: 'POS sales link', th: 'เชื่อมยอดขาย POS' }, { ja: 'POS の売上を PEAK へ送り、店舗分の入力を減らす', en: 'Send POS sales to PEAK — less store typing', th: 'ส่งยอดขาย POS เข้า PEAK ลดการคีย์ยอดร้าน' }, 'PP']] },
+        ['pos', { ja: 'POS 売上の連携', en: 'POS sales link', th: 'เชื่อมยอดขาย POS' }, { ja: 'POS の売上を PEAK へ送り、店舗分の入力を減らす', en: 'Send POS sales to PEAK — less store typing', th: 'ส่งยอดขาย POS เข้า PEAK ลดการคีย์ยอดร้าน' }, 'PP', 'https://intercom.help/peak/en/articles/7164871-การตั-งค-าการเชื-อมต-อรายการขาย-pos']] },
       { mk: '③', ic: 'sort', t: { ja: 'Shopee・Lazada', en: 'Shopee · Lazada', th: 'Shopee · Lazada' }, f: [
-        ['gear', { ja: 'Zort → PEAK の設定', en: 'Zort → PEAK settings', th: 'ตั้งค่า Zort → PEAK' }, { ja: '番号を PEAK で振り、手直しと重複をなくす', en: 'Let PEAK number them — no fixes or duplicates', th: 'ให้ PEAK ออกเลข ไม่ต้องแก้ ไม่ซ้ำ' }, 'PP'],
-        ['box', { ja: 'Shopee の同日注文まとめ', en: 'Shopee same-day grouping', th: 'รวมออเดอร์ Shopee รายวัน' }, { ja: '前日分を 1 伝票に（税務請求書の依頼分は別）', en: 'One document per day (tax-invoice requests kept apart)', th: 'รวมเป็น 1 เอกสารต่อวัน (แยกที่ขอใบกำกับภาษี)' }, 'PP'],
-        ['xls', { ja: '注文レポート（Lazada など）', en: 'Order reports (Lazada etc.)', th: 'รายงานออเดอร์ (Lazada ฯลฯ)' }, { ja: 'Excel に出力して、マクロの元データに使う', en: 'Export to Excel as the macro’s input', th: 'ส่งออก Excel ใช้เป็นข้อมูลให้แมโคร' }, 'API'],
-        ['chart', { ja: '売上・仕入 VAT 報告書の Excel 出力', en: 'Sales/purchase VAT report to Excel', th: 'ส่งออกรายงาน VAT ขาย/ซื้อเป็น Excel' }, { ja: 'PP.30 から出力し、Excel での作成をなくす', en: 'Export from PP.30 — no building it in Excel', th: 'ออกจาก ภ.พ.30 ไม่ต้องทำใน Excel' }, 'NA', '③④']] },
+        ['gear', { ja: 'Zort → PEAK の設定', en: 'Zort → PEAK settings', th: 'ตั้งค่า Zort → PEAK' }, { ja: '番号を PEAK で振り、手直しと重複をなくす', en: 'Let PEAK number them — no fixes or duplicates', th: 'ให้ PEAK ออกเลข ไม่ต้องแก้ ไม่ซ้ำ' }, 'PP', 'https://intercom.help/peak/en/articles/6339767-ตั-งค-าการส-งข-อมูลจาก-zort-สู-peak'],
+        ['box', { ja: 'Shopee の同日注文まとめ', en: 'Shopee same-day grouping', th: 'รวมออเดอร์ Shopee รายวัน' }, { ja: '前日分を 1 伝票に（税務請求書の依頼分は別）', en: 'One document per day (tax-invoice requests kept apart)', th: 'รวมเป็น 1 เอกสารต่อวัน (แยกที่ขอใบกำกับภาษี)' }, 'PP', 'https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-24062026-en'],
+        ['xls', { ja: '注文レポート（Lazada など）', en: 'Order reports (Lazada etc.)', th: 'รายงานออเดอร์ (Lazada ฯลฯ)' }, { ja: 'Excel に出力して、マクロの元データに使う', en: 'Export to Excel as the macro’s input', th: 'ส่งออก Excel ใช้เป็นข้อมูลให้แมโคร' }, 'API', 'https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-13052026-en'],
+        ['chart', { ja: '売上・仕入 VAT 報告書の Excel 出力', en: 'Sales/purchase VAT report to Excel', th: 'ส่งออกรายงาน VAT ขาย/ซื้อเป็น Excel' }, { ja: 'PP.30 から出力し、Excel での作成をなくす', en: 'Export from PP.30 — no building it in Excel', th: 'ออกจาก ภ.พ.30 ไม่ต้องทำใน Excel' }, 'NA', '③④', 'https://www.peakaccount.com/peak-manual/summary-reports/tax-reports-peak-tax/printing-sales-tax-purchase-tax-excel-file']] },
       { mk: '⑥', ic: 'gear', t: { ja: '定型書類', en: 'Routine documents', th: 'เอกสารประจำ' }, f: [
-        ['data', { ja: '取り込めるデータ', en: 'What can be imported', th: 'ข้อมูลที่นำเข้าได้' }, { ja: '取引先・商品・請求書・経費・仕訳などをまとめて取込', en: 'Contacts, products, invoices, expenses, journals — in bulk', th: 'ผู้ติดต่อ สินค้า ใบแจ้งหนี้ ค่าใช้จ่าย สมุดรายวัน นำเข้าทีเดียว' }, 'PP', '③⑥'],
-        ['list', { ja: '請求書の取込', en: 'Invoice import', th: 'นำเข้าใบแจ้งหนี้' }, { ja: '委託先・グループ間の請求をまとめて作る', en: 'Make consignment and group invoices in bulk', th: 'ทำใบแจ้งหนี้ฝากขายและระหว่างกลุ่มทีเดียว' }, 'PP'],
-        ['xls', { ja: '経費の取込', en: 'Expense import', th: 'นำเข้าค่าใช้จ่าย' }, { ja: 'Shopee・Lazada・KBank の費用を入力せずに済む', en: 'Shopee, Lazada and KBank fees without typing', th: 'ค่าธรรมเนียม Shopee Lazada KBank ไม่ต้องคีย์' }, 'PP']] }
+        ['data', { ja: '取り込めるデータ', en: 'What can be imported', th: 'ข้อมูลที่นำเข้าได้' }, { ja: '取引先・商品・請求書・経費・仕訳などをまとめて取込', en: 'Contacts, products, invoices, expenses, journals — in bulk', th: 'ผู้ติดต่อ สินค้า ใบแจ้งหนี้ ค่าใช้จ่าย สมุดรายวัน นำเข้าทีเดียว' }, 'PP', '③⑥', 'https://www.peakaccount.com/peak-manual/peak-others/import-documents/data-that-can-be-imported-peak-pro-plus'],
+        ['list', { ja: '請求書の取込', en: 'Invoice import', th: 'นำเข้าใบแจ้งหนี้' }, { ja: '委託先・グループ間の請求をまとめて作る', en: 'Make consignment and group invoices in bulk', th: 'ทำใบแจ้งหนี้ฝากขายและระหว่างกลุ่มทีเดียว' }, 'PP', 'https://www.peakaccount.com/peak-manual/peak-others/import-documents/import-invoice-documents'],
+        ['xls', { ja: '経費の取込', en: 'Expense import', th: 'นำเข้าค่าใช้จ่าย' }, { ja: 'Shopee・Lazada・KBank の費用を入力せずに済む', en: 'Shopee, Lazada and KBank fees without typing', th: 'ค่าธรรมเนียม Shopee Lazada KBank ไม่ต้องคีย์' }, 'PP', 'https://www.peakaccount.com/peak-manual/peak-others/import-documents/import-expense-record']] }
     ], [
       { mk: '④', ic: 'ai', t: { ja: '経費・仕入 VAT', en: 'Expenses · purchase VAT', th: 'ค่าใช้จ่าย · VAT ซื้อ' }, f: [
-        ['ai', { ja: 'SMART Key：AI 読取', en: 'SMART Key: AI reading', th: 'SMART Key: AI อ่านเอกสาร' }, { ja: '番号・明細・取引先を読み取り、手打ちをなくす', en: 'Reads number, lines, supplier — no typing', th: 'อ่านเลขที่ รายการ คู่ค้า ไม่ต้องคีย์' }, 'ED'],
-        ['check', { ja: 'SMART Key：科目の自動選択', en: 'SMART Key: account suggestions', th: 'SMART Key: เลือกผังบัญชีให้' }, { ja: '科目の候補と、足りない情報を表示', en: 'Suggests accounts; flags missing info', th: 'แนะนำผังบัญชี แจ้งข้อมูลที่ขาด' }, 'NA'],
-        ['paste', { ja: '仕入税額請求書の添付', en: 'Attach purchase tax invoices', th: 'แนบใบกำกับภาษีซื้อ' }, { ja: '番号を読んで、登録待ちの書類に自動で紐付け', en: 'Reads the number and links it to waiting records', th: 'อ่านเลขที่แล้วผูกกับเอกสารที่รอบันทึก' }, 'ED'],
-        ['pen', { ja: 'Edit All Items', en: 'Edit All Items', th: 'Edit All Items' }, { ja: '全明細の科目をまとめて変更', en: 'Change the account on every line at once', th: 'เปลี่ยนผังบัญชีทุกรายการพร้อมกัน' }, 'ED'],
-        ['search', { ja: 'PEAK TAX の AI チェック', en: 'PEAK TAX AI check', th: 'PEAK TAX ตรวจด้วย AI' }, { ja: '重複・7% の不一致・期限が近い請求書を警告', en: 'Warns of duplicates, 7% mismatches, near deadlines', th: 'เตือนเอกสารซ้ำ VAT 7% ไม่ตรง ใกล้ครบกำหนด' }, 'NA'],
-        ['two', { ja: 'PP.30 前の取引先チェック', en: 'Supplier check before PP.30', th: 'ตรวจคู่ค้าก่อน ภ.พ.30' }, { ja: 'いつもの取引先の抜けと新規を表示', en: 'Shows usual suppliers missing, and new ones', th: 'แสดงคู่ค้าประจำที่ขาด และรายใหม่' }, 'ALL'],
-        ['sort', { ja: 'PEAK to PEAK', en: 'PEAK to PEAK', th: 'PEAK to PEAK' }, { ja: '相手の売上伝票を仕入に変換（EDV ⇄ BFT）', en: 'Turns the other side’s sale into our purchase (EDV ⇄ BFT)', th: 'แปลงเอกสารขายของอีกฝ่ายเป็นซื้อ (EDV ⇄ BFT)' }, 'ALL']] },
+        ['ai', { ja: 'SMART Key：AI 読取', en: 'SMART Key: AI reading', th: 'SMART Key: AI อ่านเอกสาร' }, { ja: '番号・明細・取引先を読み取り、手打ちをなくす', en: 'Reads number, lines, supplier — no typing', th: 'อ่านเลขที่ รายการ คู่ค้า ไม่ต้องคีย์' }, 'ED', 'https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-05082026-en'],
+        ['check', { ja: 'SMART Key：科目の自動選択', en: 'SMART Key: account suggestions', th: 'SMART Key: เลือกผังบัญชีให้' }, { ja: '科目の候補と、足りない情報を表示', en: 'Suggests accounts; flags missing info', th: 'แนะนำผังบัญชี แจ้งข้อมูลที่ขาด' }, 'NA', 'https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-13052026-en'],
+        ['paste', { ja: '仕入税額請求書の添付', en: 'Attach purchase tax invoices', th: 'แนบใบกำกับภาษีซื้อ' }, { ja: '番号を読んで、登録待ちの書類に自動で紐付け', en: 'Reads the number and links it to waiting records', th: 'อ่านเลขที่แล้วผูกกับเอกสารที่รอบันทึก' }, 'ED', 'https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-05082026-en'],
+        ['pen', { ja: 'Edit All Items', en: 'Edit All Items', th: 'Edit All Items' }, { ja: '全明細の科目をまとめて変更', en: 'Change the account on every line at once', th: 'เปลี่ยนผังบัญชีทุกรายการพร้อมกัน' }, 'ED', 'https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-08072026-en'],
+        ['search', { ja: 'PEAK TAX の AI チェック', en: 'PEAK TAX AI check', th: 'PEAK TAX ตรวจด้วย AI' }, { ja: '重複・7% の不一致・期限が近い請求書を警告', en: 'Warns of duplicates, 7% mismatches, near deadlines', th: 'เตือนเอกสารซ้ำ VAT 7% ไม่ตรง ใกล้ครบกำหนด' }, 'NA', 'https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-29042026-en'],
+        ['two', { ja: 'PP.30 前の取引先チェック', en: 'Supplier check before PP.30', th: 'ตรวจคู่ค้าก่อน ภ.พ.30' }, { ja: 'いつもの取引先の抜けと新規を表示', en: 'Shows usual suppliers missing, and new ones', th: 'แสดงคู่ค้าประจำที่ขาด และรายใหม่' }, 'ALL', 'https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-10062026-en'],
+        ['sort', { ja: 'PEAK to PEAK', en: 'PEAK to PEAK', th: 'PEAK to PEAK' }, { ja: '相手の売上伝票を仕入に変換（EDV ⇄ BFT）', en: 'Turns the other side’s sale into our purchase (EDV ⇄ BFT)', th: 'แปลงเอกสารขายของอีกฝ่ายเป็นซื้อ (EDV ⇄ BFT)' }, 'ALL', 'https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-24062026-en']] },
       { mk: '⑦', ic: 'vault', t: { ja: '書類の保管（File Vault）', en: 'Document storage (File Vault)', th: 'คลังเอกสาร (File Vault)' }, f: [
-        ['vault', { ja: 'File Vault', en: 'File Vault', th: 'File Vault' }, { ja: '書類を保管し、そこから伝票を作る', en: 'Store documents and make records from them', th: 'เก็บเอกสารและสร้างรายการจากเอกสาร' }, 'PAID', '④⑦'],
-        ['phone', { ja: 'File Vault（スマホ）', en: 'File Vault (phone)', th: 'File Vault (มือถือ)' }, { ja: 'スキャナーなしで、スマホから登録', en: 'Add documents from a phone — no scanner', th: 'เพิ่มเอกสารจากมือถือ ไม่ต้องใช้สแกนเนอร์' }, 'PAID', '④⑦'],
-        ['paper', { ja: '原本を見ながら入力', en: 'Enter while viewing the original', th: 'บันทึกพร้อมดูต้นฉบับ' }, { ja: '画面を切り替えずに伝票を作る（9 月の更新）', en: 'Make the record without switching screens (Sept update)', th: 'สร้างรายการโดยไม่ต้องสลับหน้าจอ (อัปเดต ก.ย.)' }, 'ED', '④⑦'],
-        ['search', { ja: '書類の種類で検索', en: 'Search by document type', th: 'ค้นหาตามประเภทเอกสาร' }, { ja: '種類で絞って、すぐ探せる', en: 'Filter by type and find it fast', th: 'กรองตามประเภท หาเจอเร็ว' }, 'NA']] },
+        ['vault', { ja: 'File Vault', en: 'File Vault', th: 'File Vault' }, { ja: '書類を保管し、そこから伝票を作る', en: 'Store documents and make records from them', th: 'เก็บเอกสารและสร้างรายการจากเอกสาร' }, 'PAID', '④⑦', 'https://intercom.help/peak/en/articles/8353643-สร-าง-แนบ-เอกสารจากคลังเอกสาร-ใน-peak'],
+        ['phone', { ja: 'File Vault（スマホ）', en: 'File Vault (phone)', th: 'File Vault (มือถือ)' }, { ja: 'スキャナーなしで、スマホから登録', en: 'Add documents from a phone — no scanner', th: 'เพิ่มเอกสารจากมือถือ ไม่ต้องใช้สแกนเนอร์' }, 'PAID', '④⑦', 'https://intercom.help/peak/en/articles/15190616-คู-มือการใช-งาน-คลังเอกสาร-file-vault-บน-peak-mobile'],
+        ['paper', { ja: '原本を見ながら入力', en: 'Enter while viewing the original', th: 'บันทึกพร้อมดูต้นฉบับ' }, { ja: '画面を切り替えずに伝票を作る（9 月の更新）', en: 'Make the record without switching screens (Sept update)', th: 'สร้างรายการโดยไม่ต้องสลับหน้าจอ (อัปเดต ก.ย.)' }, 'ED', '④⑦', 'https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-30092026-en'],
+        ['search', { ja: '書類の種類で検索', en: 'Search by document type', th: 'ค้นหาตามประเภทเอกสาร' }, { ja: '種類で絞って、すぐ探せる', en: 'Filter by type and find it fast', th: 'กรองตามประเภท หาเจอเร็ว' }, 'NA', 'https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-28102026-en']] },
       { mk: '', ic: 'calc', t: { ja: '月次の元帳確認', en: 'Monthly ledger check', th: 'ตรวจบัญชีแยกประเภทรายเดือน' }, f: [
-        ['list', { ja: 'Working Paper', en: 'Working Paper', th: 'Working Paper' }, { ja: '勘定残高を 1 画面で確認', en: 'Check account balances on one screen', th: 'ดูยอดคงเหลือบัญชีในหน้าเดียว' }, 'BASIC'],
-        ['ai', { ja: 'PEAK MCP', en: 'PEAK MCP', th: 'PEAK MCP' }, { ja: 'AI から PEAK のデータを扱う（元帳の AI 確認に使える可能性）', en: 'AI works with PEAK data (may help AI ledger checks)', th: 'ให้ AI ใช้ข้อมูล PEAK (อาจใช้ตรวจบัญชีด้วย AI)' }, 'PP']] }
+        ['list', { ja: 'Working Paper', en: 'Working Paper', th: 'Working Paper' }, { ja: '勘定残高を 1 画面で確認', en: 'Check account balances on one screen', th: 'ดูยอดคงเหลือบัญชีในหน้าเดียว' }, 'BASIC', 'https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-27052026-en'],
+        ['ai', { ja: 'PEAK MCP', en: 'PEAK MCP', th: 'PEAK MCP' }, { ja: 'AI から PEAK のデータを扱う（元帳の AI 確認に使える可能性）', en: 'AI works with PEAK data (may help AI ledger checks)', th: 'ให้ AI ใช้ข้อมูล PEAK (อาจใช้ตรวจบัญชีด้วย AI)' }, 'PP', 'https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-22072026-en-2']] }
     ]]
   };
   var PEAK_BOOK = 0; // PEAK 機能表（付録）は経理の冊子の最後に入れる
@@ -1233,7 +1236,7 @@
           '<b>' + esc(L((d.as || [])[k] || x[1])) + '</b><small>' + esc(L(x[1])) + '</small></li>';
       }).join('');
       return h + '<div class="dt-top">' + hoursBars(d.h, U) +
-        '<div class="dt-now"><div class="dt-now-h">' + svg('0 0 120 92', MINI.pile(U), 'dt-now-art') + '<b>' + esc(U.nowWay) + '</b></div><ol>' + nowTiles + '</ol></div></div>' +
+        '<div class="dt-right"><div class="dt-now"><div class="dt-now-h">' + svg('0 0 120 92', MINI.pile(U), 'dt-now-art') + '<b>' + esc(U.nowWay) + '</b></div><ol>' + nowTiles + '</ol></div>' + aiPanel(it.mark) + '</div></div>' +
         '<div class="dt-new"><div class="dt-new-h">' + svg('0 0 120 92', MINI.check(U), 'dt-now-art') + '<b>' + esc(U.newWay) + '</b></div><ol class="dt-flow">' + flow + '</ol></div>' +
         (d.gloss ? '<ul class="dt-gloss">' + d.gloss.map(function (g) {
           return '<li>' + icon(g[0], 'ig-ic dg-ic') + '<b>' + esc(L(g[1])) + '</b><span>' + esc(L(g[2])) + '</span></li>';
@@ -1284,8 +1287,8 @@
       return '<div>' + icon(s.ic) + '<b>' + esc(L(s.l)) + '</b><span>' + esc(L(s.n)) + '</span></div>' + (i < 2 ? '<span class="ig-stage-arrow">➜</span>' : '');
     }).join('') + '</div>';
     h += '<div class="it-body"><div class="it-left">' + left + '</div><div class="it-right">' + right + '</div></div>';
-    if (it.cards) h += '<p class="cd-unit">' + esc(U.hours) + '</p><ol class="ig-cards">' + it.cards.map(function (c) {
-      return '<li>' + icon(c[0], 'ig-ic cd-ic') + '<b>' + esc(L(c[1])) + '</b>' + (c[5] ? catPills(c[5]) : '') +
+    if (it.cards) h += '<p class="cd-unit"><span>' + esc(U.hours) + '</span><span class="cd-ai">' + esc(U.aiLegend) + '</span></p><ol class="ig-cards">' + it.cards.map(function (c) {
+      return '<li>' + icon(c[0], 'ig-ic cd-ic') + '<b>' + esc(L(c[1])) + '</b>' + (c[5] ? catPills(c[5]) : '') + aiMeter(L(c[1]).charAt(0), 'is-card') +
         '<span class="cd-bars"><i class="is-now" style="width:100%"></i><i class="is-new" style="width:' + (c[4] / c[3] * 100).toFixed(0) + '%"></i></span>' +
         '<em>' + monthPair(c[3], c[4])[0].toFixed(1) + ' → ' + monthPair(c[3], c[4])[1].toFixed(1) + 'h</em><strong class="cd-pct">−' + Math.round((c[3] - c[4]) / c[3] * 100) + '%</strong><small>' + esc(L(c[2])) + '</small></li>';
     }).join('') + '</ol>';
@@ -1322,6 +1325,38 @@
     return fl.map(function (v) { return v / 10; });
   }
   // 1.2 の①〜⑦：1 か月換算の「今 → これから」。カードと①〜⑥のページで同じ数字を使い、削減の合計が表紙と一致するようにする
+  // AI への移行の難易度（経理アーティファクト「課題と順番」より）。0＝低 1＝中 2＝高
+  var AID = {
+    '①': [[{ ja: '入金入力・PEAK 修正', en: 'Deposit entry & PEAK fixes', th: 'คีย์เงินเข้า · แก้ใน PEAK' }, 0, { ja: '明細の取込に置き換える', en: 'Replace with statement import', th: 'แทนด้วยการนำเข้ารายการ' }],
+      [{ ja: '銀行照合', en: 'Bank matching', th: 'กระทบยอดธนาคาร' }, 0, { ja: 'PEAK の AI 照合', en: 'PEAK’s AI matching', th: 'กระทบยอดด้วย AI ของ PEAK' }]],
+    '②': [[{ ja: 'Sales Record', en: 'Sales Record', th: 'Sales Record' }, 0, { ja: 'POS レポートを貼る', en: 'Paste the POS report', th: 'วางรายงาน POS' }]],
+    '③': [[{ ja: 'Shopee・Lazada の照合', en: 'Shopee · Lazada matching', th: 'กระทบยอด Shopee · Lazada' }, 0, { ja: '注文番号で突き合わせる', en: 'Match by order number', th: 'จับคู่ด้วยเลขออเดอร์' }],
+      [{ ja: '番号振り', en: 'Numbering', th: 'ออกเลข' }, 1, { ja: 'PEAK の設定で解決できるか確認', en: 'Check if a PEAK setting solves it', th: 'ตรวจว่าตั้งค่า PEAK แก้ได้หรือไม่' }],
+      [{ ja: '売上 VAT 報告書', en: 'Sales VAT report', th: 'รายงาน VAT ขาย' }, 1, { ja: 'PEAK から出力し、人が確認', en: 'Export from PEAK; a person checks', th: 'ออกจาก PEAK แล้วคนตรวจ' }]],
+    '④': [[{ ja: '支払伝票・経費の入力', en: 'Vouchers & expenses', th: 'คีย์ใบสำคัญจ่าย · ค่าใช้จ่าย' }, 1, { ja: 'AI 読取。VAT と科目は人が確認', en: 'AI reads; people check VAT and accounts', th: 'AI อ่าน คนตรวจ VAT และผังบัญชี' }],
+      [{ ja: '仕入 VAT 報告書の作成', en: 'Making the purchase VAT report', th: 'ทำรายงาน VAT ซื้อ' }, 1, { ja: 'PEAK から出力し、人が確認', en: 'Export from PEAK; a person checks', th: 'ออกจาก PEAK แล้วคนตรวจ' }],
+      [{ ja: '仕入 VAT 報告書の確認', en: 'Checking the purchase VAT report', th: 'ตรวจรายงาน VAT ซื้อ' }, 2, { ja: '税務なので任せきりにしない', en: 'Tax — never left to AI alone', th: 'งานภาษี ไม่ปล่อยให้ AI ทำเองทั้งหมด' }]],
+    '⑤': [[{ ja: 'SKU 確認・納品データ', en: 'SKU check & delivery data', th: 'ตรวจ SKU · ข้อมูลส่งของ' }, 0, { ja: '対応表のルールで処理', en: 'Handled by the mapping table', th: 'ทำตามตารางจับคู่' }],
+      [{ ja: 'CN の照合', en: 'CN matching', th: 'กระทบยอด CN' }, 0, { ja: '報告と記録を突き合わせる', en: 'Match reports and records', th: 'เทียบรายงานกับบันทึก' }]],
+    '⑥': [[{ ja: '委託の入力・商品マスタ', en: 'Consignment entry & product master', th: 'คีย์ฝากขาย · ข้อมูลสินค้า' }, 0, { ja: '定型のデータ処理', en: 'Routine data work', th: 'งานข้อมูลประจำ' }],
+      [{ ja: '請求書などの発行', en: 'Issuing invoices', th: 'ออกใบแจ้งหนี้' }, 1, { ja: '社外へ出すので人が確定', en: 'Sent outside, so people confirm', th: 'ส่งออกภายนอก คนเป็นผู้ยืนยัน' }]],
+    '⑦': [[{ ja: '紙の処理', en: 'Paper work', th: 'งานกระดาษ' }, 1, { ja: '紙が必要な範囲の確認が先', en: 'First confirm what must stay on paper', th: 'ต้องตรวจก่อนว่าส่วนไหนต้องใช้กระดาษ' }]]
+  };
+  var AI_COL = ['#2f8f5b', '#c98a00', '#c0392b'];
+  // 難易度メーター（低・中・高のうち該当する段を色付け）
+  function aiMeter(mk, cls) {
+    var U = UI[lang], ps = AID[mk]; if (!ps) return '';
+    var lv = ps.map(function (p) { return p[1]; }), lo = Math.min.apply(null, lv), hi = Math.max.apply(null, lv);
+    var txt = U.aiLvs[lo] + (hi > lo ? '〜' + U.aiLvs[hi] : '');
+    return '<span class="ai-m ' + (cls || '') + '">' + icon('ai', 'ig-ic ai-m-ic') + '<span class="ai-m-l">' + esc(U.aiLv) + '</span><span class="ai-m-bars">' +
+      [0, 1, 2].map(function (k) { return '<i' + (k >= lo && k <= hi ? ' style="background:' + AI_COL[k] + '"' : '') + '></i>'; }).join('') + '</span><b style="color:' + AI_COL[hi] + '">' + esc(txt) + '</b></span>';
+  }
+  function aiPanel(mk) {
+    var U = UI[lang], ps = AID[mk]; if (!ps) return '';
+    return '<div class="dt-ai"><div class="dt-ai-h">' + aiMeter(mk, 'is-big') + '<small>' + esc(U.aiTitle) + '</small></div><ul>' + ps.map(function (p) {
+      return '<li style="--a:' + AI_COL[p[1]] + '"><span class="dt-ai-lv">' + esc(U.aiLvs[p[1]]) + '</span><b>' + esc(L(p[0])) + '</b><small>' + esc(L(p[2])) + '</small></li>';
+    }).join('') + '</ul></div>';
+  }
   var PAIRS = null;
   function monthPair(n, a) {
     if (!PAIRS) {
@@ -1427,11 +1462,14 @@
       '<div class="pk-groups">' + PEAK.pages[k].map(function (g) {
         return '<section class="pk-g"><div class="pk-gh">' + (g.mk ? '<span class="pk-mk">' + g.mk + '</span>' : '') + icon(g.ic, 'ig-ic pk-gic') + '<b>' + esc(L(g.t)) + '</b></div>' +
           '<ul class="pk-tiles">' + g.f.map(function (f) {
-            return '<li>' + (f[4] ? '<span class="pk-also">' + f[4] + '</span>' : '') + icon(f[0], 'ig-ic pk-ic') + '<div><b>' + esc(L(f[1])) + '</b><span>' + esc(L(f[2])) + '</span>' +
-              '<em class="pk-plan' + (f[3] === 'ALL' || f[3] === 'BASIC' ? ' is-all' : f[3] === 'NA' ? ' is-na' : '') + '">' + esc(L(PK[f[3]])) + '</em></div></li>';
+            var url = /^https?:/.test(f[f.length - 1]) ? f[f.length - 1] : '', also = f[4] && !/^https?:/.test(f[4]) ? f[4] : '';
+            var tag = url ? 'a href="' + esc(url) + '" target="_blank" rel="noopener"' : 'div';
+            return '<li><' + tag + ' class="pk-tile">' + (also ? '<span class="pk-also">' + also + '</span>' : '') + icon(f[0], 'ig-ic pk-ic') + '<div><b>' + esc(L(f[1])) + '</b><span>' + esc(L(f[2])) + '</span>' +
+              '<em class="pk-plan' + (f[3] === 'ALL' || f[3] === 'BASIC' ? ' is-all' : f[3] === 'NA' ? ' is-na' : '') + '">' + esc(L(PK[f[3]])) + '</em>' +
+              (url ? '<i class="pk-link">' + esc(U.openPage) + ' ↗</i>' : '') + '</div></' + (url ? 'a' : 'div') + '></li>';
           }).join('') + '</ul></section>';
       }).join('') + '</div>' +
-      '<p class="pk-note">' + svg('0 0 48 48', okCircle(24, 24, 18), 'pk-note-ic') + '<span>' + esc(L(PEAK.note)) + (k === n - 1 ? '<br><small>' + esc(L(PEAK.more)) + '</small>' : '') + '</span></p>';
+      '<p class="pk-note">' + svg('0 0 48 48', okCircle(24, 24, 18), 'pk-note-ic') + '<span>' + esc(L(PEAK.note)) + (k === n - 1 ? '<br><small>' + esc(L(PEAK.more1)) + '<a href="https://www.peakaccount.com/peak-manual" target="_blank" rel="noopener">' + esc(L(PEAK.manual)) + ' ↗</a>・<a href="https://www.peakaccount.com/peak-learning-center" target="_blank" rel="noopener">' + esc(L(PEAK.center)) + ' ↗</a>・<a href="https://www.peakaccount.com/software-package" target="_blank" rel="noopener">' + esc(L(PEAK.price)) + ' ↗</a></small>' : '') + '</span></p>';
   }
 
   function render(lng, m) {

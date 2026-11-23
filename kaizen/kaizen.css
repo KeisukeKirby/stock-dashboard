@@ -797,3 +797,32 @@ html:lang(th) .sl { line-height: 1.55; }
 .ev-who { width: 100%; }
 .ev-who > span { min-width: 0; max-width: 100%; overflow-wrap: anywhere; word-break: break-all; }
 .ev-st b { max-width: 100%; overflow-wrap: anywhere; }
+
+/* AI への移行の難易度 */
+.ai-m { display: inline-flex; align-items: center; gap: .3em; background: #fff; border: 1.5px solid var(--rule); border-radius: 999px; padding: .05em .55em .05em .2em; font-size: .62em; font-weight: 700; color: var(--ink-2); white-space: nowrap; }
+.ai-m-ic { width: 1.5em; height: 1.5em; }
+.ai-m-bars { display: inline-flex; gap: .15em; align-items: flex-end; }
+.ai-m-bars i { width: .45em; border-radius: 2px; background: #dde3ea; }
+.ai-m-bars i:nth-child(1) { height: .55em; } .ai-m-bars i:nth-child(2) { height: .8em; } .ai-m-bars i:nth-child(3) { height: 1.05em; }
+.ai-m b { font-family: var(--f-head); font-weight: 800; }
+.ai-m.is-card { margin-top: .1em; font-size: .7em; }
+.ai-m.is-big { font-size: .8em; }
+.cd-unit { display: flex; justify-content: space-between; align-items: baseline; gap: 1em; }
+.cd-ai { font-size: .85em; color: var(--ink-3); font-weight: 500; text-align: right; }
+.dt-right { display: flex; flex-direction: column; gap: .45em; min-width: 0; }
+.dt-right .dt-now { flex: 1 1 auto; }
+.dt-ai { flex: none; background: #f4f6f9; border-radius: 14px; padding: .35em .6em; display: flex; align-items: center; gap: .6em; }
+.dt-ai-h { display: flex; flex-direction: column; align-items: flex-start; gap: .1em; flex: none; }
+.dt-ai-h small { font-size: .58em; color: var(--ink-3); font-weight: 700; padding-left: .3em; }
+.dt-ai ul { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: .4em; flex: 1 1 auto; min-width: 0; }
+.dt-ai li { background: #fff; border-left: 5px solid var(--a); border-radius: 8px; padding: .2em .45em; display: grid; grid-template-columns: auto 1fr; column-gap: .35em; align-items: center; min-width: 0; }
+.dt-ai-lv { grid-row: span 2; font-family: var(--f-head); font-weight: 800; font-size: .68em; color: #fff; background: var(--a); border-radius: 6px; padding: .1em .4em; }
+.dt-ai li b { font-family: var(--f-head); font-size: .66em; line-height: 1.25; }
+.dt-ai li small { font-size: .56em; line-height: 1.3; color: var(--ink-2); }
+
+/* PEAK 機能表：カードを公式ページへのリンクに */
+.pk-tiles li { padding: 0; }
+.pk-tile { position: relative; display: flex; gap: .4em; align-items: flex-start; padding: .35em .45em; width: 100%; color: inherit; text-decoration: none; border-radius: 12px; }
+a.pk-tile:hover { background: rgba(255,255,255,.55); box-shadow: 0 0 0 2px var(--c); }
+.pk-link { font-style: normal; font-size: .56em; font-weight: 700; color: var(--c); text-decoration: underline; text-underline-offset: 2px; }
+.pk-note a { color: var(--c); font-weight: 700; }
