@@ -642,7 +642,7 @@
       t: { ja: '店舗の補充は決まった配送日に', en: 'Restock stores on set delivery days', th: 'เติมสินค้าสาขาตามวันส่งที่กำหนด' },
       when: { ja: '11 月 9 日の週から', en: 'From the week of 9 Nov', th: 'ตั้งแต่สัปดาห์ 9 พ.ย.' },
       b: { ja: 'PC の発注待ちで欠品し、補充が毎日のように発生', en: 'Waiting for PC orders meant stock-outs and restocking almost daily', th: 'รอ PC สั่งของ ทำให้ของขาด และต้องเติมแทบทุกวัน' },
-      a: { ja: 'Ying が毎週、売上と在庫を見て補充リストを作り、配送日に送る', en: 'Each week Ying makes the list from sales and stock, and ships on delivery days', th: 'ทุกสัปดาห์ Ying ทำรายการจากยอดขายและสต็อก แล้วส่งในวันจัดส่ง' },
+      a: { ja: 'コーディネーターが毎週、売上と在庫を見て補充リストを作り、配送日に送る', en: 'Each week the coordinator makes the list from sales and stock, and ships on delivery days', th: 'ทุกสัปดาห์ ผู้ประสานงาน ทำรายการจากยอดขายและสต็อก แล้วส่งในวันจัดส่ง' },
       rows: [
         [{ ja: '毎週月曜', en: 'Every Monday', th: 'ทุกวันจันทร์' }, { ja: 'K-Village・Central Ladprao・Thaniya', en: 'K-Village · Central Ladprao · Thaniya', th: 'K-Village · Central Ladprao · Thaniya' }],
         [{ ja: '毎週木曜', en: 'Every Thursday', th: 'ทุกวันพฤหัสฯ' }, { ja: 'Siam Discovery・Central Chidlom', en: 'Siam Discovery · Central Chidlom', th: 'Siam Discovery · Central Chidlom' }],
@@ -675,13 +675,12 @@
       t: { ja: 'Shopee は 14:00 までの注文を当日発送', en: 'Shopee: orders by 2 PM ship today', th: 'Shopee: สั่งก่อน 14:00 น. ส่งวันนี้' },
       when: { ja: '毎日', en: 'Every day', th: 'ทุกวัน' },
       b: { ja: '朝の梱包のあとに入った注文が、発送されていなかった', en: 'Orders after the morning packing weren’t shipped', th: 'ออเดอร์ที่เข้าหลังแพ็กรอบเช้า ไม่ได้ส่ง' },
-      a: { ja: '14:00 に Ying が新しい注文をもう一度確認し、当日発送', en: 'At 2 PM Ying checks for new orders again and ships them today', th: '14:00 น. Ying เช็กออเดอร์ใหม่อีกครั้ง แล้วส่งภายในวัน' },
-      timeline: true,
-      c: { ja: '全部送ったら Routine Check List（Office Warehouse）にチェック', en: 'Tick the Routine Check List (Office Warehouse) once all are sent', th: 'ส่งครบแล้วติ๊กใน Routine Check List (Office Warehouse)' } },
+      a: { ja: '14:00 にコーディネーターが新しい注文をもう一度確認し、当日発送', en: 'At 2 PM the coordinator checks for new orders again and ships them today', th: '14:00 น. ผู้ประสานงาน เช็กออเดอร์ใหม่อีกครั้ง แล้วส่งภายในวัน' },
+      timeline: true },
     { ch: 1, scene: 'equip', bm: 'search', am: 'check',
       t: { ja: 'イベント備品はリストで準備', en: 'Event equipment: use the list', th: 'เตรียมอุปกรณ์อีเวนต์ตามรายการ' },
       b: { ja: '正確なリストがなく、箱の中身が分からず二度手間', en: 'No exact list — nobody knew what was in the boxes', th: 'ไม่มีรายการที่ชัดเจน ไม่รู้ว่าในกล่องมีอะไร ทำซ้ำสองรอบ' },
-      a: { ja: 'Ying が Furniture・ACCESSORIES シートでイベントごとに確定', en: 'Ying fixes the list per event in the Furniture and ACCESSORIES sheets', th: 'Ying สรุปรายการต่ออีเวนต์ในชีต Furniture และ ACCESSORIES' },
+      a: { ja: 'コーディネーターが Furniture・ACCESSORIES シートでイベントごとに確定', en: 'The coordinator fixes the list per event in the Furniture and ACCESSORIES sheets', th: 'ผู้ประสานงาน สรุปรายการต่ออีเวนต์ในชีต Furniture และ ACCESSORIES' },
       steps: [
         ['check', { ja: '準備するとき', en: 'Preparing', th: 'ตอนเตรียม' }],
         ['load', { ja: '積み込む前', en: 'Before loading', th: 'ก่อนขึ้นรถ' }],
@@ -690,11 +689,9 @@
     { ch: 1, scene: 'vehicle', bm: 'wait', am: 'fast',
       t: { ja: '車は前日までに確保', en: 'Book the vehicle a day ahead', th: 'จองรถล่วงหน้า 1 วัน' },
       b: { ja: '直前にアプリで呼び、待ち時間と追加料金が出た（200 バーツが 800 バーツに）', en: 'Last-minute app bookings meant waiting and extra fees (200 baht became 800)', th: 'เรียกรถผ่านแอปกระชั้นชิด ต้องรอและเสียเงินเพิ่ม (200 บาทกลายเป็น 800)' },
-      a: { ja: '1 日前までに Ying が手配し、VEHICLE シートに記入', en: 'Ying books it by the day before and fills in the VEHICLE sheet', th: 'Ying จองรถก่อน 1 วัน แล้วกรอกชีต VEHICLE' },
+      a: { ja: '1 日前までに手配し、完了したら LINE グループで報告', en: 'Book it by the day before and report in the LINE group once it’s done', th: 'จองให้เสร็จก่อน 1 วัน แล้วแจ้งในกลุ่ม LINE เมื่อจองเสร็จ' },
       extra: [
-        ['truck', { ja: '設営と撤収は専用便や往復便を定例に', en: 'Make setup and pack-up trips regular (dedicated or round trip)', th: 'รถจัดบูธและเก็บบูธ ใช้เที่ยวประจำหรือไป-กลับ' }],
-        ['clock', { ja: '撤収の Lalamove は、終わる見込みの時間で予約', en: 'Book the pack-up Lalamove for when work will finish', th: 'จอง Lalamove ตอนเก็บบูธ ตามเวลาที่คาดว่าจะเสร็จ' }]],
-      c: { ja: 'グループには「時間」と「確保完了」だけ', en: 'Post only the time and “confirmed” in the group', th: 'แจ้งกลุ่มแค่ “เวลา” และ “ได้รถแล้ว”' } },
+        ['clock', { ja: '撤収の Lalamove は、終わる見込みの時間で予約', en: 'Book the pack-up Lalamove for when work will finish', th: 'จอง Lalamove ตอนเก็บบูธ ตามเวลาที่คาดว่าจะเสร็จ' }]] },
     { ch: 1, scene: 'event', bm: 'mess', am: 'check',
       t: { ja: 'イベントは手順書どおり', en: 'Run events by the handbook', th: 'ทำอีเวนต์ตามคู่มือ' },
       b: { ja: 'やり方がバラバラで、毎回すべての在庫を数えていた', en: 'Different every time, and all stock was counted every time', th: 'ทำไม่เหมือนกัน และนับสต็อกทั้งหมดทุกครั้ง' },
@@ -759,7 +756,7 @@
     { ch: 3, scene: 'shift', am: 'table',
       t: { ja: 'シフト表で配置と打刻を見る', en: 'Shift sheet: who’s where, and clock-ins', th: 'ตารางกะ: ใครอยู่ไหน และเวลาเข้า-ออก' },
       when: { ja: '11 月 9 日から', en: 'From 9 Nov', th: 'ตั้งแต่ 9 พ.ย.' },
-      a: { ja: 'Pong が Store Staff Shift Schedule に全店舗・イベントの配置と打刻を入力', en: 'Pong enters every store’s and event’s staff and clock-ins in the Store Staff Shift Schedule', th: 'Pong กรอกคนและเวลาเข้า-ออกของทุกสาขาและอีเวนต์ใน Store Staff Shift Schedule' },
+      a: { ja: 'HR 担当が Store Staff Shift Schedule に全店舗・イベントの配置と打刻を入力', en: 'The HR staff member enters every store’s and event’s staff and clock-ins in the Store Staff Shift Schedule', th: 'เจ้าหน้าที่ HR กรอกคนและเวลาเข้า-ออกของทุกสาขาและอีเวนต์ใน Store Staff Shift Schedule' },
       steps: [
         ['list', { ja: '配置と打刻を入力', en: 'Enter staff & clock-ins', th: 'กรอกคนและเวลา' }],
         ['data', { ja: 'PC 別に配置日数・打刻日数を見る', en: 'See days placed and clocked, per PC', th: 'ดูจำนวนวันประจำและวันลงเวลา ต่อ PC' }],
@@ -776,9 +773,8 @@
     { ch: 3, scene: 'notice', bm: 'wait', am: 'check',
       t: { ja: '行事は前もって告知', en: 'Announce events early', th: 'แจ้งกิจกรรมล่วงหน้า' },
       b: { ja: 'タンブンの告知が前日で、準備が間に合わない人が出た', en: 'The Tambun notice came the day before — some couldn’t prepare', th: 'แจ้งทำบุญแค่วันก่อน บางคนเตรียมไม่ทัน' },
-      a: { ja: '準備が必要な行事は前もって告知（HR）', en: 'HR announces anything that needs preparing in advance', th: 'HR แจ้งกิจกรรมที่ต้องเตรียมตัวล่วงหน้า' },
+      a: { ja: '会議など、準備が必要な予定・行事は前もって告知', en: 'Announce meetings and other plans or events that need preparing in advance', th: 'แจ้งล่วงหน้าเรื่องประชุมและกำหนดการหรือกิจกรรมที่ต้องเตรียมตัว' },
       rules: [
-        ['cal', { ja: '社員旅行は 1 か月前に告知', en: 'Company trip: announce a month ahead', th: 'ทริปบริษัท แจ้งล่วงหน้า 1 เดือน' }],
         ['cal', { ja: '予定は先に Google カレンダーへ', en: 'Put it in Google Calendar first', th: 'ใส่ Google Calendar ก่อน' }]] },
 
     /* ---------- 第 5 章 EC・顧客対応 ---------- */
@@ -818,7 +814,7 @@
       a: { ja: '決めた手順を、全員が同じように守る', en: 'Everyone follows the agreed steps the same way', th: 'ทุกคนทำตามขั้นตอนที่ตกลงกันเหมือนกัน' },
       rules: [
         ['list', { ja: '日報に「作業・時間・困ったこと」を毎日書く', en: 'Daily report: tasks, time, problems — every day', th: 'รายงานประจำวัน: งาน เวลา ปัญหา ทุกวัน' }],
-        ['cal', { ja: '予定と期限は会社の Google カレンダーへ（11 月から）', en: 'Plans and deadlines in the company Google Calendar (from November)', th: 'แผนงานและกำหนดส่ง ใส่ Google Calendar ของบริษัท (ตั้งแต่ พ.ย.)' }],
+        ['check', { ja: 'To Do List を活用し、タスクのスケジュールを管理', en: 'Use a To Do List to schedule your tasks', th: 'ใช้ To Do List จัดตารางงานของตัวเอง' }],
         ['stamp', { ja: '社長や Bew にサインを頼む書類は、作成者が先にサイン。ミスは本人が直す', en: 'Documents for the president or Bew: the maker signs first and fixes their own mistakes', th: 'เอกสารที่ให้ประธานหรือคุณ Bew เซ็น ผู้ทำเซ็นก่อน ผิดให้แก้เอง' }],
         ['chat', { ja: '店舗・取引先の情報は、その日のうちにグループへ', en: 'News from stores or partners goes to the group the same day', th: 'ข้อมูลจากร้านหรือคู่ค้า แจ้งกลุ่มภายในวันนั้น' }]] },
     { ch: 5, scene: 'deadline', am: 'fast',
@@ -872,8 +868,8 @@
       { k: { ja: '販売できない', en: 'Not sellable', th: 'ขายไม่ได้' }, v: { ja: '理由を記録して処分', en: 'Note why, then dispose', th: 'บันทึกเหตุผล แล้วทิ้ง' }, col: C.gray, ic: 'ng' }
     ],
     areas: [
-      { l: { ja: 'ゴミ出し', en: 'Trash', th: 'ทิ้งขยะ' }, ic: 'bin' }, { l: { ja: '床・机', en: 'Floor & desks', th: 'พื้นและโต๊ะ' }, ic: 'broom' },
-      { l: { ja: '倉庫の通路', en: 'Warehouse aisles', th: 'ทางเดินในคลัง' }, ic: 'box' }, { l: { ja: 'トイレ・給湯', en: 'Toilet & kitchenette', th: 'ห้องน้ำและมุมเครื่องดื่ม' }, ic: 'spark' }
+      { l: { ja: 'ゴミ出し', en: 'Trash', th: 'ทิ้งขยะ' }, ic: 'bin' }, { l: { ja: '給湯室', en: 'Kitchenette', th: 'ห้องเตรียมเครื่องดื่ม' }, ic: 'spark' },
+      { l: { ja: '床（共用部分）', en: 'Shared floor', th: 'พื้นส่วนกลาง' }, ic: 'broom' }
     ],
     phases: [
       { w: { ja: '開始日から', en: 'From the start', th: 'ตั้งแต่วันเริ่ม' }, b: { ja: '始める', en: 'Start', th: 'เริ่ม' }, d: { ja: '新しい手順で', en: 'Work the new way', th: 'ทำตามขั้นตอนใหม่' }, col: C.teal },
@@ -894,7 +890,7 @@
     rolesTitle: { ja: '担当と役割', en: 'Who does what', th: 'ใครทำอะไร' },
     roles: [
       { n: 'Hoshino', r: { ja: 'Event Proposal（レイアウト・商品リスト）、Case ①／② の判断', en: 'Event Proposal (layout, product list); decides Case ① or ②', th: 'ทำ Event Proposal (Layout, Product list) และตัดสิน Case ①/②' }, col: C.navy },
-      { n: 'Ying', r: { ja: 'Delivery Note、商品準備、設営、補充、撤収、結果報告', en: 'Delivery Note, preparing stock, setup, restocks, pack-up, report', th: 'Delivery Note เตรียมสินค้า จัดบูธ เติมสินค้า เก็บบูธ รายงานผล' }, col: C.teal },
+      { n: { ja: 'コーディネーター', en: 'Coordinator', th: 'ผู้ประสานงาน' }, r: { ja: 'Delivery Note、商品準備、設営、補充、撤収、結果報告', en: 'Delivery Note, preparing stock, setup, restocks, pack-up, report', th: 'Delivery Note เตรียมสินค้า จัดบูธ เติมสินค้า เก็บบูธ รายงานผล' }, col: C.teal },
       { n: { ja: '倉庫担当', en: 'Warehouse', th: 'คลังสินค้า' }, r: { ja: '商品準備、設営、撤収、翌営業日のカウント、棚戻し（着任までは経理が主導）', en: 'Preparing stock, setup, pack-up, next-day count, back to shelves (Accounting leads until they start)', th: 'เตรียมสินค้า จัดบูธ เก็บบูธ นับวันถัดไป เก็บขึ้นชั้น (บัญชีดูแลจนกว่าจะมีคน)' }, col: '#b7790f' },
       { n: { ja: 'PC 責任者', en: 'PC in charge', th: 'PC ผู้รับผิดชอบ' }, r: { ja: '初日朝の受領カウント、補充のカウント、レジ締め', en: 'First-morning count, restock count, closes the register', th: 'นับรับสินค้าเช้าวันแรก นับสินค้าเติม ปิดยอด POS' }, col: C.purple },
       { n: { ja: '経理', en: 'Accounting', th: 'ฝ่ายบัญชี' }, r: { ja: 'Zort の在庫移動、売上レポート、照合', en: 'Zort stock transfers, sales report, reconciliation', th: 'โอนสต็อกใน Zort ออกรายงานยอดขาย กระทบยอด' }, col: C.green },
@@ -902,20 +898,20 @@
     ],
     lanes: [
       { l: { ja: '準備・出庫（3〜1 営業日前）', en: 'Prepare & stock out (3–1 working days before)', th: 'เตรียมของ · เบิกออก (3–1 วันทำการก่อนงาน)' }, col: C.navy, steps: [
-        ['1', 'Event Proposal', 'Hoshino'], ['2', 'Delivery Note', 'Ying'], ['3', { ja: '承認（Sign）', en: 'Sign', th: 'ลงนาม (Sign)' }, 'Shimada'],
-        ['4', { ja: '商品準備', en: 'Prepare', th: 'เตรียมสินค้า' }, { ja: 'Ying＋倉庫', en: 'Ying + warehouse', th: 'Ying + คลัง' }], ['5', { ja: 'Zort 出庫', en: 'Stock out (Zort)', th: 'เบิกออก (Zort)' }, { ja: '経理', en: 'Accounting', th: 'บัญชี' }]] },
+        ['1', 'Event Proposal', 'Hoshino'], ['2', 'Delivery Note', { ja: 'コーディネーター', en: 'Coordinator', th: 'ผู้ประสานงาน' }], ['3', { ja: '承認（Sign）', en: 'Sign', th: 'ลงนาม (Sign)' }, 'Shimada'],
+        ['4', { ja: '商品準備', en: 'Prepare', th: 'เตรียมสินค้า' }, { ja: 'コーディネーター＋倉庫', en: 'Coordinator + warehouse', th: 'ผู้ประสานงาน + คลัง' }], ['5', { ja: 'Zort 出庫', en: 'Stock out (Zort)', th: 'เบิกออก (Zort)' }, { ja: '経理', en: 'Accounting', th: 'บัญชี' }]] },
       { l: { ja: '会期中（初日〜）', en: 'During the event (from day 1)', th: 'ระหว่างงาน (ตั้งแต่วันแรก)' }, col: C.teal, steps: [
-        ['6', { ja: '設営（前日）', en: 'Setup (day before)', th: 'จัดบูธ (วันก่อนงาน)' }, { ja: 'Ying＋倉庫', en: 'Ying + warehouse', th: 'Ying + คลัง' }],
+        ['6', { ja: '設営（前日）', en: 'Setup (day before)', th: 'จัดบูธ (วันก่อนงาน)' }, { ja: 'コーディネーター＋倉庫', en: 'Coordinator + warehouse', th: 'ผู้ประสานงาน + คลัง' }],
         ['7', { ja: '受領カウント（初日朝）', en: 'Receipt count (first morning)', th: 'นับรับสินค้า (เช้าวันแรก)' }, 'PC'],
-        ['8', { ja: '補充（発送＋Zort）', en: 'Refill (ship + Zort)', th: 'เติมสินค้า (ส่ง + Zort)' }, { ja: 'Ying・経理', en: 'Ying · Accounting', th: 'Ying · บัญชี' }]] },
+        ['8', { ja: '補充（発送＋Zort）', en: 'Refill (ship + Zort)', th: 'เติมสินค้า (ส่ง + Zort)' }, { ja: 'コーディネーター・経理', en: 'Coordinator · Accounting', th: 'ผู้ประสานงาน · บัญชี' }]] },
       { l: { ja: 'Close・棚戻し（Close 当日〜2 営業日目）', en: 'Close & back to shelves (Close day to working day 2)', th: 'ปิดงาน · เก็บขึ้นชั้น (วันปิดงานถึงวันทำการที่ 2)' }, col: '#b7790f', steps: [
-        ['9', { ja: 'Close（封印・搬出）', en: 'Close (seal, load out)', th: 'ปิดงาน (ซีลกล่อง ขนออก)' }, { ja: 'PC・Ying・倉庫', en: 'PC · Ying · warehouse', th: 'PC · Ying · คลัง' }],
+        ['9', { ja: 'Close（封印・搬出）', en: 'Close (seal, load out)', th: 'ปิดงาน (ซีลกล่อง ขนออก)' }, { ja: 'PC・コーディネーター・倉庫', en: 'PC · Coordinator · warehouse', th: 'PC · ผู้ประสานงาน · คลัง' }],
         ['10', { ja: 'カウント（翌営業日）', en: 'Count (next business day)', th: 'นับสินค้า (วันทำการถัดไป)' }, { ja: '倉庫', en: 'Warehouse', th: 'คลัง' }],
         ['11', { ja: '照合', en: 'Reconcile', th: 'กระทบยอด' }, { ja: '経理', en: 'Accounting', th: 'บัญชี' }],
-        ['12', { ja: '差異承認', en: 'Approve differences', th: 'อนุมัติส่วนต่าง' }, 'Ying · Shimada'],
+        ['12', { ja: '差異承認', en: 'Approve differences', th: 'อนุมัติส่วนต่าง' }, { ja: 'コーディネーター · 島田', en: 'Coordinator · Shimada', th: 'ผู้ประสานงาน · ชิมาดะ' }],
         ['13', { ja: 'Zort で本倉庫へ', en: 'Zort back to main', th: 'โอนกลับคลังหลัก (Zort)' }, { ja: '経理', en: 'Accounting', th: 'บัญชี' }],
         ['14', { ja: '棚戻し', en: 'Back to shelves', th: 'เก็บขึ้นชั้น' }, { ja: '倉庫', en: 'Warehouse', th: 'คลัง' }],
-        ['15', { ja: '結果報告', en: 'Report results', th: 'รายงานผล' }, 'Ying → Shimada']] }
+        ['15', { ja: '結果報告', en: 'Report results', th: 'รายงานผล' }, { ja: 'コーディネーター → 島田', en: 'Coordinator → Shimada', th: 'ผู้ประสานงาน → ชิมาดะ' }]] }
     ],
     cases: [
       { k: 'Case ①', v: { ja: '終わったら本倉庫の棚へ戻す（通常）', en: 'After the event, back to the main warehouse shelves (normal)', th: 'จบงานแล้ว นำกลับขึ้นชั้นที่คลังหลัก (ปกติ)' } },
@@ -925,14 +921,14 @@
     checks: [
       ['③', { ja: '島田', en: 'Shimada', th: 'ชิมาดะ' }, { ja: 'Delivery Note の内容', en: 'Delivery Note contents', th: 'เนื้อหา Delivery Note' }, { ja: '承認まで準備しない', en: 'No prep until approved', th: 'ไม่เตรียมจนกว่าจะอนุมัติ' }],
       ['⑤', { ja: '経理', en: 'Accounting', th: 'บัญชี' }, { ja: 'Zort の移動数 ＝ 署名済み DN', en: 'Zort transfer = signed DN', th: 'ยอดโอนใน Zort = DN ที่เซ็นแล้ว' }, { ja: '一致させる', en: 'Make them match', th: 'ทำให้ตรงกัน' }],
-      ['⑦', { ja: 'PC 責任者', en: 'PC lead', th: 'หัวหน้า PC' }, { ja: '初日の朝：陳列＋予備の実数 ＝ 持出数', en: 'First morning: shelf + spare = sent', th: 'เช้าวันแรก: ของโชว์ + สำรอง = จำนวนที่ส่ง' }, { ja: 'その日に Ying と経理へ。島田の承認後に Zort を直す', en: 'Tell Ying and Accounting that day; fix Zort after Shimada approves', th: 'แจ้ง Ying และบัญชีวันนั้น แก้ Zort หลังชิมาดะอนุมัติ' }],
+      ['⑦', { ja: 'PC 責任者', en: 'PC lead', th: 'หัวหน้า PC' }, { ja: '初日の朝：陳列＋予備の実数 ＝ 持出数', en: 'First morning: shelf + spare = sent', th: 'เช้าวันแรก: ของโชว์ + สำรอง = จำนวนที่ส่ง' }, { ja: 'その日に コーディネーター と経理へ。島田の承認後に Zort を直す', en: 'Tell Coordinator and Accounting that day; fix Zort after Shimada approves', th: 'แจ้ง ผู้ประสานงาน และบัญชีวันนั้น แก้ Zort หลังชิมาดะอนุมัติ' }],
       ['⑧', { ja: 'PC 責任者', en: 'PC lead', th: 'หัวหน้า PC' }, { ja: '補充で届いた実数', en: 'Refill actually received', th: 'ของเติมที่ได้รับจริง' }, { ja: 'Return Note に記入', en: 'Write it on the Return Note', th: 'กรอกใน Return Note' }],
-      ['⑨', { ja: 'Ying＋倉庫', en: 'Ying + warehouse', th: 'Ying + คลัง' }, { ja: 'Close 当日：箱数と封印', en: 'Close day: box count and seals', th: 'วันปิดงาน: จำนวนกล่องและซีล' }, { ja: '会場では商品を数えない', en: 'Don’t count products at the venue', th: 'ไม่นับสินค้าที่หน้างาน' }],
+      ['⑨', { ja: 'コーディネーター＋倉庫', en: 'Coordinator + warehouse', th: 'ผู้ประสานงาน + คลัง' }, { ja: 'Close 当日：箱数と封印', en: 'Close day: box count and seals', th: 'วันปิดงาน: จำนวนกล่องและซีล' }, { ja: '会場では商品を数えない', en: 'Don’t count products at the venue', th: 'ไม่นับสินค้าที่หน้างาน' }],
       ['⑩', { ja: '倉庫', en: 'Warehouse', th: 'คลัง' }, { ja: '翌営業日：封印と全箱の実数', en: 'Next day: seals and every box', th: 'วันทำการถัดไป: ซีลและของทุกกล่อง' }, { ja: '封印が破れていれば記録', en: 'Note any broken seal', th: 'ซีลขาดให้บันทึก' }],
       ['⑪', { ja: '経理', en: 'Accounting', th: 'บัญชี' }, { ja: '受領＋補充−販売 ＝ 実数', en: 'Received + refill − sold = counted', th: 'รับ + เติม − ขาย = นับได้' }, { ja: '差異表を作る', en: 'Make the difference sheet', th: 'ทำตารางส่วนต่าง' }],
-      ['⑫', { ja: 'Ying → 島田', en: 'Ying → Shimada', th: 'Ying → ชิมาดะ' }, { ja: '1 点でも差があれば原因', en: 'Any gap at all: the cause', th: 'ต่างแม้ 1 ชิ้น: หาสาเหตุ' }, { ja: '承認後に Zort を移動', en: 'Move in Zort after approval', th: 'โอนใน Zort หลังอนุมัติ' }]
+      ['⑫', { ja: 'コーディネーター → 島田', en: 'Coordinator → Shimada', th: 'ผู้ประสานงาน → ชิมาดะ' }, { ja: '1 点でも差があれば原因', en: 'Any gap at all: the cause', th: 'ต่างแม้ 1 ชิ้น: หาสาเหตุ' }, { ja: '承認後に Zort を移動', en: 'Move in Zort after approval', th: 'โอนใน Zort หลังอนุมัติ' }]
     ],
-    forms: { ja: '帳票：Delivery Note（Ying）・Return Note（Ying＋倉庫）　未定：現金売上の受け渡し方法（⑨）', en: 'Forms: Delivery Note (Ying) · Return Note (Ying + warehouse). Still open: how cash sales are handed over (⑨)', th: 'เอกสาร: Delivery Note (Ying) · Return Note (Ying + คลัง) ยังไม่สรุป: วิธีส่งมอบเงินสด (⑨)' },
+    forms: { ja: '帳票：Delivery Note（コーディネーター）・Return Note（コーディネーター＋倉庫）　未定：現金売上の受け渡し方法（⑨）', en: 'Forms: Delivery Note (Coordinator) · Return Note (Coordinator + warehouse). Still open: how cash sales are handed over (⑨)', th: 'เอกสาร: Delivery Note (ผู้ประสานงาน) · Return Note (ผู้ประสานงาน + คลัง) ยังไม่สรุป: วิธีส่งมอบเงินสด (⑨)' },
     note: { ja: '数える人と Zort に入力する人は別。Zort の移動と売上レポートは経理だけが行う。', en: 'The person who counts never enters the numbers in Zort. Only Accounting moves stock in Zort and runs sales reports.', th: 'คนนับกับคนบันทึกใน Zort ต้องเป็นคนละคน การโอนใน Zort และรายงานยอดขายทำโดยฝ่ายบัญชีเท่านั้น' }
   };
 

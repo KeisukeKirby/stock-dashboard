@@ -478,7 +478,7 @@ html:lang(en) table.b-table .nw, html:lang(th) table.b-table .nw { white-space: 
 .ig-example b { font-size: .85em; }
 .ig-example svg { width: 100%; height: auto; }
 
-.ig-bins { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6em; }
+.ig-bins { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: .6em; }
 .ig-bins div { border: 2.5px solid var(--b); border-radius: 12px; padding: .45em .3em; display: flex; flex-direction: column; align-items: center; gap: .2em; text-align: center; }
 .ig-bins b { font-size: .9em; color: var(--b); line-height: 1.3; }
 
