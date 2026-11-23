@@ -560,7 +560,10 @@
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
     });
   }
-  function inline(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>'); }
+  function inline(s) {
+    return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>'); // [文字](URL) でリンク
+  }
   // 表紙・巻末の日付は言語に合わせて表示（タイ語は仏暦）
   function fmtDay(s) {
     var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(s || '').trim());
