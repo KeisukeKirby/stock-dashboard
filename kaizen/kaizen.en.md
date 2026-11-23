@@ -640,34 +640,34 @@ New process: From the start date, work the new way
 # [Appendix] Appendix
 
 ## PEAK features that save work
-From PEAK’s official pages. We are on PRO Plus, so we meet the plan condition for every feature
+We are on PEAK PRO Plus, so every feature here is available to us (details from PEAK’s official pages)
 
-| Step | Feature | What gets easier | Plan needed | Official page |
+| Step | Feature | What gets easier | Our plan (PRO Plus) | Official page |
 |---|---|---|---|---|
-| ① Bank | Bank statement import | Load KBank and BBL statements — no typing | PRO+ | [Open](https://intercom.help/peak/en/articles/8415719-นำเข-าไฟล-เพื-อกระทบยอดธนาคาร-ใน-peak) |
-|  | AI auto-matching | Confirm matches at once; check only the rest | PRO+ | [Open](https://intercom.help/peak/en/articles/6697193-กระทบยอดธนาคาร-ด-วยระบบอัตโนมัติ-ใน-peak) |
-|  | Documents from the matching screen | Enter receipts and expenses on one screen | PRO Plus+ | [Open](https://intercom.help/peak/en/articles/10293812-สร-างรายการผ-านหน-ากระทบยอดธนาคาร-ใน-peak) |
-| ② Sales Record | POS sales link | Send POS sales to PEAK — less store typing | PRO Plus+ | [Open](https://intercom.help/peak/en/articles/7164871-การตั-งค-าการเชื-อมต-อรายการขาย-pos) |
-| ③ Shopee · Lazada | Zort → PEAK settings | Let PEAK number them — no fixes or duplicates | PRO Plus+ | [Open](https://intercom.help/peak/en/articles/6339767-ตั-งค-าการส-งข-อมูลจาก-zort-สู-peak) |
-|  | Shopee same-day grouping | One document per day (tax-invoice requests kept apart) | PRO Plus+ | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-24062026-en) |
-|  | Order reports (Lazada etc.) | Export to Excel as the macro’s input | API link | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-13052026-en) |
-|  | Sales/purchase VAT report to Excel (③④) | Export from PP.30 — no building it in Excel | Plan not stated | [Open](https://www.peakaccount.com/peak-manual/summary-reports/tax-reports-peak-tax/printing-sales-tax-purchase-tax-excel-file) |
-| ⑥ Routine documents | What can be imported (③⑥) | Contacts, products, invoices, expenses, journals — in bulk | PRO Plus+ | [Open](https://www.peakaccount.com/peak-manual/peak-others/import-documents/data-that-can-be-imported-peak-pro-plus) |
-|  | Invoice import | Make consignment and group invoices in bulk | PRO Plus+ | [Open](https://www.peakaccount.com/peak-manual/peak-others/import-documents/import-invoice-documents) |
-|  | Expense import | Shopee, Lazada and KBank fees without typing | PRO Plus+ | [Open](https://www.peakaccount.com/peak-manual/peak-others/import-documents/import-expense-record) |
-| ④ Expenses · purchase VAT | SMART Key: AI reading | Reads number, lines, supplier — no typing | e-Document+ | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-05082026-en) |
-|  | SMART Key: account suggestions | Suggests accounts; flags missing info | Plan not stated | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-13052026-en) |
-|  | Attach purchase tax invoices | Reads the number and links it to waiting records | e-Document+ | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-05082026-en) |
-|  | Edit All Items | Change the account on every line at once | e-Document+ | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-08072026-en) |
-|  | PEAK TAX AI check | Warns of duplicates, 7% mismatches, near deadlines | Plan not stated | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-29042026-en) |
-|  | Supplier check before PP.30 | Shows usual suppliers missing, and new ones | All plans | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-10062026-en) |
-|  | PEAK to PEAK | Turns the other side’s sale into our purchase (EDV ⇄ BFT) | All plans | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-24062026-en) |
-| ⑦ Document storage (File Vault) | File Vault (④⑦) | Store documents and make records from them | Paid plans | [Open](https://intercom.help/peak/en/articles/8353643-สร-าง-แนบ-เอกสารจากคลังเอกสาร-ใน-peak) |
-|  | File Vault (phone) (④⑦) | Add documents from a phone — no scanner | Paid plans | [Open](https://intercom.help/peak/en/articles/15190616-คู-มือการใช-งาน-คลังเอกสาร-file-vault-บน-peak-mobile) |
-|  | Enter while viewing the original (④⑦) | Make the record without switching screens (Sept update) | e-Document+ | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-30092026-en) |
-|  | Search by document type | Filter by type and find it fast | Plan not stated | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-28102026-en) |
-| Monthly ledger check | Working Paper | Check account balances on one screen | Basic+ | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-27052026-en) |
-|  | PEAK MCP | AI works with PEAK data (may help AI ledger checks) | PRO Plus+ | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-22072026-en-2) |
+| ① Bank | Bank statement import | Load KBank and BBL statements — no typing | ✓ Available on PRO Plus | [Open](https://intercom.help/peak/en/articles/8415719-นำเข-าไฟล-เพื-อกระทบยอดธนาคาร-ใน-peak) |
+|  | AI auto-matching | Confirm matches at once; check only the rest | ✓ Available on PRO Plus | [Open](https://intercom.help/peak/en/articles/6697193-กระทบยอดธนาคาร-ด-วยระบบอัตโนมัติ-ใน-peak) |
+|  | Documents from the matching screen | Enter receipts and expenses on one screen | ✓ Available on PRO Plus | [Open](https://intercom.help/peak/en/articles/10293812-สร-างรายการผ-านหน-ากระทบยอดธนาคาร-ใน-peak) |
+| ② Sales Record | POS sales link | Send POS sales to PEAK — less store typing | ✓ Available on PRO Plus | [Open](https://intercom.help/peak/en/articles/7164871-การตั-งค-าการเชื-อมต-อรายการขาย-pos) |
+| ③ Shopee · Lazada | Zort → PEAK settings | Let PEAK number them — no fixes or duplicates | ✓ Available on PRO Plus | [Open](https://intercom.help/peak/en/articles/6339767-ตั-งค-าการส-งข-อมูลจาก-zort-สู-peak) |
+|  | Shopee same-day grouping | One document per day (tax-invoice requests kept apart) | ✓ Available on PRO Plus | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-24062026-en) |
+|  | Order reports (Lazada etc.) | Export to Excel as the macro’s input | ✓ On PRO Plus (API link) | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-13052026-en) |
+|  | Sales/purchase VAT report to Excel (③④) | Export from PP.30 — no building it in Excel | ✓ Available on PRO Plus | [Open](https://www.peakaccount.com/peak-manual/summary-reports/tax-reports-peak-tax/printing-sales-tax-purchase-tax-excel-file) |
+| ⑥ Routine documents | What can be imported (③⑥) | Contacts, products, invoices, expenses, journals — in bulk | ✓ Available on PRO Plus | [Open](https://www.peakaccount.com/peak-manual/peak-others/import-documents/data-that-can-be-imported-peak-pro-plus) |
+|  | Invoice import | Make consignment and group invoices in bulk | ✓ Available on PRO Plus | [Open](https://www.peakaccount.com/peak-manual/peak-others/import-documents/import-invoice-documents) |
+|  | Expense import | Shopee, Lazada and KBank fees without typing | ✓ Available on PRO Plus | [Open](https://www.peakaccount.com/peak-manual/peak-others/import-documents/import-expense-record) |
+| ④ Expenses · purchase VAT | SMART Key: AI reading | Reads number, lines, supplier — no typing | ✓ Available on PRO Plus | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-05082026-en) |
+|  | SMART Key: account suggestions | Suggests accounts; flags missing info | ✓ Available on PRO Plus | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-13052026-en) |
+|  | Attach purchase tax invoices | Reads the number and links it to waiting records | ✓ Available on PRO Plus | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-05082026-en) |
+|  | Edit All Items | Change the account on every line at once | ✓ Available on PRO Plus | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-08072026-en) |
+|  | PEAK TAX AI check | Warns of duplicates, 7% mismatches, near deadlines | ✓ Available on PRO Plus | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-29042026-en) |
+|  | Supplier check before PP.30 | Shows usual suppliers missing, and new ones | ✓ Available on PRO Plus | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-10062026-en) |
+|  | PEAK to PEAK | Turns the other side’s sale into our purchase (EDV ⇄ BFT) | ✓ Available on PRO Plus | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-24062026-en) |
+| ⑦ Document storage (File Vault) | File Vault (④⑦) | Store documents and make records from them | ✓ Available on PRO Plus | [Open](https://intercom.help/peak/en/articles/8353643-สร-าง-แนบ-เอกสารจากคลังเอกสาร-ใน-peak) |
+|  | File Vault (phone) (④⑦) | Add documents from a phone — no scanner | ✓ Available on PRO Plus | [Open](https://intercom.help/peak/en/articles/15190616-คู-มือการใช-งาน-คลังเอกสาร-file-vault-บน-peak-mobile) |
+|  | Enter while viewing the original (④⑦) | Make the record without switching screens (Sept update) | ✓ Available on PRO Plus | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-30092026-en) |
+|  | Search by document type | Filter by type and find it fast | ✓ Available on PRO Plus | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-28102026-en) |
+| Monthly ledger check | Working Paper | Check account balances on one screen | ✓ Available on PRO Plus | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-27052026-en) |
+|  | PEAK MCP | AI works with PEAK data (may help AI ledger checks) | ✓ Available on PRO Plus | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-22072026-en-2) |
 
 General: [Online manual](https://www.peakaccount.com/peak-manual) · [Learning center](https://www.peakaccount.com/peak-learning-center) · [Plans & prices](https://www.peakaccount.com/software-package)
 

@@ -640,34 +640,34 @@ AI 移行の難易度: 中（紙が必要な範囲の確認が先）
 # [付録] 付録
 
 ## PEAK の機能と効率化
-PEAK 公式ページの情報。当社は PRO Plus を契約済みなので、どの機能のプラン条件も満たしている
+当社は PEAK の PRO Plus を契約中。この表の機能はすべて使える（内容は PEAK 公式ページより）
 
-| 改善 | 機能 | 何が楽になるか | 必要なプラン | 公式ページ |
+| 改善 | 機能 | 何が楽になるか | 当社（PRO Plus） | 公式ページ |
 |---|---|---|---|---|
-| ① 銀行 | 銀行明細の取込 | KBank・BBL の明細を読み込み、手入力をなくす | PRO 以上 | [開く](https://intercom.help/peak/en/articles/8415719-นำเข-าไฟล-เพื-อกระทบยอดธนาคาร-ใน-peak) |
-|  | AI 自動照合 | 一致の候補をまとめて確定し、不一致だけ見る | PRO 以上 | [開く](https://intercom.help/peak/en/articles/6697193-กระทบยอดธนาคาร-ด-วยระบบอัตโนมัติ-ใน-peak) |
-|  | 照合画面から伝票作成 | 入金と経費の入力を同じ画面で済ませる | PRO Plus 以上 | [開く](https://intercom.help/peak/en/articles/10293812-สร-างรายการผ-านหน-ากระทบยอดธนาคาร-ใน-peak) |
-| ② Sales Record | POS 売上の連携 | POS の売上を PEAK へ送り、店舗分の入力を減らす | PRO Plus 以上 | [開く](https://intercom.help/peak/en/articles/7164871-การตั-งค-าการเชื-อมต-อรายการขาย-pos) |
-| ③ Shopee・Lazada | Zort → PEAK の設定 | 番号を PEAK で振り、手直しと重複をなくす | PRO Plus 以上 | [開く](https://intercom.help/peak/en/articles/6339767-ตั-งค-าการส-งข-อมูลจาก-zort-สู-peak) |
-|  | Shopee の同日注文まとめ | 前日分を 1 伝票に（税務請求書の依頼分は別） | PRO Plus 以上 | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-24062026-en) |
-|  | 注文レポート（Lazada など） | Excel に出力して、マクロの元データに使う | API 接続 | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-13052026-en) |
-|  | 売上・仕入 VAT 報告書の Excel 出力（③④） | PP.30 から出力し、Excel での作成をなくす | プラン記載なし | [開く](https://www.peakaccount.com/peak-manual/summary-reports/tax-reports-peak-tax/printing-sales-tax-purchase-tax-excel-file) |
-| ⑥ 定型書類 | 取り込めるデータ（③⑥） | 取引先・商品・請求書・経費・仕訳などをまとめて取込 | PRO Plus 以上 | [開く](https://www.peakaccount.com/peak-manual/peak-others/import-documents/data-that-can-be-imported-peak-pro-plus) |
-|  | 請求書の取込 | 委託先・グループ間の請求をまとめて作る | PRO Plus 以上 | [開く](https://www.peakaccount.com/peak-manual/peak-others/import-documents/import-invoice-documents) |
-|  | 経費の取込 | Shopee・Lazada・KBank の費用を入力せずに済む | PRO Plus 以上 | [開く](https://www.peakaccount.com/peak-manual/peak-others/import-documents/import-expense-record) |
-| ④ 経費・仕入 VAT | SMART Key：AI 読取 | 番号・明細・取引先を読み取り、手打ちをなくす | e-Document 以上 | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-05082026-en) |
-|  | SMART Key：科目の自動選択 | 科目の候補と、足りない情報を表示 | プラン記載なし | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-13052026-en) |
-|  | 仕入税額請求書の添付 | 番号を読んで、登録待ちの書類に自動で紐付け | e-Document 以上 | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-05082026-en) |
-|  | Edit All Items | 全明細の科目をまとめて変更 | e-Document 以上 | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-08072026-en) |
-|  | PEAK TAX の AI チェック | 重複・7% の不一致・期限が近い請求書を警告 | プラン記載なし | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-29042026-en) |
-|  | PP.30 前の取引先チェック | いつもの取引先の抜けと新規を表示 | 全プラン | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-10062026-en) |
-|  | PEAK to PEAK | 相手の売上伝票を仕入に変換（EDV ⇄ BFT） | 全プラン | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-24062026-en) |
-| ⑦ 書類の保管（File Vault） | File Vault（④⑦） | 書類を保管し、そこから伝票を作る | 有料プラン | [開く](https://intercom.help/peak/en/articles/8353643-สร-าง-แนบ-เอกสารจากคลังเอกสาร-ใน-peak) |
-|  | File Vault（スマホ）（④⑦） | スキャナーなしで、スマホから登録 | 有料プラン | [開く](https://intercom.help/peak/en/articles/15190616-คู-มือการใช-งาน-คลังเอกสาร-file-vault-บน-peak-mobile) |
-|  | 原本を見ながら入力（④⑦） | 画面を切り替えずに伝票を作る（9 月の更新） | e-Document 以上 | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-30092026-en) |
-|  | 書類の種類で検索 | 種類で絞って、すぐ探せる | プラン記載なし | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-28102026-en) |
-| 月次の元帳確認 | Working Paper | 勘定残高を 1 画面で確認 | Basic 以上 | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-27052026-en) |
-|  | PEAK MCP | AI から PEAK のデータを扱う（元帳の AI 確認に使える可能性） | PRO Plus 以上 | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-22072026-en-2) |
+| ① 銀行 | 銀行明細の取込 | KBank・BBL の明細を読み込み、手入力をなくす | ✓ PRO Plus で使える | [開く](https://intercom.help/peak/en/articles/8415719-นำเข-าไฟล-เพื-อกระทบยอดธนาคาร-ใน-peak) |
+|  | AI 自動照合 | 一致の候補をまとめて確定し、不一致だけ見る | ✓ PRO Plus で使える | [開く](https://intercom.help/peak/en/articles/6697193-กระทบยอดธนาคาร-ด-วยระบบอัตโนมัติ-ใน-peak) |
+|  | 照合画面から伝票作成 | 入金と経費の入力を同じ画面で済ませる | ✓ PRO Plus で使える | [開く](https://intercom.help/peak/en/articles/10293812-สร-างรายการผ-านหน-ากระทบยอดธนาคาร-ใน-peak) |
+| ② Sales Record | POS 売上の連携 | POS の売上を PEAK へ送り、店舗分の入力を減らす | ✓ PRO Plus で使える | [開く](https://intercom.help/peak/en/articles/7164871-การตั-งค-าการเชื-อมต-อรายการขาย-pos) |
+| ③ Shopee・Lazada | Zort → PEAK の設定 | 番号を PEAK で振り、手直しと重複をなくす | ✓ PRO Plus で使える | [開く](https://intercom.help/peak/en/articles/6339767-ตั-งค-าการส-งข-อมูลจาก-zort-สู-peak) |
+|  | Shopee の同日注文まとめ | 前日分を 1 伝票に（税務請求書の依頼分は別） | ✓ PRO Plus で使える | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-24062026-en) |
+|  | 注文レポート（Lazada など） | Excel に出力して、マクロの元データに使う | ✓ PRO Plus で使える（API 接続） | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-13052026-en) |
+|  | 売上・仕入 VAT 報告書の Excel 出力（③④） | PP.30 から出力し、Excel での作成をなくす | ✓ PRO Plus で使える | [開く](https://www.peakaccount.com/peak-manual/summary-reports/tax-reports-peak-tax/printing-sales-tax-purchase-tax-excel-file) |
+| ⑥ 定型書類 | 取り込めるデータ（③⑥） | 取引先・商品・請求書・経費・仕訳などをまとめて取込 | ✓ PRO Plus で使える | [開く](https://www.peakaccount.com/peak-manual/peak-others/import-documents/data-that-can-be-imported-peak-pro-plus) |
+|  | 請求書の取込 | 委託先・グループ間の請求をまとめて作る | ✓ PRO Plus で使える | [開く](https://www.peakaccount.com/peak-manual/peak-others/import-documents/import-invoice-documents) |
+|  | 経費の取込 | Shopee・Lazada・KBank の費用を入力せずに済む | ✓ PRO Plus で使える | [開く](https://www.peakaccount.com/peak-manual/peak-others/import-documents/import-expense-record) |
+| ④ 経費・仕入 VAT | SMART Key：AI 読取 | 番号・明細・取引先を読み取り、手打ちをなくす | ✓ PRO Plus で使える | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-05082026-en) |
+|  | SMART Key：科目の自動選択 | 科目の候補と、足りない情報を表示 | ✓ PRO Plus で使える | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-13052026-en) |
+|  | 仕入税額請求書の添付 | 番号を読んで、登録待ちの書類に自動で紐付け | ✓ PRO Plus で使える | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-05082026-en) |
+|  | Edit All Items | 全明細の科目をまとめて変更 | ✓ PRO Plus で使える | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-08072026-en) |
+|  | PEAK TAX の AI チェック | 重複・7% の不一致・期限が近い請求書を警告 | ✓ PRO Plus で使える | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-29042026-en) |
+|  | PP.30 前の取引先チェック | いつもの取引先の抜けと新規を表示 | ✓ PRO Plus で使える | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-10062026-en) |
+|  | PEAK to PEAK | 相手の売上伝票を仕入に変換（EDV ⇄ BFT） | ✓ PRO Plus で使える | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-24062026-en) |
+| ⑦ 書類の保管（File Vault） | File Vault（④⑦） | 書類を保管し、そこから伝票を作る | ✓ PRO Plus で使える | [開く](https://intercom.help/peak/en/articles/8353643-สร-าง-แนบ-เอกสารจากคลังเอกสาร-ใน-peak) |
+|  | File Vault（スマホ）（④⑦） | スキャナーなしで、スマホから登録 | ✓ PRO Plus で使える | [開く](https://intercom.help/peak/en/articles/15190616-คู-มือการใช-งาน-คลังเอกสาร-file-vault-บน-peak-mobile) |
+|  | 原本を見ながら入力（④⑦） | 画面を切り替えずに伝票を作る（9 月の更新） | ✓ PRO Plus で使える | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-30092026-en) |
+|  | 書類の種類で検索 | 種類で絞って、すぐ探せる | ✓ PRO Plus で使える | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-28102026-en) |
+| 月次の元帳確認 | Working Paper | 勘定残高を 1 画面で確認 | ✓ PRO Plus で使える | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-27052026-en) |
+|  | PEAK MCP | AI から PEAK のデータを扱う（元帳の AI 確認に使える可能性） | ✓ PRO Plus で使える | [開く](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-22072026-en-2) |
 
 全般：[オンラインマニュアル](https://www.peakaccount.com/peak-manual)・[学習センター](https://www.peakaccount.com/peak-learning-center)・[料金・プラン](https://www.peakaccount.com/software-package)
 

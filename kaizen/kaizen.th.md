@@ -640,34 +640,34 @@ SMART Key: PEAK อ่านเอกสาร แล้วกรอกเลข
 # [ภาคผนวก] ภาคผนวก
 
 ## ฟีเจอร์ PEAK ที่ช่วยลดงาน
-ข้อมูลจากหน้าเว็บทางการของ PEAK บริษัทใช้แพ็กเกจ PRO Plus จึงใช้ได้ทุกฟีเจอร์ในหน้านี้
+บริษัทใช้แพ็กเกจ PEAK PRO Plus จึงใช้ได้ทุกฟีเจอร์ในหน้านี้ (ข้อมูลจากหน้าเว็บทางการของ PEAK)
 
-| ข้อ | ฟีเจอร์ | ช่วยอะไร | แพ็กเกจที่ต้องใช้ | หน้าเว็บทางการ |
+| ข้อ | ฟีเจอร์ | ช่วยอะไร | แพ็กเกจของเรา (PRO Plus) | หน้าเว็บทางการ |
 |---|---|---|---|---|
-| ① ธนาคาร | นำเข้ารายการเดินบัญชี | โหลดรายการ KBank · BBL ไม่ต้องคีย์ | PRO ขึ้นไป | [เปิด](https://intercom.help/peak/en/articles/8415719-นำเข-าไฟล-เพื-อกระทบยอดธนาคาร-ใน-peak) |
-|  | กระทบยอดอัตโนมัติด้วย AI | ยืนยันคู่ที่ตรงพร้อมกัน ดูเฉพาะที่ไม่ตรง | PRO ขึ้นไป | [เปิด](https://intercom.help/peak/en/articles/6697193-กระทบยอดธนาคาร-ด-วยระบบอัตโนมัติ-ใน-peak) |
-|  | สร้างเอกสารจากหน้ากระทบยอด | บันทึกรับเงินและค่าใช้จ่ายในหน้าเดียว | PRO Plus ขึ้นไป | [เปิด](https://intercom.help/peak/en/articles/10293812-สร-างรายการผ-านหน-ากระทบยอดธนาคาร-ใน-peak) |
-| ② Sales Record | เชื่อมยอดขาย POS | ส่งยอดขาย POS เข้า PEAK ลดการคีย์ยอดร้าน | PRO Plus ขึ้นไป | [เปิด](https://intercom.help/peak/en/articles/7164871-การตั-งค-าการเชื-อมต-อรายการขาย-pos) |
-| ③ Shopee · Lazada | ตั้งค่า Zort → PEAK | ให้ PEAK ออกเลข ไม่ต้องแก้ ไม่ซ้ำ | PRO Plus ขึ้นไป | [เปิด](https://intercom.help/peak/en/articles/6339767-ตั-งค-าการส-งข-อมูลจาก-zort-สู-peak) |
-|  | รวมออเดอร์ Shopee รายวัน | รวมเป็น 1 เอกสารต่อวัน (แยกที่ขอใบกำกับภาษี) | PRO Plus ขึ้นไป | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-24062026-en) |
-|  | รายงานออเดอร์ (Lazada ฯลฯ) | ส่งออก Excel ใช้เป็นข้อมูลให้แมโคร | เชื่อม API | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-13052026-en) |
-|  | ส่งออกรายงาน VAT ขาย/ซื้อเป็น Excel (③④) | ออกจาก ภ.พ.30 ไม่ต้องทำใน Excel | ไม่ระบุแพ็กเกจ | [เปิด](https://www.peakaccount.com/peak-manual/summary-reports/tax-reports-peak-tax/printing-sales-tax-purchase-tax-excel-file) |
-| ⑥ เอกสารประจำ | ข้อมูลที่นำเข้าได้ (③⑥) | ผู้ติดต่อ สินค้า ใบแจ้งหนี้ ค่าใช้จ่าย สมุดรายวัน นำเข้าทีเดียว | PRO Plus ขึ้นไป | [เปิด](https://www.peakaccount.com/peak-manual/peak-others/import-documents/data-that-can-be-imported-peak-pro-plus) |
-|  | นำเข้าใบแจ้งหนี้ | ทำใบแจ้งหนี้ฝากขายและระหว่างกลุ่มทีเดียว | PRO Plus ขึ้นไป | [เปิด](https://www.peakaccount.com/peak-manual/peak-others/import-documents/import-invoice-documents) |
-|  | นำเข้าค่าใช้จ่าย | ค่าธรรมเนียม Shopee Lazada KBank ไม่ต้องคีย์ | PRO Plus ขึ้นไป | [เปิด](https://www.peakaccount.com/peak-manual/peak-others/import-documents/import-expense-record) |
-| ④ ค่าใช้จ่าย · VAT ซื้อ | SMART Key: AI อ่านเอกสาร | อ่านเลขที่ รายการ คู่ค้า ไม่ต้องคีย์ | e-Document ขึ้นไป | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-05082026-en) |
-|  | SMART Key: เลือกผังบัญชีให้ | แนะนำผังบัญชี แจ้งข้อมูลที่ขาด | ไม่ระบุแพ็กเกจ | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-13052026-en) |
-|  | แนบใบกำกับภาษีซื้อ | อ่านเลขที่แล้วผูกกับเอกสารที่รอบันทึก | e-Document ขึ้นไป | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-05082026-en) |
-|  | Edit All Items | เปลี่ยนผังบัญชีทุกรายการพร้อมกัน | e-Document ขึ้นไป | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-08072026-en) |
-|  | PEAK TAX ตรวจด้วย AI | เตือนเอกสารซ้ำ VAT 7% ไม่ตรง ใกล้ครบกำหนด | ไม่ระบุแพ็กเกจ | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-29042026-en) |
-|  | ตรวจคู่ค้าก่อน ภ.พ.30 | แสดงคู่ค้าประจำที่ขาด และรายใหม่ | ทุกแพ็กเกจ | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-10062026-en) |
-|  | PEAK to PEAK | แปลงเอกสารขายของอีกฝ่ายเป็นซื้อ (EDV ⇄ BFT) | ทุกแพ็กเกจ | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-24062026-en) |
-| ⑦ คลังเอกสาร (File Vault) | File Vault (④⑦) | เก็บเอกสารและสร้างรายการจากเอกสาร | แพ็กเกจเสียเงิน | [เปิด](https://intercom.help/peak/en/articles/8353643-สร-าง-แนบ-เอกสารจากคลังเอกสาร-ใน-peak) |
-|  | File Vault (มือถือ) (④⑦) | เพิ่มเอกสารจากมือถือ ไม่ต้องใช้สแกนเนอร์ | แพ็กเกจเสียเงิน | [เปิด](https://intercom.help/peak/en/articles/15190616-คู-มือการใช-งาน-คลังเอกสาร-file-vault-บน-peak-mobile) |
-|  | บันทึกพร้อมดูต้นฉบับ (④⑦) | สร้างรายการโดยไม่ต้องสลับหน้าจอ (อัปเดต ก.ย.) | e-Document ขึ้นไป | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-30092026-en) |
-|  | ค้นหาตามประเภทเอกสาร | กรองตามประเภท หาเจอเร็ว | ไม่ระบุแพ็กเกจ | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-28102026-en) |
-| ตรวจบัญชีแยกประเภทรายเดือน | Working Paper | ดูยอดคงเหลือบัญชีในหน้าเดียว | Basic ขึ้นไป | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-27052026-en) |
-|  | PEAK MCP | ให้ AI ใช้ข้อมูล PEAK (อาจใช้ตรวจบัญชีด้วย AI) | PRO Plus ขึ้นไป | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-22072026-en-2) |
+| ① ธนาคาร | นำเข้ารายการเดินบัญชี | โหลดรายการ KBank · BBL ไม่ต้องคีย์ | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://intercom.help/peak/en/articles/8415719-นำเข-าไฟล-เพื-อกระทบยอดธนาคาร-ใน-peak) |
+|  | กระทบยอดอัตโนมัติด้วย AI | ยืนยันคู่ที่ตรงพร้อมกัน ดูเฉพาะที่ไม่ตรง | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://intercom.help/peak/en/articles/6697193-กระทบยอดธนาคาร-ด-วยระบบอัตโนมัติ-ใน-peak) |
+|  | สร้างเอกสารจากหน้ากระทบยอด | บันทึกรับเงินและค่าใช้จ่ายในหน้าเดียว | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://intercom.help/peak/en/articles/10293812-สร-างรายการผ-านหน-ากระทบยอดธนาคาร-ใน-peak) |
+| ② Sales Record | เชื่อมยอดขาย POS | ส่งยอดขาย POS เข้า PEAK ลดการคีย์ยอดร้าน | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://intercom.help/peak/en/articles/7164871-การตั-งค-าการเชื-อมต-อรายการขาย-pos) |
+| ③ Shopee · Lazada | ตั้งค่า Zort → PEAK | ให้ PEAK ออกเลข ไม่ต้องแก้ ไม่ซ้ำ | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://intercom.help/peak/en/articles/6339767-ตั-งค-าการส-งข-อมูลจาก-zort-สู-peak) |
+|  | รวมออเดอร์ Shopee รายวัน | รวมเป็น 1 เอกสารต่อวัน (แยกที่ขอใบกำกับภาษี) | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-24062026-en) |
+|  | รายงานออเดอร์ (Lazada ฯลฯ) | ส่งออก Excel ใช้เป็นข้อมูลให้แมโคร | ✓ ใช้ได้กับ PRO Plus (เชื่อม API) | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-13052026-en) |
+|  | ส่งออกรายงาน VAT ขาย/ซื้อเป็น Excel (③④) | ออกจาก ภ.พ.30 ไม่ต้องทำใน Excel | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://www.peakaccount.com/peak-manual/summary-reports/tax-reports-peak-tax/printing-sales-tax-purchase-tax-excel-file) |
+| ⑥ เอกสารประจำ | ข้อมูลที่นำเข้าได้ (③⑥) | ผู้ติดต่อ สินค้า ใบแจ้งหนี้ ค่าใช้จ่าย สมุดรายวัน นำเข้าทีเดียว | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://www.peakaccount.com/peak-manual/peak-others/import-documents/data-that-can-be-imported-peak-pro-plus) |
+|  | นำเข้าใบแจ้งหนี้ | ทำใบแจ้งหนี้ฝากขายและระหว่างกลุ่มทีเดียว | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://www.peakaccount.com/peak-manual/peak-others/import-documents/import-invoice-documents) |
+|  | นำเข้าค่าใช้จ่าย | ค่าธรรมเนียม Shopee Lazada KBank ไม่ต้องคีย์ | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://www.peakaccount.com/peak-manual/peak-others/import-documents/import-expense-record) |
+| ④ ค่าใช้จ่าย · VAT ซื้อ | SMART Key: AI อ่านเอกสาร | อ่านเลขที่ รายการ คู่ค้า ไม่ต้องคีย์ | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-05082026-en) |
+|  | SMART Key: เลือกผังบัญชีให้ | แนะนำผังบัญชี แจ้งข้อมูลที่ขาด | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-13052026-en) |
+|  | แนบใบกำกับภาษีซื้อ | อ่านเลขที่แล้วผูกกับเอกสารที่รอบันทึก | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-05082026-en) |
+|  | Edit All Items | เปลี่ยนผังบัญชีทุกรายการพร้อมกัน | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-08072026-en) |
+|  | PEAK TAX ตรวจด้วย AI | เตือนเอกสารซ้ำ VAT 7% ไม่ตรง ใกล้ครบกำหนด | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-29042026-en) |
+|  | ตรวจคู่ค้าก่อน ภ.พ.30 | แสดงคู่ค้าประจำที่ขาด และรายใหม่ | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-10062026-en) |
+|  | PEAK to PEAK | แปลงเอกสารขายของอีกฝ่ายเป็นซื้อ (EDV ⇄ BFT) | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-24062026-en) |
+| ⑦ คลังเอกสาร (File Vault) | File Vault (④⑦) | เก็บเอกสารและสร้างรายการจากเอกสาร | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://intercom.help/peak/en/articles/8353643-สร-าง-แนบ-เอกสารจากคลังเอกสาร-ใน-peak) |
+|  | File Vault (มือถือ) (④⑦) | เพิ่มเอกสารจากมือถือ ไม่ต้องใช้สแกนเนอร์ | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://intercom.help/peak/en/articles/15190616-คู-มือการใช-งาน-คลังเอกสาร-file-vault-บน-peak-mobile) |
+|  | บันทึกพร้อมดูต้นฉบับ (④⑦) | สร้างรายการโดยไม่ต้องสลับหน้าจอ (อัปเดต ก.ย.) | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-30092026-en) |
+|  | ค้นหาตามประเภทเอกสาร | กรองตามประเภท หาเจอเร็ว | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-28102026-en) |
+| ตรวจบัญชีแยกประเภทรายเดือน | Working Paper | ดูยอดคงเหลือบัญชีในหน้าเดียว | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-27052026-en) |
+|  | PEAK MCP | ให้ AI ใช้ข้อมูล PEAK (อาจใช้ตรวจบัญชีด้วย AI) | ✓ ใช้ได้กับ PRO Plus | [เปิด](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-22072026-en-2) |
 
 ทั่วไป: [คู่มือออนไลน์](https://www.peakaccount.com/peak-manual) · [ศูนย์การเรียนรู้](https://www.peakaccount.com/peak-learning-center) · [แพ็กเกจและราคา](https://www.peakaccount.com/software-package)
 

@@ -1016,7 +1016,9 @@
   var PEAK = {
     title: { ja: 'PEAK の機能と効率化', en: 'PEAK features that save work', th: 'ฟีเจอร์ PEAK ที่ช่วยลดงาน' },
     short: { ja: 'PEAK 機能表', en: 'PEAK features', th: 'ฟีเจอร์ PEAK' },
-    note: { ja: 'PEAK 公式ページの情報。当社は PRO Plus を契約済みなので、どの機能のプラン条件も満たしている', en: 'From PEAK’s official pages. We are on PRO Plus, so we meet the plan condition for every feature', th: 'ข้อมูลจากหน้าเว็บทางการของ PEAK บริษัทใช้แพ็กเกจ PRO Plus จึงใช้ได้ทุกฟีเจอร์ในหน้านี้' },
+    note: { ja: '当社は PEAK の PRO Plus を契約中。この表の機能はすべて使える（内容は PEAK 公式ページより）', en: 'We are on PEAK PRO Plus, so every feature here is available to us (details from PEAK’s official pages)', th: 'บริษัทใช้แพ็กเกจ PEAK PRO Plus จึงใช้ได้ทุกฟีเจอร์ในหน้านี้ (ข้อมูลจากหน้าเว็บทางการของ PEAK)' },
+    ok: { ja: '✓ PRO Plus で使える', en: '✓ Available on PRO Plus', th: '✓ ใช้ได้กับ PRO Plus' },
+    okApi: { ja: '✓ PRO Plus で使える（API 接続）', en: '✓ On PRO Plus (API link)', th: '✓ ใช้ได้กับ PRO Plus (เชื่อม API)' },
     more1: { ja: 'カードを押すと PEAK の公式ページが開く。全般：', en: 'Click a card to open PEAK’s official page. General: ', th: 'กดที่การ์ดเพื่อเปิดหน้าเว็บทางการของ PEAK ทั่วไป: ' },
     manual: { ja: 'オンラインマニュアル', en: 'Online manual', th: 'คู่มือออนไลน์' },
     center: { ja: '学習センター', en: 'Learning center', th: 'ศูนย์การเรียนรู้' },
@@ -1465,7 +1467,7 @@
             var url = /^https?:/.test(f[f.length - 1]) ? f[f.length - 1] : '', also = f[4] && !/^https?:/.test(f[4]) ? f[4] : '';
             var tag = url ? 'a href="' + esc(url) + '" target="_blank" rel="noopener"' : 'div';
             return '<li><' + tag + ' class="pk-tile">' + (also ? '<span class="pk-also">' + also + '</span>' : '') + icon(f[0], 'ig-ic pk-ic') + '<div><b>' + esc(L(f[1])) + '</b><span>' + esc(L(f[2])) + '</span>' +
-              '<em class="pk-plan' + (f[3] === 'ALL' || f[3] === 'BASIC' ? ' is-all' : f[3] === 'NA' ? ' is-na' : '') + '">' + esc(L(PK[f[3]])) + '</em>' +
+              '<em class="pk-plan is-all">' + esc(L(f[3] === 'API' ? PEAK.okApi : PEAK.ok)) + '</em>' +
               (url ? '<i class="pk-link">' + esc(U.openPage) + ' ↗</i>' : '') + '</div></' + (url ? 'a' : 'div') + '></li>';
           }).join('') + '</ul></section>';
       }).join('') + '</div>' +
