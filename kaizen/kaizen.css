@@ -572,6 +572,14 @@ html:lang(en) table.b-table .nw, html:lang(th) table.b-table .nw { white-space: 
 .cd-pct { font-family: var(--f-head); font-weight: 800; font-size: .95em; color: #fff; background: #2f8f5b; border-radius: 999px; padding: .05em .7em; }
 .ig-cards small { font-size: .62em; line-height: 1.3; color: var(--ink-3); }
 .gl-after { flex: none; }
+.gl-head { margin: 0 0 -.2em; display: flex; align-items: center; gap: .4em; font-family: var(--f-head); font-weight: 800; color: var(--c); font-size: 1.05em; flex: none; }
+.gl-head-ic { width: 1.8em; height: 1.8em; }
+.gl-tiles { grid-template-columns: repeat(6, 1fr) !important; }
+.dt-gloss { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: .5em; flex: none; }
+.dt-gloss li { display: grid; grid-template-columns: 2.2em auto 1fr; align-items: center; gap: .5em; background: #f4f6f9; border-radius: 10px; padding: .3em .7em; }
+.dg-ic { width: 2.2em; height: 2.2em; background: #fff; border-radius: 50%; padding: .15em; }
+.dt-gloss b { font-family: var(--f-head); font-size: .85em; color: var(--c); white-space: nowrap; }
+.dt-gloss span { font-size: .72em; line-height: 1.4; color: var(--ink-2); }
 .gl-tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: .6em; flex: none; }
 .gl-tiles li { background: var(--s); border-radius: 14px; padding: .6em .4em; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .25em; }
 .gl-cal { width: 4.4em; height: auto; }
