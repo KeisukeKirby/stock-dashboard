@@ -1117,7 +1117,7 @@
     if (it.cards) h += '<p class="cd-unit">' + esc(U.hours) + '</p><ol class="ig-cards">' + it.cards.map(function (c) {
       return '<li>' + icon(c[0], 'ig-ic cd-ic') + '<b>' + esc(L(c[1])) + '</b>' +
         '<span class="cd-bars"><i class="is-now" style="width:100%"></i><i class="is-new" style="width:' + (c[4] / c[3] * 100).toFixed(0) + '%"></i></span>' +
-        '<em>' + perMonth(c[3]).toFixed(1) + ' → ' + perMonth(c[4]).toFixed(1) + 'h</em><small>' + esc(L(c[2])) + '</small></li>';
+        '<em>' + perMonth(c[3]).toFixed(1) + ' → ' + perMonth(c[4]).toFixed(1) + 'h</em><strong class="cd-pct">−' + Math.round((c[3] - c[4]) / c[3] * 100) + '%</strong><small>' + esc(L(c[2])) + '</small></li>';
     }).join('') + '</ol>';
     if (it.c) h += '<div class="ig-check">' + svg('0 0 48 48', okCircle(24, 24, 20), 'ig-check-ic') + '<b>' + esc(U.check) + '</b><span>' + esc(L(it.c)) + '</span></div>';
     return h;
