@@ -1,356 +1,734 @@
 ---
 title: Process Improvement Manual
-subtitle: Past problems and our new work processes
-company: BAREFOOTINC(THAILAND) CO., LTD
-version: 0.3 (Draft)
-date: 2026-10-30
-author: 
-approver: 
+subtitle: Improvements by department, and how we will work from now on
+company: BAREFOOTINC(THAILAND) CO., LTD / Endeavorz Co., Ltd.
+version: 0.4 (Draft)
+date: 2026-11-23
+author:
+approver:
 ---
 
 :::history
-0.3 | 2026-10-29 | Each item in Accounting, Logistics, QC and Company-wide rewritten as "previous process / problem / new process". Introductory chapter removed and the text simplified.
+0.4 | 2026-11-23 | Fully revised to match the illustrated booklets. Accounting is now ordered as summary, work overview, improvements and rollout, with how hard each step is to move to AI, monthly hours, the PEAK feature list (Appendix A) and event Case ①/② (Appendix B)
+0.3 | 2026-10-29 | Each item in Accounting, Logistics, QC and Company-wide rewritten as "previous process / problem / new process".
 0.2 | 2026-10-29 | Chapters reorganised into Accounting, Store & Event Logistics, and Quality Control & Warehouse Inspection.
 0.1 | 2026-10-28 | First draft (proposal).
 :::
 
 # Accounting
-> The basic rule is to check sales, payments and refunds every day and leave nothing pending.
+> The idea: cut typing and matching ("efficiency") to make time for daily checks ("quality")
 
-## Check POS data and payment records every day and reconcile sales
+### Summary
+- We expect to save **59.4 hours a month (2 people combined)** (NEE 31.4h / NUT 28.0h).
+- Today the 2 people spend 193.6h a month (NEE 104.8h / NUT 88.8h).
+- 31% of 193.6 hours a month (2 people). The freed ~52.5 hours a month go to daily checks, monthly ledgers, stock counts and the monthly report
 
-:::proposal
-Before: POS data and payment records (card, QR, cash) were not reconciled each day. They were checked later, in batches.
-Problem: Checks were put off, so unreconciled items and unexplained differences piled up as pending. After a few days, the cause (keying errors, duplicate charges, refunds) could no longer be traced.
-New process: Every business day, reconcile the previous day's sales in the morning and fill in the daily check sheet. Confirm any difference with the store or person in charge the same day, and record the reason and the action taken. (See the checklist.)
-Check: The daily check sheet is filled in every day. No unresolved differences are carried over to the next day.
+:::info How the numbers were made
+Work hours: from NUT’s and NEE’s Daily Reports (11 Feb – 3 Apr), excluding year-end closing work / Expected saving: an estimate from AI analysis of the Daily Reports / 1 month = 21 working days (this month’s count)
 :::
 
-### Steps (every business day, morning)
-
-1. Pull the previous day's POS sales by store and by payment method (cash / card / QR / bank transfer), and match the amounts and number of transactions.
-2. If there is a difference, check with the store or person in charge the same day and identify the reason (keying error, duplicate charge, refund, payment not yet received).
-
-## Check every day whether any refund cases have occurred
-
-:::proposal
-Before: Refunds (cancellations, returns, payment errors) were not checked as they happened.
-Problem: Refunds do not match the sales reconciliation and cause differences. Late refunds keep customers waiting.
-New process: Check every day whether any refunds have occurred and enter them in the sheet. If one has occurred, process it the same day or first thing the next morning. (See the checklist.)
-Check: Record the date each refund occurred and the date it was processed in the sheet.
+### Why change how we work
+:::flow
+- Now: Lots of typing and matching by hand
+- So: Checks get missed · Refunds run late · Monthly report runs late
+- What we change: Use AI to change how we work
+- Effect: Work smarter → Less work time
+- Time saved goes to: Daily checks · Refunds handled fast · Reports on time
+- Goal: Problems are prevented
 :::
 
-## Checking Siam Discovery and Central SKU codes
+### All accounting work (per month, 2 people combined)
+| Area | Work | Now | New | Saved | Step |
+|---|---|---|---|---|---|
+| Quality | Purchase VAT check | 15.5h | 7.9h | −7.6h | ④ |
+|  | Sales & E-Tax | 11.2h | — | — |  |
+|  | Bank match | 9.1h | 4.6h | −4.5h | ① |
+|  | Payment papers | 3.7h | — | — |  |
+|  | Refund memo | Not measured | — | — |  |
+|  | **Subtotal** | **39.5h** | **27.4h** | **−12.1h** |  |
+| Efficiency | Paper work | 23.1h | 16.1h | −7.0h | ⑦ |
+|  | EC matching | 9.5h | 4.2h | −5.3h | ③ |
+|  | EC numbering | 5.9h | 1.8h | −4.1h | ③ |
+|  | SKU check | 4.6h | 2.3h | −2.3h | ⑤ |
+|  | Store CN | 4.4h | 2.1h | −2.3h | ⑤ |
+|  | **Subtotal** | **47.5h** | **26.5h** | **−21.0h** |  |
+| Other | QC & packing | 15.4h | — | — |  |
+|  | POS & PC help | 14.6h | — | — |  |
+|  | Email & meetings | 9.2h | — | — |  |
+|  | Registry & kit | 6.7h | — | — |  |
+|  | Tax filing | 6.0h | — | — |  |
+|  | Monthly report | New work | — | — |  |
+|  | **Subtotal** | **51.9h** | **—** | **Not reduced this time** |  |
+| Data entry | Vouchers & expenses | 15.4h | 8.3h | −7.1h | ④⑥ |
+|  | Deposits & fixes | 13.3h | 5.2h | −8.1h | ① |
+|  | Invoices & E-Tax | 9.1h | 6.4h | −2.7h | ⑥ |
+|  | Purchase VAT report | 5.7h | 2.9h | −2.8h | ④ |
+|  | Sales Record | 4.5h | 1.8h | −2.7h | ② |
+|  | Sales VAT report | 3.5h | 2.0h | −1.5h | ③ |
+|  | Consignment entry | 2.1h | 1.0h | −1.1h | ⑥ |
+|  | Product master | 1.1h | 0.8h | −0.3h | ⑥ |
+|  | **Subtotal** | **54.7h** | **28.4h** | **−26.3h** |  |
+| **Total** |  | **193.6h** | **134.2h** | **−59.4h (−31%)** |  |
 
+Quality −12.1h + Efficiency −21.0h + Data entry −26.3h = **−59.4h**
+
+- The less typing, the more time for quality, efficiency and other work.
+- All figures are per month (21 working days), 2 people combined. ①–⑦ are the 1.2 improvements. The yearly close (139.4 hours on a monthly basis) is not included
+
+## Daily sales check & refund memos
 :::proposal
-Before: Siam Discovery's and Central's SKU codes do not match our own, so every line had to be checked one by one.
-Problem: The work took a lot of time.
-New process: Use AI to match them (details are being confirmed).
+Problem: Checked only on Mondays — gaps found late, E-Tax took up to a week
+New process: Every morning, check yesterday’s store and event sales
+Check: Gaps found the next working day · E-Tax in 1–2 days · refunds in the Refund Log
 :::
 
-## Prepare the monthly report
+**When**: Every morning (from 4 Nov)
 
-Submit it within the first 5 business days of each month.
+### Steps
+1. POS vs. terminal & QR — record it
+2. Look for QR/card mix-ups and other stores’ sales
+3. Issue E-Tax within 1–2 working days
+4. Ask the store the same day
+5. Refund or transfer: memo now → Friday payments
+
+## Import, read, paste — not type
+:::proposal
+Problem: Lots of typing and double checks — sales checked only weekly
+New process: Do ①–⑦ the new way; the time saved goes to quality checks
+Check: Results match the old way · less work time
+:::
+
+### All improvements
+| Step | Area | AI move | Hours (now → new) | Saved | How |
+|---|---|---|---|---|---|
+| ① Bank | Quality · Data entry | Low | 22.4h → 9.8h | −12.6h (−56%) | Import statements, check AI matches |
+| ② Sales Record | Data entry | Low | 4.5h → 1.8h | −2.7h (−60%) | Paste the POS report |
+| ③ Shopee · Lazada | Efficiency · Data entry | Low–Mid | 18.8h → 7.9h | −10.9h (−58%) | Match with a macro; PEAK numbers them |
+| ④ Expenses · purchase VAT | Data entry · Quality | Mid–High | 34.1h → 18.5h | −15.6h (−46%) | Read with AI |
+| ⑤ Department stores | Efficiency | Low | 9.1h → 4.5h | −4.6h (−51%) | SKU mapping + matching sheet |
+| ⑥ Routine documents | Data entry | Low–Mid | 14.8h → 8.8h | −6.0h (−40%) | Bulk import from Excel |
+| ⑦ Paper | Efficiency | Mid | 23.0h → 16.0h | −7.0h (−30%) | Paper only where required |
+| **Total** |  | | **126.7h → 67.3h** | **−59.4h** |  |
+
+### How hard it is to move to AI
+:::kv
+Internal work (stock etc.): With clear rules, AI can do it. Try it first
+External work (tax etc.): Never leave it to AI alone. AI helps; a person confirms
+Low: Move to AI now
+Mid: AI + a person checks
+High: People do it
+:::
+
+| Step | Level | Task | Task level | Why |
+|---|---|---|---|---|
+| ① Bank | Low | Deposit entry & PEAK fixes | Low | Replace with statement import |
+|  | | Bank matching | Low | PEAK’s AI matching |
+| ② Sales Record | Low | Sales Record | Low | Paste the POS report |
+| ③ Shopee · Lazada | Low–Mid | Shopee · Lazada matching | Low | Match by order number |
+|  | | Numbering | Mid | Check if a PEAK setting solves it |
+|  | | Sales VAT report | Mid | Export from PEAK; a person checks |
+| ④ Expenses · purchase VAT | Mid–High | Vouchers & expenses | Mid | AI reads; people check VAT and accounts |
+|  | | Making the purchase VAT report | Mid | Export from PEAK; a person checks |
+|  | | Checking the purchase VAT report | High | Tax — never left to AI alone |
+| ⑤ Department stores | Low | SKU check & delivery data | Low | Handled by the mapping table |
+|  | | CN matching | Low | Match reports and records |
+| ⑥ Routine documents | Low–Mid | Consignment entry & product master | Low | Routine data work |
+|  | | Issuing invoices | Mid | Sent outside, so people confirm |
+| ⑦ Paper | Mid | Paper work | Mid | First confirm what must stay on paper |
+
+:::check Check
+- Results match the old way · less work time
+:::
+
+- PEAK features and official pages: Appendix A
+
+### ① Bank: import statements, match with AI
+:::kv
+Hours (2 people, per month): 22.4h → 9.8h (−12.6h, −56%)
+Area: Quality · Data entry
+AI move: Low (Deposit entry & PEAK fixes = Low, Bank matching = Low)
+:::
+
+**How we do it now**
+
+- Type deposits in by hand from the statement
+- Enter store deposits separately
+- Match 2–3 months at once in Excel
+- Fix mismatches in PEAK
+
+**New steps**
+
+1. **Monday morning**: Download last week’s statement for each account (KBank PDF, BBL CSV)
+2. **Then**: Import into PEAK’s bank file import; choose AI matching
+3. **Then**: Review AI matches and confirm the right ones together
+4. **Then**: Look into mismatches only (check store deposits against POS sales)
+5. **Month-end**: Check the balance against the statement in the report (maker and checker differ)
+
+:::tip
+No more batching 2–3 months; year-end matching shrinks too
+:::
+
+### ② Sales Record: just paste the POS report
+:::kv
+Hours (2 people, per month): 4.5h → 1.8h (−2.7h, −60%)
+Area: Data entry
+AI move: Low (Sales Record = Low)
+:::
+
+**How we do it now**
+
+- Collect EDC slips and receipts from each store
+- Total them by store
+- Type every store into the spreadsheet by hand
+
+**New steps**
+
+1. **Daily**: Export yesterday from Zort Report → Sales to Excel
+2. **Then**: Paste it into the sheet — no typing
+3. **Automatic**: Totals by store and payment type appear; events go in the same sheet
+
+:::tip
+To be confirmed: whether Zort’s POS report splits by store and payment type
+:::
+
+### ③ Shopee · Lazada: macro matching, PEAK numbering
+:::kv
+Hours (2 people, per month): 18.8h → 7.9h (−10.9h, −58%)
+Area: Efficiency · Data entry
+AI move: Low–Mid (Shopee · Lazada matching = Low, Numbering = Mid, Sales VAT report = Mid)
+:::
+
+**How we do it now**
+
+- Match sales, fees and payments in Excel
+- Match payments to the bank statement
+- Fix 215–258 numbers one by one each month
+- Cancel duplicates by hand
+
+**New steps**
+
+1. **Around the 15th**: Export orders, payouts and the bank statement
+2. **Then**: Save in the month’s folder and run the macro
+3. **Macro**: Sorts into matched, amount gap, unpaid, duplicate
+4. **Then**: Check only gaps and unpaid; write the cause
+5. **Then**: Send to PEAK; PEAK numbers them (Zort numbers stay)
+6. **Before PP.30**: Check totals in the PEAK TAX sales VAT report
+
+:::tip
+To be confirmed: whether PEAK numbers them in date order
+:::
+
+### ④ Expenses · purchase VAT: read with AI
+:::kv
+Hours (2 people, per month): 34.1h → 18.5h (−15.6h, −46%)
+Area: Data entry · Quality
+AI move: Mid–High (Vouchers & expenses = Mid, Making the purchase VAT report = Mid, Checking the purchase VAT report = High)
+:::
+
+**How we do it now**
+
+- Type payment vouchers from paper invoices
+- Build the purchase VAT report in Excel
+- Two people check every document
+
+**New steps**
+
+1. **Day it arrives**: Put it in File Vault (PC, app or LINE)
+2. **Twice a week**: SMART Key reads the number, lines and supplier
+3. **Then**: Compare original and fields side by side; clear orange warnings
+4. **Then**: Fix the account and record it
+5. **19th–20th**: Make PP.30 and the purchase tax report in PEAK TAX
+
+:::kv
+File Vault: PEAK’s document store. Put invoices and receipts in as photos or PDFs; find them by number
+SMART Key: PEAK reads the document and fills in the number, lines and supplier for you
+:::
+
+### ⑤ Department stores: SKU table & matching sheet
+:::kv
+Hours (2 people, per month): 9.1h → 4.5h (−4.6h, −51%)
+Area: Efficiency
+AI move: Low (SKU check & delivery data = Low, CN matching = Low)
+:::
+
+**How we do it now**
+
+- Check differently written SKUs line by line
+- Make Siam and Central data separately
+- Check amounts by hand before each CN
+
+**New steps**
+
+1. **By Wednesday**: Receive the restock list (our SKU + quantity)
+2. **Then**: Paste into Excel — Siam and SCON files are made
+3. **Then**: Check only red rows and add them to the table
+4. **Before Thursday delivery**: Issue delivery notes (ask Siam for a PO; Central goes into SCON)
+5. **When sales reports arrive**: Paste, see the difference, issue CN only for it
+
+### ⑥ Routine documents: bulk import from Excel
+:::kv
+Hours (2 people, per month): 14.8h → 8.8h (−6.0h, −40%)
+Area: Data entry
+AI move: Low–Mid (Consignment entry & product master = Low, Issuing invoices = Mid)
+:::
+
+**How we do it now**
+
+- Post Shopee, Lazada and KBank fees one by one
+- Make consignment and group invoices one by one
+- Type consignment sales and product data on screen
+
+**New steps**
+
+1. **Month-end to start**: Gather fee statements and consignment/group sales (use ③’s results)
+2. **Macro**: Turns them into PEAK’s import Excel
+3. **Then**: Check totals and coloured exceptions (people confirm tax documents)
+4. **Then**: Import into PEAK
+5. **Then**: Review the documents and approve
+
+:::tip
+Withholding certificates and E-Tax go to outside parties, so they stay as they are
+:::
+
+### ⑦ Paper: keep only the papers we must; store the rest electronically
+:::kv
+Hours (2 people, per month): 23.0h → 16.0h (−7.0h)
+Area: Efficiency
+AI move: Mid (First confirm what must stay on paper)
+:::
+
+## Monthly financial report
+:::proposal
+Problem: Accounts were reviewed only twice a year
+New process: Give management a report every month
+Check: First one: October, by 10 Nov. Mark anything not yet final
+:::
+
+**When**: Within 5 working days each month
+
+### Steps
+1. Day 1 · import & match bank statements
+2. Day 2 · Zort sales to PEAK
+3. Day 3 · book expense documents
+4. Day 4 · check account balances
+5. By day 5 · make, sign, submit
+
+## Switch over in parallel
+If problems come up, keep reviewing the steps; go live only once the work is clear and problem-free
+
+### Date we start trying the new way
+| Step | Start trying |
+|---|---|
+| ① Bank | 11/24 |
+| ② Sales Record | 11/24 |
+| ③ Shopee · Lazada | Nov close |
+| ④ Expenses · VAT | 11/30 |
+| ⑤ Dept. stores | from the next delivery |
+| ⑥ Routine docs | Dec invoices |
+
+:::info News: ChatGPT for Accounting has been released
+We are now researching how it could help our work. It may be brought into our tasks step by step. Stages: Research(we are here) → Try it → Bring in step by step
+:::
 
 # Store, Event & Online Logistics
+> The office plans how stock moves
 
-## The office manages store stock and restocks every Monday
-
+## Restock stores on set delivery days
 :::proposal
-Before: Store sales staff (PCs) checked stock whenever needed and asked the office to send items.
-Problem: Stores spent time checking and requesting stock instead of selling, which meant lost sales. The office also had to respond case by case, which was inefficient.
-New process: The office manages each store's stock and sales, and prepares the items each store needs every Monday. Items are shipped after the Delivery Note has gone through the approval process, and the store checks the delivery against the Delivery Note on receipt. At month-end, the PC's stock report is matched against the system stock so that both the office and the stores always know the accurate stock in real time. (See the checklist.)
-Check: Restocks for all stores are shipped every Monday. The number of differences found in the month-end check (recorded by store and by month).
+Problem: Waiting for PC orders meant stock-outs and restocking almost daily
+New process: Each week the coordinator makes the list from sales and stock, and ships on delivery days
 :::
 
-### Steps (every Monday)
+**When**: From the week of 9 Nov
 
-:::flow
-- Mon morning: The office reviews the stock dashboard and last week's sales, and makes a restock list for each store (SKU × quantity)
-- Mon morning: Pick the restock items and prepare the Delivery Note (store, date, SKU, quantity)
-- Mon afternoon: Check the Delivery Note against the contents of each box, then ship
-- Office: Update the stock data for the items shipped
-- Store, on receipt: The PC checks the contents against the Delivery Note and reports any differences in the group chat the same day
+| When | What |
+|---|---|
+| Every Monday | K-Village · Central Ladprao · Thaniya |
+| Every Thursday | Siam Discovery · Central Chidlom |
+| 15th & 30th | Paradise |
+| Consignment · dept. stores | Decide from weekly sales (e.g. 12+ pairs a week) |
+
+- PCs stop counting and ordering — customers and the floor come first
+- Extra deliveries may be added, based on sales
+
+## Delivery note = what’s in the box
+:::proposal
+Problem: Delivery and stock records didn’t line up, so nothing could be checked later
+New process: Check the note against the box before sending and on arrival
+Check: Any difference goes to the group the same day
 :::
 
-### Month-end stock check
+### Steps
+1. Restock list per store
+2. Pick · Delivery Note
+3. Check DN vs. box, then ship
+4. Update stock; fill in Store Restock
+5. The PC checks it on arrival
 
-1. At the end of each month, the PC counts the store's stock and reports it using the standard form (model × color × size).
-2. The office matches the report against the system stock and lists the SKUs that differ.
-3. The office confirms the reason for each difference with the store (sale not recorded, restock not updated, return not reported, lost item) and corrects the stock data.
+- Weekends: online orders shipped from Paradise Park go in the Online Shipping sheet, sent with the sales report. The office deducts store stock on Monday
 
-### Weekend online orders shipped from Paradise Park
-
-1. For items shipped from Paradise Park to fill online orders at the weekend, the PC makes a list (order number, SKU, quantity).
-2. The PC sends the list together with that day's sales report.
-3. On the next business day, the office uses the list to deduct the items from the store's stock.
-
-## Online orders: 2 PM cut-off — every order received by then ships the same day
-
+## Follow up wholesale customers
 :::proposal
-Before: Orders were packed and shipped first thing in the morning. Orders received later that day were not shipped until the next day.
-Problem: Orders that could have shipped the same day went out the next day.
-New process: The same-day shipping cut-off is 2:00 PM. Every order received by the cut-off must ship the same day.
-Check: Tick the sheet once each order has been shipped. (See the checklist.)
+New process: After restocking, the coordinator follows up
 :::
 
-## Prepare event equipment and fixtures with a checklist, so no time is lost searching
+### Steps
+1. Restock the customer
+2. Follow up
+3. Bangkok: visit with BD once displayed
 
+## Shopee: orders by 2 PM ship today
 :::proposal
-Before: Both when preparing at the office and when setting up the booth, time was spent searching for equipment and fixtures and checking whether everything was there.
-Problem: Preparation and setup were inefficient. If something was missing, the booth could not always be set up as planned.
-New process: For each event, prepare using the "Equipment & Fixtures Checklist", and check again before loading and during setup so that nothing is missed. (See the equipment & fixtures list.)
-Check: Tick ✅ on the event equipment list for each item checked.
+Problem: Orders after the morning packing weren’t shipped
+New process: At 2 PM the coordinator checks for new orders again and ships them today
 :::
 
-## Book vehicles in advance and confirm in the group chat
+**When**: Every day
 
+**The day**: Morning shipment → 2 PM cut-off → Ships today → Ships tomorrow
+
+## Event equipment: use the list
 :::proposal
-Before: Vehicles were arranged at the last minute before loading in and out.
-Problem: Time was wasted waiting for a vehicle, and loading, load-in and load-out started late.
-New process: Book the vehicle no later than the day before.
-Check: Enter the booking in the vehicle schedule and report it in the group chat. In the group, just post the planned time and that the vehicle is confirmed. (See the equipment & fixtures list.)
+Problem: No exact list — nobody knew what was in the boxes
+New process: The coordinator fixes the list per event in the Furniture and ACCESSORIES sheets
+Check: Tick ✅ on the list
 :::
 
-## Event procedure: preparation → stock out → during the event → close → stock in (back to shelves)
+### Steps
+1. Preparing
+2. Before loading
+3. At setup
 
+## Book the vehicle a day ahead
 :::proposal
-Before: The work process was different every time, so preparation took a long time. Items were not returned to the shelves promptly after events, which also caused stock discrepancies.
-Problem: When stock did not match after an event, the cause could not be traced, and returning items to the shelves and preparing for the next event took time.
-New process: Follow the procedure in the handbook to work more efficiently. (See the separate procedure handbook.)
-Check: The Delivery Note (quantity out, quantity received) matches the items returned plus the items sold. If the reconciliation shows a difference, it is reported and approved.
+Problem: Last-minute app bookings meant waiting and extra fees (200 baht became 800)
+New process: Book it by the day before and report in the LINE group once it’s done
 :::
 
-# QC & Inspection
+- Book the pack-up Lalamove for when work will finish
 
-## Plan preparation using standard work times (lead times)
-
+## Run events by the handbook
 :::proposal
-Before: QC, repairs and packing depended on particular staff members, so nobody could predict how long the work would take.
-Problem: Preparation for events and shipments did not finish on schedule. Extra help had to be found at the last minute, wasting both time and labor costs.
-New process: Use measured work times as the standard for estimating lead times. Before starting preparation, calculate the time and number of people needed (pairs × standard time). Record the actual times and review the standards.
-Check: The gap between the planned time and the actual time.
-:::
-
-| Task | Description | Standard time |
-|---|---|---|
-| Initial shoe QC | Quality inspection | 1 min 40 sec per pair |
-| Shoe repair (gluing) | Glue repair | 1 min per pair |
-| Shoe repair (stitching) | Sent to an outside repair craftsman | Outsourced |
-| Packing for events | Picking and boxing | approx. 32.5 sec per pair, approx. 6 min 4 sec per box, approx. 111 pairs per hour |
-
-The packing standard is based on an actual measurement (347 pairs in 31 boxes, packed in 3 hours 7 minutes 52 seconds).
-
-### How to calculate the time needed (example: a 300-pair event)
-
-| Task | Calculation | 1 person | 2 people |
-|---|---|---|---|
-| Initial QC | 300 pairs × 100 sec | approx. 8 h 20 min | approx. 4 h 10 min |
-| Packing | 300 pairs ÷ 111 pairs/hour | approx. 2 h 40 min | approx. 1 h 20 min |
-
-1. Confirm the number of pairs to prepare.
-2. Use the standards above to calculate the time for each task, then decide the number of people and the schedule.
-3. Record the start and finish time of the work.
-4. If the actual time differs a lot from the standard, note the reason (type of product, working conditions) and review the standard.
-
-## Initial QC procedure
-
-:::proposal
-Before: What was inspected, and how defects were judged, differed from person to person.
-Problem: The time needed for inspection could not be estimated, so staffing and work efficiency were poor.
-New process: Fix the inspection items and inspect every pair, aiming for 1 min 40 sec per pair. Sort the results into good / repair (gluing) / repair (stitching) / B-grade, and move them on to the sorting step below.
-Check: The number of defective items returned from stores or customers after inspection (per month).
-:::
-
-## Sort B-grade items and turn them into cash quickly
-
-:::proposal
-Before: There were no rules for B-grade (damaged) items, so they stayed in the warehouse — including items that could have been repaired.
-Problem: Sellable items sat in the warehouse and were slow to turn into cash. Repairable and non-repairable items were mixed together, so decisions took time.
-New process: Sort items by the QC result. Items with minor damage that cannot be repaired go on clearance, normally at 15% off. Items with missing parts are sold at up to 50% off. Repairable items are split into gluing (in-house) and stitching (outsourced), repaired, inspected again, and sold as good items. Turning stock into cash quickly is the priority.
-Check: The number of days from sorting until items go on sale or out for repair. The number of B-grade pairs left in the warehouse (counted once a month).
+Problem: Different every time, and all stock was counted every time
+New process: Same steps, same people, every time; stock recorded in Zort (appendix)
+Check: Delivery Note = returned + sold. Gaps reported and approved
 :::
 
 :::flow
-- QC: A defect or damage is found
-- Sorting: Decide whether the item can be repaired, has minor damage that cannot be repaired, or cannot be sold
-- Repairable: Gluing is done in-house (1 min per pair); stitching goes to an outside craftsman → QC again → good item
-- Minor damage, not repairable: Clearance sale, normally 15% off
-- Missing parts: Sold at up to 50% off
-- Not sellable: Record the reason and dispose of the item
+- Prepare & stock out: 1–6 · 3–1 working days before
+- During the event: 7–8 · from day 1
+- Close & back to shelves: 9–15 · to working day 2
 :::
 
-| Grade | Criteria | Action |
-|---|---|---|
-| Repairable | Lifting glue, slightly loose stitching, etc. — becomes a good item once repaired | Gluing in-house, stitching outsourced. Good item after QC again |
-| Minor damage (not repairable) | Small scratches or marks that do not affect use | Clearance at 15% off (discounts over 15% need a manager's approval) |
-| Missing parts | A part is missing, but the item can still be used | Sold at up to 50% off |
-| Not sellable | Major damage or a safety issue | Dispose of. Record the item code, quantity and reason |
+- Don’t start preparing until step ③ is approved
+- First morning: count everything before selling (PC lead)
+- Plan and done dates for each step go in the CHECKLIST sheet
 
-# HR
-> Make it clear at a glance who is working where, and when, at each store and event — so no shift is left uncovered and nothing has to change at the last minute.
+- Full steps: Appendix B
 
-## PC management: a schedule of the PCs assigned to each store and event
+# Stock, Warehouse & QC
+> Stock in Zort, QC by the standard
 
+## Manage stock in Zort
 :::proposal
-Before: The PC schedule for each store and event was not kept in one place; it was tracked through individual messages and the group chat.
-Problem: Checking who was working where took time, and shifts were left uncovered, double-booked or changed at the last minute.
-New process: Keep a "PC schedule" for each store and event (date × location).
-Check: There are no blank (unassigned) cells in the schedule.
+Problem: The real stock wasn’t known, so everything was counted before each event
+New process: Every in and out goes in Zort; prepare from the system stock
+:::
+
+- Warehouse staff own every job that moves stock (online shipping, event prep, returns & exchanges, store restock)
+- Office stock is counted and in Zort; stores are being added
+- e.g. the coordinator takes on packing and shipping
+
+## Month-end stock count
+:::proposal
+New process: Accounting and the warehouse count, then compare with the system
+:::
+
+**When**: Month-end
+
+- Log differences in the Stock Discrepancy Log
+- No restocking on count day — NUT tells stores in advance
+- Restock before the count if needed
+
+## Keep notes in pairs; put new stock out
+:::proposal
+Problem: Papers were scattered, and new stock sat in the warehouse
+New process: Delivery and return notes are kept as one set by Accounting
+:::
+
+- Check sent, returned and system figures all match
+- After stock arrives, check it went on the shelf
+- If something isn’t selling, first check the shop-floor stock
+
+## Plan with standard times
+:::proposal
+Problem: No standard — inspections waited months, and claim deadlines passed
+New process: Pairs × standard time → people and schedule
+Check: Log start and end times in the QC sheet; note why if far from standard
+:::
+
+### Standard times
+| Task | Standard |
+|---|---|
+| Initial QC | 1:40 min / pair |
+| Glue repair | 1:00 min / pair |
+| Stitch repair | — Outsourced |
+| Arm sleeve & buff QC | 2:13 min / piece |
+| Event packing (≈32.5 sec / pair) | 111 pairs / hour |
+
+**Example: a 300-pair event**
+
+- First QC: 8 h 20 min with 1 person / 4 h 10 min with 2
+- Packing: 2 h 40 min with 1 person / 1 h 20 min with 2
+
+## Initial QC: sort every pair into 4
+:::proposal
+Problem: Each person judged differently
+New process: Same checks for all — 1 min 40 sec a pair
+Check: Defects sent back (per month)
+:::
+
+### The 4 groups
+
+1. Good
+2. Glue repair
+3. Stitch repair
+4. B-grade
+
+## Turn B-grade into cash fast
+:::proposal
+Problem: No rules — items sat in the warehouse
+New process: Sort into 4, sell or repair right away; log it in the B-GRADE sheet
+Check: Days to sale or repair · B-grade stock (monthly)
+:::
+
+### Handling B-grade
+| Condition | What to do |
+|---|---|
+| Repairable | Repair → QC again → sell as good |
+| Minor marks or cracks | 15% off (more needs a manager’s OK) |
+| Missing parts | Up to 50% off |
+| Not sellable | Note why, then dispose |
+
+# HR & PC Management
+> Show who works where, and when
+
+## PC schedule
+:::proposal
+Problem: Hard to know who was where
+New process: One table: date × store / event
+Check: No blank (unassigned) cells
+:::
+
+## Shift sheet: who’s where, and clock-ins
+:::proposal
+New process: The HR staff member enters every store’s and event’s staff and clock-ins in the Store Staff Shift Schedule
+:::
+
+**When**: From 9 Nov
+
+### Steps
+1. Enter staff & clock-ins
+2. See days placed and clocked, per PC
+3. Look at sales with clock-ins
+4. Zero sales or odd clock-ins: go on site
+
+## Sales drop? Check on site
+:::proposal
+Problem: We only listened to the PC — no site visit, no analysis
+New process: Send a strong seller to the site to watch the selling
+:::
+
+- Look at location, customers and PC behaviour; use it next time
+- HR keeps watching sales after placing staff; Accounting tells HR about odd numbers
+- Family pairs on one shift: check on site more carefully
+
+## Announce events early
+:::proposal
+Problem: The Tambun notice came the day before — some couldn’t prepare
+New process: Announce meetings and other plans or events that need preparing in advance
+:::
+
+- Put it in Google Calendar first
+
+# E-commerce & Customer Service
+> Claims only with full proof
+
+## Claims: proof first
+:::proposal
+Problem: We didn’t ask for the facts and skipped steps
+New process: Nothing moves until we have proof of purchase and damage photos
+Check: Unsure? Ask Shimada or Bew
+:::
+
+### Steps
+1. Need time? Reply “We’ll check”
+2. Proof + photos from the customer
+3. Bought at a retailer → send to that store
+4. Bought from us → repair, swap to a new model, or refund
+
+## Writing to overseas customers
+:::proposal
+Problem: AI text was sent as is, apologising again and again before anything was checked
+New process: Before the facts are checked, keep it to “Sorry to hear that”
+:::
+
+- Tell the AI: short and simple
+- Read AI text before sending
+- Unsure? Ask the AI or a supervisor
+
+## Don’t let “order received” drag [Being confirmed]
+:::proposal
+Problem: Some customers never confirm receipt — up to 30 days
+New process: 3–4 days after delivery, find unconfirmed orders and have admin ask
 :::
 
 # Company-wide
-> Rules everyone follows, whatever their section.
+> Rules for everyone, and the roll-out
 
-## Rotating duty for trash and cleaning
-
+## Trash & cleaning rota
 :::proposal
-Before: Nobody was assigned to take out the trash or clean; whoever noticed did it.
-Problem: The work fell on the same people, trash piled up, and some areas were never cleaned.
-New process: Make a weekly rotation. The person on duty covers their areas (trash, floors, work tables, toilet, kitchenette) using a checklist. Post the rotation and the checklist where everyone can see them.
-Check: The check boxes on the rotation are filled in every week.
+Problem: Messy desks; nobody owned the kitchenette or trash
+New process: The Trash & Cleaning Duty rota does it on their day; desks are your own
+Check: The rota is ticked every week
 :::
 
-| Week | On duty | Trash | Office floor & desks | Warehouse aisles | Toilet & kitchenette | Checked by |
-|---|---|---|---|---|---|---|
-|  |  | ☐ | ☐ | ☐ | ☐ |  |
+**When**: Weekly
 
-1. At the start of each month, make the rotation for the whole month and post it.
-2. The person on duty does the checklist items on the set day and time, and ticks each one when finished.
-3. If the person on duty is off, the next person on the rotation covers.
+**Duty areas**: Trash · Kitchenette · Shared floor
 
-:::kv
-Who / how often: Everyone (weekly rotation).
+## Everyday basics
+:::proposal
+New process: Everyone follows the agreed steps the same way
 :::
 
-# [Appendix] Event procedure handbook: preparation, stock out and stock in
+- Daily report: tasks, time, problems — every day
+- Use a To Do List to schedule your tasks
+- Documents for the president or Bew: the maker signs first and fixes their own mistakes
+- News from stores or partners goes to the group the same day
 
-## Event procedure: preparation → stock out → during the event → close → stock in (back to shelves)
+## No deadline given? Finish it today
+:::proposal
+New process: The day you get it is the deadline
+:::
 
-### Roles
+- Finish it the same day
+- Can’t make it? Tell Shimada why, and how many days it will take
 
-| Person | Role |
-|---|---|
-| Hoshino | Prepares the Event Proposal (layout, product list); decides Case ① or ② |
-| Ying (coordinator) | Prepares the Delivery Note; prepares products; sets up; prepares and ships restocks; packs up; reports results |
-| Warehouse staff | Prepare products; set up; pack up; count on the next business day; return items to the shelves |
-| PC in charge (sales employee) | Counts everything on the first morning (before sales start); counts restocks on arrival; closes the POS register at Close |
-| Accounting | Moves stock in Zort (out, restock, in); issues sales reports; reconciles |
-| Shimada | Approves the Delivery Note; approves differences |
+## Stalled work? Push it yourself
+:::proposal
+Problem: Sign artwork sat waiting for approval; after its maker left, nobody followed up
+New process: Get a quote as soon as the artwork is ready; if approval is slow, the owner chases Bew or the president
+:::
 
-Setup and Close are planned to move to "outside contractor + warehouse staff" in the future. Warehouse staff will continue to take part after the change.
-
-| Pattern | What happens | When to use |
-|---|---|---|
-| Case ① | After the event, items go back to the shelves in the main warehouse | Normal events |
-| Case ② | After the event, items stay packed and go on to the next event | The next event is within 2 weeks and is the same size or larger |
-
-### Overall flow
+## Roll-out: review after 2 months
+:::proposal
+New process: From the start date, work the new way
+:::
 
 :::flow
-- Preparation → stock out: 1 Event Proposal → 2 Delivery Note → 3 Sign (Shimada's approval) → 4 Prepare and 5 Stock out (Zort transfer) in parallel
-- During the event: 6 Setup (day before opening) → 7 Receipt count (first morning, before sales) → 8 Refill (when needed; shipment and Zort transfer together)
-- Close → back to shelves: 9 Close → 10 Count (next business day, at the warehouse) → 11 Reconcile → 12 Approve differences → 13 Zort transfer → 14 Back to shelves → 15 Report results
+- From the start: Start (Work the new way)
+- Every Friday: Follow-up (15 min: progress & problems)
+- After 1 month: Midpoint check (Adjust the steps)
+- After 2 months: Review (Decide what to stop or fix)
 :::
 
-### Step 1: Preparation → stock out
+- Daily report every day — the office analyses it with AI for follow-up
+- Exceptions or problems: don’t stop — tell the group the same day
+- At the monthly meeting, decide what to keep, fix or stop
 
-Product preparation and Zort transfers do not start until Shimada has approved (step 3). After approval, steps 4 and 5 run in parallel.
+# [Appendix] Appendix
 
-| Step | Task | Who | Days needed |
-|---|---|---|---|
-| 1 Event Proposal | Prepare the layout and product list. State whether it is Case ① or ② | Hoshino | [TBD] |
-| 2 Delivery Note | Prepare the Delivery Note from the product list | Ying | [TBD] |
-| 3 Sign | Check and sign the Delivery Note | Shimada | [TBD] |
-| 4 Prepare | Collect and pack the items exactly as on the Delivery Note, and number each box | Ying + warehouse staff | [TBD] |
-| 5 Stock out | Transfer the stock in Zort from the main warehouse to the event warehouse | Accounting | [TBD] |
+## PEAK features that save work
+From PEAK’s official pages. We are on PRO Plus, so we meet the plan condition for every feature
 
-- Box numbers are serial numbers only. No contents list is made for each box.
-- Step 5 is a transfer between warehouses, not a stock-out. Each event uses its own event warehouse in Zort.
-- The quantities in step 5 must match the signed Delivery Note.
+| Step | Feature | What gets easier | Plan needed | Official page |
+|---|---|---|---|---|
+| ① Bank | Bank statement import | Load KBank and BBL statements — no typing | PRO+ | [Open](https://intercom.help/peak/en/articles/8415719-นำเข-าไฟล-เพื-อกระทบยอดธนาคาร-ใน-peak) |
+|  | AI auto-matching | Confirm matches at once; check only the rest | PRO+ | [Open](https://intercom.help/peak/en/articles/6697193-กระทบยอดธนาคาร-ด-วยระบบอัตโนมัติ-ใน-peak) |
+|  | Documents from the matching screen | Enter receipts and expenses on one screen | PRO Plus+ | [Open](https://intercom.help/peak/en/articles/10293812-สร-างรายการผ-านหน-ากระทบยอดธนาคาร-ใน-peak) |
+| ② Sales Record | POS sales link | Send POS sales to PEAK — less store typing | PRO Plus+ | [Open](https://intercom.help/peak/en/articles/7164871-การตั-งค-าการเชื-อมต-อรายการขาย-pos) |
+| ③ Shopee · Lazada | Zort → PEAK settings | Let PEAK number them — no fixes or duplicates | PRO Plus+ | [Open](https://intercom.help/peak/en/articles/6339767-ตั-งค-าการส-งข-อมูลจาก-zort-สู-peak) |
+|  | Shopee same-day grouping | One document per day (tax-invoice requests kept apart) | PRO Plus+ | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-24062026-en) |
+|  | Order reports (Lazada etc.) | Export to Excel as the macro’s input | API link | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-13052026-en) |
+|  | Sales/purchase VAT report to Excel (③④) | Export from PP.30 — no building it in Excel | Plan not stated | [Open](https://www.peakaccount.com/peak-manual/summary-reports/tax-reports-peak-tax/printing-sales-tax-purchase-tax-excel-file) |
+| ⑥ Routine documents | What can be imported (③⑥) | Contacts, products, invoices, expenses, journals — in bulk | PRO Plus+ | [Open](https://www.peakaccount.com/peak-manual/peak-others/import-documents/data-that-can-be-imported-peak-pro-plus) |
+|  | Invoice import | Make consignment and group invoices in bulk | PRO Plus+ | [Open](https://www.peakaccount.com/peak-manual/peak-others/import-documents/import-invoice-documents) |
+|  | Expense import | Shopee, Lazada and KBank fees without typing | PRO Plus+ | [Open](https://www.peakaccount.com/peak-manual/peak-others/import-documents/import-expense-record) |
+| ④ Expenses · purchase VAT | SMART Key: AI reading | Reads number, lines, supplier — no typing | e-Document+ | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-05082026-en) |
+|  | SMART Key: account suggestions | Suggests accounts; flags missing info | Plan not stated | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-13052026-en) |
+|  | Attach purchase tax invoices | Reads the number and links it to waiting records | e-Document+ | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-05082026-en) |
+|  | Edit All Items | Change the account on every line at once | e-Document+ | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-08072026-en) |
+|  | PEAK TAX AI check | Warns of duplicates, 7% mismatches, near deadlines | Plan not stated | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-29042026-en) |
+|  | Supplier check before PP.30 | Shows usual suppliers missing, and new ones | All plans | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-10062026-en) |
+|  | PEAK to PEAK | Turns the other side’s sale into our purchase (EDV ⇄ BFT) | All plans | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-24062026-en) |
+| ⑦ Document storage (File Vault) | File Vault (④⑦) | Store documents and make records from them | Paid plans | [Open](https://intercom.help/peak/en/articles/8353643-สร-าง-แนบ-เอกสารจากคลังเอกสาร-ใน-peak) |
+|  | File Vault (phone) (④⑦) | Add documents from a phone — no scanner | Paid plans | [Open](https://intercom.help/peak/en/articles/15190616-คู-มือการใช-งาน-คลังเอกสาร-file-vault-บน-peak-mobile) |
+|  | Enter while viewing the original (④⑦) | Make the record without switching screens (Sept update) | e-Document+ | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-30092026-en) |
+|  | Search by document type | Filter by type and find it fast | Plan not stated | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-28102026-en) |
+| Monthly ledger check | Working Paper | Check account balances on one screen | Basic+ | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-27052026-en) |
+|  | PEAK MCP | AI works with PEAK data (may help AI ledger checks) | PRO Plus+ | [Open](https://www.peakaccount.com/blog/program-usage/update-peak-function-en/update-function-22072026-en-2) |
 
-### Step 2: During the event
+General: [Online manual](https://www.peakaccount.com/peak-manual) · [Learning center](https://www.peakaccount.com/peak-learning-center) · [Plans & prices](https://www.peakaccount.com/software-package)
 
-All sales during the event are recorded on the Zort POS. Every restock is paired with a Zort transfer by Accounting.
+## Event procedure (15 steps)
+### Who does what
+| Who | Role |
+|---|---|
+| Hoshino | Event Proposal (layout, product list) |
+| Coordinator | Delivery Note, preparing stock, setup, restocks, pack-up, report |
+| Warehouse | Preparing stock, setup, pack-up, next-day count, back to shelves (Accounting leads until they start) |
+| PC in charge | First-morning count, restock count, closes the register |
+| Accounting | Zort stock transfers, sales report, reconciliation |
+| Shimada | Approves the Delivery Note and differences |
 
-| Step | Task | Who | When |
-|---|---|---|---|
-| 6 Setup | Bring everything to the venue, then set up and display it according to the layout | Ying + warehouse staff | Day before opening |
-| 7 Receipt count | Count every item, both on display and in reserve. Enter the "Quantity received" on the Delivery Note and sign | PC in charge | First morning, before sales start |
-| 8 Refill (prepare & ship) | Tell Accounting which items and how many to restock, then prepare them and send them to the venue. How to request and record: [TBD] | Ying | During the event, when needed |
-| 8 Refill (Zort) | Transfer the restocked items in Zort from the main warehouse to the event warehouse | Accounting | At the same time as the shipment |
-
-- The quantity received in step 7 is the starting point for every later check. Any packing mistakes are caught here.
-- The PC in charge joins from the first morning. During setup the day before, reserve stock is grouped in box-number order so it is easy to count.
-- If step 7 shows a difference, contact Ying and Accounting the same day, and Accounting corrects the quantity in the Zort event warehouse (whether Shimada's approval is needed: [TBD]).
-- If counting cannot be finished before opening, check "items counted + POS sales so far" against the quantity out on the Delivery Note.
-- Restocked items are also counted by the PC in charge on arrival and entered in the "Restocked" column of the Return Note.
-- POS sales are deducted from the Zort event warehouse. Restock boxes continue the box numbering from stock-out.
-
-### Step 3: Close → back to shelves
-
-On Close day, nothing is counted at the venue. Only the number of boxes is checked and the boxes are sealed. Counting is done at the warehouse on the next business day.
-
-| Step | Task | Who | When |
-|---|---|---|---|
-| 9 Close | Close the POS register (PC in charge). Pack the remaining items, number and seal the boxes, enter the number of boxes on the Return Note, and load out | PC in charge, Ying + warehouse staff | Close day |
-| 10 Count | Check the seals, open every box, count the remaining quantity of each item and enter it on the Return Note | Warehouse staff | Next business day (provisional) [TBD] |
-| 11 Reconcile | Issue the sales report from Zort. Compare the event warehouse's book stock (received + restocked − sold) with the actual count, and prepare a difference sheet if they do not match | Accounting | Next business day (provisional) [TBD] |
-| 12 Approve differences | Ying checks the cause and Shimada approves. Threshold for differences that need approval: [TBD] | Ying, Shimada | Only if there is a difference |
-| 13 Zort transfer | Transfer the stock in Zort from the event warehouse back to the main warehouse | Accounting | After reconciliation and approval |
-| 14 Back to shelves | Return the items to the shelves and report completion | Warehouse staff | [TBD] |
-| 15 Report results | Report sales, differences and the number of days taken | Ying → Shimada | [TBD] |
-
-- If the seal on a box sealed in step 9 is broken, note it on the Return Note in step 10.
-- Step 13 is not done until reconciliation (and approval, if there is a difference) is complete. In Case ②, steps 13 and 14 are skipped.
-- How cash sales are handed over (from the PC in charge to Accounting, when and in what form): [TBD]
-- How soiled or defective items are handled: [TBD]
-
-### Case ② (back-to-back events)
-
-Returning items to the shelves and preparing the full quantity for the next event are skipped, but counting and reconciliation are not. Case ② applies only when both conditions are met: the next event is within 2 weeks, and it is the same size or larger. Hoshino states this in the Event Proposal and Shimada approves it.
-
-| Step | Case ① | Case ② |
+### Prepare & stock out (3–1 working days before)
+| Step | What | Who |
 |---|---|---|
-| 9 Close to 12 Approve differences | Yes | Yes (same) |
-| 13 Zort transfer (event warehouse → main warehouse) | Yes | No. Stock stays in the event warehouse |
-| 14 Back to shelves | Yes | No. Items are repacked, sealed and kept in the holding area |
-| Next event: 1 Proposal, 2 Delivery Note, 3 Sign | Full quantity | Same steps. Delivery Note for the additional items only |
-| Next event: 4 Prepare, 5 Stock out | Full quantity | Additional items only |
-| Next event: 7 Receipt count | Full quantity | Count both the additional items and the items on hold |
+| 1 | Event Proposal | Hoshino |
+| 2 | Delivery Note | Coordinator |
+| 3 | Sign | Shimada |
+| 4 | Prepare | Coordinator + warehouse |
+| 5 | Stock out (Zort) | Accounting |
 
-- "Additional items" means the shortfall: the next event's product list minus the quantity left after counting.
-- Stock on hold is in the event warehouse, so it cannot be sold in stores or online.
-- Location of the holding area, and the exception rule for moving best-sellers back to the main warehouse while on hold: [TBD]
+### During the event (from day 1)
+| Step | What | Who |
+|---|---|---|
+| 6 | Setup (day before) | Coordinator + warehouse |
+| 7 | Receipt count (first morning) | PC |
+| 8 | Refill (ship + Zort) | Coordinator · Accounting |
 
-### Forms
+### Close & back to shelves (Close day to working day 2)
+| Step | What | Who |
+|---|---|---|
+| 9 | Close (seal, load out) | PC · Coordinator · warehouse |
+| 10 | Count (next business day) | Warehouse |
+| 11 | Reconcile | Accounting |
+| 12 | Approve differences | Coordinator · Shimada |
+| 13 | Zort back to main | Accounting |
+| 14 | Back to shelves | Warehouse |
+| 15 | Report results | Coordinator → Shimada |
 
-There are two forms: the Delivery Note and the Return Note. Both use the same product lines so that every item can be tracked out and back (use "Return_Note_ひな形.xlsx" for the Return Note).
+### After Close: Case ① or ②
+| Case | When | What happens next |
+|---|---|---|
+| Case ① | Normal | ⑬ Zort back to main → ⑭ Back to shelves → ⑮ Report results |
+| Case ② | Next event within 2 weeks, same size or bigger | Seal it in the holding area (skip ⑬⑭) → ⑮ Report results. Not sold in stores or online while waiting |
 
-| Form | Prepared by | Used in steps | Contents |
+### Where, who and what to check
+| Step | Who | What | Then |
 |---|---|---|---|
-| Delivery Note | Ying | 2–5, 7 | Event name, dates, Case ①/②, product code, product name, quantity out, quantity received, number of boxes, prepared by, approval signature, recipient signature |
-| Return Note | Ying + warehouse staff | 8–12 | Basic information, A. Boxes and seals, B. Product details, C. Signatures |
+| ③ | Shimada | Delivery Note contents | No prep until approved |
+| ⑤ | Accounting | Zort transfer = signed DN | Make them match |
+| ⑦ | PC lead | First morning: shelf + spare = sent | Tell Coordinator and Accounting that day; fix Zort after Shimada approves |
+| ⑧ | PC lead | Refill actually received | Write it on the Return Note |
+| ⑨ | Coordinator + warehouse | Close day: box count and seals | Don’t count products at the venue |
+| ⑩ | Warehouse | Next day: seals and every box | Note any broken seal |
+| ⑪ | Accounting | Received + refill − sold = counted | Make the difference sheet |
+| ⑫ | Coordinator → Shimada | Any gap at all: the cause | Move in Zort after approval |
 
-Return Note "B. Product details" — columns and who fills them in:
+:::warn
+The person who counts never enters the numbers in Zort. Only Accounting moves stock in Zort and runs sales reports.
+:::
 
-| Column | Content | Filled in by | Step |
-|---|---|---|---|
-| Received (a) | Copied from "Quantity received" on the Delivery Note | Ying | After 7 Receipt count |
-| Restocked (b) | Counted and entered each time a restock arrives | PC in charge | 8 Refill |
-| Sold (c) | Taken from the Zort sales report | Accounting | 11 Reconcile |
-| Book stock | a + b − c (calculated automatically) | Accounting | 11 Reconcile |
-| Actual (d) | Counted by opening every box | Warehouse staff | 10 Count |
-| Difference | d − book stock (calculated automatically) | Accounting | 11 Reconcile |
-| Notes | Soiled or defective items, cause of differences, etc. | Anyone involved | Any time |
-
-### Open items (to be added to the text once decided)
-
-1. Days needed for each step, and the deadline after Close (Steps 1 and 3)
-2. Whether correcting Zort after a difference in the receipt count needs Shimada's approval (Step 2)
-3. Confirm on the actual Zort screens that we can create an event warehouse, transfer between warehouses, and choose which warehouse POS sales are deducted from
-4. Approval threshold for differences after Close (approval for even a single item, or a threshold by amount or quantity) (Step 3)
-5. How cash sales are handed over (from the PC in charge to Accounting, when and in what form) (Step 3)
-6. Who requests a refill and how it is recorded (Step 2)
-7. How soiled or defective items are handled (Step 3)
-8. Location of the holding area for Case ②, and the exception rule for moving best-sellers back to the main warehouse
+Forms: Delivery Note (Coordinator) · Return Note (Coordinator + warehouse). Still open: how cash sales are handed over (⑨)
