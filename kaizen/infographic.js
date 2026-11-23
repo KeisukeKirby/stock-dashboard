@@ -547,7 +547,7 @@
           ['xls', { ja: '売上 VAT 作成', en: 'Sales VAT report', th: 'ทำ VAT ขาย' }, 6.3, 3.5, '③'],
           ['store', { ja: '委託・店舗入力', en: 'Consignment entry', th: 'กรอกฝากขาย' }, 3.8, 1.9, '⑥'],
           ['data', { ja: '商品マスタ', en: 'Product master', th: 'ข้อมูลสินค้า' }, 2.1, 1.5, '⑥']] },
-      foot: { ja: '①〜⑦ は 1.2 の改善。年 1 回の決算（252.2 時間）は含まない', en: '①–⑦ are the 1.2 improvements. The yearly close (252.2 hours) is not included', th: '①–⑦ คือการปรับปรุงในข้อ 1.2 ไม่รวมงานปิดงบปีละครั้ง (252.2 ชั่วโมง)' } },
+      foot: { ja: '数字はすべて 1 か月（21 営業日）あたり・2 名合計。①〜⑦ は 1.2 の改善。年 1 回の決算（1 か月換算 139.4 時間）は含まない', en: 'All figures are per month (21 working days), 2 people combined. ①–⑦ are the 1.2 improvements. The yearly close (139.4 hours on a monthly basis) is not included', th: 'ตัวเลขทั้งหมดต่อเดือน (21 วันทำการ) รวม 2 คน ①–⑦ คือการปรับปรุงในข้อ 1.2 ไม่รวมงานปิดงบปีละครั้ง (คิดเป็นรายเดือน 139.4 ชั่วโมง)' } },
     { ch: 0, scene: 'pos', bm: 'pile', am: 'check',
       t: { ja: '売上の毎日照合と返金メモ', en: 'Daily sales check & refund memos', th: 'กระทบยอดขายทุกวัน และบันทึกคืนเงิน' },
       when: { ja: '毎朝（11 月 4 日から）', en: 'Every morning (from 4 Nov)', th: 'ทุกเช้า (ตั้งแต่ 4 พ.ย.)' },
@@ -975,7 +975,7 @@
         ['15', { ja: '結果報告', en: 'Report results', th: 'รายงานผล' }, { ja: 'コーディネーター → 島田', en: 'Coordinator → Shimada', th: 'ผู้ประสานงาน → ชิมาดะ' }, 'chart']] }
     ],
     branch: {
-      q: { ja: 'Case を判断', en: 'Which case?', th: 'เลือก Case' }, by: 'Hoshino',
+      q: { ja: 'Case を判断', en: 'Which case?', th: 'เลือก Case' },
       c1: { ja: '通常', en: 'Normal', th: 'ปกติ' },
       c2: { ja: '次のイベントが 2 週間以内・同じ規模以上', en: 'Next event within 2 weeks, same size or bigger', th: 'อีเวนต์ถัดไปภายใน 2 สัปดาห์ ขนาดเท่าเดิมขึ้นไป' },
       hold: { ja: '封をして待機エリアへ', en: 'Seal it in the holding area', th: 'ซีลแล้วเก็บที่พื้นที่พักสินค้า' }, holdWho: { ja: '倉庫', en: 'Warehouse', th: 'คลัง' },
@@ -1169,28 +1169,45 @@
     var h = '<header class="ig-item-head"><span class="ig-no' + (it.intro ? ' is-apx' : '') + '">' + (it.intro ? esc(U.overview) : no) + '</span><h2>' + esc(L(it.t)) + '</h2>' +
       (it.review ? '<span class="ig-pill">' + esc(U.inReview) + '</span>' : '') + (it.cats ? catPills(it.cats) : '') + (it.when ? '<span class="ig-when">🕘 ' + esc(L(it.when)) + '</span>' : '') + '</header>';
     if (it.map) {
-      var fmt = function (v) { return perMonth(v).toFixed(1); };
-      var tiles = function (items, c) {
-        return items.map(function (x) {
+      // すべて 1 か月（21 営業日）に換算。四捨五入のずれが出ないよう、合計から各項目へ 0.1h 単位で配分する
+      var K = MONTH_DAYS / REPORT_DAYS, f1 = function (v) { return v.toFixed(1); };
+      var all = it.groups.concat([it.base]);
+      var num = function (x) { return typeof x[2] === 'number' ? x[2] : 0; };
+      var cutOf = function (x) { return typeof x[2] === 'number' && typeof x[3] === 'number' ? x[2] - x[3] : 0; };
+      var tNow = Math.round(it.total[0] * K * 10) / 10, tCut = Math.round((it.total[0] - it.total[1]) * K * 10) / 10;
+      var gNow = share(all.map(function (g) { return g.now * K; }), tNow);
+      var gCut = share(all.map(function (g) { return g.after != null ? (g.now - g.after) * K : 0; }), tCut);
+      all.forEach(function (g, i) {
+        g.mNow = gNow[i]; g.mCut = gCut[i];
+        g.mTiles = share(g.items.map(function (x) { return num(x) * K; }), gNow[i]);
+        g.mCuts = share(g.items.map(function (x) { return cutOf(x) * K; }), gCut[i]);
+      });
+      var tiles = function (g) {
+        return g.items.map(function (x, k) {
+          var n = g.mTiles[k], c = g.mCuts[k];
           var bars = typeof x[2] === 'number' ?
-            '<span class="mt-bar"><i style="width:100%"></i>' + (x[3] != null ? '<i class="is-new" style="width:' + (x[3] / x[2] * 100).toFixed(0) + '%"></i>' : '') + '</span>' +
-            '<em>' + fmt(x[2]) + (x[3] != null ? ' → <b>' + fmt(x[3]) + '</b>' : '') + 'h</em>'
+            '<span class="mt-bar"><i style="width:100%"></i>' + (x[3] != null ? '<i class="is-new" style="width:' + ((n - c) / n * 100).toFixed(0) + '%"></i>' : '') + '</span>' +
+            '<em>' + f1(n) + (x[3] != null ? ' → <b>' + f1(n - c) + '</b>' : '') + 'h</em>'
             : '<em>' + esc(x[2] === '?' ? U.notMeasured : U.newWork) + '</em>';
           return '<li>' + (x[4] ? '<span class="mt-mk">' + x[4] + '</span>' : '') + icon(x[0], 'ig-ic mt-ic') + '<b>' + esc(L(x[1])) + '</b>' + bars + '</li>';
         }).join('');
       };
       var card = function (g, cls) {
-        var c = CAT[g.cat], cut = g.after != null ? Math.round((g.now - g.after) / g.now * 100) : 0;
+        var c = CAT[g.cat];
         return '<div class="mp-card ' + (cls || '') + '" style="--mc:' + c.col + ';--ms:' + c.soft + '"><div class="mp-h">' + icon(c.ic, 'ig-ic mp-ic') + '<b>' + esc(L(c.l)) + '</b>' +
-          '<strong>' + fmt(g.now) + (g.after != null ? '<span class="mp-to">→ ' + fmt(g.after) + 'h</span><span class="mp-pct">−' + cut + '%</span>' : 'h<span class="mp-pct is-none">' + esc(U.noCut) + '</span>') + '</strong></div>' +
-          '<ul class="mp-tiles">' + tiles(g.items, c) + '</ul></div>';
+          '<strong>' + f1(g.mNow) + (g.after != null ? '<span class="mp-to">→ ' + f1(g.mNow - g.mCut) + 'h</span><span class="mp-pct">−' + f1(g.mCut) + 'h</span>' : 'h<span class="mp-pct is-none">' + esc(U.noCut) + '</span>') + '</strong></div>' +
+          '<ul class="mp-tiles">' + tiles(g) + '</ul></div>';
       };
-      var tn = it.total[0], ta = it.total[1];
+      var cutGroups = all.filter(function (g) { return g.after != null; });
+      var sum = '<div class="mp-sum">' + cutGroups.map(function (g) {
+        var c = CAT[g.cat];
+        return '<span style="--mc:' + c.col + '">' + icon(c.ic, 'ig-ic mp-sum-ic') + esc(L(c.l)) + ' <b>−' + f1(g.mCut) + 'h</b></span>';
+      }).join('<i>＋</i>') + '<i>＝</i><strong>−' + f1(tCut) + 'h</strong></div>';
       return h + '<div class="mp">' +
         '<div class="mp-total">' + svg('0 0 48 48', face(16, 24, 11, C.blue) + face(32, 24, 11, C.gold), 'mp-ppl') + '<span>' + esc(U.hours) + '</span>' +
-          '<b>' + fmt(tn) + 'h</b><span class="mp-arr">➜</span><b class="is-new">' + fmt(ta) + 'h</b><em>−' + perMonth(tn - ta).toFixed(1) + 'h（−' + Math.round((tn - ta) / tn * 100) + '%' + esc(U.twoTotal) + '）</em></div>' +
+          '<b>' + f1(tNow) + 'h</b><span class="mp-arr">➜</span><b class="is-new">' + f1(tNow - tCut) + 'h</b><em>−' + f1(tCut) + 'h（−' + Math.round(tCut / tNow * 100) + '%' + esc(U.twoTotal) + '）</em></div>' +
         '<div class="mp-cols">' + it.groups.map(function (g) { return card(g); }).join('') + '</div>' +
-        '<div class="mp-up">▲ ' + icon('type', 'ig-ic mp-up-ic') + esc(U.lessTyping) + ' ▲</div>' + card(it.base, 'is-base') +
+        '<div class="mp-up">▲ ' + icon('type', 'ig-ic mp-up-ic') + esc(U.lessTyping) + ' ▲</div>' + card(it.base, 'is-base') + sum +
         '<p class="ig-dnote">※ ' + esc(L(it.foot)) + '</p></div>';
     }
     if (it.why) {
@@ -1270,7 +1287,7 @@
     if (it.cards) h += '<p class="cd-unit">' + esc(U.hours) + '</p><ol class="ig-cards">' + it.cards.map(function (c) {
       return '<li>' + icon(c[0], 'ig-ic cd-ic') + '<b>' + esc(L(c[1])) + '</b>' + (c[5] ? catPills(c[5]) : '') +
         '<span class="cd-bars"><i class="is-now" style="width:100%"></i><i class="is-new" style="width:' + (c[4] / c[3] * 100).toFixed(0) + '%"></i></span>' +
-        '<em>' + perMonth(c[3]).toFixed(1) + ' → ' + perMonth(c[4]).toFixed(1) + 'h</em><strong class="cd-pct">−' + Math.round((c[3] - c[4]) / c[3] * 100) + '%</strong><small>' + esc(L(c[2])) + '</small></li>';
+        '<em>' + monthPair(c[3], c[4])[0].toFixed(1) + ' → ' + monthPair(c[3], c[4])[1].toFixed(1) + 'h</em><strong class="cd-pct">−' + Math.round((c[3] - c[4]) / c[3] * 100) + '%</strong><small>' + esc(L(c[2])) + '</small></li>';
     }).join('') + '</ol>';
     if (it.c) h += '<div class="ig-check">' + svg('0 0 48 48', okCircle(24, 24, 20), 'ig-check-ic') + '<b>' + esc(U.check) + '</b><span>' + esc(L(it.c)) + '</span></div>';
     return h;
@@ -1296,11 +1313,33 @@
   // 経理の時間は日報の 38 営業日分。1 か月 = 21 営業日に換算して見せる
   var REPORT_DAYS = 38, MONTH_DAYS = 21;
   function perMonth(h) { return Math.round(h * MONTH_DAYS / REPORT_DAYS * 10) / 10; }
+  // 合計を 0.1h 単位で各項目へ配分（四捨五入で合計がずれないように）
+  function share(ex, total) {
+    var t = Math.round(total * 10), fl = ex.map(function (v) { return Math.floor(v * 10 + 1e-9); });
+    var rest = t - fl.reduce(function (x, y) { return x + y; }, 0);
+    ex.map(function (v, i) { return [v * 10 - fl[i], i]; }).sort(function (x, y) { return y[0] - x[0]; })
+      .slice(0, Math.max(0, rest)).forEach(function (r) { fl[r[1]]++; });
+    return fl.map(function (v) { return v / 10; });
+  }
+  // 1.2 の①〜⑦：1 か月換算の「今 → これから」。カードと①〜⑥のページで同じ数字を使い、削減の合計が表紙と一致するようにする
+  var PAIRS = null;
+  function monthPair(n, a) {
+    if (!PAIRS) {
+      PAIRS = {};
+      var K = MONTH_DAYS / REPORT_DAYS, cs = [];
+      ITEMS.forEach(function (it) { if (it.cards) cs = cs.concat(it.cards); });
+      var sn = 0, sc = 0;
+      cs.forEach(function (c) { sn += c[3]; sc += c[3] - c[4]; });
+      var mn = share(cs.map(function (c) { return c[3] * K; }), sn * K), mc = share(cs.map(function (c) { return (c[3] - c[4]) * K; }), sc * K);
+      cs.forEach(function (c, i) { PAIRS[c[3] + '|' + c[4]] = [mn[i], Math.round((mn[i] - mc[i]) * 10) / 10]; });
+    }
+    return PAIRS[n + '|' + a] || [perMonth(n), perMonth(a)];
+  }
   // 「今 → 変えた後」の時間を棒グラフで（2 名合計・1 か月あたり）
   function hoursBars(h, U) {
     var m = /([\d.]+)h\s*→\s*([\d.]+)h/.exec(h) || [0, 1, 1];
-    var a = perMonth(parseFloat(m[1])), b = perMonth(parseFloat(m[2])), cut = a - b;
-    var pct = Math.round(cut / a * 100), perDay = Math.round(cut * 60 / MONTH_DAYS);
+    var mp = monthPair(parseFloat(m[1]), parseFloat(m[2])), a = mp[0], b = mp[1], cut = Math.round((a - b) * 10) / 10;
+    var pct = Math.round((parseFloat(m[1]) - parseFloat(m[2])) / parseFloat(m[1]) * 100), perDay = Math.round(cut * 60 / MONTH_DAYS);
     return '<div class="ig-hbar"><small>' + svg('0 0 48 48', face(16, 24, 11, C.blue) + face(32, 24, 11, C.gold), 'hb-ppl') + esc(U.hours) + '</small>' +
       '<div class="hb-row is-now"><span>' + esc(U.hbNow) + '</span><i><em style="width:100%"></em></i><b>' + a.toFixed(1) + 'h</b></div>' +
       '<div class="hb-row is-new"><span>' + esc(U.hbNew) + '</span><i><em style="width:' + (b / a * 100).toFixed(1) + '%"></em></i><b>' + b.toFixed(1) + 'h</b></div>' +
@@ -1345,7 +1384,7 @@
     var U = UI[lang], B = APX.branch;
     var card = function (st, col) {
       return '<li class="ev-st" style="--b:' + col + '"><span class="ev-n">' + st[0] + '</span>' + icon(st[3], 'ig-ic ev-ic') +
-        '<b>' + esc(L(st[1])) + '</b><span class="ev-who">' + svg('0 0 48 48', face(24, 26, 20, col), 'ev-face') + esc(L(st[2])) + '</span></li>';
+        '<b>' + esc(L(st[1])) + '</b><span class="ev-who">' + svg('0 0 48 48', face(24, 26, 20, col), 'ev-face') + '<span>' + esc(L(st[2])) + '</span></span></li>';
     };
     var lane = function (ln, steps) {
       return '<div class="ev-lane" style="--b:' + ln.col + ';--n:' + steps.length + '"><h3>' + esc(L(ln.l)) + '</h3><ol>' +
@@ -1358,7 +1397,7 @@
     };
     var arr = '<i class="ev-arr" aria-hidden="true">➜</i>';
     var last = post.filter(function (st) { return st[0] === '15'; })[0];
-    var fork = '<div class="ev-fork"><div class="ev-q">' + svg('0 0 48 48', face(24, 26, 20, C.navy), 'ev-qface') + '<b>' + esc(L(B.q)) + '</b><small>' + esc(B.by) + '</small></div>' +
+    var fork = '<div class="ev-fork"><div class="ev-q">' + svg('0 0 48 48', face(24, 26, 20, C.navy), 'ev-qface') + '<b>' + esc(L(B.q)) + '</b></div>' +
       '<div class="ev-cases">' +
       '<div class="ev-case is-1"><span class="ev-ck">Case ①<small>' + esc(L(B.c1)) + '</small></span><div class="ev-path">' +
         post.map(mini).join(arr) + '</div></div>' +
