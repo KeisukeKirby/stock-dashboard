@@ -380,6 +380,14 @@
 
   /* 手順の小さなアイコン（48 × 48） */
   var ICON = {
+    shelf: function () {
+      return '<rect x="4" y="4" width="40" height="40" rx="3" fill="none"' + sw(C.navy, 2.5) + '/><path d="M4 24 h40"' + sw(C.navy, 2.5) + '/>' +
+        box(8, 10, 0.32) + box(25, 10, 0.32) + box(8, 30, 0.32) + '<path d="M36 34 l0 -9 M32 29 l4 -5 l4 5"' + sw(C.green, 3) + 'fill="none"/>';
+    },
+    hold: function () {
+      return box(4, 12, 0.75) + '<rect x="4" y="22" width="40" height="6" fill="' + C.red + '" opacity=".85"/>' +
+        '<rect x="30" y="2" width="14" height="12" rx="2" fill="' + C.gold + '"/><path d="M33 6 v-2 a4 4 0 0 1 8 0 v2"' + sw(C.gold, 2) + 'fill="none"/>';
+    },
     pos: function () { return pos(6, 4, 0.6); },
     pay: function () { return card(4, 8, 0.6) + qr(20, 20, 0.75); },
     search: function () { return magnifier(6, 6, 0.75); },
@@ -444,21 +452,21 @@
     ja: {
       kicker: 'イラストで見る 業務改善', before: 'これまで', after: 'これから', how: 'やり方', check: 'チェック',
       howToRead: 'このマニュアルの見方', legendBefore: '困っていたこと', legendAfter: '新しいやり方', legendCheck: 'できているかの確認',
-      areas: '改善する 5 つのエリア', chapter: function (n) { return '第 ' + n + ' 章'; }, appendix: '付録', inReview: '内容確認中',
+      areas: '改善する 5 つのエリア', chapter: function (n) { return '第 ' + n + ' 章'; }, appendix: '付録', nowHere: 'いまここ', inReview: '内容確認中',
       textNote: 'くわしい説明は右上の「文章」で見られます。', confidential: '社内資料・取り扱い注意',
       am: '朝', today: '今日', hours: '2 名がこの作業にかける時間（1 か月 = 21 営業日）', perMonthU: '時間 / 月', nowWay: '今のやり方', newWay: '変えた後', hbNow: '今', hbNew: '変えた後', overview: 'はじめに', notMeasured: '未計測', newWork: '新規', noCut: '今回は削減なし', twoTotal: '・2 名合計', lessTyping: '入力が減るほど、上の 3 つに使える時間が増える', nowTag: 'いま', newTag: 'これから', tryStart: '新しいやり方を試し始める日', perDay: function (m) { return '1 日あたり 約 ' + m + ' 分 短縮（2 名合計）'; }, monthEnd: '月末', monThu: '月・木', fri: '金', ours: '自社', bizDays: '営業日', mon: '月', minus1: '前日', handbook: '手順書', perPair: '1 足あたり'
     },
     en: {
       kicker: 'Process improvement, in pictures', before: 'Before', after: 'From now on', how: 'How', check: 'Check',
       howToRead: 'How to read this manual', legendBefore: 'What went wrong', legendAfter: 'The new way', legendCheck: 'How we know it works',
-      areas: '5 areas we are improving', chapter: function (n) { return 'Chapter ' + n; }, appendix: 'Appendix', inReview: 'Being confirmed',
+      areas: '5 areas we are improving', chapter: function (n) { return 'Chapter ' + n; }, appendix: 'Appendix', nowHere: 'We are here', inReview: 'Being confirmed',
       textNote: 'For full details, switch to “Text” at the top right.', confidential: 'Internal use only',
       am: 'AM', today: 'Today', hours: 'Time 2 people spend on this a month (21 working days)', perMonthU: 'hours / month', nowWay: 'The way it is now', newWay: 'The new way', hbNow: 'Now', hbNew: 'New way', overview: 'Overview', notMeasured: 'not measured', newWork: 'new', noCut: 'No cut this time', twoTotal: ', 2 people', lessTyping: 'Less typing frees time for the three above', nowTag: 'Now', newTag: 'From now on', tryStart: 'The day we start trying the new way', perDay: function (m) { return 'About ' + m + ' min saved a day (2 people)'; }, monthEnd: 'END', monThu: 'MON·THU', fri: 'FRI', ours: 'Ours', bizDays: 'business days', mon: 'MON', minus1: '−1 day', handbook: 'Handbook', perPair: 'per pair'
     },
     th: {
       kicker: 'ปรับปรุงการทำงาน ดูเข้าใจง่ายด้วยภาพ', before: 'แบบเดิม', after: 'แบบใหม่', how: 'วิธีทำ', check: 'ตรวจสอบ',
       howToRead: 'วิธีอ่านคู่มือนี้', legendBefore: 'ปัญหาที่เคยเกิด', legendAfter: 'วิธีทำงานแบบใหม่', legendCheck: 'ดูว่าทำได้จริงหรือไม่',
-      areas: '5 ส่วนงานที่จะปรับปรุง', chapter: function (n) { return 'บทที่ ' + n; }, appendix: 'ภาคผนวก', inReview: 'อยู่ระหว่างตรวจสอบ',
+      areas: '5 ส่วนงานที่จะปรับปรุง', chapter: function (n) { return 'บทที่ ' + n; }, appendix: 'ภาคผนวก', nowHere: 'ตอนนี้', inReview: 'อยู่ระหว่างตรวจสอบ',
       textNote: 'ดูรายละเอียดทั้งหมดได้ที่ปุ่ม “ข้อความ” มุมขวาบน', confidential: 'เอกสารใช้ภายในบริษัท',
       am: 'เช้า', today: 'วันนี้', hours: 'เวลาที่ 2 คนใช้กับงานนี้ต่อเดือน (21 วันทำการ)', perMonthU: 'ชั่วโมง / เดือน', nowWay: 'วิธีที่ทำอยู่ตอนนี้', newWay: 'วิธีใหม่', hbNow: 'ตอนนี้', hbNew: 'วิธีใหม่', overview: 'ภาพรวม', notMeasured: 'ยังไม่วัด', newWork: 'ใหม่', noCut: 'รอบนี้ไม่ลด', twoTotal: ' · 2 คนรวมกัน', lessTyping: 'คีย์น้อยลง มีเวลาให้ 3 ส่วนด้านบนมากขึ้น', nowTag: 'ตอนนี้', newTag: 'ต่อจากนี้', tryStart: 'วันที่เริ่มทดลองวิธีใหม่', perDay: function (m) { return 'ลดได้ประมาณ ' + m + ' นาทีต่อวัน (2 คนรวมกัน)'; }, monthEnd: 'สิ้นเดือน', monThu: 'จ.·พฤ.', fri: 'ศ.', ours: 'ของเรา', bizDays: 'วันทำการ', mon: 'จ.', minus1: '−1 วัน', handbook: 'คู่มือ', perPair: 'ต่อ 1 คู่'
     }
@@ -663,16 +671,6 @@
           [{ ja: '続けて', en: 'Then', th: 'ต่อจากนั้น' }, { ja: 'PEAK へ取り込む', en: 'Import into PEAK', th: 'นำเข้า PEAK' }, 'data'],
           [{ ja: '続けて', en: 'Then', th: 'ต่อจากนั้น' }, { ja: 'できた書類を確認して承認', en: 'Review the documents and approve', th: 'ตรวจเอกสารที่ได้แล้วอนุมัติ' }, 'stamp']],
         note: { ja: '源泉徴収票と E-Tax は社外へ出す書類なので、今回は変えない', en: 'Withholding certificates and E-Tax go to outside parties, so they stay as they are', th: 'หนังสือรับรองหัก ณ ที่จ่ายและ E-Tax ส่งออกภายนอก จึงยังไม่เปลี่ยน' } } },
-    { ch: 0, scene: 'cutover', am: 'check',
-      t: { ja: '切り替えは「並行」で', en: 'Switch over in parallel', th: 'เปลี่ยนแบบทำคู่กัน' },
-      a: { ja: '問題が起きたら手順の見直しを続け、作業内容が明確になり問題が無いことを確認してから本番へ', en: 'If problems come up, keep reviewing the steps; go live only once the work is clear and problem-free', th: 'ถ้ามีปัญหา ให้ทบทวนขั้นตอนต่อไป เมื่องานชัดเจนและไม่มีปัญหาแล้วจึงใช้จริง' },
-      golive: [
-        ['bank', { ja: '① 銀行', en: '① Bank', th: '① ธนาคาร' }, '11/24'],
-        ['chart', { ja: '② Sales Record', en: '② Sales Record', th: '② Sales Record' }, '11/24'],
-        ['sort', { ja: '③ Shopee・Lazada', en: '③ Shopee · Lazada', th: '③ Shopee · Lazada' }, { ja: '11月締め', en: 'Nov close', th: 'ปิด พ.ย.' }],
-        ['ai', { ja: '④ 経費・仕入 VAT', en: '④ Expenses · VAT', th: '④ ค่าใช้จ่าย · VAT' }, '11/30'],
-        ['store', { ja: '⑤ 百貨店', en: '⑤ Dept. stores', th: '⑤ ห้าง' }, { ja: '次回納品', en: 'Next drop', th: 'ส่งรอบหน้า' }, { ja: '次回の納品時から', en: 'from the next delivery', th: 'ตั้งแต่ส่งของรอบหน้า' }],
-        ['gear', { ja: '⑥ 定型書類', en: '⑥ Routine docs', th: '⑥ เอกสารประจำ' }, { ja: '12月分', en: 'Dec', th: 'ธ.ค.' }, { ja: 'の請求から', en: 'invoices', th: 'ใบแจ้งหนี้' }]] },
     { ch: 0, scene: 'monthly', bm: 'wait', am: 'check',
       t: { ja: '月次財務レポート', en: 'Monthly financial report', th: 'รายงานการเงินประจำเดือน' },
       when: { ja: '毎月初 5 営業日以内', en: 'Within 5 working days each month', th: 'ภายใน 5 วันทำการแรกของเดือน' },
@@ -685,6 +683,20 @@
         ['search', { ja: '4 日目　勘定残高を確認', en: 'Day 4 · check account balances', th: 'วันที่ 4 · ตรวจยอดคงเหลือบัญชี' }],
         ['stamp', { ja: '5 日目まで　作成・署名して提出', en: 'By day 5 · make, sign, submit', th: 'ภายในวันที่ 5 · ทำ เซ็น แล้วส่ง' }]],
       c: { ja: '初回は 10 月分を 11 月 10 日までに。間に合わない項目は明記して出す', en: 'First one: October, by 10 Nov. Mark anything not yet final', th: 'ครั้งแรก: เดือน ต.ค. ภายใน 10 พ.ย. ระบุรายการที่ยังไม่สรุป' } },
+    { ch: 0, scene: 'cutover', am: 'check',
+      t: { ja: '切り替えは「並行」で', en: 'Switch over in parallel', th: 'เปลี่ยนแบบทำคู่กัน' },
+      news: {
+        t: { ja: 'ChatGPT for Accounting がリリースされました', en: 'ChatGPT for Accounting has been released', th: 'ChatGPT for Accounting เปิดตัวแล้ว' },
+        d: { ja: 'この会社の業務にどう活用できるか、いまリサーチしています。順次、業務に取り入れる可能性があります', en: 'We are now researching how it could help our work. It may be brought into our tasks step by step', th: 'ตอนนี้กำลังศึกษาว่าจะนำมาใช้กับงานของบริษัทได้อย่างไร อาจนำมาใช้ในงานทีละส่วน' },
+        st: [['search', { ja: 'リサーチ', en: 'Research', th: 'ศึกษา' }], ['check', { ja: '試してみる', en: 'Try it', th: 'ทดลองใช้' }], ['gear', { ja: '順次取り入れ', en: 'Bring in step by step', th: 'นำมาใช้ทีละส่วน' }]] },
+      a: { ja: '問題が起きたら手順の見直しを続け、作業内容が明確になり問題が無いことを確認してから本番へ', en: 'If problems come up, keep reviewing the steps; go live only once the work is clear and problem-free', th: 'ถ้ามีปัญหา ให้ทบทวนขั้นตอนต่อไป เมื่องานชัดเจนและไม่มีปัญหาแล้วจึงใช้จริง' },
+      golive: [
+        ['bank', { ja: '① 銀行', en: '① Bank', th: '① ธนาคาร' }, '11/24'],
+        ['chart', { ja: '② Sales Record', en: '② Sales Record', th: '② Sales Record' }, '11/24'],
+        ['sort', { ja: '③ Shopee・Lazada', en: '③ Shopee · Lazada', th: '③ Shopee · Lazada' }, { ja: '11月締め', en: 'Nov close', th: 'ปิด พ.ย.' }],
+        ['ai', { ja: '④ 経費・仕入 VAT', en: '④ Expenses · VAT', th: '④ ค่าใช้จ่าย · VAT' }, '11/30'],
+        ['store', { ja: '⑤ 百貨店', en: '⑤ Dept. stores', th: '⑤ ห้าง' }, { ja: '次回納品', en: 'Next drop', th: 'ส่งรอบหน้า' }, { ja: '次回の納品時から', en: 'from the next delivery', th: 'ตั้งแต่ส่งของรอบหน้า' }],
+        ['gear', { ja: '⑥ 定型書類', en: '⑥ Routine docs', th: '⑥ เอกสารประจำ' }, { ja: '12月分', en: 'Dec', th: 'ธ.ค.' }, { ja: 'の請求から', en: 'invoices', th: 'ใบแจ้งหนี้' }]] },
 
     /* ---------- 第 2 章 物流 ---------- */
     { ch: 1, scene: 'restock', bm: 'mess', am: 'calendar',
@@ -947,21 +959,30 @@
     ],
     lanes: [
       { l: { ja: '準備・出庫（3〜1 営業日前）', en: 'Prepare & stock out (3–1 working days before)', th: 'เตรียมของ · เบิกออก (3–1 วันทำการก่อนงาน)' }, col: C.navy, steps: [
-        ['1', 'Event Proposal', 'Hoshino'], ['2', 'Delivery Note', { ja: 'コーディネーター', en: 'Coordinator', th: 'ผู้ประสานงาน' }], ['3', { ja: '承認（Sign）', en: 'Sign', th: 'ลงนาม (Sign)' }, 'Shimada'],
-        ['4', { ja: '商品準備', en: 'Prepare', th: 'เตรียมสินค้า' }, { ja: 'コーディネーター＋倉庫', en: 'Coordinator + warehouse', th: 'ผู้ประสานงาน + คลัง' }], ['5', { ja: 'Zort 出庫', en: 'Stock out (Zort)', th: 'เบิกออก (Zort)' }, { ja: '経理', en: 'Accounting', th: 'บัญชี' }]] },
+        ['1', 'Event Proposal', 'Hoshino', 'pen'], ['2', 'Delivery Note', { ja: 'コーディネーター', en: 'Coordinator', th: 'ผู้ประสานงาน' }, 'list'], ['3', { ja: '承認（Sign）', en: 'Sign', th: 'ลงนาม (Sign)' }, 'Shimada', 'stamp'],
+        ['4', { ja: '商品準備', en: 'Prepare', th: 'เตรียมสินค้า' }, { ja: 'コーディネーター＋倉庫', en: 'Coordinator + warehouse', th: 'ผู้ประสานงาน + คลัง' }, 'box'], ['5', { ja: 'Zort 出庫', en: 'Stock out (Zort)', th: 'เบิกออก (Zort)' }, { ja: '経理', en: 'Accounting', th: 'บัญชี' }, 'data']] },
       { l: { ja: '会期中（初日〜）', en: 'During the event (from day 1)', th: 'ระหว่างงาน (ตั้งแต่วันแรก)' }, col: C.teal, steps: [
-        ['6', { ja: '設営（前日）', en: 'Setup (day before)', th: 'จัดบูธ (วันก่อนงาน)' }, { ja: 'コーディネーター＋倉庫', en: 'Coordinator + warehouse', th: 'ผู้ประสานงาน + คลัง' }],
-        ['7', { ja: '受領カウント（初日朝）', en: 'Receipt count (first morning)', th: 'นับรับสินค้า (เช้าวันแรก)' }, 'PC'],
-        ['8', { ja: '補充（発送＋Zort）', en: 'Refill (ship + Zort)', th: 'เติมสินค้า (ส่ง + Zort)' }, { ja: 'コーディネーター・経理', en: 'Coordinator · Accounting', th: 'ผู้ประสานงาน · บัญชี' }]] },
+        ['6', { ja: '設営（前日）', en: 'Setup (day before)', th: 'จัดบูธ (วันก่อนงาน)' }, { ja: 'コーディネーター＋倉庫', en: 'Coordinator + warehouse', th: 'ผู้ประสานงาน + คลัง' }, 'booth'],
+        ['7', { ja: '受領カウント（初日朝）', en: 'Receipt count (first morning)', th: 'นับรับสินค้า (เช้าวันแรก)' }, 'PC', 'count'],
+        ['8', { ja: '補充（発送＋Zort）', en: 'Refill (ship + Zort)', th: 'เติมสินค้า (ส่ง + Zort)' }, { ja: 'コーディネーター・経理', en: 'Coordinator · Accounting', th: 'ผู้ประสานงาน · บัญชี' }, 'truck']] },
       { l: { ja: 'Close・棚戻し（Close 当日〜2 営業日目）', en: 'Close & back to shelves (Close day to working day 2)', th: 'ปิดงาน · เก็บขึ้นชั้น (วันปิดงานถึงวันทำการที่ 2)' }, col: '#b7790f', steps: [
-        ['9', { ja: 'Close（封印・搬出）', en: 'Close (seal, load out)', th: 'ปิดงาน (ซีลกล่อง ขนออก)' }, { ja: 'PC・コーディネーター・倉庫', en: 'PC · Coordinator · warehouse', th: 'PC · ผู้ประสานงาน · คลัง' }],
-        ['10', { ja: 'カウント（翌営業日）', en: 'Count (next business day)', th: 'นับสินค้า (วันทำการถัดไป)' }, { ja: '倉庫', en: 'Warehouse', th: 'คลัง' }],
-        ['11', { ja: '照合', en: 'Reconcile', th: 'กระทบยอด' }, { ja: '経理', en: 'Accounting', th: 'บัญชี' }],
-        ['12', { ja: '差異承認', en: 'Approve differences', th: 'อนุมัติส่วนต่าง' }, { ja: 'コーディネーター · 島田', en: 'Coordinator · Shimada', th: 'ผู้ประสานงาน · ชิมาดะ' }],
-        ['13', { ja: 'Zort で本倉庫へ', en: 'Zort back to main', th: 'โอนกลับคลังหลัก (Zort)' }, { ja: '経理', en: 'Accounting', th: 'บัญชี' }],
-        ['14', { ja: '棚戻し', en: 'Back to shelves', th: 'เก็บขึ้นชั้น' }, { ja: '倉庫', en: 'Warehouse', th: 'คลัง' }],
-        ['15', { ja: '結果報告', en: 'Report results', th: 'รายงานผล' }, { ja: 'コーディネーター → 島田', en: 'Coordinator → Shimada', th: 'ผู้ประสานงาน → ชิมาดะ' }]] }
+        ['9', { ja: 'Close（封印・搬出）', en: 'Close (seal, load out)', th: 'ปิดงาน (ซีลกล่อง ขนออก)' }, { ja: 'PC・コーディネーター・倉庫', en: 'PC · Coordinator · warehouse', th: 'PC · ผู้ประสานงาน · คลัง' }, 'load'],
+        ['10', { ja: 'カウント（翌営業日）', en: 'Count (next business day)', th: 'นับสินค้า (วันทำการถัดไป)' }, { ja: '倉庫', en: 'Warehouse', th: 'คลัง' }, 'count'],
+        ['11', { ja: '照合', en: 'Reconcile', th: 'กระทบยอด' }, { ja: '経理', en: 'Accounting', th: 'บัญชี' }, 'search'],
+        ['12', { ja: '差異承認', en: 'Approve differences', th: 'อนุมัติส่วนต่าง' }, { ja: 'コーディネーター · 島田', en: 'Coordinator · Shimada', th: 'ผู้ประสานงาน · ชิมาดะ' }, 'stamp'],
+        ['13', { ja: 'Zort で本倉庫へ', en: 'Zort back to main', th: 'โอนกลับคลังหลัก (Zort)' }, { ja: '経理', en: 'Accounting', th: 'บัญชี' }, 'data'],
+        ['14', { ja: '棚戻し', en: 'Back to shelves', th: 'เก็บขึ้นชั้น' }, { ja: '倉庫', en: 'Warehouse', th: 'คลัง' }, 'shelf'],
+        ['15', { ja: '結果報告', en: 'Report results', th: 'รายงานผล' }, { ja: 'コーディネーター → 島田', en: 'Coordinator → Shimada', th: 'ผู้ประสานงาน → ชิมาดะ' }, 'chart']] }
     ],
+    branch: {
+      q: { ja: 'Case を判断', en: 'Which case?', th: 'เลือก Case' }, by: 'Hoshino',
+      c1: { ja: '通常', en: 'Normal', th: 'ปกติ' },
+      c2: { ja: '次のイベントが 2 週間以内・同じ規模以上', en: 'Next event within 2 weeks, same size or bigger', th: 'อีเวนต์ถัดไปภายใน 2 สัปดาห์ ขนาดเท่าเดิมขึ้นไป' },
+      hold: { ja: '封をして待機エリアへ', en: 'Seal it in the holding area', th: 'ซีลแล้วเก็บที่พื้นที่พักสินค้า' }, holdWho: { ja: '倉庫', en: 'Warehouse', th: 'คลัง' },
+      skip: { ja: '⑬⑭ は省く', en: 'Skip ⑬⑭', th: 'ข้าม ⑬⑭' },
+      noSell: { ja: '待機中は店舗・オンラインで売らない', en: 'Not sold in stores or online while waiting', th: 'ระหว่างรอห้ามขายที่ร้านหรือออนไลน์' },
+      next: { ja: '次のイベントへそのまま', en: 'Straight to the next event', th: 'ไปอีเวนต์ถัดไปได้เลย' }
+    },
     cases: [
       { k: 'Case ①', v: { ja: '終わったら本倉庫の棚へ戻す（通常）', en: 'After the event, back to the main warehouse shelves (normal)', th: 'จบงานแล้ว นำกลับขึ้นชั้นที่คลังหลัก (ปกติ)' } },
       { k: 'Case ②', v: { ja: '次が 2 週間以内・同規模以上なら、数えて照合したあと、封をして待機エリアへ（⑬⑭は省く）。待機中は店舗・オンラインで売らない', en: 'Next event within 2 weeks and as big or bigger: count and reconcile, then seal it in the holding area (skip ⑬⑭). Not sold in stores or online while waiting', th: 'อีเวนต์ถัดไปภายใน 2 สัปดาห์และขนาดเท่าเดิมขึ้นไป: นับและกระทบยอด แล้วซีลเก็บที่พื้นที่พักสินค้า (ข้าม ⑬⑭) ระหว่างรอห้ามขายที่ร้านหรือออนไลน์' } }
@@ -980,6 +1001,59 @@
     forms: { ja: '帳票：Delivery Note（コーディネーター）・Return Note（コーディネーター＋倉庫）　未定：現金売上の受け渡し方法（⑨）', en: 'Forms: Delivery Note (Coordinator) · Return Note (Coordinator + warehouse). Still open: how cash sales are handed over (⑨)', th: 'เอกสาร: Delivery Note (ผู้ประสานงาน) · Return Note (ผู้ประสานงาน + คลัง) ยังไม่สรุป: วิธีส่งมอบเงินสด (⑨)' },
     note: { ja: '数える人と Zort に入力する人は別。Zort の移動と売上レポートは経理だけが行う。', en: 'The person who counts never enters the numbers in Zort. Only Accounting moves stock in Zort and runs sales reports.', th: 'คนนับกับคนบันทึกใน Zort ต้องเป็นคนละคน การโอนใน Zort และรายงานยอดขายทำโดยฝ่ายบัญชีเท่านั้น' }
   };
+
+  // 付録：PEAK の機能表（経理の冊子の最後）。公式ページの情報
+  var PK = {
+    PRO: { ja: 'PRO 以上', en: 'PRO+', th: 'PRO ขึ้นไป' },
+    PP: { ja: 'PRO Plus 以上', en: 'PRO Plus+', th: 'PRO Plus ขึ้นไป' },
+    ED: { ja: 'e-Document 以上', en: 'e-Document+', th: 'e-Document ขึ้นไป' },
+    ALL: { ja: '全プラン', en: 'All plans', th: 'ทุกแพ็กเกจ' },
+    PAID: { ja: '有料プラン', en: 'Paid plans', th: 'แพ็กเกจเสียเงิน' },
+    BASIC: { ja: 'Basic 以上', en: 'Basic+', th: 'Basic ขึ้นไป' },
+    API: { ja: 'API 接続', en: 'API link', th: 'เชื่อม API' },
+    NA: { ja: 'プラン記載なし', en: 'Plan not stated', th: 'ไม่ระบุแพ็กเกจ' }
+  };
+  var PEAK = {
+    title: { ja: 'PEAK の機能と効率化', en: 'PEAK features that save work', th: 'ฟีเจอร์ PEAK ที่ช่วยลดงาน' },
+    short: { ja: 'PEAK 機能表', en: 'PEAK features', th: 'ฟีเจอร์ PEAK' },
+    note: { ja: 'PEAK 公式ページの情報。当社は PRO Plus を契約済みなので、どの機能のプラン条件も満たしている', en: 'From PEAK’s official pages. We are on PRO Plus, so we meet the plan condition for every feature', th: 'ข้อมูลจากหน้าเว็บทางการของ PEAK บริษัทใช้แพ็กเกจ PRO Plus จึงใช้ได้ทุกฟีเจอร์ในหน้านี้' },
+    more: { ja: '詳しい使い方：PEAK のオンラインマニュアル・学習センター（peakaccount.com）', en: 'How-to guides: PEAK online manual and learning center (peakaccount.com)', th: 'วิธีใช้: คู่มือออนไลน์และศูนย์การเรียนรู้ของ PEAK (peakaccount.com)' },
+    pages: [[
+      { mk: '①', ic: 'bank', t: { ja: '銀行', en: 'Bank', th: 'ธนาคาร' }, f: [
+        ['dl', { ja: '銀行明細の取込', en: 'Bank statement import', th: 'นำเข้ารายการเดินบัญชี' }, { ja: 'KBank・BBL の明細を読み込み、手入力をなくす', en: 'Load KBank and BBL statements — no typing', th: 'โหลดรายการ KBank · BBL ไม่ต้องคีย์' }, 'PRO'],
+        ['ai', { ja: 'AI 自動照合', en: 'AI auto-matching', th: 'กระทบยอดอัตโนมัติด้วย AI' }, { ja: '一致の候補をまとめて確定し、不一致だけ見る', en: 'Confirm matches at once; check only the rest', th: 'ยืนยันคู่ที่ตรงพร้อมกัน ดูเฉพาะที่ไม่ตรง' }, 'PRO'],
+        ['list', { ja: '照合画面から伝票作成', en: 'Documents from the matching screen', th: 'สร้างเอกสารจากหน้ากระทบยอด' }, { ja: '入金と経費の入力を同じ画面で済ませる', en: 'Enter receipts and expenses on one screen', th: 'บันทึกรับเงินและค่าใช้จ่ายในหน้าเดียว' }, 'PP']] },
+      { mk: '②', ic: 'chart', t: { ja: 'Sales Record', en: 'Sales Record', th: 'Sales Record' }, f: [
+        ['pos', { ja: 'POS 売上の連携', en: 'POS sales link', th: 'เชื่อมยอดขาย POS' }, { ja: 'POS の売上を PEAK へ送り、店舗分の入力を減らす', en: 'Send POS sales to PEAK — less store typing', th: 'ส่งยอดขาย POS เข้า PEAK ลดการคีย์ยอดร้าน' }, 'PP']] },
+      { mk: '③', ic: 'sort', t: { ja: 'Shopee・Lazada', en: 'Shopee · Lazada', th: 'Shopee · Lazada' }, f: [
+        ['gear', { ja: 'Zort → PEAK の設定', en: 'Zort → PEAK settings', th: 'ตั้งค่า Zort → PEAK' }, { ja: '番号を PEAK で振り、手直しと重複をなくす', en: 'Let PEAK number them — no fixes or duplicates', th: 'ให้ PEAK ออกเลข ไม่ต้องแก้ ไม่ซ้ำ' }, 'PP'],
+        ['box', { ja: 'Shopee の同日注文まとめ', en: 'Shopee same-day grouping', th: 'รวมออเดอร์ Shopee รายวัน' }, { ja: '前日分を 1 伝票に（税務請求書の依頼分は別）', en: 'One document per day (tax-invoice requests kept apart)', th: 'รวมเป็น 1 เอกสารต่อวัน (แยกที่ขอใบกำกับภาษี)' }, 'PP'],
+        ['xls', { ja: '注文レポート（Lazada など）', en: 'Order reports (Lazada etc.)', th: 'รายงานออเดอร์ (Lazada ฯลฯ)' }, { ja: 'Excel に出力して、マクロの元データに使う', en: 'Export to Excel as the macro’s input', th: 'ส่งออก Excel ใช้เป็นข้อมูลให้แมโคร' }, 'API'],
+        ['chart', { ja: '売上・仕入 VAT 報告書の Excel 出力', en: 'Sales/purchase VAT report to Excel', th: 'ส่งออกรายงาน VAT ขาย/ซื้อเป็น Excel' }, { ja: 'PP.30 から出力し、Excel での作成をなくす', en: 'Export from PP.30 — no building it in Excel', th: 'ออกจาก ภ.พ.30 ไม่ต้องทำใน Excel' }, 'NA', '③④']] },
+      { mk: '⑥', ic: 'gear', t: { ja: '定型書類', en: 'Routine documents', th: 'เอกสารประจำ' }, f: [
+        ['data', { ja: '取り込めるデータ', en: 'What can be imported', th: 'ข้อมูลที่นำเข้าได้' }, { ja: '取引先・商品・請求書・経費・仕訳などをまとめて取込', en: 'Contacts, products, invoices, expenses, journals — in bulk', th: 'ผู้ติดต่อ สินค้า ใบแจ้งหนี้ ค่าใช้จ่าย สมุดรายวัน นำเข้าทีเดียว' }, 'PP', '③⑥'],
+        ['list', { ja: '請求書の取込', en: 'Invoice import', th: 'นำเข้าใบแจ้งหนี้' }, { ja: '委託先・グループ間の請求をまとめて作る', en: 'Make consignment and group invoices in bulk', th: 'ทำใบแจ้งหนี้ฝากขายและระหว่างกลุ่มทีเดียว' }, 'PP'],
+        ['xls', { ja: '経費の取込', en: 'Expense import', th: 'นำเข้าค่าใช้จ่าย' }, { ja: 'Shopee・Lazada・KBank の費用を入力せずに済む', en: 'Shopee, Lazada and KBank fees without typing', th: 'ค่าธรรมเนียม Shopee Lazada KBank ไม่ต้องคีย์' }, 'PP']] }
+    ], [
+      { mk: '④', ic: 'ai', t: { ja: '経費・仕入 VAT', en: 'Expenses · purchase VAT', th: 'ค่าใช้จ่าย · VAT ซื้อ' }, f: [
+        ['ai', { ja: 'SMART Key：AI 読取', en: 'SMART Key: AI reading', th: 'SMART Key: AI อ่านเอกสาร' }, { ja: '番号・明細・取引先を読み取り、手打ちをなくす', en: 'Reads number, lines, supplier — no typing', th: 'อ่านเลขที่ รายการ คู่ค้า ไม่ต้องคีย์' }, 'ED'],
+        ['check', { ja: 'SMART Key：科目の自動選択', en: 'SMART Key: account suggestions', th: 'SMART Key: เลือกผังบัญชีให้' }, { ja: '科目の候補と、足りない情報を表示', en: 'Suggests accounts; flags missing info', th: 'แนะนำผังบัญชี แจ้งข้อมูลที่ขาด' }, 'NA'],
+        ['paste', { ja: '仕入税額請求書の添付', en: 'Attach purchase tax invoices', th: 'แนบใบกำกับภาษีซื้อ' }, { ja: '番号を読んで、登録待ちの書類に自動で紐付け', en: 'Reads the number and links it to waiting records', th: 'อ่านเลขที่แล้วผูกกับเอกสารที่รอบันทึก' }, 'ED'],
+        ['pen', { ja: 'Edit All Items', en: 'Edit All Items', th: 'Edit All Items' }, { ja: '全明細の科目をまとめて変更', en: 'Change the account on every line at once', th: 'เปลี่ยนผังบัญชีทุกรายการพร้อมกัน' }, 'ED'],
+        ['search', { ja: 'PEAK TAX の AI チェック', en: 'PEAK TAX AI check', th: 'PEAK TAX ตรวจด้วย AI' }, { ja: '重複・7% の不一致・期限が近い請求書を警告', en: 'Warns of duplicates, 7% mismatches, near deadlines', th: 'เตือนเอกสารซ้ำ VAT 7% ไม่ตรง ใกล้ครบกำหนด' }, 'NA'],
+        ['two', { ja: 'PP.30 前の取引先チェック', en: 'Supplier check before PP.30', th: 'ตรวจคู่ค้าก่อน ภ.พ.30' }, { ja: 'いつもの取引先の抜けと新規を表示', en: 'Shows usual suppliers missing, and new ones', th: 'แสดงคู่ค้าประจำที่ขาด และรายใหม่' }, 'ALL'],
+        ['sort', { ja: 'PEAK to PEAK', en: 'PEAK to PEAK', th: 'PEAK to PEAK' }, { ja: '相手の売上伝票を仕入に変換（EDV ⇄ BFT）', en: 'Turns the other side’s sale into our purchase (EDV ⇄ BFT)', th: 'แปลงเอกสารขายของอีกฝ่ายเป็นซื้อ (EDV ⇄ BFT)' }, 'ALL']] },
+      { mk: '⑦', ic: 'vault', t: { ja: '書類の保管（File Vault）', en: 'Document storage (File Vault)', th: 'คลังเอกสาร (File Vault)' }, f: [
+        ['vault', { ja: 'File Vault', en: 'File Vault', th: 'File Vault' }, { ja: '書類を保管し、そこから伝票を作る', en: 'Store documents and make records from them', th: 'เก็บเอกสารและสร้างรายการจากเอกสาร' }, 'PAID', '④⑦'],
+        ['phone', { ja: 'File Vault（スマホ）', en: 'File Vault (phone)', th: 'File Vault (มือถือ)' }, { ja: 'スキャナーなしで、スマホから登録', en: 'Add documents from a phone — no scanner', th: 'เพิ่มเอกสารจากมือถือ ไม่ต้องใช้สแกนเนอร์' }, 'PAID', '④⑦'],
+        ['paper', { ja: '原本を見ながら入力', en: 'Enter while viewing the original', th: 'บันทึกพร้อมดูต้นฉบับ' }, { ja: '画面を切り替えずに伝票を作る（9 月の更新）', en: 'Make the record without switching screens (Sept update)', th: 'สร้างรายการโดยไม่ต้องสลับหน้าจอ (อัปเดต ก.ย.)' }, 'ED', '④⑦'],
+        ['search', { ja: '書類の種類で検索', en: 'Search by document type', th: 'ค้นหาตามประเภทเอกสาร' }, { ja: '種類で絞って、すぐ探せる', en: 'Filter by type and find it fast', th: 'กรองตามประเภท หาเจอเร็ว' }, 'NA']] },
+      { mk: '', ic: 'calc', t: { ja: '月次の元帳確認', en: 'Monthly ledger check', th: 'ตรวจบัญชีแยกประเภทรายเดือน' }, f: [
+        ['list', { ja: 'Working Paper', en: 'Working Paper', th: 'Working Paper' }, { ja: '勘定残高を 1 画面で確認', en: 'Check account balances on one screen', th: 'ดูยอดคงเหลือบัญชีในหน้าเดียว' }, 'BASIC'],
+        ['ai', { ja: 'PEAK MCP', en: 'PEAK MCP', th: 'PEAK MCP' }, { ja: 'AI から PEAK のデータを扱う（元帳の AI 確認に使える可能性）', en: 'AI works with PEAK data (may help AI ledger checks)', th: 'ให้ AI ใช้ข้อมูล PEAK (อาจใช้ตรวจบัญชีด้วย AI)' }, 'PP']] }
+    ]]
+  };
+  var PEAK_BOOK = 0; // PEAK 機能表（付録）は経理の冊子の最後に入れる
 
   /* ======================= 冊子（スライド）の文言 ======================= */
   var DK = {
@@ -1028,6 +1102,7 @@
       p.push({ kind: 'item', it: it, no: (i + 1) + '.' + n });
     });
     if (i === APX_BOOK) { p.push({ kind: 'apx1' }); p.push({ kind: 'apx2' }); p.push({ kind: 'apx3' }); }
+    if (i === PEAK_BOOK) PEAK.pages.forEach(function (g, k) { p.push({ kind: 'pk', k: k }); });
     return p;
   }
 
@@ -1050,7 +1125,7 @@
       return '<a class="bk" href="#/b' + (i + 1) + '" data-go="b' + (i + 1) + '" style="' + colVars(i) + '">' +
         '<span class="bk-no">' + esc(U.chapter(i + 1)) + '</span>' + icon(c.icon, 'bk-ic') +
         '<b class="bk-t">' + esc(L(c.t)) + '</b>' +
-        '<span class="bk-n">' + esc(D.items(n)) + (i === APX_BOOK ? ' + ' + esc(D.handbook) : '') + '</span></a>';
+        '<span class="bk-n">' + esc(D.items(n)) + (i === APX_BOOK ? ' + ' + esc(D.handbook) : '') + (i === PEAK_BOOK ? ' + ' + esc(L(PEAK.short)) : '') + '</span></a>';
     }).join('');
     var legend = '<div class="sh-legend">' +
       '<span class="lg is-before">' + svg('0 0 120 92', MINI.pile(U), 'lg-art') + '<b>' + esc(U.before) + '</b><small>' + esc(U.legendBefore) + '</small></span><i>➜</i>' +
@@ -1070,8 +1145,8 @@
     var U = UI[lang], D = DK[lang], c = CHAPTERS[i];
     var rows = pages.map(function (pg, k) {
       if (pg.kind === 'cover') return '';
-      if (pg.kind === 'apx2' || pg.kind === 'apx3' || (pg.kind === 'item' && (pg.it.cont || pg.it.intro))) return '';
-      var label = pg.kind === 'item' ? L(pg.it.t) : D.handbook;
+      if (pg.kind === 'apx2' || pg.kind === 'apx3' || (pg.kind === 'pk' && pg.k > 0) || (pg.kind === 'item' && (pg.it.cont || pg.it.intro))) return '';
+      var label = pg.kind === 'item' ? L(pg.it.t) : pg.kind === 'pk' ? L(PEAK.title) : D.handbook;
       var no = pg.kind === 'item' ? pg.no : U.appendix;
       return '<li><a href="#/b' + (i + 1) + '/' + (k + 1) + '" data-go="b' + (i + 1) + '/' + (k + 1) + '"><span class="tc-no">' + esc(no) + '</span><span class="tc-t">' + esc(label) + '</span>' +
         (pg.kind === 'item' && pg.it.review ? '<span class="ig-pill">' + esc(U.inReview) + '</span>' : '') + '<span class="tc-p">' + (k + 1) + '</span></a></li>';
@@ -1155,7 +1230,12 @@
           (g[3] ? '<small class="gl-sub">' + esc(L(g[3])) + '</small>' : '') + icon(g[0], 'ig-ic gl-ic') + '<b>' + esc(L(g[1])) + '</b></li>';
       }).join('');
       return h + '<div class="ig-card is-after gl-after">' + svg('0 0 120 92', MINI.check(U), 'ig-mini') + '<div><b>' + esc(U.after) + '</b><p>' + esc(L(it.a)) + '</p></div></div>' +
-        '<p class="gl-head">' + icon('cal', 'ig-ic gl-head-ic') + esc(U.tryStart) + '</p><ol class="gl-tiles">' + tiles + '</ol>';
+        '<p class="gl-head">' + icon('cal', 'ig-ic gl-head-ic') + esc(U.tryStart) + '</p><ol class="gl-tiles">' + tiles + '</ol>' +
+        (it.news ? '<div class="gl-news">' + svg('0 0 120 92', person(36, 88, 0.82, { mood: 'happy', shirt: C.blue }) + robot(70, 14, 0.85) + sparkle(110, 10, 7), 'gl-news-art') +
+          '<div class="gl-news-tx"><span class="gl-news-tag">NEW</span><b>' + esc(L(it.news.t)) + '</b><p>' + esc(L(it.news.d)) + '</p></div>' +
+          '<ol class="gl-news-st">' + it.news.st.map(function (x, k) {
+            return '<li' + (k === 0 ? ' class="is-now"' : '') + '>' + icon(x[0], 'ig-ic gl-st-ic') + '<b>' + esc(L(x[1])) + '</b>' + (k === 0 ? '<small>' + esc(U.nowHere) + '</small>' : '') + '</li>';
+          }).join('<i aria-hidden="true">➜</i>') + '</ol></div>' : '');
     }
     if (it.small) {
       return h + '<div class="it-body is-small"><div class="it-left">' + svg(VB, SCENES[it.scene](U), 'ig-hero') + '</div>' +
@@ -1262,13 +1342,35 @@
       '<div class="ig-check">' + svg('0 0 48 48', okCircle(24, 24, 20), 'ig-check-ic') + '<span>' + esc(L(APX.note)) + '</span></div>';
   }
   function renderApx2() {
-    var U = UI[lang], D = DK[lang];
+    var U = UI[lang], B = APX.branch;
+    var card = function (st, col) {
+      return '<li class="ev-st" style="--b:' + col + '"><span class="ev-n">' + st[0] + '</span>' + icon(st[3], 'ig-ic ev-ic') +
+        '<b>' + esc(L(st[1])) + '</b><span class="ev-who">' + svg('0 0 48 48', face(24, 26, 20, col), 'ev-face') + esc(L(st[2])) + '</span></li>';
+    };
+    var lane = function (ln, steps) {
+      return '<div class="ev-lane" style="--b:' + ln.col + ';--n:' + steps.length + '"><h3>' + esc(L(ln.l)) + '</h3><ol>' +
+        steps.map(function (st) { return card(st, ln.col); }).join('<i class="ev-arr" aria-hidden="true">➜</i>') + '</ol></div>';
+    };
+    var L3 = APX.lanes[2], s3 = L3.steps;
+    var pre = s3.filter(function (st) { return +st[0] <= 12; }), post = s3.filter(function (st) { return +st[0] >= 13; });
+    var mini = function (st) {
+      return '<span class="ev-mini"><span class="ev-n">' + st[0] + '</span>' + icon(st[3], 'ig-ic ev-mic') + '<b>' + esc(L(st[1])) + '</b><small>' + esc(L(st[2])) + '</small></span>';
+    };
+    var arr = '<i class="ev-arr" aria-hidden="true">➜</i>';
+    var last = post.filter(function (st) { return st[0] === '15'; })[0];
+    var fork = '<div class="ev-fork"><div class="ev-q">' + svg('0 0 48 48', face(24, 26, 20, C.navy), 'ev-qface') + '<b>' + esc(L(B.q)) + '</b><small>' + esc(B.by) + '</small></div>' +
+      '<div class="ev-cases">' +
+      '<div class="ev-case is-1"><span class="ev-ck">Case ①<small>' + esc(L(B.c1)) + '</small></span><div class="ev-path">' +
+        post.map(mini).join(arr) + '</div></div>' +
+      '<div class="ev-case is-2"><span class="ev-ck">Case ②<small>' + esc(L(B.c2)) + '</small></span><div class="ev-path">' +
+        '<span class="ev-mini is-hold">' + icon('hold', 'ig-ic ev-mic') + '<b>' + esc(L(B.hold)) + '</b><small>' + esc(L(B.holdWho)) + '</small></span>' + arr +
+        '<span class="ev-skip"><s>⑬ ⑭</s>' + esc(L(B.skip)) + '</span>' + arr + mini(last) +
+        '</div><p class="ev-nosell">' + icon('ng', 'ig-ic ev-ng') + esc(L(B.noSell)) + '</p></div>' +
+      '</div></div>';
     return '<header class="ig-item-head"><span class="ig-no is-apx">' + esc(U.appendix) + '</span><h2>' + esc(L(APX.title)) + '</h2></header>' +
-      '<div class="ig-lanes">' + APX.lanes.map(function (ln) {
-        return '<div class="ig-lane" style="--b:' + ln.col + '"><h3>' + esc(L(ln.l)) + '</h3><ol>' + ln.steps.map(function (s) {
-          return '<li><span class="ig-step-n">' + s[0] + '</span><b>' + esc(L(s[1])) + '</b><span class="ig-who">' + esc(L(s[2])) + '</span></li>';
-        }).join('') + '</ol></div>';
-      }).join('') + '</div>';
+      '<div class="ev-top">' + lane(APX.lanes[0], APX.lanes[0].steps) + lane(APX.lanes[1], APX.lanes[1].steps) + '</div>' +
+      '<div class="ev-bottom" style="--b:' + L3.col + '"><h3>' + esc(L(L3.l)) + '</h3><div class="ev-row"><ol class="ev-pre">' +
+        pre.map(function (st) { return card(st, L3.col); }).join('<i class="ev-arr" aria-hidden="true">➜</i>') + '</ol>' + arr + fork + '</div></div>';
   }
 
   function renderApx3() {
@@ -1277,6 +1379,20 @@
       '<div class="ig-checks">' + APX.checks.map(function (r) {
         return '<div><span class="ig-step-n">' + r[0] + '</span><b>' + esc(L(r[1])) + '</b><span>' + esc(L(r[2])) + '</span><em>' + esc(L(r[3])) + '</em></div>';
       }).join('') + '</div><p class="ig-forms">' + esc(L(APX.forms)) + '</p>';
+  }
+
+  // 付録（PEAK 機能表）：改善ごとに機能のタイルを並べる
+  function renderPeak(k) {
+    var U = UI[lang], n = PEAK.pages.length;
+    return '<header class="ig-item-head"><span class="ig-no is-apx">' + esc(U.appendix) + '</span><h2>' + esc(L(PEAK.title)) + (n > 1 ? ' <small class="pk-pg">' + (k + 1) + ' / ' + n + '</small>' : '') + '</h2></header>' +
+      '<div class="pk-groups">' + PEAK.pages[k].map(function (g) {
+        return '<section class="pk-g"><div class="pk-gh">' + (g.mk ? '<span class="pk-mk">' + g.mk + '</span>' : '') + icon(g.ic, 'ig-ic pk-gic') + '<b>' + esc(L(g.t)) + '</b></div>' +
+          '<ul class="pk-tiles">' + g.f.map(function (f) {
+            return '<li>' + (f[4] ? '<span class="pk-also">' + f[4] + '</span>' : '') + icon(f[0], 'ig-ic pk-ic') + '<div><b>' + esc(L(f[1])) + '</b><span>' + esc(L(f[2])) + '</span>' +
+              '<em class="pk-plan' + (f[3] === 'ALL' || f[3] === 'BASIC' ? ' is-all' : f[3] === 'NA' ? ' is-na' : '') + '">' + esc(L(PK[f[3]])) + '</em></div></li>';
+          }).join('') + '</ul></section>';
+      }).join('') + '</div>' +
+      '<p class="pk-note">' + svg('0 0 48 48', okCircle(24, 24, 18), 'pk-note-ic') + '<span>' + esc(L(PEAK.note)) + (k === n - 1 ? '<br><small>' + esc(L(PEAK.more)) + '</small>' : '') + '</span></p>';
   }
 
   function render(lng, m) {
@@ -1288,8 +1404,8 @@
       var pages = pagesOf(i), n = pages.length;
       pages.forEach(function (pg, k) {
         if (pg.kind === 'cover') { h += renderBookCover(i, pages); return; }
-        var body = pg.kind === 'item' ? renderItem(pg.it, pg.no) : pg.kind === 'apx1' ? renderApx1() : pg.kind === 'apx2' ? renderApx2() : renderApx3();
-        h += slide(i + 1, k + 1, 'sl-item' + (pg.kind === 'item' ? '' : ' sl-apx'), colVars(i) + (pg.kind === 'item' ? (pg.it.b || pg.it.small ? '' : ';--z0:1.15') : ';--z0:' + (pg.kind === 'apx1' ? 1.15 : pg.kind === 'apx3' ? 1.1 : 1.3)), body, foot(i, k + 1, n));
+        var body = pg.kind === 'item' ? renderItem(pg.it, pg.no) : pg.kind === 'pk' ? renderPeak(pg.k) : pg.kind === 'apx1' ? renderApx1() : pg.kind === 'apx2' ? renderApx2() : renderApx3();
+        h += slide(i + 1, k + 1, 'sl-item' + (pg.kind === 'item' ? '' : ' sl-apx'), colVars(i) + (pg.kind === 'item' ? (pg.it.b || pg.it.small ? '' : ';--z0:1.15') : ';--z0:' + (pg.kind === 'apx1' ? 1.15 : pg.kind === 'apx3' ? 1.1 : pg.kind === 'pk' ? 1.15 : 1.22)), body, foot(i, k + 1, n));
       });
     });
     h += '</div></div>' +
