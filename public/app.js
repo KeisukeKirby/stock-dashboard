@@ -1877,6 +1877,20 @@ if (RETURNS_ON) {
     return !(a && a.matches && a.matches("input:not([type=search]), textarea")) && !(data && (isDirty() || ordDirty())) && !($("ordDlg").open || $("recvDlg").open);
   };
 
+  // 拠点の列を並べ替える (数量・Return・月販の配列と、Office・イベントなどの列番号も一緒に動かす)
+  function moveStore(d, name, to) {
+    const from = d.stores.indexOf(name);
+    if (from < 0 || from === to) return;
+    const mv = (arr) => { if (!Array.isArray(arr) || arr.length < d.stores.length) return; const [x] = arr.splice(from, 1); arr.splice(to, 0, x); };
+    const idx = (i) => (i === from ? to : from < to ? (i > from && i <= to ? i - 1 : i) : (i >= to && i < from ? i + 1 : i));
+    d.items.forEach((it) => { mv(it.qty); mv(it.ret); mv(it.rate); });
+    if (d.totalRow) { mv(d.totalRow.qty); mv(d.totalRow.ret); }
+    mv(d.stores);
+    if (d.officeIndex != null) d.officeIndex = idx(d.officeIndex);
+    if (d.eventIndex != null) d.eventIndex = idx(d.eventIndex);
+    d.nonStore = (d.nonStore || []).map(idx);
+  }
+
   /* ---------- load ---------- */
   // 毎回かならず最新の在庫データを読む (ブラウザや配信側に古いデータが残っていても使わない)
   // Zort: 前回の Zort の数 (このブラウザに保存) ですぐ表示し、最新の Zort の数が届いたら表示し直す
@@ -1886,6 +1900,7 @@ if (RETURNS_ON) {
     const d = JSON.parse(JSON.stringify(base));
     data = d;
     if (z) applyZort(d, z);
+    moveStore(d, "Paradise Park", d.officeIndex != null ? d.officeIndex + 1 : 0); // 並び: Office → Paradise Park → K Village → …
     // 靴下は Socks シートに出すので除き、モデル名のアルファベット順に並べる (同じモデルの中は元の並び: カラー・サイズ順)
     d.items = d.items.filter((it) => !window.IS_SOCKS(it.model));
     // Outstanding PO をモデル・カラー・サイズで行に当てる (在庫一覧にない モデル・カラー・サイズ は行を追加する)
