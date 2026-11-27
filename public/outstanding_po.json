@@ -1,5 +1,5 @@
 {
- "source": "ETD_2027_prebook_order_Thailand_20261111.xlsx",
+ "source": "ETD_2027_prebook_order_Thailand_20261111_v2.xlsx",
  "total": 3636,
  "items": [
   {
@@ -12,7 +12,8 @@
      "po": "CN27002C",
      "style": "27M4307",
      "etd": "2026-11-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     }
    ]
   },
@@ -26,7 +27,8 @@
      "po": "CN27002C",
      "style": "27M4307",
      "etd": "2026-11-30",
-     "qty": 18
+     "qty": 18,
+     "arrival": "End of December"
     }
    ]
   },
@@ -40,7 +42,8 @@
      "po": "CN27002C",
      "style": "27M4307",
      "etd": "2026-11-30",
-     "qty": 24
+     "qty": 24,
+     "arrival": "End of December"
     }
    ]
   },
@@ -54,7 +57,8 @@
      "po": "CN27002C",
      "style": "27M4307",
      "etd": "2026-11-30",
-     "qty": 24
+     "qty": 24,
+     "arrival": "End of December"
     }
    ]
   },
@@ -68,7 +72,8 @@
      "po": "CN27002C",
      "style": "27M4307",
      "etd": "2026-11-30",
-     "qty": 21
+     "qty": 21,
+     "arrival": "End of December"
     }
    ]
   },
@@ -82,7 +87,8 @@
      "po": "CN27002C",
      "style": "27M4307",
      "etd": "2026-11-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     }
    ]
   },
@@ -96,7 +102,8 @@
      "po": "CN27002C",
      "style": "27M4307",
      "etd": "2026-11-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     }
    ]
   },
@@ -110,7 +117,8 @@
      "po": "CN27002C",
      "style": "27M0603",
      "etd": "2026-11-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "End of December"
     }
    ]
   },
@@ -124,7 +132,8 @@
      "po": "CN27002C",
      "style": "27M0603",
      "etd": "2026-11-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     }
    ]
   },
@@ -138,7 +147,8 @@
      "po": "CN27002C",
      "style": "27M0603",
      "etd": "2026-11-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     }
    ]
   },
@@ -152,7 +162,8 @@
      "po": "CN27002C",
      "style": "27M0603",
      "etd": "2026-11-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     }
    ]
   },
@@ -166,7 +177,8 @@
      "po": "CN27002C",
      "style": "27M0603",
      "etd": "2026-11-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     }
    ]
   },
@@ -180,7 +192,8 @@
      "po": "CN27002C",
      "style": "27M0603",
      "etd": "2026-11-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "End of December"
     }
    ]
   },
@@ -194,7 +207,8 @@
      "po": "CN27013C",
      "style": "25M0603",
      "etd": "2027-03-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "TBD"
     }
    ]
   },
@@ -208,13 +222,15 @@
      "po": "CN27002C",
      "style": "25M0603",
      "etd": "2026-11-30",
-     "qty": 12
+     "qty": 12,
+     "arrival": "End of December"
     },
     {
      "po": "CN27013C",
      "style": "25M0603",
      "etd": "2027-03-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "TBD"
     }
    ]
   },
@@ -228,13 +244,15 @@
      "po": "CN27002C",
      "style": "25M0603",
      "etd": "2026-11-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     },
     {
      "po": "CN27013C",
      "style": "25M0603",
      "etd": "2027-03-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "TBD"
     }
    ]
   },
@@ -248,13 +266,15 @@
      "po": "CN27002C",
      "style": "25M0603",
      "etd": "2026-11-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     },
     {
      "po": "CN27013C",
      "style": "25M0603",
      "etd": "2027-03-30",
-     "qty": 24
+     "qty": 24,
+     "arrival": "TBD"
     }
    ]
   },
@@ -268,13 +288,15 @@
      "po": "CN27002C",
      "style": "25M0603",
      "etd": "2026-11-30",
-     "qty": 12
+     "qty": 12,
+     "arrival": "End of December"
     },
     {
      "po": "CN27013C",
      "style": "25M0603",
      "etd": "2027-03-30",
-     "qty": 21
+     "qty": 21,
+     "arrival": "TBD"
     }
    ]
   },
@@ -288,13 +310,15 @@
      "po": "CN27002C",
      "style": "25M0603",
      "etd": "2026-11-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "End of December"
     },
     {
      "po": "CN27013C",
      "style": "25M0603",
      "etd": "2027-03-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "TBD"
     }
    ]
   },
@@ -308,7 +332,8 @@
      "po": "CN27013C",
      "style": "25M0603",
      "etd": "2027-03-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "TBD"
     }
    ]
   },
@@ -322,7 +347,8 @@
      "po": "CN27002C",
      "style": "25W0603",
      "etd": "2026-11-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     }
    ]
   },
@@ -336,7 +362,8 @@
      "po": "CN27002C",
      "style": "25W0603",
      "etd": "2026-11-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     }
    ]
   },
@@ -350,7 +377,8 @@
      "po": "CN27002C",
      "style": "25W0603",
      "etd": "2026-11-30",
-     "qty": 18
+     "qty": 18,
+     "arrival": "End of December"
     }
    ]
   },
@@ -364,7 +392,8 @@
      "po": "CN27002C",
      "style": "25W0603",
      "etd": "2026-11-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     }
    ]
   },
@@ -378,7 +407,8 @@
      "po": "CN27002C",
      "style": "25W0603",
      "etd": "2026-11-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     }
    ]
   },
@@ -392,7 +422,8 @@
      "po": "CN27002C",
      "style": "25W0603",
      "etd": "2026-11-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "End of December"
     }
    ]
   },
@@ -406,7 +437,8 @@
      "po": "CN27002C",
      "style": "27M3204",
      "etd": "2026-11-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "End of December"
     }
    ]
   },
@@ -420,7 +452,8 @@
      "po": "CN27002C",
      "style": "27M3204",
      "etd": "2026-11-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     }
    ]
   },
@@ -434,7 +467,8 @@
      "po": "CN27002C",
      "style": "27M3204",
      "etd": "2026-11-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     }
    ]
   },
@@ -448,7 +482,8 @@
      "po": "CN27002C",
      "style": "27M3204",
      "etd": "2026-11-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     }
    ]
   },
@@ -462,7 +497,8 @@
      "po": "CN27002C",
      "style": "27M3204",
      "etd": "2026-11-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     }
    ]
   },
@@ -476,7 +512,8 @@
      "po": "CN27002C",
      "style": "27M3204",
      "etd": "2026-11-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "End of December"
     }
    ]
   },
@@ -490,7 +527,8 @@
      "po": "CN27002C",
      "style": "27W3205",
      "etd": "2026-11-30",
-     "qty": 12
+     "qty": 12,
+     "arrival": "End of December"
     }
    ]
   },
@@ -504,7 +542,8 @@
      "po": "CN27002C",
      "style": "27W3205",
      "etd": "2026-11-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     }
    ]
   },
@@ -518,7 +557,8 @@
      "po": "CN27002C",
      "style": "27W3205",
      "etd": "2026-11-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     }
    ]
   },
@@ -532,7 +572,8 @@
      "po": "CN27002C",
      "style": "27W3205",
      "etd": "2026-11-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     }
    ]
   },
@@ -546,7 +587,8 @@
      "po": "CN27002C",
      "style": "27W3205",
      "etd": "2026-11-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     }
    ]
   },
@@ -560,7 +602,8 @@
      "po": "CN27013C",
      "style": "27M3202",
      "etd": "2027-03-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "TBD"
     }
    ]
   },
@@ -574,7 +617,8 @@
      "po": "CN27013C",
      "style": "27M3202",
      "etd": "2027-03-30",
-     "qty": 12
+     "qty": 12,
+     "arrival": "TBD"
     }
    ]
   },
@@ -588,7 +632,8 @@
      "po": "CN27013C",
      "style": "27M3202",
      "etd": "2027-03-30",
-     "qty": 21
+     "qty": 21,
+     "arrival": "TBD"
     }
    ]
   },
@@ -602,7 +647,8 @@
      "po": "CN27013C",
      "style": "27M3202",
      "etd": "2027-03-30",
-     "qty": 27
+     "qty": 27,
+     "arrival": "TBD"
     }
    ]
   },
@@ -616,7 +662,8 @@
      "po": "CN27013C",
      "style": "27M3202",
      "etd": "2027-03-30",
-     "qty": 21
+     "qty": 21,
+     "arrival": "TBD"
     }
    ]
   },
@@ -630,7 +677,8 @@
      "po": "CN27013C",
      "style": "27M3202",
      "etd": "2027-03-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "TBD"
     }
    ]
   },
@@ -644,7 +692,8 @@
      "po": "CN27013C",
      "style": "27M3202",
      "etd": "2027-03-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "TBD"
     }
    ]
   },
@@ -658,7 +707,8 @@
      "po": "CN27013C",
      "style": "27W3202",
      "etd": "2027-03-30",
-     "qty": 12
+     "qty": 12,
+     "arrival": "TBD"
     }
    ]
   },
@@ -672,7 +722,8 @@
      "po": "CN27013C",
      "style": "27W3202",
      "etd": "2027-03-30",
-     "qty": 18
+     "qty": 18,
+     "arrival": "TBD"
     }
    ]
   },
@@ -686,7 +737,8 @@
      "po": "CN27013C",
      "style": "27W3202",
      "etd": "2027-03-30",
-     "qty": 30
+     "qty": 30,
+     "arrival": "TBD"
     }
    ]
   },
@@ -700,7 +752,8 @@
      "po": "CN27013C",
      "style": "27W3202",
      "etd": "2027-03-30",
-     "qty": 33
+     "qty": 33,
+     "arrival": "TBD"
     }
    ]
   },
@@ -714,7 +767,8 @@
      "po": "CN27013C",
      "style": "27W3202",
      "etd": "2027-03-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "TBD"
     }
    ]
   },
@@ -728,7 +782,8 @@
      "po": "CN27013C",
      "style": "26M5001",
      "etd": "2027-03-30",
-     "qty": 12
+     "qty": 12,
+     "arrival": "TBD"
     }
    ]
   },
@@ -742,7 +797,8 @@
      "po": "CN27013C",
      "style": "26M5001",
      "etd": "2027-03-30",
-     "qty": 24
+     "qty": 24,
+     "arrival": "TBD"
     }
    ]
   },
@@ -756,7 +812,8 @@
      "po": "CN27013C",
      "style": "26M5001",
      "etd": "2027-03-30",
-     "qty": 27
+     "qty": 27,
+     "arrival": "TBD"
     }
    ]
   },
@@ -770,7 +827,8 @@
      "po": "CN27013C",
      "style": "26M5001",
      "etd": "2027-03-30",
-     "qty": 33
+     "qty": 33,
+     "arrival": "TBD"
     }
    ]
   },
@@ -784,7 +842,8 @@
      "po": "CN27013C",
      "style": "26M5001",
      "etd": "2027-03-30",
-     "qty": 18
+     "qty": 18,
+     "arrival": "TBD"
     }
    ]
   },
@@ -798,7 +857,8 @@
      "po": "CN27013C",
      "style": "26M5001",
      "etd": "2027-03-30",
-     "qty": 12
+     "qty": 12,
+     "arrival": "TBD"
     }
    ]
   },
@@ -812,7 +872,8 @@
      "po": "CN27013C",
      "style": "26M5001",
      "etd": "2027-03-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "TBD"
     }
    ]
   },
@@ -826,7 +887,8 @@
      "po": "CN27013C",
      "style": "26W5001",
      "etd": "2027-03-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "TBD"
     }
    ]
   },
@@ -840,7 +902,8 @@
      "po": "CN27013C",
      "style": "26W5001",
      "etd": "2027-03-30",
-     "qty": 12
+     "qty": 12,
+     "arrival": "TBD"
     }
    ]
   },
@@ -854,7 +917,8 @@
      "po": "CN27013C",
      "style": "26W5001",
      "etd": "2027-03-30",
-     "qty": 33
+     "qty": 33,
+     "arrival": "TBD"
     }
    ]
   },
@@ -868,7 +932,8 @@
      "po": "CN27013C",
      "style": "26W5001",
      "etd": "2027-03-30",
-     "qty": 24
+     "qty": 24,
+     "arrival": "TBD"
     }
    ]
   },
@@ -882,7 +947,8 @@
      "po": "CN27013C",
      "style": "26W5001",
      "etd": "2027-03-30",
-     "qty": 24
+     "qty": 24,
+     "arrival": "TBD"
     }
    ]
   },
@@ -896,7 +962,8 @@
      "po": "CN27013C",
      "style": "26W5001",
      "etd": "2027-03-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "TBD"
     }
    ]
   },
@@ -910,7 +977,8 @@
      "po": "CN27002C",
      "style": "27M9402",
      "etd": "2026-12-10",
-     "qty": 12
+     "qty": 12,
+     "arrival": "End of December"
     }
    ]
   },
@@ -924,7 +992,8 @@
      "po": "CN27002C",
      "style": "27M9402",
      "etd": "2026-12-10",
-     "qty": 18
+     "qty": 18,
+     "arrival": "End of December"
     }
    ]
   },
@@ -938,7 +1007,8 @@
      "po": "CN27002C",
      "style": "27M9402",
      "etd": "2026-12-10",
-     "qty": 18
+     "qty": 18,
+     "arrival": "End of December"
     }
    ]
   },
@@ -952,7 +1022,8 @@
      "po": "CN27002C",
      "style": "27M9402",
      "etd": "2026-12-10",
-     "qty": 12
+     "qty": 12,
+     "arrival": "End of December"
     }
    ]
   },
@@ -966,7 +1037,8 @@
      "po": "CN27002C",
      "style": "27W9402",
      "etd": "2026-12-10",
-     "qty": 12
+     "qty": 12,
+     "arrival": "End of December"
     }
    ]
   },
@@ -980,7 +1052,8 @@
      "po": "CN27002C",
      "style": "27W9402",
      "etd": "2026-12-10",
-     "qty": 24
+     "qty": 24,
+     "arrival": "End of December"
     }
    ]
   },
@@ -994,7 +1067,8 @@
      "po": "CN27002C",
      "style": "27W9402",
      "etd": "2026-12-10",
-     "qty": 33
+     "qty": 33,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1008,7 +1082,8 @@
      "po": "CN27002C",
      "style": "27W9402",
      "etd": "2026-12-10",
-     "qty": 30
+     "qty": 30,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1022,7 +1097,8 @@
      "po": "CN27002C",
      "style": "27W9402",
      "etd": "2026-12-10",
-     "qty": 21
+     "qty": 21,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1036,7 +1112,8 @@
      "po": "CN27002C",
      "style": "27W9402",
      "etd": "2026-12-10",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1050,7 +1127,8 @@
      "po": "CN27002C",
      "style": "27W9402",
      "etd": "2026-12-10",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1064,7 +1142,8 @@
      "po": "CN27002C",
      "style": "27M9401",
      "etd": "2026-12-10",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1078,7 +1157,8 @@
      "po": "CN27002C",
      "style": "27M9401",
      "etd": "2026-12-10",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1092,7 +1172,8 @@
      "po": "CN27002C",
      "style": "27M9401",
      "etd": "2026-12-10",
-     "qty": 24
+     "qty": 24,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1106,7 +1187,8 @@
      "po": "CN27002C",
      "style": "27M9401",
      "etd": "2026-12-10",
-     "qty": 27
+     "qty": 27,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1120,7 +1202,8 @@
      "po": "CN27002C",
      "style": "27M9401",
      "etd": "2026-12-10",
-     "qty": 18
+     "qty": 18,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1134,7 +1217,8 @@
      "po": "CN27002C",
      "style": "27M9401",
      "etd": "2026-12-10",
-     "qty": 12
+     "qty": 12,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1148,7 +1232,8 @@
      "po": "CN27002C",
      "style": "27M9401",
      "etd": "2026-12-10",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1162,7 +1247,8 @@
      "po": "CN27002C",
      "style": "27M9401",
      "etd": "2026-12-10",
-     "qty": 6
+     "qty": 6,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1176,7 +1262,8 @@
      "po": "CN27002C",
      "style": "27W9401",
      "etd": "2026-12-10",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1190,7 +1277,8 @@
      "po": "CN27002C",
      "style": "27W9401",
      "etd": "2026-12-10",
-     "qty": 18
+     "qty": 18,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1204,7 +1292,8 @@
      "po": "CN27002C",
      "style": "27W9401",
      "etd": "2026-12-10",
-     "qty": 27
+     "qty": 27,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1218,7 +1307,8 @@
      "po": "CN27002C",
      "style": "27W9401",
      "etd": "2026-12-10",
-     "qty": 24
+     "qty": 24,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1232,7 +1322,8 @@
      "po": "CN27002C",
      "style": "27W9401",
      "etd": "2026-12-10",
-     "qty": 21
+     "qty": 21,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1246,7 +1337,8 @@
      "po": "CN27002C",
      "style": "27W9401",
      "etd": "2026-12-10",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1260,7 +1352,8 @@
      "po": "CN27002C",
      "style": "27W9401",
      "etd": "2026-12-10",
-     "qty": 6
+     "qty": 6,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1274,7 +1367,8 @@
      "po": "CN27002C",
      "style": "27W9407",
      "etd": "2026-12-10",
-     "qty": 12
+     "qty": 12,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1288,7 +1382,8 @@
      "po": "CN27002C",
      "style": "27W9407",
      "etd": "2026-12-10",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1302,7 +1397,8 @@
      "po": "CN27002C",
      "style": "27W9407",
      "etd": "2026-12-10",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1316,7 +1412,8 @@
      "po": "CN27002C",
      "style": "27W9407",
      "etd": "2026-12-10",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1330,7 +1427,8 @@
      "po": "CN27002C",
      "style": "27W9407",
      "etd": "2026-12-10",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     }
    ]
   },
@@ -1344,7 +1442,8 @@
      "po": "CN27013Y",
      "style": "27M6907",
      "etd": "2027-03-15",
-     "qty": 9
+     "qty": 9,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1358,7 +1457,8 @@
      "po": "CN27013Y",
      "style": "27M6907",
      "etd": "2027-03-15",
-     "qty": 15
+     "qty": 15,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1372,7 +1472,8 @@
      "po": "CN27013Y",
      "style": "27M6907",
      "etd": "2027-03-15",
-     "qty": 18
+     "qty": 18,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1386,7 +1487,8 @@
      "po": "CN27013Y",
      "style": "27M6907",
      "etd": "2027-03-15",
-     "qty": 24
+     "qty": 24,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1400,7 +1502,8 @@
      "po": "CN27013Y",
      "style": "27M6907",
      "etd": "2027-03-15",
-     "qty": 21
+     "qty": 21,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1414,7 +1517,8 @@
      "po": "CN27013Y",
      "style": "27M6907",
      "etd": "2027-03-15",
-     "qty": 12
+     "qty": 12,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1428,7 +1532,8 @@
      "po": "CN27013Y",
      "style": "27M6907",
      "etd": "2027-03-15",
-     "qty": 9
+     "qty": 9,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1442,7 +1547,8 @@
      "po": "CN27002E",
      "style": "27M7003",
      "etd": "2026-11-15",
-     "qty": 10
+     "qty": 10,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1456,7 +1562,8 @@
      "po": "CN27002E",
      "style": "27M7003",
      "etd": "2026-11-15",
-     "qty": 18
+     "qty": 18,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1470,7 +1577,8 @@
      "po": "CN27002E",
      "style": "27M7003",
      "etd": "2026-11-15",
-     "qty": 27
+     "qty": 27,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1484,7 +1592,8 @@
      "po": "CN27002E",
      "style": "27M7003",
      "etd": "2026-11-15",
-     "qty": 30
+     "qty": 30,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1498,7 +1607,8 @@
      "po": "CN27002E",
      "style": "27M7003",
      "etd": "2026-11-15",
-     "qty": 26
+     "qty": 26,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1512,7 +1622,8 @@
      "po": "CN27002E",
      "style": "27M7003",
      "etd": "2026-11-15",
-     "qty": 18
+     "qty": 18,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1526,7 +1637,8 @@
      "po": "CN27002E",
      "style": "27M7003",
      "etd": "2026-11-15",
-     "qty": 9
+     "qty": 9,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1540,7 +1652,8 @@
      "po": "CN27002E",
      "style": "27M7003",
      "etd": "2026-11-15",
-     "qty": 6
+     "qty": 6,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1554,7 +1667,8 @@
      "po": "CN27002E",
      "style": "27M7004",
      "etd": "2026-11-15",
-     "qty": 12
+     "qty": 12,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1568,7 +1682,8 @@
      "po": "CN27002E",
      "style": "27M7004",
      "etd": "2026-11-15",
-     "qty": 21
+     "qty": 21,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1582,7 +1697,8 @@
      "po": "CN27002E",
      "style": "27M7004",
      "etd": "2026-11-15",
-     "qty": 30
+     "qty": 30,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1596,7 +1712,8 @@
      "po": "CN27002E",
      "style": "27M7004",
      "etd": "2026-11-15",
-     "qty": 33
+     "qty": 33,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1610,7 +1727,8 @@
      "po": "CN27002E",
      "style": "27M7004",
      "etd": "2026-11-15",
-     "qty": 27
+     "qty": 27,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1624,7 +1742,8 @@
      "po": "CN27002E",
      "style": "27M7004",
      "etd": "2026-11-15",
-     "qty": 18
+     "qty": 18,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1638,7 +1757,8 @@
      "po": "CN27002E",
      "style": "27M7004",
      "etd": "2026-11-15",
-     "qty": 12
+     "qty": 12,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1652,7 +1772,8 @@
      "po": "CN27002E",
      "style": "27M7004",
      "etd": "2026-11-15",
-     "qty": 9
+     "qty": 9,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1666,7 +1787,8 @@
      "po": "CN27002E",
      "style": "27M7004",
      "etd": "2026-11-15",
-     "qty": 6
+     "qty": 6,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1680,7 +1802,8 @@
      "po": "CN27002E",
      "style": "26M7001",
      "etd": "2026-11-15",
-     "qty": 9
+     "qty": 9,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1694,7 +1817,8 @@
      "po": "CN27002E",
      "style": "26M7001",
      "etd": "2026-11-15",
-     "qty": 12
+     "qty": 12,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1708,7 +1832,8 @@
      "po": "CN27002E",
      "style": "26M7001",
      "etd": "2026-11-15",
-     "qty": 15
+     "qty": 15,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1722,7 +1847,8 @@
      "po": "CN27002E",
      "style": "26M7001",
      "etd": "2026-11-15",
-     "qty": 21
+     "qty": 21,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1736,7 +1862,8 @@
      "po": "CN27002E",
      "style": "26M7001",
      "etd": "2026-11-15",
-     "qty": 30
+     "qty": 30,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1750,7 +1877,8 @@
      "po": "CN27002E",
      "style": "26M7001",
      "etd": "2026-11-15",
-     "qty": 30
+     "qty": 30,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1764,7 +1892,8 @@
      "po": "CN27002E",
      "style": "26M7001",
      "etd": "2026-11-15",
-     "qty": 18
+     "qty": 18,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1778,7 +1907,8 @@
      "po": "CN27002E",
      "style": "26M7001",
      "etd": "2026-11-15",
-     "qty": 9
+     "qty": 9,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1792,7 +1922,8 @@
      "po": "CN27002E",
      "style": "26M7001",
      "etd": "2026-11-15",
-     "qty": 6
+     "qty": 6,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1806,7 +1937,8 @@
      "po": "CN27002E",
      "style": "26M7001",
      "etd": "2026-11-15",
-     "qty": 6
+     "qty": 6,
+     "arrival": "Late January"
     }
    ]
   },
@@ -1820,7 +1952,8 @@
      "po": "CN27013E",
      "style": "26W7002",
      "etd": "2027-03-15",
-     "qty": 6
+     "qty": 6,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1834,7 +1967,8 @@
      "po": "CN27013E",
      "style": "26W7002",
      "etd": "2027-03-15",
-     "qty": 9
+     "qty": 9,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1848,7 +1982,8 @@
      "po": "CN27013E",
      "style": "26W7002",
      "etd": "2027-03-15",
-     "qty": 15
+     "qty": 15,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1862,7 +1997,8 @@
      "po": "CN27013E",
      "style": "26W7002",
      "etd": "2027-03-15",
-     "qty": 18
+     "qty": 18,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1876,7 +2012,8 @@
      "po": "CN27013E",
      "style": "26W7002",
      "etd": "2027-03-15",
-     "qty": 33
+     "qty": 33,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1890,7 +2027,8 @@
      "po": "CN27013E",
      "style": "26W7002",
      "etd": "2027-03-15",
-     "qty": 18
+     "qty": 18,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1904,7 +2042,8 @@
      "po": "CN27013E",
      "style": "26W7002",
      "etd": "2027-03-15",
-     "qty": 9
+     "qty": 9,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1918,13 +2057,15 @@
      "po": "CN27007E",
      "style": "26W7202",
      "etd": "2026-12-15",
-     "qty": 12
+     "qty": 12,
+     "arrival": "Late January"
     },
     {
      "po": "CN27013E",
      "style": "26W7202",
      "etd": "2027-03-15",
-     "qty": 9
+     "qty": 9,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1938,13 +2079,15 @@
      "po": "CN27007E",
      "style": "26W7202",
      "etd": "2026-12-15",
-     "qty": 18
+     "qty": 18,
+     "arrival": "Late January"
     },
     {
      "po": "CN27013E",
      "style": "26W7202",
      "etd": "2027-03-15",
-     "qty": 18
+     "qty": 18,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1958,13 +2101,15 @@
      "po": "CN27007E",
      "style": "26W7202",
      "etd": "2026-12-15",
-     "qty": 24
+     "qty": 24,
+     "arrival": "Late January"
     },
     {
      "po": "CN27013E",
      "style": "26W7202",
      "etd": "2027-03-15",
-     "qty": 30
+     "qty": 30,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1978,13 +2123,15 @@
      "po": "CN27007E",
      "style": "26W7202",
      "etd": "2026-12-15",
-     "qty": 24
+     "qty": 24,
+     "arrival": "Late January"
     },
     {
      "po": "CN27013E",
      "style": "26W7202",
      "etd": "2027-03-15",
-     "qty": 30
+     "qty": 30,
+     "arrival": "TBD"
     }
    ]
   },
@@ -1998,13 +2145,15 @@
      "po": "CN27007E",
      "style": "26W7202",
      "etd": "2026-12-15",
-     "qty": 18
+     "qty": 18,
+     "arrival": "Late January"
     },
     {
      "po": "CN27013E",
      "style": "26W7202",
      "etd": "2027-03-15",
-     "qty": 18
+     "qty": 18,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2018,13 +2167,15 @@
      "po": "CN27007E",
      "style": "26W7202",
      "etd": "2026-12-15",
-     "qty": 12
+     "qty": 12,
+     "arrival": "Late January"
     },
     {
      "po": "CN27013E",
      "style": "26W7202",
      "etd": "2027-03-15",
-     "qty": 9
+     "qty": 9,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2038,7 +2189,8 @@
      "po": "CN27013E",
      "style": "26W7202",
      "etd": "2027-03-15",
-     "qty": 6
+     "qty": 6,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2052,7 +2204,8 @@
      "po": "CN27002C",
      "style": "27W7202",
      "etd": "2026-11-30",
-     "qty": 12
+     "qty": 12,
+     "arrival": "End of December"
     }
    ]
   },
@@ -2066,7 +2219,8 @@
      "po": "CN27002C",
      "style": "27W7202",
      "etd": "2026-11-30",
-     "qty": 21
+     "qty": 21,
+     "arrival": "End of December"
     }
    ]
   },
@@ -2080,7 +2234,8 @@
      "po": "CN27002C",
      "style": "27W7202",
      "etd": "2026-11-30",
-     "qty": 30
+     "qty": 30,
+     "arrival": "End of December"
     }
    ]
   },
@@ -2094,7 +2249,8 @@
      "po": "CN27002C",
      "style": "27W7202",
      "etd": "2026-11-30",
-     "qty": 27
+     "qty": 27,
+     "arrival": "End of December"
     }
    ]
   },
@@ -2108,7 +2264,8 @@
      "po": "CN27002C",
      "style": "27W7202",
      "etd": "2026-11-30",
-     "qty": 18
+     "qty": 18,
+     "arrival": "End of December"
     }
    ]
   },
@@ -2122,7 +2279,8 @@
      "po": "CN27002C",
      "style": "27W7202",
      "etd": "2026-11-30",
-     "qty": 12
+     "qty": 12,
+     "arrival": "End of December"
     }
    ]
   },
@@ -2136,7 +2294,8 @@
      "po": "CN27002C",
      "style": "26W7201",
      "etd": "2026-11-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "End of December"
     }
    ]
   },
@@ -2150,19 +2309,22 @@
      "po": "CN27002C",
      "style": "26W7201",
      "etd": "2026-11-30",
-     "qty": 12
+     "qty": 12,
+     "arrival": "End of December"
     },
     {
      "po": "CN27007E",
      "style": "26W7201",
      "etd": "2026-12-15",
-     "qty": 12
+     "qty": 12,
+     "arrival": "Late January"
     },
     {
      "po": "CN27013E",
      "style": "26W7201",
      "etd": "2027-03-15",
-     "qty": 24
+     "qty": 24,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2176,19 +2338,22 @@
      "po": "CN27002C",
      "style": "26W7201",
      "etd": "2026-11-30",
-     "qty": 30
+     "qty": 30,
+     "arrival": "End of December"
     },
     {
      "po": "CN27007E",
      "style": "26W7201",
      "etd": "2026-12-15",
-     "qty": 42
+     "qty": 42,
+     "arrival": "Late January"
     },
     {
      "po": "CN27013E",
      "style": "26W7201",
      "etd": "2027-03-15",
-     "qty": 24
+     "qty": 24,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2202,19 +2367,22 @@
      "po": "CN27002C",
      "style": "26W7201",
      "etd": "2026-11-30",
-     "qty": 33
+     "qty": 33,
+     "arrival": "End of December"
     },
     {
      "po": "CN27007E",
      "style": "26W7201",
      "etd": "2026-12-15",
-     "qty": 48
+     "qty": 48,
+     "arrival": "Late January"
     },
     {
      "po": "CN27013E",
      "style": "26W7201",
      "etd": "2027-03-15",
-     "qty": 40
+     "qty": 40,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2228,19 +2396,22 @@
      "po": "CN27002C",
      "style": "26W7201",
      "etd": "2026-11-30",
-     "qty": 36
+     "qty": 36,
+     "arrival": "End of December"
     },
     {
      "po": "CN27007E",
      "style": "26W7201",
      "etd": "2026-12-15",
-     "qty": 72
+     "qty": 72,
+     "arrival": "Late January"
     },
     {
      "po": "CN27013E",
      "style": "26W7201",
      "etd": "2027-03-15",
-     "qty": 50
+     "qty": 50,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2254,19 +2425,22 @@
      "po": "CN27002C",
      "style": "26W7201",
      "etd": "2026-11-30",
-     "qty": 36
+     "qty": 36,
+     "arrival": "End of December"
     },
     {
      "po": "CN27007E",
      "style": "26W7201",
      "etd": "2026-12-15",
-     "qty": 48
+     "qty": 48,
+     "arrival": "Late January"
     },
     {
      "po": "CN27013E",
      "style": "26W7201",
      "etd": "2027-03-15",
-     "qty": 24
+     "qty": 24,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2280,19 +2454,22 @@
      "po": "CN27002C",
      "style": "26W7201",
      "etd": "2026-11-30",
-     "qty": 21
+     "qty": 21,
+     "arrival": "End of December"
     },
     {
      "po": "CN27007E",
      "style": "26W7201",
      "etd": "2026-12-15",
-     "qty": 18
+     "qty": 18,
+     "arrival": "Late January"
     },
     {
      "po": "CN27013E",
      "style": "26W7201",
      "etd": "2027-03-15",
-     "qty": 18
+     "qty": 18,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2306,7 +2483,8 @@
      "po": "CN27007E",
      "style": "26W7201",
      "etd": "2026-12-15",
-     "qty": 12
+     "qty": 12,
+     "arrival": "Late January"
     }
    ]
   },
@@ -2320,7 +2498,8 @@
      "po": "CN27002C",
      "style": "26W7201",
      "etd": "2026-11-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "End of December"
     }
    ]
   },
@@ -2334,7 +2513,8 @@
      "po": "CN27013C",
      "style": "27W8701",
      "etd": "2027-03-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2348,19 +2528,22 @@
      "po": "CN27002C",
      "style": "27W8701",
      "etd": "2026-11-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     },
     {
      "po": "CN27007C",
      "style": "27W8701",
      "etd": "2027-01-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "TBD"
     },
     {
      "po": "CN27013C",
      "style": "27W8701",
      "etd": "2027-03-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2374,19 +2557,22 @@
      "po": "CN27002C",
      "style": "27W8701",
      "etd": "2026-11-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     },
     {
      "po": "CN27007C",
      "style": "27W8701",
      "etd": "2027-01-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "TBD"
     },
     {
      "po": "CN27013C",
      "style": "27W8701",
      "etd": "2027-03-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2400,19 +2586,22 @@
      "po": "CN27002C",
      "style": "27W8701",
      "etd": "2026-11-30",
-     "qty": 21
+     "qty": 21,
+     "arrival": "End of December"
     },
     {
      "po": "CN27007C",
      "style": "27W8701",
      "etd": "2027-01-30",
-     "qty": 21
+     "qty": 21,
+     "arrival": "TBD"
     },
     {
      "po": "CN27013C",
      "style": "27W8701",
      "etd": "2027-03-30",
-     "qty": 21
+     "qty": 21,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2426,19 +2615,22 @@
      "po": "CN27002C",
      "style": "27W8701",
      "etd": "2026-11-30",
-     "qty": 21
+     "qty": 21,
+     "arrival": "End of December"
     },
     {
      "po": "CN27007C",
      "style": "27W8701",
      "etd": "2027-01-30",
-     "qty": 21
+     "qty": 21,
+     "arrival": "TBD"
     },
     {
      "po": "CN27013C",
      "style": "27W8701",
      "etd": "2027-03-30",
-     "qty": 21
+     "qty": 21,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2452,19 +2644,22 @@
      "po": "CN27002C",
      "style": "27W8701",
      "etd": "2026-11-30",
-     "qty": 18
+     "qty": 18,
+     "arrival": "End of December"
     },
     {
      "po": "CN27007C",
      "style": "27W8701",
      "etd": "2027-01-30",
-     "qty": 18
+     "qty": 18,
+     "arrival": "TBD"
     },
     {
      "po": "CN27013C",
      "style": "27W8701",
      "etd": "2027-03-30",
-     "qty": 18
+     "qty": 18,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2478,19 +2673,22 @@
      "po": "CN27002C",
      "style": "27W8701",
      "etd": "2026-11-30",
-     "qty": 12
+     "qty": 12,
+     "arrival": "End of December"
     },
     {
      "po": "CN27007C",
      "style": "27W8701",
      "etd": "2027-01-30",
-     "qty": 12
+     "qty": 12,
+     "arrival": "TBD"
     },
     {
      "po": "CN27013C",
      "style": "27W8701",
      "etd": "2027-03-30",
-     "qty": 12
+     "qty": 12,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2504,19 +2702,22 @@
      "po": "CN27002C",
      "style": "27W8701",
      "etd": "2026-11-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "End of December"
     },
     {
      "po": "CN27007C",
      "style": "27W8701",
      "etd": "2027-01-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "TBD"
     },
     {
      "po": "CN27013C",
      "style": "27W8701",
      "etd": "2027-03-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2530,13 +2731,15 @@
      "po": "CN27002C",
      "style": "27W8701",
      "etd": "2026-11-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "End of December"
     },
     {
      "po": "CN27007C",
      "style": "27W8701",
      "etd": "2027-01-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2550,7 +2753,8 @@
      "po": "CN27013C",
      "style": "27W8702",
      "etd": "2027-03-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2564,7 +2768,8 @@
      "po": "CN27013C",
      "style": "27W8702",
      "etd": "2027-03-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2578,13 +2783,15 @@
      "po": "CN27002C",
      "style": "27W8702",
      "etd": "2026-11-30",
-     "qty": 12
+     "qty": 12,
+     "arrival": "End of December"
     },
     {
      "po": "CN27013C",
      "style": "27W8702",
      "etd": "2027-03-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2598,13 +2805,15 @@
      "po": "CN27002C",
      "style": "27W8702",
      "etd": "2026-11-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     },
     {
      "po": "CN27013C",
      "style": "27W8702",
      "etd": "2027-03-30",
-     "qty": 21
+     "qty": 21,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2618,13 +2827,15 @@
      "po": "CN27002C",
      "style": "27W8702",
      "etd": "2026-11-30",
-     "qty": 15
+     "qty": 15,
+     "arrival": "End of December"
     },
     {
      "po": "CN27013C",
      "style": "27W8702",
      "etd": "2027-03-30",
-     "qty": 21
+     "qty": 21,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2638,13 +2849,15 @@
      "po": "CN27002C",
      "style": "27W8702",
      "etd": "2026-11-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     },
     {
      "po": "CN27013C",
      "style": "27W8702",
      "etd": "2027-03-30",
-     "qty": 18
+     "qty": 18,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2658,13 +2871,15 @@
      "po": "CN27002C",
      "style": "27W8702",
      "etd": "2026-11-30",
-     "qty": 9
+     "qty": 9,
+     "arrival": "End of December"
     },
     {
      "po": "CN27013C",
      "style": "27W8702",
      "etd": "2027-03-30",
-     "qty": 12
+     "qty": 12,
+     "arrival": "TBD"
     }
    ]
   },
@@ -2678,7 +2893,8 @@
      "po": "CN27013C",
      "style": "27W8702",
      "etd": "2027-03-30",
-     "qty": 6
+     "qty": 6,
+     "arrival": "TBD"
     }
    ]
   }

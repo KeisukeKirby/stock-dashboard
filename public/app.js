@@ -704,7 +704,7 @@
     { k: "imp", h: "Import Total" },
     { k: "s2023", grp: "Sales", h: "2023" }, { k: "s2024", grp: "Sales", h: "2024" }, { k: "s2025", grp: "Sales", h: "2025" },
     { k: "s2026", grp: "Sales", h: "2026", title: "info.s2026" },
-    { k: "st", h: "Sales Total", title: "info.st" }, { k: "bal", h: "Balance", title: "info.bal" }, { k: "oi", h: "Order Import" },
+    { k: "st", h: "Sales Total", title: "info.st" }, { k: "bal", h: "Balance", title: "info.bal" }, { k: "oi", h: "Order Import", title: "info.oi" },
     { k: "zt", grp: "Size", h: "Sales Total", title: "info.zt" }, { k: "zp", grp: "Size", h: "%", title: "info.zp" },
   ];
   const infoOn = () => !!OS;
@@ -712,15 +712,24 @@
   const osKey = (x) => String(x || "").toLowerCase().replace("balck", "black").replace(/[^a-z0-9]/g, "");
   const infoVal = (it, k) => {
     if (k === "zt" || k === "zp") { const z = it._osz; return z ? z[k === "zt" ? "t" : "p"] : null; }
+    if (k === "oi") return PO ? it._po || (it._os ? 0 : null) : it._os ? it._os[k] : null; // Order Import = ETD のファイルの数量
     return it._os ? it._os[k] : null;
   };
   const fmtInfo = (k, v) => (v == null ? "" : k === "zp" ? (typeof v === "number" ? `${v.toFixed(1)}%` : "") : nf(v));
-  const infoCellsHtml = (it) => infoCols().map((c) => `<td class="c info${c.k === "s2026" ? " info-now" : ""}">${fmtInfo(c.k, infoVal(it, c.k))}</td>`).join("");
+  const infoCellsHtml = (it) => infoCols().map((c) => `<td class="c info${c.k === "s2026" ? " info-now" : ""}"${c.k === "oi" && PO && it._poLines ? ` title="${esc(poTitle(it))}"` : ""}>${fmtInfo(c.k, infoVal(it, c.k))}</td>`).join("");
   const infoTotals = (items) => Object.fromEntries(infoCols().map((c) => [c.k, c.k === "zt" || c.k === "zp" ? null : sum(items.map((it) => infoVal(it, c.k) || 0))]));
   // 列グループの表示順: [オフィスの表の列] Company Total [Order] Office・店舗… Outstanding PO
   const ctIdx = () => groups.length - 1;
-  const qOrder = () => [ctIdx(), ...groups.map((_, i) => i).filter((i) => i !== ctIdx())].filter((g) => colKinds(g).includes("qty")); // 画面の Qty のマスの並び
-  const restG = () => groups.map((_, i) => i).filter((i) => i !== ctIdx());
+  const qOrder = () => [ctIdx(), ...restG()].filter((g) => colKinds(g).includes("qty")); // 画面の Qty のマスの並び
+  // マレーシア (JB・KL) の列は Central LP のすぐ右に置く
+  const restG = () => {
+    const out = groups.map((_, i) => i).filter((i) => i !== ctIdx() && !isMyG(i));
+    if (myIdx() < 0) return out;
+    const lp = data.stores.indexOf("Central LP");
+    const at = lp >= 0 ? out.indexOf(lp) + 1 : data.stores.length;
+    out.splice(at, 0, myIdx(), myIdx() + 1);
+    return out;
+  };
   // segs: 1 行分のマスを表示順に作る。info / g(列グループ) / ord を順番に呼ぶ
   const segs = (info, grp, ord) => [info(), grp(ctIdx()), ord(), ...restG().map(grp)].join("");
 
@@ -772,6 +781,7 @@
     const out = Object.fromEntries((data.counts || []).filter((c) => c.label).map((c) => [data.stores.indexOf(c.store), c.label]));
     // Zort の数を使う拠点には棚卸の日付を出さない (表の上に Zort の読み込み時刻をまとめて出す)
     if (data.zort) data.zort.locs.forEach((l) => delete out[data.stores.indexOf(l)]);
+    if (myIdx() >= 0 && MY.asof) { const a = String(MY.asof).replace(/^\d{4}-(\d\d)-(\d\d)/, (_, m, d) => `${+m}/${+d}`); out[myIdx()] = `MY ${a}`; out[myIdx() + 1] = `MY ${a}`; }
     return out;
   };
   // As of の行: ラベルのある列グループの上だけ別のマスにし、残りは As of の文言のマスにまとめる
@@ -808,7 +818,7 @@
   let showRate = true;
   try { showRate = localStorage.getItem("showRate") !== "0"; } catch (_) {}
   const rateStores = () => (data.salesRate && showRate ? data.stores.map((s, i) => (s in data.salesRate.months ? i : -1)).filter((i) => i >= 0) : []);
-  const hasRate = (g) => rateStores().includes(g) || (rateStores().length > 0 && hasOffice() && g >= data.stores.length && g !== poIdx());
+  const hasRate = (g) => rateStores().includes(g) || (rateStores().length > 0 && hasOffice() && g >= data.stores.length && g !== poIdx() && !isMyG(g));
   const rowRate = (it, g) => {
     const r = (i) => (it.rate ? it.rate[i] || 0 : 0);
     if (g < data.stores.length) return it.rate ? it.rate[g] : null;
@@ -836,7 +846,7 @@
   // Store Total の列は出さない
   const hiddenAlways = (g) => hasOffice() && g === data.stores.length;
   // 「Details」: Pathwild から右 (主要 6 拠点と Company Total 以外) はボタンを押したときだけ表示する
-  const MAIN_LOCS = ["Office", "Paradise Park", "K Village", "Central CL (Department)", "Siam Discovery", "Central LP"];
+  const MAIN_LOCS = ["Office", "Paradise Park", "K Village", "Central CL (Department)", "Siam Discovery", "Central LP", "JB (MY)", "KL (MY)"];
   let showDetails = false;
   try { showDetails = localStorage.getItem("showDetails") === "1"; } catch (_) {}
   const isDetailG = (g) => hasOffice() && g !== groups.length - 1 && !MAIN_LOCS.includes(groups[g]);
@@ -847,10 +857,14 @@
   // Outstanding PO (発注済み・未入荷) は Store Total と Company Total の間の列。Company Total には含めない
   let PO = null; // public/outstanding_po.json
   const poIdx = () => (PO && hasOffice() ? data.stores.length + 1 : -1);
-  const gcls = (g) => (g === groups.length - 1 ? " ct" : g === poIdx() ? " po" : ""); // Company Total の列は色を変える
-  const poTitle = (it) => (it._poLines ? it._poLines.map((l) => `${l.po}  ${l.qty} (EX/F ${l.etd})`).join("\n") : "");
-  const rowQty = (it) => (hasOffice() ? [...it._adj, it._st, ...(PO ? [it._po || 0] : []), it._tq] : [...it._adj, it._tq]);
-  const rowRet = (it) => (hasOffice() ? [...it._ret, it._tr, ...(PO ? [null] : []), null] : [...it._ret, it._tr]);
+  // マレーシアの在庫 (/api/malaysia): JB (倉庫) と KL (イベント分)。Company Total には含めない
+  let MY = null;
+  const myIdx = () => (MY && hasOffice() ? data.stores.length + 1 + (PO ? 1 : 0) : -1);
+  const isMyG = (g) => myIdx() >= 0 && (g === myIdx() || g === myIdx() + 1);
+  const gcls = (g) => (g === groups.length - 1 ? " ct" : g === poIdx() ? " po" : isMyG(g) ? " my" : ""); // Company Total などの列は色を変える
+  const poTitle = (it) => (it._poLines ? it._poLines.map((l) => `${l.po}  ${l.qty} (EX/F ${l.etd}${l.arrival ? ` / ${l.arrival}` : ""})`).join("\n") : "");
+  const rowQty = (it) => (hasOffice() ? [...it._adj, it._st, ...(PO ? [it._po || 0] : []), ...(MY ? [it._jb || 0, it._kl || 0] : []), it._tq] : [...it._adj, it._tq]);
+  const rowRet = (it) => (hasOffice() ? [...it._ret, it._tr, ...(PO ? [null] : []), ...(MY ? [null, null] : []), null] : [...it._ret, it._tr]);
 
   function totalsOf(items) {
     const qty = groups.map((_, g) => sum(items.map((it) => rowQty(it)[g])));
@@ -2176,6 +2190,24 @@ if (RETURNS_ON) {
         it._poLines = [...(it._poLines || []), ...p.lines];
       }
     }
+    // マレーシアの在庫を品番で行に当てる (タイの一覧にない品番は、同じ品番・カラーの行からモデル名とカラー名を借りて行を追加する)
+    if (MY && d.officeIndex != null) {
+      const byCode = new Map(d.items.filter((it) => it.code).map((it) => [it.code, it]));
+      const byPre = new Map();
+      d.items.forEach((it) => { if (it.code && !byPre.has(it.code.split(",")[0])) byPre.set(it.code.split(",")[0], it); });
+      for (const x of MY.items) {
+        let it = byCode.get(x.sku);
+        if (!it) {
+          if (!x.jb && !x.kl) continue;
+          const ref = byPre.get(x.sku.split(",")[0]);
+          it = { code: x.sku, model: ref ? ref.model : `VFF ${x.model}`, color: ref ? ref.color : x.color, size: x.size, qty: d.stores.map(() => 0), ret: d.stores.map(() => null), rate: null, rateEvent: null };
+          d.items.push(it);
+          byCode.set(x.sku, it);
+        }
+        it._jb = (it._jb || 0) + x.jb;
+        it._kl = (it._kl || 0) + x.kl;
+      }
+    }
     // 同じモデルの中は カラー (最初に出てきた順。品番のカラー部分で分ける) → サイズ (M → W、小さい順)
     const mkey = (it) => shortModel(it.model).toLowerCase();
     const ckey = (it) => (it.code ? it.code.split(",")[0] : it.color);
@@ -2189,7 +2221,7 @@ if (RETURNS_ON) {
     // どの拠点にも在庫が 1 足もないカラー (そのカラーの全サイズが 0。モデルごと 0 の場合も含む) は「在庫0」シートに移す
     // カラーは品番のカラー部分で分ける (表示名が同じでも品番が違えば別のカラー)
     const gkey = (it) => `${it.model}|${ckey(it)}`;
-    const live = new Set(d.items.filter((it) => it.qty.some((q) => q) || it._po).map(gkey));
+    const live = new Set(d.items.filter((it) => it.qty.some((q) => q) || it._po || it._jb || it._kl).map(gkey));
     d.zeroItems = d.items.filter((it) => !live.has(gkey(it)));
     d.items = d.items.filter((it) => live.has(gkey(it)));
     // オフィスの在庫管理表の列を モデル・カラー・サイズ で当てる
@@ -2205,7 +2237,7 @@ if (RETURNS_ON) {
       });
     }
     shownZort = z ? z.fetchedAt : null;
-    groups = d.officeIndex != null ? [...d.stores, "Store Total", ...(PO ? ["Outstanding PO"] : []), "Company Total Stock"] : [...d.stores, "Total"];
+    groups = d.officeIndex != null ? [...d.stores, "Store Total", ...(PO ? ["Outstanding PO"] : []), ...(MY ? ["JB (MY)", "KL (MY)"] : []), "Company Total Stock"] : [...d.stores, "Total"];
     d.items.forEach((it, n) => {
       it._id = n;
       it._search = `${it.code} ${it.model} ${it.color} ${it.size}`.toLowerCase();
@@ -2254,7 +2286,12 @@ if (RETURNS_ON) {
       HL = new Set(((d.returnsSeed && d.returnsSeed.highlights) || []).map((h) => `${h.code}@${h.store}@${h.kind}`));
       const po = fetch(`outstanding_po.json?t=${Date.now()}`, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null).then((j) => { PO = j && j.items && j.items.length ? j : null; });
       const os = fetch(`office_sheet.json?t=${Date.now()}`, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null).then((j) => { OS = j && j.rows && j.rows.length ? j : null; });
-      return Promise.all([initReturns(), initOrders(), po, os]);
+      // マレーシアの在庫は 8 秒で諦める (取れなくても表は出す)
+      const ac = typeof AbortController === "function" ? new AbortController() : null;
+      if (ac) setTimeout(() => ac.abort(), 8000);
+      const my = fetch(`api/malaysia?t=${Date.now()}`, { cache: "no-store", signal: ac ? ac.signal : undefined }).then((r) => (r.ok ? r.json() : null)).catch(() => null)
+        .then((j) => { MY = j && j.items && j.items.length ? j : null; });
+      return Promise.all([initReturns(), initOrders(), po, os, my]);
     })
     .then(() => (window.ZORT_CACHED ? window.ZORT_CACHED : window.ZORT || null))
     .then((z) => {

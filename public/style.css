@@ -586,10 +586,9 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 .sheet .ord-step .ord-in { width: 30px; height: 18px; border: 1px solid #b7dcae; border-radius: 5px; background: #fff; color: #14532d; padding: 0 1px; }
 .sheet .ord-step .ord-in:focus { outline: 2px solid #16a34a; outline-offset: 0; }
 
-/* 在庫の数: 1 足は黄色のバッジ、0 は薄く、マイナスは赤 */
+/* 在庫の数: 0 は薄く、マイナスは赤 */
 .sheet td.q.lv0 { color: #c0c6cf; }
 .sheet td.q.lvn { color: #dc2626; font-weight: 700; }
-.sheet td.q.lv1 { color: #92400e; font-weight: 700; background-image: radial-gradient(ellipse 13px 9px at 50% 50%, #fde68a 99%, transparent 100%); }
 /* ヒートマップ (トグル): 0 = 赤、1 = 黄、2 以上 = 緑 */
 body.heat .sheet td.q.lv0 { background: #fde2e4; color: #9f1239; background-image: none; }
 body.heat .sheet td.q.lv1 { background: #fef3c7; background-image: none; }
@@ -650,3 +649,10 @@ body.drawer-open .ord-fab { right: 400px; }
 .sheet tbody tr.rsel td.colhl { background-color: #fbbf24 !important; }
 .sheet thead th.colhl { background: #f59e0b !important; color: #fff !important; }
 .sheet thead tr.h1 th, .sheet thead tr.h2 th { cursor: pointer; }
+
+/* マレーシアの在庫 (JB・KL): Central LP の右。ピンク系で区別 */
+.sheet thead tr.h1 th.my, .sheet thead tr.h2 th.my { background: #fce7f3; color: #9d174d; }
+.sheet td.my { background: #fdf2f8; color: #9d174d; }
+.sheet td.q.my { font-weight: 700; }
+.sheet tr.total td.my { background: #fbcfe8; }
+.sheet tr.rsel td.my { background-color: #c7d2fe; }

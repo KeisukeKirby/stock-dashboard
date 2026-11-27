@@ -39,12 +39,14 @@ def title(s):
 
 def main(path):
     ws = openpyxl.load_workbook(path, data_only=True).active
-    head = [str(c.value or "").strip() for c in ws[1]]
+    # 見出しの行を探す (版によって 1 行目・2 行目、A 列から・B 列からと位置が違う)
+    hr = next(r for r in range(1, 11) if any(str(c.value or "").strip() == "Style Name" for c in ws[r]))
+    head = [str(c.value or "").strip() for c in ws[hr]]
     col = {h: i for i, h in enumerate(head)}
     sizes = [(i, re.match(r"(\d+(?:\.\d+)?)#", h).group(1)) for i, h in enumerate(head) if re.match(r"\d+(?:\.\d+)?#", h)]
     out = {}
     total = 0
-    for row in ws.iter_rows(min_row=2, values_only=True):
+    for row in ws.iter_rows(min_row=hr + 1, values_only=True):
         if not row[col["Style Name"]]:
             continue
         name = str(row[col["Style Name"]]).strip()
@@ -66,7 +68,8 @@ def main(path):
             key = (model, color, f"{mw}{sz}")
             e = out.setdefault(key, {"model": model, "color": color, "size": f"{mw}{sz}", "qty": 0, "lines": []})
             e["qty"] += q
-            e["lines"].append({"po": po, "style": style, "etd": etd, "qty": q})
+            e["lines"].append({"po": po, "style": style, "etd": etd, "qty": q,
+                               **({"arrival": str(row[col["Arrival Timing"]]).strip()} if "Arrival Timing" in col and row[col["Arrival Timing"]] else {})})
         if row_total != int(row[col["Qty (pairs)"]] or 0):
             print(f"warning: {po} {name} {color}: sizes {row_total} != Qty {row[col['Qty (pairs)']]}")
         total += row_total
