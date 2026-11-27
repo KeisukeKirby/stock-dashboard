@@ -15,7 +15,7 @@
   // Excel の列幅 (文字数) → px : width * 7 + 5
   const COL_W = { code: 23.63, model: 15.27, color: 16.63, size: 10.91, qty: 12.36, ret: 11.18, rate: 8.5, mos: 8.5, sales: 10 }; // Excel 出力用
   // 画面の表は見やすさ優先で Code 列を隠し、各列を狭くする
-  const VIEW_W = { model: 12.5, color: 14.5, size: 4.6, qty: 6, totQty: 6.6, ord: 6.6, info: 6.4, infoS: 4.8, ret: 5.6, rate: 5, mos: 5, sales: 7 };
+  const VIEW_W = { model: 12.5, color: 14.5, size: 4.6, qty: 6, totQty: 6.6, ord: 9.6, chk: 3, info: 6.4, infoS: 4.8, ret: 5.6, rate: 5, mos: 5, sales: 7 };
   const VIEW_TEXT = ["model", "color", "size"];
   const shortModel = (m) => String(m || "").replace(/^VFF\s+/, "");
   const shortGroup = (g) => String(g).replace(" (Department)", " (Dept.)");
@@ -76,14 +76,21 @@
   /* ---------- 表を画面幅に合わせる (スクロールなし) ---------- */
   // 表の幅は列幅 (colgroup) の合計で決まるので、表を測り直さずに計算する (大きな表の再計算を避けて速くする)
   // 表示幅は ResizeObserver で覚えておき、描画のたびに測らない (測ると大きな表の再計算が起きて遅い)
-  let lastFit = null, availW = 0;
+  let lastFit = null, availW = 0, fitSig = "", fitW = 0;
   new ResizeObserver(() => { availW = $("sheet").clientWidth; fitTable(); }).observe($("sheet"));
   function fitTable() {
     const table = $("stockTable");
     const avail = availW;
     if (!avail) return;
-    let w = 0;
-    for (const c of $("cols").children) w += (parseFloat(c.style.width) || 0) + 1; // +1 = セルの罫線
+    // 列の並びが変わったときだけ、実際の表の幅を 1 回測る (余白・罫線を含めた正確な幅。毎回は測らない)
+    const sig = [...$("cols").children].map((c) => c.style.width).join(",");
+    if (sig !== fitSig) {
+      table.style.setProperty("--fit", 1);
+      lastFit = 1;
+      fitW = table.offsetWidth;
+      fitSig = sig;
+    }
+    const w = fitW;
     const fit = w > avail ? Math.floor(((avail - 2) / w) * 10000) / 10000 : 1;
     if (fit !== lastFit) { table.style.setProperty("--fit", fit); lastFit = fit; }
   }
@@ -724,7 +731,7 @@
       return `<col style="width:${px(w)}px">`;
     }).join("");
     $("cols").innerHTML =
-      VIEW_TEXT.map((k) => `<col style="width:${px(VIEW_W[k])}px">`).join("") +
+      `<col style="width:${px(VIEW_W.chk)}px">` + VIEW_TEXT.map((k) => `<col style="width:${px(VIEW_W[k])}px">`).join("") +
       segs(() => infoCols().map((c) => `<col style="width:${px(c.grp === "Sales" ? VIEW_W.infoS : VIEW_W.info)}px">`).join(""), gcols,
         () => `<col style="width:${px(VIEW_W.ord)}px">`);
     // 店舗 (▼) と数量 (▼) の絞り込みボタンは一番右の列グループだけに出す
@@ -744,7 +751,8 @@
       <tr class="title"><th colspan="${ncol}">${esc(d.title)}</th></tr>
       <tr class="asof">${asofRowHtml(d)}</tr>
       <tr class="h1">
-        ${["Model", "Color", "Size"].map((h, k) => `<th rowspan="2">${k === 0 ? `<button type="button" class="selall" id="selAll" title="${esc(t("sel.all"))}" aria-label="${esc(t("sel.all"))}">${esc(t("sel.allBtn"))}</button>` : ""}${h}${afBtn(`t${VIEW_TEXT[k]}`, h)}</th>`).join("")}
+        <th rowspan="2" class="chk-h"><input type="checkbox" id="chkAll" title="${esc(t("sel.all"))}" aria-label="${esc(t("sel.all"))}"></th>
+        ${["Model", "Color", "Size"].map((h, k) => `<th rowspan="2">${h}${afBtn(`t${VIEW_TEXT[k]}`, h)}</th>`).join("")}
         ${segs(infoH1, (i) => (colKinds(i).length ? `<th class="grp${i === lastG ? "" : " no-af"}${gcls(i)}" colspan="${colKinds(i).length}" title="${esc(groups[i])}">${esc(shortGroup(groups[i]))}${i === lastG ? afBtn("loc", t("f.loc")) : ""}</th>` : ""),
           () => `<th class="ord-h" rowspan="2" title="${esc(t("ord.title"))}">Order</th>`)}
       </tr>
@@ -769,7 +777,7 @@
   function asofRowHtml(d) {
     const labels = groupLabels();
     const cells = [];
-    let span = VIEW_TEXT.length + infoCols().length, first = true;
+    let span = 1 + VIEW_TEXT.length + infoCols().length, first = true; // 1 = チェックボックスの列
     const flush = () => {
       if (!span) return;
       cells.push(`<th colspan="${span}">${first && !d.zort ? esc(d.asOf) : ""}</th>`);
@@ -826,8 +834,13 @@
   // 列グループごとの列の並び: [月平均販売] [今年の販売 (Office のみ)] Quantity [在庫月数] [Return]
   // Store Total の列は出さない
   const hiddenAlways = (g) => hasOffice() && g === data.stores.length;
-  const colKinds = (g) => locHidden.has(g) || hiddenAlways(g) ? [] : [...(hasRate(g) ? ["rate"] : []), ...(hasSalesTotal(g) ? ["sales"] : []), "qty", ...(hasRate(g) ? ["mos"] : []), ...(hasRet(g) ? ["ret"] : [])];
-  const numCols = () => VIEW_TEXT.length + infoCols().length + sum(groups.map((_, i) => colKinds(i).length)) + 1; // +1 = Order
+  // 「Details」: Pathwild から右 (主要 6 拠点と Company Total 以外) はボタンを押したときだけ表示する
+  const MAIN_LOCS = ["Office", "Paradise Park", "K Village", "Central CL (Department)", "Siam Discovery", "Central LP"];
+  let showDetails = false;
+  try { showDetails = localStorage.getItem("showDetails") === "1"; } catch (_) {}
+  const isDetailG = (g) => hasOffice() && g !== groups.length - 1 && !MAIN_LOCS.includes(groups[g]);
+  const colKinds = (g) => locHidden.has(g) || hiddenAlways(g) || (!showDetails && isDetailG(g)) ? [] : [...(hasRate(g) ? ["rate"] : []), ...(hasSalesTotal(g) ? ["sales"] : []), "qty", ...(hasRate(g) ? ["mos"] : []), ...(hasRet(g) ? ["ret"] : [])];
+  const numCols = () => 1 + VIEW_TEXT.length + infoCols().length + sum(groups.map((_, i) => colKinds(i).length)) + 1; // +1 = Order
 
   // 1 行分の Quantity / Return を groups の並びで返す
   // Outstanding PO (発注済み・未入荷) は Store Total と Company Total の間の列。Company Total には含めない
@@ -846,7 +859,7 @@
     return { qty, ret, rate, sales, order: ordTotal(items), info: infoTotals(items) };
   }
 
-  const totalRowHtml = (tot) => `<td>Total</td><td></td><td></td>
+  const totalRowHtml = (tot) => `<td class="chk"></td><td>Total</td><td></td><td></td>
       ${segs(() => infoCols().map((c) => `<td class="c info">${fmtInfo(c.k, tot.info[c.k])}</td>`).join(""), (i) => colKinds(i).map((k) =>
         k === "qty" ? `<td class="c${gcls(i)}">${nf(tot.qty[i])}</td>`
         : k === "ret" ? `<td class="c">${nf(tot.ret[i])}</td>`
@@ -868,13 +881,13 @@
   function renderTable(items) {
     shown = items;
     const all = items.length === data.items.length;
-    const rows = items.map((it) => `<tr data-id="${it._id}">
-        <td title="${esc(it.code || "")}">${esc(shortModel(it.model))}</td><td title="${esc(it.color)}">${esc(it.color)}</td><td class="c">${esc(it.size)}</td>
+    const rows = items.map((it) => `<tr data-id="${it._id}"${rowSel.has(it._id) ? ' class="rsel"' : ""}>
+        <td class="chk"><input type="checkbox" class="row-chk"${rowSel.has(it._id) ? " checked" : ""} aria-label="${esc(`${it.model} ${it.color} ${it.size}`)}"></td><td title="${esc(it.code || "")}">${esc(shortModel(it.model))}</td><td title="${esc(it.color)}">${esc(it.color)}</td><td class="c">${esc(it.size)}</td>
         ${((q_) => segs(() => infoCellsHtml(it), (g) => {
           const q = q_[g];
           const tot = g >= data.stores.length;
           return colKinds(g).map((k) => {
-            if (k === "qty") return `<td class="c q${tot ? " b" : ""}${isHl(it, g, "qty") ? " hl" : ""}${gcls(g)}"${g === poIdx() && it._poLines ? ` title="${esc(poTitle(it))}"` : ""}>${nf(q)}</td>`;
+            if (k === "qty") return `<td class="c q${tot ? " b" : ` ${q < 0 ? "lvn" : q === 0 ? "lv0" : q === 1 ? "lv1" : "lv2"}`}${isHl(it, g, "qty") ? " hl" : ""}${gcls(g)}"${g === poIdx() && it._poLines ? ` title="${esc(poTitle(it))}"` : ""}>${nf(q)}</td>`;
             if (k === "rate") return `<td class="c rate${gcls(g)}">${fmtRate(rowRate(it, g))}</td>`;
             if (k === "sales") return `<td class="c sales${gcls(g)}">${nf(rowSalesTotal(it))}</td>`;
             if (k === "mos") return `<td class="c mos${gcls(g)}" data-g="${g}">${fmtMos(mos(q, rowRate(it, g)))}</td>`;
@@ -890,6 +903,7 @@
     $("tbody").innerHTML = rows.join("");
     sel = null;
     refreshSel();
+    updateRowBar();
     $("rowCount").textContent = all ? t("count.all", { n: fmt(data.items.length) }) : t("count.of", { n: fmt(data.items.length), m: fmt(items.length) });
   }
 
@@ -947,6 +961,7 @@
     return { r: td.parentElement.sectionRowIndex, c: td.cellIndex };
   };
   const cellValue = (td) => {
+    if (td.classList.contains("chk")) return null;
     const input = td.querySelector("input");
     const raw = (input ? input.value : td.textContent).trim().replace(/,/g, "");
     if (raw === "") return null;
@@ -968,7 +983,7 @@
     for (let r = r0; r <= r1 && r < rows.length; r++) {
       for (let c = c0; c <= c1; c++) {
         const td = rows[r].cells[c];
-        if (!td) continue;
+        if (!td || td.classList.contains("chk")) continue;
         cells++;
         td.classList.add("sel");
         if (r === r0) td.classList.add("sel-t");
@@ -1048,7 +1063,7 @@
         const vals = [];
         for (let c = c0; c <= c1; c++) {
           const td = rows[r].cells[c];
-          if (!td) continue;
+          if (!td || td.classList.contains("chk")) continue;
           const v = cellValue(td);
           vals.push(v != null ? v : (td.querySelector("input") ? td.querySelector("input").value : td.textContent.trim()));
         }
@@ -1063,16 +1078,7 @@
     }
   });
   $("selClose").addEventListener("click", clearSel);
-  // Model の左の「全選択」: 表の全部のマス (Total 行を含む) を選択する。Ctrl+C / ⌘+C でコピーできる
-  document.addEventListener("click", (e) => {
-    if (!e.target.closest("#selAll")) return;
-    e.preventDefault();
-    e.stopPropagation();
-    const rows = bodyRows();
-    if (!rows.length || rows[0].querySelector("td.empty")) return;
-    sel = { r0: 0, c0: 0, r1: rows.length - 1, c1: Math.max(...[...rows].map((r) => r.cells.length)) - 1 };
-    refreshSel();
-  });
+
   $("tbody").addEventListener("focusin", (e) => { if (e.target.classList.contains("ret-in")) e.target.select(); });
   // Enter / ↑↓ で上下のセルへ移動 (Excel と同じ操作感)
   $("tbody").addEventListener("keydown", (e) => {
@@ -1216,7 +1222,7 @@
 
   const ordTotal = (items) => sum(items.map((it) => orders[okey(it)] || 0));
   const ordCellHtml = (it) =>
-    `<td class="c ord"><input class="ord-in" type="text" inputmode="numeric" autocomplete="off" value="${orders[okey(it)] || ""}" aria-label="${esc(`${it.model} ${it.color} ${it.size}`)} Order"></td>`;
+    `<td class="c ord"><span class="ord-step"><button type="button" class="ord-btn" data-d="-1" tabindex="-1" aria-label="−1">−</button><input class="ord-in" type="text" inputmode="numeric" autocomplete="off" value="${orders[okey(it)] || ""}" aria-label="${esc(`${it.model} ${it.color} ${it.size}`)} Order"><button type="button" class="ord-btn" data-d="1" tabindex="-1" aria-label="+1">+</button></span></td>`;
   // 表を作り直さずに Order の数だけ書き換える (入力中のマスには触れない)
   function applyOrders() {
     const active = document.activeElement;
@@ -1253,6 +1259,7 @@
       : ordErr ? t("sync.offline")
       : ordFlash ? t("sync.pulled")
       : t("sync.shared", { t: hm(ordLastSaved && (!ordLastSync || ordLastSaved > ordLastSync) ? ordLastSaved : ordLastSync || new Date()) });
+    if (typeof renderDrawer === "function" && $("ordDrawer")) renderDrawer();
   }
 
   // Order のマスの入力 → 合計を更新 (保存ボタンで確定)
@@ -1390,6 +1397,138 @@
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   });
   odlg.addEventListener("toggle", (e) => { if (e.target.matches && e.target.matches("details[open]")) ordOpenAt = +e.target.dataset.n; }, true);
+
+  /* ---------- 行のチェック (Model の左)。見出しのチェックで全選択。コピー・CSV・選択解除 ---------- */
+  const rowSel = new Set(); // チェックした行 (item._id)
+  function updateRowBar() {
+    const bar = $("rowBar");
+    const ids = shown.map((it) => it._id);
+    const n = ids.filter((id) => rowSel.has(id)).length;
+    bar.hidden = !n;
+    $("rowBarN").textContent = t("rows.selected", { n: fmt(n) });
+    const all = $("chkAll");
+    if (all) { all.checked = n > 0 && n === ids.length; all.indeterminate = n > 0 && n < ids.length; }
+  }
+  const selectedItems = () => shown.filter((it) => rowSel.has(it._id));
+  $("tbody").addEventListener("change", (e) => {
+    if (!e.target.classList.contains("row-chk")) return;
+    const tr = e.target.closest("tr");
+    const id = +tr.dataset.id;
+    if (e.target.checked) rowSel.add(id); else rowSel.delete(id);
+    tr.classList.toggle("rsel", e.target.checked);
+    updateRowBar();
+  });
+  // Shift+クリックで前にチェックした行からまとめてチェック
+  let lastChk = null;
+  $("tbody").addEventListener("click", (e) => {
+    const cb = e.target.closest(".row-chk");
+    if (!cb) return;
+    const trs = [...$("tbody").querySelectorAll("tr[data-id]")];
+    const idx = trs.indexOf(cb.closest("tr"));
+    if (e.shiftKey && lastChk != null && lastChk !== idx) {
+      const [a, b] = [Math.min(lastChk, idx), Math.max(lastChk, idx)];
+      for (let k = a; k <= b; k++) {
+        const c = trs[k].querySelector(".row-chk");
+        c.checked = cb.checked;
+        trs[k].classList.toggle("rsel", cb.checked);
+        if (cb.checked) rowSel.add(+trs[k].dataset.id); else rowSel.delete(+trs[k].dataset.id);
+      }
+      updateRowBar();
+    }
+    lastChk = idx;
+  });
+  document.addEventListener("change", (e) => {
+    if (e.target.id !== "chkAll") return;
+    shown.forEach((it) => (e.target.checked ? rowSel.add(it._id) : rowSel.delete(it._id)));
+    $("tbody").querySelectorAll("tr[data-id]").forEach((tr) => {
+      tr.classList.toggle("rsel", e.target.checked);
+      const c = tr.querySelector(".row-chk");
+      if (c) c.checked = e.target.checked;
+    });
+    updateRowBar();
+  });
+  $("rowCopy").addEventListener("click", () => {
+    const m = tableMatrix(selectedItems());
+    const tsv = m.map((r) => r.map((v) => String(v ?? "").replace(/[\t\n]/g, " ")).join("\t")).join("\n");
+    (navigator.clipboard ? navigator.clipboard.writeText(tsv) : Promise.reject()).then(() => {
+      const b = $("rowCopy"); b.textContent = t("rows.copied"); setTimeout(() => (b.textContent = t("rows.copy")), 1200);
+    }).catch(() => alert(t("rows.copyFail")));
+  });
+  $("rowCsv").addEventListener("click", () => downloadCsv(tableMatrix(selectedItems()), `stock_selected_${selectedItems().length}.csv`));
+  $("rowClear").addEventListener("click", () => {
+    rowSel.clear();
+    $("tbody").querySelectorAll("tr.rsel").forEach((tr) => { tr.classList.remove("rsel"); const c = tr.querySelector(".row-chk"); if (c) c.checked = false; });
+    updateRowBar();
+  });
+
+  /* ---------- Order の −/+ ボタン ---------- */
+  $("tbody").addEventListener("click", (e) => {
+    const b = e.target.closest(".ord-btn");
+    if (!b) return;
+    const input = b.parentElement.querySelector(".ord-in");
+    const cur = parseInt(String(input.value).replace(/[０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0)), 10) || 0;
+    input.value = Math.max(0, cur + Number(b.dataset.d)) || "";
+    commitOrder(input);
+  });
+
+  /* ---------- Order の下書きパネル (右側)。入力した Order の一覧・合計・保存・確定 ---------- */
+  const drawer = $("ordDrawer");
+  function renderDrawer() {
+    const byKey = new Map(data ? data.items.map((it) => [okey(it), it]) : []);
+    const lines = Object.entries(orders).map(([k, q]) => ({ k, q, it: byKey.get(k) }))
+      .sort((a, b) => (a.it ? a.it._id : 1e9) - (b.it ? b.it._id : 1e9));
+    $("ordFab").hidden = false;
+    $("ordFabN").textContent = lines.length ? `${fmt(sum(lines.map((l) => l.q)))}` : "";
+    $("ordFab").classList.toggle("has", !!lines.length);
+    $("ordFab").classList.toggle("dirty", ordDirty());
+    if (drawer.hidden) return;
+    $("drawerList").innerHTML = lines.length ? lines.map((l) => `<tr data-k="${esc(l.k)}">
+        <td>${esc(l.it ? shortModel(l.it.model) : l.k)}</td><td>${esc(l.it ? l.it.color : "")}</td><td class="c">${esc(l.it ? l.it.size : "")}</td>
+        <td class="c b">${fmt(l.q)}</td><td><button type="button" class="drawer-x" data-k="${esc(l.k)}" aria-label="×">×</button></td></tr>`).join("")
+      : `<tr><td colspan="5" class="drawer-empty">${esc(t("drawer.empty"))}</td></tr>`;
+    $("drawerTotal").textContent = t("drawer.total", { q: fmt(sum(lines.map((l) => l.q))), n: fmt(lines.length) });
+    $("drawerState").textContent = $("ordState").textContent;
+    $("drawerState").className = $("ordState").className;
+    $("drawerSave").disabled = $("saveOrders").disabled;
+    $("drawerConfirm").disabled = $("confirmOrders").disabled;
+  }
+  $("ordFab").addEventListener("click", () => { drawer.hidden = !drawer.hidden; document.body.classList.toggle("drawer-open", !drawer.hidden); renderDrawer(); fitTable(); });
+  $("drawerClose").addEventListener("click", () => { drawer.hidden = true; document.body.classList.remove("drawer-open"); fitTable(); });
+  $("drawerSave").addEventListener("click", () => $("saveOrders").click());
+  $("drawerConfirm").addEventListener("click", () => $("confirmOrders").click());
+  $("drawerHist").addEventListener("click", () => $("ordHistBtn").click());
+  drawer.addEventListener("click", (e) => {
+    const x = e.target.closest(".drawer-x");
+    if (x) { delete orders[x.dataset.k]; applyOrders(); return; }
+    const tr = e.target.closest("tr[data-k]");
+    if (!tr) return;
+    // 行を押すと在庫一覧のその行へ移動して Order 欄にカーソル
+    const it = data.items.find((i) => okey(i) === tr.dataset.k);
+    const row = it && $("tbody").querySelector(`tr[data-id="${it._id}"]`);
+    if (row) { row.scrollIntoView({ block: "center", behavior: "smooth" }); const inp = row.querySelector(".ord-in"); if (inp) setTimeout(() => inp.focus(), 300); }
+  });
+
+  /* ---------- 表示の切り替え: Details (Pathwild から右)・在庫ヒートマップ ---------- */
+  let heat = false;
+  try { heat = localStorage.getItem("heat") === "1"; } catch (_) {}
+  const applyToggles = () => {
+    $("detailsToggle").setAttribute("aria-pressed", showDetails);
+    $("detailsToggle").querySelector("span").textContent = t(showDetails ? "details.hide" : "details.show");
+    $("heatToggle").checked = heat;
+    document.body.classList.toggle("heat", heat);
+  };
+  $("detailsToggle").addEventListener("click", () => {
+    showDetails = !showDetails;
+    try { localStorage.setItem("showDetails", showDetails ? "1" : "0"); } catch (_) {}
+    applyToggles();
+    if (data) { renderFrame(data); render(); }
+  });
+  $("heatToggle").addEventListener("change", (e) => {
+    heat = e.target.checked;
+    try { localStorage.setItem("heat", heat ? "1" : "0"); } catch (_) {}
+    applyToggles();
+  });
+  applyToggles();
 
   /* ---------- 返品の受領 (オフィスに届いたら「受領完了」で Office 在庫へ) ---------- */
   const dlg = $("recvDlg");
@@ -1565,8 +1704,8 @@
   }
 
   /* ---------- CSV ---------- */
-  $("dlCsv").addEventListener("click", () => {
-    const rows = filtered();
+  // 表の中身 (見出し + 行) を画面と同じ並びで作る。CSV と、チェックした行のコピーに使う
+  function tableMatrix(rows) {
     const q = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
     const LBL = { qty: "Quantity", ret: "Return", rate: "Monthly avg sales", sales: "Sales this year", mos: "Months of stock" };
     // 画面と同じ並び: オフィスの表の列 → Company Total → Order → Office・店舗…
@@ -1585,12 +1724,19 @@
         ...infoCols().map((c) => { const v = infoVal(it, c.k); return v == null ? "" : c.k === "zp" ? +Number(v).toFixed(1) : v; }),
         ...gv(order[0]), orders[okey(it)] || "", ...order.slice(1).flatMap(gv)];
     });
-    const csv = "﻿" + [head, ...body].map((r) => r.map(q).join(",")).join("\r\n");
+    return [head, ...body];
+  }
+  const downloadCsv = (matrix, name) => {
+    const q = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+    const csv = "\ufeff" + matrix.map((r) => r.map(q).join(",")).join("\r\n");
     const a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
-    a.download = `stock_${(data.asOfDate || "").replace(/\//g, "")}.csv`;
+    a.download = name;
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  };
+  $("dlCsv").addEventListener("click", () => {
+    downloadCsv(tableMatrix(filtered()), `stock_${(data.asOfDate || "").replace(/\//g, "")}.csv`);
   });
 
   /* ---------- Excel 出力 (Return 入力を反映、元の Excel と同じ書式) ---------- */
@@ -1849,6 +1995,7 @@ if (RETURNS_ON) {
     updateOrderInfo();
     renderZero();
     if ($("ordDlg").open) renderOrdHistory();
+    applyToggles();
   });
 
   /* ---------- Zort ---------- */

@@ -247,7 +247,10 @@ python scripts/build_vivo_standalone.py vivo-sales.html          # claude.ai の
 - 2026 年の Sales は Excel の値ではなく、このダッシュボードの販売実績（`data/sales_rate.json`：全拠点の 2026 年の販売足数）。Sales Total と Balance（Import Total − Sales Total）もそれで計算し直す。V-Soul Black は Excel が 1 行なので、V-Soul（BK）と V-Soul 26（BK26）の販売を合わせる。
 - 作り方: `python3 scripts/office_sheet.py <在庫管理表.xlsx>` → `public/office_sheet.json`。販売実績を更新したら（`sales_rate_update.py build` のあと）もう一度実行する。
 - `data/sku_names.json` は Zort の商品名から作った SKU → モデル・カラー・サイズの対応表（在庫表にない SKU の販売を数えるため）。
-- Model の見出しの左の「全」ボタンで表の全部のマスを選択し、Ctrl+C / ⌘+C でコピーできる。
+- Model の左のチェックボックス: 見出しのチェックで表示中の全行を選択、行ごと・Shift+クリックでまとめて選択。下に出るバーから「コピー」（Excel に貼り付け）・CSV・選択解除。
+- 「Details」ボタン: Pathwild から右（Pathwild・Event・Outlet・(BFT) の倉庫・Outstanding PO）を表示 / 非表示（ブラウザに記憶）。
+- 「在庫ヒートマップ」: 店舗の在庫を 0 = 赤・1 = 黄・2 以上 = 緑で塗る。オフのときは 1 足だけ黄色のバッジ、0 は薄い文字。
+- Order 欄の −/+ ボタンで 1 足ずつ入力。右下の「Order 下書き」で入力済みの一覧・合計・保存・確定（行を押すとその商品へ移動）。
 
 ## Socks 在庫（在庫一覧の「Socks」）
 

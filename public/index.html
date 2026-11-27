@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261127044931">
+  <link rel="stylesheet" href="style.css?v=20261127051036">
 </head>
 <body>
   <div class="page">
@@ -151,6 +151,8 @@
           <span data-i18n="f.sort"></span>
           <select id="fSort"><option value="" data-i18n="f.sortExcel"></option></select>
         </label>
+        <button type="button" class="seg-btn" id="detailsToggle" aria-pressed="false" data-i18n-title="details.title"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 3h12v2H2zm0 4h12v2H2zm0 4h8v2H2z"/></svg><span></span></button>
+        <label class="switch"><input type="checkbox" id="heatToggle"><span class="switch-ui" aria-hidden="true"></span><span data-i18n="heat.toggle"></span></label>
         <label class="check-toggle" id="rateToggle" hidden><input type="checkbox" id="showRate" checked> <span data-i18n="rate.toggle"></span></label>
         <button id="reset" class="ghost" type="button" data-i18n="reset"></button>
       </div>
@@ -234,6 +236,25 @@
       <div id="ordBody" class="recv-body"></div>
     </form>
   </dialog>
+  <div id="rowBar" class="row-bar" role="status" hidden>
+    <b id="rowBarN"></b>
+    <button type="button" id="rowCopy" class="ghost small" data-i18n="rows.copy"></button>
+    <button type="button" id="rowCsv" class="ghost small">CSV</button>
+    <button type="button" id="rowClear" class="ghost small" data-i18n="rows.clear"></button>
+  </div>
+  <button type="button" id="ordFab" class="ord-fab" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l5 5v15H6zM14 3v5h5M9 12h8M9 16h8"/></svg><span data-i18n="drawer.btn"></span><b id="ordFabN"></b></button>
+  <aside id="ordDrawer" class="ord-drawer" hidden aria-labelledby="drawerTitle">
+    <div class="drawer-head"><h2 id="drawerTitle" data-i18n="drawer.title"></h2><button type="button" id="drawerClose" class="drawer-close" aria-label="×">×</button></div>
+    <p class="drawer-note" data-i18n="drawer.note"></p>
+    <div class="drawer-body"><table class="drawer-table"><thead><tr><th>Model</th><th>Color</th><th>Size</th><th>Qty</th><th></th></tr></thead><tbody id="drawerList"></tbody></table></div>
+    <div class="drawer-foot">
+      <div class="drawer-total" id="drawerTotal"></div>
+      <div class="drawer-state"><span id="drawerState"></span></div>
+      <button type="button" id="drawerSave" class="drawer-save" data-i18n="ord.save"></button>
+      <button type="button" id="drawerConfirm" class="drawer-confirm" data-i18n="ord.confirmBtn"></button>
+      <button type="button" id="drawerHist" class="ghost small" data-i18n="ord.history"></button>
+    </div>
+  </aside>
   <div id="tip" class="tip" role="tooltip" hidden></div>
   <div id="afPop" class="af-pop" role="dialog" hidden></div>
   <div id="selBar" class="sel-bar" role="status" aria-live="polite" hidden>
@@ -246,10 +267,10 @@
     <span class="sel-copy" data-i18n="sel.copyHint"></span>
     <button type="button" id="selClose" aria-label="×">×</button>
   </div>
-  <script src="zort.js?v=20261127044931"></script>
-  <script src="i18n.js?v=20261127044931"></script>
-  <script src="vivo-stock.js?v=20261127044931"></script>
-  <script src="socks-stock.js?v=20261127044931"></script>
-  <script src="app.js?v=20261127044931"></script>
+  <script src="zort.js?v=20261127051036"></script>
+  <script src="i18n.js?v=20261127051036"></script>
+  <script src="vivo-stock.js?v=20261127051036"></script>
+  <script src="socks-stock.js?v=20261127051036"></script>
+  <script src="app.js?v=20261127051036"></script>
 </body>
 </html>
