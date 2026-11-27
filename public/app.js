@@ -912,6 +912,29 @@
         }, () => ordCellHtml(it)))(rowQty(it))}
       </tr>`);
     if (!items.length) rows.push(`<tr><td class="empty" colspan="${numCols()}">${esc(t("empty"))}</td></tr>`);
+    // モデル (男女別) のまとまりごとに、サイズ別の販売合計と比率の合計 (100%) の行を入れる (オフィスの表の CD・CE 列の Total と同じ)
+    // モデル順の並び (並べ替えなし) のときだけ
+    if (infoOn() && !state.sort && items.length) {
+      const out = [];
+      const subRows = (it) => {
+        const mk = osKey(it.model);
+        const gs = [...new Set(items.filter((x) => osKey(x.model) === mk).map((x) => String(x.size)[0]))].sort();
+        return gs.map((gd) => {
+          const ent = Object.entries(OS.sizeTable).filter(([k]) => k.startsWith(`${mk}|${gd}`));
+          if (!ent.length) return "";
+          const zt = sum(ent.map(([, v]) => v.t || 0));
+          const label = gd === "M" ? "Men" : gd === "W" ? "Women" : gd === "U" ? "Unisex" : gd;
+          return `<tr class="sub"><td class="chk"></td><td>${esc(shortModel(it.model))}</td><td>Total (${label})</td><td></td>
+            ${segs(() => infoCols().map((c) => `<td class="c info">${c.k === "zt" ? nf(zt) : c.k === "zp" ? "100.0%" : ""}</td>`).join(""),
+              (g) => colKinds(g).map(() => `<td class="${gcls(g).trim()}"></td>`).join(""), () => `<td class="ord"></td>`)}</tr>`;
+        }).join("");
+      };
+      items.forEach((it, n) => {
+        out.push(rows[n]);
+        if (n === items.length - 1 || osKey(items[n + 1].model) !== osKey(it.model)) out.push(subRows(it));
+      });
+      rows.splice(0, rows.length, ...out);
+    }
 
     // 表示中の行の合計 (絞り込み・返品入力がなければ Excel の Total 行と同じ値)
     rows.push(`<tr class="total" id="totalRow">${totalRowHtml(totalsOf(items))}</tr>`);

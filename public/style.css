@@ -656,3 +656,7 @@ body.drawer-open .ord-fab { right: 400px; }
 .sheet td.q.my { font-weight: 700; }
 .sheet tr.total td.my { background: #fbcfe8; }
 .sheet tr.rsel td.my { background-color: #c7d2fe; }
+
+/* モデル (男女別) ごとのサイズ比率の合計行 */
+.sheet tr.sub td { background: #f1f5f9; color: #334155; font-weight: 700; border-bottom: 1.5px solid #94a3b8; }
+.sheet tr.sub td.info { background: #e2e8f0; color: #0f172a; }
