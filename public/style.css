@@ -642,3 +642,11 @@ body.drawer-open .ord-fab { right: 400px; }
 .drawer-save:disabled, .drawer-confirm:disabled { opacity: .45; cursor: default; }
 @media (max-width: 900px) { body.drawer-open .page { padding-right: 24px; } body.drawer-open .ord-fab { right: 20px; bottom: 20px; } }
 @media print { .row-bar, .ord-fab, .ord-drawer { display: none !important; } }
+
+/* チェックした行・見出しを押した列の色付け */
+.sheet tr.rsel td, .sheet tr.rsel td.ct, .sheet tr.rsel td.ord, .sheet tr.rsel td.info { background-color: #c7d2fe; }
+.sheet tr.rsel td.chk { box-shadow: inset 3px 0 0 #4338ca; }
+.sheet tbody td.colhl { background-color: #fde68a !important; }
+.sheet tbody tr.rsel td.colhl { background-color: #fbbf24 !important; }
+.sheet thead th.colhl { background: #f59e0b !important; color: #fff !important; }
+.sheet thead tr.h1 th, .sheet thead tr.h2 th { cursor: pointer; }

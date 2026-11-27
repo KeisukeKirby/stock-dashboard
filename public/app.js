@@ -726,6 +726,7 @@
 
   function renderFrame(d) {
     const ncol = numCols();
+    if (ncol !== frameCols) { hlCols.clear(); frameCols = ncol; } // 列の数が変わったら列の色付けは解除 (10 分ごとの更新では残す)
     const gcols = (g) => colKinds(g).map((k) => {
       const w = k === "qty" && g >= data.stores.length ? VIEW_W.totQty : k === "qty" && colKinds(g).length === 1 ? 8.5 : VIEW_W[k]; // Qty だけの列は見出しが収まる幅
       return `<col style="width:${px(w)}px">`;
@@ -904,6 +905,7 @@
     sel = null;
     refreshSel();
     updateRowBar();
+    paintCols();
     $("rowCount").textContent = all ? t("count.all", { n: fmt(data.items.length) }) : t("count.of", { n: fmt(data.items.length), m: fmt(items.length) });
   }
 
@@ -1461,6 +1463,45 @@
     updateRowBar();
   });
 
+  /* ---------- 見出しを押すと、その列 (まとめ見出しならその下の列すべて) を色付けする。もう一度押すと解除 ---------- */
+  const hlCols = new Set();
+  let frameCols = 0;
+  // 見出しの各マスが表の何列目かを、rowspan・colspan を考えて求める
+  function headCols(th) {
+    const rows = [...$("thead").querySelectorAll("tr.h1, tr.h2")];
+    const grid = [];
+    let found = null;
+    rows.forEach((tr, r) => {
+      grid[r] = grid[r] || [];
+      let c = 0;
+      [...tr.children].forEach((cell) => {
+        while (grid[r][c]) c++;
+        const cs = cell.colSpan || 1, rs = cell.rowSpan || 1;
+        for (let dr = 0; dr < rs; dr++) for (let dc = 0; dc < cs; dc++) { grid[r + dr] = grid[r + dr] || []; grid[r + dr][c + dc] = true; }
+        if (cell === th) found = Array.from({ length: cs }, (_, k) => c + k);
+        c += cs;
+      });
+    });
+    return found || [];
+  }
+  function paintCols() {
+    $("tbody").querySelectorAll("td.colhl").forEach((td) => td.classList.remove("colhl"));
+    $("thead").querySelectorAll("th.colhl").forEach((th) => th.classList.remove("colhl"));
+    if (!hlCols.size) return;
+    $("tbody").querySelectorAll("tr").forEach((tr) => hlCols.forEach((c) => { const td = tr.cells[c]; if (td && !td.classList.contains("empty")) td.classList.add("colhl"); }));
+    $("thead").querySelectorAll("tr.h1 th, tr.h2 th").forEach((th) => { if (headCols(th).some((c) => hlCols.has(c))) th.classList.add("colhl"); });
+  }
+  $("thead").addEventListener("click", (e) => {
+    if (e.target.closest(".af, input, button")) return;
+    const th = e.target.closest("tr.h1 th, tr.h2 th");
+    if (!th) return;
+    const cols = headCols(th);
+    if (!cols.length || cols[0] <= VIEW_TEXT.length) return; // チェック・Model・Color・Size は対象外
+    const on = !cols.every((c) => hlCols.has(c));
+    cols.forEach((c) => (on ? hlCols.add(c) : hlCols.delete(c)));
+    paintCols();
+  });
+
   /* ---------- Order の −/+ ボタン ---------- */
   $("tbody").addEventListener("click", (e) => {
     const b = e.target.closest(".ord-btn");
@@ -1978,7 +2019,7 @@ if (RETURNS_ON) {
     const cur = sel.value;
     [...sel.options].slice(1).forEach((o) => o.remove());
     const d = data;
-    const totals = d.officeIndex != null ? [["total", "Company Total"]] : [["total", "Total"]];
+    const totals = d.officeIndex != null ? [["total", "Company Total Stock"]] : [["total", "Total"]];
     const opts = [...d.stores.map((s, i) => [String(i), s]), ...totals];
     fillSelect(sel, opts.map((o) => o[0]), opts.map((o) => t("f.sortBy", { name: o[1] })));
     sel.value = cur;
@@ -2164,7 +2205,7 @@ if (RETURNS_ON) {
       });
     }
     shownZort = z ? z.fetchedAt : null;
-    groups = d.officeIndex != null ? [...d.stores, "Store Total", ...(PO ? ["Outstanding PO"] : []), "Company Total"] : [...d.stores, "Total"];
+    groups = d.officeIndex != null ? [...d.stores, "Store Total", ...(PO ? ["Outstanding PO"] : []), "Company Total Stock"] : [...d.stores, "Total"];
     d.items.forEach((it, n) => {
       it._id = n;
       it._search = `${it.code} ${it.model} ${it.color} ${it.size}`.toLowerCase();
