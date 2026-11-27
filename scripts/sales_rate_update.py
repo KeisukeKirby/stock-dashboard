@@ -63,6 +63,11 @@ def extract(kind, path, months):
             ws = wb[f"{mo}-{y[2:]}"] if f"{mo}-{y[2:]}" in wb.sheetnames else wb.worksheets[0]
             counts, unmatched = collections.Counter(), []
             for r in ws.iter_rows(values_only=True):
+                # 店舗名の列があるシート (Store Name, Sales Date, Catalogue No., SKU Name, Sales Quantity) は CHIDLOM だけ使う
+                if r and kind == "central" and isinstance(r[0], str) and len(r) > 4 and isinstance(r[1], datetime.datetime):
+                    if r[0].strip() != "CHIDLOM":
+                        continue
+                    r = r[1:]
                 if not r or not isinstance(r[0], datetime.datetime):
                     continue
                 if kind == "central":

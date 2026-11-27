@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-27 11:10",
+ "generatedAt": "2026-11-27 11:11",
  "months": {
   "K Village": [
    "2026-01",
@@ -89,7 +89,7 @@
   "Central LP": 664.0,
   "Paradise Park": 330.0,
   "Online": 1785.0,
-  "Central CL (Department)": 558.0,
+  "Central CL (Department)": 554.0,
   "Siam Discovery": 523.0
  },
  "rate": {
@@ -221,7 +221,7 @@
    "Event": 0.3,
    "Central LP": 0.4,
    "Online": 1.0,
-   "Central CL (Department)": 0.7,
+   "Central CL (Department)": 0.6,
    "Siam Discovery": 0.3
   },
   "VFF0026(TT/BK,M45)": {
@@ -1305,7 +1305,7 @@
    "Event": 0.4,
    "Central LP": 0.5,
    "Online": 0.4,
-   "Central CL (Department)": 1.6,
+   "Central CL (Department)": 1.5,
    "Siam Discovery": 1.1,
    "Paradise Park": 0.143
   },
@@ -1401,7 +1401,7 @@
    "Central LP": 0.3,
    "Paradise Park": 0.286,
    "Online": 0.6,
-   "Central CL (Department)": 0.4,
+   "Central CL (Department)": 0.3,
    "Siam Discovery": 0.4
   },
   "VFF0025(BK,U43)": {
@@ -2488,8 +2488,7 @@
   },
   "VFF0022(BK,W37)": {
    "Paradise Park": 0.143,
-   "Siam Discovery": 0.2,
-   "Central CL (Department)": 0.1
+   "Siam Discovery": 0.2
   },
   "VFF0013(BK,M44)": {
    "Paradise Park": 0.143,
@@ -3246,11 +3245,12 @@
   "Sales_Siam_Dis_Jan-Jun_26.xlsx",
   "BFT_Siam_Discovery_Jul-Aug_26.xlsx",
   "bft_sep.xlsx + bft_oct.xlsx + edv_sep.xlsx + edv_oct.xlsx",
+  "cen_sep.xlsx",
   "cl_oct.xlsx",
   "siam_oct.xlsx"
  ],
  "added": [
-  "Central CL (Department) 2026-09 55",
+  "Central CL (Department) 2026-09 51",
   "Central LP 2026-09 50",
   "Event 2026-09 194",
   "K Village 2026-09 168",
