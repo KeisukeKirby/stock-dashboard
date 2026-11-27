@@ -912,14 +912,14 @@
         }, () => ordCellHtml(it)))(rowQty(it))}
       </tr>`);
     if (!items.length) rows.push(`<tr><td class="empty" colspan="${numCols()}">${esc(t("empty"))}</td></tr>`);
-    // モデル (男女別) のまとまりごとに、サイズ別の販売合計と比率の合計 (100%) の行を入れる (オフィスの表の CD・CE 列の Total と同じ)
+    // モデル・性別のまとまり (例: V-Run のメンズ) が終わるごとに、サイズ別の販売合計と比率の合計 (100%) の行を入れる (オフィスの表の CD・CE 列の Total と同じ)
     // モデル順の並び (並べ替えなし) のときだけ
     if (infoOn() && !state.sort && items.length) {
       const out = [];
+      const gOf = (x) => String(x.size)[0];
       const subRows = (it) => {
         const mk = osKey(it.model);
-        const gs = [...new Set(items.filter((x) => osKey(x.model) === mk).map((x) => String(x.size)[0]))].sort();
-        return gs.map((gd) => {
+        return [gOf(it)].map((gd) => {
           const ent = Object.entries(OS.sizeTable).filter(([k]) => k.startsWith(`${mk}|${gd}`));
           if (!ent.length) return "";
           const zt = sum(ent.map(([, v]) => v.t || 0));
@@ -931,7 +931,7 @@
       };
       items.forEach((it, n) => {
         out.push(rows[n]);
-        if (n === items.length - 1 || osKey(items[n + 1].model) !== osKey(it.model)) out.push(subRows(it));
+        if (n === items.length - 1 || osKey(items[n + 1].model) !== osKey(it.model) || gOf(items[n + 1]) !== gOf(it)) out.push(subRows(it));
       });
       rows.splice(0, rows.length, ...out);
     }
@@ -2231,15 +2231,15 @@ if (RETURNS_ON) {
         it._kl = (it._kl || 0) + x.kl;
       }
     }
-    // 同じモデルの中は カラー (最初に出てきた順。品番のカラー部分で分ける) → サイズ (M → W、小さい順)
+    // 並び: モデル → 性別 (M → W) → カラー (最初に出てきた順。品番のカラー部分で分ける) → サイズ (小さい順)
     const mkey = (it) => shortModel(it.model).toLowerCase();
     const ckey = (it) => (it.code ? it.code.split(",")[0] : it.color);
     const cfirst = new Map();
     d.items.forEach((it, i) => { const k = `${mkey(it)}|${ckey(it)}`; if (!cfirst.has(k)) cfirst.set(k, i); });
     d.items = d.items.slice().sort((a, b) => {
       const sa = sizeKey(a.size), sb = sizeKey(b.size);
-      return mkey(a).localeCompare(mkey(b), "en") || cfirst.get(`${mkey(a)}|${ckey(a)}`) - cfirst.get(`${mkey(b)}|${ckey(b)}`)
-        || String(sa[0]).localeCompare(String(sb[0])) || sa[1] - sb[1];
+      return mkey(a).localeCompare(mkey(b), "en") || String(sa[0]).localeCompare(String(sb[0]))
+        || cfirst.get(`${mkey(a)}|${ckey(a)}`) - cfirst.get(`${mkey(b)}|${ckey(b)}`) || sa[1] - sb[1];
     });
     // どの拠点にも在庫が 1 足もないカラー (そのカラーの全サイズが 0。モデルごと 0 の場合も含む) は「在庫0」シートに移す
     // カラーは品番のカラー部分で分ける (表示名が同じでも品番が違えば別のカラー)
