@@ -1,0 +1,5247 @@
+{
+"VFF0000(GN,L)": [
+"T-Shirt",
+"L",
+"Green"
+],
+"VFF0000(GN,M)": [
+"T-Shirt",
+"M",
+"Green"
+],
+"VFF0000(GN,S)": [
+"T-Shirt",
+"S",
+"Green"
+],
+"VFF0000(GN,XL)": [
+"T-Shirt",
+"XL",
+"Green"
+],
+"VFF0000(NV,L)": [
+"T-Shirt",
+"L",
+"Navy"
+],
+"VFF0000(NV,M)": [
+"T-Shirt",
+"M",
+"Navy"
+],
+"VFF0000(NV,S)": [
+"T-Shirt",
+"S",
+"Navy"
+],
+"VFF0000(NV,XL)": [
+"T-Shirt",
+"XL",
+"Navy"
+],
+"VFF0001(BK,M40)": [
+"VFF V-Aqua",
+"Black",
+"M40"
+],
+"VFF0001(BK,M41)": [
+"VFF V-Aqua",
+"Black",
+"M41"
+],
+"VFF0001(BK,M42)": [
+"VFF V-Aqua",
+"Black",
+"M42"
+],
+"VFF0001(BK,M43)": [
+"VFF V-Aqua",
+"Black",
+"M43"
+],
+"VFF0001(BK,M44)": [
+"VFF V-Aqua",
+"Black",
+"M44"
+],
+"VFF0001(BK,M45)": [
+"VFF V-Aqua",
+"Black",
+"M45"
+],
+"VFF0001(BK,M46)": [
+"VFF V-Aqua",
+"Black",
+"M46"
+],
+"VFF0001(BK,M47)": [
+"VFF V-Aqua",
+"Black",
+"M47"
+],
+"VFF0001(BK,M48)": [
+"VFF V-Aqua",
+"Black",
+"M48"
+],
+"VFF0001(BK,W36)": [
+"VFF V-Aqua",
+"Black",
+"W36"
+],
+"VFF0001(BK,W37)": [
+"VFF V-Aqua",
+"Black",
+"W37"
+],
+"VFF0001(BK,W38)": [
+"VFF V-Aqua",
+"Black",
+"W38"
+],
+"VFF0001(BK,W39)": [
+"VFF V-Aqua",
+"Black",
+"W39"
+],
+"VFF0001(BK,W40)": [
+"VFF V-Aqua",
+"Black",
+"W40"
+],
+"VFF0001(BK,W41)": [
+"VFF V-Aqua",
+"Black",
+"W41"
+],
+"VFF0001(BK,W42)": [
+"VFF V-Aqua",
+"Black",
+"W42"
+],
+"VFF0001(GY,M40)": [
+"VFF V-Aqua",
+"Gray",
+"M40"
+],
+"VFF0001(GY,M41)": [
+"VFF V-Aqua",
+"Grey",
+"M41"
+],
+"VFF0001(GY,M42)": [
+"VFF V-Aqua",
+"Grey",
+"M42"
+],
+"VFF0001(GY,M43)": [
+"VFF V-Aqua",
+"Grey",
+"M43"
+],
+"VFF0001(GY,M44)": [
+"VFF V-Aqua",
+"Grey",
+"M44"
+],
+"VFF0001(GY,M45)": [
+"VFF V-Aqua",
+"Grey",
+"M45"
+],
+"VFF0001(GY,M46)": [
+"VFF V-Aqua",
+"Gray",
+"M46"
+],
+"VFF0001(GY,M47)": [
+"VFF V-Aqua",
+"Gray",
+"M47"
+],
+"VFF0001(GYBL,W36)": [
+"VFF V-Aqua",
+"Light Grey Blue",
+"W36"
+],
+"VFF0001(GYBL,W37)": [
+"VFF V-Aqua",
+"Light Grey Blue",
+"W37"
+],
+"VFF0001(GYBL,W38)": [
+"VFF V-Aqua",
+"Light Grey Blue",
+"W38"
+],
+"VFF0001(GYBL,W39)": [
+"VFF V-Aqua",
+"Light Grey Blue",
+"W39"
+],
+"VFF0001(GYBL,W40)": [
+"VFF V-Aqua",
+"Light Grey Blue",
+"W40"
+],
+"VFF0001(GYBL,W41)": [
+"VFF V-Aqua",
+"Light Grey Blue",
+"W41"
+],
+"VFF0002(BK/BL,M39)": [
+"VFF V-Run",
+"Black/Blue",
+"M39"
+],
+"VFF0002(BK/BL,M40)": [
+"VFF V-Run",
+"Black/Blue",
+"M40"
+],
+"VFF0002(BK/BL,M41)": [
+"VFF V-Run",
+"Black/Blue",
+"M41"
+],
+"VFF0002(BK/BL,M42)": [
+"VFF V-Run",
+"Black/Blue",
+"M42"
+],
+"VFF0002(BK/BL,M43)": [
+"VFF V-Run",
+"Black/Blue",
+"M43"
+],
+"VFF0002(BK/BL,M44)": [
+"VFF V-Run",
+"Black/Blue",
+"M44"
+],
+"VFF0002(BK/BL,M45)": [
+"VFF V-Run",
+"Black/Blue",
+"M45"
+],
+"VFF0002(BK/BL,M46)": [
+"VFF V-Run",
+"Black/Blue",
+"M46"
+],
+"VFF0002(BK/BL,M47)": [
+"VFF V-Run",
+"Black/Blue",
+"M47"
+],
+"VFF0002(BK/BL,M48)": [
+"VFF V-Run",
+"Black/Blue",
+"M48"
+],
+"VFF0002(BK/F,W36)": [
+"VFF V-Run",
+"Black/Fig",
+"W36"
+],
+"VFF0002(BK/F,W37)": [
+"VFF V-Run",
+"Black/Fig",
+"W37"
+],
+"VFF0002(BK/F,W38)": [
+"VFF V-Run",
+"Black/Fig",
+"W38"
+],
+"VFF0002(BK/F,W39)": [
+"VFF V-Run",
+"Black/Fig",
+"W39"
+],
+"VFF0002(BK/F,W40)": [
+"VFF V-Run",
+"Black/Fig",
+"W40"
+],
+"VFF0002(BK/F,W41)": [
+"VFF V-Run",
+"Black/Fig",
+"W41"
+],
+"VFF0002(BK/F,W42)": [
+"VFF V-Run",
+"Black/Fig",
+"W42"
+],
+"VFF0002(BK/LI/BK,M38)": [
+"VFF V-Run",
+"Black Lime/Black",
+"M38"
+],
+"VFF0002(BK/LI/BK,M39)": [
+"VFF V-Run",
+"Black Lime/Black",
+"M39"
+],
+"VFF0002(BK/LI/BK,M40)": [
+"VFF V-Run",
+"Black Lime/Black",
+"M40"
+],
+"VFF0002(BK/LI/BK,M41)": [
+"VFF V-Run",
+"Black Lime/Black",
+"M41"
+],
+"VFF0002(BK/LI/BK,M42)": [
+"VFF V-Run",
+"Black Lime/Black",
+"M42"
+],
+"VFF0002(BK/LI/BK,M43)": [
+"VFF V-Run",
+"Black Lime/Black",
+"M43"
+],
+"VFF0002(BK/LI/BK,M44)": [
+"VFF V-Run",
+"Black Lime/Black",
+"M44"
+],
+"VFF0002(BK/LI/BK,M45)": [
+"VFF V-Run",
+"Black Lime/Black",
+"M45"
+],
+"VFF0002(BK/LI/BK,M46)": [
+"VFF V-Run",
+"Black Lime/Black",
+"M46"
+],
+"VFF0002(BK/LI/BK,M47)": [
+"VFF V-Run",
+"Black Lime/Black",
+"M47"
+],
+"VFF0002(BK/YL,M39)": [
+"VFF V-Run",
+"Black/Yellow",
+"M39"
+],
+"VFF0002(BK/YL,M40)": [
+"VFF V-Run",
+"Black/Yellow",
+"M40"
+],
+"VFF0002(BK/YL,M41)": [
+"VFF V-Run",
+"Black/Yellow",
+"M41"
+],
+"VFF0002(BK/YL,M42)": [
+"VFF V-Run",
+"Black/Yellow",
+"M42"
+],
+"VFF0002(BK/YL,M43)": [
+"VFF V-Run",
+"Black/Yellow",
+"M43"
+],
+"VFF0002(BK/YL,M44)": [
+"VFF V-Run",
+"Black/Yellow",
+"M44"
+],
+"VFF0002(BK/YL,M45)": [
+"VFF V-Run",
+"Black/Yellow",
+"M45"
+],
+"VFF0002(BK/YL,M46)": [
+"VFF V-Run",
+"Black/Yellow",
+"M46"
+],
+"VFF0002(BK/YL,M47)": [
+"VFF V-Run",
+"Black/Yellow",
+"M47"
+],
+"VFF0002(BK/YL,M48)": [
+"VFF V-Run",
+"Black/Yellow",
+"M48"
+],
+"VFF0002(BK/YL/PP,W36)": [
+"VFF V-Run",
+"Black/Yellow/Purple",
+"W36"
+],
+"VFF0002(BK/YL/PP,W37)": [
+"VFF V-Run",
+"Black/Yellow/Purple",
+"W37"
+],
+"VFF0002(BK/YL/PP,W38)": [
+"VFF V-Run",
+"Black/Yellow/Purple",
+"W38"
+],
+"VFF0002(BK/YL/PP,W39)": [
+"VFF V-Run",
+"Black/Yellow/Purple",
+"W39"
+],
+"VFF0002(BK/YL/PP,W40)": [
+"VFF V-Run",
+"Black/Yellow/Purple",
+"W40"
+],
+"VFF0002(BK/YL/PP,W41)": [
+"VFF V-Run",
+"Black/Yellow/Purple",
+"W41"
+],
+"VFF0002(BK/YL/PP,W42)": [
+"VFF V-Run",
+"Black/Yellow/Purple",
+"W42"
+],
+"VFF0002(BL/BK,M39)": [
+"VFF V-Run",
+"Blue/Black",
+"M39"
+],
+"VFF0002(BL/BK,M40)": [
+"VFF V-Run",
+"Blue/Black",
+"M40"
+],
+"VFF0002(BL/BK,M41)": [
+"VFF V-Run",
+"Blue/Black",
+"M41"
+],
+"VFF0002(BL/BK,M42)": [
+"VFF V-Run",
+"Blue/Black",
+"M42"
+],
+"VFF0002(BL/BK,M43)": [
+"VFF V-Run",
+"Blue/Black",
+"M43"
+],
+"VFF0002(BL/BK,M44)": [
+"VFF V-Run",
+"Blue/Black",
+"M44"
+],
+"VFF0002(BL/BK,M45)": [
+"VFF V-Run",
+"Blue/Black",
+"M45"
+],
+"VFF0002(BL/BK,M46)": [
+"VFF V-Run",
+"Blue/Black",
+"M46"
+],
+"VFF0002(BL/BL,W36)": [
+"VFF V-Run",
+"Blue/Blue",
+"W36"
+],
+"VFF0002(BL/BL,W37)": [
+"VFF V-Run",
+"Blue/Blue",
+"W37"
+],
+"VFF0002(BL/BL,W38)": [
+"VFF V-Run",
+"Blue/Blue",
+"W38"
+],
+"VFF0002(BL/BL,W39)": [
+"VFF V-Run",
+"Blue/Blue",
+"W39"
+],
+"VFF0002(BL/BL,W40)": [
+"VFF V-Run",
+"Blue/Blue",
+"W40"
+],
+"VFF0002(BL/BL,W41)": [
+"VFF V-Run",
+"Blue/Blue",
+"W41"
+],
+"VFF0002(BR/IV/BK,M39)": [
+"VFF V-Run",
+"Brown Ivory/Black",
+"M39"
+],
+"VFF0002(BR/IV/BK,M40)": [
+"VFF V-Run",
+"Brown Ivory/Black",
+"M40"
+],
+"VFF0002(BR/IV/BK,M41)": [
+"VFF V-Run",
+"Brown Ivory/Black",
+"M41"
+],
+"VFF0002(BR/IV/BK,M42)": [
+"VFF V-Run",
+"Brown Ivory/Black",
+"M42"
+],
+"VFF0002(BR/IV/BK,M43)": [
+"VFF V-Run",
+"Brown Ivory/Black",
+"M43"
+],
+"VFF0002(BR/IV/BK,M44)": [
+"VFF V-Run",
+"Brown Ivory/Black",
+"M44"
+],
+"VFF0002(BR/IV/BK,M45)": [
+"VFF V-Run",
+"Brown Ivory/Black",
+"M45"
+],
+"VFF0002(BR/IV/BK,M46)": [
+"VFF V-Run",
+"Brown Ivory/Black",
+"M46"
+],
+"VFF0002(DL/IV,W36)": [
+"VFF V-Run",
+"Deep Lake/Ivory",
+"W36"
+],
+"VFF0002(DL/IV,W37)": [
+"VFF V-Run",
+"Deep Lake/Ivory",
+"W37"
+],
+"VFF0002(DL/IV,W38)": [
+"VFF V-Run",
+"Deep Lake/Ivory",
+"W38"
+],
+"VFF0002(DL/IV,W39)": [
+"VFF V-Run",
+"Deep Lake/Ivory",
+"W39"
+],
+"VFF0002(DL/IV,W40)": [
+"VFF V-Run",
+"Deep Lake/Ivory",
+"W40"
+],
+"VFF0002(DL/IV,W41)": [
+"VFF V-Run",
+"Deep Lake/Ivory",
+"W41"
+],
+"VFF0002(DPK,W36)": [
+"VFF V-Run",
+"Dusty Pink",
+"W36"
+],
+"VFF0002(DPK,W37)": [
+"VFF V-Run",
+"Dusty Pink",
+"W37"
+],
+"VFF0002(DPK,W38)": [
+"VFF V-Run",
+"Dusty Pink",
+"W38"
+],
+"VFF0002(DPK,W39)": [
+"VFF V-Run",
+"Dusty Pink",
+"W39"
+],
+"VFF0002(DPK,W40)": [
+"VFF V-Run",
+"Dusty Pink",
+"W40"
+],
+"VFF0002(DPK,W41)": [
+"VFF V-Run",
+"Dusty Pink",
+"W41"
+],
+"VFF0002(F/IV/GN,M40)": [
+"VFF V-Run",
+"Fig/Ivory/A.Green",
+"M40"
+],
+"VFF0002(F/IV/GN,M41)": [
+"VFF V-Run",
+"Fig/Ivory/A.Green",
+"M41"
+],
+"VFF0002(F/IV/GN,M42)": [
+"VFF V-Run",
+"Fig/Ivory/A.Green",
+"M42"
+],
+"VFF0002(F/IV/GN,M43)": [
+"VFF V-Run",
+"Fig/Ivory/A.Green",
+"M43"
+],
+"VFF0002(F/IV/GN,M44)": [
+"VFF V-Run",
+"Fig/Ivory/A.Green",
+"M44"
+],
+"VFF0002(F/IV/GN,M45)": [
+"VFF V-Run",
+"Fig/Ivory/A.Green",
+"M45"
+],
+"VFF0002(F/IV/GN,M46)": [
+"VFF V-Run",
+"Fig/Ivory/A.Green",
+"M46"
+],
+"VFF0002(F/IV/GN,M47)": [
+"VFF V-Run",
+"Fig/Ivory/A.Green",
+"M47"
+],
+"VFF0002(GO/YL/BK,M39)": [
+"VFF V-Run",
+"Golden/Yellow/Black",
+"M39"
+],
+"VFF0002(GO/YL/BK,M40)": [
+"VFF V-Run",
+"Golden/Yellow/Black",
+"M40"
+],
+"VFF0002(GO/YL/BK,M41)": [
+"VFF V-Run",
+"Golden/Yellow/Black",
+"M41"
+],
+"VFF0002(GO/YL/BK,M42)": [
+"VFF V-Run",
+"Golden/Yellow/Black",
+"M42"
+],
+"VFF0002(GO/YL/BK,M43)": [
+"VFF V-Run",
+"Golden/Yellow/Black",
+"M43"
+],
+"VFF0002(GO/YL/BK,M44)": [
+"VFF V-Run",
+"Golden/Yellow/Black",
+"M44"
+],
+"VFF0002(GO/YL/BK,M45)": [
+"VFF V-Run",
+"Golden/Yellow/Black",
+"M45"
+],
+"VFF0002(GO/YL/BK,M46)": [
+"VFF V-Run",
+"Golden/Yellow/Black",
+"M46"
+],
+"VFF0002(GO/YL/BK,M47)": [
+"VFF V-Run",
+"Golden/Yellow/Black",
+"M47"
+],
+"VFF0002(GO/YL/BK,M48)": [
+"VFF V-Run",
+"Golden/Yellow/Black",
+"M48"
+],
+"VFF0002(IV/YL,M40)": [
+"VFF V-Run",
+"Ivory/Yellow",
+"M40"
+],
+"VFF0002(IV/YL,M41)": [
+"VFF V-Run",
+"Ivory/Yellow",
+"M41"
+],
+"VFF0002(IV/YL,M42)": [
+"VFF V-Run",
+"Ivory/Yellow",
+"M42"
+],
+"VFF0002(IV/YL,M43)": [
+"VFF V-Run",
+"Ivory/Yellow",
+"M43"
+],
+"VFF0002(IV/YL,M44)": [
+"VFF V-Run",
+"Ivory/Yellow",
+"M44"
+],
+"VFF0002(IV/YL,M45)": [
+"VFF V-Run",
+"Ivory/Yellow",
+"M45"
+],
+"VFF0002(IV/YL,M46)": [
+"VFF V-Run",
+"Ivory/Yellow",
+"M46"
+],
+"VFF0002(LI/BL,W36)": [
+"VFF V-Run",
+"Lime/Blue",
+"W36"
+],
+"VFF0002(LI/BL,W37)": [
+"VFF V-Run",
+"Lime/Blue",
+"W37"
+],
+"VFF0002(LI/BL,W38)": [
+"VFF V-Run",
+"Lime/Blue",
+"W38"
+],
+"VFF0002(LI/BL,W39)": [
+"VFF V-Run",
+"Lime/Blue",
+"W39"
+],
+"VFF0002(LI/BL,W40)": [
+"VFF V-Run",
+"Lime/Blue",
+"W40"
+],
+"VFF0002(LI/BL,W41)": [
+"VFF V-Run",
+"Lime/Blue",
+"W41"
+],
+"VFF0002(LI/BL,W42)": [
+"VFF V-Run",
+"Lime/Blue",
+"W42"
+],
+"VFF0002(TT/BK,M39)": [
+"VFF V-Run",
+"Total Black",
+"M39"
+],
+"VFF0002(TT/BK,M40)": [
+"VFF V-Run",
+"Total Black",
+"M40"
+],
+"VFF0002(TT/BK,M41)": [
+"VFF V-Run",
+"Total Black",
+"M41"
+],
+"VFF0002(TT/BK,M42)": [
+"VFF V-Run",
+"Total Black",
+"M42"
+],
+"VFF0002(TT/BK,M43)": [
+"VFF V-Run",
+"Total Black",
+"M43"
+],
+"VFF0002(TT/BK,M44)": [
+"VFF V-Run",
+"Total Black",
+"M44"
+],
+"VFF0002(TT/BK,M45)": [
+"VFF V-Run",
+"Total Black",
+"M45"
+],
+"VFF0002(TT/BK,M46)": [
+"VFF V-Run",
+"Total Black",
+"M46"
+],
+"VFF0002(TT/BK,M47)": [
+"VFF V-Run",
+"Total Black",
+"M47"
+],
+"VFF0002(TT/BK,M48)": [
+"VFF V-Run",
+"Total Black",
+"M48"
+],
+"VFF0002(TT/IV,M39)": [
+"VFF V-Run",
+"Total Ivory",
+"M39"
+],
+"VFF0002(TT/IV,M40)": [
+"VFF V-Run",
+"Total Ivory",
+"M40"
+],
+"VFF0002(TT/IV,M41)": [
+"VFF V-Run",
+"Total Ivory",
+"M41"
+],
+"VFF0002(TT/IV,M42)": [
+"VFF V-Run",
+"Total Ivory",
+"M42"
+],
+"VFF0002(TT/IV,M43)": [
+"VFF V-Run",
+"Total Ivory",
+"M43"
+],
+"VFF0002(TT/IV,M44)": [
+"VFF V-Run",
+"Total Ivory",
+"M44"
+],
+"VFF0002(TT/IV,M45)": [
+"VFF V-Run",
+"Total Ivory",
+"M45"
+],
+"VFF0002(TT/IV,M46)": [
+"VFF V-Run",
+"Total Ivory",
+"M46"
+],
+"VFF0002(TT/IV,M47)": [
+"VFF V-Run",
+"Total Ivory",
+"M47"
+],
+"VFF0002(TT/IV,M48)": [
+"VFF V-Run",
+"Total Ivory",
+"M48"
+],
+"VFF0002(TT/IV,W36)": [
+"VFF V-Run",
+"Total Ivory",
+"W36"
+],
+"VFF0002(TT/IV,W37)": [
+"VFF V-Run",
+"Total Ivory",
+"W37"
+],
+"VFF0002(TT/IV,W38)": [
+"VFF V-Run",
+"Total Ivory",
+"W38"
+],
+"VFF0002(TT/IV,W39)": [
+"VFF V-Run",
+"Total Ivory",
+"W39"
+],
+"VFF0002(TT/IV,W40)": [
+"VFF V-Run",
+"Total Ivory",
+"W40"
+],
+"VFF0002(TT/IV,W41)": [
+"VFF V-Run",
+"Total Ivory",
+"W41"
+],
+"VFF0003(BK/GN/BK,M40)": [
+"VFF V-Run Retro",
+"Black/Green/Black",
+"M40"
+],
+"VFF0003(BK/GN/BK,M41)": [
+"VFF V-Run Retro",
+"Black/Green/Black",
+"M41"
+],
+"VFF0003(BK/GN/BK,M42)": [
+"VFF V-Run Retro",
+"Black/Green/Black",
+"M42"
+],
+"VFF0003(BK/GN/BK,M43)": [
+"VFF V-Run Retro",
+"Black/Green/Black",
+"M43"
+],
+"VFF0003(BK/GN/BK,M44)": [
+"VFF V-Run Retro",
+"Black/Green/Black",
+"M44"
+],
+"VFF0003(BK/GN/BK,M45)": [
+"VFF V-Run Retro",
+"Black/Green/Black",
+"M45"
+],
+"VFF0003(BK/GN/BK,M46)": [
+"VFF V-Run Retro",
+"Black/Green/Black",
+"M46"
+],
+"VFF0003(BK/GN/BK,W37)": [
+"VFF V-Run Retro",
+"Black/Green/Black",
+"W37"
+],
+"VFF0003(BK/GN/BK,W38)": [
+"VFF V-Run Retro",
+"Black/Green/Black",
+"W38"
+],
+"VFF0003(BK/GN/BK,W39)": [
+"VFF V-Run Retro",
+"Black/Green/Black",
+"W39"
+],
+"VFF0003(BK/GN/BK,W40)": [
+"VFF V-Run Retro",
+"Black/Green/Black",
+"W40"
+],
+"VFF0004(BK/YL,M39)": [
+"VFF V-Trail 2.0",
+"Black/Yellow",
+"M39"
+],
+"VFF0004(BK/YL,M40)": [
+"VFF V-Trail 2.0",
+"Black/Yellow",
+"M40"
+],
+"VFF0004(BK/YL,M41)": [
+"VFF V-Trail 2.0",
+"Black/Yellow",
+"M41"
+],
+"VFF0004(BK/YL,M42)": [
+"VFF V-Trail 2.0",
+"Black/Yellow",
+"M42"
+],
+"VFF0004(BK/YL,M43)": [
+"VFF V-Trail 2.0",
+"Black/Yellow",
+"M43"
+],
+"VFF0004(BK/YL,M44)": [
+"VFF V-Trail 2.0",
+"Black/Yellow",
+"M44"
+],
+"VFF0004(BK/YL,M45)": [
+"VFF V-Trail 2.0",
+"Black/Yellow",
+"M45"
+],
+"VFF0004(BK/YL,M46)": [
+"VFF V-Trail 2.0",
+"Black/Yellow",
+"M46"
+],
+"VFF0004(BK/YL,M47)": [
+"VFF V-Trail 2.0",
+"Black/Yellow",
+"M47"
+],
+"VFF0004(BK/YL,M48)": [
+"VFF V-Trail 2.0",
+"Black/Yellow",
+"M48"
+],
+"VFF0004(BK/YL,W36)": [
+"VFF V-Trail 2.0",
+"Black/Yellow",
+"W36"
+],
+"VFF0004(BK/YL,W37)": [
+"VFF V-Trail 2.0",
+"Black/Yellow",
+"W37"
+],
+"VFF0004(BK/YL,W38)": [
+"VFF V-Trail 2.0",
+"Black/Yellow",
+"W38"
+],
+"VFF0004(BK/YL,W39)": [
+"VFF V-Trail 2.0",
+"Black/Yellow",
+"W39"
+],
+"VFF0004(BK/YL,W40)": [
+"VFF V-Trail 2.0",
+"Black/Yellow",
+"W40"
+],
+"VFF0004(BK/YL,W41)": [
+"VFF V-Trail 2.0",
+"Black/Yellow",
+"W41"
+],
+"VFF0004(RD/BK,M41)": [
+"VFF V-Trail 2.0",
+"Pompeian Red/Black",
+"M41"
+],
+"VFF0004(RD/BK,M42)": [
+"VFF V-Trail 2.0",
+"Pompeian Red/Black",
+"M42"
+],
+"VFF0004(RD/BK,M43)": [
+"VFF V-Trail 2.0",
+"Pompeian Red/Black",
+"M43"
+],
+"VFF0004(RD/BK,M44)": [
+"VFF V-Trail 2.0",
+"Pompeian Red/Black",
+"M44"
+],
+"VFF0004(RD/BK,M45)": [
+"VFF V-Trail 2.0",
+"Pompeian Red/Black",
+"M45"
+],
+"VFF0004(RD/BK,M46)": [
+"VFF V-Trail 2.0",
+"Pompeian Red/Black",
+"M46"
+],
+"VFF0005(BK/BK,M39": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M39"
+],
+"VFF0005(BK/BK,M39)": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M39"
+],
+"VFF0005(BK/BK,M40": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M40"
+],
+"VFF0005(BK/BK,M40)": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M40"
+],
+"VFF0005(BK/BK,M41": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M41"
+],
+"VFF0005(BK/BK,M41)": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M41"
+],
+"VFF0005(BK/BK,M42": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M42"
+],
+"VFF0005(BK/BK,M42)": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M42"
+],
+"VFF0005(BK/BK,M43": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M43"
+],
+"VFF0005(BK/BK,M43)": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M43"
+],
+"VFF0005(BK/BK,M44": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M44"
+],
+"VFF0005(BK/BK,M44)": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M44"
+],
+"VFF0005(BK/BK,M45": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M45"
+],
+"VFF0005(BK/BK,M45)": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M45"
+],
+"VFF0005(BK/BK,M46": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M46"
+],
+"VFF0005(BK/BK,M46)": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M46"
+],
+"VFF0005(BK/BK,M47": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M47"
+],
+"VFF0005(BK/BK,M47)": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M47"
+],
+"VFF0005(BK/BK,M48)": [
+"VFF V-Train 2.0",
+"Black/Black",
+"M48"
+],
+"VFF0005(BK/BK,W36)": [
+"VFF V-Train 2.0",
+"Black/Black",
+"W36"
+],
+"VFF0005(BK/BK,W37)": [
+"VFF V-Train 2.0",
+"Black/Black",
+"W37"
+],
+"VFF0005(BK/BK,W38)": [
+"VFF V-Train 2.0",
+"Black/Black",
+"W38"
+],
+"VFF0005(BK/BK,W39)": [
+"VFF V-Train 2.0",
+"Black/Black",
+"W39"
+],
+"VFF0005(BK/BK,W40)": [
+"VFF V-Train 2.0",
+"Black/Black",
+"W40"
+],
+"VFF0005(BK/BK,W41)": [
+"VFF V-Train 2.0",
+"Black/Black",
+"W41"
+],
+"VFF0005(BK/BK,W42)": [
+"VFF V-Train 2.0",
+"Black/Black",
+"W42"
+],
+"VFF0005(BK/BL,M40)": [
+"VFF V-Train 2.0",
+"Black/Blue",
+"M40"
+],
+"VFF0005(BK/BL,M41)": [
+"VFF V-Train 2.0",
+"Black/Blue",
+"M41"
+],
+"VFF0005(BK/BL,M42)": [
+"VFF V-Train 2.0",
+"Black/Blue",
+"M42"
+],
+"VFF0005(BK/BL,M43)": [
+"VFF V-Train 2.0",
+"Black/Blue",
+"M43"
+],
+"VFF0005(BK/BL,M44)": [
+"VFF V-Train 2.0",
+"Black/Blue",
+"M44"
+],
+"VFF0005(BK/BL,M45)": [
+"VFF V-Train 2.0",
+"Black/Blue",
+"M45"
+],
+"VFF0005(BK/BL,M46)": [
+"VFF V-Train 2.0",
+"Black/Blue",
+"M46"
+],
+"VFF0005(BK/BL,M47)": [
+"VFF V-Train 2.0",
+"Black/Blue",
+"M47"
+],
+"VFF0005(BK/OR,M39)": [
+"VFF V-Train 2.0",
+"Black/Orange",
+"M39"
+],
+"VFF0005(BK/OR,M40)": [
+"VFF V-Train 2.0",
+"Black/Orange",
+"M40"
+],
+"VFF0005(BK/OR,M41)": [
+"VFF V-Train 2.0",
+"Black/Orange",
+"M41"
+],
+"VFF0005(BK/OR,M42)": [
+"VFF V-Train 2.0",
+"Black/Orange",
+"M42"
+],
+"VFF0005(BK/OR,M43)": [
+"VFF V-Train 2.0",
+"Black/Orange",
+"M43"
+],
+"VFF0005(BK/OR,M44)": [
+"VFF V-Train 2.0",
+"Black/Orange",
+"M44"
+],
+"VFF0005(BK/OR,M45)": [
+"VFF V-Train 2.0",
+"Black/Orange",
+"M45"
+],
+"VFF0005(BK/OR,M46)": [
+"VFF V-Train 2.0",
+"Black/Orange",
+"M46"
+],
+"VFF0005(BK/OR,M47)": [
+"VFF V-Train 2.0",
+"Black/Orange",
+"M47"
+],
+"VFF0005(BK/PK,W36)": [
+"VFF V-Train 2.0",
+"Black/Pink",
+"W36"
+],
+"VFF0005(BK/PK,W37)": [
+"VFF V-Train 2.0",
+"Black/Pink",
+"W37"
+],
+"VFF0005(BK/PK,W38)": [
+"VFF V-Train 2.0",
+"Black/Pink",
+"W38"
+],
+"VFF0005(BK/PK,W39)": [
+"VFF V-Train 2.0",
+"Black/Pink",
+"W39"
+],
+"VFF0005(BK/PK,W40)": [
+"VFF V-Train 2.0",
+"Black/Pink",
+"W40"
+],
+"VFF0005(BK/PK,W41)": [
+"VFF V-Train 2.0",
+"Black/Pink",
+"W41"
+],
+"VFF0005(BK/PK,W42)": [
+"VFF V-Train 2.0",
+"Black/Pink",
+"W42"
+],
+"VFF0005(GY/CM,M39)": [
+"VFF V-Train 2.0",
+"Gray Camo",
+"M39"
+],
+"VFF0005(GY/CM,M40)": [
+"VFF V-Train 2.0",
+"Gray Camo",
+"M40"
+],
+"VFF0005(GY/CM,M41)": [
+"VFF V-Train 2.0",
+"Gray Camo",
+"M41"
+],
+"VFF0005(GY/CM,M42)": [
+"VFF V-Train 2.0",
+"Gray Camo",
+"M42"
+],
+"VFF0005(GY/CM,M43)": [
+"VFF V-Train 2.0",
+"Gray Camo",
+"M43"
+],
+"VFF0005(GY/CM,M44)": [
+"VFF V-Train 2.0",
+"Gray Camo",
+"M44"
+],
+"VFF0005(GY/CM,M45)": [
+"VFF V-Train 2.0",
+"Gray Camo",
+"M45"
+],
+"VFF0005(GY/CM,M46)": [
+"VFF V-Train 2.0",
+"Gray Camo",
+"M46"
+],
+"VFF0005(GY/CM,M47)": [
+"VFF V-Train 2.0",
+"Gray Camo",
+"M47"
+],
+"VFF0005(GY/CM,M48)": [
+"VFF V-Train 2.0",
+"Gray Camo",
+"M48"
+],
+"VFF0005(LIG/GY,M39)": [
+"VFF V-Train 2.0",
+"Lime Green/Gray",
+"M39"
+],
+"VFF0005(LIG/GY,M40)": [
+"VFF V-Train 2.0",
+"Lime Green/Gray",
+"M40"
+],
+"VFF0005(LIG/GY,M41)": [
+"VFF V-Train 2.0",
+"Lime Green/Gray",
+"M41"
+],
+"VFF0005(LIG/GY,M42)": [
+"VFF V-Train 2.0",
+"Lime Green/Gray",
+"M42"
+],
+"VFF0005(LIG/GY,M43)": [
+"VFF V-Train 2.0",
+"Lime Green/Gray",
+"M43"
+],
+"VFF0005(LIG/GY,M44)": [
+"VFF V-Train 2.0",
+"Lime Green/Gray",
+"M44"
+],
+"VFF0005(LIG/GY,M45)": [
+"VFF V-Train 2.0",
+"Lime Green/Gray",
+"M45"
+],
+"VFF0005(LIG/GY,M46)": [
+"VFF V-Train 2.0",
+"Lime Green/Gray",
+"M46"
+],
+"VFF0005(LIG/GY,M47)": [
+"VFF V-Train 2.0",
+"Lime Green/Gray",
+"M47"
+],
+"VFF0006(BK,M40)": [
+"VFF Spyridon Evo",
+"Black",
+"M40"
+],
+"VFF0006(BK,M41)": [
+"VFF Spyridon Evo",
+"Black",
+"M41"
+],
+"VFF0006(BK,M42)": [
+"VFF Spyridon Evo",
+"Black",
+"M42"
+],
+"VFF0006(BK,M43)": [
+"VFF Spyridon Evo",
+"Black",
+"M43"
+],
+"VFF0006(BK,M44)": [
+"VFF Spyridon Evo",
+"Black",
+"M44"
+],
+"VFF0006(BK,M45)": [
+"VFF Spyridon Evo",
+"Black",
+"M45"
+],
+"VFF0006(BK,M46)": [
+"VFF Spyridon Evo",
+"Black",
+"M46"
+],
+"VFF0006(BK,M47)": [
+"VFF Spyridon Evo",
+"Black",
+"M47"
+],
+"VFF0006(BK,W37)": [
+"VFF Spyridon Evo",
+"Black",
+"W37"
+],
+"VFF0006(BK,W38)": [
+"VFF Spyridon Evo",
+"Black",
+"W38"
+],
+"VFF0006(BK,W39)": [
+"VFF Spyridon Evo",
+"Black",
+"W39"
+],
+"VFF0006(BK,W40)": [
+"VFF Spyridon Evo",
+"Black",
+"W40"
+],
+"VFF0006(BK,W41)": [
+"VFF Spyridon Evo",
+"Black",
+"W41"
+],
+"VFF0006(DGN/CM,M40)": [
+"VFF Spyridon Evo",
+"Dark Green/Camo",
+"M40"
+],
+"VFF0006(DGN/CM,M41)": [
+"VFF Spyridon Evo",
+"Dark Green/Camo",
+"M41"
+],
+"VFF0006(DGN/CM,M42)": [
+"VFF Spyridon Evo",
+"Dark Green/Camo",
+"M42"
+],
+"VFF0006(DGN/CM,M43)": [
+"VFF Spyridon Evo",
+"Dark Green/Camo",
+"M43"
+],
+"VFF0006(DGN/CM,M44)": [
+"VFF Spyridon Evo",
+"Dark Green/Camo",
+"M44"
+],
+"VFF0006(DGN/CM,M45)": [
+"VFF Spyridon Evo",
+"Dark Green/Camo",
+"M45"
+],
+"VFF0006(DGN/CM,M46)": [
+"VFF Spyridon Evo",
+"Dark Green/Camo",
+"M46"
+],
+"VFF0007(BGD,W37)": [
+"VFF Vi-b Eco",
+"Burgundy",
+"W37"
+],
+"VFF0007(BGD,W38)": [
+"VFF Vi-b Eco",
+"Burgundy",
+"W38"
+],
+"VFF0007(BGD,W39)": [
+"VFF Vi-b Eco",
+"Burgundy",
+"W39"
+],
+"VFF0007(BGD,W40)": [
+"VFF Vi-b Eco",
+"Burgundy",
+"W40"
+],
+"VFF0007(BGD,W41)": [
+"VFF Vi-b Eco",
+"Burgundy",
+"W41"
+],
+"VFF0007(BK,W36)": [
+"VFF Vi-b Eco",
+"Black",
+"W36"
+],
+"VFF0007(BK,W37)": [
+"VFF Vi-b Eco",
+"Black",
+"W37"
+],
+"VFF0007(BK,W38)": [
+"VFF Vi-b Eco",
+"Black",
+"W38"
+],
+"VFF0007(BK,W39)": [
+"VFF Vi-b Eco",
+"Black",
+"W39"
+],
+"VFF0007(BK,W40)": [
+"VFF Vi-b Eco",
+"Black",
+"W40"
+],
+"VFF0007(BK,W41)": [
+"VFF Vi-b Eco",
+"Black",
+"W41"
+],
+"VFF0008(BB/BL,W35)": [
+"VFF V-Soul",
+"Baby Blue",
+"W35"
+],
+"VFF0008(BB/BL,W36)": [
+"VFF V-Soul",
+"Baby Blue",
+"W36"
+],
+"VFF0008(BB/BL,W37)": [
+"VFF V-Soul",
+"Baby Blue",
+"W37"
+],
+"VFF0008(BB/BL,W38)": [
+"VFF V-Soul",
+"Baby Blue",
+"W38"
+],
+"VFF0008(BB/BL,W39)": [
+"VFF V-Soul",
+"Baby Blue",
+"W39"
+],
+"VFF0008(BB/BL,W40)": [
+"VFF V-Soul",
+"Baby Blue",
+"W40"
+],
+"VFF0008(BB/BL,W41)": [
+"VFF V-Soul",
+"Baby Blue",
+"W41"
+],
+"VFF0008(BB/BL,W42)": [
+"VFF V-Soul",
+"Baby Blue",
+"W42"
+],
+"VFF0008(BB/BL,W43)": [
+"VFF V-Soul",
+"Baby Blue",
+"W43"
+],
+"VFF0008(BK,W35)": [
+"VFF V-Soul",
+"Black",
+"W35"
+],
+"VFF0008(BK,W36)": [
+"VFF V-Soul",
+"Black",
+"W36"
+],
+"VFF0008(BK,W37)": [
+"VFF V-Soul",
+"Black",
+"W37"
+],
+"VFF0008(BK,W38)": [
+"VFF V-Soul",
+"Black",
+"W38"
+],
+"VFF0008(BK,W39)": [
+"VFF V-Soul",
+"Black",
+"W39"
+],
+"VFF0008(BK,W40)": [
+"VFF V-Soul",
+"Black",
+"W40"
+],
+"VFF0008(BK,W41)": [
+"VFF V-Soul",
+"Black",
+"W41"
+],
+"VFF0008(BK,W42)": [
+"VFF V-Soul",
+"Black",
+"W42"
+],
+"VFF0008(BK,W43)": [
+"VFF V-Soul",
+"Black",
+"W43"
+],
+"VFF0008(BK26,W35)": [
+"VFF V-Soul",
+"Black",
+"W35"
+],
+"VFF0008(BK26,W36)": [
+"VFF V-Soul",
+"Black",
+"W36"
+],
+"VFF0008(BK26,W37)": [
+"VFF V-Soul",
+"Black",
+"W37"
+],
+"VFF0008(BK26,W38)": [
+"VFF V-Soul",
+"Black",
+"W38"
+],
+"VFF0008(BK26,W39)": [
+"VFF V-Soul",
+"Black",
+"W39"
+],
+"VFF0008(BK26,W40)": [
+"VFF V-Soul",
+"Black",
+"W40"
+],
+"VFF0008(BK26,W41)": [
+"VFF V-Soul",
+"Black",
+"W41"
+],
+"VFF0008(BK26,W42)": [
+"VFF V-Soul",
+"Black",
+"W42"
+],
+"VFF0008(BK26,W43)": [
+"VFF V-Soul",
+"Black",
+"W43"
+],
+"VFF0008(BR,W36)": [
+"VFF V-Soul",
+"Brown",
+"W36"
+],
+"VFF0008(BR,W37)": [
+"VFF V-Soul",
+"Brown",
+"W37"
+],
+"VFF0008(BR,W38)": [
+"VFF V-Soul",
+"Brown",
+"W38"
+],
+"VFF0008(BR,W39)": [
+"VFF V-Soul",
+"Brown",
+"W39"
+],
+"VFF0008(BR,W40)": [
+"VFF V-Soul",
+"Brown",
+"W40"
+],
+"VFF0008(BR,W41)": [
+"VFF V-Soul",
+"Brown",
+"W41"
+],
+"VFF0008(DPK/CRO,W35)": [
+"VFF V-Soul",
+"Dusty Pink/Coral Orange",
+"W35"
+],
+"VFF0008(DPK/CRO,W36)": [
+"VFF V-Soul",
+"Dusty Pink/Coral Orange",
+"W36"
+],
+"VFF0008(DPK/CRO,W37)": [
+"VFF V-Soul",
+"Dusty Pink/Coral Orange",
+"W37"
+],
+"VFF0008(DPK/CRO,W38)": [
+"VFF V-Soul",
+"Dusty Pink/Coral Orange",
+"W38"
+],
+"VFF0008(DPK/CRO,W39)": [
+"VFF V-Soul",
+"Dusty Pink/Coral Orange",
+"W39"
+],
+"VFF0008(DPK/CRO,W40)": [
+"VFF V-Soul",
+"Dusty Pink/Coral Orange",
+"W40"
+],
+"VFF0008(DPK/CRO,W41)": [
+"VFF V-Soul",
+"Dusty Pink/Coral Orange",
+"W41"
+],
+"VFF0008(F/GN,W35)": [
+"VFF V-Soul",
+"Fig/A. Green",
+"W35"
+],
+"VFF0008(F/GN,W36)": [
+"VFF V-Soul",
+"Fig/A. Green",
+"W36"
+],
+"VFF0008(F/GN,W37)": [
+"VFF V-Soul",
+"Fig/A. Green",
+"W37"
+],
+"VFF0008(F/GN,W38)": [
+"VFF V-Soul",
+"Fig/A. Green",
+"W38"
+],
+"VFF0008(F/GN,W39)": [
+"VFF V-Soul",
+"Fig/A. Green",
+"W39"
+],
+"VFF0008(F/GN,W40)": [
+"VFF V-Soul",
+"Fig/A. Green",
+"W40"
+],
+"VFF0008(F/GN,W41)": [
+"VFF V-Soul",
+"Fig/A. Green",
+"W41"
+],
+"VFF0008(FU,W35)": [
+"VFF V-Soul",
+"Fuchsia",
+"W35"
+],
+"VFF0008(FU,W36)": [
+"VFF V-Soul",
+"Fuchsia",
+"W36"
+],
+"VFF0008(FU,W37)": [
+"VFF V-Soul",
+"Fuchsia",
+"W37"
+],
+"VFF0008(FU,W38)": [
+"VFF V-Soul",
+"Fuchsia",
+"W38"
+],
+"VFF0008(FU,W39)": [
+"VFF V-Soul",
+"Fuchsia",
+"W39"
+],
+"VFF0008(FU,W40)": [
+"VFF V-Soul",
+"Fuchsia",
+"W40"
+],
+"VFF0008(FU,W41)": [
+"VFF V-Soul",
+"Fuchsia",
+"W41"
+],
+"VFF0008(FU,W42)": [
+"VFF V-Soul",
+"Fuchsia",
+"W42"
+],
+"VFF0008(IV/DPK,W35)": [
+"VFF V-Soul",
+"Ivory/Dusty Pink",
+"W35"
+],
+"VFF0008(IV/DPK,W36)": [
+"VFF V-Soul",
+"Ivory/Dusty Pink",
+"W36"
+],
+"VFF0008(IV/DPK,W37)": [
+"VFF V-Soul",
+"Ivory/Dusty Pink",
+"W37"
+],
+"VFF0008(IV/DPK,W38)": [
+"VFF V-Soul",
+"Ivory/Dusty Pink",
+"W38"
+],
+"VFF0008(IV/DPK,W39)": [
+"VFF V-Soul",
+"Ivory/Dusty Pink",
+"W39"
+],
+"VFF0008(IV/DPK,W40)": [
+"VFF V-Soul",
+"Ivory/Dusty Pink",
+"W40"
+],
+"VFF0008(IV/DPK,W41)": [
+"VFF V-Soul",
+"Ivory/Dusty Pink",
+"W41"
+],
+"VFF0008(IV/DPK,W42)": [
+"VFF V-Soul",
+"Ivory/Dusty Pink",
+"W42"
+],
+"VFF0008(LI/GN,W35)": [
+"VFF V-Soul",
+"Lime Green",
+"W35"
+],
+"VFF0008(LI/GN,W36)": [
+"VFF V-Soul",
+"Lime Green",
+"W36"
+],
+"VFF0008(LI/GN,W37)": [
+"VFF V-Soul",
+"Lime Green",
+"W37"
+],
+"VFF0008(LI/GN,W38)": [
+"VFF V-Soul",
+"Lime Green",
+"W38"
+],
+"VFF0008(LI/GN,W39)": [
+"VFF V-Soul",
+"Lime Green",
+"W39"
+],
+"VFF0008(LI/GN,W40)": [
+"VFF V-Soul",
+"Lime Green",
+"W40"
+],
+"VFF0008(LI/GN,W41)": [
+"VFF V-Soul",
+"Lime Green",
+"W41"
+],
+"VFF0008(LI/GN,W42)": [
+"VFF V-Soul",
+"Lime Green",
+"W42"
+],
+"VFF0008(LVD,W35)": [
+"VFF V-Soul",
+"Lavendar",
+"W35"
+],
+"VFF0008(LVD,W36)": [
+"VFF V-Soul",
+"Lavendar",
+"W36"
+],
+"VFF0008(LVD,W37)": [
+"VFF V-Soul",
+"Lavendar",
+"W37"
+],
+"VFF0008(LVD,W38)": [
+"VFF V-Soul",
+"Lavendar",
+"W38"
+],
+"VFF0008(LVD,W39)": [
+"VFF V-Soul",
+"Lavendar",
+"W39"
+],
+"VFF0008(LVD,W40)": [
+"VFF V-Soul",
+"Lavendar",
+"W40"
+],
+"VFF0008(LVD,W41)": [
+"VFF V-Soul",
+"Lavendar",
+"W41"
+],
+"VFF0008(NU,W35)": [
+"VFF V-Soul",
+"Nude",
+"W35"
+],
+"VFF0008(NU,W36)": [
+"VFF V-Soul",
+"Nude",
+"W36"
+],
+"VFF0008(NU,W37)": [
+"VFF V-Soul",
+"Nude",
+"W37"
+],
+"VFF0008(NU,W38)": [
+"VFF V-Soul",
+"Nude",
+"W38"
+],
+"VFF0008(NU,W39)": [
+"VFF V-Soul",
+"Nude",
+"W39"
+],
+"VFF0008(NU,W40)": [
+"VFF V-Soul",
+"Nude",
+"W40"
+],
+"VFF0008(NU,W41)": [
+"VFF V-Soul",
+"Nude",
+"W41"
+],
+"VFF0008(NU,W42)": [
+"VFF V-Soul",
+"Nude",
+"W42"
+],
+"VFF0008(PP,W36)": [
+"VFF V-Soul",
+"Purple",
+"W36"
+],
+"VFF0008(PP,W37)": [
+"VFF V-Soul",
+"Purple",
+"W37"
+],
+"VFF0008(PP,W38)": [
+"VFF V-Soul",
+"Purple",
+"W38"
+],
+"VFF0008(PP,W39)": [
+"VFF V-Soul",
+"Purple",
+"W39"
+],
+"VFF0008(PP,W40)": [
+"VFF V-Soul",
+"Purple",
+"W40"
+],
+"VFF0008(PP,W41)": [
+"VFF V-Soul",
+"Purple",
+"W41"
+],
+"VFF0008(SV,W35)": [
+"VFF V-Soul",
+"Silver",
+"W35"
+],
+"VFF0008(SV,W36)": [
+"VFF V-Soul",
+"Silver",
+"W36"
+],
+"VFF0008(SV,W37)": [
+"VFF V-Soul",
+"Silver",
+"W37"
+],
+"VFF0008(SV,W38)": [
+"VFF V-Soul",
+"Silver",
+"W38"
+],
+"VFF0008(SV,W39)": [
+"VFF V-Soul",
+"Silver",
+"W39"
+],
+"VFF0008(SV,W40)": [
+"VFF V-Soul",
+"Silver",
+"W40"
+],
+"VFF0008(SV,W41)": [
+"VFF V-Soul",
+"Silver",
+"W41"
+],
+"VFF0008(SV,W42)": [
+"VFF V-Soul",
+"Silver",
+"W42"
+],
+"VFF0009(BK,M39)": [
+"VFF KSO EVO",
+"Black",
+"M39"
+],
+"VFF0009(BK,M40)": [
+"VFF KSO EVO",
+"Black",
+"M40"
+],
+"VFF0009(BK,M41)": [
+"VFF KSO EVO",
+"Black",
+"M41"
+],
+"VFF0009(BK,M42)": [
+"VFF KSO EVO",
+"Black",
+"M42"
+],
+"VFF0009(BK,M43)": [
+"VFF KSO EVO",
+"Black",
+"M43"
+],
+"VFF0009(BK,M44)": [
+"VFF KSO EVO",
+"Black",
+"M44"
+],
+"VFF0009(BK,M45)": [
+"VFF KSO EVO",
+"Black",
+"M45"
+],
+"VFF0009(BK,M46)": [
+"VFF KSO EVO",
+"Black",
+"M46"
+],
+"VFF0009(BK,M47)": [
+"VFF KSO EVO",
+"Black",
+"M47"
+],
+"VFF0009(BK,M48)": [
+"VFF KSO EVO",
+"Black",
+"M48"
+],
+"VFF0009(BK,W35)": [
+"VFF KSO EVO",
+"Black",
+"W35"
+],
+"VFF0009(BK,W36)": [
+"VFF KSO EVO",
+"Black",
+"W36"
+],
+"VFF0009(BK,W37)": [
+"VFF KSO EVO",
+"Black",
+"W37"
+],
+"VFF0009(BK,W38)": [
+"VFF KSO EVO",
+"Black",
+"W38"
+],
+"VFF0009(BK,W39)": [
+"VFF KSO EVO",
+"Black",
+"W39"
+],
+"VFF0009(BK,W40)": [
+"VFF KSO EVO",
+"Black",
+"W40"
+],
+"VFF0009(BK,W41)": [
+"VFF KSO EVO",
+"Black",
+"W41"
+],
+"VFF0009(BK,W42)": [
+"VFF KSO EVO",
+"Black",
+"W42"
+],
+"VFF0009(BK/BK,M40)": [
+"VFF KSO",
+"Black/Black",
+"M40"
+],
+"VFF0009(BK/BK,M41)": [
+"VFF KSO",
+"Black/Black",
+"M41"
+],
+"VFF0009(BK/BK,M42)": [
+"VFF KSO",
+"Black/Black",
+"M42"
+],
+"VFF0009(BK/BK,M43)": [
+"VFF KSO",
+"Black/Black",
+"M43"
+],
+"VFF0009(BK/BK,M44)": [
+"VFF KSO",
+"Black/Black",
+"M44"
+],
+"VFF0009(BK/BK,M45)": [
+"VFF KSO",
+"Black/Black",
+"M45"
+],
+"VFF0009(BK/BK,M46)": [
+"VFF KSO",
+"Black/Black",
+"M46"
+],
+"VFF0009(BK/BK,M47)": [
+"VFF KSO",
+"Black/Black",
+"M47"
+],
+"VFF0009(BK/RD,M41)": [
+"VFF KSO EVO",
+"Black/Red",
+"M41"
+],
+"VFF0009(BK/RD,M42)": [
+"VFF KSO EVO",
+"Black/Red",
+"M42"
+],
+"VFF0009(BK/RD,M43)": [
+"VFF KSO EVO",
+"Black/Red",
+"M43"
+],
+"VFF0009(BK/RD,M44)": [
+"VFF KSO EVO",
+"Black/Red",
+"M44"
+],
+"VFF0009(BK/RD,M45)": [
+"VFF KSO EVO",
+"Black/Red",
+"M45"
+],
+"VFF0009(BK/RD,M46)": [
+"VFF KSO EVO",
+"Black/Red",
+"M46"
+],
+"VFF0009(BK/RD,M47)": [
+"VFF KSO EVO",
+"Black/Red",
+"M47"
+],
+"VFF0009(BK/RO,W36)": [
+"VFF KSO EVO",
+"Black/Rose",
+"W36"
+],
+"VFF0009(BK/RO,W37)": [
+"VFF KSO EVO",
+"Black/Rose",
+"W37"
+],
+"VFF0009(BK/RO,W38)": [
+"VFF KSO EVO",
+"Black/Rose",
+"W38"
+],
+"VFF0009(BK/RO,W39)": [
+"VFF KSO EVO",
+"Black/Rose",
+"W39"
+],
+"VFF0009(BK/RO,W40)": [
+"VFF KSO EVO",
+"Black/Rose",
+"W40"
+],
+"VFF0009(BK/RO,W41)": [
+"VFF KSO EVO",
+"Black/Rose",
+"W41"
+],
+"VFF0009(BK/RO,W42)": [
+"VFF KSO EVO",
+"Black/Rose",
+"W42"
+],
+"VFF0009(BK/YL,M40)": [
+"VFF KSO EVO",
+"Black/Yellow",
+"M40"
+],
+"VFF0009(BK/YL,M41)": [
+"VFF KSO EVO",
+"Black/Yellow",
+"M41"
+],
+"VFF0009(BK/YL,M42)": [
+"VFF KSO EVO",
+"Black/Yellow",
+"M42"
+],
+"VFF0009(BK/YL,M43)": [
+"VFF KSO EVO",
+"Black/Yellow",
+"M43"
+],
+"VFF0009(BK/YL,M44)": [
+"VFF KSO EVO",
+"Black/Yellow",
+"M44"
+],
+"VFF0009(BK/YL,M45)": [
+"VFF KSO EVO",
+"Black/Yellow",
+"M45"
+],
+"VFF0009(BK/YL,M46)": [
+"VFF KSO EVO",
+"Black/Yellow",
+"M46"
+],
+"VFF0009(BK/YL,M47)": [
+"VFF KSO EVO",
+"Black/Yellow",
+"M47"
+],
+"VFF0009(DL/BK,M40)": [
+"VFF KSO EVO",
+"Deep Lake/Black",
+"M40"
+],
+"VFF0009(DL/BK,M41)": [
+"VFF KSO EVO",
+"Deep Lake/Black",
+"M41"
+],
+"VFF0009(DL/BK,M42)": [
+"VFF KSO EVO",
+"Deep Lake/Black",
+"M42"
+],
+"VFF0009(DL/BK,M43)": [
+"VFF KSO EVO",
+"Deep Lake/Black",
+"M43"
+],
+"VFF0009(DL/BK,M44)": [
+"VFF KSO EVO",
+"Deep Lake/Black",
+"M44"
+],
+"VFF0009(DL/BK,M45)": [
+"VFF KSO EVO",
+"Deep Lake/Black",
+"M45"
+],
+"VFF0009(DL/BK,M46)": [
+"VFF KSO EVO",
+"Deep Lake/Black",
+"M46"
+],
+"VFF0009(DL/BK,M47)": [
+"VFF KSO EVO",
+"Deep Lake/Black",
+"M47"
+],
+"VFF0009(DL/BK,W36)": [
+"VFF KSO EVO",
+"Deep Lake/Black",
+"W36"
+],
+"VFF0009(DL/BK,W37)": [
+"VFF KSO EVO",
+"Deep Lake/Black",
+"W37"
+],
+"VFF0009(DL/BK,W38)": [
+"VFF KSO EVO",
+"Deep Lake/Black",
+"W38"
+],
+"VFF0009(DL/BK,W39)": [
+"VFF KSO EVO",
+"Deep Lake/Black",
+"W39"
+],
+"VFF0009(DL/BK,W40)": [
+"VFF KSO EVO",
+"Deep Lake/Black",
+"W40"
+],
+"VFF0009(DL/BK,W41)": [
+"VFF KSO EVO",
+"Deep Lake/Black",
+"W41"
+],
+"VFF0009(F/GN,M40)": [
+"VFF KSO EVO",
+"Fig/A Green",
+"M40"
+],
+"VFF0009(F/GN,M41)": [
+"VFF KSO EVO",
+"Fig/A Green",
+"M41"
+],
+"VFF0009(F/GN,M42)": [
+"VFF KSO EVO",
+"Fig/A Green",
+"M42"
+],
+"VFF0009(F/GN,M43)": [
+"VFF KSO EVO",
+"Fig/A Green",
+"M43"
+],
+"VFF0009(F/GN,M44)": [
+"VFF KSO EVO",
+"Fig/A Green",
+"M44"
+],
+"VFF0009(F/GN,M45)": [
+"VFF KSO EVO",
+"Fig/A Green",
+"M45"
+],
+"VFF0009(F/GN,M46)": [
+"VFF KSO EVO",
+"Fig/A Green",
+"M46"
+],
+"VFF0009(F/GN,M47)": [
+"VFF KSO EVO",
+"Fig/A Green",
+"M47"
+],
+"VFF0009(F/GN,W37)": [
+"VFF KSO EVO",
+"Fig/A Green",
+"W37"
+],
+"VFF0009(F/GN,W38)": [
+"VFF KSO EVO",
+"Fig/A Green",
+"W38"
+],
+"VFF0009(F/GN,W39)": [
+"VFF KSO EVO",
+"Fig/A Green",
+"W39"
+],
+"VFF0009(F/GN,W40)": [
+"VFF KSO EVO",
+"Fig/A Green",
+"W40"
+],
+"VFF0009(F/GN,W41)": [
+"VFF KSO EVO",
+"Fig/A Green",
+"W41"
+],
+"VFF0009(GY/OR,M40)": [
+"VFF KSO EVO",
+"Gray/Orange",
+"M40"
+],
+"VFF0009(GY/OR,M41)": [
+"VFF KSO EVO",
+"Gray/Orange",
+"M41"
+],
+"VFF0009(GY/OR,M42)": [
+"VFF KSO EVO",
+"Gray/Orange",
+"M42"
+],
+"VFF0009(GY/OR,M43)": [
+"VFF KSO EVO",
+"Gray/Orange",
+"M43"
+],
+"VFF0009(GY/OR,M44)": [
+"VFF KSO EVO",
+"Gray/Orange",
+"M44"
+],
+"VFF0009(GY/OR,M45)": [
+"VFF KSO EVO",
+"Gray/Orange",
+"M45"
+],
+"VFF0009(GY/OR,M46)": [
+"VFF KSO EVO",
+"Gray/Orange",
+"M46"
+],
+"VFF0009(GY/OR,M47)": [
+"VFF KSO EVO",
+"Gray/Orange",
+"M47"
+],
+"VFF0009(GY/PP,W35)": [
+"VFF KSO EVO",
+"Gray/Purple",
+"W35"
+],
+"VFF0009(GY/PP,W36)": [
+"VFF KSO EVO",
+"Gray/Purple",
+"W36"
+],
+"VFF0009(GY/PP,W37)": [
+"VFF KSO EVO",
+"Gray/Purple",
+"W37"
+],
+"VFF0009(GY/PP,W38)": [
+"VFF KSO EVO",
+"Gray/Purple",
+"W38"
+],
+"VFF0009(GY/PP,W39)": [
+"VFF KSO EVO",
+"Gray/Purple",
+"W39"
+],
+"VFF0009(GY/PP,W40)": [
+"VFF KSO EVO",
+"Gray/Purple",
+"W40"
+],
+"VFF0009(GY/RD,M46)": [
+"VFF KSO EVO",
+"Gray/Red",
+"M46"
+],
+"VFF0009(IV/BK,W36)": [
+"VFF KSO EVO",
+"Ivory/Black",
+"W36"
+],
+"VFF0009(IV/BK,W37)": [
+"VFF KSO EVO",
+"Ivory/Black",
+"W37"
+],
+"VFF0009(IV/BK,W38)": [
+"VFF KSO EVO",
+"Ivory/Black",
+"W38"
+],
+"VFF0009(IV/BK,W39)": [
+"VFF KSO EVO",
+"Ivory/Black",
+"W39"
+],
+"VFF0009(IV/BK,W40)": [
+"VFF KSO EVO",
+"Ivory/Black",
+"W40"
+],
+"VFF0009(IV/BK,W41)": [
+"VFF KSO EVO",
+"Ivory/Black",
+"W41"
+],
+"VFF0009(IV/BK,W42)": [
+"VFF KSO EVO",
+"Ivory/Black",
+"W42"
+],
+"VFF0009(YL/WT,M40)": [
+"VFF KSO EVO",
+"Yellow/White",
+"M40"
+],
+"VFF0009(YL/WT,M41)": [
+"VFF KSO EVO",
+"Yellow/White",
+"M41"
+],
+"VFF0009(YL/WT,M42)": [
+"VFF KSO EVO",
+"Yellow/White",
+"M42"
+],
+"VFF0009(YL/WT,M43)": [
+"VFF KSO EVO",
+"Yellow/White",
+"M43"
+],
+"VFF0009(YL/WT,M44)": [
+"VFF KSO EVO",
+"Yellow/White",
+"M44"
+],
+"VFF0009(YL/WT,M45)": [
+"VFF KSO EVO",
+"Yellow/White",
+"M45"
+],
+"VFF0009(YL/WT,M46)": [
+"VFF KSO EVO",
+"Yellow/White",
+"M46"
+],
+"VFF0009(YL/WT,M47)": [
+"VFF KSO EVO",
+"Yellow/White",
+"M47"
+],
+"VFF0009(YL/WT,M48)": [
+"VFF KSO EVO",
+"Yellow/White",
+"M48"
+],
+"VFF0009(YL/WT,W36)": [
+"VFF KSO EVO",
+"Yellow/White",
+"W36"
+],
+"VFF0009(YL/WT,W37)": [
+"VFF KSO EVO",
+"Yellow/White",
+"W37"
+],
+"VFF0009(YL/WT,W38)": [
+"VFF KSO EVO",
+"Yellow/White",
+"W38"
+],
+"VFF0009(YL/WT,W39)": [
+"VFF KSO EVO",
+"Yellow/White",
+"W39"
+],
+"VFF0009(YL/WT,W40)": [
+"VFF KSO EVO",
+"Yellow/White",
+"W40"
+],
+"VFF0009(YL/WT,W41)": [
+"VFF KSO EVO",
+"Yellow/White",
+"W41"
+],
+"VFF0009(YL/WT,W42)": [
+"VFF KSO EVO",
+"Yellow/White",
+"W42"
+],
+"VFF0010(BK,M40)": [
+"VFF EL-X Knit",
+"Black",
+"M40"
+],
+"VFF0010(BK,M41)": [
+"VFF EL-X Knit",
+"Black",
+"M41"
+],
+"VFF0010(BK,M42)": [
+"VFF EL-X Knit",
+"Black",
+"M42"
+],
+"VFF0010(BK,M43)": [
+"VFF EL-X Knit",
+"Black",
+"M43"
+],
+"VFF0010(BK,M44)": [
+"VFF EL-X Knit",
+"Black",
+"M44"
+],
+"VFF0010(BK,M45)": [
+"VFF EL-X Knit",
+"Black",
+"M45"
+],
+"VFF0010(BK,M46)": [
+"VFF EL-X Knit",
+"Black",
+"M46"
+],
+"VFF0010(BK,M47)": [
+"VFF EL-X Knit",
+"Black",
+"M47"
+],
+"VFF0010(BK,M48)": [
+"VFF EL-X Knit",
+"Black",
+"M48"
+],
+"VFF0010(GY,M40)": [
+"VFF EL-X Knit",
+"Gray",
+"M40"
+],
+"VFF0010(GY,M41)": [
+"VFF EL-X Knit",
+"Gray",
+"M41"
+],
+"VFF0010(GY,M42)": [
+"VFF EL-X Knit",
+"Gray",
+"M42"
+],
+"VFF0010(GY,M43)": [
+"VFF EL-X Knit",
+"Gray",
+"M43"
+],
+"VFF0010(GY,M44)": [
+"VFF EL-X Knit",
+"Gray",
+"M44"
+],
+"VFF0010(GY,M45)": [
+"VFF EL-X Knit",
+"Gray",
+"M45"
+],
+"VFF0010(GY,M46)": [
+"VFF EL-X Knit",
+"Gray",
+"M46"
+],
+"VFF0010(GY,M47)": [
+"VFF EL-X Knit",
+"Gray",
+"M47"
+],
+"VFF0010(GY,M48)": [
+"VFF EL-X Knit",
+"Gray",
+"M48"
+],
+"VFF0010(GY,W36)": [
+"VFF EL-X Knit",
+"Gray",
+"W36"
+],
+"VFF0010(GY,W37)": [
+"VFF EL-X Knit",
+"Gray",
+"W37"
+],
+"VFF0010(GY,W38)": [
+"VFF EL-X Knit",
+"Gray",
+"W38"
+],
+"VFF0010(GY,W39)": [
+"VFF EL-X Knit",
+"Gray",
+"W39"
+],
+"VFF0010(GY,W40)": [
+"VFF EL-X Knit",
+"Gray",
+"W40"
+],
+"VFF0011(BK,W37)": [
+"VFF KMD Sports 2.0",
+"Black",
+"W37"
+],
+"VFF0011(BK,W38)": [
+"VFF KMD Sports 2.0",
+"Black",
+"W38"
+],
+"VFF0011(BK,W39)": [
+"VFF KMD Sports 2.0",
+"Black",
+"W39"
+],
+"VFF0011(BK,W40)": [
+"VFF KMD Sports 2.0",
+"Black",
+"W40"
+],
+"VFF0012(BG,W36)": [
+"VFF KSO ECO",
+"Beige",
+"W36"
+],
+"VFF0012(BG,W37)": [
+"VFF KSO ECO",
+"Beige",
+"W37"
+],
+"VFF0012(BG,W38)": [
+"VFF KSO ECO",
+"Beige",
+"W38"
+],
+"VFF0012(BG,W39)": [
+"VFF KSO ECO",
+"Beige",
+"W39"
+],
+"VFF0012(BG,W40)": [
+"VFF KSO ECO",
+"Beige",
+"W40"
+],
+"VFF0012(BG,W41)": [
+"VFF KSO ECO",
+"Beige",
+"W41"
+],
+"VFF0012(BG,W42)": [
+"VFF KSO ECO",
+"Beige",
+"W42"
+],
+"VFF0012(GY,M40)": [
+"VFF KSO ECO",
+"Gray",
+"M40"
+],
+"VFF0012(GY,M41)": [
+"VFF KSO ECO",
+"Gray",
+"M41"
+],
+"VFF0012(GY,M42)": [
+"VFF KSO ECO",
+"Gray",
+"M42"
+],
+"VFF0012(GY,M43)": [
+"VFF KSO ECO",
+"Gray",
+"M43"
+],
+"VFF0012(GY,M44)": [
+"VFF KSO ECO",
+"Gray",
+"M44"
+],
+"VFF0012(GY,M45)": [
+"VFF KSO ECO",
+"Gray",
+"M45"
+],
+"VFF0012(GY,M46)": [
+"VFF KSO ECO",
+"Gray",
+"M46"
+],
+"VFF0012(GY,M47)": [
+"VFF KSO ECO",
+"Gray",
+"M47"
+],
+"VFF0012(GY,W36)": [
+"VFF KSO ECO",
+"Gray",
+"W36"
+],
+"VFF0012(GY,W37)": [
+"VFF KSO ECO",
+"Gray",
+"W37"
+],
+"VFF0012(GY,W38)": [
+"VFF KSO ECO",
+"Gray",
+"W38"
+],
+"VFF0012(GY,W39)": [
+"VFF KSO ECO",
+"Gray",
+"W39"
+],
+"VFF0012(GY,W40)": [
+"VFF KSO ECO",
+"Gray",
+"W40"
+],
+"VFF0012(GY,W41)": [
+"VFF KSO ECO",
+"Gray",
+"W41"
+],
+"VFF0012(MIL/GN,M40)": [
+"VFF KSO ECO",
+"Military Green",
+"M40"
+],
+"VFF0012(MIL/GN,M41)": [
+"VFF KSO ECO",
+"Military Green",
+"M41"
+],
+"VFF0012(MIL/GN,M42)": [
+"VFF KSO ECO",
+"Military Green",
+"M42"
+],
+"VFF0012(MIL/GN,M43)": [
+"VFF KSO ECO",
+"Military Green",
+"M43"
+],
+"VFF0012(MIL/GN,M44)": [
+"VFF KSO ECO",
+"Military Green",
+"M44"
+],
+"VFF0012(MIL/GN,M45)": [
+"VFF KSO ECO",
+"Military Green",
+"M45"
+],
+"VFF0012(MIL/GN,M46)": [
+"VFF KSO ECO",
+"Military Green",
+"M46"
+],
+"VFF0013(BK,M40)": [
+"VFF CVT-Hemp",
+"Black",
+"M40"
+],
+"VFF0013(BK,M41)": [
+"VFF CVT-Hemp",
+"Black",
+"M41"
+],
+"VFF0013(BK,M42)": [
+"VFF CVT-Hemp",
+"Black",
+"M42"
+],
+"VFF0013(BK,M43)": [
+"VFF CVT-Hemp",
+"Black",
+"M43"
+],
+"VFF0013(BK,M44)": [
+"VFF CVT-Hemp",
+"Black",
+"M44"
+],
+"VFF0013(BK,M45)": [
+"VFF CVT-Hemp",
+"Black",
+"M45"
+],
+"VFF0013(BK,M46)": [
+"VFF CVT-Hemp",
+"Black",
+"M46"
+],
+"VFF0013(BK,M47)": [
+"VFF CVT-Hemp",
+"Black",
+"M47"
+],
+"VFF0013(BK,W36)": [
+"VFF CVT-Hemp",
+"Black",
+"W36"
+],
+"VFF0013(KK,M41)": [
+"VFF CVT-Hemp",
+"Khaki",
+"M41"
+],
+"VFF0013(KK,M42)": [
+"VFF CVT-Hemp",
+"Khaki",
+"M42"
+],
+"VFF0013(KK,M43)": [
+"VFF CVT-Hemp",
+"Khaki",
+"M43"
+],
+"VFF0013(KK,M44)": [
+"VFF CVT-Hemp",
+"Khaki",
+"M44"
+],
+"VFF0013(KK,M45)": [
+"VFF CVT-Hemp",
+"Khaki",
+"M45"
+],
+"VFF0013(KK,M46)": [
+"VFF CVT-Hemp",
+"Khaki",
+"M46"
+],
+"VFF0013(KK,M47)": [
+"VFF CVT-Hemp",
+"Khaki",
+"M47"
+],
+"VFF0013(KK,W36)": [
+"VFF CVT-Hemp",
+"Khaki",
+"W36"
+],
+"VFF0013(KK,W37)": [
+"VFF CVT-Hemp",
+"Khaki",
+"W37"
+],
+"VFF0013(KK,W38)": [
+"VFF CVT-Hemp",
+"Khaki",
+"W38"
+],
+"VFF0013(KK,W39)": [
+"VFF CVT-Hemp",
+"Khaki",
+"W39"
+],
+"VFF0013(KK,W40)": [
+"VFF CVT-Hemp",
+"Khaki",
+"W40"
+],
+"VFF0013(KK,W41)": [
+"VFF CVT-Hemp",
+"Khaki",
+"W41"
+],
+"VFF0013(KK,W42)": [
+"VFF CVT-Hemp",
+"Khaki",
+"W42"
+],
+"VFF0014(BK,M40)": [
+"VFF Classic Eco",
+"Black",
+"M40"
+],
+"VFF0014(BK,M41)": [
+"VFF Classic Eco",
+"Black",
+"M41"
+],
+"VFF0014(BK,M42)": [
+"VFF Classic Eco",
+"Black",
+"M42"
+],
+"VFF0014(BK,M43)": [
+"VFF Classic Eco",
+"Black",
+"M43"
+],
+"VFF0014(BK,M44)": [
+"VFF Classic Eco",
+"Black",
+"M44"
+],
+"VFF0014(BK,M45)": [
+"VFF Classic Eco",
+"Black",
+"M45"
+],
+"VFF0014(BK,M46)": [
+"VFF Classic Eco",
+"Black",
+"M46"
+],
+"VFF0014(BK,M47)": [
+"VFF Classic Eco",
+"Black",
+"M47"
+],
+"VFF0015(BK,36)": [
+"Vibram Furoshiki Yuwa",
+"Black",
+"36"
+],
+"VFF0015(BK,37)": [
+"Vibram Furoshiki Yuwa",
+"Black",
+"37"
+],
+"VFF0015(BK,38)": [
+"Vibram Furoshiki Yuwa",
+"Black",
+"38"
+],
+"VFF0015(BK,39)": [
+"Vibram Furoshiki Yuwa",
+"Black",
+"39"
+],
+"VFF0015(BK,40)": [
+"Vibram Furoshiki Yuwa",
+"Black",
+"40"
+],
+"VFF0015(BK,41)": [
+"Vibram Furoshiki Yuwa",
+"Black",
+"41"
+],
+"VFF0015(BK,42)": [
+"Vibram Furoshiki Yuwa",
+"Black",
+"42"
+],
+"VFF0015(BK,43)": [
+"Vibram Furoshiki Yuwa",
+"Black",
+"43"
+],
+"VFF0015(BK,44)": [
+"Vibram Furoshiki Yuwa",
+"Black",
+"44"
+],
+"VFF0015(BK,45)": [
+"Vibram Furoshiki Yuwa",
+"Black",
+"45"
+],
+"VFF0015(BK,46)": [
+"Vibram Furoshiki Yuwa",
+"Black",
+"46"
+],
+"VFF0015(BK,M40)": [
+"Vibram Furoshiki Eco F",
+"Black",
+"M40"
+],
+"VFF0015(BK,M41)": [
+"Vibram Furoshiki Eco F",
+"Black",
+"M41"
+],
+"VFF0015(BK,M42)": [
+"Vibram Furoshiki Eco F",
+"Black",
+"M42"
+],
+"VFF0015(BK,M43)": [
+"Vibram Furoshiki Eco F",
+"Black",
+"M43"
+],
+"VFF0015(BK,M44)": [
+"Vibram Furoshiki Eco F",
+"Black",
+"M44"
+],
+"VFF0015(BK,M45)": [
+"Vibram Furoshiki Eco F",
+"Black",
+"M45"
+],
+"VFF0015(BK,M46)": [
+"Vibram Furoshiki Eco F",
+"Black",
+"M46"
+],
+"VFF0015(BK,M47)": [
+"Vibram Furoshiki Eco F",
+"Black",
+"M47"
+],
+"VFF0015(BK,W36)": [
+"Vibram Furoshiki Eco F",
+"Black",
+"W36"
+],
+"VFF0015(BK,W37)": [
+"Vibram Furoshiki Eco F",
+"Black",
+"W37"
+],
+"VFF0015(BK,W38)": [
+"Vibram Furoshiki Eco F",
+"Black",
+"W38"
+],
+"VFF0015(BK,W39)": [
+"Vibram Furoshiki Eco F",
+"Black",
+"W39"
+],
+"VFF0015(BK,W40)": [
+"Vibram Furoshiki Eco F",
+"Black",
+"W40"
+],
+"VFF0015(BK,W41)": [
+"Vibram Furoshiki Eco F",
+"Black",
+"W41"
+],
+"VFF0015(CBR,36)": [
+"Vibram Furoshiki Yuwa",
+"Cranberry",
+"36"
+],
+"VFF0015(CBR,37)": [
+"Vibram Furoshiki Yuwa",
+"Cranberry",
+"37"
+],
+"VFF0015(CBR,38)": [
+"Vibram Furoshiki Yuwa",
+"Cranberry",
+"38"
+],
+"VFF0015(CBR,39)": [
+"Vibram Furoshiki Yuwa",
+"Cranberry",
+"39"
+],
+"VFF0015(CBR,40)": [
+"Vibram Furoshiki Yuwa",
+"Cranberry",
+"40"
+],
+"VFF0015(CBR,41)": [
+"Vibram Furoshiki Yuwa",
+"Cranberry",
+"41"
+],
+"VFF0015(CBR,42)": [
+"Vibram Furoshiki Yuwa",
+"Cranberry",
+"42"
+],
+"VFF0015(CBR,43)": [
+"Vibram Furoshiki Yuwa",
+"Cranberry",
+"43"
+],
+"VFF0015(CBR,44)": [
+"Vibram Furoshiki Yuwa",
+"Cranberry",
+"44"
+],
+"VFF0015(CBR,45)": [
+"Vibram Furoshiki Yuwa",
+"Cranberry",
+"45"
+],
+"VFF0015(DN,M40)": [
+"Vibram Furoshiki Eco F",
+"Denim",
+"M40"
+],
+"VFF0015(DN,M41)": [
+"Vibram Furoshiki Eco F",
+"Denim",
+"M41"
+],
+"VFF0015(DN,M42)": [
+"Vibram Furoshiki Eco F",
+"Denim",
+"M42"
+],
+"VFF0015(DN,M43)": [
+"Vibram Furoshiki Eco F",
+"Denim",
+"M43"
+],
+"VFF0015(DN,M44)": [
+"Vibram Furoshiki Eco F",
+"Denim",
+"M44"
+],
+"VFF0015(DN,M45)": [
+"Vibram Furoshiki Eco F",
+"Denim",
+"M45"
+],
+"VFF0015(DN,M46)": [
+"Vibram Furoshiki Eco F",
+"Denim",
+"M46"
+],
+"VFF0015(DN,M47)": [
+"Vibram Furoshiki Eco F",
+"Denim",
+"M47"
+],
+"VFF0015(DN,W36)": [
+"Vibram Furoshiki Eco F",
+"Denim",
+"W36"
+],
+"VFF0015(DN,W37)": [
+"Vibram Furoshiki Eco F",
+"Denim",
+"W37"
+],
+"VFF0015(DN,W38)": [
+"Vibram Furoshiki Eco F",
+"Denim",
+"W38"
+],
+"VFF0015(DN,W39)": [
+"Vibram Furoshiki Eco F",
+"Denim",
+"W39"
+],
+"VFF0015(DN,W40)": [
+"Vibram Furoshiki Eco F",
+"Denim",
+"W40"
+],
+"VFF0015(DN,W41)": [
+"Vibram Furoshiki Eco F",
+"Denim",
+"W41"
+],
+"VFF0015(GN,M40)": [
+"Vibram Furoshiki Eco F",
+"Green",
+"M40"
+],
+"VFF0015(GN,M41)": [
+"Vibram Furoshiki Eco F",
+"Green",
+"M41"
+],
+"VFF0015(GN,M42)": [
+"Vibram Furoshiki Eco F",
+"Green",
+"M42"
+],
+"VFF0015(GN,M43)": [
+"Vibram Furoshiki Eco F",
+"Green",
+"M43"
+],
+"VFF0015(GN,M44)": [
+"Vibram Furoshiki Eco F",
+"Green",
+"M44"
+],
+"VFF0015(GN,M45)": [
+"Vibram Furoshiki Eco F",
+"Green",
+"M45"
+],
+"VFF0015(GN,M46)": [
+"Vibram Furoshiki Eco F",
+"Green",
+"M46"
+],
+"VFF0015(GN,W36)": [
+"Vibram Furoshiki Eco F",
+"Green",
+"W36"
+],
+"VFF0015(GN,W37)": [
+"Vibram Furoshiki Eco F",
+"Green",
+"W37"
+],
+"VFF0015(GN,W38)": [
+"Vibram Furoshiki Eco F",
+"Green",
+"W38"
+],
+"VFF0015(GN,W39)": [
+"Vibram Furoshiki Eco F",
+"Green",
+"W39"
+],
+"VFF0015(GN,W40)": [
+"Vibram Furoshiki Eco F",
+"Green",
+"W40"
+],
+"VFF0015(GN,W41)": [
+"Vibram Furoshiki Eco F",
+"Green",
+"W41"
+],
+"VFF0015(IE,M40)": [
+"Vibram Furoshiki Eco F",
+"Ice",
+"M40"
+],
+"VFF0015(IE,M41)": [
+"Vibram Furoshiki Eco F",
+"Ice",
+"M41"
+],
+"VFF0015(IE,M42)": [
+"Vibram Furoshiki Eco F",
+"Ice",
+"M42"
+],
+"VFF0015(IE,M43)": [
+"Vibram Furoshiki Eco F",
+"Ice",
+"M43"
+],
+"VFF0015(IE,M44)": [
+"Vibram Furoshiki Eco F",
+"Ice",
+"M44"
+],
+"VFF0015(IE,M45)": [
+"Vibram Furoshiki Eco F",
+"Ice",
+"M45"
+],
+"VFF0015(IE,M46)": [
+"Vibram Furoshiki Eco F",
+"Ice",
+"M46"
+],
+"VFF0015(IE,W36)": [
+"Vibram Furoshiki Eco F",
+"Ice",
+"W36"
+],
+"VFF0015(IE,W37)": [
+"Vibram Furoshiki Eco F",
+"Ice",
+"W37"
+],
+"VFF0015(IE,W38)": [
+"Vibram Furoshiki Eco F",
+"Ice",
+"W38"
+],
+"VFF0015(IE,W39)": [
+"Vibram Furoshiki Eco F",
+"Ice",
+"W39"
+],
+"VFF0015(IE,W40)": [
+"Vibram Furoshiki Eco F",
+"Ice",
+"W40"
+],
+"VFF0015(IE,W41)": [
+"Vibram Furoshiki Eco F",
+"Ice",
+"W41"
+],
+"VFF0015(IE,W42)": [
+"Vibram Furoshiki Eco F",
+"Ice",
+"W42"
+],
+"VFF0015(MT,W36)": [
+"Vibram Furoshiki Eco F",
+"Mustard",
+"W36"
+],
+"VFF0015(MT,W37)": [
+"Vibram Furoshiki Eco F",
+"Mustard",
+"W37"
+],
+"VFF0015(MT,W38)": [
+"Vibram Furoshiki Eco F",
+"Mustard",
+"W38"
+],
+"VFF0015(MT,W39)": [
+"Vibram Furoshiki Eco F",
+"Mustard",
+"W39"
+],
+"VFF0015(MT,W40)": [
+"Vibram Furoshiki Eco F",
+"Mustard",
+"W40"
+],
+"VFF0015(MT,W41)": [
+"Vibram Furoshiki Eco F",
+"Mustard",
+"W41"
+],
+"VFF0015(MT,W42)": [
+"Vibram Furoshiki Eco F",
+"Mustard",
+"W42"
+],
+"VFF0015(RT,W36)": [
+"Vibram Furoshiki",
+"Riot",
+"W36"
+],
+"VFF0015(RT,W37)": [
+"Vibram Furoshiki",
+"Riot",
+"W37"
+],
+"VFF0015(RT,W38)": [
+"Vibram Furoshiki",
+"Riot",
+"W38"
+],
+"VFF0015(RT,W39)": [
+"Vibram Furoshiki",
+"Riot",
+"W39"
+],
+"VFF0015(RT,W40)": [
+"Vibram Furoshiki",
+"Riot",
+"W40"
+],
+"VFF0015(RT,W41)": [
+"Vibram Furoshiki",
+"Riot",
+"W41"
+],
+"VFF0015(SVB,36)": [
+"Vibram Furoshiki Yuwa",
+"SilverBirch",
+"36"
+],
+"VFF0015(SVB,37)": [
+"Vibram Furoshiki Yuwa",
+"SilverBirch",
+"37"
+],
+"VFF0015(SVB,38)": [
+"Vibram Furoshiki Yuwa",
+"SilverBirch",
+"38"
+],
+"VFF0015(SVB,39)": [
+"Vibram Furoshiki Yuwa",
+"SilverBirch",
+"39"
+],
+"VFF0015(SVB,40)": [
+"Vibram Furoshiki Yuwa",
+"SilverBirch",
+"40"
+],
+"VFF0015(SVB,41)": [
+"Vibram Furoshiki Yuwa",
+"SilverBirch",
+"41"
+],
+"VFF0015(SVB,42)": [
+"Vibram Furoshiki Yuwa",
+"SilverBirch",
+"42"
+],
+"VFF0015(SVB,43)": [
+"Vibram Furoshiki Yuwa",
+"SilverBirch",
+"43"
+],
+"VFF0015(SVB,44)": [
+"Vibram Furoshiki Yuwa",
+"SilverBirch",
+"44"
+],
+"VFF0015(SVB,45)": [
+"Vibram Furoshiki Yuwa",
+"SilverBirch",
+"45"
+],
+"VFF0015(SVB,46)": [
+"Vibram Furoshiki Yuwa",
+"SilverBirch",
+"46"
+],
+"VFF0016(BK,L)": [
+"Socks",
+"Black",
+"L"
+],
+"VFF0016(BK,M)": [
+"Socks",
+"Black",
+"M"
+],
+"VFF0016(BK,S)": [
+"Socks",
+"Black",
+"S"
+],
+"VFF0016(BK/GY,L)": [
+"Socks",
+"Black/Gray",
+"L"
+],
+"VFF0016(BK/GY,M)": [
+"Socks",
+"Black/Gray",
+"M"
+],
+"VFF0016(BK/GY,S)": [
+"Socks",
+"Black/Gray",
+"S"
+],
+"VFF0016(GY,L)": [
+"Socks Pack1",
+"Gray",
+"L"
+],
+"VFF0016(GY,M)": [
+"Socks Pack1",
+"Gray",
+"M"
+],
+"VFF0016(GY/RD,L)": [
+"Socks",
+"Gray/Red",
+"L"
+],
+"VFF0016(GY/RD,M)": [
+"Socks",
+"Gray/Red",
+"M"
+],
+"VFF0016(GY/RD,S)": [
+"Socks",
+"Gray/Red",
+"S"
+],
+"VFF0017(BK/BK,M40)": [
+"VFF V-Trek",
+"Black/Black",
+"M40"
+],
+"VFF0017(BK/BK,M41)": [
+"VFF V-Trek",
+"Black/Black",
+"M41"
+],
+"VFF0017(BK/BK,M42)": [
+"VFF V-Trek",
+"Black/Black",
+"M42"
+],
+"VFF0017(BK/BK,M43)": [
+"VFF V-Trek",
+"Black/Black",
+"M43"
+],
+"VFF0017(BK/BK,M44)": [
+"VFF V-Trek",
+"Black/Black",
+"M44"
+],
+"VFF0017(BK/BK,M45)": [
+"VFF V-Trek",
+"Black/Black",
+"M45"
+],
+"VFF0017(BK/BK,M46)": [
+"VFF V-Trek",
+"Black/Black",
+"M46"
+],
+"VFF0017(BK/BK,M47)": [
+"VFF V-Trek",
+"Black/Black",
+"M47"
+],
+"VFF0017(BK/BK,W36)": [
+"VFF V-Trek",
+"Black/Black",
+"W36"
+],
+"VFF0017(BK/BK,W37)": [
+"VFF V-Trek",
+"Black/Black",
+"W37"
+],
+"VFF0017(BK/BK,W38)": [
+"VFF V-Trek",
+"Black/Black",
+"W38"
+],
+"VFF0017(BK/BK,W39)": [
+"VFF V-Trek",
+"Black/Black",
+"W39"
+],
+"VFF0017(BK/BK,W40)": [
+"VFF V-Trek",
+"Black/Black",
+"W40"
+],
+"VFF0017(BK/BK,W41)": [
+"VFF V-Trek",
+"Black/Black",
+"W41"
+],
+"VFF0017(MIL/DGY,M40)": [
+"VFF V-Trek",
+"Military/Dark Gray",
+"M40"
+],
+"VFF0017(MIL/DGY,M41)": [
+"VFF V-Trek",
+"Military/Dark Gray",
+"M41"
+],
+"VFF0017(MIL/DGY,M42)": [
+"VFF V-Trek",
+"Military/Dark Gray",
+"M42"
+],
+"VFF0017(MIL/DGY,M43)": [
+"VFF V-Trek",
+"Military/Dark Gray",
+"M43"
+],
+"VFF0017(MIL/DGY,M44)": [
+"VFF V-Trek",
+"Military/Dark Gray",
+"M44"
+],
+"VFF0017(MIL/DGY,M45)": [
+"VFF V-Trek",
+"Military/Dark Gray",
+"M45"
+],
+"VFF0017(MIL/DGY,M46)": [
+"VFF V-Trek",
+"Military/Dark Gray",
+"M46"
+],
+"VFF0017(MIL/DGY,M47)": [
+"VFF V-Trek",
+"Military/Dark Gray",
+"M47"
+],
+"VFF0018(BK,M40)": [
+"VFF KMD Evo",
+"Black",
+"M40"
+],
+"VFF0018(BK,M41)": [
+"VFF KMD Evo",
+"Black",
+"M41"
+],
+"VFF0018(BK,M42)": [
+"VFF KMD Evo",
+"Black",
+"M42"
+],
+"VFF0018(BK,M43)": [
+"VFF KMD Evo",
+"Black",
+"M43"
+],
+"VFF0018(BK,M44)": [
+"VFF KMD Evo",
+"Black",
+"M44"
+],
+"VFF0018(BK,M45)": [
+"VFF KMD Evo",
+"Black",
+"M45"
+],
+"VFF0018(BK,M46)": [
+"VFF KMD Evo",
+"Black",
+"M46"
+],
+"VFF0018(BK,M47)": [
+"VFF KMD Evo",
+"Black",
+"M47"
+],
+"VFF0018(BK/YL,M41)": [
+"VFF KMD Evo",
+"Black/Yellow",
+"M41"
+],
+"VFF0018(BK/YL,M42)": [
+"VFF KMD Evo",
+"Black/Yellow",
+"M42"
+],
+"VFF0018(BK/YL,M43)": [
+"VFF KMD Evo",
+"Black/Yellow",
+"M43"
+],
+"VFF0018(BK/YL,M44)": [
+"VFF KMD Evo",
+"Black/Yellow",
+"M44"
+],
+"VFF0018(BK/YL,M45)": [
+"VFF KMD Evo",
+"Black/Yellow",
+"M45"
+],
+"VFF0018(BK/YL,M46)": [
+"VFF KMD Evo",
+"Black/Yellow",
+"M46"
+],
+"VFF0018(BK/YL,M47)": [
+"VFF KMD Evo",
+"Black/Yellow",
+"M47"
+],
+"VFF0018(YL/BL/RD,M40)": [
+"VFF KMD Evo",
+"Yellow/Blue/Red",
+"M40"
+],
+"VFF0018(YL/BL/RD,M41)": [
+"VFF KMD Evo",
+"Yellow/Blue/Red",
+"M41"
+],
+"VFF0018(YL/BL/RD,M42)": [
+"VFF KMD Evo",
+"Yellow/Blue/Red",
+"M42"
+],
+"VFF0018(YL/BL/RD,M43)": [
+"VFF KMD Evo",
+"Yellow/Blue/Red",
+"M43"
+],
+"VFF0018(YL/BL/RD,M44)": [
+"VFF KMD Evo",
+"Yellow/Blue/Red",
+"M44"
+],
+"VFF0018(YL/BL/RD,M45)": [
+"VFF KMD Evo",
+"Yellow/Blue/Red",
+"M45"
+],
+"VFF0018(YL/BL/RD,M46)": [
+"VFF KMD Evo",
+"Yellow/Blue/Red",
+"M46"
+],
+"VFF0018(YL/BL/RD,M47)": [
+"VFF KMD Evo",
+"Yellow/Blue/Red",
+"M47"
+],
+"VFF0019(BR,M40)": [
+"VFF CVT-Leather",
+"Brown",
+"M40"
+],
+"VFF0019(BR,M41)": [
+"VFF CVT-Leather",
+"Brown",
+"M41"
+],
+"VFF0019(BR,M42)": [
+"VFF CVT-Leather",
+"Brown",
+"M42"
+],
+"VFF0019(BR,M43)": [
+"VFF CVT-Leather",
+"Brown",
+"M43"
+],
+"VFF0019(BR,M44)": [
+"VFF CVT-Leather",
+"Brown",
+"M44"
+],
+"VFF0019(BR,M45)": [
+"VFF CVT-Leather",
+"Brown",
+"M45"
+],
+"VFF0019(BR,M46)": [
+"VFF CVT-Leather",
+"Brown",
+"M46"
+],
+"VFF0019(BR,M47)": [
+"VFF CVT-Leather",
+"Brown",
+"M47"
+],
+"VFF0020(BG,W36)": [
+"VFF Alitza Loop",
+"Beige",
+"W36"
+],
+"VFF0020(BG,W37)": [
+"VFF Alitza Loop",
+"Beige",
+"W37"
+],
+"VFF0020(BG,W38)": [
+"VFF Alitza Loop",
+"Beige",
+"W38"
+],
+"VFF0020(BG,W39)": [
+"VFF Alitza Loop",
+"Beige",
+"W39"
+],
+"VFF0020(BG,W40)": [
+"VFF Alitza Loop",
+"Beige",
+"W40"
+],
+"VFF0020(BG,W41)": [
+"VFF Alitza Loop",
+"Beige",
+"W41"
+],
+"VFF0020(BK,W36)": [
+"VFF Alitza Loop",
+"Black",
+"W36"
+],
+"VFF0020(BK,W37)": [
+"VFF Alitza Loop",
+"Black",
+"W37"
+],
+"VFF0020(BK,W38)": [
+"VFF Alitza Loop",
+"Black",
+"W38"
+],
+"VFF0020(BK,W39)": [
+"VFF Alitza Loop",
+"Black",
+"W39"
+],
+"VFF0020(BK,W40)": [
+"VFF Alitza Loop",
+"Black",
+"W40"
+],
+"VFF0020(BK,W41)": [
+"VFF Alitza Loop",
+"Black",
+"W41"
+],
+"VFF0021(BK,M40)": [
+"VFF Graspifier",
+"Black",
+"M40"
+],
+"VFF0021(BK,M41)": [
+"VFF Graspifier",
+"Black",
+"M41"
+],
+"VFF0021(BK,M42)": [
+"VFF Graspifier",
+"Black",
+"M42"
+],
+"VFF0021(BK,M43)": [
+"VFF Graspifier",
+"Black",
+"M43"
+],
+"VFF0021(BK,M44)": [
+"VFF Graspifier",
+"Black",
+"M44"
+],
+"VFF0021(BK,M45)": [
+"VFF Graspifier",
+"Black",
+"M45"
+],
+"VFF0021(BK,M46)": [
+"VFF Graspifier",
+"Black",
+"M46"
+],
+"VFF0021(BK,M47)": [
+"VFF Graspifier",
+"Black",
+"M47"
+],
+"VFF0021(IV/FU,W36)": [
+"VFF Graspifier",
+"Ivory/Fuchsia",
+"W36"
+],
+"VFF0021(IV/FU,W37)": [
+"VFF Graspifier",
+"Ivory/Fuchsia",
+"W37"
+],
+"VFF0021(IV/FU,W38)": [
+"VFF Graspifier",
+"Ivory/Fuchsia",
+"W38"
+],
+"VFF0021(IV/FU,W39)": [
+"VFF Graspifier",
+"Ivory/Fuchsia",
+"W39"
+],
+"VFF0021(IV/FU,W40)": [
+"VFF Graspifier",
+"Ivory/Fuchsia",
+"W40"
+],
+"VFF0021(IV/FU,W41)": [
+"VFF Graspifier",
+"Ivory/Fuchsia",
+"W41"
+],
+"VFF0021(IV/FU,W42)": [
+"VFF Graspifier",
+"Ivory/Fuchsia",
+"W42"
+],
+"VFF0021(TT/BK,M40)": [
+"VFF Graspifier",
+"Total Black",
+"M40"
+],
+"VFF0021(TT/BK,M41)": [
+"VFF Graspifier",
+"Total Black",
+"M41"
+],
+"VFF0021(TT/BK,M42)": [
+"VFF Graspifier",
+"Total Black",
+"M42"
+],
+"VFF0021(TT/BK,M43)": [
+"VFF Graspifier",
+"Total Black",
+"M43"
+],
+"VFF0021(TT/BK,M44)": [
+"VFF Graspifier",
+"Total Black",
+"M44"
+],
+"VFF0021(TT/BK,M45)": [
+"VFF Graspifier",
+"Total Black",
+"M45"
+],
+"VFF0021(TT/BK,M46)": [
+"VFF Graspifier",
+"Total Black",
+"M46"
+],
+"VFF0021(TT/BK,M47)": [
+"VFF Graspifier",
+"Total Black",
+"M47"
+],
+"VFF0022(BK,M38)": [
+"VFF Breezandal",
+"Black",
+"M38"
+],
+"VFF0022(BK,M39)": [
+"VFF Breezandal",
+"Black",
+"M39"
+],
+"VFF0022(BK,M40)": [
+"VFF Breezandal",
+"Black",
+"M40"
+],
+"VFF0022(BK,M41)": [
+"VFF Breezandal",
+"Black",
+"M41"
+],
+"VFF0022(BK,M42)": [
+"VFF Breezandal",
+"Black",
+"M42"
+],
+"VFF0022(BK,M43)": [
+"VFF Breezandal",
+"Black",
+"M43"
+],
+"VFF0022(BK,M44)": [
+"VFF Breezandal",
+"Black",
+"M44"
+],
+"VFF0022(BK,M45)": [
+"VFF Breezandal",
+"Black",
+"M45"
+],
+"VFF0022(BK,M46)": [
+"VFF Breezandal",
+"Black",
+"M46"
+],
+"VFF0022(BK,M47)": [
+"VFF Breezandal",
+"Black",
+"M47"
+],
+"VFF0022(BK,W36)": [
+"VFF Breezandal",
+"Black",
+"W36"
+],
+"VFF0022(BK,W37)": [
+"VFF Breezandal",
+"Black",
+"W37"
+],
+"VFF0022(BK,W38)": [
+"VFF Breezandal",
+"Black",
+"W38"
+],
+"VFF0022(BK,W39)": [
+"VFF Breezandal",
+"Black",
+"W39"
+],
+"VFF0022(BK,W40)": [
+"VFF Breezandal",
+"Black",
+"W40"
+],
+"VFF0022(BK,W41)": [
+"VFF Breezandal",
+"Black",
+"W41"
+],
+"VFF0022(BK,W42)": [
+"VFF Breezandal",
+"Black",
+"W42"
+],
+"VFF0022(IV/G,M38)": [
+"VFF Breezandal",
+"Ivory/Green",
+"M38"
+],
+"VFF0022(IV/G,M39)": [
+"VFF Breezandal",
+"Ivory/Green",
+"M39"
+],
+"VFF0022(IV/G,M40)": [
+"VFF Breezandal",
+"Ivory/Green",
+"M40"
+],
+"VFF0022(IV/G,M41)": [
+"VFF Breezandal",
+"Ivory/Green",
+"M41"
+],
+"VFF0022(IV/G,M42)": [
+"VFF Breezandal",
+"Ivory/Green",
+"M42"
+],
+"VFF0022(IV/G,M43)": [
+"VFF Breezandal",
+"Ivory/Green",
+"M43"
+],
+"VFF0022(IV/G,M44)": [
+"VFF Breezandal",
+"Ivory/Green",
+"M44"
+],
+"VFF0022(IV/G,M45)": [
+"VFF Breezandal",
+"Ivory/Green",
+"M45"
+],
+"VFF0022(IV/G,M46)": [
+"VFF Breezandal",
+"Ivory/Green",
+"M46"
+],
+"VFF0022(IV/G,M47)": [
+"VFF Breezandal",
+"Ivory/Green",
+"M47"
+],
+"VFF0022(IV/GN,M41)": [
+"VFF Breezandal",
+"Ivory/Green",
+"M41"
+],
+"VFF0022(IV/GN,W36)": [
+"VFF Breezandal",
+"Ivory/Green",
+"W36"
+],
+"VFF0022(IV/GN,W37)": [
+"VFF Breezandal",
+"Ivory/Green",
+"W37"
+],
+"VFF0022(IV/GN,W38)": [
+"VFF Breezandal",
+"Ivory/Green",
+"W38"
+],
+"VFF0022(IV/GN,W39)": [
+"VFF Breezandal",
+"Ivory/Green",
+"W39"
+],
+"VFF0022(IV/GN,W40)": [
+"VFF Breezandal",
+"Ivory/Green",
+"W40"
+],
+"VFF0022(IV/GN,W41)": [
+"VFF Breezandal",
+"Ivory/Green",
+"W41"
+],
+"VFF0022(IV/GN,W42)": [
+"VFF Breezandal",
+"Ivory/Green",
+"W42"
+],
+"VFF0022(MT/BK,M38)": [
+"VFF Breezandal",
+"Mustard/Black",
+"M38"
+],
+"VFF0022(MT/BK,M39)": [
+"VFF Breezandal",
+"Mustard/Black",
+"M39"
+],
+"VFF0022(MT/BK,M40)": [
+"VFF Breezandal",
+"Mustard/Black",
+"M40"
+],
+"VFF0022(MT/BK,M41)": [
+"VFF Breezandal",
+"Mustard/Black",
+"M41"
+],
+"VFF0022(MT/BK,M42)": [
+"VFF Breezandal",
+"Mustard/Black",
+"M42"
+],
+"VFF0022(MT/BK,M43)": [
+"VFF Breezandal",
+"Mustard/Black",
+"M43"
+],
+"VFF0022(MT/BK,M44)": [
+"VFF Breezandal",
+"Mustard/Black",
+"M44"
+],
+"VFF0022(MT/BK,M45)": [
+"VFF Breezandal",
+"Mustard/Black",
+"M45"
+],
+"VFF0022(MT/BK,M46)": [
+"VFF Breezandal",
+"Mustard/Black",
+"M46"
+],
+"VFF0022(MT/BK,M47)": [
+"VFF Breezandal",
+"Mustard/Black",
+"M47"
+],
+"VFF0023(BK,M39)": [
+"VFF V-Alpha",
+"Black",
+"M39"
+],
+"VFF0023(BK,M40)": [
+"VFF V-Alpha",
+"Black",
+"M40"
+],
+"VFF0023(BK,M41)": [
+"VFF V-Alpha",
+"Black",
+"M41"
+],
+"VFF0023(BK,M42)": [
+"VFF V-Alpha",
+"Black",
+"M42"
+],
+"VFF0023(BK,M43)": [
+"VFF V-Alpha",
+"Black",
+"M43"
+],
+"VFF0023(BK,M44)": [
+"VFF V-Alpha",
+"Black",
+"M44"
+],
+"VFF0023(BK,M45)": [
+"VFF V-Alpha",
+"Black",
+"M45"
+],
+"VFF0023(BK,M46)": [
+"VFF V-Alpha",
+"Black",
+"M46"
+],
+"VFF0023(BK,M47)": [
+"VFF V-Alpha",
+"Black",
+"M47"
+],
+"VFF0023(BK,M48)": [
+"VFF V-Alpha",
+"Black",
+"M48"
+],
+"VFF0023(BK,W36)": [
+"VFF V-Alpha",
+"Black",
+"W36"
+],
+"VFF0023(BK,W37)": [
+"VFF V-Alpha",
+"Black",
+"W37"
+],
+"VFF0023(BK,W38)": [
+"VFF V-Alpha",
+"Black",
+"W38"
+],
+"VFF0023(BK,W39)": [
+"VFF V-Alpha",
+"Black",
+"W39"
+],
+"VFF0023(BK,W40)": [
+"VFF V-Alpha",
+"Black",
+"W40"
+],
+"VFF0023(BK,W41)": [
+"VFF V-Alpha",
+"Black",
+"W41"
+],
+"VFF0023(DL,M40)": [
+"VFF V-Alpha",
+"Deep Lake",
+"M40"
+],
+"VFF0023(DL,M41)": [
+"VFF V-Alpha",
+"Deep Lake",
+"M41"
+],
+"VFF0023(DL,M42)": [
+"VFF V-Alpha",
+"Deep Lake",
+"M42"
+],
+"VFF0023(DL,M43)": [
+"VFF V-Alpha",
+"Deep Lake",
+"M43"
+],
+"VFF0023(DL,M44)": [
+"VFF V-Alpha",
+"Deep Lake",
+"M44"
+],
+"VFF0023(DL,M45)": [
+"VFF V-Alpha",
+"Deep Lake",
+"M45"
+],
+"VFF0023(DL,M46)": [
+"VFF V-Alpha",
+"Deep Lake",
+"M46"
+],
+"VFF0023(DL,M47)": [
+"VFF V-Alpha",
+"Deep Lake",
+"M47"
+],
+"VFF0023(DL,W36)": [
+"VFF V-Alpha",
+"Deep Lake",
+"W36"
+],
+"VFF0023(DL,W37)": [
+"VFF V-Alpha",
+"Deep Lake",
+"W37"
+],
+"VFF0023(DL,W38)": [
+"VFF V-Alpha",
+"Deep Lake",
+"W38"
+],
+"VFF0023(DL,W39)": [
+"VFF V-Alpha",
+"Deep Lake",
+"W39"
+],
+"VFF0023(DL,W40)": [
+"VFF V-Alpha",
+"Deep Lake",
+"W40"
+],
+"VFF0023(DL,W41)": [
+"VFF V-Alpha",
+"Deep Lake",
+"W41"
+],
+"VFF0023(LGN/BK,M40)": [
+"VFF V-Alpha",
+"Lime Green/Black",
+"M40"
+],
+"VFF0023(LGN/BK,M41)": [
+"VFF V-Alpha",
+"Lime Green/Black",
+"M41"
+],
+"VFF0023(LGN/BK,M42)": [
+"VFF V-Alpha",
+"Lime Green/Black",
+"M42"
+],
+"VFF0023(LGN/BK,M43)": [
+"VFF V-Alpha",
+"Lime Green/Black",
+"M43"
+],
+"VFF0023(LGN/BK,M44)": [
+"VFF V-Alpha",
+"Lime Green/Black",
+"M44"
+],
+"VFF0023(LGN/BK,M45)": [
+"VFF V-Alpha",
+"Lime Green/Black",
+"M45"
+],
+"VFF0023(LGN/BK,M46)": [
+"VFF V-Alpha",
+"Lime Green/Black",
+"M46"
+],
+"VFF0023(LGN/BK,M47)": [
+"VFF V-Alpha",
+"Lime Green/Black",
+"M47"
+],
+"VFF0024(BK,M39)": [
+"VFF Trailope",
+"Black",
+"M39"
+],
+"VFF0024(BK,M40)": [
+"VFF Trailope",
+"Black",
+"M40"
+],
+"VFF0024(BK,M41)": [
+"VFF Trailope",
+"Black",
+"M41"
+],
+"VFF0024(BK,M42)": [
+"VFF Trailope",
+"Black",
+"M42"
+],
+"VFF0024(BK,M43)": [
+"VFF Trailope",
+"Black",
+"M43"
+],
+"VFF0024(BK,M44)": [
+"VFF Trailope",
+"Black",
+"M44"
+],
+"VFF0024(BK,M45)": [
+"VFF Trailope",
+"Black",
+"M45"
+],
+"VFF0024(BK,M46)": [
+"VFF Trailope",
+"Black",
+"M46"
+],
+"VFF0024(BK,M47)": [
+"VFF Trailope",
+"Black",
+"M47"
+],
+"VFF0024(BK,M48)": [
+"VFF Trailope",
+"Black",
+"M48"
+],
+"VFF0024(DL,M39)": [
+"VFF Trailope",
+"Deep Lake",
+"M39"
+],
+"VFF0024(DL,M40)": [
+"VFF Trailope",
+"Deep Lake",
+"M40"
+],
+"VFF0024(DL,M41)": [
+"VFF Trailope",
+"Deep Lake",
+"M41"
+],
+"VFF0024(DL,M42)": [
+"VFF Trailope",
+"Deep Lake",
+"M42"
+],
+"VFF0024(DL,M43)": [
+"VFF Trailope",
+"Deep Lake",
+"M43"
+],
+"VFF0024(DL,M44)": [
+"VFF Trailope",
+"Deep Lake",
+"M44"
+],
+"VFF0024(DL,M45)": [
+"VFF Trailope",
+"Deep Lake",
+"M45"
+],
+"VFF0024(DL,M46)": [
+"VFF Trailope",
+"Deep Lake",
+"M46"
+],
+"VFF0024(DL,M47)": [
+"VFF Trailope",
+"Deep Lake",
+"M47"
+],
+"VFF0024(DL,M48)": [
+"VFF Trailope",
+"Deep Lake",
+"M48"
+],
+"VFF0025(BK,U36)": [
+"VFF Scramkey",
+"Black",
+"U36"
+],
+"VFF0025(BK,U37)": [
+"VFF Scramkey",
+"Black",
+"U37"
+],
+"VFF0025(BK,U38)": [
+"VFF Scramkey",
+"Black",
+"U38"
+],
+"VFF0025(BK,U39)": [
+"VFF Scramkey",
+"Black",
+"U39"
+],
+"VFF0025(BK,U40)": [
+"VFF Scramkey",
+"Black",
+"U40"
+],
+"VFF0025(BK,U41)": [
+"VFF Scramkey",
+"Black",
+"U41"
+],
+"VFF0025(BK,U42)": [
+"VFF Scramkey",
+"Black",
+"U42"
+],
+"VFF0025(BK,U43)": [
+"VFF Scramkey",
+"Black",
+"U43"
+],
+"VFF0025(BK,U44)": [
+"VFF Scramkey",
+"Black",
+"U44"
+],
+"VFF0025(BK,U45)": [
+"VFF Scramkey",
+"Black",
+"U45"
+],
+"VFF0025(BK,U46)": [
+"VFF Scramkey",
+"Black",
+"U46"
+],
+"VFF0025(BK,U47)": [
+"VFF Scramkey",
+"Black",
+"U47"
+],
+"VFF0025(BK,U48)": [
+"VFF Scramkey",
+"Black",
+"U48"
+],
+"VFF0025(DL/BK,U39)": [
+"VFF Scramkey",
+"Deep Lake/Black",
+"U39"
+],
+"VFF0025(DL/BK,U40)": [
+"VFF Scramkey",
+"Deep Lake/Black",
+"U40"
+],
+"VFF0025(DL/BK,U41)": [
+"VFF Scramkey",
+"Deep Lake/Black",
+"U41"
+],
+"VFF0025(DL/BK,U42)": [
+"VFF Scramkey",
+"Deep Lake/Black",
+"U42"
+],
+"VFF0025(DL/BK,U43)": [
+"VFF Scramkey",
+"Deep Lake/Black",
+"U43"
+],
+"VFF0025(DL/BK,U44)": [
+"VFF Scramkey",
+"Deep Lake/Black",
+"U44"
+],
+"VFF0025(DL/BK,U45)": [
+"VFF Scramkey",
+"Deep Lake/Black",
+"U45"
+],
+"VFF0025(DL/BK,U46)": [
+"VFF Scramkey",
+"Deep Lake/Black",
+"U46"
+],
+"VFF0025(DL/BK,U47)": [
+"VFF Scramkey",
+"Deep Lake/Black",
+"U47"
+],
+"VFF0025(DL/BK,U48)": [
+"VFF Scramkey",
+"Deep Lake/Black",
+"U48"
+],
+"VFF0026(BR/BK,M40)": [
+"VFF Spidrwalk",
+"Brown/Black",
+"M40"
+],
+"VFF0026(BR/BK,M41)": [
+"VFF Spidrwalk",
+"Brown/Black",
+"M41"
+],
+"VFF0026(BR/BK,M42)": [
+"VFF Spidrwalk",
+"Brown/Black",
+"M42"
+],
+"VFF0026(BR/BK,M43)": [
+"VFF Spidrwalk",
+"Brown/Black",
+"M43"
+],
+"VFF0026(BR/BK,M44)": [
+"VFF Spidrwalk",
+"Brown/Black",
+"M44"
+],
+"VFF0026(BR/BK,M45)": [
+"VFF Spidrwalk",
+"Brown/Black",
+"M45"
+],
+"VFF0026(BR/BK,M46)": [
+"VFF Spidrwalk",
+"Brown/Black",
+"M46"
+],
+"VFF0026(BR/BK,M47)": [
+"VFF Spidrwalk",
+"Brown/Black",
+"M47"
+],
+"VFF0026(FU,W36)": [
+"VFF Spidrwalk",
+"Fuchsia",
+"W36"
+],
+"VFF0026(FU,W37)": [
+"VFF Spidrwalk",
+"Fuchsia",
+"W37"
+],
+"VFF0026(FU,W38)": [
+"VFF Spidrwalk",
+"Fuchsia",
+"W38"
+],
+"VFF0026(FU,W39)": [
+"VFF Spidrwalk",
+"Fuchsia",
+"W39"
+],
+"VFF0026(FU,W40)": [
+"VFF Spidrwalk",
+"Fuchsia",
+"W40"
+],
+"VFF0026(FU,W41)": [
+"VFF Spidrwalk",
+"Fuchsia",
+"W41"
+],
+"VFF0026(LI/GN,M40)": [
+"VFF Spidrwalk",
+"Lime Green",
+"M40"
+],
+"VFF0026(LI/GN,M41)": [
+"VFF Spidrwalk",
+"Lime Green",
+"M41"
+],
+"VFF0026(LI/GN,M42)": [
+"VFF Spidrwalk",
+"Lime Green",
+"M42"
+],
+"VFF0026(LI/GN,M43)": [
+"VFF Spidrwalk",
+"Lime Green",
+"M43"
+],
+"VFF0026(LI/GN,M44)": [
+"VFF Spidrwalk",
+"Lime Green",
+"M44"
+],
+"VFF0026(LI/GN,M45)": [
+"VFF Spidrwalk",
+"Lime Green",
+"M45"
+],
+"VFF0026(LI/GN,M46)": [
+"VFF Spidrwalk",
+"Lime Green",
+"M46"
+],
+"VFF0026(LI/GN,M47)": [
+"VFF Spidrwalk",
+"Lime Green",
+"M47"
+],
+"VFF0026(TT/BK,M39)": [
+"VFF Spidrwalk",
+"Total Black",
+"M39"
+],
+"VFF0026(TT/BK,M40)": [
+"VFF Spidrwalk",
+"Total Black",
+"M40"
+],
+"VFF0026(TT/BK,M41)": [
+"VFF Spidrwalk",
+"Total Black",
+"M41"
+],
+"VFF0026(TT/BK,M42)": [
+"VFF Spidrwalk",
+"Total Black",
+"M42"
+],
+"VFF0026(TT/BK,M43)": [
+"VFF Spidrwalk",
+"Total Black",
+"M43"
+],
+"VFF0026(TT/BK,M44)": [
+"VFF Spidrwalk",
+"Total Black",
+"M44"
+],
+"VFF0026(TT/BK,M45)": [
+"VFF Spidrwalk",
+"Total Black",
+"M45"
+],
+"VFF0026(TT/BK,M46)": [
+"VFF Spidrwalk",
+"Total Black",
+"M46"
+],
+"VFF0026(TT/BK,M47)": [
+"VFF Spidrwalk",
+"Total Black",
+"M47"
+],
+"VFF0026(TT/BK,M48)": [
+"VFF Spidrwalk",
+"Total Black",
+"M48"
+],
+"VFF0026(TT/BK,W36)": [
+"VFF Spidrwalk",
+"Total Black",
+"W36"
+],
+"VFF0026(TT/BK,W37)": [
+"VFF Spidrwalk",
+"Total Black",
+"W37"
+],
+"VFF0026(TT/BK,W38)": [
+"VFF Spidrwalk",
+"Total Black",
+"W38"
+],
+"VFF0026(TT/BK,W39)": [
+"VFF Spidrwalk",
+"Total Black",
+"W39"
+],
+"VFF0026(TT/BK,W40)": [
+"VFF Spidrwalk",
+"Total Black",
+"W40"
+],
+"VFF0026(TT/BK,W41)": [
+"VFF Spidrwalk",
+"Total Black",
+"W41"
+],
+"VFF0026(TT/BK,W42)": [
+"VFF Spidrwalk",
+"Total Black",
+"W42"
+],
+"VFF0027(BK,L)": [
+"VFF Socks Mini Crew Summer",
+"Black",
+"L"
+],
+"VFF0027(BK,M)": [
+"VFF Socks Mini Crew Summer",
+"Black",
+"M"
+],
+"VFF0027(BK,S)": [
+"VFF Socks Mini Crew Summer",
+"Black",
+"S"
+],
+"VFF0027(BK,XL)": [
+"VFF Socks Mini Crew Summer",
+"Black",
+"XL"
+],
+"VFF0027(FI,L)": [
+"VFF Socks Mini Crew Summer",
+"Fig",
+"L"
+],
+"VFF0027(FI,M)": [
+"VFF Socks Mini Crew Summer",
+"Fig",
+"M"
+],
+"VFF0027(FI,S)": [
+"VFF Socks Mini Crew Summer",
+"Fig",
+"S"
+],
+"VFF0027(FI,XL)": [
+"VFF Socks Mini Crew Summer",
+"Fig",
+"XL"
+],
+"VFF0027(IV,L)": [
+"VFF Socks Mini Crew Summer",
+"Ivory",
+"L"
+],
+"VFF0027(IV,M)": [
+"VFF Socks Mini Crew Summer",
+"Ivory",
+"M"
+],
+"VFF0027(IV,S)": [
+"VFF Socks Mini Crew Summer",
+"Ivory",
+"S"
+],
+"VFF0027(IV,XL)": [
+"VFF Socks Mini Crew Summer",
+"Ivory",
+"XL"
+],
+"VFF0027(LI,L)": [
+"VFF Socks Mini Crew Summer",
+"Lime",
+"L"
+],
+"VFF0027(LI,M)": [
+"VFF Socks Mini Crew Summer",
+"Lime",
+"M"
+],
+"VFF0027(LI,S)": [
+"VFF Socks Mini Crew Summer",
+"Lime",
+"S"
+],
+"VFF0027(LI,XL)": [
+"VFF Socks Mini Crew Summer",
+"Lime",
+"XL"
+],
+"VFF0028(BK,L)": [
+"VFF Socks Crew Summer",
+"Black",
+"L"
+],
+"VFF0028(BK,M)": [
+"VFF Socks Crew Summer",
+"Black",
+"M"
+],
+"VFF0028(BK,S)": [
+"VFF Socks Crew Summer",
+"Black",
+"S"
+],
+"VFF0028(BK,XL)": [
+"VFF Socks Crew Summer",
+"Black",
+"XL"
+],
+"VFF0029(BK,L)": [
+"VFF Socks High Crew Summer",
+"Black",
+"L"
+],
+"VFF0029(BK,M)": [
+"VFF Socks High Crew Summer",
+"Black",
+"M"
+],
+"VFF0029(BK,S)": [
+"VFF Socks High Crew Summer",
+"Black",
+"S"
+],
+"VFF0029(BK,XL)": [
+"VFF Socks High Crew Summer",
+"Black",
+"XL"
+],
+"VFF0030(BK,M40)": [
+"VFF Groundsplay",
+"Black",
+"M40"
+],
+"VFF0030(BK,M41)": [
+"VFF Groundsplay",
+"Black",
+"M41"
+],
+"VFF0030(BK,M42)": [
+"VFF Groundsplay",
+"Black",
+"M42"
+],
+"VFF0030(BK,M43)": [
+"VFF Groundsplay",
+"Black",
+"M43"
+],
+"VFF0030(BK,M44)": [
+"VFF Groundsplay",
+"Black",
+"M44"
+],
+"VFF0030(BK,M45)": [
+"VFF Groundsplay",
+"Black",
+"M45"
+],
+"VFF0030(BK,M46)": [
+"VFF Groundsplay",
+"Black",
+"M46"
+],
+"VFF0030(BK,M47)": [
+"VFF Groundsplay",
+"Black",
+"M47"
+],
+"VFF0031(BK/LI,M40)": [
+"VFF Groundsplay LS",
+"Black/Lime",
+"M40"
+],
+"VFF0031(BK/LI,M41)": [
+"VFF Groundsplay LS",
+"Black/Lime",
+"M41"
+],
+"VFF0031(BK/LI,M42)": [
+"VFF Groundsplay LS",
+"Black/Lime",
+"M42"
+],
+"VFF0031(BK/LI,M43)": [
+"VFF Groundsplay LS",
+"Black/Lime",
+"M43"
+],
+"VFF0031(BK/LI,M44)": [
+"VFF Groundsplay LS",
+"Black/Lime",
+"M44"
+],
+"VFF0031(BK/LI,M45)": [
+"VFF Groundsplay LS",
+"Black/Lime",
+"M45"
+],
+"VFF0031(BK/LI,M46)": [
+"VFF Groundsplay LS",
+"Black/Lime",
+"M46"
+],
+"VFF0031(BK/LI,M47)": [
+"VFF Groundsplay LS",
+"Black/Lime",
+"M47"
+],
+"VFF0031(IV/DL,M40)": [
+"VFF Groundsplay LS",
+"Ivory/Deep Lake",
+"M40"
+],
+"VFF0031(IV/DL,M41)": [
+"VFF Groundsplay LS",
+"Ivory/Deep Lake",
+"M41"
+],
+"VFF0031(IV/DL,M42)": [
+"VFF Groundsplay LS",
+"Ivory/Deep Lake",
+"M42"
+],
+"VFF0031(IV/DL,M43)": [
+"VFF Groundsplay LS",
+"Ivory/Deep Lake",
+"M43"
+],
+"VFF0031(IV/DL,M44)": [
+"VFF Groundsplay LS",
+"Ivory/Deep Lake",
+"M44"
+],
+"VFF0031(IV/DL,M45)": [
+"VFF Groundsplay LS",
+"Ivory/Deep Lake",
+"M45"
+],
+"VFF0031(IV/DL,M46)": [
+"VFF Groundsplay LS",
+"Ivory/Deep Lake",
+"M46"
+],
+"VFF0031(IV/DL,M47)": [
+"VFF Groundsplay LS",
+"Ivory/Deep Lake",
+"M47"
+],
+"VFF0031(IV/DL,W36)": [
+"VFF Groundsplay LS",
+"Ivory/Deep Lake",
+"W36"
+],
+"VFF0031(IV/DL,W37)": [
+"VFF Groundsplay LS",
+"Ivory/Deep Lake",
+"W37"
+],
+"VFF0031(IV/DL,W38)": [
+"VFF Groundsplay LS",
+"Ivory/Deep Lake",
+"W38"
+],
+"VFF0031(IV/DL,W39)": [
+"VFF Groundsplay LS",
+"Ivory/Deep Lake",
+"W39"
+],
+"VFF0031(IV/DL,W40)": [
+"VFF Groundsplay LS",
+"Ivory/Deep Lake",
+"W40"
+],
+"VFF0031(IV/DL,W41)": [
+"VFF Groundsplay LS",
+"Ivory/Deep Lake",
+"W41"
+],
+"VFF0031(IV/DL,W42)": [
+"VFF Groundsplay LS",
+"Ivory/Deep Lake",
+"W42"
+],
+"VFF0031(TT/BK,M40)": [
+"VFF Groundsplay LS",
+"Total Black",
+"M40"
+],
+"VFF0031(TT/BK,M41)": [
+"VFF Groundsplay LS",
+"Total Black",
+"M41"
+],
+"VFF0031(TT/BK,M42)": [
+"VFF Groundsplay LS",
+"Total Black",
+"M42"
+],
+"VFF0031(TT/BK,M43)": [
+"VFF Groundsplay LS",
+"Total Black",
+"M43"
+],
+"VFF0031(TT/BK,M44)": [
+"VFF Groundsplay LS",
+"Total Black",
+"M44"
+],
+"VFF0031(TT/BK,M45)": [
+"VFF Groundsplay LS",
+"Total Black",
+"M45"
+],
+"VFF0031(TT/BK,M46)": [
+"VFF Groundsplay LS",
+"Total Black",
+"M46"
+],
+"VFF0031(TT/BK,M47)": [
+"VFF Groundsplay LS",
+"Total Black",
+"M47"
+],
+"VFF0031(TT/BK,W36)": [
+"VFF Groundsplay LS",
+"Total Black",
+"W36"
+],
+"VFF0031(TT/BK,W37)": [
+"VFF Groundsplay LS",
+"Total Black",
+"W37"
+],
+"VFF0031(TT/BK,W38)": [
+"VFF Groundsplay LS",
+"Total Black",
+"W38"
+],
+"VFF0031(TT/BK,W39)": [
+"VFF Groundsplay LS",
+"Total Black",
+"W39"
+],
+"VFF0031(TT/BK,W40)": [
+"VFF Groundsplay LS",
+"Total Black",
+"W40"
+],
+"VFF0031(TT/BK,W41)": [
+"VFF Groundsplay LS",
+"Total Black",
+"W41"
+],
+"VFF0031(TT/BK,W42)": [
+"VFF Groundsplay LS",
+"Total Black",
+"W42"
+],
+"VFF0032(BR/BK,M39)": [
+"VFF Trailope WP",
+"Brown/Black",
+"M39"
+],
+"VFF0032(BR/BK,M40)": [
+"VFF Trailope WP",
+"Brown/Black",
+"M40"
+],
+"VFF0032(BR/BK,M41)": [
+"VFF Trailope WP",
+"Brown/Black",
+"M41"
+],
+"VFF0032(BR/BK,M42)": [
+"VFF Trailope WP",
+"Brown/Black",
+"M42"
+],
+"VFF0032(BR/BK,M43)": [
+"VFF Trailope WP",
+"Brown/Black",
+"M43"
+],
+"VFF0032(BR/BK,M44)": [
+"VFF Trailope WP",
+"Brown/Black",
+"M44"
+],
+"VFF0032(BR/BK,M45)": [
+"VFF Trailope WP",
+"Brown/Black",
+"M45"
+],
+"VFF0032(BR/BK,M46)": [
+"VFF Trailope WP",
+"Brown/Black",
+"M46"
+],
+"VFF0032(BR/BK,M47)": [
+"VFF Trailope WP",
+"Brown/Black",
+"M47"
+]
+}

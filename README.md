@@ -240,6 +240,15 @@ python scripts/build_vivo_standalone.py vivo-sales.html          # claude.ai の
 - 更新: `python3 scripts/outstanding_po.py <ETD 表.xlsx>` → `public/outstanding_po.json` を作り直してコミット。
 - モデル・カラー・サイズで在庫一覧の行に当て、ない行は追加します。モデル名の読み替えは `scripts/outstanding_po.py` の `MODEL` / `OVERRIDE`（V-Soul Black 26W7201 → V-Soul 26 / Black）。
 
+## オフィスの在庫管理表の列（Import / Sales / Balance / Order Import / サイズ別）
+
+在庫一覧の Company Total の左に、オフィスの在庫管理表（例 `data/VFF_Stock_08-10-26.xlsx`）の列を出します。並びは Import Total（AY）→ Sales 2023〜2026（AZ〜BC）→ Sales Total（BI）→ Balance（BJ）→ Order Import（BK）→ サイズ別の Sales Total・%（CD・CE。モデル×サイズの表なので、同じモデル・サイズの行には全カラー共通の値）→ Company Total → Order → Office・各店舗。
+
+- 2026 年の Sales は Excel の値ではなく、このダッシュボードの販売実績（`data/sales_rate.json`：全拠点の 2026 年の販売足数）。Sales Total と Balance（Import Total − Sales Total）もそれで計算し直す。V-Soul Black は Excel が 1 行なので、V-Soul（BK）と V-Soul 26（BK26）の販売を合わせる。
+- 作り方: `python3 scripts/office_sheet.py <在庫管理表.xlsx>` → `public/office_sheet.json`。販売実績を更新したら（`sales_rate_update.py build` のあと）もう一度実行する。
+- `data/sku_names.json` は Zort の商品名から作った SKU → モデル・カラー・サイズの対応表（在庫表にない SKU の販売を数えるため）。
+- Model の見出しの左の「全」ボタンで表の全部のマスを選択し、Ctrl+C / ⌘+C でコピーできる。
+
 ## Socks 在庫（在庫一覧の「Socks」）
 
 靴下（Zort の商品名に Socks を含む VFF の SKU）は VFF の在庫一覧から外し、在庫一覧の **VFF / Vivo / Socks** 切り替えの「Socks」シートに出します（`public/socks-stock.js`、Zort から読み込み・在庫がある拠点だけ表示）。VFF の在庫一覧はモデル名のアルファベット順に並べています（同じモデル内はカラー・サイズの元の順）。

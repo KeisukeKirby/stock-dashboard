@@ -518,3 +518,13 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 /* Outstanding PO の列 */
 .sheet td.po { color: #7030a0; }
 .sheet td.po[title] { cursor: help; }
+
+/* オフィスの在庫管理表の列 (Import / Sales / Balance / Order Import / サイズ別) */
+.sheet thead tr.h1 th.info-h, .sheet thead tr.h2 th.info-h { background: #44546a; font-size: 8.5pt; white-space: normal; line-height: 1.05; padding: 0 1px; }
+.sheet thead tr.h2 th.info-h.info-now { background: #2f75b5; }
+.sheet td.info { background: #f2f2f2; color: #262626; }
+.sheet td.info.info-now { background: #ddebf7; }
+.sheet tr.total td.info { background: #d9d9d9; }
+.sheet tbody td.info.sel { background-color: #e6efcf !important; }
+.sheet thead .selall { margin-right: 3px; padding: 0 4px; font-size: 8pt; line-height: 1.4; border: 1px solid rgba(255,255,255,.7); border-radius: 4px; background: transparent; color: #fff; cursor: pointer; vertical-align: middle; }
+.sheet thead .selall:hover { background: rgba(255,255,255,.2); }

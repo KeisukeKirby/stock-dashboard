@@ -15,7 +15,7 @@
   // Excel の列幅 (文字数) → px : width * 7 + 5
   const COL_W = { code: 23.63, model: 15.27, color: 16.63, size: 10.91, qty: 12.36, ret: 11.18, rate: 8.5, mos: 8.5, sales: 10 }; // Excel 出力用
   // 画面の表は見やすさ優先で Code 列を隠し、各列を狭くする
-  const VIEW_W = { model: 12.5, color: 14.5, size: 4.6, qty: 6, totQty: 6.6, ord: 6.6, ret: 5.6, rate: 5, mos: 5, sales: 7 };
+  const VIEW_W = { model: 12.5, color: 14.5, size: 4.6, qty: 6, totQty: 6.6, ord: 6.6, info: 6.4, infoS: 4.8, ret: 5.6, rate: 5, mos: 5, sales: 7 };
   const VIEW_TEXT = ["model", "color", "size"];
   const shortModel = (m) => String(m || "").replace(/^VFF\s+/, "");
   const shortGroup = (g) => String(g).replace(" (Department)", " (Dept.)");
@@ -332,7 +332,7 @@
     $("tbody").querySelectorAll("tr[data-id]").forEach((tr) => {
       const it = data.items[+tr.dataset.id];
       const q = rowQty(it);
-      tr.querySelectorAll("td.q").forEach((td, k) => (td.textContent = nf(q[k])));
+      tr.querySelectorAll("td.q").forEach((td, k) => (td.textContent = nf(q[qOrder()[k]])));
       tr.querySelector("td.tr").textContent = nf(it._tr);
       updateMos(tr, it);
       tr.querySelectorAll(".ret-in").forEach((inp) => {
@@ -690,28 +690,68 @@
   }
 
   /* ---------- table (Excel 書式) ---------- */
+  /* ---------- オフィスの在庫管理表の列 (Import / Sales / Balance / Order Import / サイズ別の販売) ---------- */
+  // public/office_sheet.json (scripts/office_sheet.py)。Company Total の左に並べる。2026 年の Sales はダッシュボードの販売実績
+  let OS = null;
+  const INFO = [
+    { k: "imp", h: "Import Total" },
+    { k: "s2023", grp: "Sales", h: "2023" }, { k: "s2024", grp: "Sales", h: "2024" }, { k: "s2025", grp: "Sales", h: "2025" },
+    { k: "s2026", grp: "Sales", h: "2026", title: "info.s2026" },
+    { k: "st", h: "Sales Total", title: "info.st" }, { k: "bal", h: "Balance", title: "info.bal" }, { k: "oi", h: "Order Import" },
+    { k: "zt", grp: "Size", h: "Sales Total", title: "info.zt" }, { k: "zp", grp: "Size", h: "%", title: "info.zp" },
+  ];
+  const infoOn = () => !!OS;
+  const infoCols = () => (infoOn() ? INFO : []);
+  const osKey = (x) => String(x || "").toLowerCase().replace("balck", "black").replace(/[^a-z0-9]/g, "");
+  const infoVal = (it, k) => {
+    if (k === "zt" || k === "zp") { const z = it._osz; return z ? z[k === "zt" ? "t" : "p"] : null; }
+    return it._os ? it._os[k] : null;
+  };
+  const fmtInfo = (k, v) => (v == null ? "" : k === "zp" ? (typeof v === "number" ? `${v.toFixed(1)}%` : "") : nf(v));
+  const infoCellsHtml = (it) => infoCols().map((c) => `<td class="c info${c.k === "s2026" ? " info-now" : ""}">${fmtInfo(c.k, infoVal(it, c.k))}</td>`).join("");
+  const infoTotals = (items) => Object.fromEntries(infoCols().map((c) => [c.k, c.k === "zt" || c.k === "zp" ? null : sum(items.map((it) => infoVal(it, c.k) || 0))]));
+  // 列グループの表示順: [オフィスの表の列] Company Total [Order] Office・店舗… Outstanding PO
+  const ctIdx = () => groups.length - 1;
+  const qOrder = () => [ctIdx(), ...groups.map((_, i) => i).filter((i) => i !== ctIdx())].filter((g) => colKinds(g).includes("qty")); // 画面の Qty のマスの並び
+  const restG = () => groups.map((_, i) => i).filter((i) => i !== ctIdx());
+  // segs: 1 行分のマスを表示順に作る。info / g(列グループ) / ord を順番に呼ぶ
+  const segs = (info, grp, ord) => [info(), grp(ctIdx()), ord(), ...restG().map(grp)].join("");
+
   function renderFrame(d) {
     const ncol = numCols();
+    const gcols = (g) => colKinds(g).map((k) => {
+      const w = k === "qty" && g >= data.stores.length ? VIEW_W.totQty : k === "qty" && colKinds(g).length === 1 ? 8.5 : VIEW_W[k]; // Qty だけの列は見出しが収まる幅
+      return `<col style="width:${px(w)}px">`;
+    }).join("");
     $("cols").innerHTML =
       VIEW_TEXT.map((k) => `<col style="width:${px(VIEW_W[k])}px">`).join("") +
-      groups.map((_, g) => colKinds(g).map((k) => {
-        const w = k === "qty" && g >= data.stores.length ? VIEW_W.totQty : k === "qty" && colKinds(g).length === 1 ? 8.5 : VIEW_W[k]; // Qty だけの列は見出しが収まる幅
-        return `<col style="width:${px(w)}px">`;
-      }).join("")).join("") + `<col style="width:${px(VIEW_W.ord)}px">`;
+      segs(() => infoCols().map((c) => `<col style="width:${px(c.grp === "Sales" ? VIEW_W.infoS : VIEW_W.info)}px">`).join(""), gcols,
+        () => `<col style="width:${px(VIEW_W.ord)}px">`);
     // 店舗 (▼) と数量 (▼) の絞り込みボタンは一番右の列グループだけに出す
-    const lastG = groups.map((_, i) => i).filter((i) => colKinds(i).length).pop();
+    const lastG = restG().filter((i) => colKinds(i).length).pop();
+    // オフィスの表の見出し: 1 段目は Sales・Size をまとめ、ほかは 2 段分の高さ
+    const infoH1 = () => {
+      const out = [];
+      infoCols().forEach((c, n, a) => {
+        if (!c.grp) { out.push(`<th class="info-h" rowspan="2"${c.title ? ` title="${esc(t(c.title))}"` : ""}>${esc(c.h)}</th>`); return; }
+        if (n > 0 && a[n - 1].grp === c.grp) return;
+        out.push(`<th class="info-h" colspan="${a.filter((x) => x.grp === c.grp).length}">${esc(c.grp === "Size" ? t("info.size") : c.grp)}</th>`);
+      });
+      return out.join("");
+    };
+    const infoH2 = () => infoCols().filter((c) => c.grp).map((c) => `<th class="info-h${c.k === "s2026" ? " info-now" : ""}"${c.title ? ` title="${esc(t(c.title))}"` : ""}>${esc(c.h)}</th>`).join("");
     $("thead").innerHTML = `
       <tr class="title"><th colspan="${ncol}">${esc(d.title)}</th></tr>
       <tr class="asof">${asofRowHtml(d)}</tr>
       <tr class="h1">
-        ${["Model", "Color", "Size"].map((h, k) => `<th rowspan="2">${h}${afBtn(`t${VIEW_TEXT[k]}`, h)}</th>`).join("")}
-        ${groups.map((g, i) => (colKinds(i).length ? `<th class="grp${i === lastG ? "" : " no-af"}${gcls(i)}" colspan="${colKinds(i).length}" title="${esc(g)}">${esc(shortGroup(g))}${i === lastG ? afBtn("loc", t("f.loc")) : ""}</th>` : "")).join("")}
-        <th class="ord-h" rowspan="2" title="${esc(t("ord.title"))}">Order</th>
+        ${["Model", "Color", "Size"].map((h, k) => `<th rowspan="2">${k === 0 ? `<button type="button" class="selall" id="selAll" title="${esc(t("sel.all"))}" aria-label="${esc(t("sel.all"))}">${esc(t("sel.allBtn"))}</button>` : ""}${h}${afBtn(`t${VIEW_TEXT[k]}`, h)}</th>`).join("")}
+        ${segs(infoH1, (i) => (colKinds(i).length ? `<th class="grp${i === lastG ? "" : " no-af"}${gcls(i)}" colspan="${colKinds(i).length}" title="${esc(groups[i])}">${esc(shortGroup(groups[i]))}${i === lastG ? afBtn("loc", t("f.loc")) : ""}</th>` : ""),
+          () => `<th class="ord-h" rowspan="2" title="${esc(t("ord.title"))}">Order</th>`)}
       </tr>
-      <tr class="h2">${groups.map((g, i) => colKinds(i).map((k) =>
-        k === "qty" ? (i === lastG ? `<th class="${gcls(i).trim()}" title="Quantity">Qty${afBtn(`n${i}`, `${g} Quantity`)}</th>` : `<th class="no-af${gcls(i)}" title="Quantity">Qty</th>`)
+      <tr class="h2">${segs(infoH2, (i) => colKinds(i).map((k) =>
+        k === "qty" ? (i === lastG ? `<th class="${gcls(i).trim()}" title="Quantity">Qty${afBtn(`n${i}`, `${groups[i]} Quantity`)}</th>` : `<th class="no-af${gcls(i)}" title="Quantity">Qty</th>`)
         : k === "ret" ? `<th class="ret-h">Return</th>`
-        : `<th class="${k}-h" title="${esc(t(`col.${k}.title`))}">${esc(t(`col.${k}`))}</th>`).join("")).join("")}</tr>`;
+        : `<th class="${k}-h${gcls(i)}" title="${esc(t(`col.${k}.title`))}">${esc(t(`col.${k}`))}</th>`).join(""), () => "")}</tr>`;
     updateFilterUi();
   }
 
@@ -729,22 +769,24 @@
   function asofRowHtml(d) {
     const labels = groupLabels();
     const cells = [];
-    let span = VIEW_TEXT.length, first = true;
+    let span = VIEW_TEXT.length + infoCols().length, first = true;
     const flush = () => {
       if (!span) return;
       cells.push(`<th colspan="${span}">${first && !d.zort ? esc(d.asOf) : ""}</th>`);
       first = false;
       span = 0;
     };
-    groups.forEach((_, g) => {
+    const addG = (g) => {
       const n = colKinds(g).length;
       if (!n) return;
       if (labels[g] == null) { span += n; return; }
       flush();
       first = false;
       cells.push(`<th class="grp-label" colspan="${n}">${esc(labels[g])}</th>`);
-    });
+    };
+    addG(ctIdx());
     span += 1; // Order 列
+    restG().forEach(addG);
     flush();
     return cells.join("");
   }
@@ -785,7 +827,7 @@
   // Store Total の列は出さない
   const hiddenAlways = (g) => hasOffice() && g === data.stores.length;
   const colKinds = (g) => locHidden.has(g) || hiddenAlways(g) ? [] : [...(hasRate(g) ? ["rate"] : []), ...(hasSalesTotal(g) ? ["sales"] : []), "qty", ...(hasRate(g) ? ["mos"] : []), ...(hasRet(g) ? ["ret"] : [])];
-  const numCols = () => VIEW_TEXT.length + sum(groups.map((_, i) => colKinds(i).length)) + 1; // +1 = Order
+  const numCols = () => VIEW_TEXT.length + infoCols().length + sum(groups.map((_, i) => colKinds(i).length)) + 1; // +1 = Order
 
   // 1 行分の Quantity / Return を groups の並びで返す
   // Outstanding PO (発注済み・未入荷) は Store Total と Company Total の間の列。Company Total には含めない
@@ -801,17 +843,17 @@
     const ret = groups.map((_, g) => sum(items.map((it) => rowRet(it)[g])));
     const rate = groups.map((_, g) => (hasRate(g) ? sum(items.map((it) => rowRate(it, g))) : null));
     const sales = groups.map((_, g) => (hasSalesTotal(g) ? sum(items.map((it) => rowSalesTotal(it) || 0)) : null));
-    return { qty, ret, rate, sales, order: ordTotal(items) };
+    return { qty, ret, rate, sales, order: ordTotal(items), info: infoTotals(items) };
   }
 
   const totalRowHtml = (tot) => `<td>Total</td><td></td><td></td>
-      ${groups.map((_, i) => colKinds(i).map((k) =>
+      ${segs(() => infoCols().map((c) => `<td class="c info">${fmtInfo(c.k, tot.info[c.k])}</td>`).join(""), (i) => colKinds(i).map((k) =>
         k === "qty" ? `<td class="c${gcls(i)}">${nf(tot.qty[i])}</td>`
         : k === "ret" ? `<td class="c">${nf(tot.ret[i])}</td>`
         : k === "rate" ? `<td class="c rate${gcls(i)}">${fmtRate(tot.rate[i])}</td>`
         : k === "sales" ? `<td class="c sales${gcls(i)}">${nf(tot.sales[i])}</td>`
-        : `<td class="c mos${gcls(i)}">${fmtMos(mos(tot.qty[i], tot.rate[i]))}</td>`).join("")).join("")}
-      <td class="c ord-t" id="ordTot">${nf(tot.order)}</td>`;
+        : `<td class="c mos${gcls(i)}">${fmtMos(mos(tot.qty[i], tot.rate[i]))}</td>`).join(""),
+        () => `<td class="c ord-t" id="ordTot">${nf(tot.order)}</td>`)}`;
 
   // Return で在庫が変わったときに在庫月数を更新
   function updateMos(tr, it) {
@@ -828,7 +870,8 @@
     const all = items.length === data.items.length;
     const rows = items.map((it) => `<tr data-id="${it._id}">
         <td title="${esc(it.code || "")}">${esc(shortModel(it.model))}</td><td title="${esc(it.color)}">${esc(it.color)}</td><td class="c">${esc(it.size)}</td>
-        ${rowQty(it).map((q, g) => {
+        ${((q_) => segs(() => infoCellsHtml(it), (g) => {
+          const q = q_[g];
           const tot = g >= data.stores.length;
           return colKinds(g).map((k) => {
             if (k === "qty") return `<td class="c q${tot ? " b" : ""}${isHl(it, g, "qty") ? " hl" : ""}${gcls(g)}"${g === poIdx() && it._poLines ? ` title="${esc(poTitle(it))}"` : ""}>${nf(q)}</td>`;
@@ -838,7 +881,7 @@
             if (tot) return `<td class="c b tr">${nf(it._tr)}</td>`;
             return `<td class="c ret${isHl(it, g, "ret") ? " hl" : ""}"><input class="ret-in" type="text" inputmode="numeric" autocomplete="off" data-s="${g}" value="${it._ret[g] ?? ""}" aria-label="${esc(data.stores[g])} Return"${it._rc[g] ? ` title="${esc(t("recv.cellTitle", { q: it._rc[g] }))}"` : ""}></td>`;
           }).join("");
-        }).join("")}${ordCellHtml(it)}
+        }, () => ordCellHtml(it)))(rowQty(it))}
       </tr>`);
     if (!items.length) rows.push(`<tr><td class="empty" colspan="${numCols()}">${esc(t("empty"))}</td></tr>`);
 
@@ -871,7 +914,7 @@
     input.value = it._ret[i] ?? "";
     input.defaultValue = input.value;
     const q = rowQty(it);
-    tr.querySelectorAll("td.q").forEach((td, k) => (td.textContent = nf(q[k])));
+    tr.querySelectorAll("td.q").forEach((td, k) => (td.textContent = nf(q[qOrder()[k]])));
     tr.querySelector("td.tr").textContent = nf(it._tr);
     updateMos(tr, it);
     $("totalRow").innerHTML = totalRowHtml(totalsOf(shown));
@@ -1020,6 +1063,16 @@
     }
   });
   $("selClose").addEventListener("click", clearSel);
+  // Model の左の「全選択」: 表の全部のマス (Total 行を含む) を選択する。Ctrl+C / ⌘+C でコピーできる
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest("#selAll")) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const rows = bodyRows();
+    if (!rows.length || rows[0].querySelector("td.empty")) return;
+    sel = { r0: 0, c0: 0, r1: rows.length - 1, c1: Math.max(...[...rows].map((r) => r.cells.length)) - 1 };
+    refreshSel();
+  });
   $("tbody").addEventListener("focusin", (e) => { if (e.target.classList.contains("ret-in")) e.target.select(); });
   // Enter / ↑↓ で上下のセルへ移動 (Excel と同じ操作感)
   $("tbody").addEventListener("keydown", (e) => {
@@ -1516,13 +1569,21 @@
     const rows = filtered();
     const q = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
     const LBL = { qty: "Quantity", ret: "Return", rate: "Monthly avg sales", sales: "Sales this year", mos: "Months of stock" };
-    const head = ["Code", "Model", "Color", "Size", ...groups.flatMap((g, i) => colKinds(i).map((k) => `${g} ${LBL[k]}`)), "Order"];
+    // 画面と同じ並び: オフィスの表の列 → Company Total → Order → Office・店舗…
+    const order = [ctIdx(), ...restG()];
+    const ILBL = (c) => (c.grp === "Sales" ? `Sales ${c.h}` : c.grp === "Size" ? `Size ${c.h}` : c.h);
+    const head = ["Code", "Model", "Color", "Size", ...infoCols().map(ILBL),
+      ...colKinds(order[0]).map((k) => `${groups[order[0]]} ${LBL[k]}`), "Order",
+      ...order.slice(1).flatMap((i) => colKinds(i).map((k) => `${groups[i]} ${LBL[k]}`))];
     const body = rows.map((it) => {
       const q = rowQty(it), rt = rowRet(it);
-      return [it.code, it.model, it.color, it.size, ...groups.flatMap((_, g) => colKinds(g).map((k) => {
+      const gv = (g) => colKinds(g).map((k) => {
         const r = rowRate(it, g), m = mos(q[g], r);
         return k === "qty" ? q[g] : k === "ret" ? rt[g] ?? "" : k === "rate" ? (r == null ? "" : +r.toFixed(1)) : k === "sales" ? (rowSalesTotal(it) ?? "") : (m == null ? "" : +m.toFixed(1));
-      })), orders[okey(it)] || ""];
+      });
+      return [it.code, it.model, it.color, it.size,
+        ...infoCols().map((c) => { const v = infoVal(it, c.k); return v == null ? "" : c.k === "zp" ? +Number(v).toFixed(1) : v; }),
+        ...gv(order[0]), orders[okey(it)] || "", ...order.slice(1).flatMap(gv)];
     });
     const csv = "﻿" + [head, ...body].map((r) => r.map(q).join(",")).join("\r\n");
     const a = document.createElement("a");
@@ -1569,8 +1630,10 @@
         { width: COL_W.code }, { width: COL_W.model }, { width: COL_W.color }, { width: COL_W.size },
         ...layout.map((c) => ({ width: c.kind === "qty" ? (!hasRet(c.g) && c.g >= data.stores.length ? 15.5 : COL_W.qty) : COL_W[c.kind] })),
         { width: 10 }, // Order
+        ...infoCols().map(() => ({ width: 11 })), // オフィスの表の列 (Import / Sales / Balance / Order Import / サイズ別)
       ];
-      const lastCol = 5 + layout.length;
+      const ordCol = 5 + layout.length;
+      const lastCol = ordCol + infoCols().length;
 
       ws.getCell(1, 1).value = data.title;
       ws.getCell(1, 1).font = { name: "Calibri", size: 14, bold: true };
@@ -1602,8 +1665,12 @@
         kinds.forEach((k, j) => (ws.getCell(4, c + j).value = XLBL[k]));
         c += kinds.length;
       });
-      ws.mergeCells(3, lastCol, 4, lastCol);
-      ws.getCell(3, lastCol).value = "Order";
+      ws.mergeCells(3, ordCol, 4, ordCol);
+      ws.getCell(3, ordCol).value = "Order";
+      infoCols().forEach((c, n) => {
+        ws.mergeCells(3, ordCol + 1 + n, 4, ordCol + 1 + n);
+        ws.getCell(3, ordCol + 1 + n).value = c.grp === "Sales" ? `Sales ${c.h}` : c.grp === "Size" ? `Size ${c.h}` : c.h;
+      });
       for (let r = 3; r <= 4; r++) {
         ws.getRow(r).height = 20;
         for (let k = 1; k <= lastCol; k++) {
@@ -1627,7 +1694,8 @@
             return col.kind === "qty" ? q[col.g] : col.kind === "ret" ? rt[col.g] || null
               : col.kind === "rate" ? (rr == null ? null : +rr.toFixed(3)) : col.kind === "sales" ? rowSalesTotal(it)
               : (m == null ? null : +m.toFixed(1));
-          }), orders[okey(it)] || null];
+          }), orders[okey(it)] || null,
+          ...infoCols().map((c) => { const v = infoVal(it, c.k); return v == null ? null : c.k === "zp" ? +Number(v).toFixed(1) : v; })];
         const row = ws.getRow(r);
         row.values = vals;
         vals.forEach((_, k) => {
@@ -1656,7 +1724,7 @@
         return col.kind === "qty" ? tot.qty[col.g] : col.kind === "ret" ? tot.ret[col.g]
           : col.kind === "rate" ? +(tot.rate[col.g] || 0).toFixed(3) : col.kind === "sales" ? tot.sales[col.g]
           : (m == null ? null : +m.toFixed(1));
-      }), tot.order];
+      }), tot.order, ...infoCols().map((c) => tot.info[c.k])];
       for (let k = 1; k <= lastCol; k++) {
         const cell = tr.getCell(k);
         const col = layout[k - 5];
@@ -1936,6 +2004,18 @@ if (RETURNS_ON) {
     const live = new Set(d.items.filter((it) => it.qty.some((q) => q) || it._po).map(gkey));
     d.zeroItems = d.items.filter((it) => !live.has(gkey(it)));
     d.items = d.items.filter((it) => live.has(gkey(it)));
+    // オフィスの在庫管理表の列を モデル・カラー・サイズ で当てる
+    if (OS) {
+      const rows = new Map(OS.rows.map((r) => [`${osKey(r.model)}|${osKey(r.color)}|${r.size}`, r]));
+      // 同じ名前の行が 2 つある商品 (品番違い) は、合計が二重にならないよう最初の行だけに出す
+      const used = new Set();
+      d.items.forEach((it) => {
+        const k = `${osKey(it.model)}|${osKey(it.color)}|${it.size}`;
+        it._os = !used.has(k) ? rows.get(k) || null : null;
+        if (it._os) used.add(k);
+        it._osz = OS.sizeTable[`${osKey(it.model)}|${it.size}`] || null;
+      });
+    }
     shownZort = z ? z.fetchedAt : null;
     groups = d.officeIndex != null ? [...d.stores, "Store Total", ...(PO ? ["Outstanding PO"] : []), "Company Total"] : [...d.stores, "Total"];
     d.items.forEach((it, n) => {
@@ -1985,7 +2065,8 @@ if (RETURNS_ON) {
       RKEY = `returns:${d.asOfDate || d.source}`;
       HL = new Set(((d.returnsSeed && d.returnsSeed.highlights) || []).map((h) => `${h.code}@${h.store}@${h.kind}`));
       const po = fetch(`outstanding_po.json?t=${Date.now()}`, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null).then((j) => { PO = j && j.items && j.items.length ? j : null; });
-      return Promise.all([initReturns(), initOrders(), po]);
+      const os = fetch(`office_sheet.json?t=${Date.now()}`, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null).then((j) => { OS = j && j.rows && j.rows.length ? j : null; });
+      return Promise.all([initReturns(), initOrders(), po, os]);
     })
     .then(() => (window.ZORT_CACHED ? window.ZORT_CACHED : window.ZORT || null))
     .then((z) => {
