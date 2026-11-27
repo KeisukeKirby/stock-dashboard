@@ -711,7 +711,7 @@
   const infoCols = () => (infoOn() ? INFO : []);
   const osKey = (x) => String(x || "").toLowerCase().replace("balck", "black").replace(/[^a-z0-9]/g, "");
   const infoVal = (it, k) => {
-    if (k === "zt" || k === "zp") { const z = it._osz; return z ? z[k === "zt" ? "t" : "p"] : null; }
+    if (k === "zt" || k === "zp") return null; // サイズ別の販売・比率は商品の行には出さず、モデル・性別ごとの「By size」の行にだけ出す
     if (k === "oi") return PO ? it._po || (it._os ? 0 : null) : it._os ? it._os[k] : null; // Order Import = ETD のファイルの数量
     return it._os ? it._os[k] : null;
   };
