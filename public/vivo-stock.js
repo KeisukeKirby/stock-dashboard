@@ -76,6 +76,13 @@
   const show = (z) => {
     const d = JSON.parse(JSON.stringify(base));
     applyZort(d, z);
+    // 並び: モデル (A→Z) → 性別 (M → W …) → カラー (最初に出てきた順) → サイズ (小さい順)
+    const mk = (it) => it.model.replace(/^Vivo\s+/i, "").trim().toLowerCase();
+    const sk = (s) => { const m = /^([A-Za-z]*)\s*(\d+(?:\.\d+)?)/.exec(String(s)); return m ? [m[1].toUpperCase(), +m[2]] : [String(s), 0]; };
+    const cfirst = new Map();
+    d.items.forEach((it, i) => { const k = `${mk(it)}|${it.color}`; if (!cfirst.has(k)) cfirst.set(k, i); });
+    d.items.sort((a, b) => mk(a).localeCompare(mk(b), "en") || sk(a.size)[0].localeCompare(sk(b.size)[0])
+      || cfirst.get(`${mk(a)}|${a.color}`) - cfirst.get(`${mk(b)}|${b.color}`) || sk(a.size)[1] - sk(b.size)[1]);
     shownAt = z ? z.fetchedAt : null;
     data = d;
     render();

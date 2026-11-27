@@ -4,7 +4,7 @@
 //                       names: { SKU: 商品名 } }
 //
 // Zort Open API (https://open-api.zortout.com/v4/) を店舗アカウントごとに呼び、倉庫ごとの在庫を返す。
-// 返すのは VFF / Vivo の SKU と数量だけ (顧客情報・価格は含めない)。
+// 返すのは VFF / Vivo / Barefoot Japan / Oleno / Coolcore の SKU と数量だけ (顧客情報・価格は含めない)。
 //
 // 環境変数 (Vercel の Settings → Environment Variables):
 //   ZORT_ACCOUNTS            カンマ区切りのアカウント名 (例: BFT,EDV)
@@ -15,7 +15,7 @@
 //   GET /api/zort?since=<fetchedAt>  → 変わっていなければ { same: true } だけを返す (1 分ごとの確認用)
 
 const BASE = process.env.ZORT_BASE_URL || "https://open-api.zortout.com/v4";
-const SKU_RE = /^(VFF|VV)\d/;
+const SKU_RE = /^(VFF|VV|BFJ|OLN|CC)\d/; // VFF・Vivo・Barefoot Japan・Oleno・Coolcore
 const PAGE = 500;
 // 読まない倉庫 (在庫の数ではない仮の倉庫)。รอ = 入荷待ちなどの仮置きで、大きなマイナスになっている
 const SKIP = /^(รอ|ของเสีย|สินค้าตัวอย่าง)$/;
