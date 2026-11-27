@@ -924,9 +924,13 @@
           if (!ent.length) return "";
           const zt = sum(ent.map(([, v]) => v.t || 0));
           const label = gd === "M" ? "Men" : gd === "W" ? "Women" : gd === "U" ? "Unisex" : gd;
-          return `<tr class="sub"><td class="chk"></td><td>${esc(shortModel(it.model))}</td><td>Total (${label})</td><td></td>
-            ${segs(() => infoCols().map((c) => `<td class="c info">${c.k === "zt" ? nf(zt) : c.k === "zp" ? "100.0%" : ""}</td>`).join(""),
+          const line = (cls, color, size, t_, p_) => `<tr class="${cls}"><td class="chk"></td><td>${esc(shortModel(it.model))}</td><td>${esc(color)}</td><td class="c">${esc(size)}</td>
+            ${segs(() => infoCols().map((c) => `<td class="c info">${c.k === "zt" ? nf(t_) : c.k === "zp" ? p_ : ""}</td>`).join(""),
               (g) => colKinds(g).map(() => `<td class="${gcls(g).trim()}"></td>`).join(""), () => `<td class="ord"></td>`)}</tr>`;
+          // サイズごとの販売合計と比率 (オフィスの表の CD・CE 列) → 最後に合計 100%
+          const sizes = ent.map(([k, v]) => [k.split("|")[1], v]).sort((x, y) => sizeKey(x[0])[1] - sizeKey(y[0])[1]);
+          return sizes.map(([sz, v], n) => line("sub sz", n === 0 ? `By size (${label})` : "", sz, v.t || 0, typeof v.p === "number" ? `${v.p.toFixed(1)}%` : "")).join("")
+            + line("sub", `Total (${label})`, "", zt, "100.0%");
         }).join("");
       };
       items.forEach((it, n) => {
