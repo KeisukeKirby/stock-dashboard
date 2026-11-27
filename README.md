@@ -128,6 +128,17 @@ python scripts/convert.py data/Store_Stock_092526.xlsx data/VFF_Stock_25-09-26.x
     data/import_9.26_move_to_branch.xlsx data/event_asok_stock.json data/sales_rate.json data/returns_import.json
 ```
 
+### 9 月以降の販売を足す（scripts/sales_rate_update.py）
+
+1〜8 月の元データ（data/sales_raw/）は Git 管理外のため、1〜8 月は `data/sales_rate_base_2026-01_08.json`（1〜8 月の月平均）から「月平均 × 月数」で販売足数を戻し、`data/sales_monthly/*.json`（月別・店舗別・SKU 別の足数）を足して計算し直します。店舗ごとに「販売足数 ÷ データのある月数」です。
+
+```bash
+python3 scripts/sales_rate_update.py extract central <Central CL の売上.xlsx> 2026-09 2026-10   # 月別シート 09-26, 10-26
+python3 scripts/sales_rate_update.py extract siam <Siam の売上.xlsx> 2026-09 2026-10
+python3 scripts/sales_rate_update.py extract pos <Zort の รายการขาย.xlsx>                         # K Village / Central LP の POS
+python3 scripts/sales_rate_update.py build                                                       # data/sales_rate.json を作り直す
+```
+
 | 店舗 | 元データ | 対象月 |
 |---|---|---|
 | K Village / Central LP | EDV 受注明細 order_detail_*_7duk（倉庫 Kvillage / Coollabo Cen LP 3F） | 1〜8月 |

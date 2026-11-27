@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-30 10:36",
+ "generatedAt": "2026-11-27 11:08",
  "months": {
   "K Village": [
    "2026-01",
@@ -9,7 +9,8 @@
    "2026-05",
    "2026-06",
    "2026-07",
-   "2026-08"
+   "2026-08",
+   "2026-10"
   ],
   "Event": [
    "2026-01",
@@ -29,7 +30,9 @@
    "2026-05",
    "2026-06",
    "2026-07",
-   "2026-08"
+   "2026-08",
+   "2026-09",
+   "2026-10"
   ],
   "Paradise Park": [
    "2026-04",
@@ -56,7 +59,9 @@
    "2026-05",
    "2026-06",
    "2026-07",
-   "2026-08"
+   "2026-08",
+   "2026-09",
+   "2026-10"
   ],
   "Siam Discovery": [
    "2026-01",
@@ -66,1049 +71,1081 @@
    "2026-05",
    "2026-06",
    "2026-07",
-   "2026-08"
+   "2026-08",
+   "2026-09",
+   "2026-10"
   ]
  },
  "totals": {
-  "K Village": 1199.0,
-  "Event": 814.0,
-  "Central LP": 564.0,
-  "Paradise Park": 263.0,
-  "Online": 1518.0,
-  "Central CL (Department)": 460.0,
-  "Siam Discovery": 387.0
+  "K Village": 1320.0,
+  "Event": 814,
+  "Central LP": 661.0,
+  "Paradise Park": 263,
+  "Online": 1518,
+  "Central CL (Department)": 558.0,
+  "Siam Discovery": 523.0
  },
  "rate": {
   "VFF0008(NU,W37)": {
-   "K Village": 0.625
+   "K Village": 0.556
   },
   "VFF0008(F/GN,W37)": {
-   "K Village": 0.5,
+   "K Village": 0.556,
    "Event": 0.625,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Paradise Park": 0.2
   },
   "VFF0008(BB/BL,W37)": {
-   "K Village": 2.25,
+   "K Village": 2.0,
    "Event": 0.75,
-   "Central LP": 0.5,
+   "Central LP": 0.4,
    "Paradise Park": 0.4,
    "Online": 1.875,
-   "Central CL (Department)": 0.375,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.4,
+   "Siam Discovery": 0.1
   },
   "VFF0005(BK/BK,M45)": {
-   "K Village": 0.25,
-   "Central LP": 0.125,
-   "Online": 0.5
+   "K Village": 0.222,
+   "Central LP": 0.1,
+   "Online": 0.5,
+   "Central CL (Department)": 0.1
   },
   "VFF0008(BB/BL,W39)": {
-   "K Village": 1.25,
+   "K Village": 1.667,
    "Event": 1.0,
-   "Central LP": 0.375,
+   "Central LP": 0.3,
    "Paradise Park": 0.2,
    "Online": 1.5,
-   "Central CL (Department)": 0.5,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.7,
+   "Siam Discovery": 0.2
   },
   "VFF0008(BR,W40)": {
-   "K Village": 0.625,
+   "K Village": 0.778,
    "Event": 0.375,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Paradise Park": 0.2,
    "Online": 0.5,
-   "Siam Discovery": 0.25
+   "Siam Discovery": 0.2
   },
   "VFF0009(BK,M44)": {
-   "K Village": 0.75,
+   "K Village": 0.778,
    "Event": 0.125,
-   "Central LP": 0.375,
+   "Central LP": 0.3,
    "Paradise Park": 0.6,
    "Online": 1.75,
-   "Central CL (Department)": 0.625,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.6,
+   "Siam Discovery": 0.3
   },
   "VFF0025(BK,U41)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
-   "Central LP": 0.125,
-   "Siam Discovery": 0.125
+   "Central LP": 0.2,
+   "Siam Discovery": 0.1
   },
   "VFF0008(F/GN,W38)": {
-   "K Village": 1.125,
+   "K Village": 1.0,
    "Event": 0.5,
-   "Central LP": 0.5,
+   "Central LP": 0.4,
    "Paradise Park": 0.2,
    "Online": 0.375
   },
   "VFF0009(BK,M42)": {
-   "K Village": 1.625,
+   "K Village": 1.444,
    "Event": 0.625,
-   "Central LP": 0.375,
+   "Central LP": 0.3,
    "Paradise Park": 0.2,
    "Online": 1.625,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.5
+   "Central CL (Department)": 0.3,
+   "Siam Discovery": 0.4
   },
   "VFF0025(BK,U44)": {
-   "K Village": 0.375,
+   "K Village": 0.333,
    "Event": 0.5,
-   "Central LP": 0.125,
-   "Central CL (Department)": 0.125
+   "Central LP": 0.2,
+   "Central CL (Department)": 0.1
   },
   "VFF0002(TT/IV,W38)": {
-   "K Village": 1.125,
+   "K Village": 1.333,
    "Event": 0.125,
    "Central LP": 0.5,
    "Paradise Park": 0.2,
    "Online": 1.0
   },
   "VFF0008(BR,W37)": {
-   "K Village": 0.875,
+   "K Village": 0.778,
    "Event": 0.25,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Paradise Park": 0.4,
    "Online": 0.625,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.2
   },
   "VFF0008(F/GN,W40)": {
-   "K Village": 0.75,
+   "K Village": 0.889,
    "Event": 0.375,
    "Paradise Park": 0.4,
    "Online": 0.5
   },
   "VFF0008(BK26,W36)": {
-   "K Village": 0.375,
+   "K Village": 0.778,
    "Event": 0.625,
-   "Central CL (Department)": 0.25
+   "Central CL (Department)": 0.5,
+   "Central LP": 0.2
   },
   "VFF0008(BB/BL,W38)": {
-   "K Village": 2.125,
+   "K Village": 1.889,
    "Event": 1.0,
-   "Central LP": 0.625,
+   "Central LP": 0.7,
    "Online": 2.125,
-   "Central CL (Department)": 0.625,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.8,
+   "Siam Discovery": 0.1
   },
   "VFF0008(NU,W39)": {
-   "K Village": 0.25
+   "K Village": 0.444,
+   "Central CL (Department)": 0.1
   },
   "VFF0008(LI/GN,W37)": {
-   "K Village": 0.5,
+   "K Village": 0.556,
    "Event": 0.25,
-   "Central LP": 0.5,
+   "Central LP": 0.4,
    "Online": 1.25,
-   "Central CL (Department)": 0.5,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.7,
+   "Siam Discovery": 0.3
   },
   "VFF0026(TT/BK,M45)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.125,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Online": 0.5,
-   "Central CL (Department)": 0.375,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.3,
+   "Siam Discovery": 0.1
   },
   "VFF0026(TT/BK,W36)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0002(BK/F,W38)": {
-   "K Village": 1.125,
+   "K Village": 1.0,
    "Event": 0.625,
-   "Central LP": 0.375,
+   "Central LP": 0.4,
    "Online": 0.25,
-   "Central CL (Department)": 0.75,
-   "Siam Discovery": 0.375
+   "Central CL (Department)": 0.7,
+   "Siam Discovery": 0.4
   },
   "VFF0008(SV,W38)": {
-   "K Village": 1.5,
+   "K Village": 1.444,
    "Event": 1.125,
-   "Central LP": 1.125,
+   "Central LP": 0.9,
    "Paradise Park": 1.0,
    "Online": 2.75,
-   "Central CL (Department)": 1.875,
-   "Siam Discovery": 1.125
+   "Central CL (Department)": 1.5,
+   "Siam Discovery": 0.9
   },
   "VFF0009(BK,W39)": {
-   "K Village": 1.25,
+   "K Village": 1.222,
    "Event": 0.125,
-   "Central LP": 0.5,
+   "Central LP": 0.4,
    "Online": 1.125,
-   "Central CL (Department)": 0.5,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.4,
+   "Siam Discovery": 0.2
   },
   "VFF0026(TT/BK,W39)": {
-   "K Village": 0.625,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
+   "K Village": 0.556,
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.2,
+   "Central LP": 0.1
   },
   "VFF0008(NU,W38)": {
-   "K Village": 0.375,
+   "K Village": 0.556,
    "Event": 0.125
   },
   "VFF0002(BK/LI/BK,M43)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Online": 0.375,
-   "Central CL (Department)": 0.375
+   "Central CL (Department)": 0.4
   },
   "VFF0002(BR/IV/BK,M40)": {
-   "K Village": 0.375,
+   "K Village": 0.556,
    "Event": 0.125,
    "Paradise Park": 0.2,
    "Online": 0.25
   },
   "VFF0008(BK26,W37)": {
-   "K Village": 1.125,
+   "K Village": 1.444,
    "Event": 0.625,
-   "Central LP": 0.125,
+   "Central LP": 0.6,
    "Online": 0.375,
-   "Central CL (Department)": 0.5
+   "Central CL (Department)": 0.6
   },
   "VFF0008(SV,W37)": {
-   "K Village": 1.375,
+   "K Village": 1.333,
    "Event": 0.25,
-   "Central LP": 1.375,
+   "Central LP": 1.1,
    "Paradise Park": 0.4,
    "Online": 0.625,
-   "Central CL (Department)": 0.75,
-   "Siam Discovery": 0.5
+   "Central CL (Department)": 0.6,
+   "Siam Discovery": 0.4
   },
   "VFF0002(DPK,W36)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Paradise Park": 0.2,
    "Online": 0.375
   },
   "VFF0002(BR/IV/BK,M43)": {
-   "K Village": 0.25,
+   "K Village": 0.333,
    "Event": 0.25,
-   "Central LP": 0.25,
+   "Central LP": 0.3,
    "Paradise Park": 0.2,
    "Online": 0.125
   },
   "VFF0026(TT/BK,M43)": {
-   "K Village": 0.875,
+   "K Village": 0.778,
    "Event": 0.125,
-   "Central LP": 0.5,
+   "Central LP": 0.4,
    "Online": 0.75,
-   "Central CL (Department)": 0.625,
-   "Siam Discovery": 0.625
-  },
-  "VFF0008(BR,W38)": {
-   "K Village": 1.25,
-   "Event": 0.625,
-   "Central LP": 0.5,
-   "Paradise Park": 1.0,
-   "Online": 1.125,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
-  },
-  "VFF0021(IV/FU,W39)": {
-   "K Village": 0.5,
-   "Event": 0.625,
-   "Central LP": 0.5,
-   "Paradise Park": 0.4,
-   "Online": 0.375,
-   "Central CL (Department)": 0.375,
+   "Central CL (Department)": 0.5,
    "Siam Discovery": 0.5
   },
+  "VFF0008(BR,W38)": {
+   "K Village": 1.111,
+   "Event": 0.625,
+   "Central LP": 0.4,
+   "Paradise Park": 1.0,
+   "Online": 1.125,
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
+  },
+  "VFF0021(IV/FU,W39)": {
+   "K Village": 0.556,
+   "Event": 0.625,
+   "Central LP": 0.4,
+   "Paradise Park": 0.4,
+   "Online": 0.375,
+   "Central CL (Department)": 0.4,
+   "Siam Discovery": 0.4
+  },
   "VFF0002(TT/IV,M43)": {
-   "K Village": 0.375,
+   "K Village": 0.444,
    "Event": 0.25,
-   "Central LP": 0.5,
+   "Central LP": 0.4,
    "Paradise Park": 0.6,
    "Online": 1.125
   },
   "VFF0002(TT/IV,M42)": {
-   "K Village": 1.0,
+   "K Village": 0.889,
    "Event": 0.25,
-   "Central LP": 0.375,
+   "Central LP": 0.3,
    "Paradise Park": 0.2,
    "Online": 1.625
   },
   "VFF0024(BK,M45)": {
-   "K Village": 0.375,
-   "Central LP": 0.375,
+   "K Village": 0.333,
+   "Central LP": 0.3,
    "Paradise Park": 0.4,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.2
   },
   "VFF0025(DL/BK,U40)": {
-   "Central LP": 0.25
+   "Central LP": 0.2
   },
   "VFF0008(BK,W35)": {
-   "K Village": 0.625,
+   "K Village": 0.556,
    "Event": 0.25,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 1.25
   },
   "VFF0008(BK26,W41)": {
-   "K Village": 0.75,
+   "K Village": 1.0,
    "Event": 0.25,
-   "Central LP": 0.25,
-   "Online": 0.25
+   "Central LP": 0.4,
+   "Online": 0.25,
+   "Central CL (Department)": 0.2
   },
   "VFF0009(BK,M40)": {
-   "K Village": 0.625,
+   "K Village": 0.556,
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Paradise Park": 0.2,
    "Online": 0.25,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.375
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.3
   },
   "VFF0002(DPK,W39)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.125,
    "Online": 0.125,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.3,
+   "Central LP": 0.1,
+   "Siam Discovery": 0.3
   },
   "VFF0008(BK,W36)": {
-   "K Village": 2.5,
+   "K Village": 2.222,
    "Event": 0.875,
-   "Central LP": 0.75,
+   "Central LP": 0.7,
    "Paradise Park": 0.2,
    "Online": 3.5,
-   "Central CL (Department)": 1.25,
-   "Siam Discovery": 1.0
+   "Central CL (Department)": 1.0,
+   "Siam Discovery": 0.9
   },
   "VFF0002(DPK,W37)": {
-   "K Village": 0.125,
-   "Central LP": 0.125,
+   "K Village": 0.111,
+   "Central LP": 0.1,
    "Online": 0.25,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.2
   },
   "VFF0008(BK26,W38)": {
-   "K Village": 1.625,
+   "K Village": 1.889,
    "Event": 1.25,
-   "Central LP": 0.375,
+   "Central LP": 0.8,
    "Paradise Park": 0.4,
    "Online": 0.125,
-   "Central CL (Department)": 0.5
+   "Central CL (Department)": 1.1
   },
   "VFF0008(BK26,W39)": {
-   "K Village": 0.875,
+   "K Village": 1.111,
    "Event": 1.125,
-   "Central LP": 0.375,
+   "Central LP": 0.6,
    "Online": 0.25,
-   "Central CL (Department)": 0.5
+   "Central CL (Department)": 0.6
   },
   "VFF0008(PP,W37)": {
-   "Central LP": 0.375,
+   "Central LP": 0.4,
    "Online": 0.125,
-   "Central CL (Department)": 0.625,
-   "Siam Discovery": 0.375
+   "Central CL (Department)": 0.6,
+   "Siam Discovery": 0.5
   },
   "VFF0008(BK26,W42)": {
-   "K Village": 0.125,
-   "Central LP": 0.125
+   "K Village": 0.222,
+   "Central LP": 0.2
   },
   "VFF0008(FU,W38)": {
-   "K Village": 1.125,
+   "K Village": 1.0,
    "Event": 0.125,
-   "Central LP": 0.75,
+   "Central LP": 0.7,
    "Online": 2.25,
-   "Central CL (Department)": 1.0,
-   "Siam Discovery": 0.875
+   "Central CL (Department)": 0.8,
+   "Siam Discovery": 0.8
   },
   "VFF0008(PP,W38)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.25,
-   "Central LP": 0.125,
+   "Central LP": 0.2,
    "Online": 1.0,
-   "Central CL (Department)": 0.625,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.7,
+   "Siam Discovery": 0.2
   },
   "VFF0002(TT/IV,W39)": {
-   "K Village": 1.125,
+   "K Village": 1.111,
    "Event": 0.625,
-   "Central LP": 0.375,
+   "Central LP": 0.5,
    "Paradise Park": 1.2,
    "Online": 0.75
   },
   "VFF0002(TT/IV,W41)": {
-   "K Village": 0.375,
+   "K Village": 0.333,
    "Event": 0.25,
    "Paradise Park": 0.2,
-   "Online": 0.375
+   "Online": 0.375,
+   "Central LP": 0.1
   },
   "VFF0008(BB/BL,W40)": {
-   "K Village": 0.375,
+   "K Village": 0.444,
    "Event": 0.75,
    "Online": 1.375,
-   "Central CL (Department)": 0.625
+   "Central CL (Department)": 0.9,
+   "Central LP": 0.2
   },
   "VFF0009(BK,M41)": {
-   "K Village": 0.625,
+   "K Village": 0.556,
    "Event": 0.25,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.75,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.3
   },
   "VFF0008(FU,W37)": {
-   "K Village": 1.375,
+   "K Village": 1.222,
    "Event": 0.625,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 1.25,
    "Central CL (Department)": 0.5,
-   "Siam Discovery": 0.625
+   "Siam Discovery": 0.5
   },
   "VFF0008(PP,W36)": {
-   "K Village": 0.25,
-   "Online": 0.625
+   "K Village": 0.222,
+   "Online": 0.625,
+   "Central CL (Department)": 0.2,
+   "Central LP": 0.1
   },
   "VFF0008(IV/DPK,W36)": {
-   "K Village": 1.0,
+   "K Village": 0.889,
    "Event": 0.375,
-   "Central LP": 0.75,
+   "Central LP": 0.6,
    "Online": 1.75,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0026(TT/BK,M41)": {
-   "K Village": 0.375,
+   "K Village": 0.333,
    "Event": 0.125,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Online": 0.375,
-   "Central CL (Department)": 0.5,
-   "Siam Discovery": 0.375
+   "Central CL (Department)": 0.4,
+   "Siam Discovery": 0.5
   },
   "VFF0002(TT/BK,M42)": {
-   "K Village": 1.25,
+   "K Village": 1.222,
    "Event": 0.75,
-   "Central LP": 1.0,
+   "Central LP": 0.8,
    "Paradise Park": 0.4,
    "Online": 2.375,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.625
+   "Central CL (Department)": 0.4,
+   "Siam Discovery": 0.6
   },
   "VFF0002(BK/LI/BK,M39)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
    "Paradise Park": 0.2,
    "Online": 0.125
   },
   "VFF0008(BB/BL,W36)": {
-   "K Village": 0.625,
+   "K Village": 0.556,
    "Event": 0.125,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Online": 1.0,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0005(BK/BK,M42)": {
-   "K Village": 0.25,
-   "Siam Discovery": 0.375
+   "K Village": 0.222,
+   "Siam Discovery": 0.5,
+   "Central LP": 0.1,
+   "Central CL (Department)": 0.1
   },
   "VFF0002(BR/IV/BK,M44)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.25,
    "Online": 0.375
   },
   "VFF0005(BK/BK,W36)": {
-   "K Village": 0.125
+   "K Village": 0.111,
+   "Central CL (Department)": 0.1
   },
   "VFF0009(BK,W37)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.25,
-   "Central CL (Department)": 0.25
+   "Central CL (Department)": 0.2
   },
   "VFF0021(IV/FU,W37)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.25,
-   "Central LP": 0.5,
+   "Central LP": 0.4,
    "Online": 0.5,
-   "Central CL (Department)": 0.5
+   "Central CL (Department)": 0.4
   },
   "VFF0005(BK/BK,W39)": {
-   "K Village": 0.125,
-   "Siam Discovery": 0.125
+   "K Village": 0.111,
+   "Siam Discovery": 0.1,
+   "Central CL (Department)": 0.1,
+   "Central LP": 0.1
   },
   "VFF0022(MT/BK,M43)": {
-   "K Village": 0.375,
+   "K Village": 0.444,
    "Event": 0.125,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Online": 0.625,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.3
   },
   "VFF0002(TT/IV,M44)": {
-   "K Village": 0.875,
+   "K Village": 0.889,
    "Event": 0.375,
-   "Central LP": 0.375,
+   "Central LP": 0.4,
    "Paradise Park": 0.2,
    "Online": 1.0
   },
   "VFF0002(TT/BK,M44)": {
-   "K Village": 1.875,
+   "K Village": 1.667,
    "Event": 0.375,
-   "Central LP": 0.875,
+   "Central LP": 0.7,
    "Paradise Park": 1.4,
    "Online": 1.125,
-   "Central CL (Department)": 0.375,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.3,
+   "Siam Discovery": 0.2
   },
   "VFF0026(TT/BK,M44)": {
-   "K Village": 0.5,
+   "K Village": 0.444,
    "Event": 0.125,
-   "Central LP": 0.375,
+   "Central LP": 0.3,
    "Online": 0.375,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.3,
+   "Siam Discovery": 0.3
   },
   "VFF0023(BK,M44)": {
-   "K Village": 0.75,
+   "K Village": 0.667,
    "Paradise Park": 0.2,
    "Online": 0.5,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.375
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.3
   },
   "VFF0021(TT/BK,M43)": {
-   "K Village": 0.125,
+   "K Village": 0.222,
    "Event": 0.25,
-   "Central LP": 0.125,
+   "Central LP": 0.2,
    "Paradise Park": 0.4,
    "Online": 0.625,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.1
   },
   "VFF0030(BK,M43)": {
-   "K Village": 0.625,
+   "K Village": 0.556,
    "Online": 0.125,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.2
   },
   "VFF0008(BK26,W40)": {
-   "K Village": 1.375,
+   "K Village": 1.444,
    "Event": 0.25,
-   "Central LP": 0.125,
+   "Central LP": 0.3,
    "Paradise Park": 0.2,
    "Online": 0.125,
-   "Central CL (Department)": 0.25
+   "Central CL (Department)": 0.3
   },
   "VFF0022(IV/G,M43)": {
-   "K Village": 0.625,
+   "K Village": 0.556,
    "Event": 0.125,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Online": 0.125
   },
   "VFF0008(BR,W39)": {
-   "K Village": 1.0,
+   "K Village": 0.889,
    "Event": 0.625,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 1.0,
-   "Central CL (Department)": 0.375,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.3,
+   "Siam Discovery": 0.1
   },
   "VFF0008(LI/GN,W39)": {
-   "K Village": 0.75,
+   "K Village": 0.889,
    "Event": 0.25,
-   "Central LP": 0.375,
+   "Central LP": 0.3,
    "Paradise Park": 0.6,
    "Online": 0.875,
-   "Central CL (Department)": 0.75,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.7,
+   "Siam Discovery": 0.6
   },
   "VFF0002(TT/BK,M41)": {
-   "K Village": 1.875,
+   "K Village": 1.667,
    "Event": 0.25,
-   "Central LP": 0.375,
+   "Central LP": 0.5,
    "Paradise Park": 0.4,
    "Online": 2.0,
-   "Central CL (Department)": 0.5,
+   "Central CL (Department)": 0.4,
    "Siam Discovery": 0.5
   },
   "VFF0026(TT/BK,W40)": {
-   "K Village": 0.375,
-   "Central LP": 0.25,
+   "K Village": 0.333,
+   "Central LP": 0.2,
    "Online": 0.25,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.1
   },
   "VFF0002(TT/IV,M40)": {
-   "K Village": 0.875,
+   "K Village": 0.778,
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.125
   },
   "VFF0022(BK,M46)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
    "Paradise Park": 0.2,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0022(MT/BK,M44)": {
-   "K Village": 0.75,
+   "K Village": 0.667,
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.2,
    "Online": 0.25,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0008(BK26,W35)": {
-   "K Village": 0.25,
+   "K Village": 0.333,
    "Event": 0.125
   },
   "VFF0002(TT/IV,W40)": {
-   "K Village": 0.875,
+   "K Village": 0.778,
    "Event": 0.375,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Paradise Park": 0.4,
    "Online": 0.375
   },
   "VFF0009(BK,M45)": {
-   "K Village": 0.75,
+   "K Village": 0.667,
    "Event": 0.375,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.75,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.375
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.3
   },
   "VFF0005(BK/BK,W37)": {
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Paradise Park": 0.2,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0008(NU,W40)": {
-   "K Village": 0.125
+   "K Village": 0.222
   },
   "VFF0008(F/GN,W39)": {
-   "K Village": 0.625,
+   "K Village": 0.556,
    "Event": 1.0,
-   "Central LP": 0.625,
+   "Central LP": 0.5,
    "Paradise Park": 0.2,
    "Online": 0.5
   },
   "VFF0021(IV/FU,W41)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Paradise Park": 0.2,
    "Online": 0.25,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0008(F/GN,W41)": {
-   "K Village": 0.125,
-   "Central LP": 0.25,
+   "K Village": 0.333,
+   "Central LP": 0.2,
    "Paradise Park": 0.2,
    "Online": 0.125
   },
   "VFF0002(TT/IV,M41)": {
-   "K Village": 0.875,
+   "K Village": 0.778,
    "Event": 0.25,
-   "Central LP": 0.625,
+   "Central LP": 0.6,
    "Paradise Park": 0.2,
    "Online": 0.875
   },
   "VFF0009(BK,W40)": {
-   "K Village": 0.75,
+   "K Village": 0.667,
    "Event": 0.5,
-   "Central LP": 0.625,
+   "Central LP": 0.5,
    "Paradise Park": 0.4,
    "Online": 1.125,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.3
   },
   "VFF0008(LI/GN,W40)": {
-   "K Village": 0.75,
-   "Central LP": 0.25,
+   "K Village": 0.667,
+   "Central LP": 0.3,
    "Online": 0.75,
    "Central CL (Department)": 0.5,
-   "Siam Discovery": 0.375
+   "Siam Discovery": 0.4
   },
   "VFF0002(BR/IV/BK,M41)": {
-   "K Village": 0.375,
+   "K Village": 0.333,
    "Event": 0.375,
-   "Central LP": 0.125,
-   "Online": 0.375
+   "Central LP": 0.1,
+   "Online": 0.375,
+   "Siam Discovery": 0.1
   },
   "VFF0005(BK/BK,M43)": {
-   "K Village": 0.5,
-   "Central LP": 0.125,
+   "K Village": 0.556,
+   "Central LP": 0.1,
    "Online": 0.75,
-   "Siam Discovery": 0.25
+   "Siam Discovery": 0.3
   },
   "VFF0022(BK,M43)": {
-   "K Village": 0.375,
+   "K Village": 0.333,
    "Event": 0.375,
    "Paradise Park": 0.2,
    "Online": 0.25,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.375
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.3
   },
   "VFF0023(DL,M45)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0009(BK,W38)": {
-   "K Village": 0.75,
+   "K Village": 0.889,
    "Event": 0.25,
-   "Central LP": 0.625,
+   "Central LP": 0.5,
    "Online": 0.625,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1,
+   "Central CL (Department)": 0.1
   },
   "VFF0002(BK/LI/BK,M42)": {
-   "K Village": 0.375,
+   "K Village": 0.333,
    "Event": 0.25,
    "Paradise Park": 0.2,
    "Online": 0.5,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.375
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.5,
+   "Central LP": 0.2
   },
   "VFF0008(FU,W39)": {
-   "K Village": 1.25,
+   "K Village": 1.333,
    "Event": 0.375,
-   "Central LP": 0.75,
+   "Central LP": 0.7,
    "Paradise Park": 0.6,
    "Online": 2.5,
-   "Central CL (Department)": 0.375,
-   "Siam Discovery": 0.625
+   "Central CL (Department)": 0.4,
+   "Siam Discovery": 0.5
   },
   "VFF0022(IV/GN,W41)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.25,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0002(BK/F,W36)": {
-   "K Village": 0.125,
-   "Central LP": 0.25,
+   "K Village": 0.111,
+   "Central LP": 0.2,
    "Online": 0.375,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0021(TT/BK,M44)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.125,
-   "Central LP": 0.375,
+   "Central LP": 0.4,
    "Paradise Park": 0.4,
    "Online": 0.5,
-   "Central CL (Department)": 0.375,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.3,
+   "Siam Discovery": 0.1
   },
   "VFF0008(BB/BL,W42)": {
-   "K Village": 0.375,
+   "K Village": 0.444,
    "Online": 0.5
   },
   "VFF0005(BK/BK,M41)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Online": 0.125,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.3
   },
   "VFF0009(BK,M43)": {
-   "K Village": 1.5,
+   "K Village": 1.444,
    "Event": 0.5,
-   "Central LP": 0.625,
+   "Central LP": 0.5,
    "Paradise Park": 0.2,
    "Online": 1.75,
-   "Central CL (Department)": 0.625,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.5,
+   "Siam Discovery": 0.6
   },
   "VFF0002(DPK,W38)": {
-   "K Village": 0.25,
+   "K Village": 0.444,
    "Paradise Park": 0.2,
-   "Online": 0.375
+   "Online": 0.375,
+   "Central CL (Department)": 0.3,
+   "Central LP": 0.3,
+   "Siam Discovery": 0.1
   },
   "VFF0025(DL/BK,U42)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
-   "Central LP": 0.125
+   "Central LP": 0.2
   },
   "VFF0009(BK,M46)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.125,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Online": 0.375,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.2
   },
   "VFF0002(TT/BK,M45)": {
    "K Village": 1.0,
-   "Central LP": 0.375,
+   "Central LP": 0.3,
    "Paradise Park": 0.6,
    "Online": 0.625,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0008(BK,W39)": {
-   "K Village": 5.125,
+   "K Village": 4.556,
    "Event": 2.25,
-   "Central LP": 2.125,
+   "Central LP": 1.7,
    "Paradise Park": 1.6,
    "Online": 9.75,
-   "Central CL (Department)": 3.125,
-   "Siam Discovery": 2.375
+   "Central CL (Department)": 2.5,
+   "Siam Discovery": 2.7
   },
   "VFF0008(FU,W40)": {
-   "K Village": 1.25,
+   "K Village": 1.111,
    "Event": 0.25,
-   "Central LP": 0.375,
+   "Central LP": 0.4,
    "Paradise Park": 0.2,
    "Online": 0.5,
-   "Central CL (Department)": 0.625,
-   "Siam Discovery": 0.625
+   "Central CL (Department)": 0.5,
+   "Siam Discovery": 0.6
   },
   "VFF0024(BK,M42)": {
-   "K Village": 0.125,
+   "K Village": 0.222,
    "Event": 0.125,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Paradise Park": 0.2,
    "Online": 0.25,
-   "Central CL (Department)": 0.25
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.2
   },
   "VFF0022(MT/BK,M42)": {
-   "K Village": 0.125,
-   "Central LP": 0.125,
-   "Online": 0.25
+   "K Village": 0.111,
+   "Central LP": 0.1,
+   "Online": 0.25,
+   "Siam Discovery": 0.2
   },
   "VFF0005(LIG/GY,M44)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Paradise Park": 0.4,
    "Online": 0.125
   },
   "VFF0021(IV/FU,W38)": {
-   "K Village": 0.5,
+   "K Village": 0.444,
    "Event": 0.625,
-   "Central LP": 0.375,
+   "Central LP": 0.3,
    "Paradise Park": 0.2,
    "Online": 0.375,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.1
   },
   "VFF0008(BK,W38)": {
-   "K Village": 3.875,
+   "K Village": 3.444,
    "Event": 1.5,
-   "Central LP": 2.0,
+   "Central LP": 1.6,
    "Paradise Park": 0.6,
    "Online": 9.625,
-   "Central CL (Department)": 2.375,
-   "Siam Discovery": 2.125
+   "Central CL (Department)": 1.9,
+   "Siam Discovery": 2.7
   },
   "VFF0008(BK,W41)": {
-   "K Village": 2.25,
+   "K Village": 2.0,
    "Event": 0.25,
-   "Central LP": 0.75,
+   "Central LP": 0.6,
    "Paradise Park": 0.2,
    "Online": 2.625,
-   "Central CL (Department)": 0.875,
-   "Siam Discovery": 1.25
+   "Central CL (Department)": 0.7,
+   "Siam Discovery": 1.6
   },
   "VFF0008(LI/GN,W41)": {
-   "K Village": 0.375,
-   "Central LP": 0.125,
+   "K Village": 0.333,
+   "Central LP": 0.1,
    "Online": 0.375,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.3,
+   "Siam Discovery": 0.1
   },
   "VFF0008(FU,W41)": {
-   "K Village": 0.375,
-   "Central LP": 0.375,
+   "K Village": 0.333,
+   "Central LP": 0.3,
    "Paradise Park": 0.2,
    "Online": 0.5,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0002(TT/BK,M47)": {
-   "K Village": 0.25,
-   "Central LP": 0.25,
+   "K Village": 0.222,
+   "Central LP": 0.2,
    "Paradise Park": 0.2,
    "Online": 0.125
   },
   "VFF0008(SV,W39)": {
-   "K Village": 0.875,
+   "K Village": 1.111,
    "Event": 0.75,
-   "Central LP": 0.875,
+   "Central LP": 0.9,
    "Paradise Park": 1.0,
    "Online": 1.75,
-   "Central CL (Department)": 0.875,
-   "Siam Discovery": 0.75
+   "Central CL (Department)": 0.7,
+   "Siam Discovery": 1.0
   },
   "VFF0009(F/GN,M42)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.25
   },
   "VFF0009(F/GN,M43)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
-   "Central LP": 0.25,
-   "Siam Discovery": 0.125
+   "Central LP": 0.2,
+   "Siam Discovery": 0.1
   },
   "VFF0009(F/GN,M44)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
    "Online": 0.125
   },
   "VFF0009(BK,W41)": {
-   "K Village": 0.375,
+   "K Village": 0.333,
    "Event": 0.125,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Online": 0.5,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.2
   },
   "VFF0002(BK/F,W40)": {
-   "K Village": 0.375,
+   "K Village": 0.556,
    "Event": 0.375,
-   "Central LP": 0.75,
+   "Central LP": 0.6,
    "Paradise Park": 0.4,
    "Online": 0.375,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.2
   },
   "VFF0024(BK,M47)": {
-   "Central LP": 0.125
+   "Central LP": 0.1
   },
   "VFF0002(TT/BK,M43)": {
-   "K Village": 1.625,
+   "K Village": 1.667,
    "Event": 0.5,
-   "Central LP": 1.125,
+   "Central LP": 1.1,
    "Paradise Park": 0.8,
    "Online": 2.75,
-   "Central CL (Department)": 0.5,
-   "Siam Discovery": 0.5
+   "Central CL (Department)": 0.4,
+   "Siam Discovery": 0.4
   },
   "VFF0008(BK,W37)": {
-   "K Village": 2.875,
+   "K Village": 2.667,
    "Event": 0.875,
-   "Central LP": 1.625,
+   "Central LP": 1.3,
    "Online": 6.125,
-   "Central CL (Department)": 1.875,
-   "Siam Discovery": 1.5
+   "Central CL (Department)": 1.5,
+   "Siam Discovery": 1.9
   },
   "VFF0008(SV,W40)": {
-   "K Village": 2.125,
+   "K Village": 2.0,
    "Event": 0.375,
-   "Central LP": 0.75,
+   "Central LP": 0.7,
    "Paradise Park": 0.2,
    "Online": 2.75,
-   "Central CL (Department)": 0.875,
-   "Siam Discovery": 0.75
+   "Central CL (Department)": 0.7,
+   "Siam Discovery": 0.6
   },
   "VFF0008(FU,W36)": {
-   "K Village": 0.625,
-   "Central LP": 0.25,
+   "K Village": 0.556,
+   "Central LP": 0.2,
    "Online": 0.125,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0026(FU,W39)": {
-   "Central LP": 0.25,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.25
+   "Central LP": 0.2,
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.2
   },
   "VFF0022(IV/GN,W38)": {
-   "K Village": 0.25,
-   "Central LP": 0.25,
+   "K Village": 0.333,
+   "Central LP": 0.2,
    "Paradise Park": 0.2,
    "Online": 0.375,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.2
   },
   "VFF0022(MT/BK,M40)": {
-   "K Village": 0.125,
-   "Central LP": 0.25
+   "K Village": 0.111,
+   "Central LP": 0.2
   },
   "VFF0023(DL,W41)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0009(F/GN,W38)": {
-   "K Village": 0.5,
+   "K Village": 0.444,
    "Event": 0.5,
    "Paradise Park": 0.2
   },
   "VFF0009(DL/BK,M41)": {
-   "K Village": 0.125,
-   "Central LP": 0.125,
-   "Online": 0.125
+   "K Village": 0.111,
+   "Central LP": 0.1,
+   "Online": 0.125,
+   "Siam Discovery": 0.1
   },
   "VFF0030(BK,M41)": {
-   "K Village": 0.125,
-   "Central LP": 0.125,
+   "K Village": 0.111,
+   "Central LP": 0.1,
    "Online": 0.25,
-   "Siam Discovery": 0.25
+   "Siam Discovery": 0.3
   },
   "VFF0022(BK,W40)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.25,
-   "Central LP": 0.5,
+   "Central LP": 0.4,
    "Paradise Park": 0.2,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.1
   },
   "VFF0002(BK/YL,M43)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.25,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.375,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.1
   },
   "VFF0024(BK,M44)": {
-   "K Village": 0.25,
+   "K Village": 0.333,
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Paradise Park": 0.2,
    "Online": 0.75,
-   "Siam Discovery": 0.25
+   "Siam Discovery": 0.3,
+   "Central CL (Department)": 0.1
   },
   "VFF0008(BK,W43)": {
-   "K Village": 0.75,
+   "K Village": 0.667,
    "Paradise Park": 0.2,
    "Online": 1.375
   },
   "VFF0021(TT/BK,M41)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.125,
-   "Central LP": 0.5,
+   "Central LP": 0.4,
    "Paradise Park": 0.4,
    "Online": 0.125,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0022(BK,M42)": {
-   "K Village": 0.125,
+   "K Village": 0.222,
    "Event": 0.125,
-   "Central LP": 0.25,
+   "Central LP": 0.3,
    "Paradise Park": 0.2,
    "Online": 0.125,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.2
   },
   "VFF0005(BK/BK,M40)": {
-   "K Village": 0.125
+   "K Village": 0.111,
+   "Siam Discovery": 0.2
   },
   "VFF0008(BK26,W43)": {
    "Event": 0.125,
-   "Paradise Park": 0.4
+   "Paradise Park": 0.4,
+   "Central LP": 0.1,
+   "K Village": 0.111
   },
   "VFF0009(F/GN,W40)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.5
   },
   "VFF0022(BK,M41)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Paradise Park": 0.4,
    "Online": 0.375,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.2
   },
   "VFF0009(DL/BK,W41)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.25,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Paradise Park": 0.4
   },
   "VFF0002(F/IV/GN,M40)": {
-   "K Village": 0.5,
+   "K Village": 0.444,
    "Event": 0.125,
    "Online": 0.25
   },
   "VFF0018(YL/BL/RD,M42)": {
    "Event": 0.625,
-   "Central LP": 0.125,
-   "Central CL (Department)": 0.25
+   "Central LP": 0.1,
+   "Central CL (Department)": 0.2
   },
   "VFF0025(BK,U38)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.375,
    "Paradise Park": 0.2
   },
@@ -1121,30 +1158,30 @@
    "Event": 0.125
   },
   "VFF0022(IV/GN,W39)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.5,
-   "Central LP": 0.125,
+   "Central LP": 0.2,
    "Paradise Park": 0.2,
    "Online": 0.375,
-   "Siam Discovery": 0.25
+   "Siam Discovery": 0.4
   },
   "VFF0008(PP,W39)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Online": 0.625,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.6,
+   "Siam Discovery": 0.5
   },
   "VFF0015(DN,M44)": {
    "Event": 1.125
   },
   "VFF0022(BK,M44)": {
-   "K Village": 0.625,
+   "K Village": 0.667,
    "Event": 0.375,
    "Paradise Park": 0.2,
    "Online": 0.375,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0015(DN,M46)": {
    "Event": 0.125
@@ -1162,7 +1199,8 @@
   "VFF0024(DL,M45)": {
    "Event": 0.125,
    "Paradise Park": 0.4,
-   "Online": 0.25
+   "Online": 0.25,
+   "Siam Discovery": 0.1
   },
   "VFF0013(BK,M42)": {
    "Event": 0.25,
@@ -1172,74 +1210,75 @@
   "VFF0009(YL/WT,M43)": {
    "Event": 0.375,
    "Online": 0.375,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0008(PP,W41)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Online": 0.125,
-   "Central CL (Department)": 0.25
+   "Central CL (Department)": 0.2
   },
   "VFF0002(BK/LI/BK,M44)": {
-   "K Village": 0.375,
+   "K Village": 0.556,
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.2,
    "Paradise Park": 0.2,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1,
+   "Central CL (Department)": 0.1
   },
   "VFF0002(BK/LI/BK,M41)": {
-   "K Village": 0.25,
-   "Central LP": 0.25,
+   "K Village": 0.333,
+   "Central LP": 0.3,
    "Online": 0.375,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.1
   },
   "VFF0023(BK,M45)": {
-   "K Village": 0.75,
+   "K Village": 0.667,
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.2,
    "Paradise Park": 0.2,
    "Online": 0.625,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.2
   },
   "VFF0026(TT/BK,W38)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.125,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Online": 0.125,
-   "Siam Discovery": 0.5
+   "Siam Discovery": 0.4
   },
   "VFF0008(LI/GN,W38)": {
-   "K Village": 0.625,
+   "K Village": 0.556,
    "Event": 0.375,
    "Central LP": 0.5,
    "Online": 0.5,
-   "Central CL (Department)": 1.125,
-   "Siam Discovery": 0.75
+   "Central CL (Department)": 1.6,
+   "Siam Discovery": 1.1
   },
   "VFF0009(F/GN,M46)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Online": 0.125
   },
   "VFF0002(BK/F,W39)": {
-   "K Village": 0.625,
+   "K Village": 0.556,
    "Event": 0.75,
-   "Central LP": 0.625,
+   "Central LP": 0.6,
    "Paradise Park": 0.4,
    "Online": 0.5,
    "Central CL (Department)": 0.5,
-   "Siam Discovery": 0.25
+   "Siam Discovery": 0.3
   },
   "VFF0002(BR/IV/BK,M46)": {
    "Event": 0.125,
    "Online": 0.125
   },
   "VFF0022(BK,W39)": {
-   "K Village": 0.875,
+   "K Village": 0.778,
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Paradise Park": 0.4,
    "Online": 0.125,
-   "Siam Discovery": 0.5
+   "Siam Discovery": 0.4
   },
   "VFF0013(BK,W36)": {
    "Event": 0.125
@@ -1248,31 +1287,31 @@
    "Event": 0.125
   },
   "VFF0025(DL/BK,U44)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.125,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0022(IV/G,M42)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.125,
    "Paradise Park": 0.2,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0025(BK,U37)": {
    "Event": 0.25
   },
   "VFF0008(SV,W42)": {
-   "K Village": 0.375,
+   "K Village": 0.444,
    "Event": 0.25,
-   "Central LP": 0.25,
+   "Central LP": 0.3,
    "Online": 1.125
   },
   "VFF0017(BK/BK,W39)": {
    "Event": 0.375,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0009(F/GN,W39)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.5,
    "Paradise Park": 0.2,
    "Online": 0.125
@@ -1281,48 +1320,48 @@
    "Event": 0.375
   },
   "VFF0005(LIG/GY,M42)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 1.125,
    "Paradise Park": 0.2,
    "Online": 0.25
   },
   "VFF0002(BK/BL,M41)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.375,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.875,
-   "Central CL (Department)": 0.375,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.3,
+   "Siam Discovery": 0.1
   },
   "VFF0002(F/IV/GN,M41)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.375,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Paradise Park": 0.2,
    "Online": 0.25
   },
   "VFF0024(BK,M43)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.25,
-   "Central LP": 0.375,
+   "Central LP": 0.3,
    "Paradise Park": 0.4,
    "Online": 0.375,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.375
+   "Central CL (Department)": 0.4,
+   "Siam Discovery": 0.4
   },
   "VFF0025(BK,U43)": {
    "Event": 0.375,
-   "Central LP": 0.125,
-   "Siam Discovery": 0.25
+   "Central LP": 0.1,
+   "Siam Discovery": 0.2
   },
   "VFF0002(BK/F,W37)": {
-   "K Village": 0.5,
+   "K Village": 0.444,
    "Event": 0.25,
-   "Central LP": 0.625,
+   "Central LP": 0.5,
    "Paradise Park": 0.2,
    "Online": 0.375,
-   "Central CL (Department)": 0.375,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.5,
+   "Siam Discovery": 0.1
   },
   "VFF0012(BG,W37)": {
    "Event": 0.375
@@ -1332,21 +1371,22 @@
    "Online": 0.125
   },
   "VFF0002(BK/BL,M46)": {
-   "K Village": 0.25,
-   "Central LP": 0.125,
+   "K Village": 0.222,
+   "Central LP": 0.1,
    "Online": 0.125,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0008(F/GN,W36)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.625,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Paradise Park": 0.4,
    "Online": 0.375
   },
   "VFF0009(DL/BK,M44)": {
-   "K Village": 0.625,
-   "Central LP": 0.125,
+   "K Village": 0.556,
+   "Central LP": 0.1,
    "Online": 0.125
   },
   "VFF0015(DN,M45)": {
@@ -1360,33 +1400,35 @@
    "Online": 0.375
   },
   "VFF0018(YL/BL/RD,M44)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
    "Paradise Park": 0.4,
    "Online": 0.125,
-   "Central CL (Department)": 0.375,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.3,
+   "Siam Discovery": 0.1
   },
   "VFF0008(SV,W41)": {
-   "K Village": 0.875,
+   "K Village": 0.778,
    "Event": 0.375,
-   "Central LP": 0.75,
+   "Central LP": 0.6,
    "Paradise Park": 0.2,
    "Online": 1.25,
-   "Central CL (Department)": 0.5,
-   "Siam Discovery": 0.625
+   "Central CL (Department)": 0.4,
+   "Siam Discovery": 0.5
   },
   "VFF0008(PP,W40)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Online": 0.375,
-   "Central CL (Department)": 0.375,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.3,
+   "Siam Discovery": 0.2,
+   "Central LP": 0.1
   },
   "VFF0017(MIL/DGY,M41)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
    "Online": 0.375,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0009(DL/BK,W40)": {
    "Event": 0.25,
@@ -1394,159 +1436,165 @@
    "Online": 0.375
   },
   "VFF0008(BB/BL,W41)": {
-   "K Village": 0.5,
+   "K Village": 0.444,
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 1.0,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0008(BK,W40)": {
-   "K Village": 3.375,
+   "K Village": 3.0,
    "Event": 1.125,
-   "Central LP": 2.0,
+   "Central LP": 1.6,
    "Paradise Park": 0.6,
    "Online": 8.0,
-   "Central CL (Department)": 2.0,
+   "Central CL (Department)": 1.6,
    "Siam Discovery": 1.5
   },
   "VFF0008(LI/GN,W42)": {
    "Event": 0.125
   },
   "VFF0009(F/GN,M45)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
    "Online": 0.125,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0017(BK/BK,M40)": {
    "Event": 0.125,
-   "Central LP": 0.125
+   "Central LP": 0.1
   },
   "VFF0023(BK,M46)": {
-   "K Village": 0.125,
-   "Central LP": 0.125,
+   "K Village": 0.222,
+   "Central LP": 0.1,
    "Online": 0.125,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.2
   },
   "VFF0030(BK,M40)": {
    "Event": 0.125,
    "Paradise Park": 0.2,
-   "Online": 0.125
+   "Online": 0.125,
+   "K Village": 0.111
   },
   "VFF0002(BK/BL,M43)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.25,
    "Paradise Park": 0.4,
    "Online": 1.125,
-   "Central CL (Department)": 0.625,
-   "Siam Discovery": 0.375
+   "Central CL (Department)": 0.5,
+   "Siam Discovery": 0.3,
+   "Central LP": 0.1
   },
   "VFF0024(BK,M40)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.25,
    "Online": 0.125,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0015(DN,M43)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.625
   },
   "VFF0002(F/IV/GN,M43)": {
    "Event": 0.375,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Paradise Park": 0.2,
    "Online": 0.625
   },
   "VFF0023(DL,W36)": {
-   "Event": 0.125
+   "Event": 0.125,
+   "Central LP": 0.1
   },
   "VFF0002(BK/F,W41)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Paradise Park": 0.2,
-   "Central CL (Department)": 0.375
+   "Central CL (Department)": 0.3
   },
   "VFF0022(IV/GN,W42)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.125
   },
   "VFF0022(IV/G,M44)": {
-   "K Village": 0.25,
-   "Central LP": 0.25,
+   "K Village": 0.222,
+   "Central LP": 0.2,
    "Online": 0.125
   },
   "VFF0022(IV/GN,W37)": {
-   "K Village": 0.125,
-   "Central LP": 0.375,
+   "K Village": 0.111,
+   "Central LP": 0.3,
    "Online": 0.25,
-   "Siam Discovery": 0.25
+   "Siam Discovery": 0.3
   },
   "VFF0002(F/IV/GN,M44)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Paradise Park": 0.8,
    "Online": 0.875
   },
   "VFF0026(FU,W40)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0030(BK,M44)": {
-   "K Village": 0.125,
-   "Central LP": 0.25,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.25
+   "K Village": 0.111,
+   "Central LP": 0.2,
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.2
   },
   "VFF0001(BK,W37)": {
    "Event": 0.125,
    "Online": 0.125
   },
   "VFF0002(BR/IV/BK,M42)": {
-   "K Village": 0.375,
+   "K Village": 0.333,
    "Event": 0.25
   },
   "VFF0002(BK/LI/BK,M45)": {
    "Event": 0.125,
    "Paradise Park": 0.2,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1,
+   "Central LP": 0.1,
+   "K Village": 0.111
   },
   "VFF0025(BK,U42)": {
    "Event": 0.125,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Paradise Park": 0.2
   },
   "VFF0005(LIG/GY,M45)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.25,
    "Paradise Park": 0.2,
    "Online": 0.125
   },
   "VFF0008(BR,W36)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.25,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.375
   },
   "VFF0017(MIL/DGY,M42)": {
    "Event": 0.375,
    "Online": 0.125,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0030(BK,M42)": {
-   "K Village": 0.25,
+   "K Village": 0.333,
    "Event": 0.125,
    "Online": 0.125,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0015(CBR,40)": {
    "Event": 0.875
   },
   "VFF0002(F/IV/GN,M46)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
    "Online": 0.125
   },
@@ -1554,743 +1602,753 @@
    "Event": 0.375
   },
   "VFF0026(TT/BK,M42)": {
-   "K Village": 0.625,
+   "K Village": 0.556,
    "Event": 0.375,
-   "Central LP": 0.375,
+   "Central LP": 0.3,
    "Paradise Park": 0.2,
    "Online": 0.5,
    "Central CL (Department)": 0.5,
-   "Siam Discovery": 0.625
+   "Siam Discovery": 0.6
   },
   "VFF0009(BK/RD,M41)": {
    "Event": 0.125
   },
   "VFF0021(BK,M44)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125
   },
   "VFF0015(DN,W39)": {
    "Event": 1.25
   },
   "VFF0021(IV/FU,W40)": {
-   "K Village": 0.625,
+   "K Village": 0.667,
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Paradise Park": 0.2,
    "Online": 0.125,
-   "Central CL (Department)": 0.5,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.4,
+   "Siam Discovery": 0.1
   },
   "VFF0015(DN,W38)": {
    "Event": 1.375
   },
   "VFF0022(BK,W38)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.25,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Paradise Park": 0.2,
    "Online": 0.25,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.3,
+   "Siam Discovery": 0.2
   },
   "VFF0005(LIG/GY,M43)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.25,
    "Paradise Park": 0.2
   },
   "VFF0009(DL/BK,W38)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.125,
    "Paradise Park": 0.2,
    "Online": 0.125,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0008(BR,W41)": {
-   "K Village": 0.125,
-   "Central LP": 0.125,
+   "K Village": 0.222,
+   "Central LP": 0.1,
    "Paradise Park": 0.2,
    "Online": 0.5
   },
   "VFF0025(BK,U46)": {
-   "K Village": 0.125
+   "K Village": 0.111,
+   "Central LP": 0.1
   },
   "VFF0002(TT/IV,M46)": {
-   "K Village": 0.5,
+   "K Village": 0.444,
    "Online": 0.125
   },
   "VFF0026(TT/BK,M46)": {
-   "K Village": 0.5,
-   "Central LP": 0.125,
+   "K Village": 0.444,
+   "Central LP": 0.1,
    "Online": 0.125
   },
   "VFF0002(TT/BK,M46)": {
-   "K Village": 0.375,
+   "K Village": 0.333,
    "Paradise Park": 0.2,
    "Online": 0.375
   },
   "VFF0021(TT/BK,M46)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Online": 0.125,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0023(DL,W40)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Online": 0.25
   },
   "VFF0009(BK,W36)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0009(DL/BK,W39)": {
    "Event": 0.125,
-   "Central LP": 0.25,
+   "Central LP": 0.3,
    "Online": 0.25,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0008(IV/DPK,W38)": {
-   "K Village": 2.5,
+   "K Village": 2.222,
    "Event": 0.75,
-   "Central LP": 1.875,
+   "Central LP": 1.5,
    "Paradise Park": 0.6,
    "Online": 5.0,
-   "Central CL (Department)": 0.375
+   "Central CL (Department)": 0.3
   },
   "VFF0021(TT/BK,M45)": {
-   "K Village": 0.25,
-   "Central LP": 0.125,
+   "K Village": 0.222,
+   "Central LP": 0.1,
    "Online": 0.625,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0009(BK/BK,M40)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125
   },
   "VFF0008(LI/GN,W36)": {
-   "K Village": 0.25,
+   "K Village": 0.333,
    "Event": 0.25,
    "Online": 0.625,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0008(SV,W36)": {
-   "K Village": 0.375,
+   "K Village": 0.333,
    "Event": 0.125,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Online": 0.875,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0022(IV/GN,W40)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
-   "Central LP": 0.125,
-   "Siam Discovery": 0.25
+   "Central LP": 0.1,
+   "Siam Discovery": 0.2
   },
   "VFF0023(BK,M40)": {
-   "K Village": 0.25,
-   "Central LP": 0.25,
+   "K Village": 0.222,
+   "Central LP": 0.2,
    "Paradise Park": 0.2,
    "Online": 0.875,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.2
   },
   "VFF0021(TT/BK,M42)": {
-   "K Village": 0.125,
-   "Central LP": 0.125,
+   "K Village": 0.111,
+   "Central LP": 0.1,
    "Paradise Park": 0.2,
    "Online": 0.5,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0008(BK,W42)": {
-   "K Village": 1.375,
-   "Central LP": 0.25,
+   "K Village": 1.222,
+   "Central LP": 0.2,
    "Paradise Park": 0.8,
    "Online": 2.125
   },
   "VFF0002(BK/BL,M47)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
    "Paradise Park": 0.2,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0022(MT/BK,M45)": {
-   "K Village": 0.375,
-   "Central LP": 0.25,
+   "K Village": 0.333,
+   "Central LP": 0.2,
    "Paradise Park": 0.2,
    "Online": 0.125,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0002(TT/IV,W36)": {
-   "K Village": 0.125,
+   "K Village": 0.222,
    "Online": 0.625
   },
   "VFF0024(DL,M40)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
    "Online": 0.125
   },
   "VFF0026(TT/BK,M40)": {
    "Event": 0.125,
-   "Central LP": 0.25,
+   "Central LP": 0.3,
    "Paradise Park": 0.2,
    "Online": 0.375,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0002(TT/BK,M40)": {
-   "K Village": 0.625,
+   "K Village": 0.556,
    "Event": 0.125,
-   "Central LP": 0.375,
+   "Central LP": 0.3,
    "Paradise Park": 0.6,
    "Online": 0.625,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0008(IV/DPK,W39)": {
-   "K Village": 1.5,
+   "K Village": 1.333,
    "Event": 0.625,
-   "Central LP": 1.25,
+   "Central LP": 1.0,
    "Paradise Park": 0.8,
    "Online": 3.75,
-   "Central CL (Department)": 0.875
+   "Central CL (Department)": 0.7
   },
   "VFF0009(DL/BK,M46)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Online": 0.125
   },
   "VFF0009(F/GN,M40)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
    "Online": 0.125
   },
   "VFF0008(BB/BL,W35)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Online": 0.5
   },
   "VFF0017(BK/BK,M45)": {
-   "K Village": 0.375,
-   "Siam Discovery": 0.125
+   "K Village": 0.333,
+   "Siam Discovery": 0.1
   },
   "VFF0005(BK/BK,M48)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0026(FU,W37)": {
-   "K Village": 0.125,
-   "Central LP": 0.125,
+   "K Village": 0.111,
+   "Central LP": 0.1,
    "Online": 0.25,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.2
   },
   "VFF0023(BK,M41)": {
-   "K Village": 0.5,
-   "Central LP": 0.375,
+   "K Village": 0.444,
+   "Central LP": 0.4,
    "Online": 0.875,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.3
   },
   "VFF0026(LI/GN,M40)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0025(DL/BK,U45)": {
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Online": 0.25
   },
   "VFF0002(BK/BL,M48)": {
-   "Central LP": 0.125
+   "Central LP": 0.1
   },
   "VFF0022(MT/BK,M41)": {
-   "K Village": 0.125,
-   "Central LP": 0.125,
+   "K Village": 0.222,
+   "Central LP": 0.1,
    "Paradise Park": 0.2,
    "Online": 0.25,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0002(TT/IV,W37)": {
-   "K Village": 0.5,
+   "K Village": 0.444,
    "Paradise Park": 0.2,
-   "Online": 0.375
+   "Online": 0.375,
+   "Central LP": 0.1
   },
   "VFF0023(BK,M42)": {
-   "K Village": 0.625,
+   "K Village": 0.556,
    "Event": 0.25,
-   "Central LP": 0.125,
+   "Central LP": 0.2,
    "Paradise Park": 0.4,
    "Online": 1.125,
-   "Siam Discovery": 0.625
+   "Siam Discovery": 0.5
   },
   "VFF0009(DL/BK,M45)": {
-   "Central LP": 0.25
+   "Central LP": 0.2
   },
   "VFF0025(DL/BK,U41)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0002(TT/IV,M45)": {
-   "K Village": 0.75,
-   "Central LP": 0.125,
+   "K Village": 0.667,
+   "Central LP": 0.1,
    "Paradise Park": 0.2,
    "Online": 0.25
   },
   "VFF0024(BK,M41)": {
-   "K Village": 0.375,
-   "Central LP": 0.25,
+   "K Village": 0.444,
+   "Central LP": 0.3,
    "Online": 0.25,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.375
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.4
   },
   "VFF0009(F/GN,M41)": {
-   "K Village": 0.375,
-   "Central LP": 0.125,
+   "K Village": 0.333,
+   "Central LP": 0.1,
    "Online": 0.5
   },
   "VFF0002(BR/IV/BK,M45)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0026(LI/GN,M43)": {
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.375
   },
   "VFF0017(BK/BK,M46)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0017(MIL/DGY,M46)": {
-   "K Village": 0.25,
-   "Siam Discovery": 0.125
+   "K Village": 0.222,
+   "Siam Discovery": 0.1
   },
   "VFF0017(BK/BK,M44)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.375,
-   "Siam Discovery": 0.25
+   "Siam Discovery": 0.2
   },
   "VFF0022(IV/G,M46)": {
-   "K Village": 0.125,
-   "Central LP": 0.125,
+   "K Village": 0.111,
+   "Central LP": 0.1,
    "Online": 0.125,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0017(MIL/DGY,M40)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Online": 0.125,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0025(BK,U45)": {
-   "Central LP": 0.125,
-   "Siam Discovery": 0.125
+   "Central LP": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0009(BK,M39)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Online": 0.125
   },
   "VFF0002(TT/IV,M47)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Online": 0.125
   },
   "VFF0026(TT/BK,W37)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Online": 0.125,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0009(BK/BK,M45)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125
   },
   "VFF0002(F/IV/GN,M45)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Paradise Park": 0.2,
    "Online": 0.125
   },
   "VFF0018(BK,M43)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.5,
-   "Central LP": 0.375,
+   "Central LP": 0.3,
    "Online": 0.25,
-   "Central CL (Department)": 0.625,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.5,
+   "Siam Discovery": 0.1
   },
   "VFF0023(DL,W39)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.125,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0018(YL/BL/RD,M41)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0002(F/IV/GN,M42)": {
-   "K Village": 0.125,
+   "K Village": 0.222,
    "Event": 0.25,
    "Paradise Park": 0.2,
    "Online": 0.25
   },
   "VFF0017(MIL/DGY,M45)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Online": 0.25,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0002(BK/YL,M44)": {
-   "K Village": 0.375,
+   "K Village": 0.333,
    "Event": 0.125,
    "Online": 0.125
   },
   "VFF0021(IV/FU,W36)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Online": 0.125
   },
   "VFF0022(BK,M45)": {
-   "K Village": 0.25,
-   "Central LP": 0.125,
+   "K Village": 0.333,
+   "Central LP": 0.1,
    "Paradise Park": 0.2,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0023(DL,M46)": {
-   "Central LP": 0.125
+   "Central LP": 0.2
   },
   "VFF0005(BK/BK,M46)": {
-   "K Village": 0.375,
-   "Central LP": 0.125,
+   "K Village": 0.333,
+   "Central LP": 0.1,
    "Online": 0.25
   },
   "VFF0022(BK,W41)": {
-   "K Village": 0.125
+   "K Village": 0.111,
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0022(IV/G,M45)": {
-   "K Village": 0.125,
-   "Central LP": 0.125,
+   "K Village": 0.111,
+   "Central LP": 0.1,
    "Online": 0.25
   },
   "VFF0024(DL,M43)": {
-   "K Village": 0.125,
-   "Event": 0.125
+   "K Village": 0.111,
+   "Event": 0.125,
+   "Central CL (Department)": 0.1
   },
   "VFF0023(LGN/BK,M43)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Online": 0.125,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0030(BK,M45)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
    "Online": 0.125
   },
   "VFF0023(LGN/BK,M44)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Paradise Park": 0.2,
    "Online": 0.125
   },
   "VFF0021(TT/BK,M40)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.125,
    "Online": 0.375
   },
   "VFF0021(IV/FU,W42)": {
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.125
   },
   "VFF0009(F/GN,W37)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0002(BK/BL,M45)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Paradise Park": 0.2,
    "Online": 0.5,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1,
+   "Central LP": 0.1
   },
   "VFF0017(MIL/DGY,M43)": {
-   "K Village": 0.375,
+   "K Village": 0.333,
    "Event": 0.25,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.25,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0023(BK,M43)": {
-   "K Village": 0.375,
-   "Central LP": 0.25,
+   "K Village": 0.333,
+   "Central LP": 0.2,
    "Paradise Park": 0.4,
    "Online": 1.0,
-   "Central CL (Department)": 0.25,
+   "Central CL (Department)": 0.2,
    "Siam Discovery": 0.5
   },
   "VFF0009(BK,W42)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Online": 0.25
   },
   "VFF0024(DL,M41)": {
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.25
   },
   "VFF0008(IV/DPK,W37)": {
-   "K Village": 1.375,
+   "K Village": 1.222,
    "Event": 0.5,
-   "Central LP": 1.375,
+   "Central LP": 1.1,
    "Paradise Park": 0.2,
    "Online": 3.625,
-   "Central CL (Department)": 0.375
+   "Central CL (Department)": 0.3
   },
   "VFF0009(BK,M48)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Online": 0.125
   },
   "VFF0023(BK,W36)": {
-   "Central LP": 0.25,
-   "Central CL (Department)": 0.125
+   "Central LP": 0.2,
+   "Central CL (Department)": 0.1
   },
   "VFF0002(BK/YL,M42)": {
    "Event": 0.125,
-   "Central LP": 0.25,
+   "Central LP": 0.2,
    "Online": 0.25,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0009(BK,M47)": {
-   "K Village": 0.125,
-   "Central LP": 0.125,
+   "K Village": 0.111,
+   "Central LP": 0.1,
    "Online": 0.125
   },
   "VFF0017(BK/BK,M43)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Online": 0.125
   },
   "VFF0023(BK,M39)": {
-   "K Village": 0.25,
-   "Central LP": 0.125,
+   "K Village": 0.222,
+   "Central LP": 0.1,
    "Online": 0.625
   },
   "VFF0002(DL/IV,W40)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.5
   },
   "VFF0022(IV/G,M41)": {
    "Event": 0.125,
-   "Central LP": 0.125
+   "Central LP": 0.2
   },
   "VFF0002(BK/BL,M44)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.125,
-   "Central CL (Department)": 0.25
+   "Central CL (Department)": 0.2
   },
   "VFF0023(DL,W38)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.25,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.25,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0002(LI/BL,W38)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.375,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.25
   },
   "VFF0008(IV/DPK,W35)": {
-   "K Village": 0.125,
-   "Central LP": 0.125,
+   "K Village": 0.111,
+   "Central LP": 0.1,
    "Online": 0.125
   },
   "VFF0023(BK,W38)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Online": 0.125
   },
   "VFF0008(IV/DPK,W41)": {
-   "K Village": 0.75,
+   "K Village": 0.667,
    "Event": 0.125,
-   "Central LP": 0.625,
+   "Central LP": 0.5,
    "Online": 1.25
   },
   "VFF0008(IV/DPK,W40)": {
-   "K Village": 1.125,
+   "K Village": 1.0,
    "Event": 0.25,
-   "Central LP": 0.5,
+   "Central LP": 0.4,
    "Paradise Park": 0.2,
    "Online": 1.875,
-   "Central CL (Department)": 0.25
+   "Central CL (Department)": 0.2
   },
   "VFF0009(BK/YL,M43)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0017(BK/BK,W38)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.25,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.125,
-   "Siam Discovery": 0.25
+   "Siam Discovery": 0.2
   },
   "VFF0024(DL,M44)": {
-   "K Village": 0.375,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.125
+   "K Village": 0.333,
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.1
   },
   "VFF0001(BK,M44)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0002(BK/BL,M42)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.375,
-   "Central LP": 0.375,
+   "Central LP": 0.3,
    "Paradise Park": 0.2,
    "Online": 0.375,
-   "Siam Discovery": 0.25
+   "Siam Discovery": 0.2
   },
   "VFF0013(KK,W41)": {
    "Event": 0.25,
-   "Central LP": 0.125
+   "Central LP": 0.1
   },
   "VFF0023(DL,M42)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
    "Online": 0.125,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1,
+   "Central LP": 0.1
   },
   "VFF0004(BK/YL,W37)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
    "Paradise Park": 0.2
   },
   "VFF0009(BK/BK,M41)": {
-   "K Village": 0.125,
-   "Siam Discovery": 0.125
+   "K Village": 0.111,
+   "Siam Discovery": 0.1
   },
   "VFF0021(BK,M45)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
    "Online": 0.125
   },
   "VFF0001(BK,W41)": {
    "Event": 0.125,
-   "Central LP": 0.125,
-   "Siam Discovery": 0.125
+   "Central LP": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0017(BK/BK,W37)": {
    "Event": 0.125,
-   "Central LP": 0.125
+   "Central LP": 0.1
   },
   "VFF0022(BK,M40)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
-   "Online": 0.125
+   "Online": 0.125,
+   "Siam Discovery": 0.1
   },
   "VFF0009(YL/WT,M45)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Online": 0.375,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0009(BK/RO,W37)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.25
   },
   "VFF0004(BK/YL,M43)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125
   },
   "VFF0013(BK,M45)": {
    "Event": 0.125,
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.125
   },
   "VFF0023(BK,W37)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125
   },
   "VFF0009(GY/OR,M47)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Paradise Park": 0.2
   },
   "VFF0021(BK,M46)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0023(DL,M41)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0005(LIG/GY,M41)": {
-   "K Village": 0.25,
+   "K Village": 0.222,
    "Event": 0.125
   },
   "VFF0024(DL,M46)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0018(BK,M41)": {
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.25
   },
   "VFF0009(BK/BK,M46)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0002(DL/IV,W41)": {
-   "K Village": 0.125,
-   "Central LP": 0.125
+   "K Village": 0.111,
+   "Central LP": 0.1
   },
   "VFF0002(DL/IV,W39)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Paradise Park": 0.2
   },
   "VFF0018(YL/BL/RD,M43)": {
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Paradise Park": 0.2
   },
   "VFF0009(DL/BK,M43)": {
    "Event": 0.25,
-   "Central LP": 0.125
+   "Central LP": 0.1
   },
   "VFF0002(BK/BL,M40)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Online": 0.25
   },
   "VFF0002(BK/YL,M48)": {
-   "Central LP": 0.125
+   "Central LP": 0.1
   },
   "VFF0009(DL/BK,W37)": {
-   "Central LP": 0.125,
+   "Central LP": 0.1,
    "Online": 0.125
   },
   "VFF0018(BK,M44)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0017(MIL/DGY,M44)": {
-   "K Village": 0.125,
-   "Central LP": 0.125,
+   "K Village": 0.111,
+   "Central LP": 0.1,
    "Online": 0.625,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0019(BR,M41)": {
-   "K Village": 0.25
+   "K Village": 0.222
   },
   "VFF0002(BL/BK,M40)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0013(KK,W37)": {
    "Event": 0.375,
-   "Central LP": 0.125,
-   "Central CL (Department)": 0.125
+   "Central LP": 0.1,
+   "Central CL (Department)": 0.1
   },
   "VFF0023(DL,M44)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0018(BK,M46)": {
-   "K Village": 0.125,
-   "Central CL (Department)": 0.125
+   "K Village": 0.111,
+   "Central CL (Department)": 0.1
   },
   "VFF0002(LI/BL,W39)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.125,
    "Paradise Park": 0.4,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0015(BK,M43)": {
-   "K Village": 0.125,
+   "K Village": 0.111,
    "Event": 0.25
   },
   "VFF0022(BK,W36)": {
-   "K Village": 0.125,
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.125
+   "K Village": 0.222,
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.1
   },
   "VFF0005(LIG/GY,M46)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0009(BK/BK,M44)": {
-   "K Village": 0.125
+   "K Village": 0.111
   },
   "VFF0026(LI/GN,M41)": {
    "Online": 0.25
@@ -2300,16 +2358,18 @@
   },
   "VFF0005(BK/BK,M44)": {
    "Online": 0.125,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0023(DL,M43)": {
    "Online": 0.25,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0026(FU,W38)": {
    "Online": 0.25,
-   "Central CL (Department)": 0.25
+   "Central CL (Department)": 0.3,
+   "Siam Discovery": 0.1
   },
   "VFF0002(IV/YL,M46)": {
    "Event": 0.125,
@@ -2321,7 +2381,9 @@
   "VFF0002(DPK,W40)": {
    "Paradise Park": 0.2,
    "Online": 0.125,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1,
+   "Central LP": 0.1,
+   "K Village": 0.111
   },
   "VFF0002(BK/LI/BK,M46)": {
    "Online": 0.25
@@ -2331,20 +2393,22 @@
   },
   "VFF0017(BK/BK,M41)": {
    "Online": 0.25,
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.1
   },
   "VFF0022(BK,W37)": {
    "Paradise Park": 0.2,
-   "Siam Discovery": 0.25
+   "Siam Discovery": 0.2,
+   "Central CL (Department)": 0.1
   },
   "VFF0013(BK,M44)": {
    "Paradise Park": 0.2,
    "Online": 0.125,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0025(BK,U40)": {
-   "Paradise Park": 0.2
+   "Paradise Park": 0.2,
+   "Central LP": 0.1
   },
   "VFF0008(FU,W42)": {
    "Paradise Park": 0.2,
@@ -2365,7 +2429,7 @@
   "VFF0018(BK,M45)": {
    "Event": 0.25,
    "Online": 0.25,
-   "Siam Discovery": 0.25
+   "Siam Discovery": 0.2
   },
   "VFF0015(DN,M41)": {
    "Event": 0.625,
@@ -2387,7 +2451,7 @@
   "VFF0013(BK,M41)": {
    "Event": 0.125,
    "Online": 0.125,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0015(CBR,44)": {
    "Event": 0.375
@@ -2404,15 +2468,19 @@
    "Paradise Park": 0.2
   },
   "VFF0026(LI/GN,M44)": {
-   "Event": 0.125
+   "Event": 0.125,
+   "Central LP": 0.1
   },
   "VFF0026(TT/BK,W41)": {
    "Event": 0.125,
-   "Online": 0.375
+   "Online": 0.375,
+   "Central LP": 0.1,
+   "K Village": 0.111
   },
   "VFF0024(BK,M46)": {
    "Online": 0.25,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.2,
+   "K Village": 0.111
   },
   "VFF0013(BK,M43)": {
    "Event": 0.125,
@@ -2421,7 +2489,7 @@
   },
   "VFF0023(LGN/BK,M45)": {
    "Paradise Park": 0.2,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0010(BK,M46)": {
    "Event": 0.125,
@@ -2439,7 +2507,7 @@
   "VFF0009(YL/WT,W39)": {
    "Event": 0.5,
    "Online": 0.375,
-   "Central CL (Department)": 0.25
+   "Central CL (Department)": 0.2
   },
   "VFF0015(IE,W39)": {
    "Event": 1.0
@@ -2481,7 +2549,8 @@
    "Event": 0.25
   },
   "VFF0023(LGN/BK,M41)": {
-   "Event": 0.125
+   "Event": 0.125,
+   "Siam Discovery": 0.1
   },
   "VFF0018(YL/BL/RD,M47)": {
    "Event": 0.125
@@ -2553,7 +2622,7 @@
   "VFF0002(LI/BL,W40)": {
    "Event": 0.5,
    "Paradise Park": 0.2,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0010(GY,M45)": {
    "Event": 0.125,
@@ -2561,7 +2630,8 @@
    "Online": 0.375
   },
   "VFF0022(MT/BK,M47)": {
-   "Online": 0.125
+   "Online": 0.125,
+   "Siam Discovery": 0.1
   },
   "VFF0022(IV/G,M47)": {
    "Paradise Park": 0.2
@@ -2574,7 +2644,7 @@
   },
   "VFF0009(YL/WT,M42)": {
    "Event": 0.125,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0009(IV/BK,W36)": {
    "Event": 0.125,
@@ -2626,7 +2696,8 @@
   "VFF0009(DL/BK,M42)": {
    "Event": 0.125,
    "Paradise Park": 0.2,
-   "Online": 0.5
+   "Online": 0.5,
+   "Central CL (Department)": 0.1
   },
   "VFF0025(DL/BK,U47)": {
    "Online": 0.125
@@ -2658,7 +2729,7 @@
   "VFF0013(KK,W40)": {
    "Event": 0.25,
    "Online": 0.125,
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0001(GY,M46)": {
    "Event": 0.25
@@ -2671,7 +2742,7 @@
   },
   "VFF0009(YL/WT,W38)": {
    "Event": 0.125,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0018(BK,M40)": {
    "Event": 0.125
@@ -2733,7 +2804,8 @@
    "Event": 0.25
   },
   "VFF0023(BK,M47)": {
-   "Event": 0.125
+   "Event": 0.125,
+   "Central LP": 0.1
   },
   "VFF0004(RD/BK,M41)": {
    "Event": 0.125
@@ -2765,7 +2837,7 @@
   "VFF0022(BK,M38)": {
    "Event": 0.125,
    "Online": 0.125,
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0004(RD/BK,M43)": {
    "Event": 0.125
@@ -2804,53 +2876,134 @@
    "Online": 0.125
   },
   "VFF0022(IV/GN,M42)": {
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.3
   },
   "VFF0002(BK/YL,M46)": {
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0009(YL/WT,W41)": {
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0022(IV/GN,M43)": {
-   "Central CL (Department)": 0.25,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.2,
+   "Siam Discovery": 0.2
   },
   "VFF0023(LGN/BK,M40)": {
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.25
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.2
   },
   "VFF0025(BK,U39)": {
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0009(YL/WT,M46)": {
-   "Central CL (Department)": 0.125
+   "Central CL (Department)": 0.1
   },
   "VFF0022(MT/BK,M46)": {
-   "Central CL (Department)": 0.125,
-   "Siam Discovery": 0.125
+   "Central CL (Department)": 0.1,
+   "Siam Discovery": 0.2,
+   "K Village": 0.111
   },
   "VFF0022(BK,M39)": {
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0002(BK/YL,M40)": {
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0009(YL/WT,M48)": {
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0021(BK,M43)": {
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0022(BK,M47)": {
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
   },
   "VFF0022(IV/GN,M44)": {
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.3
   },
   "VFF0022(IV/GN,M41)": {
-   "Siam Discovery": 0.125
+   "Siam Discovery": 0.1
+  },
+  "VFF0005(BK/BK,W40)": {
+   "Siam Discovery": 0.2,
+   "K Village": 0.111
+  },
+  "VFF0005(BK/BK,W38)": {
+   "Central CL (Department)": 0.1,
+   "Central LP": 0.1,
+   "Siam Discovery": 0.1
+  },
+  "VFF0031(TT/BK,W38)": {
+   "Central CL (Department)": 0.1,
+   "K Village": 0.111
+  },
+  "VFF0022(IV/G,M40)": {
+   "Central LP": 0.1
+  },
+  "VFF0031(IV/DL,M43)": {
+   "Central LP": 0.1
+  },
+  "VFF0031(IV/DL,W40)": {
+   "Central LP": 0.1,
+   "K Village": 0.111
+  },
+  "VFF0031(TT/BK,M40)": {
+   "Central LP": 0.1
+  },
+  "VFF0031(TT/BK,M41)": {
+   "Central LP": 0.1
+  },
+  "VFF0008(BB/BL,W43)": {
+   "K Village": 0.111
+  },
+  "VFF0026(BR/BK,M43)": {
+   "K Village": 0.111
+  },
+  "VFF0031(BK/LI,M41)": {
+   "K Village": 0.111
+  },
+  "VFF0031(BK/LI,M44)": {
+   "K Village": 0.111
+  },
+  "VFF0031(IV/DL,M44)": {
+   "K Village": 0.111
+  },
+  "VFF0031(TT/BK,M42)": {
+   "K Village": 0.111
+  },
+  "VFF0031(TT/BK,M45)": {
+   "K Village": 0.111
+  },
+  "VFF0031(TT/BK,W42)": {
+   "K Village": 0.111
+  },
+  "VFF0032(BR/BK,M40)": {
+   "K Village": 0.111
+  },
+  "VFF0032(BR/BK,M41)": {
+   "K Village": 0.111
+  },
+  "VFF0032(BR/BK,M45)": {
+   "K Village": 0.111
+  },
+  "VFF0032(BR/BK,M46)": {
+   "K Village": 0.111
+  },
+  "VFF0031(IV/DL,M40)": {
+   "Siam Discovery": 0.1
+  },
+  "VFF0031(IV/DL,M41)": {
+   "Siam Discovery": 0.1
+  },
+  "VFF0031(IV/DL,W39)": {
+   "Siam Discovery": 0.1
+  },
+  "VFF0031(TT/BK,M43)": {
+   "Siam Discovery": 0.1
+  },
+  "VFF0031(TT/BK,W40)": {
+   "Siam Discovery": 0.1
   }
  },
  "unmatched": [
@@ -2869,6 +3022,19 @@
   "BFT_Central_Total_Department_07-2026.xlsx",
   "BFT_Sale_Online_Shopee_Lazada_Paradise_Central_Jul-Aug.xlsx",
   "Sales_Siam_Dis_Jan-Jun_26.xlsx",
-  "BFT_Siam_Discovery_Jul-Aug_26.xlsx"
+  "BFT_Siam_Discovery_Jul-Aug_26.xlsx",
+  "cl_oct.xlsx",
+  "edv_lp_sep.xlsx",
+  "kv_th_lp.xlsx",
+  "siam_oct.xlsx"
+ ],
+ "added": [
+  "Central CL (Department) 2026-09 55",
+  "Central LP 2026-09 49",
+  "Siam Discovery 2026-09 64",
+  "Central CL (Department) 2026-10 43",
+  "Central LP 2026-10 48",
+  "K Village 2026-10 121",
+  "Siam Discovery 2026-10 72"
  ]
 }

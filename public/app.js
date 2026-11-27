@@ -1749,7 +1749,7 @@ if (RETURNS_ON) {
     $("foot").textContent = t("foot", { src }) + (d.allocSource ? " " + t("foot.alloc", { n: fmt(d.allocMoved) }) : "")
       + (d.eventSource ? " " + t("foot.event", { n: fmt(d.eventMoved) }) : "")
       + (d.eventStock ? " " + t("foot.eventStock", { c: d.eventStock.cutoff, s: fmt(d.eventStock.start), o: fmt(d.eventStock.sold), r: fmt(d.eventStock.remain) }) : "")
-      + (d.salesRate ? " " + t("foot.rate", { p: Object.entries(d.salesRate.months).map(([s, v]) => `${s === "Office" ? "Office (Online)" : s} ${v[2]}`).join(" / ") }) : "")
+      + (d.salesRate ? " " + t("foot.rate", { p: Object.entries(d.salesRate.months).map(([s, v]) => `${s === "Office" ? "Office (Online)" : s} ${v[0]}〜${v[1]} (${v[2]})`).join(" / ") }) : "")
       + (d.zort ? " " + t("foot.zort", { l: d.zort.locs.join(", ") }) : "")
       + ((d.adjustments || []).length ? " " + t("foot.adjust", { n: fmt(d.adjustments.length), list: d.adjustments.map((r) => `${r.date} ${r.store} ${r.code} ${r.qty > 0 ? "+" : ""}${r.qty}`).join(" / ") }) : "")
       + (d.counts || []).map((c) => " " + t("foot.counts", { s: c.store, src: c.source, n: fmt(c.items), b: fmt(c.before), a: fmt(c.after) })).join("")
