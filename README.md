@@ -118,7 +118,7 @@ POS の注文明細（data/event_orders/）は顧客情報を含むため Git �
 
 ## 月平均販売・在庫月数
 
-各店舗（K Village / Central CL / Siam Discovery / Paradise Park / Central LP）、Office（オンライン販売）、Store Total、Company Total（オンライン + イベント + 全店舗）の在庫数の左に「月平均販売」、右に「在庫月数（在庫 ÷ 月平均販売）」を表示します（フィルター欄のチェックで表示／非表示）。Office の Quantity の左には「今年の販売」（Office の月平均販売 × 対象月数を四捨五入した、2026年1〜8月の累計オンライン販売足数）も表示します。
+各店舗（K Village / Central CL / Siam Discovery / Paradise Park / Central LP）、Office（オンライン販売）、Store Total、Company Total（オンライン + イベント + 全店舗）の在庫数の左に「月平均販売」、右に「在庫月数（在庫 ÷ 月平均販売）」を表示します（フィルター欄のチェックで表示／非表示）。Office の Quantity の左には「今年の販売」（Office の月平均販売 × 対象月数を四捨五入した、2026年の累計オンライン販売足数）も表示します。
 
 `scripts/sales_rate.py` が 2026年1〜8月の VFF シューズの販売から SKU×店舗（店頭販売）・Online・Event の月平均販売足数を計算し `data/sales_rate.json` に保存、convert.py の 6 つ目の引数で在庫データに付けます。
 
@@ -135,7 +135,7 @@ python scripts/convert.py data/Store_Stock_092526.xlsx data/VFF_Stock_25-09-26.x
 ```bash
 python3 scripts/sales_rate_update.py extract central <Central CL の売上.xlsx> 2026-09 2026-10   # 月別シート 09-26, 10-26
 python3 scripts/sales_rate_update.py extract siam <Siam の売上.xlsx> 2026-09 2026-10
-python3 scripts/sales_rate_update.py extract pos <Zort の รายการขาย.xlsx>                         # K Village / Central LP の POS
+python3 scripts/sales_rate_update.py extract orders <BFT 受注明細.xlsx> <EDV 受注明細.xlsx> ...           # K Village / Central LP / Paradise Park / Online / Event（1〜8 月と同じ決まり）
 python3 scripts/sales_rate_update.py build                                                       # data/sales_rate.json を作り直す
 ```
 

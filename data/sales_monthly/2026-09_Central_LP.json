@@ -1,13 +1,14 @@
 {
  "store": "Central LP",
  "month": "2026-09",
- "source": "edv_lp_sep.xlsx",
- "total": 49.0,
+ "source": "bft_sep.xlsx + bft_oct.xlsx + edv_sep.xlsx + edv_oct.xlsx",
+ "total": 50.0,
  "sales": {
   "VFF0002(BK/F,W38)": 1.0,
   "VFF0002(BK/F,W39)": 1.0,
   "VFF0002(BK/LI/BK,M42)": 1.0,
   "VFF0002(BK/LI/BK,M45)": 1.0,
+  "VFF0002(BR/IV/BK,M42)": 1.0,
   "VFF0002(DPK,W38)": 2.0,
   "VFF0002(DPK,W39)": 1.0,
   "VFF0002(TT/BK,M41)": 1.0,

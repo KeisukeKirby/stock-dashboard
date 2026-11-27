@@ -1,7 +1,7 @@
 {
  "store": "K Village",
  "month": "2026-10",
- "source": "kv_th_lp.xlsx",
+ "source": "bft_sep.xlsx + bft_oct.xlsx + edv_sep.xlsx + edv_oct.xlsx",
  "total": 121.0,
  "sales": {
   "VFF0002(BK/F,W40)": 2.0,

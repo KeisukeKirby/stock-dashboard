@@ -7,8 +7,10 @@
 使い方:
   1. 新しい販売ファイルを読み、月別の足数を data/sales_monthly/ に保存する
        python3 scripts/sales_rate_update.py extract <種類> <ファイル> [月 ...]
-       種類: central (Central CL の月別シート), siam (Siam Discovery の月別シート),
-             pos (Zort の「รายการขาย」POS 販売。K Village / Central LP)
+       種類: orders (Zort の受注明細 Orders。BFT・EDV の両方をまとめて指定する。
+                     K Village / Central LP / Paradise Park / Online / Event を 1〜8 月と同じ決まりで数える),
+             central (Central CL の月別シート), siam (Siam Discovery の月別シート。月別シートのないファイルは先頭のシート),
+             pos (Zort の「รายการขาย」POS 販売。受注明細がないときの K Village / Central LP 用)
        月: central / siam はシート名の月 (例 2026-09 2026-10)。pos はファイル内の全月
   2. 合計し直す:  python3 scripts/sales_rate_update.py build
   3. convert.py を実行して stock.json に反映する
@@ -23,7 +25,7 @@ from pathlib import Path
 import openpyxl
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from sales_rate import SkuMatcher, is_shoe_text, vff_shoe  # noqa: E402
+from sales_rate import SkuMatcher, is_shoe_text, read_orders, vff_shoe  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE = ROOT / "data" / "sales_rate_base_2026-01_08.json"
@@ -58,7 +60,7 @@ def extract(kind, path, months):
         store = CL if kind == "central" else SD
         for month in months:
             y, mo = month.split("-")
-            ws = wb[f"{mo}-{y[2:]}"]
+            ws = wb[f"{mo}-{y[2:]}"] if f"{mo}-{y[2:]}" in wb.sheetnames else wb.worksheets[0]
             counts, unmatched = collections.Counter(), []
             for r in ws.iter_rows(values_only=True):
                 if not r or not isinstance(r[0], datetime.datetime):
@@ -78,6 +80,16 @@ def extract(kind, path, months):
                 else:
                     unmatched.append([str(r[0].date()), str(name), q])
             save(store, month, counts, unmatched, src)
+    elif kind == "orders":
+        # 1〜8 月と同じ集計 (scripts/sales_rate.py の read_orders)。BFT と EDV の両方の受注明細をまとめて数える
+        sales, meta, periods = collections.defaultdict(collections.Counter), {}, set()
+        for f in [path, *months]:
+            read_orders(Path(f), sales, meta, periods)
+        stores = ["K Village", "Central LP", "Paradise Park", "Online", "Event"]
+        for month in sorted(periods):
+            for store in stores:
+                counts = collections.Counter({c: q[(store, month)] for c, q in sales.items() if q[(store, month)]})
+                save(store, month, counts, [], " + ".join(Path(f).name for f in [path, *months]))
     elif kind == "pos":
         ws = wb.worksheets[0]
         by = collections.defaultdict(collections.Counter)

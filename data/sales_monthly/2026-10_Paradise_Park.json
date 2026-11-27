@@ -1,0 +1,29 @@
+{
+ "store": "Paradise Park",
+ "month": "2026-10",
+ "source": "bft_sep.xlsx + bft_oct.xlsx + edv_sep.xlsx + edv_oct.xlsx",
+ "total": 20.0,
+ "sales": {
+  "VFF0002(BK/F,W41)": 1.0,
+  "VFF0002(BK/LI/BK,M42)": 1.0,
+  "VFF0002(TT/IV,W36)": 1.0,
+  "VFF0005(BK/BK,M41)": 1.0,
+  "VFF0005(BK/BK,M42)": 1.0,
+  "VFF0005(BK/BK,W41)": 1.0,
+  "VFF0008(BB/BL,W36)": 1.0,
+  "VFF0008(BB/BL,W37)": 1.0,
+  "VFF0008(BK,W39)": 1.0,
+  "VFF0008(BK26,W37)": 1.0,
+  "VFF0008(BK26,W39)": 1.0,
+  "VFF0008(BR,W40)": 1.0,
+  "VFF0008(BR,W41)": 1.0,
+  "VFF0008(F/GN,W41)": 1.0,
+  "VFF0021(TT/BK,M42)": 1.0,
+  "VFF0022(BK,M43)": 1.0,
+  "VFF0022(BK,W36)": 1.0,
+  "VFF0026(BR/BK,M42)": 1.0,
+  "VFF0031(IV/DL,W42)": 1.0,
+  "VFF0031(TT/BK,M42)": 1.0
+ },
+ "unmatched": []
+}
