@@ -4,7 +4,8 @@
 
 取り出す列 (1 行目 = 商品 1 つ。B: モデル・カラー (縦に結合), C: サイズ):
   AY Import Total / AZ〜BC Sales 2023〜2026 / BI Sales Total / BJ Balance / BK Order Import
-  CB〜CE: モデル×サイズの表 (Itmes, Size, Sales Total, %)。カラーに関係なく同じモデル・サイズの行に出す
+  CB〜CE: モデル×サイズの表 (Itmes, Size, Sales Total, %)。カラーに関係なく同じモデル・サイズの行に出す。
+         値は Excel と同じ計算方法で計算し直す (CD = 全カラーの Sales Total の合計、CE = CD ÷ モデルの M / W ごとの合計 × 100)
 2026 年の Sales は Excel の値ではなく、ダッシュボードの販売実績 (data/sales_rate.json: 全拠点の 2026 年の販売足数) を使い、
 Sales Total (= 2023〜2026 の合計) と Balance (= Import Total − Sales Total) も計算し直す。
 販売実績を更新したら (scripts/sales_rate_update.py build のあと) このスクリプトも実行し直す。
@@ -97,7 +98,20 @@ def main(path):
         if re.fullmatch(r"\d+", zs) and cur.lower() == "scramkey":
             zs = "U" + zs
         size_tbl[f"{nk('VFF ' + cur)}|{zs}"] = {"t": num(ws.cell(r, COL["zt"]).value), "p": num(ws.cell(r, COL["zp"]).value)}
-    data = {"source": Path(path).name, "rows": rows, "sizeTable": size_tbl}
+    # サイズ別の Sales Total・% は Excel と同じ計算方法で計算し直す (2026 年をダッシュボードの販売実績にした Sales Total を使う):
+    #   CD = 同じモデル・サイズの全カラーの Sales Total (BI) の合計、CE = CD ÷ そのモデルの M / W ごとの合計 × 100
+    #   (Excel の CD は全カラーの BI の合計と一致することを確認済み)
+    zt = {}
+    for x in rows:
+        k = f"{nk(x['model'])}|{x['size']}"
+        zt[k] = zt.get(k, 0) + x["st"]
+    block = lambda k: (k.split("|")[0], re.match(r"[A-Z]*", k.split("|")[1]).group(0))
+    btot = {}
+    for k, v in zt.items():
+        btot[block(k)] = btot.get(block(k), 0) + v
+    excel_tbl = size_tbl
+    size_tbl = {k: {"t": v, "p": (v / btot[block(k)] * 100) if btot[block(k)] else None} for k, v in zt.items()}
+    data = {"source": Path(path).name, "rows": rows, "sizeTable": size_tbl, "sizeTableExcel": excel_tbl}
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=0), encoding="utf-8")
     print(f"{len(rows)} rows, {len(size_tbl)} model-size rows -> {OUT}")
     print(f"2026 sales: {sum(x['s2026'] for x in rows)} pairs on sheet rows "
