@@ -1580,6 +1580,59 @@
   $("drawerSave").addEventListener("click", () => $("saveOrders").click());
   $("drawerConfirm").addEventListener("click", () => $("confirmOrders").click());
   $("drawerHist").addEventListener("click", () => $("ordHistBtn").click());
+  // Order 下書きを Excel に出力 (Model・Color・Size・品番・Order 数、参考に Company Total Stock)
+  $("drawerXlsx").addEventListener("click", async () => {
+    const btn = $("drawerXlsx");
+    const byKey = new Map(data ? data.items.map((it) => [okey(it), it]) : []);
+    const lines = Object.entries(orders).map(([k, q]) => ({ k, q, it: byKey.get(k) }))
+      .sort((a, b) => (a.it ? a.it._id : 1e9) - (b.it ? b.it._id : 1e9));
+    if (!lines.length) { alert(t("drawer.empty")); return; }
+    const label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = t("xlsx.creating");
+    try {
+      const ExcelJS = await loadExcelJs();
+      const now = new Date();
+      const pad = (n) => String(n).padStart(2, "0");
+      const wb = new ExcelJS.Workbook();
+      const ws = wb.addWorksheet("Order");
+      ws.columns = [{ width: 5 }, { width: 22 }, { width: 26 }, { width: 22 }, { width: 8 }, { width: 10 }, { width: 14 }];
+      ws.addRow([`Draft Order  ${now.getFullYear()}/${pad(now.getMonth() + 1)}/${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`]).font = { bold: true, size: 13 };
+      ws.addRow([]);
+      const head = ws.addRow(["No", "Code", "Model", "Color", "Size", "Order Qty", "Company Total Stock"]);
+      head.eachCell((c) => {
+        c.font = { bold: true, color: { argb: "FFFFFFFF" } };
+        c.fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FF166534" } };
+        c.alignment = { horizontal: "center", vertical: "middle", wrapText: true };
+      });
+      lines.forEach((l, n) => {
+        const it = l.it;
+        ws.addRow([n + 1, it ? it.code || "" : "", it ? shortModel(it.model) : l.k, it ? it.color : "", it ? it.size : "", l.q, it ? it._tq : null]);
+      });
+      const tot = ws.addRow(["", "", "Total", "", "", sum(lines.map((l) => l.q)), null]);
+      tot.font = { bold: true };
+      const first = 4, last = ws.rowCount;
+      for (let r = first - 1; r <= last; r++) ws.getRow(r).eachCell({ includeEmpty: true }, (c, col) => {
+        if (col > 7) return;
+        c.border = { top: { style: "thin" }, left: { style: "thin" }, bottom: { style: "thin" }, right: { style: "thin" } };
+        if (r >= first && [1, 5, 6, 7].includes(col)) c.alignment = { horizontal: "center" };
+      });
+      ws.getRow(last).eachCell({ includeEmpty: true }, (c, col) => { if (col <= 7) c.fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FFDCF3D0" } }; });
+      ws.views = [{ state: "frozen", ySplit: 3 }];
+      const buf = await wb.xlsx.writeBuffer();
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([buf], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
+      a.download = `Order_draft_${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}.xlsx`;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    } catch (err) {
+      console.error(err);
+      alert(t("xlsx.fail"));
+    } finally {
+      btn.disabled = false;
+      btn.textContent = label;
+    }
+  });
   drawer.addEventListener("click", (e) => {
     const x = e.target.closest(".drawer-x");
     if (x) { delete orders[x.dataset.k]; applyOrders(); return; }
