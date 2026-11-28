@@ -11,6 +11,9 @@
   "functions": {
     "api/zort.js": {
       "maxDuration": 60
+    },
+    "api/zort-sales.js": {
+      "maxDuration": 60
     }
   },
   "buildCommand": "",

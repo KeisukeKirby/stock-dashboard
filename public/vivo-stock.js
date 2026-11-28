@@ -27,6 +27,7 @@
   }
 
   window.OTHER_SHEET.salesReady.then(render);
+  window.OTHER_SHEET.onSales(render);
   ["vq", "vStock"].forEach((id) => $(id).addEventListener(id === "vq" ? "input" : "change", render));
   window.I18N.onChange(render);
   // Zort の在庫があれば、対応する拠点の数を Zort の数に置き換える

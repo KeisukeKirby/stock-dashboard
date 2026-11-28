@@ -78,6 +78,7 @@
     }
 
     window.OTHER_SHEET.salesReady.then(() => data && render());
+    window.OTHER_SHEET.onSales(() => data && render());
     [`${cfg.prefix}q`, `${cfg.prefix}Stock`].forEach((id, n) => $(id).addEventListener(n === 0 ? "input" : "change", render));
     window.I18N.onChange(render);
     let shownAt = null;

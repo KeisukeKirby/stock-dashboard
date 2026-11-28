@@ -14,10 +14,21 @@
   // 拠点の並び (VFF と同じ)。同じ順位のものは元の並び
   const orderLocs = (stores, idx) => idx.slice().sort((a, b) => locRank(stores[a]) - locRank(stores[b]) || a - b);
 
+  // Sales: まず other_sales.json (受注明細のファイルから数えた分) で表示し、
+  // Zort の受注から数えた分 (/api/zort-sales。2026/1 から今月まで) が届いたら置き換えて描き直す
   let sales = null;
+  const listeners = [];
   const salesReady = fetch(`other_sales.json?t=${Date.now()}`, { cache: "no-store" })
     .then((r) => (r.ok ? r.json() : null)).catch(() => null)
-    .then((j) => { sales = j; return j; });
+    .then((j) => { if (!sales) sales = j; return j; });
+  fetch(`api/zort-sales?t=${Date.now()}`, { cache: "no-store" })
+    .then((r) => (r.ok ? r.json() : null)).catch(() => null)
+    .then((j) => {
+      if (!j || !j.months || !j.months.length) return;
+      if (sales && sales.months && j.months.length < sales.months.length) return; // 古いファイルより短い期間なら使わない
+      sales = j;
+      listeners.forEach((f) => f());
+    });
 
   const salesLabel = () => {
     if (!sales) return "";
@@ -70,5 +81,5 @@
     tbody.innerHTML = body.join("");
   }
 
-  window.OTHER_SHEET = { render, salesReady };
+  window.OTHER_SHEET = { render, salesReady, onSales: (f) => listeners.push(f) };
 })();
