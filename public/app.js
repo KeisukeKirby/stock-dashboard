@@ -15,7 +15,7 @@
   // Excel の列幅 (文字数) → px : width * 7 + 5
   const COL_W = { code: 23.63, model: 15.27, color: 16.63, size: 10.91, qty: 12.36, ret: 11.18, rate: 8.5, mos: 8.5, sales: 10 }; // Excel 出力用
   // 画面の表は見やすさ優先で Code 列を隠し、各列を狭くする
-  const VIEW_W = { model: 12.5, color: 14.5, size: 4.6, qty: 6, totQty: 6.6, ord: 9.6, chk: 3, info: 6.4, infoS: 4.8, ret: 5.6, rate: 5, mos: 5, sales: 7 };
+  const VIEW_W = { model: 12.5, color: 14.5, size: 4.6, qty: 6, totQty: 6.6, myQty: 4.4, ord: 9.6, chk: 3, info: 6.4, infoS: 4.8, ret: 5.6, rate: 5, mos: 5, sales: 7 };
   const VIEW_TEXT = ["model", "color", "size"];
   const shortModel = (m) => String(m || "").replace(/^VFF\s+/, "");
   const shortGroup = (g) => String(g).replace(" (Department)", " (Dept.)");
@@ -738,7 +738,7 @@
     const ncol = numCols();
     if (ncol !== frameCols) { hlCols.clear(); frameCols = ncol; } // 列の数が変わったら列の色付けは解除 (10 分ごとの更新では残す)
     const gcols = (g) => colKinds(g).map((k) => {
-      const w = k === "qty" && g >= data.stores.length ? VIEW_W.totQty : k === "qty" && colKinds(g).length === 1 ? 8.5 : VIEW_W[k]; // Qty だけの列は見出しが収まる幅
+      const w = k === "qty" && isMyG(g) ? VIEW_W.myQty : k === "qty" && g >= data.stores.length ? VIEW_W.totQty : k === "qty" && colKinds(g).length === 1 ? 8.5 : VIEW_W[k]; // Qty だけの列は見出しが収まる幅
       return `<col style="width:${px(w)}px">`;
     }).join("");
     $("cols").innerHTML =
@@ -782,7 +782,7 @@
     const out = Object.fromEntries((data.counts || []).filter((c) => c.label).map((c) => [data.stores.indexOf(c.store), c.label]));
     // Zort の数を使う拠点には棚卸の日付を出さない (表の上に Zort の読み込み時刻をまとめて出す)
     if (data.zort) data.zort.locs.forEach((l) => delete out[data.stores.indexOf(l)]);
-    if (myIdx() >= 0 && MY.asof) { const a = String(MY.asof).replace(/^\d{4}-(\d\d)-(\d\d)/, (_, m, d) => `${+m}/${+d}`); out[myIdx()] = `MY ${a}`; out[myIdx() + 1] = `MY ${a}`; }
+    if (myIdx() >= 0 && MY.asof) { const a = String(MY.asof).replace(/^\d{4}-(\d\d)-(\d\d)/, (_, m, d) => `${+m}/${+d}`); out[myIdx()] = `MY ${a.split(" ")[0]}`; out[myIdx() + 1] = `MY ${a.split(" ")[0]}`; }
     return out;
   };
   // As of の行: ラベルのある列グループの上だけ別のマスにし、残りは As of の文言のマスにまとめる
@@ -847,10 +847,10 @@
   // Store Total の列は出さない
   const hiddenAlways = (g) => hasOffice() && g === data.stores.length;
   // 「Details」: Pathwild から右 (主要 6 拠点と Company Total 以外) はボタンを押したときだけ表示する
-  const MAIN_LOCS = ["Office", "Paradise Park", "K Village", "Central CL (Department)", "Siam Discovery", "Central LP", "JB (MY)", "KL (MY)"];
+  const MAIN_LOCS = ["Office", "Paradise Park", "K Village", "Central CL (Department)", "Siam Discovery", "Central LP", "JB", "KL"];
   let showDetails = false;
   try { showDetails = localStorage.getItem("showDetails") === "1"; } catch (_) {}
-  const isDetailG = (g) => hasOffice() && g !== groups.length - 1 && !MAIN_LOCS.includes(groups[g]);
+  const isDetailG = (g) => hasOffice() && g !== groups.length - 1 && !MAIN_LOCS.includes(groups[g]) && !/^event/i.test(groups[g]); // Event は常に表示
   const colKinds = (g) => locHidden.has(g) || hiddenAlways(g) || (!showDetails && isDetailG(g)) ? [] : [...(hasRate(g) ? ["rate"] : []), ...(hasSalesTotal(g) ? ["sales"] : []), "qty", ...(hasRate(g) ? ["mos"] : []), ...(hasRet(g) ? ["ret"] : [])];
   const numCols = () => 1 + VIEW_TEXT.length + infoCols().length + sum(groups.map((_, i) => colKinds(i).length)) + 1; // +1 = Order
 
@@ -2318,7 +2318,7 @@ if (RETURNS_ON) {
       });
     }
     shownZort = z ? z.fetchedAt : null;
-    groups = d.officeIndex != null ? [...d.stores, "Store Total", ...(PO ? ["Outstanding PO"] : []), ...(MY ? ["JB (MY)", "KL (MY)"] : []), "Company Total Stock"] : [...d.stores, "Total"];
+    groups = d.officeIndex != null ? [...d.stores, "Store Total", ...(PO ? ["Outstanding PO"] : []), ...(MY ? ["JB", "KL"] : []), "Company Total Stock"] : [...d.stores, "Total"];
     d.items.forEach((it, n) => {
       it._id = n;
       it._search = `${it.code} ${it.model} ${it.color} ${it.size}`.toLowerCase();
