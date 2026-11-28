@@ -1219,20 +1219,57 @@
     ordErr = false;
     return changed;
   }
+  // 入力のバックアップ (このブラウザ): 保存前に通信が切れたり画面を閉じたりしても、次に開いたときに戻す
+  const OBACKUP = "orders:backup";
+  const ordBackup = () => {
+    try {
+      if (ordDirty()) localStorage.setItem(OBACKUP, JSON.stringify({ at: new Date().toISOString(), ...ordDiff() }));
+      else localStorage.removeItem(OBACKUP);
+    } catch (_) {}
+  };
+  const ordRestoreBackup = () => {
+    try {
+      const b = JSON.parse(localStorage.getItem(OBACKUP) || "null");
+      if (!b) return;
+      for (const [k, v] of Object.entries(b.set || {})) if (Number(v) > 0) orders[k] = Number(v);
+      for (const k of b.del || []) delete orders[k];
+    } catch (_) {}
+  };
   async function initOrders() {
     try {
       const r = await fetch(OAPI, { cache: "no-store" });
       const j = r.ok ? await r.json() : null;
-      if (j && j.shared) { ordShared = true; ordMerge(j); return; }
+      if (j && j.shared) { ordShared = true; ordMerge(j); ordRestoreBackup(); return; }
     } catch (_) {}
     ordLoadLocal();
+    ordRestoreBackup();
   }
+  // 自動保存: 変更から 1.5 秒たったら保存する (失敗したら 20 秒ごとにやり直す)。画面を閉じる・切り替えるときもすぐ保存
+  let autoTimer = null;
+  const autoSave = async () => {
+    clearTimeout(autoTimer);
+    autoTimer = null;
+    if (!ordDirty()) return;
+    if (ordBusy) { autoTimer = setTimeout(autoSave, 1500); return; }
+    const a = document.activeElement;
+    // 入力中のマスの数は、確定してから保存する (打ちかけの数は保存しない)
+    if (a && a.classList && a.classList.contains("ord-in") && a.value !== a.defaultValue) { autoTimer = setTimeout(autoSave, 1500); return; }
+    ordBusy = true;
+    updateOrderInfo();
+    const ok = await saveOrders(true);
+    ordBusy = false;
+    if (ok) { applyOrders(); ordBackup(); }
+    else { updateOrderInfo(); autoTimer = setTimeout(autoSave, 20000); }
+  };
+  const scheduleAutoSave = () => { ordBackup(); if (!autoTimer) autoTimer = setTimeout(autoSave, 1500); };
+  document.addEventListener("visibilitychange", () => { if (document.hidden && ordDirty()) autoSave(); });
+  window.addEventListener("pagehide", () => { if (ordDirty()) { ordBackup(); autoSave(); } });
   async function ordPost(body) {
-    const r = await fetch(OAPI, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+    const r = await fetch(OAPI, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), keepalive: true });
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     return r.json();
   }
-  async function saveOrders() {
+  async function saveOrders(quiet) {
     if (!ordShared) {
       try {
         ordSaved = { ...orders };
@@ -1240,7 +1277,7 @@
         ordSaveLocal();
         ordLastSaved = new Date();
         return true;
-      } catch (_) { alert(t("ord.saveFail")); return false; }
+      } catch (_) { if (!quiet) alert(t("ord.saveFail")); return false; }
     }
     try {
       const j = await ordPost(ordDiff());
@@ -1254,7 +1291,7 @@
     } catch (e) {
       console.error(e);
       ordErr = true;
-      alert(t("ord.saveFail"));
+      if (!quiet) alert(t("ord.saveFail"));
       return false;
     }
   }
@@ -1282,7 +1319,8 @@
   /* ---------- 発注の計画: 発注後の在庫 (在庫 + 発注残 + 新規) とサイズ比率、合計数量からの自動割り振り ---------- */
   // まとまり = モデル × 性別 × カラー。目標の比率 = 販売のサイズ比率 (By size の %。モデル・サイズごと)
   const planKey = (it) => `${osKey(it.model)}|${String(it.size)[0]}|${osKey(it.color)}`;
-  const planQty = {}; // まとまり → 入力した合計数量
+  const planQty = (() => { try { return JSON.parse(localStorage.getItem("planQty") || "{}") || {}; } catch (_) { return {}; } })(); // まとまり → 入力した合計数量 (このブラウザに残す)
+  const savePlanQty = () => { try { localStorage.setItem("planQty", JSON.stringify(planQty)); } catch (_) {} };
   let tolPct = 2, tolQty = 0;
   try { const v = JSON.parse(localStorage.getItem("planTol") || "null"); if (v) { tolPct = +v.pct || 0; tolQty = +v.qty || 0; } } catch (_) {}
   const targetOf = (it) => { const z = OS && OS.sizeTable[`${osKey(it.model)}|${it.size}`]; return z && typeof z.p === "number" ? z.p : 0; };
@@ -1357,9 +1395,14 @@
     rs.forEach((x, i) => { const k = okey(x.it); if (best.o[i]) orders[k] = best.o[i]; else delete orders[k]; });
     applyOrders();
   }
+  // 入力の途中で手を止めても (2 秒) 確定して保存する
+  let typeTimer = null;
   $("tbody").addEventListener("input", (e) => {
     const inp = e.target;
-    if (inp.classList.contains("ord-in")) planRefresh(inp.closest("tr").dataset.pk);
+    if (!inp.classList.contains("ord-in")) return;
+    planRefresh(inp.closest("tr").dataset.pk);
+    clearTimeout(typeTimer);
+    typeTimer = setTimeout(() => { if (inp.isConnected && inp.value !== inp.defaultValue) commitOrder(inp); }, 2000);
   });
   $("tbody").addEventListener("keydown", (e) => {
     const inp = e.target;
@@ -1368,6 +1411,7 @@
     const pk = inp.closest("tr").dataset.pk;
     const T = parseQ(inp.value);
     if (T) planQty[pk] = T; else delete planQty[pk];
+    savePlanQty();
     if (T) allocate(pk, T);
     // Tab / Enter → このまとまりの最初のサイズの Order へ (数を直せる)
     const first = $("tbody").querySelector(`tr[data-id][data-pk="${CSS.escape(pk)}"] .ord-in`);
@@ -1404,6 +1448,7 @@
   }
   function updateOrderInfo() {
     const dirty = ordDirty();
+    if (dirty && !ordBusy) scheduleAutoSave();
     const n = Object.keys(orders).length;
     const hm = (d) => d.toLocaleTimeString(window.I18N.locale, { hour: "2-digit", minute: "2-digit" });
     $("ordInfo").textContent = n ? t("ord.info", { n: fmt(n), q: fmt(sum(Object.values(orders))) }) : "";
