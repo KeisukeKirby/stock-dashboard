@@ -2208,6 +2208,39 @@ if (RETURNS_ON) {
     d.zort = { fetchedAt: z.fetchedAt, locs, unmapped: [] };
   }
 
+  // 委託先の在庫 (public/consign.json = Stock VFF Consignment.xlsx の Balance。scripts/consign.py)
+  // Central CL は棚卸 (data/counts) で入れているので除く。委託先ごとの列 (Details で表示) を足し、Company Total に入れる (Store Total には入れない)
+  let CONSIGN = null;
+  function applyConsign(d) {
+    if (!CONSIGN || d.officeIndex == null) return;
+    const byCode = new Map(d.items.filter((it) => it.code).map((it) => [it.code, it]));
+    for (const [store, m] of Object.entries(CONSIGN.stores || {})) {
+      if (store === "Central CL (Department)" || store === "Siam Discovery") continue;
+      const vff = Object.entries(m).filter(([code]) => code.startsWith("VFF"));
+      if (!vff.some(([, q]) => q)) continue;
+      let k = d.stores.indexOf(store);
+      if (k < 0) {
+        d.stores.push(store);
+        d.items.forEach((it) => { it.qty.push(0); if (Array.isArray(it.ret)) it.ret.push(null); if (Array.isArray(it.rate)) it.rate.push(null); });
+        k = d.stores.length - 1;
+        d.nonStore = [...(d.nonStore || []), k];
+      }
+      d.items.forEach((it) => { if (it.code) it.qty[k] = 0; });
+      for (const [code, q] of vff) {
+        let it = byCode.get(code);
+        if (!it) {
+          const name = (window.ZORT_CACHED && window.ZORT_CACHED.names[code]) || "";
+          const mm = /^(.*)\(([A-Z]{0,2}\d+(?:\.\d+)?),\s*(.+)\)\s*$/.exec(name);
+          if (!mm || window.IS_SOCKS(name)) continue;
+          it = { code, model: mm[1].trim(), color: mm[3].trim(), size: mm[2], qty: d.stores.map(() => 0), ret: d.stores.map(() => null), rate: null, rateEvent: null };
+          d.items.push(it);
+          byCode.set(code, it);
+        }
+        it.qty[k] = q;
+      }
+    }
+  }
+
   if (!RETURNS_ON) document.body.classList.add("no-returns");
 
   /* ---------- Zort の読み込み状態の注意書き (全員が同じ数を見ているかが分かるように) ---------- */
@@ -2256,6 +2289,7 @@ if (RETURNS_ON) {
     const d = JSON.parse(JSON.stringify(base));
     data = d;
     if (z) applyZort(d, z);
+    applyConsign(d);
     moveStore(d, "Paradise Park", d.officeIndex != null ? d.officeIndex + 1 : 0); // 並び: Office → Paradise Park → K Village → …
     // 靴下は Socks シートに出すので除き、モデル名のアルファベット順に並べる (同じモデルの中は元の並び: カラー・サイズ順)
     d.items = d.items.filter((it) => !window.IS_SOCKS(it.model));
@@ -2395,13 +2429,14 @@ if (RETURNS_ON) {
       RKEY = `returns:${d.asOfDate || d.source}`;
       HL = new Set(((d.returnsSeed && d.returnsSeed.highlights) || []).map((h) => `${h.code}@${h.store}@${h.kind}`));
       const po = fetch(`outstanding_po.json?t=${Date.now()}`, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null).then((j) => { PO = j && j.items && j.items.length ? j : null; });
+      const cs = fetch(`consign.json?t=${Date.now()}`, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null).then((j) => { CONSIGN = j && j.stores ? j : null; });
       const os = fetch(`office_sheet.json?t=${Date.now()}`, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null).then((j) => { OS = j && j.rows && j.rows.length ? j : null; });
       // マレーシアの在庫は 8 秒で諦める (取れなくても表は出す)
       const ac = typeof AbortController === "function" ? new AbortController() : null;
       if (ac) setTimeout(() => ac.abort(), 8000);
       const my = fetch(`api/malaysia?t=${Date.now()}`, { cache: "no-store", signal: ac ? ac.signal : undefined }).then((r) => (r.ok ? r.json() : null)).catch(() => null)
         .then((j) => { MY = j && j.items && j.items.length ? j : null; });
-      return Promise.all([initReturns(), initOrders(), po, os, my]);
+      return Promise.all([initReturns(), initOrders(), po, os, my, cs]);
     })
     .then(() => (window.ZORT_CACHED ? window.ZORT_CACHED : window.ZORT || null))
     .then((z) => {

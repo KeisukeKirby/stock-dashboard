@@ -36,7 +36,14 @@ CATALOG = {
     "OLN0007": ["DN,25", "DN,27", "DN,29", "W/M,25", "W/M,27"],
     "OLN0009": [f"DN,{s}" for s in [25, 27, 29]],
     "OLN0016": [f"{c},{s}" for c in ["BK/GO", "BK/TQ"] for s in [25, 27, 29]],
+    # Coolcore (CP): サイズのない品番 (",24" は品番の一部)
+    "CP0002": ["BK", "GY,24", "WT", "CMNV,24", "CMGY,24", "CMF"],
+    "CP0003": ["HBL", "SBL", "BL"],
+    "CP0004": ["TQ,24", "FU,24", "YL,24", "BK", "DGY", "BL"],
 }
+CP_COLORS = {"BLACK": "BK", "GRAY": "GY", "GREY": "GY", "WHITE": "WT", "CAMO NAVY": "CMNV", "CAMO GRAY": "CMGY", "CAMOUFLAGE": "CMF",
+             "HERITAGE BLUE": "HBL", "SKY BLUE": "SBL", "DIVA BLUE": "BL", "TURQUOISE": "TQ", "FUSCIA": "FU", "FUCHSIA": "FU",
+             "YELLOW": "YL", "DARK GRAY": "DGY", "BL": "BL", "HBL": "HBL", "SBL": "SBL", "TQ": "TQ", "FU": "FU", "DGY": "DGY", "BK": "BK"}
 COLOR_WORDS = {
     "BLACK": "BK", "BLAC": "BK", "GRAY": "GY", "GREY": "GY", "BLUE": "BL", "PINK": "PK", "YELLOW": "YL",
     "FIG": "FI", "F": "FI", "IVORY": "IV", "LIME": "LI", "DENIM": "DN", "RED": "RD", "WINE": "W", "MIX": "M",
@@ -48,6 +55,8 @@ SML_NUM = {"S": "25", "M": "27", "L": "29"}
 
 def family(name):
     n = name.upper()
+    if re.match(r"^\s*CP\b", n) or "CHILL" in n:
+        return "CP0002" if "MULTI" in n else "CP0003" if "OUTDOOR" in n else "CP0004" if "SPORT" in n else None
     if "BFJ" in n:
         return "BFJ0002" if "FREE" in n else "BFJ0001"
     if re.search(r"OLENO|OLN|HADASHI|ULTIMATE|S-70", n):
@@ -85,6 +94,11 @@ def to_code(name, hint=""):
     fam = family(name)
     if not fam:
         return None, False
+    if fam.startswith("CP"):  # 色だけで決める
+        m = re.search(r"\(([^()]*)\)", name)
+        col = CP_COLORS.get(re.sub(r"\s+", " ", (m.group(1) if m else "").split(",")[0].strip().upper()))
+        hit = [c for c in CATALOG[fam] if c.split(",")[0] == col]
+        return (f"{fam}({hit[0]})" if len(hit) == 1 else None), True
     m = re.search(r"\(([^()]*)\)\s*$", name.strip()) or re.search(r"\(([^()]*)", name)
     toks = [t.strip() for t in re.split(r"[,]|\s(?=\d)", m.group(1))] if m else []
     toks = [t for t in toks if t]

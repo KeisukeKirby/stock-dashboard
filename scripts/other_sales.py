@@ -20,7 +20,7 @@ from sales_rate import ONLINE_CHANNELS, STORE_WAREHOUSE  # noqa: E402  (VFF уБош
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "public" / "other_sales.json"
-CODE = re.compile(r"^(VV|BFJ|OLN|CC)\d")
+CODE = re.compile(r"^(VV|BFJ|OLN|CC|CP)\d")
 
 
 def date_of(v):

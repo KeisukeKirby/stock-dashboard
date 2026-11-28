@@ -1,4 +1,4 @@
-// VFF の靴以外 (Vivo・VFF の靴下・Barefoot Japan・Oleno・Coolcore) の販売足数を Zort の受注から数える API  —  Vercel Function
+// VFF の靴以外 (Vivo・VFF の靴下・Barefoot Japan・Oleno・Coolcore (CC・CP)) の販売足数を Zort の受注から数える API  —  Vercel Function
 //
 //   GET /api/zort-sales            → { from, to, months, sales: { 品番: 足数 }, at }   (2026-01 から今月まで)
 //   GET /api/zort-sales?probe=1    → 受注データの形の確認用 (項目名・件数だけ。顧客情報は返さない)
@@ -9,12 +9,12 @@
 
 const BASE = process.env.ZORT_BASE_URL || "https://open-api.zortout.com/v4";
 const START = "2026-01";
-const CODE = /^(VV|BFJ|OLN|CC)\d/;
+const CODE = /^(VV|BFJ|OLN|CC|CP)\d/;
 const ONLINE_CHANNELS = new Set(["Shopee", "Shopee VFF", "Shopee BFI", "Lazada", "Facebook", "LINE", "Instagram", "Website", "barefootinc"]);
 const STORE_WH = new Set(["Kvillage", "Coollabo Cen LP 3F", "Paradise Park"]);
 const EVENT_WH = new Set(["Event 1", "Event 2", "CART Central LP"]);
 const PAGE = 500;
-const KEY = (ym) => `zortsales:v1:${ym}`;
+const KEY = (ym) => `zortsales:v2:${ym}`; // v2: Coolcore の CP を追加
 const CUR_MAX_AGE = 6 * 3600 * 1000;
 const BUDGET_MS = 45 * 1000;
 

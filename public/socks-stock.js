@@ -1,7 +1,7 @@
 /* Socks・Coolcore の在庫シート: Zort の在庫から該当する SKU だけを取り出して表示する。
    Socks    = VFF の靴下 (商品名に Socks を含む VFF の SKU) + Barefoot Japan (BFJ)
    Oleno    = 品番が OLN で始まる SKU
-   Coolcore = 品番が CC で始まる SKU
+   Coolcore = 品番が CC・CP で始まる SKU
    VFF の靴下は VFF の在庫一覧には出さない (app.js の isSocks で除いている)。 */
 (() => {
   const $ = (id) => document.getElementById(id);
@@ -41,7 +41,8 @@
       const add = (sku) => {
         let it = byCode.get(sku);
         if (!it) {
-          const p = parseName(z.names[sku] || sku);
+          const cn = window.OTHER_SHEET.consign();
+          const p = parseName(z.names[sku] || (cn && cn.names && cn.names[sku]) || sku);
           it = { code: sku, ...p, qty: stores.map(() => 0) };
           byCode.set(sku, it);
         }
@@ -50,6 +51,22 @@
       z.locations.forEach((loc, k) => {
         for (const [sku, q] of Object.entries(loc.stock)) if (cfg.match(sku, z.names[sku])) add(sku).qty[k] += q;
       });
+      // 委託先の在庫 (public/consign.json)。Central CL・Siam Discovery などはこの数に置き換え、Zort にない委託先は列を足す
+      const cons = window.OTHER_SHEET.consign();
+      if (cons) {
+        for (const [store, m] of Object.entries(cons.stores || {})) {
+          const mine = Object.entries(m).filter(([sku]) => cfg.match(sku, z.names[sku] || cfg.nameOf(sku, m)));
+          let k = stores.indexOf(store);
+          if (k < 0) {
+            if (!mine.some(([, q]) => q)) continue;
+            stores.push(store);
+            byCode.forEach((it) => it.qty.push(0));
+            k = stores.length - 1;
+          }
+          byCode.forEach((it) => (it.qty[k] = 0));
+          for (const [sku, q] of mine) add(sku).qty[k] = q;
+        }
+      }
       const mk = (it) => it.model.replace(/^VFF\s+/, "").toLowerCase();
       const cfirst = new Map();
       const items = [...byCode.values()].sort((a, b) => a.code.localeCompare(b.code, "en"));
@@ -82,8 +99,10 @@
     window.OTHER_SHEET.onSales(() => data && render());
     [`${cfg.prefix}q`, `${cfg.prefix}Stock`].forEach((id, n) => $(id).addEventListener(n === 0 ? "input" : "change", render));
     window.I18N.onChange(render);
-    let shownAt = null;
+    let shownAt = null, lastZ = null;
+    window.OTHER_SHEET.consignReady.then(() => { if (lastZ) { data = build(lastZ); render(); } });
     const show = (z) => {
+      lastZ = z || lastZ;
       if (!z) return render();
       data = build(z);
       shownAt = z.fetchedAt;
@@ -94,7 +113,9 @@
     window.addEventListener("zort-update", (e) => { if (e.detail.fetchedAt !== shownAt) show(e.detail); });
   }
 
-  sheet({ prefix: "s", key: "socks", match: (sku, name) => (sku.startsWith("VFF") && isSocks(name)) || /^BFJ\d/.test(sku) });
-  sheet({ prefix: "o", key: "oleno", match: (sku) => /^OLN\d/.test(sku) });
-  sheet({ prefix: "c", key: "coolcore", match: (sku) => /^CC\d/.test(sku) });
+  // nameOf: Zort の商品名がない品番 (委託の表にだけある品番) の判定用
+  const vffSockCode = (sku) => /^VFF00(2[7-9])\(/.test(sku);
+  sheet({ prefix: "s", key: "socks", match: (sku, name) => (sku.startsWith("VFF") && (isSocks(name) || (!name && vffSockCode(sku)))) || /^BFJ\d/.test(sku), nameOf: () => "" });
+  sheet({ prefix: "o", key: "oleno", match: (sku) => /^OLN\d/.test(sku), nameOf: () => "" });
+  sheet({ prefix: "c", key: "coolcore", match: (sku) => /^(CC|CP)\d/.test(sku), nameOf: () => "" });
 })();

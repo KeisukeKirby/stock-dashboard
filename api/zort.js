@@ -15,7 +15,7 @@
 //   GET /api/zort?since=<fetchedAt>  → 変わっていなければ { same: true } だけを返す (1 分ごとの確認用)
 
 const BASE = process.env.ZORT_BASE_URL || "https://open-api.zortout.com/v4";
-const SKU_RE = /^(VFF|VV|BFJ|OLN|CC)\d/; // VFF・Vivo・Barefoot Japan・Oleno・Coolcore
+const SKU_RE = /^(VFF|VV|BFJ|OLN|CC|CP)\d/; // VFF・Vivo・Barefoot Japan・Oleno・Coolcore (CC・CP)
 const PAGE = 500;
 // 読まない倉庫 (在庫の数ではない仮の倉庫)。รอ = 入荷待ちなどの仮置きで、大きなマイナスになっている
 const SKIP = /^(รอ|ของเสีย|สินค้าตัวอย่าง)$/;
