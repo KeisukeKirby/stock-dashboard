@@ -56,6 +56,7 @@
       if (cons) {
         for (const [store, m] of Object.entries(cons.stores || {})) {
           const mine = Object.entries(m).filter(([sku]) => cfg.match(sku, z.names[sku] || cfg.nameOf(sku, m)));
+          if (!mine.length) continue; // 委託の表にこの表の品目がない拠点は Zort の数のまま (例: Pathwild の Oleno)
           let k = stores.indexOf(store);
           if (k < 0) {
             if (!mine.some(([, q]) => q)) continue;
