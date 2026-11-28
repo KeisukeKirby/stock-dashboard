@@ -4,7 +4,7 @@
 //        → { shared: true, draft: { "<商品>": 数量, ... }, updatedAt, confirmed: [ { at, items: {...}, total } ] }
 //   POST /api/orders   body: { set: { "<商品>": 数量 }, del: ["<商品>"] }
 //        → 変更したマスだけを書き込み、最新の全体を返す (同時に別のマスを入力しても消えない)
-//   POST /api/orders   body: { confirm: true }
+//   POST /api/orders   body: { confirm: true, name: "Order 名" }
 //        → 保存済みの Order を確定履歴に移し、入力欄を空にする
 //
 // 保存先: returns.js と同じ Upstash Redis (KV_REST_API_URL / KV_REST_API_TOKEN。Prefix 付きでも可)
@@ -79,7 +79,8 @@ module.exports = async (req, res) => {
         const items = toMap(flat);
         const total = Object.values(items).reduce((a, v) => a + v, 0);
         if (!total) return res.status(200).json({ ...(await state()), confirmedNow: null });
-        const entry = { at: now, items, total };
+        const name = String(body.name || "").replace(/[\u0000-\u001f]/g, " ").trim().slice(0, 100); // Order 名 (任意)
+        const entry = { at: now, items, total, ...(name ? { name } : {}) };
         const s = await state([
           ["LPUSH", HISTORY, JSON.stringify(entry)],
           ["LTRIM", HISTORY, 0, KEEP - 1],

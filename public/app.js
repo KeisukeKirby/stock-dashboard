@@ -1540,22 +1540,34 @@
     orders = { ...ordSaved };
     applyOrders();
   });
-  $("confirmOrders").addEventListener("click", async () => {
+  // Confirm Order: Order 名を入れる確認のポップ → 確定
+  $("confirmOrders").addEventListener("click", () => {
     if (ordBusy) return;
     blurOrder();
     const n = Object.keys(orders).length;
-    if (!n || !confirm(t("ord.confirm", { n: fmt(n), q: fmt(sum(Object.values(orders))) }))) return;
+    if (!n) return;
+    $("confirmSub").textContent = t("ord.confirm", { n: fmt(n), q: fmt(sum(Object.values(orders))) });
+    const d = new Date();
+    $("ordName").value = `Order ${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()}`;
+    $("confirmDlg").returnValue = "";
+    $("confirmDlg").showModal();
+    $("ordName").select();
+  });
+  $("ordName").addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); $("confirmDlg").close("yes"); } });
+  $("confirmDlg").addEventListener("close", () => { if ($("confirmDlg").returnValue === "yes") doConfirm($("ordName").value.trim()); });
+  async function doConfirm(name) {
+    if (ordBusy) return;
     ordBusy = true;
     updateOrderInfo();
     try {
       if (ordDirty() && !(await saveOrders())) return;
       if (ordShared) {
-        const j = await ordPost({ confirm: true });
+        const j = await ordPost({ confirm: true, name });
         ordMerge(j);
         orders = ordClean(j.draft);
       } else {
         const items = { ...ordSaved };
-        ordHistory = [{ at: new Date().toISOString(), items, total: sum(Object.values(items)) }, ...ordHistory].slice(0, 50);
+        ordHistory = [{ at: new Date().toISOString(), items, total: sum(Object.values(items)), ...(name ? { name } : {}) }, ...ordHistory].slice(0, 50);
         ordSaved = {};
         orders = {};
         ordUpdatedAt = new Date().toISOString();
@@ -1572,7 +1584,7 @@
       ordErr = true;
       alert(t("ord.confirmFail"));
     } finally { ordBusy = false; applyOrders(); }
-  });
+  }
 
   /* 確定履歴 */
   const odlg = $("ordDlg");
@@ -1629,7 +1641,8 @@
       a.href = URL.createObjectURL(new Blob([out], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
       const d = new Date(h.at);
       const pad = (n) => String(n).padStart(2, "0");
-      a.download = `PO_FORM_${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}.xlsx`;
+      const nm = String(h.name || "").replace(/[\\/:*?"<>|]+/g, "_").trim();
+      a.download = `PO_FORM_${nm ? `${nm}_` : ""}${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}.xlsx`;
       a.click();
       setTimeout(() => URL.revokeObjectURL(a.href), 1000);
       if (miss.length) alert(t("ord.poMiss", { n: fmt(miss.length), q: fmt(sum(miss.map((r) => r.q))) }));
@@ -1643,7 +1656,7 @@
     $("ordBody").innerHTML = ordHistory.map((h, n) => {
       const rows = ordRows(h.items || {});
       return `<details class="ord-h-item"${n === ordOpenAt ? " open" : ""} data-n="${n}">
-        <summary><b>${esc(fmtAt(h.at))}</b><span>${esc(t("ord.histSum", { n: fmt(rows.length), q: fmt(h.total || 0) }))}</span>
+        <summary><b>${esc(fmtAt(h.at))}</b><span class="ord-name">${esc(h.name || t("ord.noName"))}</span><span>${esc(t("ord.histSum", { n: fmt(rows.length), q: fmt(h.total || 0) }))}</span>
           <button type="button" class="ghost small" data-csv="${n}">CSV</button><button type="button" class="ghost small" data-poform="${n}">Order Sheet</button></summary>
         <table class="ord-list"><thead><tr><th>Model</th><th>Color</th><th>Size</th><th>Order</th></tr></thead><tbody>
           ${rows.map((r) => `<tr><td title="${esc(r.code)}">${esc(shortModel(r.model))}</td><td>${esc(r.color)}</td><td class="c">${esc(r.size)}</td><td class="c b">${fmt(r.q)}</td></tr>`).join("")}
