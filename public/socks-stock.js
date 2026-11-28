@@ -64,6 +64,9 @@
             byCode.forEach((it) => it.qty.push(0));
             k = stores.length - 1;
           }
+          // 同じ委託先の Zort の列 (例: EDV の Central Chidlom → "Central CL (Department) (EDV)") は二重にならないよう 0 にする
+          const base = (n) => n.replace(/\s*\((EDV|BFT)\)$/, "").replace(/\s+/g, "").toLowerCase();
+          stores.forEach((n, j) => { if (j !== k && base(n) === base(store)) byCode.forEach((it) => (it.qty[j] = 0)); });
           byCode.forEach((it) => (it.qty[k] = 0));
           for (const [sku, q] of mine) add(sku).qty[k] = q;
         }
