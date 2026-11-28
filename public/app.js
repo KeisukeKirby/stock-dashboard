@@ -70,6 +70,7 @@
     $("view-zero").hidden = v !== "zero";
     history.replaceState(null, "", v === "table" ? location.pathname + location.search : `#${v}`);
     if (v === "table") fitTable();
+    else if (window.OTHER_SHEET) requestAnimationFrame(() => window.OTHER_SHEET.refitAll());
     if (scroll) $("view-table").scrollIntoView({ behavior: "smooth", block: "start" });
   }
   document.querySelectorAll(".tab").forEach((tab) => tab.addEventListener("click", () => showView(tab.dataset.view)));
@@ -96,7 +97,7 @@
     const fit = w > avail ? Math.floor(((avail - 2) / w) * 10000) / 10000 : 1;
     if (fit !== lastFit) { table.style.setProperty("--fit", fit); lastFit = fit; }
     // Vivo・Socks・Coolcore の表も VFF と同じ倍率で表示する
-    document.querySelectorAll("#vivoTable, #socksTable, #olenoTable, #coolcoreTable").forEach((x) => x.style.setProperty("--fit", lastFit));
+    if (window.OTHER_SHEET) window.OTHER_SHEET.refitAll();
   }
   window.addEventListener("resize", fitTable);
 

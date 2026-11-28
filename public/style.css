@@ -460,7 +460,7 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 #zeroTable td:nth-child(2) { min-width: 120px; }
 .vivo-sheet td:nth-child(2), .vivo-sheet td:nth-child(3) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .vivo-sheet thead tr.h1 th { top: calc(var(--title-h) + var(--row-h)); }
-.vivo-sheet thead tr.h1 th.grp.ct { white-space: normal; line-height: 1.1; }
+.vivo-sheet thead tr.h1 th.grp { white-space: normal; line-height: 1.1; overflow-wrap: normal; font-size: 8pt; padding-left: 1px; padding-right: 1px; }
 
 /* 在庫一覧の VFF / Vivo 切り替え */
 .brand-switch { display: inline-flex; margin-right: 10px; border: 1px solid var(--line-strong, #ccc); border-radius: 999px; overflow: hidden; vertical-align: middle; }

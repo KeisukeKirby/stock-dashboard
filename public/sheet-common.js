@@ -75,10 +75,11 @@
     const px = (w) => Math.round(w * 7 + 5);
     let cg = table.querySelector("colgroup");
     if (!cg) { cg = document.createElement("colgroup"); table.insertBefore(cg, thead); }
-    cg.innerHTML = [3, 12.5, 14.5, 4.6, 6.4, 8.5, ...order.map(() => 6)].map((w) => `<col style="width:${px(w)}px">`).join("");
-    const vff = document.getElementById("stockTable");
-    const fit = vff && parseFloat(vff.style.getPropertyValue("--fit"));
-    table.style.setProperty("--fit", fit > 0 ? fit : 1);
+    const widths = [3, 20, 13, 4.6, 6.4, 8.5, ...order.map(() => 7)].map(px); // Model は商品名が長いので広め
+    cg.innerHTML = widths.map((w) => `<col style="width:${w}px">`).join("");
+    // 表の幅 = 列幅の合計 (長い商品名で Model 列が広がらないように)
+    table.style.width = `${widths.reduce((a, w) => a + w, 0)}px`;
+    refit(table);
     thead.innerHTML = `
       <tr class="title"><th colspan="${ncol}">${esc(title)}</th></tr>
       <tr class="asof"><th colspan="${ncol}">${esc(asof)}</th></tr>
@@ -111,6 +112,19 @@
   // 委託先の在庫 (public/consign.json。scripts/consign.py)
   let consign = null;
   const consignReady = fetch(`consign.json?t=${Date.now()}`, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null).then((j) => { consign = j; });
+
+  // 縮小率: 画面に入らない広い表だけ、画面の幅に収まるように縮める
+  function refit(table) {
+    if (!table) return;
+    const sheet = table.closest(".sheet");
+    const w = parseFloat(table.style.width) || table.offsetWidth;
+    const avail = sheet && sheet.clientWidth ? sheet.clientWidth - 2 : 0;
+    // 画面の幅いっぱいに収まる倍率 (最大 1 = 縮小なし)
+    const fit = avail && w > avail ? Math.floor((avail / w) * 10000) / 10000 : 1;
+    table.style.setProperty("--fit", fit);
+  }
+  const refitAll = () => document.querySelectorAll(".vivo-sheet table").forEach((t) => { if (t.id !== "zeroTable" && t.offsetParent) refit(t); });
+  window.addEventListener("resize", refitAll);
 
   /* ---------- 行・列のハイライトと、ドラッグした範囲の合計 (VFF の在庫一覧と同じ操作) ---------- */
   const rkey = (it) => it.code || `${it.model}|${it.color}|${it.size}`;
@@ -270,5 +284,5 @@
   });
   document.getElementById("selClose").addEventListener("click", clearSel);
 
-  window.OTHER_SHEET = { render, salesReady, onSales: (f) => listeners.push(f), consign: () => consign, consignReady };
+  window.OTHER_SHEET = { render, salesReady, onSales: (f) => listeners.push(f), consign: () => consign, consignReady, refitAll };
 })();
