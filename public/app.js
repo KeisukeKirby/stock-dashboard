@@ -2321,7 +2321,10 @@ if (RETURNS_ON) {
       const byCode = new Map(d.items.filter((it) => it.code).map((it) => [it.code, it]));
       const byName = new Map();
       d.items.forEach((it) => { const k = nameKey(shortModel(it.model), it.color, it.size); if (!byName.has(k)) byName.set(k, it); });
-      for (const x of MY.items) {
+      // マレーシアとタイでカラー名が違う商品 (マレーシアの名前 → タイの名前)
+      const MY_COLOR = { "groundsplayls|black": "Total Black" };
+      for (const x0 of MY.items) {
+        const x = { ...x0, color: MY_COLOR[`${nk(x0.model)}|${nk(x0.color)}`] || x0.color };
         const c = byCode.get(x.sku);
         let it = c && sameModel(c, x) ? c : byName.get(nameKey(x.model, x.color, x.size));
         if (!it) {
