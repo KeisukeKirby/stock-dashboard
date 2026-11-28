@@ -1407,9 +1407,15 @@
   $("tbody").addEventListener("input", (e) => {
     const inp = e.target;
     if (!inp.classList.contains("ord-in")) return;
-    // 1 文字打つたびに Order に入れて、このブラウザにすぐバックアップ → 1.5 秒後にサーバーへ保存 (画面を閉じても消えない)
+    // 1 文字打つたびに Order に入れて、このブラウザにすぐバックアップ (画面を閉じても消えない)
+    // サーバーへの保存は、手を止めて 2 秒たったとき (打ち続けている間は待つ)
     const raw = inp.value.trim().replace(/[０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0));
-    if (raw === "" || /^\d+$/.test(raw)) { commitOrder(inp); return; }
+    if (raw === "" || /^\d+$/.test(raw)) {
+      commitOrder(inp);
+      clearTimeout(autoTimer);
+      autoTimer = setTimeout(autoSave, 2000);
+      return;
+    }
     planRefresh(inp.closest("tr").dataset.pk);
     clearTimeout(typeTimer);
     typeTimer = setTimeout(() => { if (inp.isConnected && inp.value !== inp.defaultValue) commitOrder(inp); }, 2000);
@@ -1616,6 +1622,49 @@
       return { k, q, it, code: it ? it.code : k.includes("|") ? "" : k, model: it ? it.model : k, color: it ? it.color : "", size: it ? it.size : "" };
     }).sort((a, b) => (a.it ? a.it._id : 1e9) - (b.it ? b.it._id : 1e9));
   }
+  // 発注書の式を計算する (SUM(範囲)・掛け算・足し算・引き算・NA() のみ。それ以外の式は結果を空にして Excel の再計算に任せる)
+  function recalcSheet(ws) {
+    const colNum = (L) => [...L].reduce((n, ch) => n * 26 + ch.charCodeAt(0) - 64, 0);
+    const memo = new Map(), busy = new Set();
+    const val = (addr) => {
+      const m = /^\$?([A-Z]+)\$?(\d+)$/.exec(addr);
+      if (!m) return NaN;
+      const cell = ws.getRow(+m[2]).getCell(colNum(m[1]));
+      const f = cell.formula;
+      if (f) return evalF(cell.address, f);
+      const v = cell.value;
+      return typeof v === "number" ? v : 0;
+    };
+    const evalF = (key, f) => {
+      if (memo.has(key)) return memo.get(key);
+      if (busy.has(key)) return NaN;
+      busy.add(key);
+      let r = NaN;
+      try {
+        const ex = String(f).replace(/^=/, "").replace(/\s+/g, "").toUpperCase()
+          .replace(/SUM\(\$?([A-Z]+)\$?(\d+):\$?([A-Z]+)\$?(\d+)\)/g, (_, c1, r1, c2, r2) => {
+            let t = 0;
+            for (let rr = +r1; rr <= +r2; rr++) for (let cc = colNum(c1); cc <= colNum(c2); cc++) {
+              const cell = ws.getRow(rr).getCell(cc);
+              t += cell.formula ? evalF(cell.address, cell.formula) || 0 : typeof cell.value === "number" ? cell.value : 0;
+            }
+            return `(${t})`;
+          })
+          .replace(/\$?[A-Z]+\$?\d+/g, (a) => `(${val(a)})`);
+        if (ex === "NA()") r = null;
+        else if (/^[\d.()+\-*/eE]+$/.test(ex)) r = Function(`"use strict";return (${ex});`)();
+      } catch (_) { r = NaN; }
+      busy.delete(key);
+      memo.set(key, r);
+      return r;
+    };
+    ws.eachRow({ includeEmpty: false }, (row) => row.eachCell({ includeEmpty: false }, (cell) => {
+      const f = cell.formula;
+      if (!f) return;
+      const r = evalF(cell.address, f);
+      cell.value = Number.isFinite(r) ? { formula: f, result: Math.round(r * 1e6) / 1e6 } : r === null ? { formula: f, result: { error: "#N/A" } } : { formula: f };
+    }));
+  }
   // メーカーに送る発注書 (public/po_form.xlsx = SS27 DISTRIBUTOR PO FORM) に、確定した数量を入れてダウンロードする
   // 行 = モデル (D 列)・カラー (F 列)・性別 (H 列)、列 = サイズ (2 行目の 35〜53)。ひな型に入っている数量は消してから入れる
   async function exportPoForm(h) {
@@ -1655,6 +1704,10 @@
         ms.getRow(1).font = { bold: true };
         miss.forEach((r) => ms.addRow([r.code, shortModel(r.model), r.color, r.size, r.q]));
       }
+      // 式のマス (Total quantity・Total amount・合計など) の計算結果を、入れた数量で計算し直して書き込む
+      // (ひな型には前の発注で計算した結果が残っていて、再計算しないアプリではその古い数が見えてしまうため)
+      recalcSheet(ws);
+      wb.calcProperties = { ...(wb.calcProperties || {}), fullCalcOnLoad: true }; // Excel では開いたときにも再計算
       const out = await wb.xlsx.writeBuffer();
       const a = document.createElement("a");
       a.href = URL.createObjectURL(new Blob([out], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
