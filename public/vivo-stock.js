@@ -15,25 +15,18 @@
     const shown = data.stores.map((_, i) => i).filter((i) => data.items.some((it) => it.qty[i]));
     const total = (it) => it.qty.reduce((a, v) => a + (v || 0), 0);
     const rows = data.items.filter((it) => (!q || `${it.code} ${it.model} ${it.color} ${it.size}`.toLowerCase().includes(q)) && (!onlyStock || total(it) > 0));
-    const ncol = 3 + shown.length + 1;
     const pending = data.stores.filter((_, i) => !data.counted[i]);
-    $("vThead").innerHTML = `
-      <tr class="title"><th colspan="${ncol}">${esc(data.title)}</th></tr>
-      <tr class="asof"><th colspan="${ncol}">${esc(data.zortAt ? t("zort.asof", { t: `Zort ${data.zortAt}` }) : data.counts.map((c) => `${c.store}: ${c.date}`).join(" / "))}</th></tr>
-      <tr class="h1"><th>Model</th><th>Color</th><th>Size</th>
-        ${shown.map((i) => `<th title="${esc(data.stores[i])}">${esc(short(data.stores[i]))}</th>`).join("")}<th>Total</th></tr>`;
-    const body = rows.map((it) => `<tr><td>${esc(it.model.replace(/^Vivo\s+/, ""))}</td><td>${esc(it.color)}</td><td class="c">${esc(it.size)}</td>
-      ${shown.map((i) => `<td class="c${it.qty[i] < 0 ? " neg" : ""}"${it.qty[i] < 0 ? ` title="${esc(t("vivo.negTitle"))}"` : ""}>${nf(it.qty[i] ?? 0)}</td>`).join("")}
-      <td class="c b">${nf(total(it))}</td></tr>`);
-    if (!rows.length) body.push(`<tr><td class="empty" colspan="${ncol}">${esc(t("empty"))}</td></tr>`);
-    const sum = (i) => rows.reduce((a, it) => a + (it.qty[i] || 0), 0);
-    body.push(`<tr class="total"><td>Total</td><td></td><td></td>${shown.map((i) => `<td class="c">${nf(sum(i))}</td>`).join("")}<td class="c">${nf(rows.reduce((a, it) => a + total(it), 0))}</td></tr>`);
-    $("vTbody").innerHTML = body.join("");
+    window.OTHER_SHEET.render({
+      thead: $("vThead"), tbody: $("vTbody"), title: data.title, stores: data.stores, shown, rows,
+      asof: data.zortAt ? t("zort.asof", { t: `Zort ${data.zortAt}` }) : data.counts.map((c) => `${c.store}: ${c.date}`).join(" / "),
+      modelOf: (it) => it.model.replace(/^Vivo\s+/, ""),
+    });
     $("vCount").textContent = rows.length === data.items.length ? t("count.all", { n: data.items.length }) : t("count.of", { n: data.items.length, m: rows.length });
     const negs = data.items.filter((it) => it.qty.some((v) => v < 0));
     $("vNote").textContent = data.zortAt ? t("vivo.noteZort") + (negs.length ? " " + t("vivo.neg", { n: negs.length, q: -negs.reduce((a, it) => a + it.qty.reduce((b, v) => b + (v < 0 ? v : 0), 0), 0) }) : "") : t("vivo.note", { done: data.counts.map((c) => `${c.store}（${c.date}）`).join("、"), pending: pending.join(", ") });
   }
 
+  window.OTHER_SHEET.salesReady.then(render);
   ["vq", "vStock"].forEach((id) => $(id).addEventListener(id === "vq" ? "input" : "change", render));
   window.I18N.onChange(render);
   // Zort の在庫があれば、対応する拠点の数を Zort の数に置き換える
@@ -76,6 +69,16 @@
   const show = (z) => {
     const d = JSON.parse(JSON.stringify(base));
     applyZort(d, z);
+    // 同じ モデル・カラー・サイズ の行 (品番の書き方違い) は 1 行にまとめる
+    const dk = (it) => `${it.model}|${it.color}|${it.size}`.toLowerCase().replace(/[^a-z0-9|]/g, "");
+    const firstOf = new Map();
+    d.items = d.items.filter((it) => {
+      const m = firstOf.get(dk(it));
+      if (!m) { firstOf.set(dk(it), it); return true; }
+      m.qty = m.qty.map((q, i) => (q == null && it.qty[i] == null ? null : (q || 0) + (it.qty[i] || 0)));
+      if (it.code && it.code !== m.code) m.codes = [...(m.codes || []), it.code];
+      return false;
+    });
     // 並び: モデル (A→Z) → 性別 (M → W …) → カラー (最初に出てきた順) → サイズ (小さい順)
     const mk = (it) => it.model.replace(/^Vivo\s+/i, "").trim().toLowerCase();
     const sk = (s) => { const m = /^([A-Za-z]*)\s*(\d+(?:\.\d+)?)/.exec(String(s)); return m ? [m[1].toUpperCase(), +m[2]] : [String(s), 0]; };

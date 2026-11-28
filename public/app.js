@@ -94,6 +94,8 @@
     const w = fitW;
     const fit = w > avail ? Math.floor(((avail - 2) / w) * 10000) / 10000 : 1;
     if (fit !== lastFit) { table.style.setProperty("--fit", fit); lastFit = fit; }
+    // Vivo・Socks・Coolcore の表も VFF と同じ倍率で表示する
+    document.querySelectorAll("#vivoTable, #socksTable, #coolcoreTable").forEach((x) => x.style.setProperty("--fit", lastFit));
   }
   window.addEventListener("resize", fitTable);
 

@@ -69,23 +69,15 @@
       // 在庫がある拠点 (マイナスを含む) だけを列にする
       const shown = data.stores.map((_, i) => i).filter((i) => data.items.some((it) => it.qty[i]));
       const rows = data.items.filter((it) => (!q || `${it.code} ${it.model} ${it.color} ${it.size}`.toLowerCase().includes(q)) && (!onlyStock || total(it) > 0));
-      const ncol = 3 + shown.length + 1;
-      $(`${p}Thead`).innerHTML = `
-        <tr class="title"><th colspan="${ncol}">${esc(t(`${cfg.key}.sheetTitle`))}</th></tr>
-        <tr class="asof"><th colspan="${ncol}">${esc(t("zort.asof", { t: `Zort ${data.zortAt}` }))}</th></tr>
-        <tr class="h1"><th>Model</th><th>Color</th><th>Size</th>
-          ${shown.map((i) => `<th title="${esc(data.stores[i])}">${esc(short(data.stores[i]))}</th>`).join("")}<th>Total</th></tr>`;
-      const body = rows.map((it) => `<tr><td title="${esc(it.code)}">${esc(it.model.replace(/^VFF\s+/, ""))}</td><td>${esc(it.color)}</td><td class="c">${esc(it.size)}</td>
-        ${shown.map((i) => `<td class="c${it.qty[i] < 0 ? " neg" : ""}"${it.qty[i] < 0 ? ` title="${esc(t("vivo.negTitle"))}"` : ""}>${nf(it.qty[i])}</td>`).join("")}
-        <td class="c b">${nf(total(it))}</td></tr>`);
-      if (!rows.length) body.push(`<tr><td class="empty" colspan="${ncol}">${esc(t("empty"))}</td></tr>`);
-      const sum = (i) => rows.reduce((a, it) => a + (it.qty[i] || 0), 0);
-      body.push(`<tr class="total"><td>Total</td><td></td><td></td>${shown.map((i) => `<td class="c">${nf(sum(i))}</td>`).join("")}<td class="c">${nf(rows.reduce((a, it) => a + total(it), 0))}</td></tr>`);
-      $(`${p}Tbody`).innerHTML = body.join("");
+      window.OTHER_SHEET.render({
+        thead: $(`${p}Thead`), tbody: $(`${p}Tbody`), title: t(`${cfg.key}.sheetTitle`), stores: data.stores, shown, rows,
+        asof: t("zort.asof", { t: `Zort ${data.zortAt}` }), modelOf: (it) => it.model.replace(/^VFF\s+/, ""),
+      });
       $(`${p}Count`).textContent = rows.length === data.items.length ? t("count.all", { n: data.items.length }) : t("count.of", { n: data.items.length, m: rows.length });
       $(`${p}Note`).textContent = t(`${cfg.key}.note`);
     }
 
+    window.OTHER_SHEET.salesReady.then(() => data && render());
     [`${cfg.prefix}q`, `${cfg.prefix}Stock`].forEach((id, n) => $(id).addEventListener(n === 0 ? "input" : "change", render));
     window.I18N.onChange(render);
     let shownAt = null;

@@ -454,11 +454,13 @@ body.selecting, body.selecting * { user-select: none; -webkit-user-select: none;
 .recv-done li em { font-style: normal; font-weight: 700; }
 
 /* Vivo 在庫タブ */
-.vivo-sheet table { width: auto; }
-.vivo-sheet th, .vivo-sheet td { min-width: 70px; }
-.vivo-sheet td:first-child { min-width: 190px; }
-.vivo-sheet td:nth-child(2) { min-width: 120px; }
+#zeroTable { width: auto; }
+#zeroTable th, #zeroTable td { min-width: 70px; }
+#zeroTable td:first-child { min-width: 190px; }
+#zeroTable td:nth-child(2) { min-width: 120px; }
+.vivo-sheet td:first-child, .vivo-sheet td:nth-child(2) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .vivo-sheet thead tr.h1 th { top: calc(var(--title-h) + var(--row-h)); }
+.vivo-sheet thead tr.h1 th.grp.ct { white-space: normal; line-height: 1.1; }
 
 /* 在庫一覧の VFF / Vivo 切り替え */
 .brand-switch { display: inline-flex; margin-right: 10px; border: 1px solid var(--line-strong, #ccc); border-radius: 999px; overflow: hidden; vertical-align: middle; }
