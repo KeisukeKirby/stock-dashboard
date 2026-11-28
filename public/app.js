@@ -944,7 +944,7 @@
       // モデル・性別・カラーのまとまりの先頭に「発注数量」の入力行
       const planRow = (it) => `<tr class="plan" data-pk="${esc(planKey(it))}"><td class="chk"></td><td>${esc(shortModel(it.model))}</td><td title="${esc(it.color)}">${esc(it.color)}</td><td class="c plan-lb">${esc(t("plan.label"))}</td>
         ${segs(() => infoCols().map(() => `<td class="info"></td>`).join(""), (g) => colKinds(g).map(() => `<td class="${gcls(g).trim()}"></td>`).join(""),
-          () => `<td class="c ord plan-cell"><input class="plan-in" type="text" inputmode="numeric" autocomplete="off" placeholder="${esc(t("plan.ph"))}" title="${esc(t("plan.title"))}" value="${planQty[planKey(it)] || ""}" aria-label="${esc(`${it.model} ${it.color}`)} ${esc(t("plan.label"))}"></td><td class="c plan-tot b"></td><td class="c plan-pct"></td>`)}</tr>`;
+          () => `<td class="c ord plan-cell"><input class="plan-in" type="text" inputmode="numeric" autocomplete="off" placeholder="${esc(t("plan.ph"))}" title="${esc(t("plan.title"))}" value="${planQty[planKey(it)] || ""}" aria-label="${esc(`${it.model} ${it.color}`)} ${esc(t("plan.label"))}"><button type="button" class="plan-ok" title="${esc(t("plan.title"))}">OK</button></td><td class="c plan-tot b"></td><td class="c plan-pct"></td>`)}</tr>`;
       items.forEach((it, n) => {
         if (n === 0 || planKey(items[n - 1]) !== planKey(it)) out.push(planRow(it));
         out.push(rows[n]);
@@ -1408,15 +1408,23 @@
     const inp = e.target;
     if (!inp.classList.contains("plan-in") || !(e.key === "Enter" || e.key === "Tab")) return;
     e.preventDefault();
+    planApply(inp);
+  });
+  // OK ボタン = Tab / Enter と同じ
+  $("tbody").addEventListener("click", (e) => {
+    const b = e.target.closest(".plan-ok");
+    if (b) planApply(b.parentElement.querySelector(".plan-in"));
+  });
+  function planApply(inp) {
     const pk = inp.closest("tr").dataset.pk;
     const T = parseQ(inp.value);
     if (T) planQty[pk] = T; else delete planQty[pk];
     savePlanQty();
     if (T) allocate(pk, T);
-    // Tab / Enter → このまとまりの最初のサイズの Order へ (数を直せる)
+    // Tab / Enter / OK → このまとまりの最初のサイズの Order へ (数を直せる)
     const first = $("tbody").querySelector(`tr[data-id][data-pk="${CSS.escape(pk)}"] .ord-in`);
     if (first) first.focus();
-  });
+  }
   $("tbody").addEventListener("focusin", (e) => { if (e.target.classList.contains("plan-in")) e.target.select(); });
   const saveTol = () => {
     tolPct = Math.max(0, parseFloat($("tolPct").value) || 0);
@@ -1558,6 +1566,7 @@
       ordBusy = false;
       applyOrders();
       openOrdHistory();
+      if (ordHistory[0]) exportPoForm(ordHistory[0]); // 確定した数量を入れたメーカー向けの Order Sheet をダウンロード
     } catch (e) {
       console.error(e);
       ordErr = true;
@@ -1576,13 +1585,66 @@
       return { k, q, it, code: it ? it.code : k.includes("|") ? "" : k, model: it ? it.model : k, color: it ? it.color : "", size: it ? it.size : "" };
     }).sort((a, b) => (a.it ? a.it._id : 1e9) - (b.it ? b.it._id : 1e9));
   }
+  // メーカーに送る発注書 (public/po_form.xlsx = SS27 DISTRIBUTOR PO FORM) に、確定した数量を入れてダウンロードする
+  // 行 = モデル (D 列)・カラー (F 列)・性別 (H 列)、列 = サイズ (2 行目の 35〜53)。ひな型に入っている数量は消してから入れる
+  async function exportPoForm(h) {
+    if (!h) return;
+    try {
+      const ExcelJS = await loadExcelJs();
+      const buf = await (await fetch(`po_form.xlsx?t=${Date.now()}`, { cache: "no-store" })).arrayBuffer();
+      const wb = new ExcelJS.Workbook();
+      await wb.xlsx.load(buf);
+      const ws = wb.worksheets[0];
+      const nk = (x) => String(x == null ? "" : x).toLowerCase().replace(/[^a-z0-9]/g, "");
+      const sizeCol = {};
+      ws.getRow(2).eachCell((c, col) => { if (typeof c.value === "number") sizeCol[c.value] = col; });
+      const cols = Object.values(sizeCol);
+      const rowOf = new Map();
+      ws.eachRow((row, r) => {
+        if (r < 3) return;
+        const model = row.getCell(4).value, color = row.getCell(6).value, g = row.getCell(8).value;
+        if (!model || !g || typeof model !== "string") return;
+        cols.forEach((c) => { const cell = row.getCell(c); if (typeof cell.value === "number") cell.value = null; }); // 前の発注数を消す
+        const k = `${nk(model)}|${nk(typeof color === "string" ? color : "")}|${String(g).trim().toUpperCase()}`;
+        if (!rowOf.has(k)) rowOf.set(k, r);
+      });
+      const miss = [];
+      for (const rr of ordRows(h.items || {})) {
+        const m = /^([MWU])\s*(\d+(?:\.\d+)?)$/.exec(String(rr.size).trim());
+        const r = m && rowOf.get(`${nk(shortModel(rr.model))}|${nk(rr.color)}|${m[1]}`);
+        const c = m && sizeCol[+m[2]];
+        if (!r || !c) { miss.push(rr); continue; }
+        const cell = ws.getRow(r).getCell(c);
+        cell.value = (typeof cell.value === "number" ? cell.value : 0) + rr.q;
+      }
+      // 発注書にない商品 (モデル・カラーが発注書の行にない) は別のシートに出す
+      if (miss.length) {
+        const ms = wb.addWorksheet("Not in form");
+        ms.columns = [{ header: "Code", width: 22 }, { header: "Model", width: 24 }, { header: "Color", width: 22 }, { header: "Size", width: 8 }, { header: "Order", width: 8 }];
+        ms.getRow(1).font = { bold: true };
+        miss.forEach((r) => ms.addRow([r.code, shortModel(r.model), r.color, r.size, r.q]));
+      }
+      const out = await wb.xlsx.writeBuffer();
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([out], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
+      const d = new Date(h.at);
+      const pad = (n) => String(n).padStart(2, "0");
+      a.download = `PO_FORM_${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}.xlsx`;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+      if (miss.length) alert(t("ord.poMiss", { n: fmt(miss.length), q: fmt(sum(miss.map((r) => r.q))) }));
+    } catch (err) {
+      console.error(err);
+      alert(t("xlsx.fail"));
+    }
+  }
   function renderOrdHistory() {
     if (!ordHistory.length) { $("ordBody").innerHTML = `<p class="recv-empty">${esc(t("ord.noHistory"))}</p>`; return; }
     $("ordBody").innerHTML = ordHistory.map((h, n) => {
       const rows = ordRows(h.items || {});
       return `<details class="ord-h-item"${n === ordOpenAt ? " open" : ""} data-n="${n}">
         <summary><b>${esc(fmtAt(h.at))}</b><span>${esc(t("ord.histSum", { n: fmt(rows.length), q: fmt(h.total || 0) }))}</span>
-          <button type="button" class="ghost small" data-csv="${n}">CSV</button></summary>
+          <button type="button" class="ghost small" data-csv="${n}">CSV</button><button type="button" class="ghost small" data-poform="${n}">Order Sheet</button></summary>
         <table class="ord-list"><thead><tr><th>Model</th><th>Color</th><th>Size</th><th>Order</th></tr></thead><tbody>
           ${rows.map((r) => `<tr><td title="${esc(r.code)}">${esc(shortModel(r.model))}</td><td>${esc(r.color)}</td><td class="c">${esc(r.size)}</td><td class="c b">${fmt(r.q)}</td></tr>`).join("")}
         </tbody></table></details>`;
@@ -1594,6 +1656,8 @@
   }
   $("ordHistBtn").addEventListener("click", () => { ordOpenAt = 0; openOrdHistory(); });
   odlg.addEventListener("click", (e) => {
+    const pf = e.target.closest("[data-poform]");
+    if (pf) { e.preventDefault(); exportPoForm(ordHistory[+pf.dataset.poform]); return; }
     const b = e.target.closest("[data-csv]");
     if (!b) return;
     e.preventDefault();

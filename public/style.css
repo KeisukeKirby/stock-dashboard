@@ -678,3 +678,7 @@ body.drawer-open .ord-fab { right: 400px; }
 .sheet .plan-in:focus { outline: 2px solid #ca8a04; outline-offset: 0; }
 .plan-tol { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #374151; margin-left: 12px; }
 .plan-tol input { width: 52px; padding: 2px 4px; border: 1px solid #d1d5db; border-radius: 6px; margin: 0 2px; }
+.sheet tr.plan td.plan-cell { white-space: nowrap; }
+.sheet tr.plan .plan-in { width: calc(100% - 30px); }
+.sheet .plan-ok { width: 26px; height: calc(var(--row-h) - 4px); margin-left: 2px; border: 1px solid #ca8a04; border-radius: 5px; background: #ca8a04; color: #fff; font-size: 8pt; font-weight: 700; padding: 0; cursor: pointer; vertical-align: top; }
+.sheet .plan-ok:hover { background: #a16207; }
