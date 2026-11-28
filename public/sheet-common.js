@@ -18,15 +18,38 @@
   // Zort の受注から数えた分 (/api/zort-sales。2026/1 から今月まで) が届いたら置き換えて描き直す
   let sales = null;
   const listeners = [];
-  const salesReady = fetch(`other_sales.json?t=${Date.now()}`, { cache: "no-store" })
-    .then((r) => (r.ok ? r.json() : null)).catch(() => null)
-    .then((j) => { if (!sales) sales = j; return j; });
-  fetch(`api/zort-sales?t=${Date.now()}`, { cache: "no-store" })
-    .then((r) => (r.ok ? r.json() : null)).catch(() => null)
-    .then((j) => {
+  // 崩れた品番を読み替える: "VV0006(W39,OSD)" → "VV0006(OSD,W39)"、"CC0015(PK)(M)" → "CC0015(PK,M)"
+  const isSz = (x) => /^([MWU]?\d+(\.\d+)?|XXS|XS|S|M|L|XL|XXL|\d+-\d+)$/i.test(String(x).trim());
+  const normCode = (c) => {
+    let m = /^([A-Z]+\d+)\(([^()]+)\)\(([^()]+)\)$/.exec(c);
+    if (m) return `${m[1]}(${m[2]},${m[3]})`;
+    m = /^([A-Z]+\d+)\(([^(),]+),([^(),]+)\)$/.exec(c);
+    if (m && isSz(m[2]) && !isSz(m[3])) return `${m[1]}(${m[3]},${m[2]})`;
+    return c;
+  };
+  const normSales = (map) => {
+    const out = {};
+    Object.entries(map || {}).forEach(([k, q]) => { const c = normCode(k.trim()); out[c] = (out[c] || 0) + q; });
+    return out;
+  };
+  // Central CL・Siam Discovery の販売 (public/dept_sales.json。scripts/dept_sales.py で百貨店の売上表から数えた分) を足す
+  let dept = null;
+  const deptReady = fetch(`dept_sales.json?t=${Date.now()}`, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null).then((j) => { dept = j; });
+  const merged = (j) => {
+    if (!j) return j;
+    const out = { ...j, sales: normSales(j.sales) };
+    if (dept && dept.stores) Object.values(dept.stores).forEach((st) => Object.entries(st.sales || {}).forEach(([k, q]) => { out.sales[k] = (out.sales[k] || 0) + q; }));
+    return out;
+  };
+  const salesReady = Promise.all([fetch(`other_sales.json?t=${Date.now()}`, { cache: "no-store" })
+    .then((r) => (r.ok ? r.json() : null)).catch(() => null), deptReady])
+    .then(([j]) => { if (!sales) sales = merged(j); return sales; });
+  Promise.all([fetch(`api/zort-sales?t=${Date.now()}`, { cache: "no-store" })
+    .then((r) => (r.ok ? r.json() : null)).catch(() => null), deptReady])
+    .then(([j]) => {
       if (!j || !j.months || !j.months.length) return;
       if (sales && sales.months && j.months.length < sales.months.length) return; // 古いファイルより短い期間なら使わない
-      sales = j;
+      sales = merged(j);
       listeners.forEach((f) => f());
     });
 
@@ -38,7 +61,7 @@
   const salesOf = (it) => {
     if (!sales) return null;
     const codes = [it.code, ...(it.codes || [])].filter(Boolean);
-    return codes.reduce((a, c) => a + (sales.sales[c] || 0), 0);
+    return [...new Set(codes.map(normCode))].reduce((a, c) => a + (sales.sales[c] || 0), 0);
   };
 
   // 表を描く。rows: [{ code, model, color, size, qty: [拠点ごと] }]、shown: 表示する拠点の番号
