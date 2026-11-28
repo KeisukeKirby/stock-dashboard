@@ -65,7 +65,11 @@
             k = stores.length - 1;
           }
           // 同じ委託先の Zort の列 (例: EDV の Central Chidlom → "Central CL (Department) (EDV)") は二重にならないよう 0 にする
-          const base = (n) => n.replace(/\s*\((EDV|BFT)\)$/, "").replace(/\s+/g, "").toLowerCase();
+          const base = (n) => {
+            const x = n.replace(/\s*\((EDV|BFT)\)$/, "").toLowerCase().replace(/[^a-z0-9]/g, "").replace(/department$/, "");
+            return /chidlom|^centralcl/.test(x) ? "centralcl" : /latphrao|lardprao/.test(x) ? "centrallatphrao" : /centralworld/.test(x) ? "centralworld"
+              : /highland/.test(x) ? "highlander" : x;
+          };
           stores.forEach((n, j) => { if (j !== k && base(n) === base(store)) byCode.forEach((it) => (it.qty[j] = 0)); });
           byCode.forEach((it) => (it.qty[k] = 0));
           for (const [sku, q] of mine) add(sku).qty[k] = q;

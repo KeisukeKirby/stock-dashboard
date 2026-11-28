@@ -5,7 +5,7 @@
   const t = (k, p) => window.I18N.t(k, p);
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const nf = (v) => (v == null ? "" : v === 0 ? "-" : v < 0 ? `(${Math.abs(v).toLocaleString("en-US")})` : v.toLocaleString("en-US"));
-  const short = (g) => String(g).replace(" (Department)", " (Dept.)");
+  const short = (g) => String(g).replace(" (Department)", " (Dept.)").replace("คลังสินค้าหลัก (EDV)", "EDV Main");
   const MAIN = ["Office", "Paradise Park", "K Village", "Central CL (Department)", "Siam Discovery", "Central LP"];
   const locRank = (name) => {
     const i = MAIN.indexOf(name);
