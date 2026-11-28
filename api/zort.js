@@ -22,7 +22,11 @@ const SKIP = /^(รอ|ของเสีย|สินค้าตัวอย�
 // アカウントごとに読む倉庫 (ここにないアカウントは全倉庫)。EDV は K Village と Central LP だけ使う
 // アカウントごとに読まない倉庫。EDV の本倉庫は大きなマイナスの仮の数なので読まない (EDV のそのほかの倉庫は全部読む)
 const ACC_SKIP = { EDV: /^คลังสินค้าหลัก$/ };
-const skipWh = (acc, name) => SKIP.test(name.trim()) || (ACC_SKIP[acc.name.toUpperCase()] || /$^/).test(name.trim());
+const accSkip = (acc, name) => (ACC_SKIP[acc.name.toUpperCase()] || /$^/).test(name.trim());
+const skipWh = (acc, name) => SKIP.test(name.trim());
+// ACC_SKIP の倉庫 (EDV の本倉庫) は VFF・Vivo の数が仮のマイナスなので読まないが、
+// Coolcore・Oleno・Barefoot Japan など VFF・Vivo 以外の品番は本当の在庫なので、それだけ読む
+const PARTIAL_RE = /^(VFF|VV)\d/;
 const norm = (s) => String(s || "").toLowerCase().replace(/[\s._\-/()]/g, "");
 
 function accounts() {
@@ -97,7 +101,8 @@ async function kv(commands) {
   return out.map((x) => x.result);
 }
 // v2: EDV の全倉庫と商品マスタ (在庫 0 の商品名) を含む形式
-const SNAP = "zort:v2:snapshot", SNAP_AT = "zort:v2:fetchedAt", LOCK = "zort:v2:lock";
+// v3: Coolcore の CP と、EDV 本倉庫の VFF・Vivo 以外の品番を含む
+const SNAP = "zort:v3:snapshot", SNAP_AT = "zort:v3:fetchedAt", LOCK = "zort:v3:lock";
 const MAX_AGE = 10 * 60 * 1000; // 10 分ごとに Zort から読み直す
 
 async function readZort(accs) {
@@ -115,7 +120,9 @@ async function readZort(accs) {
       const worker = async () => {
         while (next < whs.length) {
           const i = next++;
-          warehouses[i] = { ...whs[i], stock: await warehouseStock(acc, whs[i], names) };
+          const st = await warehouseStock(acc, whs[i], names);
+          if (accSkip(acc, whs[i].name)) for (const k of Object.keys(st)) if (PARTIAL_RE.test(k)) delete st[k];
+          warehouses[i] = { ...whs[i], stock: st };
         }
       };
       await Promise.all(Array.from({ length: Math.min(6, whs.length) }, worker));
@@ -142,8 +149,9 @@ async function summary(res, accs) {
       const tot = (re) => Object.entries(st).filter(([k]) => re.test(k)).reduce((a, [, q]) => a + q, 0);
       return {
         account: acc.name, code: w.code, name: w.name,
-        used: !skipWh(acc, w.name),
+        used: !skipWh(acc, w.name) && (!accSkip(acc, w.name) ? "all" : "non-VFF/Vivo only"),
         vff: tot(/^VFF/), vivo: tot(/^VV/), skus: Object.keys(st).length,
+        byPrefix: Object.entries(st).reduce((a, [k, q]) => { const p = (k.match(/^[A-Z]+/) || ["?"])[0]; a[p] = (a[p] || 0) + q; return a; }, {}),
         negative: Object.values(st).filter((q) => q < 0).length,
       };
     }));
