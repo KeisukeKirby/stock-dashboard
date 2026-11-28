@@ -1811,6 +1811,23 @@
   $("drawerSave").addEventListener("click", () => $("saveOrders").click());
   $("drawerConfirm").addEventListener("click", () => $("confirmOrders").click());
   $("drawerHist").addEventListener("click", () => $("ordHistBtn").click());
+  // Clear Order: 確認 (Yes / No) のあと、入力中の Order をすべて消す (自動保存で共有の下書きからも消える)
+  $("drawerClear").addEventListener("click", () => {
+    const n = Object.keys(orders).length;
+    if (!n) { alert(t("drawer.empty")); return; }
+    $("clearSub").textContent = t("drawer.clearSub", { n: fmt(n), q: fmt(sum(Object.values(orders))) });
+    $("clearDlg").returnValue = "";
+    $("clearDlg").showModal();
+  });
+  $("clearDlg").addEventListener("close", () => {
+    if ($("clearDlg").returnValue !== "yes") return;
+    blurOrder();
+    orders = {};
+    Object.keys(planQty).forEach((k) => delete planQty[k]);
+    savePlanQty();
+    $("tbody").querySelectorAll(".plan-in").forEach((x) => (x.value = ""));
+    applyOrders();
+  });
   // Order 下書きを Excel に出力 (Model・Color・Size・品番・Order 数、参考に Company Total Stock)
   $("drawerXlsx").addEventListener("click", async () => {
     const btn = $("drawerXlsx");

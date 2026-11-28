@@ -682,3 +682,15 @@ body.drawer-open .ord-fab { right: 400px; }
 .sheet tr.plan .plan-in { width: calc(100% - 30px); }
 .sheet .plan-ok { width: 26px; height: calc(var(--row-h) - 4px); margin-left: 2px; border: 1px solid #ca8a04; border-radius: 5px; background: #ca8a04; color: #fff; font-size: 8pt; font-weight: 700; padding: 0; cursor: pointer; vertical-align: top; }
 .sheet .plan-ok:hover { background: #a16207; }
+
+/* Clear Order と確認のポップ */
+.drawer-clear { border: 1px solid #fecaca; background: #fff; color: #b91c1c; border-radius: 999px; padding: 6px 12px; font-weight: 600; cursor: pointer; }
+.drawer-clear:hover { background: #fef2f2; }
+.clear-dlg { border: 0; border-radius: 14px; padding: 22px 24px; max-width: 360px; box-shadow: 0 20px 50px rgba(0,0,0,.25); }
+.clear-dlg::backdrop { background: rgba(15, 23, 42, .45); }
+.clear-msg { font-size: 17px; font-weight: 700; margin: 0 0 8px; color: #111827; }
+.clear-sub { font-size: 13px; color: #4b5563; margin: 0 0 18px; }
+.clear-btns { display: flex; justify-content: flex-end; gap: 10px; }
+.clear-btns button { min-width: 84px; padding: 8px 14px; border-radius: 999px; font-weight: 700; cursor: pointer; }
+.clear-btns .danger { background: #dc2626; color: #fff; border: 1px solid #dc2626; }
+.clear-btns .danger:hover { background: #b91c1c; }
