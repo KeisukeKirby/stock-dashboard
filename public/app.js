@@ -2289,6 +2289,30 @@ if (RETURNS_ON) {
         it._kl = (it._kl || 0) + x.kl;
       }
     }
+    // 同じ モデル・カラー・サイズ の行 (品番の書き方違い: IV/G と IV/GN、BK と BK26、マレーシア側の品番など) は 1 行にまとめる
+    {
+      const nk = (x) => String(x || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+      const dkey = (it) => `${nk(shortModel(it.model))}|${nk(it.color)}|${nk(it.size)}`;
+      const addArr = (a, b) => (a || b ? (a || b).map((_, i) => (a && a[i] != null) || (b && b[i] != null) ? ((a && a[i]) || 0) + ((b && b[i]) || 0) : null) : a);
+      const first = new Map();
+      d.items = d.items.filter((it) => {
+        const k = dkey(it);
+        const m = first.get(k);
+        if (!m) { first.set(k, it); return true; }
+        if (!m.code && it.code) m.code = it.code;
+        if (it.code && it.code !== m.code) m._codes = [...(m._codes || []), it.code];
+        m.qty = addArr(m.qty, it.qty);
+        m.ret = addArr(m.ret, it.ret);
+        m.rate = addArr(m.rate, it.rate);
+        if (it.rateEvent != null) m.rateEvent = (m.rateEvent || 0) + it.rateEvent;
+        if (it.totalQty != null) m.totalQty = (m.totalQty || 0) + it.totalQty;
+        if (it.totalRet != null) m.totalRet = (m.totalRet || 0) + it.totalRet;
+        if (it._po) { m._po = (m._po || 0) + it._po; m._poLines = [...(m._poLines || []), ...(it._poLines || [])]; }
+        if (it._jb) m._jb = (m._jb || 0) + it._jb;
+        if (it._kl) m._kl = (m._kl || 0) + it._kl;
+        return false;
+      });
+    }
     // 並び: モデル → 性別 (M → W) → カラー (最初に出てきた順。品番のカラー部分で分ける) → サイズ (小さい順)
     const mkey = (it) => shortModel(it.model).toLowerCase();
     const ckey = (it) => (it.code ? it.code.split(",")[0] : it.color);
@@ -2321,7 +2345,7 @@ if (RETURNS_ON) {
     groups = d.officeIndex != null ? [...d.stores, "Store Total", ...(PO ? ["Outstanding PO"] : []), ...(MY ? ["JB", "KL"] : []), "Company Total Stock"] : [...d.stores, "Total"];
     d.items.forEach((it, n) => {
       it._id = n;
-      it._search = `${it.code} ${it.model} ${it.color} ${it.size}`.toLowerCase();
+      it._search = `${it.code} ${(it._codes || []).join(" ")} ${it.model} ${it.color} ${it.size}`.toLowerCase();
       recompute(it);
     });
     d._grand = sum(d.items.map((it) => it._tq));
