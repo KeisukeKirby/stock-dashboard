@@ -788,7 +788,8 @@
     const out = Object.fromEntries((data.counts || []).filter((c) => c.label).map((c) => [data.stores.indexOf(c.store), c.label]));
     // Zort の数を使う拠点には棚卸の日付を出さない (表の上に Zort の読み込み時刻をまとめて出す)
     if (data.zort) data.zort.locs.forEach((l) => delete out[data.stores.indexOf(l)]);
-    if (myIdx() >= 0 && MY.asof) { const a = String(MY.asof).replace(/^\d{4}-(\d\d)-(\d\d)/, (_, m, d) => `${+m}/${+d}`); out[myIdx()] = `MY ${a.split(" ")[0]}`; out[myIdx() + 1] = `MY ${a.split(" ")[0]}`; }
+    // マレーシアの在庫の日付 = マレーシアのダッシュボードと同じ「販売を差し引いた最終日」(salesUntil)。なければ在庫履歴の日付
+    if (myIdx() >= 0 && (MY.salesUntil || MY.asof)) { const a = String(MY.salesUntil || MY.asof).replace(/^\d{4}-(\d\d)-(\d\d)/, (_, m, d) => `${+m}/${+d}`); out[myIdx()] = `MY ${a.split(" ")[0]}`; out[myIdx() + 1] = `MY ${a.split(" ")[0]}`; }
     return out;
   };
   // As of の行: ラベルのある列グループの上だけ別のマスにし、残りは As of の文言のマスにまとめる
