@@ -664,3 +664,17 @@ body.drawer-open .ord-fab { right: 400px; }
 .sheet tr.sub td.info { background: #e2e8f0; color: #0f172a; }
 .sheet tr.sub.sz td { background: #f8fafc; font-weight: 400; color: #475569; border-bottom: 1px solid #e2e8f0; }
 .sheet tr.sub.sz td.info { background: #eef2f7; color: #0f172a; }
+
+/* 発注の計画: 発注後の在庫・比率の列と、モデル・性別・カラーごとの発注数量の行 */
+.sheet thead tr.h1 th.plan-h { background: #ecfdf5; color: #065f46; font-size: 8.5pt; white-space: normal; line-height: 1.1; }
+.sheet td.plan-tot { background: #f7fdf9; color: #065f46; }
+.sheet td.plan-pct { background: #f7fdf9; font-size: 8.5pt; color: #6b7280; white-space: nowrap; }
+.sheet td.plan-pct.ok { color: #15803d; font-weight: 700; }
+.sheet td.plan-pct.ng { color: #dc2626; font-weight: 700; }
+.sheet tr.plan td { background: #fefce8; border-top: 1.5px solid #ca8a04; font-weight: 700; color: #713f12; }
+.sheet tr.plan td.plan-lb { font-size: 8.5pt; }
+.sheet tr.plan td.plan-cell { background: #fef9c3; }
+.sheet .plan-in { width: 100%; height: calc(var(--row-h) - 4px); border: 1.5px solid #ca8a04; border-radius: 5px; text-align: center; font-weight: 700; background: #fff; color: #713f12; }
+.sheet .plan-in:focus { outline: 2px solid #ca8a04; outline-offset: 0; }
+.plan-tol { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #374151; margin-left: 12px; }
+.plan-tol input { width: 52px; padding: 2px 4px; border: 1px solid #d1d5db; border-radius: 6px; margin: 0 2px; }

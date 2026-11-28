@@ -15,7 +15,7 @@
   // Excel の列幅 (文字数) → px : width * 7 + 5
   const COL_W = { code: 23.63, model: 15.27, color: 16.63, size: 10.91, qty: 12.36, ret: 11.18, rate: 8.5, mos: 8.5, sales: 10 }; // Excel 出力用
   // 画面の表は見やすさ優先で Code 列を隠し、各列を狭くする
-  const VIEW_W = { model: 12.5, color: 14.5, size: 4.6, qty: 6, totQty: 6.6, myQty: 4.4, ord: 9.6, chk: 3, info: 6.4, infoS: 4.8, ret: 5.6, rate: 5, mos: 5, sales: 7 };
+  const VIEW_W = { model: 12.5, color: 14.5, size: 4.6, qty: 6, totQty: 6.6, myQty: 4.4, plan: 7.5, planPct: 10.5, ord: 9.6, chk: 3, info: 6.4, infoS: 4.8, ret: 5.6, rate: 5, mos: 5, sales: 7 };
   const VIEW_TEXT = ["model", "color", "size"];
   const shortModel = (m) => String(m || "").replace(/^VFF\s+/, "");
   const shortGroup = (g) => String(g).replace(" (Department)", " (Dept.)");
@@ -750,7 +750,7 @@
     $("cols").innerHTML =
       `<col style="width:${px(VIEW_W.chk)}px">` + VIEW_TEXT.map((k) => `<col style="width:${px(VIEW_W[k])}px">`).join("") +
       segs(() => infoCols().map((c) => `<col style="width:${px(c.grp === "Sales" ? VIEW_W.infoS : VIEW_W.info)}px">`).join(""), gcols,
-        () => `<col style="width:${px(VIEW_W.ord)}px">`);
+        () => `<col style="width:${px(VIEW_W.ord)}px"><col style="width:${px(VIEW_W.plan)}px"><col style="width:${px(VIEW_W.planPct)}px">`);
     // 店舗 (▼) と数量 (▼) の絞り込みボタンは一番右の列グループだけに出す
     const lastG = restG().filter((i) => colKinds(i).length).pop();
     // オフィスの表の見出し: 1 段目は Sales・Size をまとめ、ほかは 2 段分の高さ
@@ -771,7 +771,7 @@
         <th rowspan="2" class="chk-h"><input type="checkbox" id="chkAll" title="${esc(t("sel.all"))}" aria-label="${esc(t("sel.all"))}"></th>
         ${["Model", "Color", "Size"].map((h, k) => `<th rowspan="2">${h}${afBtn(`t${VIEW_TEXT[k]}`, h)}</th>`).join("")}
         ${segs(infoH1, (i) => (colKinds(i).length ? `<th class="grp${i === lastG ? "" : " no-af"}${gcls(i)}" colspan="${colKinds(i).length}" title="${esc(groups[i])}">${esc(shortGroup(groups[i]))}${i === lastG ? afBtn("loc", t("f.loc")) : ""}</th>` : ""),
-          () => `<th class="ord-h" rowspan="2" title="${esc(t("ord.title"))}">Order</th>`)}
+          () => `<th class="ord-h" rowspan="2" title="${esc(t("ord.title"))}">Order</th><th class="plan-h" rowspan="2" title="${esc(t("plan.projTitle"))}">${esc(t("plan.projH"))}</th><th class="plan-h" rowspan="2" title="${esc(t("plan.pctTitle"))}">${esc(t("plan.pctH"))}</th>`)}
       </tr>
       <tr class="h2">${segs(infoH2, (i) => colKinds(i).map((k) =>
         k === "qty" ? (i === lastG ? `<th class="${gcls(i).trim()}" title="Quantity">Qty${afBtn(`n${i}`, `${groups[i]} Quantity`)}</th>` : `<th class="no-af${gcls(i)}" title="Quantity">Qty</th>`)
@@ -812,7 +812,7 @@
       cells.push(`<th class="grp-label" colspan="${n}">${esc(labels[g])}</th>`);
     };
     addG(ctIdx());
-    span += 1; // Order 列
+    span += 3; // Order 列 + 発注後の在庫・比率の列
     restG().forEach(addG);
     flush();
     return cells.join("");
@@ -859,7 +859,7 @@
   try { showDetails = localStorage.getItem("showDetails") === "1"; } catch (_) {}
   const isDetailG = (g) => hasOffice() && g !== groups.length - 1 && !MAIN_LOCS.includes(groups[g]) && !/^event/i.test(groups[g]); // Event は常に表示
   const colKinds = (g) => locHidden.has(g) || hiddenAlways(g) || (!showDetails && isDetailG(g)) ? [] : [...(hasRate(g) ? ["rate"] : []), ...(hasSalesTotal(g) ? ["sales"] : []), "qty", ...(hasRate(g) ? ["mos"] : []), ...(hasRet(g) ? ["ret"] : [])];
-  const numCols = () => 1 + VIEW_TEXT.length + infoCols().length + sum(groups.map((_, i) => colKinds(i).length)) + 1; // +1 = Order
+  const numCols = () => 1 + VIEW_TEXT.length + infoCols().length + sum(groups.map((_, i) => colKinds(i).length)) + 3; // +3 = Order・発注後の在庫・比率
 
   // 1 行分の Quantity / Return を groups の並びで返す
   // Outstanding PO (発注済み・未入荷) は Store Total と Company Total の間の列。Company Total には含めない
@@ -889,7 +889,7 @@
         : k === "rate" ? `<td class="c rate${gcls(i)}">${fmtRate(tot.rate[i])}</td>`
         : k === "sales" ? `<td class="c sales${gcls(i)}">${nf(tot.sales[i])}</td>`
         : `<td class="c mos${gcls(i)}">${fmtMos(mos(tot.qty[i], tot.rate[i]))}</td>`).join(""),
-        () => `<td class="c ord-t" id="ordTot">${nf(tot.order)}</td>`)}`;
+        () => `<td class="c ord-t" id="ordTot">${nf(tot.order)}</td><td class="c plan-tot"></td><td class="c plan-pct"></td>`)}`;
 
   // Return で在庫が変わったときに在庫月数を更新
   function updateMos(tr, it) {
@@ -904,7 +904,7 @@
   function renderTable(items) {
     shown = items;
     const all = items.length === data.items.length;
-    const rows = items.map((it) => `<tr data-id="${it._id}"${rowSel.has(it._id) ? ' class="rsel"' : ""}>
+    const rows = items.map((it) => `<tr data-id="${it._id}" data-pk="${esc(planKey(it))}"${rowSel.has(it._id) ? ' class="rsel"' : ""}>
         <td class="chk"><input type="checkbox" class="row-chk"${rowSel.has(it._id) ? " checked" : ""} aria-label="${esc(`${it.model} ${it.color} ${it.size}`)}"></td><td title="${esc(it.code || "")}">${esc(shortModel(it.model))}</td><td title="${esc(it.color)}">${esc(it.color)}</td><td class="c">${esc(it.size)}</td>
         ${((q_) => segs(() => infoCellsHtml(it), (g) => {
           const q = q_[g];
@@ -917,7 +917,7 @@
             if (tot) return `<td class="c b tr">${nf(it._tr)}</td>`;
             return `<td class="c ret${isHl(it, g, "ret") ? " hl" : ""}"><input class="ret-in" type="text" inputmode="numeric" autocomplete="off" data-s="${g}" value="${it._ret[g] ?? ""}" aria-label="${esc(data.stores[g])} Return"${it._rc[g] ? ` title="${esc(t("recv.cellTitle", { q: it._rc[g] }))}"` : ""}></td>`;
           }).join("");
-        }, () => ordCellHtml(it)))(rowQty(it))}
+        }, () => ordCellHtml(it) + `<td class="c plan-tot"></td><td class="c plan-pct"></td>`))(rowQty(it))}
       </tr>`);
     if (!items.length) rows.push(`<tr><td class="empty" colspan="${numCols()}">${esc(t("empty"))}</td></tr>`);
     // モデル・性別のまとまり (例: V-Run のメンズ) が終わるごとに、サイズ別の販売合計と比率の合計 (100%) の行を入れる (オフィスの表の CD・CE 列の Total と同じ)
@@ -934,14 +934,19 @@
           const label = gd === "M" ? "Men" : gd === "W" ? "Women" : gd === "U" ? "Unisex" : gd;
           const line = (cls, color, size, t_, p_) => `<tr class="${cls}"><td class="chk"></td><td>${esc(shortModel(it.model))}</td><td>${esc(color)}</td><td class="c">${esc(size)}</td>
             ${segs(() => infoCols().map((c) => `<td class="c info">${c.k === "zt" ? nf(t_) : c.k === "zp" ? p_ : ""}</td>`).join(""),
-              (g) => colKinds(g).map(() => `<td class="${gcls(g).trim()}"></td>`).join(""), () => `<td class="ord"></td>`)}</tr>`;
+              (g) => colKinds(g).map(() => `<td class="${gcls(g).trim()}"></td>`).join(""), () => `<td class="ord"></td><td></td><td></td>`)}</tr>`;
           // サイズごとの販売合計と比率 (オフィスの表の CD・CE 列) → 最後に合計 100%
           const sizes = ent.map(([k, v]) => [k.split("|")[1], v]).sort((x, y) => sizeKey(x[0])[1] - sizeKey(y[0])[1]);
           return sizes.map(([sz, v], n) => line("sub sz", n === 0 ? `By size (${label})` : "", sz, v.t || 0, typeof v.p === "number" ? `${v.p.toFixed(1)}%` : "")).join("")
             + line("sub", `Total (${label})`, "", zt, "100.0%");
         }).join("");
       };
+      // モデル・性別・カラーのまとまりの先頭に「発注数量」の入力行
+      const planRow = (it) => `<tr class="plan" data-pk="${esc(planKey(it))}"><td class="chk"></td><td>${esc(shortModel(it.model))}</td><td title="${esc(it.color)}">${esc(it.color)}</td><td class="c plan-lb">${esc(t("plan.label"))}</td>
+        ${segs(() => infoCols().map(() => `<td class="info"></td>`).join(""), (g) => colKinds(g).map(() => `<td class="${gcls(g).trim()}"></td>`).join(""),
+          () => `<td class="c ord plan-cell"><input class="plan-in" type="text" inputmode="numeric" autocomplete="off" placeholder="${esc(t("plan.ph"))}" title="${esc(t("plan.title"))}" value="${planQty[planKey(it)] || ""}" aria-label="${esc(`${it.model} ${it.color}`)} ${esc(t("plan.label"))}"></td><td class="c plan-tot b"></td><td class="c plan-pct"></td>`)}</tr>`;
       items.forEach((it, n) => {
+        if (n === 0 || planKey(items[n - 1]) !== planKey(it)) out.push(planRow(it));
         out.push(rows[n]);
         if (n === items.length - 1 || osKey(items[n + 1].model) !== osKey(it.model) || gOf(items[n + 1]) !== gOf(it)) out.push(subRows(it));
       });
@@ -951,6 +956,7 @@
     // 表示中の行の合計 (絞り込み・返品入力がなければ Excel の Total 行と同じ値)
     rows.push(`<tr class="total" id="totalRow">${totalRowHtml(totalsOf(items))}</tr>`);
     $("tbody").innerHTML = rows.join("");
+    planRefreshAll();
     sel = null;
     refreshSel();
     updateRowBar();
@@ -1272,6 +1278,111 @@
   document.addEventListener("visibilitychange", () => { if (!document.hidden) pullOrders(); });
 
   const ordTotal = (items) => sum(items.map((it) => orders[okey(it)] || 0));
+
+  /* ---------- 発注の計画: 発注後の在庫 (在庫 + 発注残 + 新規) とサイズ比率、合計数量からの自動割り振り ---------- */
+  // まとまり = モデル × 性別 × カラー。目標の比率 = 販売のサイズ比率 (By size の %。モデル・サイズごと)
+  const planKey = (it) => `${osKey(it.model)}|${String(it.size)[0]}|${osKey(it.color)}`;
+  const planQty = {}; // まとまり → 入力した合計数量
+  let tolPct = 2, tolQty = 0;
+  try { const v = JSON.parse(localStorage.getItem("planTol") || "null"); if (v) { tolPct = +v.pct || 0; tolQty = +v.qty || 0; } } catch (_) {}
+  const targetOf = (it) => { const z = OS && OS.sizeTable[`${osKey(it.model)}|${it.size}`]; return z && typeof z.p === "number" ? z.p : 0; };
+  const stockOf = (it) => (it._tq || 0) + (it._po || 0); // 在庫 (Company Total) + 発注残 (Outstanding PO)
+  const parseQ = (v) => { const n = parseInt(String(v || "").replace(/[０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0)), 10); return Number.isFinite(n) && n > 0 ? n : 0; };
+  // 1 つのまとまりの行 (表示中の行) と、入力中の数 (確定前も含む)
+  function planRows(pk) {
+    return [...$("tbody").querySelectorAll(`tr[data-id][data-pk="${CSS.escape(pk)}"]`)].map((tr) => {
+      const it = data.items[+tr.dataset.id];
+      const inp = tr.querySelector(".ord-in");
+      return { tr, it, o: inp ? parseQ(inp.value) : orders[okey(it)] || 0 };
+    });
+  }
+  function planRefresh(pk) {
+    const rs = planRows(pk);
+    if (!rs.length) return;
+    const fin = rs.map((r) => stockOf(r.it) + r.o);
+    const tot = sum(fin.map((v) => Math.max(0, v)));
+    const ps = rs.map((r) => targetOf(r.it));
+    const pt = sum(ps);
+    let maxd = 0;
+    rs.forEach((r, i) => {
+      const share = tot ? (Math.max(0, fin[i]) / tot) * 100 : 0;
+      const target = pt ? (ps[i] / pt) * 100 : null;
+      const d = target == null ? 0 : Math.abs(share - target);
+      if (target != null && (ps[i] > 0 || fin[i] > 0)) maxd = Math.max(maxd, d);
+      r.tr.querySelector("td.plan-tot").textContent = nf(fin[i]);
+      const pc = r.tr.querySelector("td.plan-pct");
+      pc.textContent = target == null ? "" : `${share.toFixed(1)}% / ${target.toFixed(1)}%`;
+      pc.classList.toggle("ok", target != null && d <= tolPct);
+      pc.classList.toggle("ng", target != null && d > tolPct);
+    });
+    const pr = $("tbody").querySelector(`tr.plan[data-pk="${CSS.escape(pk)}"]`);
+    if (pr) {
+      const newQ = sum(rs.map((r) => r.o));
+      pr.querySelector("td.plan-tot").textContent = newQ ? `+${fmt(newQ)} → ${fmt(tot)}` : fmt(tot);
+      const pc = pr.querySelector("td.plan-pct");
+      pc.textContent = pt ? t("plan.maxDiff", { d: maxd.toFixed(1) }) : "";
+      pc.classList.toggle("ok", !!pt && maxd <= tolPct);
+      pc.classList.toggle("ng", !!pt && maxd > tolPct);
+    }
+  }
+  function planRefreshAll() { new Set(shown.map(planKey)).forEach(planRefresh); }
+  // 合計 N 足をサイズに割り振る: 発注後の在庫の比率が販売の比率に近くなるよう、足りないサイズから埋める (水位合わせ)
+  function splitOrder(cur, r, N) {
+    const f = (L) => sum(r.map((ri, i) => Math.max(0, ri * L - cur[i])));
+    let lo = 0, hi = sum(cur) + N + 1;
+    while (f(hi) < N && hi < 1e7) hi *= 2;
+    for (let k = 0; k < 60; k++) { const mid = (lo + hi) / 2; if (f(mid) < N) lo = mid; else hi = mid; }
+    const raw = r.map((ri, i) => Math.max(0, ri * hi - cur[i]));
+    const o = raw.map(Math.floor);
+    let rest = N - sum(o);
+    raw.map((v, i) => [v - Math.floor(v), i]).filter(([, i]) => r[i] > 0).sort((a, b) => b[0] - a[0]).forEach(([, i]) => { if (rest > 0) { o[i]++; rest--; } });
+    return o;
+  }
+  function allocate(pk, T) {
+    const rs = planRows(pk);
+    if (!rs.length) return;
+    const cur = rs.map((r) => Math.max(0, stockOf(r.it)));
+    let r = rs.map((x) => targetOf(x.it));
+    const rt = sum(r);
+    r = rt ? r.map((v) => v / rt) : r.map(() => 1 / rs.length); // 販売のないモデルは均等
+    // 合計数量の許容差 (±足) の範囲で、比率の差が一番小さい割り振りを選ぶ (同じなら入力した数に近い方)
+    let best = null;
+    for (let N = Math.max(0, T - tolQty); N <= T + tolQty; N++) {
+      const o = splitOrder(cur, r, N);
+      const fin = cur.map((c, i) => c + o[i]);
+      const tot = sum(fin) || 1;
+      const dev = Math.max(...fin.map((v, i) => Math.abs(v / tot - r[i]) * 100));
+      if (!best || dev < best.dev - 1e-9 || (Math.abs(dev - best.dev) < 1e-9 && Math.abs(N - T) < Math.abs(best.N - T))) best = { N, o, dev };
+    }
+    rs.forEach((x, i) => { const k = okey(x.it); if (best.o[i]) orders[k] = best.o[i]; else delete orders[k]; });
+    applyOrders();
+  }
+  $("tbody").addEventListener("input", (e) => {
+    const inp = e.target;
+    if (inp.classList.contains("ord-in")) planRefresh(inp.closest("tr").dataset.pk);
+  });
+  $("tbody").addEventListener("keydown", (e) => {
+    const inp = e.target;
+    if (!inp.classList.contains("plan-in") || !(e.key === "Enter" || e.key === "Tab")) return;
+    e.preventDefault();
+    const pk = inp.closest("tr").dataset.pk;
+    const T = parseQ(inp.value);
+    if (T) planQty[pk] = T; else delete planQty[pk];
+    if (T) allocate(pk, T);
+    // Tab / Enter → このまとまりの最初のサイズの Order へ (数を直せる)
+    const first = $("tbody").querySelector(`tr[data-id][data-pk="${CSS.escape(pk)}"] .ord-in`);
+    if (first) first.focus();
+  });
+  $("tbody").addEventListener("focusin", (e) => { if (e.target.classList.contains("plan-in")) e.target.select(); });
+  const saveTol = () => {
+    tolPct = Math.max(0, parseFloat($("tolPct").value) || 0);
+    tolQty = Math.max(0, parseInt($("tolQty").value, 10) || 0);
+    try { localStorage.setItem("planTol", JSON.stringify({ pct: tolPct, qty: tolQty })); } catch (_) {}
+    if (data) planRefreshAll();
+  };
+  $("tolPct").value = tolPct;
+  $("tolQty").value = tolQty;
+  ["tolPct", "tolQty"].forEach((id) => $(id).addEventListener("change", saveTol));
   const ordCellHtml = (it) =>
     `<td class="c ord"><span class="ord-step"><button type="button" class="ord-btn" data-d="-1" tabindex="-1" aria-label="−1">−</button><input class="ord-in" type="text" inputmode="numeric" autocomplete="off" value="${orders[okey(it)] || ""}" aria-label="${esc(`${it.model} ${it.color} ${it.size}`)} Order"><button type="button" class="ord-btn" data-d="1" tabindex="-1" aria-label="+1">+</button></span></td>`;
   // 表を作り直さずに Order の数だけ書き換える (入力中のマスには触れない)
@@ -1288,6 +1399,7 @@
     if (tc) tc.textContent = nf(ordTotal(shown));
     refreshSel();
     updateOrderInfo();
+    planRefreshAll();
     if ($("ordDlg").open) renderOrdHistory();
   }
   function updateOrderInfo() {
@@ -1329,6 +1441,7 @@
     const tc = $("ordTot");
     if (tc) tc.textContent = nf(ordTotal(shown));
     updateOrderInfo();
+    planRefresh(planKey(it));
   }
   $("tbody").addEventListener("change", (e) => { if (e.target.classList.contains("ord-in")) { commitOrder(e.target); refreshSel(); } });
   $("tbody").addEventListener("focusin", (e) => { if (e.target.classList.contains("ord-in")) e.target.select(); });
@@ -1346,9 +1459,11 @@
     let dir = 0;
     if (e.key === "Enter" || e.key === "ArrowDown") dir = e.shiftKey && e.key === "Enter" ? -1 : 1;
     else if (e.key === "ArrowUp") dir = -1;
+    else if (e.key === "Tab") dir = e.shiftKey ? -1 : 1; // Tab = 発注予定数量として確定して次のサイズへ
     else if (e.key === "Escape") { input.value = input.defaultValue; input.blur(); return; }
     if (!dir) return;
     e.preventDefault();
+    if (input.value !== input.defaultValue) commitOrder(input);
     let tr = input.closest("tr");
     do { tr = dir > 0 ? tr.nextElementSibling : tr.previousElementSibling; } while (tr && !tr.dataset.id);
     const next = tr && tr.querySelector(".ord-in");
