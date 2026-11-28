@@ -2312,19 +2312,23 @@ if (RETURNS_ON) {
         it._poLines = [...(it._poLines || []), ...p.lines];
       }
     }
-    // マレーシアの在庫を品番で行に当てる (タイの一覧にない品番は、同じ品番・カラーの行からモデル名とカラー名を借りて行を追加する)
+    // マレーシアの在庫を行に当てる。品番の付け方がタイと違うことがある (例: VFF0021 はタイでは Graspifier、マレーシアでは Groundsplay LS) ので、
+    // 品番が同じでもモデル名が違えば別の商品とみなし、モデル名・カラー・サイズで当てる。どれにも当たらなければマレーシアの名前で行を足す
     if (MY && d.officeIndex != null) {
+      const nk = (x) => String(x || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+      const sameModel = (it, x) => { const a = nk(shortModel(it.model)), b = nk(x.model); return a === b || (b.length > 3 && nk(it.model).includes(b)); };
+      const nameKey = (m, c, sz) => `${nk(m)}|${nk(c)}|${nk(sz)}`;
       const byCode = new Map(d.items.filter((it) => it.code).map((it) => [it.code, it]));
-      const byPre = new Map();
-      d.items.forEach((it) => { if (it.code && !byPre.has(it.code.split(",")[0])) byPre.set(it.code.split(",")[0], it); });
+      const byName = new Map();
+      d.items.forEach((it) => { const k = nameKey(shortModel(it.model), it.color, it.size); if (!byName.has(k)) byName.set(k, it); });
       for (const x of MY.items) {
-        let it = byCode.get(x.sku);
+        const c = byCode.get(x.sku);
+        let it = c && sameModel(c, x) ? c : byName.get(nameKey(x.model, x.color, x.size));
         if (!it) {
           if (!x.jb && !x.kl) continue;
-          const ref = byPre.get(x.sku.split(",")[0]);
-          it = { code: x.sku, model: ref ? ref.model : `VFF ${x.model}`, color: ref ? ref.color : x.color, size: x.size, qty: d.stores.map(() => 0), ret: d.stores.map(() => null), rate: null, rateEvent: null };
+          it = { code: null, _mycode: x.sku, model: `VFF ${x.model}`, color: x.color, size: x.size, qty: d.stores.map(() => 0), ret: d.stores.map(() => null), rate: null, rateEvent: null };
           d.items.push(it);
-          byCode.set(x.sku, it);
+          byName.set(nameKey(x.model, x.color, x.size), it);
         }
         it._jb = (it._jb || 0) + x.jb;
         it._kl = (it._kl || 0) + x.kl;
