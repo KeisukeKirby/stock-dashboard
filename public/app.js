@@ -1280,9 +1280,16 @@
       } catch (_) { if (!quiet) alert(t("ord.saveFail")); return false; }
     }
     try {
+      const sent = { ...orders };
       const j = await ordPost(ordDiff());
       ordSaved = ordClean(j.draft);
-      orders = { ...ordSaved };
+      // 通信中に打った数は残す
+      const next = { ...ordSaved };
+      for (const k of new Set([...Object.keys(sent), ...Object.keys(orders)])) {
+        if (orders[k] === sent[k]) continue;
+        if (orders[k]) next[k] = orders[k]; else delete next[k];
+      }
+      orders = next;
       ordHistory = j.confirmed || [];
       ordUpdatedAt = j.updatedAt;
       ordLastSaved = ordLastSync = new Date();
@@ -1400,9 +1407,21 @@
   $("tbody").addEventListener("input", (e) => {
     const inp = e.target;
     if (!inp.classList.contains("ord-in")) return;
+    // 1 文字打つたびに Order に入れて、このブラウザにすぐバックアップ → 1.5 秒後にサーバーへ保存 (画面を閉じても消えない)
+    const raw = inp.value.trim().replace(/[０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0));
+    if (raw === "" || /^\d+$/.test(raw)) { commitOrder(inp); return; }
     planRefresh(inp.closest("tr").dataset.pk);
     clearTimeout(typeTimer);
     typeTimer = setTimeout(() => { if (inp.isConnected && inp.value !== inp.defaultValue) commitOrder(inp); }, 2000);
+  });
+  // 合計数量の欄も打つたびにこのブラウザへ残す
+  $("tbody").addEventListener("input", (e) => {
+    const inp = e.target;
+    if (!inp.classList.contains("plan-in")) return;
+    const pk = inp.closest("tr").dataset.pk;
+    const T = parseQ(inp.value);
+    if (T) planQty[pk] = T; else delete planQty[pk];
+    savePlanQty();
   });
   $("tbody").addEventListener("keydown", (e) => {
     const inp = e.target;
@@ -2084,7 +2103,7 @@
   });
   // 未保存のままページを閉じようとしたら確認
   window.addEventListener("beforeunload", (e) => {
-    if (data && (isDirty() || ordDirty())) { e.preventDefault(); e.returnValue = ""; }
+    if (data && isDirty()) { e.preventDefault(); e.returnValue = ""; } // Order はバックアップ済み + 閉じるときに保存するので確認しない
   });
 
   function render() {
