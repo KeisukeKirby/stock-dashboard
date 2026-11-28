@@ -722,13 +722,15 @@
   // 列グループの表示順: [オフィスの表の列] Company Total [Order] Office・店舗… Outstanding PO
   const ctIdx = () => groups.length - 1;
   const qOrder = () => [ctIdx(), ...restG()].filter((g) => colKinds(g).includes("qty")); // 画面の Qty のマスの並び
-  // マレーシア (JB・KL) の列は Central LP のすぐ右に置く
+  // マレーシア (JB・KL) の列は Central LP・Event の右に置く
+  // Event の列は Central LP の右 (マレーシアの列の左隣) に置く
+  const isEventG = (g) => g < data.stores.length && /^event/i.test(groups[g]);
   const restG = () => {
-    const out = groups.map((_, i) => i).filter((i) => i !== ctIdx() && !isMyG(i));
-    if (myIdx() < 0) return out;
+    const ev = groups.map((_, i) => i).filter(isEventG);
+    const out = groups.map((_, i) => i).filter((i) => i !== ctIdx() && !isMyG(i) && !isEventG(i));
     const lp = data.stores.indexOf("Central LP");
     const at = lp >= 0 ? out.indexOf(lp) + 1 : data.stores.length;
-    out.splice(at, 0, myIdx(), myIdx() + 1);
+    out.splice(at, 0, ...ev, ...(myIdx() >= 0 ? [myIdx(), myIdx() + 1] : []));
     return out;
   };
   // segs: 1 行分のマスを表示順に作る。info / g(列グループ) / ord を順番に呼ぶ
