@@ -1,11 +1,12 @@
 """Central CL・Siam Discovery の売上表から、VFF の靴以外 (VFF の靴下・Barefoot Japan・Oleno) の販売足数を品番別に数える。
 
-  python3 scripts/dept_sales.py <Central CL の売上ファイル> <Siam Discovery の売上ファイル>
+  python3 scripts/dept_sales.py "Central CL (Department)=<ファイル>" ... "Siam Discovery=<ファイル>" ... [-v]
+  同じ拠点・同じ月が複数のファイルにあるときは、先に書いたファイルを使う
   → public/dept_sales.json  { stores: { 拠点: { from, to, sales: { 品番: 足数 } } }, unmatched: [...] }
 
 百貨店の売上表は品番がない (または独自の書き方) ので、品名から Zort の品番に読み替える。
   例: "OLENO ULTIMATE SHR (RD/PP,23-25)" → OLN0003(RD/PP,25)、"BFJ SOCKS(M, BLACK)" → BFJ0001(BK,M)
-月別のシート (01-26, 02-26 …) を読む。Central CL は Store Name 列があれば CHIDLOM の行だけ (VFF の販売と同じ決まり)。
+月は 日付のマス / "Jan-2026" / シート名 (01-26) から決める。Central CL は Store Name 列があれば CHIDLOM の行だけ (VFF の販売と同じ決まり)。
 """
 import collections
 import datetime
@@ -124,61 +125,92 @@ def to_code(name, hint=""):
     return f"{fam}({cands[0]})", True
 
 
-def month_sheets(wb):
+MONTHS = {m: i + 1 for i, m in enumerate(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])}
+
+
+def row_month(r, sheet_ym):
+    """行の月: 日付のマス → "Jan-2026" のような文字 → シート名 (01-26) の順で決める"""
+    for v in r:
+        if isinstance(v, (datetime.datetime, datetime.date)):
+            return f"{v.year}-{v.month:02d}"
+    for v in r:
+        m = re.match(r"^([A-Z][a-z]{2})-(\d{4})$", str(v or "").strip())
+        if m and m.group(1) in MONTHS:
+            return f"{m.group(2)}-{MONTHS[m.group(1)]:02d}"
+    return sheet_ym
+
+
+def read_lines(path):
+    """1 ファイルの販売の行を (月, 品番 or None, 品名, 数量) で返す。VFF の靴など対象外の品名は返さない"""
+    wb = openpyxl.load_workbook(path, read_only=True, data_only=True)
     for ws in wb.worksheets:
         m = re.match(r"^(\d{2})-(\d{2})$", ws.title.strip())
-        if m:
-            yield f"20{m.group(2)}-{m.group(1)}", ws
-
-
-def read(path, store):
-    wb = openpyxl.load_workbook(path, read_only=True, data_only=True)
-    sales, unmatched, months = collections.Counter(), collections.Counter(), set()
-    seen = {}
-    for ym, ws in month_sheets(wb):
-        if ym < "2026-01":
+        sheet_ym = f"20{m.group(2)}-{m.group(1)}" if m else None
+        # 月別シートのあるファイル (2026, 2025 などのまとめシートもある) は月別シートだけ読む
+        if not m and any(re.match(r"^\d{2}-\d{2}$", w.title.strip()) for w in wb.worksheets):
             continue
         rows = list(ws.iter_rows(values_only=True))
         head = next((r for r in rows[:5] if r and any(str(v or "").strip() == "Store Name" for v in r)), None)
         si = [str(v or "").strip() for v in head].index("Store Name") if head else None
         for r in rows:
-            if not r or not any(isinstance(v, datetime.datetime) for v in r):  # 日付のある行だけ (見出し・合計の行は読まない)
+            if not r:
                 continue
+            ym = row_month(r, sheet_ym)
+            if not ym or not ym.startswith("2026"):
+                continue
+            # Central は CHIDLOM の行だけ (VFF の販売と同じ決まり。CHIDLOM ONLINE・ほかの Central の店は含めない)
             if si is not None and str(r[si] or "").strip().upper() != "CHIDLOM":
                 continue
             strs = [v for v in r if isinstance(v, str) and v.strip()]
             nums = [v for v in r if isinstance(v, (int, float)) and not isinstance(v, bool)]
             if not strs or not nums:
                 continue
-            # 品名 = かっこのある文字列 (なければ最初の文字列)。ほかの文字列 (売上表の品番) は色の手がかりに使う
-            name = next((x for x in reversed(strs) if "(" in x and x.strip().upper() != "CHIDLOM"), strs[0])
-            qty = nums[0]
-            code, ours = to_code(name, " ".join(x for x in strs if x is not name))
+            # 品名: かっこのある文字列のうち、品番に読み替えられるもの (売上表の品番の列より品名の列を優先)
+            cands = [x for x in strs if "(" in x] or strs[:1]
+            hint = " ".join(strs)
+            scored = [(to_code(x, hint), x) for x in cands]
+            (code, ours), name = max(scored, key=lambda t: (t[0][0] is not None, t[0][1], len(t[1])))
             if not ours:
                 continue
-            months.add(ym)
-            if code:
-                sales[code] += qty
-                seen.setdefault(name, code)
-            else:
-                unmatched[name] += qty
-    ms = sorted(months)
-    if "-v" in sys.argv:
-        for k, v in sorted(seen.items()):
-            print(f"  {k!r:45} -> {v}")
-    return {"from": ms[0] if ms else None, "to": ms[-1] if ms else None, "source": Path(path).name,
-            "sales": {k: int(v) if v == int(v) else v for k, v in sorted(sales.items()) if v}}, unmatched
+            yield ym, code, name, nums[0]
 
 
-def main(cl, sd):
+def main(args):
+    """args: "Central CL (Department)=ファイル" / "Siam Discovery=ファイル" を優先する順に。
+    同じ拠点・同じ月が複数のファイルにあるときは、先に書いたファイルの数だけを使う (二重に数えない)"""
     out = {"stores": {}, "unmatched": {}}
-    for store, path in [("Central CL (Department)", cl), ("Siam Discovery", sd)]:
-        d, un = read(path, store)
-        out["stores"][store] = d
-        out["unmatched"][store] = {k: v for k, v in un.most_common()}
-        print(store, d["from"], d["to"], sum(d["sales"].values()), "pairs,", len(d["sales"]), "SKUs; unmatched", sum(un.values()), dict(un.most_common(8)))
+    verbose = "-v" in args
+    for store in dict.fromkeys(a.split("=", 1)[0] for a in args if "=" in a):
+        files = [a.split("=", 1)[1] for a in args if a.startswith(store + "=")]
+        taken = {}  # 月 → ファイル
+        sales, un, seen = collections.Counter(), collections.Counter(), {}
+        for f in files:
+            lines = list(read_lines(f))
+            months = {ym for ym, *_ in lines}
+            use = {ym for ym in months if ym not in taken}
+            for ym in use:
+                taken[ym] = Path(f).name
+            for ym, code, name, q in lines:
+                if ym not in use:
+                    continue
+                if code:
+                    sales[code] += q
+                    seen.setdefault(name, code)
+                else:
+                    un[name] += q
+        ms = sorted(taken)
+        out["stores"][store] = {"from": ms[0] if ms else None, "to": ms[-1] if ms else None,
+                                "months": {m: taken[m] for m in ms},
+                                "sales": {k: int(v) if v == int(v) else v for k, v in sorted(sales.items()) if v}}
+        out["unmatched"][store] = dict(un.most_common())
+        if verbose:
+            for k, v in sorted(seen.items()):
+                print(f"  {k!r:45} -> {v}")
+        print(store, ms[0] if ms else None, ms[-1] if ms else None, sum(sales.values()), "pairs,", len(sales), "SKUs; unmatched", sum(un.values()), dict(un.most_common(8)))
+        for m in ms:
+            print("   ", m, taken[m])
     OUT.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 if __name__ == "__main__":
-    main(*[a for a in sys.argv[1:] if a != "-v"][:2])
+    main(sys.argv[1:])

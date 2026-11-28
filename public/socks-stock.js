@@ -1,5 +1,6 @@
 /* Socks・Coolcore の在庫シート: Zort の在庫から該当する SKU だけを取り出して表示する。
-   Socks    = VFF の靴下 (商品名に Socks を含む VFF の SKU) + Barefoot Japan (BFJ) + Oleno (OLN)
+   Socks    = VFF の靴下 (商品名に Socks を含む VFF の SKU) + Barefoot Japan (BFJ)
+   Oleno    = 品番が OLN で始まる SKU
    Coolcore = 品番が CC で始まる SKU
    VFF の靴下は VFF の在庫一覧には出さない (app.js の isSocks で除いている)。 */
 (() => {
@@ -93,6 +94,7 @@
     window.addEventListener("zort-update", (e) => { if (e.detail.fetchedAt !== shownAt) show(e.detail); });
   }
 
-  sheet({ prefix: "s", key: "socks", match: (sku, name) => (sku.startsWith("VFF") && isSocks(name)) || /^(BFJ|OLN)\d/.test(sku) });
+  sheet({ prefix: "s", key: "socks", match: (sku, name) => (sku.startsWith("VFF") && isSocks(name)) || /^BFJ\d/.test(sku) });
+  sheet({ prefix: "o", key: "oleno", match: (sku) => /^OLN\d/.test(sku) });
   sheet({ prefix: "c", key: "coolcore", match: (sku) => /^CC\d/.test(sku) });
 })();

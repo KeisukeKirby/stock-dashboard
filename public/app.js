@@ -56,15 +56,16 @@
   applyTheme();
 
   /* ---------- tabs ---------- */
-  let view = ["#detail", "#vivo", "#socks", "#coolcore", "#zero"].includes(location.hash) ? location.hash.slice(1) : "table";
+  let view = ["#detail", "#vivo", "#socks", "#oleno", "#coolcore", "#zero"].includes(location.hash) ? location.hash.slice(1) : "table";
   function showView(v, { scroll = false } = {}) {
     view = v;
     // Vivo は在庫一覧の中の切り替え (タブは「在庫一覧」のまま)
-    document.querySelectorAll(".tab").forEach((tab) => tab.setAttribute("aria-selected", tab.dataset.view === (["vivo", "socks", "coolcore", "zero"].includes(v) ? "table" : v)));
+    document.querySelectorAll(".tab").forEach((tab) => tab.setAttribute("aria-selected", tab.dataset.view === (["vivo", "socks", "oleno", "coolcore", "zero"].includes(v) ? "table" : v)));
     $("view-table").hidden = v !== "table";
     $("view-detail").hidden = v !== "detail";
     $("view-vivo").hidden = v !== "vivo";
     $("view-socks").hidden = v !== "socks";
+    $("view-oleno").hidden = v !== "oleno";
     $("view-coolcore").hidden = v !== "coolcore";
     $("view-zero").hidden = v !== "zero";
     history.replaceState(null, "", v === "table" ? location.pathname + location.search : `#${v}`);
@@ -95,7 +96,7 @@
     const fit = w > avail ? Math.floor(((avail - 2) / w) * 10000) / 10000 : 1;
     if (fit !== lastFit) { table.style.setProperty("--fit", fit); lastFit = fit; }
     // Vivo・Socks・Coolcore の表も VFF と同じ倍率で表示する
-    document.querySelectorAll("#vivoTable, #socksTable, #coolcoreTable").forEach((x) => x.style.setProperty("--fit", lastFit));
+    document.querySelectorAll("#vivoTable, #socksTable, #olenoTable, #coolcoreTable").forEach((x) => x.style.setProperty("--fit", lastFit));
   }
   window.addEventListener("resize", fitTable);
 
