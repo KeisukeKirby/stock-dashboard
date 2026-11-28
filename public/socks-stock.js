@@ -51,6 +51,13 @@
       z.locations.forEach((loc, k) => {
         for (const [sku, q] of Object.entries(loc.stock)) if (cfg.match(sku, z.names[sku])) add(sku).qty[k] += q;
       });
+      // EDV の本倉庫 (คลังสินค้าหลัก) の在庫は Office に合算して、Office として出す
+      const edvMain = stores.findIndex((n) => /^(คลังสินค้าหลัก|Office) \(EDV\)$/.test(n));
+      const office = stores.indexOf("Office");
+      if (edvMain >= 0 && office >= 0) {
+        byCode.forEach((it) => { it.qty[office] += it.qty[edvMain] || 0; it.qty.splice(edvMain, 1); });
+        stores.splice(edvMain, 1);
+      }
       // 委託先の在庫 (public/consign.json)。Central CL・Siam Discovery などはこの数に置き換え、Zort にない委託先は列を足す
       const cons = window.OTHER_SHEET.consign();
       if (cons) {
